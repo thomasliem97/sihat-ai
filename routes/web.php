@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AiFileController;
+use App\Http\Controllers\AiWebhookController;
 use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\Patient\DashboardController as PatientDashboardController;
 use App\Http\Controllers\Physician\DashboardController as PhysicianDashboardController;
@@ -7,6 +9,11 @@ use App\Http\Middleware\EnsureUserRole;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'Welcome')->name('home');
+
+Route::post('/api/ai/webhook', AiWebhookController::class)->name('ai.webhook');
+Route::get('/api/ai/files/{record}', AiFileController::class)
+    ->middleware('signed')
+    ->name('ai.file');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
