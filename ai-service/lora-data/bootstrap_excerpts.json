@@ -1,0 +1,98 @@
+[
+  {
+    "source": "MOH Malaysia CPG - Community Acquired Pneumonia",
+    "section": "Imaging",
+    "content_en": "Chest radiograph may show lobar or patchy consolidation. Clinical correlation with symptoms, vital signs, and laboratory findings is essential before initiating antibiotic therapy.",
+    "content_bm": "X-ray dada mungkin menunjukkan konsolidasi lobar atau bertompok. Korelasi klinikal dengan simptom, tanda vital, dan keputusan makmal adalah penting sebelum memulakan antibiotik."
+  },
+  {
+    "source": "MOH Malaysia CPG - Tuberculosis",
+    "section": "Imaging",
+    "content_en": "Upper lobe cavitary lesions are characteristic of post-primary TB. Lower lobe involvement can occur, particularly in immunocompromised patients. Sputum AFB and GeneXpert should be considered when TB is suspected.",
+    "content_bm": "Lesi kaviti di lobus atas adalah ciri TB pasca-primer. Penglibatan lobus bawah boleh berlaku, terutamanya dalam pesakit imunokompromis. Ujian AFB kahak dan GeneXpert perlu dipertimbangkan jika TB disyaki."
+  },
+  {
+    "source": "MOH Malaysia CPG - Dengue Infection in Adults",
+    "section": "Warning signs",
+    "content_en": "Warning signs include abdominal pain or tenderness, persistent vomiting, clinical fluid accumulation, mucosal bleed, lethargy or restlessness, liver enlargement >2 cm, and rising haematocrit with rapid falling platelet count. Patients with warning signs need close monitoring and may require hospital referral.",
+    "content_bm": "Tanda amaran termasuk sakit perut, muntah berterusan, pengumpulan cecair, pendarahan mukosa, kelesuan atau kegelisahan, pembesaran hati >2 cm, dan hematokrit meningkat dengan platelet menurun pantas. Pesakit dengan tanda amaran perlu pemantauan rapi dan mungkin perlu dirujuk ke hospital."
+  },
+  {
+    "source": "MOH Malaysia CPG - Dengue Fever in Children",
+    "section": "Fluid management",
+    "content_en": "In dengue with warning signs, careful intravenous fluid titration is preferred over aggressive boluses unless there is shock. Overhydration can worsen plasma leakage complications.",
+    "content_bm": "Dalam denggi dengan tanda amaran, titrasi cecair IV yang berhati-hati lebih digalakkan berbanding bolus agresif kecuali jika terdapat kejutan. Hidrasi berlebihan boleh memburukkan komplikasi kebocoran plasma."
+  },
+  {
+    "source": "MOH Malaysia CPG - Thalassaemia",
+    "section": "Laboratory",
+    "content_en": "Microcytic hypochromic anaemia with elevated HbA2 or HbF suggests beta-thalassaemia trait. Iron studies help differentiate from iron deficiency anaemia. Cascade screening of family members is recommended after confirming a carrier.",
+    "content_bm": "Anemia mikrositik hipokromik dengan HbA2 atau HbF tinggi mencadangkan sifat beta-talasemia. Ujian zat besi membantu membezakan daripada anemia kekurangan zat besi. Saringan keluarga digalakkan selepas mengesahkan pembawa."
+  },
+  {
+    "source": "MOH Malaysia CPG - Type 2 Diabetes Mellitus",
+    "section": "Glycaemic targets",
+    "content_en": "Individualise HbA1c targets. For many non-pregnant adults, an HbA1c of ≤7.0% is reasonable if achievable without significant hypoglycaemia. Less stringent targets may be appropriate in older adults or those with limited life expectancy or severe comorbidities.",
+    "content_bm": "Sasaran HbA1c perlu diindividuakan. Bagi ramai orang dewasa bukan hamil, HbA1c ≤7.0% munasabah jika dicapai tanpa hipoglisemia ketara. Sasaran lebih longgar mungkin sesuai untuk warga emas atau mereka dengan jangka hayat terhad atau komorbiditi teruk."
+  },
+  {
+    "source": "MOH Malaysia CPG - Type 2 Diabetes Mellitus",
+    "section": "Cardiovascular risk",
+    "content_en": "T2DM is a cardiovascular disease–defining condition. Blood pressure, lipids, smoking cessation, and cardiorenal therapies such as SGLT2 inhibitors or GLP-1 receptor agonists should be considered based on comorbidities.",
+    "content_bm": "T2DM adalah keadaan yang mentakrifkan penyakit kardiovaskular. Tekanan darah, lipid, berhenti merokok, dan terapi kardiorenal seperti perencat SGLT2 atau agonis reseptor GLP-1 perlu dipertimbangkan mengikut komorbiditi."
+  },
+  {
+    "source": "MOH Malaysia CPG - Obesity",
+    "section": "Assessment",
+    "content_en": "Obesity assessment should include BMI, waist circumference, comorbidity screening, and evaluation of readiness for lifestyle change. Multicomponent lifestyle intervention remains first-line; pharmacotherapy or bariatric pathways may be considered for selected patients.",
+    "content_bm": "Penilaian obesiti harus merangkumi BMI, lilitan pinggang, saringan komorbiditi, dan kesediaan untuk perubahan gaya hidup. Intervensi gaya hidup berbilang komponen kekal barisan pertama; ubat atau pembedahan mungkin dipertimbangkan untuk pesakit terpilih."
+  },
+  {
+    "source": "MOH Malaysia CPG - Asthma in Adults",
+    "section": "Diagnosis",
+    "content_en": "Asthma diagnosis is based on compatible history plus evidence of variable expiratory airflow limitation. Spirometry with bronchodilator reversibility is preferred when available. Chest radiograph is not routine for uncomplicated asthma but helps exclude alternative diagnoses when red flags are present.",
+    "content_bm": "Diagnosis asma berdasarkan sejarah yang sesuai serta bukti had aliran udara ekspiratori yang berubah-ubah. Spirometri dengan kebolehbalikan bronkodilator digalakkan jika ada. X-ray dada bukan rutin untuk asma tanpa komplikasi, tetapi membantu menolak diagnosis lain jika terdapat tanda bahaya."
+  },
+  {
+    "source": "MOH Malaysia CPG - Childhood Asthma",
+    "section": "Differential diagnosis",
+    "content_en": "Consider alternative diagnoses such as foreign body inhalation, tuberculosis, congenital airway anomalies, or heart failure when red flags are present. Chest X-ray may be indicated to exclude structural or infective causes.",
+    "content_bm": "Pertimbangkan diagnosis alternatif seperti terhidu benda asing, tuberkulosis, anomali saluran udara kongenital, atau kegagalan jantung jika terdapat tanda bahaya. X-ray dada mungkin diperlukan untuk menolak punca struktur atau jangkitan."
+  },
+  {
+    "source": "MOH Malaysia CPG - EVALI",
+    "section": "Imaging",
+    "content_en": "E-cigarette or vaping product use–associated lung injury (EVALI) may present with bilateral opacities on chest radiograph or CT. A history of recent vaping is essential. Infectious causes should be excluded and supportive care initiated promptly.",
+    "content_bm": "Kecederaan paru-paru berkaitan e-rokok atau vape (EVALI) boleh menunjukkan opasiti dua hala pada X-ray atau CT dada. Sejarah vape baru-baru ini adalah penting. Punca jangkitan perlu ditolak dan rawatan sokongan dimulakan dengan segera."
+  },
+  {
+    "source": "MOH Malaysia CPG - Dermatology / pigmented lesions",
+    "section": "ABCDE",
+    "content_en": "Asymmetry, border irregularity, colour variation, diameter >6 mm, and evolution warrant specialist review for suspected melanoma. Document lesion location and recommend clinical photography when monitoring.",
+    "content_bm": "Asimetri, sempadan tidak teratur, variasi warna, diameter >6 mm, dan perubahan wajar dirujuk kepada pakar jika melanoma disyaki. Dokumentasikan lokasi lesi dan cadangkan fotografi klinikal jika dipantau."
+  },
+  {
+    "source": "MOH Malaysia CPG - Acne Vulgaris",
+    "section": "Patient counselling",
+    "content_en": "Acne management includes gentle cleansing, avoiding aggressive scrubbing, adherence to topical regimens, and counselling on expected response time. Seek medical review for nodulocystic disease, scarring, or psychosocial distress.",
+    "content_bm": "Pengurusan jerawat termasuk pencucian lembut, elak gosokan kasar, pematuhan regimen topikal, dan kaunseling tentang tempoh jangkaan respons. Dapatkan semakan perubatan untuk penyakit nodulocystic, parut, atau tekanan psikososial."
+  },
+  {
+    "source": "MOH Malaysia CPG - Hypertension",
+    "section": "Targets",
+    "content_en": "Blood pressure targets should be individualised. Lifestyle measures include salt reduction, weight management, physical activity, and limiting alcohol. Pharmacotherapy choice depends on comorbidities such as diabetes, CKD, or ischaemic heart disease.",
+    "content_bm": "Sasaran tekanan darah perlu diindividuakan. Langkah gaya hidup termasuk kurangkan garam, kawalan berat, aktiviti fizikal, dan hadkan alkohol. Pilihan ubat bergantung kepada komorbiditi seperti diabetes, CKD, atau penyakit jantung iskemia."
+  },
+  {
+    "source": "MOH Malaysia CPG - Heart Failure",
+    "section": "Recognition",
+    "content_en": "Heart failure may present with dyspnoea, orthopnoea, oedema, and fatigue. Chest radiograph can show cardiomegaly, pulmonary congestion, or pleural effusion. Early specialist pathway and guideline-directed medical therapy improve outcomes.",
+    "content_bm": "Kegagalan jantung boleh muncul dengan sesak nafas, ortopnea, bengkak, dan mudah penat. X-ray dada boleh menunjukkan kardiomegali, kesesakan paru-paru, atau efusi pleura. Laluan pakar awal dan terapi perubatan berpandukan garis panduan memperbaiki outcome."
+  },
+  {
+    "source": "SihatAI product style",
+    "section": "Safety disclaimer",
+    "content_en": "AI-generated findings are decision support only and do not replace clinical judgement. Critical or uncertain findings should be escalated to a licensed clinician. Patient-facing summaries should use plain language and avoid definitive diagnosis wording.",
+    "content_bm": "Dapatan AI hanyalah sokongan keputusan dan tidak menggantikan pertimbangan klinikal. Dapatan kritikal atau tidak pasti perlu diarahkan kepada doktor berdaftar. Ringkasan untuk pesakit perlu bahasa mudah dan elak kata diagnosis muktamad."
+  }
+]
