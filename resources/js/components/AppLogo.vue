@@ -3,11 +3,7 @@ import AppLogoIcon from '@/components/AppLogoIcon.vue';
 </script>
 
 <template>
-    <div
-        class="flex aspect-square size-8 items-center justify-center rounded-xl bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
-    >
-        <AppLogoIcon class="size-5 fill-current" />
-    </div>
+    <AppLogoIcon class="size-8 rounded-xl" />
     <div class="ml-2 grid flex-1 text-left text-sm leading-tight">
         <span class="truncate font-bold tracking-tight">Sihat AI</span>
         <span
