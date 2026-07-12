@@ -22,7 +22,7 @@ class MedicalDemoSeeder extends Seeder
     {
         $physician = User::factory()->create([
             'name' => 'Dr. Aisha Rahman',
-            'email' => 'physician@sihatai.test',
+            'email' => 'physician@sihat-ai.vxms.dev',
             'password' => Hash::make('password'),
             'role' => UserRole::Physician,
             'locale' => ReportLanguage::English,
@@ -30,7 +30,7 @@ class MedicalDemoSeeder extends Seeder
 
         $patient = User::factory()->create([
             'name' => 'Ahmad bin Hassan',
-            'email' => 'patient@sihatai.test',
+            'email' => 'patient@sihat-ai.vxms.dev',
             'password' => Hash::make('password'),
             'role' => UserRole::Patient,
             'locale' => ReportLanguage::Malay,
@@ -120,7 +120,7 @@ class MedicalDemoSeeder extends Seeder
         MedicalRecord::create([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $physician->id,
-            'title' => 'Chest X-ray — cough 2 weeks',
+            'title' => 'Chest X-ray, cough 2 weeks',
             'modality' => Modality::Xray,
             'detected_modality' => Modality::Xray,
             'status' => RecordStatus::Completed,
@@ -169,7 +169,7 @@ class MedicalDemoSeeder extends Seeder
         MedicalRecord::create([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $patient->id,
-            'title' => 'Full blood count — routine screening',
+            'title' => 'Full blood count, routine screening',
             'modality' => Modality::LabPdf,
             'detected_modality' => Modality::LabPdf,
             'status' => RecordStatus::Completed,

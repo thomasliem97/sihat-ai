@@ -26,11 +26,7 @@ defineProps<{
                 :href="home()"
                 class="flex items-center gap-2.5 self-center font-medium"
             >
-                <div
-                    class="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground"
-                >
-                    <AppLogoIcon class="size-5 fill-current" />
-                </div>
+                <AppLogoIcon class="size-9 rounded-xl" />
                 <span class="font-bold tracking-tight">Sihat AI</span>
             </Link>
 

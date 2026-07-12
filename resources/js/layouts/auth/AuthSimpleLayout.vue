@@ -21,11 +21,7 @@ defineProps<{
                         :href="home()"
                         class="flex flex-col items-center gap-3 font-medium"
                     >
-                        <div
-                            class="flex size-11 items-center justify-center rounded-xl bg-primary text-primary-foreground"
-                        >
-                            <AppLogoIcon class="size-6 fill-current" />
-                        </div>
+                        <AppLogoIcon class="size-11 rounded-xl text-base" />
                         <span
                             class="font-mono text-[0.65rem] font-semibold tracking-wider text-ink-faint uppercase"
                         >
@@ -35,7 +31,7 @@ defineProps<{
                     </Link>
                     <div class="space-y-2 text-center">
                         <SectionTag v-if="title" class="justify-center">
-                            Access
+                            Demo access
                         </SectionTag>
                         <h1 class="text-2xl font-bold tracking-tight">
                             {{ title }}

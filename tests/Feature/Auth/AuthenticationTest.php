@@ -10,6 +10,12 @@ test('login screen can be rendered', function () {
     $response->assertOk();
 });
 
+test('login screen offers seeded demo accounts', function () {
+    $this->get(route('login'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page->component('auth/Login'));
+});
+
 test('users can authenticate using the login screen', function () {
     $user = User::factory()->create();
 

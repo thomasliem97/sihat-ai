@@ -5,6 +5,9 @@ use App\Models\User;
 test('welcome page is accessible to guests', function () {
     $this->get(route('home'))
         ->assertOk()
+        ->assertDontSee('Create account')
+        ->assertDontSee('Get started')
+        ->assertSee('View Demo')
         ->assertInertia(fn ($page) => $page
             ->component('Welcome')
             ->where('auth.user', null));

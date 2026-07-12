@@ -27,7 +27,7 @@ import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import IconDisc from '@/components/patterns/IconDisc.vue';
 import SectionTag from '@/components/patterns/SectionTag.vue';
 import { Button } from '@/components/ui/button';
-import { dashboard, home, login, register } from '@/routes';
+import { dashboard, home, login } from '@/routes';
 
 const mobileOpen = ref(false);
 const activeSection = ref('hero');
@@ -40,7 +40,6 @@ const navItems = [
     { id: 'pipeline', label: 'Pipeline' },
     { id: 'capabilities', label: 'Capabilities' },
     { id: 'safety', label: 'Safety' },
-    { id: 'try', label: 'Try it' },
 ] as const;
 
 const fractures = [
@@ -130,7 +129,7 @@ const safetyPrinciples = [
     {
         n: '03',
         title: 'Constrain claims',
-        body: 'Structured DDx with confidence — never unsupported certainty.',
+        body: 'Structured DDx with confidence, never unsupported certainty.',
     },
     {
         n: '04',
@@ -146,6 +145,11 @@ function scrollToId(id: string) {
     mobileOpen.value = false;
     const el = document.getElementById(id);
     el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function scrollToTop() {
+    mobileOpen.value = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function onScroll() {
@@ -173,7 +177,7 @@ onMounted(() => {
         )
         .forEach((el) => observer?.observe(el));
 
-    // Hero should animate in immediately — don't wait for IO.
+    // Hero should animate in immediately; don't wait for IO.
     requestAnimationFrame(() => {
         document
             .querySelectorAll(
@@ -218,7 +222,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="SihatAI — Multimodal clinical intelligence" />
+    <Head title="SihatAI: Multimodal clinical intelligence" />
 
     <div class="welcome-page atlas-field min-h-screen">
         <!-- Nav -->
@@ -234,15 +238,11 @@ onUnmounted(() => {
                 class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6"
             >
                 <a
-                    href="#hero"
+                    href="#"
                     class="flex items-center gap-2.5"
-                    @click.prevent="scrollToId('hero')"
+                    @click.prevent="scrollToTop"
                 >
-                    <div
-                        class="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground"
-                    >
-                        <AppLogoIcon class="size-5 fill-current" />
-                    </div>
+                    <AppLogoIcon class="size-9 rounded-xl" />
                     <div class="leading-tight">
                         <span class="block text-lg font-bold tracking-tight"
                             >Sihat<span class="text-primary">AI</span></span
@@ -277,14 +277,8 @@ onUnmounted(() => {
                         </Button>
                     </template>
                     <template v-else>
-                        <Link
-                            :href="login()"
-                            class="hidden text-sm text-muted-foreground hover:text-foreground sm:inline"
-                        >
-                            Log in
-                        </Link>
                         <Button as-child size="sm">
-                            <Link :href="register()">Get started</Link>
+                            <Link :href="login()">View Demo</Link>
                         </Button>
                     </template>
                     <Button
@@ -322,11 +316,8 @@ onUnmounted(() => {
                         v-if="!$page.props.auth.user"
                         class="mt-2 flex gap-2 border-t border-border/70 pt-3"
                     >
-                        <Button as-child variant="outline" class="flex-1">
-                            <Link :href="login()">Log in</Link>
-                        </Button>
                         <Button as-child class="flex-1">
-                            <Link :href="register()">Get started</Link>
+                            <Link :href="login()">View Demo</Link>
                         </Button>
                     </div>
                 </nav>
@@ -340,7 +331,7 @@ onUnmounted(() => {
                 class="relative overflow-hidden border-b border-border/60"
             >
                 <div
-                    class="mx-auto grid min-h-[calc(100svh-4.25rem)] max-w-7xl items-center gap-10 px-4 py-12 md:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:py-16"
+                    class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:py-20"
                 >
                     <div class="relative z-10 space-y-7">
                         <div
@@ -387,7 +378,7 @@ onUnmounted(() => {
                             style="--reveal-delay: 240ms"
                         >
                             One agentic engine understands imaging, labs,
-                            documents and voice — then composes grounded outputs
+                            documents and voice, then composes grounded outputs
                             for physicians and patients.
                         </p>
 
@@ -400,7 +391,7 @@ onUnmounted(() => {
                                 as-child
                                 size="lg"
                             >
-                                <Link :href="register()">Create account</Link>
+                                <Link :href="login()">View Demo</Link>
                             </Button>
                             <Button
                                 v-else
@@ -415,19 +406,11 @@ onUnmounted(() => {
                                 size="lg"
                             >
                                 <a
-                                    href="#experience"
-                                    @click.prevent="scrollToId('experience')"
+                                    href="#product"
+                                    @click.prevent="scrollToId('product')"
                                 >
-                                    See the product
+                                    Learn more
                                 </a>
-                            </Button>
-                            <Button
-                                v-if="!$page.props.auth.user"
-                                as-child
-                                variant="ghost"
-                                size="lg"
-                            >
-                                <Link :href="login()">Log in</Link>
                             </Button>
                         </div>
 
@@ -447,11 +430,11 @@ onUnmounted(() => {
 
                     <!-- Dominant hero visual -->
                     <div
-                        class="welcome-reveal-scale relative"
+                        class="welcome-reveal-scale relative space-y-4"
                         style="--reveal-delay: 180ms"
                     >
                         <div
-                            class="welcome-hero-stage relative aspect-4/5 overflow-hidden rounded-[1.75rem] sm:aspect-5/6 lg:aspect-auto lg:min-h-136"
+                            class="welcome-hero-stage relative aspect-4/5 overflow-hidden rounded-[1.75rem] sm:aspect-5/6 lg:aspect-auto lg:h-112"
                         >
                             <div
                                 class="absolute inset-x-0 top-0 z-20 flex items-center justify-between border-b border-white/10 bg-black/35 px-4 py-2.5 font-mono text-[0.65rem] tracking-wider text-white/75 uppercase backdrop-blur-sm"
@@ -497,7 +480,7 @@ onUnmounted(() => {
                                     >
                                 </div>
                                 <p class="text-sm text-white/85">
-                                    Right lower lobe opacity — patchy airspace
+                                    Right lower lobe opacity: patchy airspace
                                     change localized to the right lower zone.
                                 </p>
                                 <div
@@ -509,44 +492,59 @@ onUnmounted(() => {
                             </div>
                         </div>
 
-                        <!-- Orbiting modality chips -->
                         <div
-                            class="welcome-float absolute -left-2 top-[18%] hidden rounded-2xl border border-border bg-paper/95 p-3 shadow-atlas sm:flex sm:items-center sm:gap-2.5"
+                            class="hidden gap-3 sm:grid sm:grid-cols-2 lg:grid-cols-3"
                         >
-                            <IconDisc size="sm">
-                                <ScanLine class="size-4" />
-                            </IconDisc>
-                            <div class="leading-tight">
-                                <p class="text-sm font-semibold">Chest X-ray</p>
-                                <p class="font-mono text-[0.65rem] text-ink-faint uppercase">
-                                    Vision + localization
-                                </p>
+                            <div
+                                class="welcome-float flex items-center gap-2.5 rounded-2xl border border-border bg-paper/95 p-3 shadow-atlas"
+                            >
+                                <IconDisc size="sm">
+                                    <ScanLine class="size-4" />
+                                </IconDisc>
+                                <div class="leading-tight">
+                                    <p class="text-sm font-semibold">
+                                        Chest X-ray
+                                    </p>
+                                    <p
+                                        class="font-mono text-[0.65rem] text-ink-faint uppercase"
+                                    >
+                                        Vision + localization
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            class="welcome-float-delay absolute -right-1 top-[42%] hidden rounded-2xl border border-border bg-paper/95 p-3 shadow-atlas md:flex md:items-center md:gap-2.5"
-                        >
-                            <IconDisc size="sm">
-                                <FileText class="size-4" />
-                            </IconDisc>
-                            <div class="leading-tight">
-                                <p class="text-sm font-semibold">Lab panel</p>
-                                <p class="font-mono text-[0.65rem] text-ink-faint uppercase">
-                                    Biomarker extraction
-                                </p>
+                            <div
+                                class="welcome-float-delay flex items-center gap-2.5 rounded-2xl border border-border bg-paper/95 p-3 shadow-atlas"
+                            >
+                                <IconDisc size="sm">
+                                    <FileText class="size-4" />
+                                </IconDisc>
+                                <div class="leading-tight">
+                                    <p class="text-sm font-semibold">
+                                        Lab panel
+                                    </p>
+                                    <p
+                                        class="font-mono text-[0.65rem] text-ink-faint uppercase"
+                                    >
+                                        Biomarker extraction
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div
-                            class="welcome-float absolute bottom-[8%] left-[8%] hidden rounded-2xl border border-border bg-paper/95 p-3 shadow-atlas lg:flex lg:items-center lg:gap-2.5"
-                        >
-                            <IconDisc size="sm">
-                                <Mic class="size-4" />
-                            </IconDisc>
-                            <div class="leading-tight">
-                                <p class="text-sm font-semibold">Voice intake</p>
-                                <p class="font-mono text-[0.65rem] text-ink-faint uppercase">
-                                    Triage structuring
-                                </p>
+                            <div
+                                class="welcome-float hidden items-center gap-2.5 rounded-2xl border border-border bg-paper/95 p-3 shadow-atlas lg:flex"
+                            >
+                                <IconDisc size="sm">
+                                    <Mic class="size-4" />
+                                </IconDisc>
+                                <div class="leading-tight">
+                                    <p class="text-sm font-semibold">
+                                        Voice intake
+                                    </p>
+                                    <p
+                                        class="font-mono text-[0.65rem] text-ink-faint uppercase"
+                                    >
+                                        Triage structuring
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -648,7 +646,7 @@ onUnmounted(() => {
                             class="welcome-reveal text-base leading-relaxed text-muted-foreground md:text-lg"
                         >
                             SihatAI routes any artifact into one canonical
-                            findings object, then adapts the explanation — not
+                            findings object, then adapts the explanation, not
                             the evidence.
                         </p>
                     </div>
@@ -744,7 +742,7 @@ onUnmounted(() => {
                                 >
                             </div>
                             <code
-                                class="font-mono text-[0.65rem] text-primary"
+                                class="mt-3 font-mono text-[0.65rem] text-primary"
                                 >schema_valid: true</code
                             >
                         </div>
@@ -849,11 +847,7 @@ onUnmounted(() => {
                             <aside
                                 class="flex items-center gap-3 border-b border-border bg-stage px-4 py-3 md:w-16 md:flex-col md:border-r md:border-b-0 md:py-5"
                             >
-                                <div
-                                    class="flex size-9 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground"
-                                >
-                                    S
-                                </div>
+                                <AppLogoIcon class="size-9" />
                                 <div
                                     class="flex flex-1 gap-2 md:flex-col md:items-center"
                                 >
@@ -955,7 +949,7 @@ onUnmounted(() => {
                                             >
                                         </div>
                                         <div
-                                            class="space-y-2 rounded-2xl border border-border p-3"
+                                            class="space-y-2 rounded-2xl border border-border p-4"
                                         >
                                             <div
                                                 class="flex items-center justify-between gap-2"
@@ -982,7 +976,7 @@ onUnmounted(() => {
                                             </div>
                                         </div>
                                         <div
-                                            class="space-y-2 rounded-2xl border border-border p-3"
+                                            class="space-y-2 rounded-2xl border border-border p-4"
                                         >
                                             <div
                                                 class="flex items-center justify-between gap-2"
@@ -1662,7 +1656,6 @@ onUnmounted(() => {
                             v-for="(item, i) in advantages"
                             :key="item.title"
                             class="welcome-reveal-scale paper-panel space-y-4 p-6"
-                            :class="{ 'paper-panel--focal': i === 1 }"
                             :style="{ '--reveal-delay': `${i * 80}ms` }"
                         >
                             <div class="flex items-center justify-between">
@@ -1744,28 +1737,28 @@ onUnmounted(() => {
             <section id="try" class="scroll-mt-24">
                 <div class="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
                     <div
-                        class="welcome-reveal-scale relative overflow-hidden rounded-4xl border border-border bg-paper px-6 py-14 text-center shadow-atlas md:px-12"
+                        class="welcome-reveal-scale paper-panel paper-panel--focal relative px-6 py-14 text-center md:px-12"
                     >
                         <div
-                            class="welcome-orbit opacity-40"
+                            class="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
                             aria-hidden="true"
-                        />
-                        <div
-                            class="welcome-orbit-inner opacity-30"
-                            aria-hidden="true"
-                        />
+                        >
+                            <div class="welcome-orbit opacity-40" />
+                            <div class="welcome-orbit-inner opacity-30" />
+                        </div>
 
                         <div class="relative z-10 mx-auto max-w-3xl space-y-6">
                             <SectionTag class="justify-center"
-                                >The next interface is not a chatbox</SectionTag
+                                >Open the clinical field atlas</SectionTag
                             >
                             <h2
                                 class="text-3xl font-bold tracking-tight md:text-5xl"
                             >
-                                It is a safe, grounded
+                                Safe, grounded
                                 <span class="text-primary"
-                                    >clinical intelligence layer.</span
+                                    >clinical intelligence</span
                                 >
+                                you can inspect.
                             </h2>
                             <p
                                 class="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
@@ -1783,37 +1776,13 @@ onUnmounted(() => {
                                     as-child
                                     size="lg"
                                 >
-                                    <Link :href="register()"
-                                        >Create account</Link
-                                    >
+                                    <Link :href="login()">View Demo</Link>
                                 </Button>
                                 <Button v-else as-child size="lg">
                                     <Link :href="dashboard()"
                                         >Open dashboard</Link
                                     >
                                 </Button>
-                                <Button
-                                    v-if="!$page.props.auth.user"
-                                    as-child
-                                    variant="outline"
-                                    size="lg"
-                                >
-                                    <Link :href="login()">Log in</Link>
-                                </Button>
-                            </div>
-
-                            <div
-                                class="mx-auto mt-4 flex max-w-xl flex-col items-center gap-3 rounded-2xl border border-dashed border-coral/40 bg-coral/5 px-5 py-4 sm:flex-row sm:justify-center"
-                            >
-                                <AnnotationPill variant="coral"
-                                    >Demo ready</AnnotationPill
-                                >
-                                <p
-                                    class="font-mono text-xs font-medium tracking-wide text-ink-soft"
-                                >
-                                    physician@sihatai.test · patient@sihatai.test
-                                    · password
-                                </p>
                             </div>
 
                             <div
@@ -1872,11 +1841,7 @@ onUnmounted(() => {
                 >
                     <div class="space-y-4">
                         <Link :href="home()" class="inline-flex items-center gap-2.5">
-                            <div
-                                class="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground"
-                            >
-                                <AppLogoIcon class="size-5 fill-current" />
-                            </div>
+                            <AppLogoIcon class="size-9 rounded-xl" />
                             <span class="text-lg font-bold tracking-tight"
                                 >Sihat<span class="text-primary">AI</span></span
                             >
@@ -1885,13 +1850,13 @@ onUnmounted(() => {
                             class="max-w-sm text-sm leading-relaxed text-muted-foreground"
                         >
                             Multimodal clinical intelligence for Malaysian
-                            imaging and labs — MedGemma analysis, RAG citations,
+                            imaging and labs: MedGemma analysis, RAG citations,
                             and dual physician / patient reports.
                         </p>
                         <div class="flex items-center gap-2">
                             <Shield class="size-4 text-primary" />
                             <p class="text-xs text-muted-foreground">
-                                AI assist only — not a substitute for clinical
+                                AI assist only, not a substitute for clinical
                                 judgment.
                             </p>
                         </div>
@@ -1920,21 +1885,14 @@ onUnmounted(() => {
                         <p
                             class="mb-3 font-mono text-xs font-semibold tracking-wider text-ink-faint uppercase"
                         >
-                            Access
+                            Connect
                         </p>
                         <ul class="space-y-2 text-sm">
                             <li v-if="!$page.props.auth.user">
                                 <Link
                                     :href="login()"
                                     class="text-muted-foreground hover:text-foreground"
-                                    >Log in</Link
-                                >
-                            </li>
-                            <li v-if="!$page.props.auth.user">
-                                <Link
-                                    :href="register()"
-                                    class="text-muted-foreground hover:text-foreground"
-                                    >Create account</Link
+                                    >View Demo</Link
                                 >
                             </li>
                             <li v-if="$page.props.auth.user">
@@ -1955,11 +1913,18 @@ onUnmounted(() => {
                             </li>
                             <li>
                                 <a
-                                    href="https://sihat-ai.vxms.dev"
+                                    href="mailto:thomasliem@veximus.com.my"
+                                    class="text-muted-foreground hover:text-foreground"
+                                    >Get in touch</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://maicnexus.com/en"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="text-muted-foreground hover:text-foreground"
-                                    >Live demo</a
+                                    >MAIC Nexus</a
                                 >
                             </li>
                         </ul>
@@ -1973,7 +1938,9 @@ onUnmounted(() => {
                         © {{ new Date().getFullYear() }} SihatAI · MAIC Nexus
                         Challenge
                     </p>
-                    <p class="max-w-md text-xs leading-relaxed text-muted-foreground">
+                    <p
+                        class="text-xs leading-relaxed text-muted-foreground sm:whitespace-nowrap"
+                    >
                         For demonstration and research. Not for clinical
                         decision-making without qualified clinician review.
                     </p>

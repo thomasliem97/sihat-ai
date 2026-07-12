@@ -1,21 +1,41 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
+import { ref } from 'vue';
 import InputError from '@/components/InputError.vue';
+import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { Spinner } from '@/components/ui/spinner';
-import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
+
+const demoAccounts = [
+    {
+        email: 'physician@sihat-ai.vxms.dev',
+        label: 'Physician · Dr. Aisha Rahman',
+    },
+    {
+        email: 'patient@sihat-ai.vxms.dev',
+        label: 'Patient · Ahmad bin Hassan',
+    },
+] as const;
+
+const selectedEmail = ref<string>(demoAccounts[0].email);
 
 defineOptions({
     layout: {
         title: 'Log in to your account',
-        description: 'Enter your email and password below to log in',
+        description: 'Choose a demo account to continue',
     },
 });
 
@@ -43,17 +63,28 @@ defineProps<{
     >
         <div class="grid gap-6">
             <div class="grid gap-2">
-                <Label for="email">Email address</Label>
-                <Input
-                    id="email"
-                    type="email"
-                    name="email"
-                    required
-                    autofocus
-                    :tabindex="1"
-                    autocomplete="email"
-                    placeholder="email@example.com"
-                />
+                <FieldLabel required>Demo account</FieldLabel>
+                <Select v-model="selectedEmail" required>
+                    <SelectTrigger
+                        id="email"
+                        class="w-full"
+                        autofocus
+                        :tabindex="1"
+                        aria-label="Demo account"
+                    >
+                        <SelectValue placeholder="Select demo account" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem
+                            v-for="account in demoAccounts"
+                            :key="account.email"
+                            :value="account.email"
+                        >
+                            {{ account.label }}
+                        </SelectItem>
+                    </SelectContent>
+                </Select>
+                <input type="hidden" name="email" :value="selectedEmail" />
                 <InputError :message="errors.email" />
             </div>
 
@@ -75,7 +106,8 @@ defineProps<{
                     required
                     :tabindex="2"
                     autocomplete="current-password"
-                    placeholder="Password"
+                    placeholder="password"
+                    default-value="password"
                 />
                 <InputError :message="errors.password" />
             </div>
@@ -97,11 +129,6 @@ defineProps<{
                 <Spinner v-if="processing" />
                 Log in
             </Button>
-        </div>
-
-        <div class="text-center text-sm text-muted-foreground">
-            Don't have an account?
-            <TextLink :href="register()" :tabindex="5">Sign up</TextLink>
         </div>
     </Form>
 </template>
