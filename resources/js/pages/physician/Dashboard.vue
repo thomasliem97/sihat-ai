@@ -53,7 +53,7 @@ defineOptions({
 <template>
     <Head title="Physician Dashboard" />
 
-    <div class="atlas-field mx-auto max-w-7xl space-y-6 p-4 md:p-6">
+    <div class="space-y-6">
         <PageHeader
             tag="Physician workspace"
             title="Dashboard"

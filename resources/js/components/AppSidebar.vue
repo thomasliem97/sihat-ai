@@ -3,12 +3,11 @@ import { Link, usePage } from '@inertiajs/vue3';
 import {
     BarChart3,
     FileText,
+    House,
     LayoutGrid,
     Mic,
-    Plus,
 } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
-import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
 import {
@@ -19,10 +18,11 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarSeparator,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { dashboard, home } from '@/routes';
 import { index as evalIndex } from '@/routes/evaluation';
-import { create as recordsCreate, index as recordsIndex } from '@/routes/records';
+import { index as recordsIndex } from '@/routes/records';
 import { triage as voiceTriage } from '@/routes/voice';
 import { dashboard as physicianDashboard } from '@/routes/physician';
 import { dashboard as patientDashboard } from '@/routes/patient';
@@ -43,11 +43,6 @@ const mainNavItems = computed<NavItem[]>(() => {
             title: 'Records',
             href: recordsIndex(),
             icon: FileText,
-        },
-        {
-            title: 'Upload',
-            href: recordsCreate(),
-            icon: Plus,
         },
     ];
 
@@ -88,6 +83,21 @@ const mainNavItems = computed<NavItem[]>(() => {
         </SidebarContent>
 
         <SidebarFooter>
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <SidebarMenuButton
+                        as-child
+                        tooltip="Back to home"
+                        class="text-muted-foreground hover:text-foreground"
+                    >
+                        <Link :href="home()">
+                            <House />
+                            <span>Back to home</span>
+                        </Link>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </SidebarMenu>
+            <SidebarSeparator class="mx-0" />
             <NavUser />
         </SidebarFooter>
     </Sidebar>

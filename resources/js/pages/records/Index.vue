@@ -41,7 +41,7 @@ defineOptions({
 <template>
     <Head title="Medical Records" />
 
-    <div class="mx-auto max-w-7xl space-y-6 p-4 md:p-6">
+    <div class="space-y-6">
         <div class="flex flex-wrap items-start justify-between gap-4">
             <PageHeader
                 tag="Specimen archive"
@@ -123,7 +123,7 @@ defineOptions({
                                     {{
                                         record.overall_confidence
                                             ? `${Math.round(record.overall_confidence * 100)}%`
-                                            : '—'
+                                            : '-'
                                     }}
                                 </td>
                                 <td

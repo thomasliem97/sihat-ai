@@ -30,7 +30,7 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
 </script>
 
 <template>
-    <div class="px-4 py-6 md:px-6">
+    <div>
         <div class="mb-2">
             <SectionTag>Account</SectionTag>
         </div>

@@ -162,10 +162,7 @@ defineOptions({
 <template>
     <Head :title="record.title" />
 
-    <div
-        class="mx-auto space-y-6 p-4 md:p-6"
-        :class="viewMode === 'physician' ? 'max-w-7xl' : 'max-w-4xl'"
-    >
+    <div class="space-y-6">
         <div class="flex flex-wrap items-start justify-between gap-4">
             <PageHeader
                 :tag="viewMode === 'physician' ? 'Specimen' : 'Your result'"
@@ -223,7 +220,7 @@ defineOptions({
             class="border-clinical-borderline/40 bg-clinical-borderline/10"
         >
             <AlertTriangle class="size-4 text-clinical-borderline" />
-            <AlertTitle>Low confidence — abstain</AlertTitle>
+            <AlertTitle>Low confidence: abstain</AlertTitle>
             <AlertDescription>
                 Model confidence is below the publish threshold. Automatic
                 patient release is withheld pending clinician review.
@@ -479,7 +476,7 @@ defineOptions({
                                 ? (
                                       record.volume_meta.used_slices as number[]
                                   ).join(', ')
-                                : '—'
+                                : '-'
                         }}
                     </p>
                     <p class="text-muted-foreground">
@@ -508,7 +505,7 @@ defineOptions({
                         >
                             <span class="font-mono text-xs">{{ p.id }}</span>
                             <span class="text-muted-foreground">{{
-                                p.finding || '—'
+                                p.finding || '-'
                             }}</span>
                         </li>
                     </ul>
@@ -784,7 +781,7 @@ defineOptions({
                                             b.reference_high
                                         }}
                                     </template>
-                                    <template v-else>—</template>
+                                    <template v-else>-</template>
                                 </td>
                                 <td class="py-2">
                                     <ClinicalBadge :status="b.status" />

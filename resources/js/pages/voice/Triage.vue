@@ -99,11 +99,11 @@ defineOptions({
 <template>
     <Head title="Voice Triage" />
 
-    <div class="atlas-field mx-auto max-w-2xl space-y-6 p-4 md:p-6">
+    <div class="space-y-6">
         <PageHeader
             tag="STT triage"
             title="Voice Triage"
-            description="Record or type symptoms — STT + structured urgency guidance"
+            description="Record or type symptoms for STT + structured urgency guidance"
         />
 
         <Card class="paper-panel--focal border-0 shadow-offset">

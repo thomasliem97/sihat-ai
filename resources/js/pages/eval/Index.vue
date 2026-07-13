@@ -40,7 +40,7 @@ defineOptions({
 <template>
     <Head title="AI Evaluation" />
 
-    <div class="atlas-field mx-auto max-w-7xl space-y-6 p-4 md:p-6">
+    <div class="space-y-6">
         <PageHeader
             tag="Eval harness"
             title="Evaluation"
@@ -92,7 +92,7 @@ defineOptions({
                     {{ summary.medqa_accuracy }}%
                 </CardContent>
             </Card>
-            <Card>
+            <Card class="paper-panel--focal border-0 shadow-offset">
                 <CardHeader class="pb-2">
                     <div class="flex items-center gap-3">
                         <IconDisc size="sm">
@@ -109,7 +109,7 @@ defineOptions({
                     {{ summary.report_quality }}/5
                 </CardContent>
             </Card>
-            <Card>
+            <Card class="paper-panel--focal border-0 shadow-offset">
                 <CardHeader class="pb-2">
                     <div class="flex items-center gap-3">
                         <IconDisc size="sm">

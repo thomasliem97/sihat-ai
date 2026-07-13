@@ -45,7 +45,7 @@ defineOptions({
 <template>
     <Head title="My Health" />
 
-    <div class="atlas-field mx-auto max-w-4xl space-y-8 p-4 md:p-6">
+    <div class="space-y-8">
         <PageHeader
             tag="Patient view"
             title="My Health"

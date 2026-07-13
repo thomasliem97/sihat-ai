@@ -40,7 +40,7 @@ defineOptions({
 <template>
     <Head title="Upload Record" />
 
-    <div class="atlas-field mx-auto max-w-2xl space-y-6 p-4 md:p-6">
+    <div class="space-y-6">
         <PageHeader
             tag="New specimen"
             title="Upload medical record"
@@ -70,7 +70,7 @@ defineOptions({
                     id="title"
                     name="title"
                     required
-                    placeholder="e.g. Chest X-ray — cough 2 weeks"
+                    placeholder="e.g. Chest X-ray, cough 2 weeks"
                 />
                 <InputError :message="errors.title" />
             </div>
@@ -93,40 +93,42 @@ defineOptions({
                 </Select>
             </div>
 
-            <div class="space-y-2">
-                <FieldLabel>Modality</FieldLabel>
-                <Select v-model="modality">
-                    <SelectTrigger>
-                        <SelectValue placeholder="Auto-detect if unsure" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem
-                            v-for="m in modalities"
-                            :key="m.value"
-                            :value="m.value"
-                        >
-                            {{ m.label }}
-                        </SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+                <div class="space-y-2">
+                    <FieldLabel>Modality</FieldLabel>
+                    <Select v-model="modality">
+                        <SelectTrigger class="w-full">
+                            <SelectValue placeholder="Auto-detect if unsure" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem
+                                v-for="m in modalities"
+                                :key="m.value"
+                                :value="m.value"
+                            >
+                                {{ m.label }}
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
 
-            <div class="space-y-2">
-                <FieldLabel>Report language</FieldLabel>
-                <Select v-model="language">
-                    <SelectTrigger>
-                        <SelectValue placeholder="Select language" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem
-                            v-for="l in languages"
-                            :key="l.value"
-                            :value="l.value"
-                        >
-                            {{ l.label }}
-                        </SelectItem>
-                    </SelectContent>
-                </Select>
+                <div class="space-y-2">
+                    <FieldLabel>Report language</FieldLabel>
+                    <Select v-model="language">
+                        <SelectTrigger class="w-full">
+                            <SelectValue placeholder="Select language" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem
+                                v-for="l in languages"
+                                :key="l.value"
+                                :value="l.value"
+                            >
+                                {{ l.label }}
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
             </div>
 
             <div class="space-y-2">
