@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Head, usePage } from '@inertiajs/vue3';
-import { Mic, MicOff, Send } from '@lucide/vue';
+import { Mic, MicOff, Send, Volume2 } from '@lucide/vue';
 import { onUnmounted, ref } from 'vue';
 import ClinicalBadge from '@/components/medical/ClinicalBadge.vue';
 import MedicalDisclaimer from '@/components/medical/MedicalDisclaimer.vue';
+import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
 import SectionTag from '@/components/patterns/SectionTag.vue';
 import { Button } from '@/components/ui/button';
@@ -12,14 +13,39 @@ import { Textarea } from '@/components/ui/textarea';
 import { triage } from '@/routes/voice';
 import { transcribe } from '@/routes/voice/triage';
 
+const interviewQuestions = [
+    'What is the main symptom that brought you here today?',
+    'How long have you had these symptoms?',
+    'Do you have chest pain, shortness of breath, or fever?',
+    'Are you taking any medications or do you have chronic conditions?',
+];
+
 const page = usePage();
 const transcript = ref('');
 const result = ref<Record<string, unknown> | null>(null);
+const sttEngine = ref<string | null>(null);
 const loading = ref(false);
 const recording = ref(false);
+const interviewIndex = ref(0);
 const audioBlob = ref<Blob | null>(null);
 let mediaRecorder: MediaRecorder | null = null;
 const chunks: BlobPart[] = [];
+
+function speakQuestion(index = interviewIndex.value) {
+    if (typeof window === 'undefined' || !window.speechSynthesis) {
+        return;
+    }
+    const text = interviewQuestions[index] ?? interviewQuestions[0];
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 0.95;
+    window.speechSynthesis.speak(utter);
+}
+
+function nextInterviewQuestion() {
+    interviewIndex.value = (interviewIndex.value + 1) % interviewQuestions.length;
+    speakQuestion(interviewIndex.value);
+}
 
 async function toggleRecording() {
     if (recording.value) {
@@ -77,6 +103,7 @@ async function submitTriage() {
         if (data.transcript) {
             transcript.value = data.transcript;
         }
+        sttEngine.value = data.engine ?? null;
         result.value = data.triage;
     } finally {
         loading.value = false;
@@ -86,6 +113,9 @@ async function submitTriage() {
 onUnmounted(() => {
     if (recording.value) {
         mediaRecorder?.stop();
+    }
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
     }
 });
 
@@ -101,10 +131,35 @@ defineOptions({
 
     <div class="space-y-6">
         <PageHeader
-            tag="STT triage"
+            tag="MedASR triage"
             title="Voice Triage"
-            description="Record or type symptoms for STT + structured urgency guidance"
+            description="Preclinical interview prompts (browser TTS), then MedASR or Whisper STT + urgency guidance"
         />
+
+        <Card class="paper-panel--focal border-0 shadow-offset">
+            <CardHeader class="space-y-2">
+                <SectionTag>Preclinical interview</SectionTag>
+                <CardTitle class="text-lg">Spoken prompts</CardTitle>
+            </CardHeader>
+            <CardContent class="space-y-3">
+                <p class="text-sm leading-relaxed text-muted-foreground">
+                    {{ interviewQuestions[interviewIndex] }}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <Button type="button" variant="outline" @click="speakQuestion()">
+                        <Volume2 class="size-4" />
+                        Speak question
+                    </Button>
+                    <Button
+                        type="button"
+                        variant="outline"
+                        @click="nextInterviewQuestion"
+                    >
+                        Next question
+                    </Button>
+                </div>
+            </CardContent>
+        </Card>
 
         <Card class="paper-panel--focal border-0 shadow-offset">
             <CardHeader class="space-y-2">
@@ -131,6 +186,9 @@ defineOptions({
                     >
                         Audio captured
                     </span>
+                    <AnnotationPill v-if="sttEngine" variant="teal">
+                        STT: {{ sttEngine }}
+                    </AnnotationPill>
                 </div>
                 <Textarea
                     v-model="transcript"

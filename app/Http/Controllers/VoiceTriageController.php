@@ -24,10 +24,12 @@ class VoiceTriageController extends Controller
         ]);
 
         $transcript = trim((string) ($validated['transcript'] ?? ''));
+        $engine = null;
 
         if ($request->hasFile('audio')) {
             $bytes = file_get_contents($request->file('audio')->getRealPath()) ?: '';
             $stt = $this->speechToText(base64_encode($bytes));
+            $engine = $stt['engine'] ?? null;
             if (($stt['transcript'] ?? '') !== '') {
                 $transcript = (string) $stt['transcript'];
             }
@@ -41,6 +43,7 @@ class VoiceTriageController extends Controller
 
         return response()->json([
             'transcript' => $transcript,
+            'engine' => $engine,
             'triage' => $this->structureTriage($transcript),
         ]);
     }
