@@ -53,6 +53,7 @@ class AnalyzeRequest(BaseModel):
     modality: Modality = Modality.unknown
     file_path: str = ""
     file_url: str | None = None
+    file_b64: str | None = None
     language: str = "en"
     webhook_url: str | None = None
     mime_type: str = "application/octet-stream"
@@ -76,6 +77,7 @@ def health() -> dict[str, str]:
         "status": "ok",
         "service": "sihat-ai",
         "inference": "modal",
+        "build": _env("SIHAT_AI_BUILD") or "unknown",
         "webhook_secret": "set" if secret else "missing",
         "adapter": f"configured:{lora}" if lora else "gpu-volume",
     }
@@ -514,8 +516,20 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
         text = _extract_pdf_text(request)
 
     text = _scrub_phi(text)
+
+    # Scanned PDF / photo with no OCR engines (or empty OCR): MedGemma vision.
+    if not text.strip() and data:
+        vision = _analyze_lab_vision(request, data, ocr_meta)
+        if vision is not None:
+            return vision
+        detail = ""
+        if isinstance(ocr_meta, dict) and ocr_meta:
+            detail = f" (ocr={ocr_meta.get('ocr_engine') or 'none'} kind={ocr_meta.get('kind')} err={ocr_meta.get('ocr_error')})"
+        build = _env("SIHAT_AI_BUILD") or "unknown"
+        raise RuntimeError(f"No lab text extracted from PDF{detail} [build={build}]")
+
     if not text.strip():
-        raise RuntimeError("No lab text extracted from PDF")
+        raise RuntimeError("No lab text extracted from PDF (empty file)")
 
     try:
         result = _invoke(
@@ -541,6 +555,50 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
         return parsed
 
     raise RuntimeError(f"Lab analysis failed after Modal error: {exc}")
+
+
+def _analyze_lab_vision(
+    request: AnalyzeRequest,
+    data: bytes,
+    ocr_meta: dict[str, Any],
+) -> dict[str, Any] | None:
+    """When OCR is empty, read lab values from rendered page image(s)."""
+    try:
+        from app.lab_ocr import lab_page_jpegs_b64
+
+        pages = lab_page_jpegs_b64(data, max_pages=2)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Lab vision page render failed: %s", exc)
+        return None
+
+    if not pages:
+        return None
+
+    last_err: Exception | None = None
+    for i, page_b64 in enumerate(pages):
+        try:
+            result = _invoke(
+                "/analyze_lab_image",
+                {
+                    "image_b64": page_b64,
+                    "language": request.language,
+                    "job_id": request.job_id,
+                    "record_id": request.record_id,
+                },
+            )
+            meta = dict(ocr_meta) if isinstance(ocr_meta, dict) else {}
+            meta["source"] = "vision"
+            meta["vision_page"] = i
+            result["lab_text_meta"] = meta
+            if result.get("biomarkers") or result.get("findings"):
+                return result
+        except Exception as exc:  # noqa: BLE001
+            last_err = exc
+            logger.warning("Lab vision analyze page %s failed: %s", i, exc)
+
+    if last_err:
+        logger.warning("Lab vision fallback exhausted: %s", last_err)
+    return None
 
 
 def _analyze_clinical_document(request: AnalyzeRequest) -> dict[str, Any]:
@@ -623,16 +681,39 @@ def _extract_pdf_text(request: AnalyzeRequest) -> str:
 
 
 def _download_bytes(request: AnalyzeRequest) -> bytes:
+    if request.file_b64:
+        import base64
+
+        try:
+            return base64.b64decode(request.file_b64, validate=False)
+        except Exception as exc:  # noqa: BLE001
+            raise RuntimeError(f"Invalid file_b64: {exc}") from exc
+
     if request.file_url:
-        with httpx.Client(timeout=60.0) as client:
+        # trycloudflare / similar tunnels block Modal datacenter IPs → 403
+        host = (request.file_url or "").lower()
+        if "trycloudflare.com" in host or "ngrok" in host:
+            raise RuntimeError(
+                "file_b64 required: refusing to fetch study via tunnel URL "
+                f"({host.split('/')[2] if '//' in host else host})"
+            )
+        with httpx.Client(
+            timeout=60.0,
+            headers={"User-Agent": "SihatAI-Modal/1.0"},
+            follow_redirects=True,
+        ) as client:
             resp = client.get(request.file_url)
             resp.raise_for_status()
             return resp.content
 
-    if request.file_path and Path(request.file_path).exists():
-        return Path(request.file_path).read_bytes()
+    if request.file_path:
+        from pathlib import Path
 
-    return b""
+        path = Path(request.file_path)
+        if path.exists():
+            return path.read_bytes()
+
+    raise RuntimeError("No file_b64 (or reachable file_url) provided for analysis")
 
 
 def _scrub_phi(text: str) -> str:
@@ -731,6 +812,8 @@ def _invoke(path: str, payload: dict[str, Any]) -> dict[str, Any]:
                 payload.get("text", ""),
                 payload.get("language", "en"),
             )
+        elif route in {"analyze_lab_image", "analyze-lab-image"}:
+            data = model.analyze_lab_image.remote(payload)
         elif route in {"analyze_clinical", "analyze-clinical"}:
             data = model.analyze_clinical_text.remote(
                 payload.get("text", ""),

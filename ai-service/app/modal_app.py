@@ -17,11 +17,11 @@ from __future__ import annotations
 import base64
 import json
 import os
-import re
 from io import BytesIO
 from typing import Any
 
 import modal
+
 
 app = modal.App("sihat-medgemma")
 
@@ -42,13 +42,17 @@ image = (
         "pylibjpeg",
         "pylibjpeg-libjpeg",
         "pylibjpeg-openjpeg",
+        "outlines",
     )
     .run_commands("python -m pip uninstall -y hf-xet || true")
 )
 
 # CPU glue: Laravel /api/v1/* + PDF/OCR (calls GPU classes via .remote())
+# copy=True bakes app code into the image so workers cannot keep a stale mount.
+# opencv-python-headless avoids RapidOCR dying on missing libGL.so.1.
 web_image = (
     modal.Image.debian_slim(python_version="3.11")
+    .apt_install("tesseract-ocr", "libgl1", "libglib2.0-0")
     .pip_install(
         "fastapi",
         "httpx",
@@ -61,11 +65,23 @@ web_image = (
         "pylibjpeg-openjpeg",
         "pymupdf",
         "pypdf",
+        "opencv-python-headless",
         "rapidocr",
         "onnxruntime",
+        "pytesseract",
     )
-    .env({"PYTHONPATH": "/root"})
-    .add_local_dir("ai-service/app", remote_path="/root/app")
+    .run_commands(
+        "python -m pip uninstall -y opencv-python || true",
+        "python -m pip install --force-reinstall opencv-python-headless",
+        'python -c "import cv2; from rapidocr import RapidOCR; RapidOCR()"',
+    )
+    .env({"PYTHONPATH": "/root", "SIHAT_AI_BUILD": "labocr-v3-20260714"})
+    .add_local_dir(
+        "ai-service/app",
+        remote_path="/root/app",
+        copy=True,
+        ignore=["**/__pycache__/**", "**/*.pyc"],
+    )
 )
 
 MODEL_ID = "google/medgemma-1.5-4b-it"
@@ -96,7 +112,7 @@ def _load_image(payload: dict[str, Any]):
         import httpx
 
         with httpx.Client(timeout=60.0) as client:
-            resp = client.get(file_url)
+            resp = client.get(file_url, headers={"User-Agent": "SihatAI-Modal/1.0"}, follow_redirects=True)
             resp.raise_for_status()
             raw = resp.content
 
@@ -124,30 +140,164 @@ def _load_image(payload: dict[str, Any]):
             raise ValueError(f"Could not decode image/DICOM payload: {exc}") from exc
 
 
-def _extract_json(text: str) -> dict[str, Any]:
-    text = text.strip()
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        match = re.search(r"\{[\s\S]*\}", text)
-        if match:
-            try:
-                return json.loads(match.group(0))
-            except json.JSONDecodeError:
-                pass
-    return {
-        "findings": [
-            {
-                "label": "Model narrative",
-                "description": text[:800],
-                "confidence": 0.6,
-                "severity": "borderline",
-            }
-        ],
-        "overall_confidence": 0.6,
-        "differential_diagnosis": [],
-        "bounding_boxes": [],
-    }
+# Structured output via Outlines + pure JSON Schema (no Pydantic models).
+# Docs: https://dottxt-ai.github.io/outlines/latest/features/core/output_types/
+# Wrap dicts with outlines.types.JsonSchema(...).
+_SEVERITY = {"type": "string", "enum": ["normal", "borderline", "abnormal", "critical"]}
+
+IMAGING_RESULT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "findings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "label": {"type": "string"},
+                    "description": {"type": "string"},
+                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                    "severity": _SEVERITY,
+                },
+                "required": ["label", "description", "confidence", "severity"],
+            },
+        },
+        "differential_diagnosis": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "condition": {"type": "string"},
+                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                },
+                "required": ["condition", "confidence"],
+            },
+        },
+        "overall_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "bounding_boxes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "label": {"type": "string"},
+                    "x": {"type": "number", "minimum": 0, "maximum": 1},
+                    "y": {"type": "number", "minimum": 0, "maximum": 1},
+                    "width": {"type": "number", "minimum": 0, "maximum": 1},
+                    "height": {"type": "number", "minimum": 0, "maximum": 1},
+                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                },
+                "required": ["label", "x", "y", "width", "height", "confidence"],
+            },
+        },
+    },
+    "required": [
+        "findings",
+        "differential_diagnosis",
+        "overall_confidence",
+        "bounding_boxes",
+    ],
+}
+
+LAB_RESULT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "findings": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "label": {"type": "string"},
+                    "value": {"type": ["number", "string", "null"]},
+                    "unit": {"type": ["string", "null"]},
+                    "reference": {"type": ["string", "null"]},
+                    "severity": _SEVERITY,
+                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                    "description": {"type": "string"},
+                },
+                "required": ["label", "severity", "confidence"],
+            },
+        },
+        "biomarkers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "name": {"type": "string"},
+                    "value": {"type": ["number", "string", "null"]},
+                    "unit": {"type": ["string", "null"]},
+                    "reference_low": {"type": ["number", "null"]},
+                    "reference_high": {"type": ["number", "null"]},
+                    "status": _SEVERITY,
+                },
+                "required": ["name", "status"],
+            },
+        },
+        "differential_diagnosis": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "condition": {"type": "string"},
+                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                },
+                "required": ["condition", "confidence"],
+            },
+        },
+        "overall_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "bounding_boxes": {"type": "array", "items": {"type": "object"}},
+    },
+    "required": [
+        "findings",
+        "biomarkers",
+        "differential_diagnosis",
+        "overall_confidence",
+        "bounding_boxes",
+    ],
+}
+
+CLASSIFY_RESULT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "modality": {
+            "type": "string",
+            "enum": [
+                "xray",
+                "dermatology",
+                "ct",
+                "mri",
+                "histopath",
+                "ophthalmology",
+                "other",
+            ],
+        },
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    },
+    "required": ["modality", "confidence"],
+}
+
+
+def _parse_structured(result: Any) -> dict[str, Any]:
+    """Outlines returns a JSON string for JsonSchema output types."""
+    if isinstance(result, dict):
+        return result
+    if isinstance(result, str):
+        parsed = json.loads(result)
+        if not isinstance(parsed, dict):
+            raise ValueError("Structured output must be a JSON object")
+        return parsed
+    if hasattr(result, "model_dump"):
+        return result.model_dump()
+    if hasattr(result, "dict"):
+        return result.dict()
+    raise ValueError(f"Unexpected structured result type: {type(result)}")
 
 
 def _clamp_boxes(boxes: Any) -> list[dict[str, Any]]:
@@ -199,11 +349,341 @@ def _normalize_result(raw: dict[str, Any], adapter: str) -> dict[str, Any]:
     }
 
 
+def _language_instruction(language: str) -> str:
+    lang = (language or "en").strip().lower()
+    if lang.startswith("ms") or lang in {"bm", "malay"}:
+        return (
+            "Write every human-readable string (labels, descriptions, conditions) in Bahasa Melayu. "
+            "Keep JSON keys in English exactly as specified."
+        )
+    return (
+        "Write every human-readable string (labels, descriptions, conditions) in clear clinical English. "
+        "Keep JSON keys in English exactly as specified."
+    )
+
+
+def _safety_rules() -> str:
+    return """
+Safety and scope:
+- You are clinical decision-support only. Never state a definitive diagnosis as fact.
+- Prefer observable findings over conclusions. Put possible conditions only in differential_diagnosis.
+- If image/text quality is poor or evidence is weak, lower confidence and say so in descriptions.
+- Do not invent anatomy, labs, medications, or findings that are not visible or stated.
+- If nothing abnormal is seen, return findings with severity "normal" and empty or low-confidence differentials.
+""".strip()
+
+
+def _confidence_rules() -> str:
+    return """
+Confidence and severity calibration:
+- confidence / overall_confidence: float from 0.0 to 1.0. Use 0.9+ only when the finding is unmistakable.
+- severity:
+  - normal: expected / no concerning change
+  - borderline: subtle, nonspecific, or uncertain
+  - abnormal: clear pathologic or clinically important change
+  - critical: potentially urgent (e.g. tension physiology, large hemorrhage, airway threat). Use sparingly.
+""".strip()
+
+
+def _imaging_bbox_rules() -> str:
+    return """
+Bounding boxes:
+- Use normalized image coordinates in [0, 1]: x,y = top-left of the box; width,height extend right/down.
+- Provide one box per localized finding when a region can be pointed to.
+- Skip boxes for diffuse/global impressions (e.g. "poor inspiration") or when location is unclear.
+- Box label should match the related finding label.
+- Prefer tight boxes around the abnormality; avoid whole-image boxes unless the finding truly fills the field.
+""".strip()
+
+
+def _imaging_review_checklist(modality: str) -> str:
+    modality = (modality or "unknown").lower()
+    checklists = {
+        "xray": """
+Modality focus: frontal/lateral chest radiograph.
+Review systematically:
+1) technical quality (rotation, inspiration, exposure)
+2) airways and mediastinum / cardiomediastinal contour
+3) lungs and pleura (opacity, consolidation, pneumothorax, effusion)
+4) bones and soft tissues
+5) devices / lines if present
+""",
+        "ct": """
+Modality focus: CT multi-slice montage (mid-volume representative slices).
+Review systematically:
+1) scan coverage and obvious artifacts
+2) lung parenchyma / airways (if chest) or organ parenchyma in view
+3) vessels and mediastinum/retroperitoneum as visible
+4) bones and soft tissues
+5) focal lesions: size, density/attenuation cues, location
+""",
+        "mri": """
+Modality focus: MRI multi-slice montage.
+Review systematically:
+1) sequence/quality limitations visible in the montage
+2) anatomy in view and laterality
+3) signal abnormalities, mass effect, edema, hemorrhage cues
+4) enhancement patterns only if clearly depicted
+5) incidental but clinically relevant findings
+""",
+        "histopath": """
+Modality focus: histopathology patch montage.
+Review systematically:
+1) staining/quality adequacy
+2) architecture (glandular, nested, diffuse, infiltrative)
+3) cytology (nuclear atypia, mitoses, necrosis if visible)
+4) stroma / inflammation / invasion cues
+5) differential tissue patterns, not a final pathologic diagnosis
+""",
+        "dermatology": """
+Modality focus: clinical dermatology photo.
+Review systematically:
+1) lesion morphology (macule/papule/plaque/nodule/ulcer)
+2) color, borders, symmetry, scale/crust
+3) distribution and surrounding skin
+4) ABCDE-style melanoma concern cues when pigmented
+5) infectious/inflammatory vs neoplastic possibilities as differentials only
+""",
+        "ophthalmology": """
+Modality focus: fundus / retinal photo.
+Review systematically:
+1) optic disc (margins, cupping, pallor)
+2) macula
+3) vessels (caliber, crossings, hemorrhages)
+4) periphery / background retina as visible
+5) media opacity that limits interpretation
+""",
+    }
+    return checklists.get(
+        modality,
+        """
+Modality focus: general medical image.
+Review systematically for quality, anatomy in view, focal abnormalities, and devices.
+""",
+    ).strip()
+
+
+def _imaging_output_contract() -> str:
+    return """
+Output contract (JSON object only; decoding already enforces schema):
+{
+  "findings": [
+    {
+      "label": "short finding name",
+      "description": "what you see + location + pertinent negatives if useful",
+      "confidence": 0.0,
+      "severity": "normal|borderline|abnormal|critical"
+    }
+  ],
+  "differential_diagnosis": [
+    {"condition": "possible condition", "confidence": 0.0}
+  ],
+  "overall_confidence": 0.0,
+  "bounding_boxes": [
+    {"label": "matching finding label", "x": 0.0, "y": 0.0, "width": 0.0, "height": 0.0, "confidence": 0.0}
+  ]
+}
+
+Content rules:
+- findings: 1 to 8 items. Separate distinct abnormalities. Do not dump prose into one finding.
+- differential_diagnosis: 0 to 5 plausible conditions ranked by likelihood; not a confirmed diagnosis list.
+- overall_confidence: your confidence in the whole assessment, not the max of single findings.
+- Prefer precise radiology/clinical wording over vague phrases like "abnormality noted".
+""".strip()
+
+
+def build_imaging_prompt(modality: str, language: str) -> str:
+    return "\n\n".join(
+        [
+            "You are SihatAI's imaging specialist: a careful clinical decision-support model for Malaysian care workflows.",
+            _safety_rules(),
+            _imaging_review_checklist(modality),
+            _confidence_rules(),
+            _imaging_bbox_rules(),
+            _language_instruction(language),
+            _imaging_output_contract(),
+            "Analyze the attached image now. Return only the JSON object.",
+        ]
+    )
+
+
+def build_clinical_text_prompt(text: str, language: str) -> str:
+    body = text[:10000]
+    return "\n\n".join(
+        [
+            "You are SihatAI's document specialist extracting structured clinical signals from a de-identified note.",
+            _safety_rules(),
+            _confidence_rules(),
+            _language_instruction(language),
+            """
+Task:
+- Extract key problems, procedures, medications, allergies, and follow-up plans that are explicitly stated.
+- Put each discrete item in findings (label + description). Use severity based on clinical urgency implied by the text.
+- differential_diagnosis may list stated working diagnoses or differentials from the note; do not invent new disease labels.
+- Set bounding_boxes to [].
+- If the document is empty or unusable, return findings=[] with low overall_confidence.
+""".strip(),
+            _imaging_output_contract(),
+            f"DOCUMENT:\n{body}",
+            "Return only the JSON object.",
+        ]
+    )
+
+
+def build_lab_text_prompt(text: str, language: str) -> str:
+    body = text[:10000]
+    return "\n\n".join(
+        [
+            "You are SihatAI's laboratory extraction specialist.",
+            _safety_rules(),
+            _confidence_rules(),
+            _language_instruction(language),
+            """
+Task:
+- Extract every readable analyte/biomarker with value, unit, and reference range when present.
+- Do not invent numbers. Use null for missing value/unit/reference fields.
+- Mirror each biomarker into findings with matching severity.
+- status/severity mapping:
+  - normal: within reference
+  - borderline: near limits or weakly out of range
+  - abnormal: clearly out of range
+  - critical: panic-level if explicitly marked or extreme vs typical adult ranges when range missing
+- differential_diagnosis usually [] unless the report itself states interpretive conditions.
+- bounding_boxes must be [].
+""".strip(),
+            """
+Output contract:
+{
+  "findings": [{"label":"Hemoglobin","value":12.1,"unit":"g/dL","reference":"12-15","severity":"normal","confidence":0.9,"description":"..."}],
+  "biomarkers": [{"name":"Hemoglobin","value":12.1,"unit":"g/dL","reference_low":12.0,"reference_high":15.0,"status":"normal"}],
+  "differential_diagnosis": [],
+  "overall_confidence": 0.0,
+  "bounding_boxes": []
+}
+""".strip(),
+            f"LAB REPORT TEXT:\n{body}",
+            "Return only the JSON object.",
+        ]
+    )
+
+
+def build_lab_image_prompt(language: str) -> str:
+    return "\n\n".join(
+        [
+            "You are SihatAI's laboratory vision extraction specialist reading a lab report page image.",
+            _safety_rules(),
+            _confidence_rules(),
+            _language_instruction(language),
+            """
+Task:
+- OCR-read the page carefully. Extract every analyte you can read with value/unit/reference.
+- Prefer exact printed strings. If a digit is unreadable, omit that analyte rather than guessing.
+- Populate both biomarkers and findings consistently.
+- bounding_boxes: optional boxes around analyte rows if clearly localizable; otherwise [].
+""".strip(),
+            """
+Output contract:
+{
+  "findings": [{"label":"WBC","value":11.2,"unit":"x10^9/L","reference":"4-10","severity":"abnormal","confidence":0.8,"description":"..."}],
+  "biomarkers": [{"name":"WBC","value":11.2,"unit":"x10^9/L","reference_low":4.0,"reference_high":10.0,"status":"abnormal"}],
+  "differential_diagnosis": [],
+  "overall_confidence": 0.0,
+  "bounding_boxes": []
+}
+""".strip(),
+            "Analyze the attached lab report image now. Return only the JSON object.",
+        ]
+    )
+
+
+def build_classify_prompt() -> str:
+    return "\n\n".join(
+        [
+            "You are SihatAI's modality router.",
+            """
+Classify the attached medical image into exactly one modality:
+- xray: radiographic projection (especially chest X-ray)
+- ct: computed tomography slices/montage
+- mri: magnetic resonance slices/montage
+- histopath: microscopy / pathology slide patches
+- dermatology: clinical skin photograph
+- ophthalmology: fundus / retinal photograph
+- other: not clearly any of the above
+
+Rules:
+- Choose the most specific matching class.
+- confidence reflects certainty of the modality call only (not disease severity).
+- If ambiguous between classes, pick the best guess and lower confidence below 0.6.
+""".strip(),
+            """
+Output contract:
+{"modality":"xray","confidence":0.0}
+""".strip(),
+            "Return only the JSON object.",
+        ]
+    )
+
+
+def _ensure_pil_format(image: Any) -> Any:
+    """Outlines Image assets expect PIL images with a format attribute set."""
+    try:
+        from PIL import Image as PILImage
+    except ImportError:  # pragma: no cover
+        return image
+
+    if isinstance(image, PILImage.Image) and not getattr(image, "format", None):
+        image.format = "PNG"
+    return image
+
+
+def _to_outlines_chat(messages: list[dict[str, Any]]):
+    """Convert HF-style multimodal messages into Outlines Chat input."""
+    from outlines.inputs import Chat, Image as OutlinesImage
+    from PIL import Image as PILImage
+
+    converted: list[dict[str, Any]] = []
+    for message in messages:
+        role = str(message.get("role") or "user")
+        content = message.get("content")
+
+        if isinstance(content, str):
+            converted.append({"role": role, "content": content})
+            continue
+
+        if not isinstance(content, list):
+            continue
+
+        parts: list[Any] = []
+        for part in content:
+            if not isinstance(part, dict):
+                continue
+            kind = part.get("type")
+            if kind == "text":
+                parts.append({"type": "text", "text": str(part.get("text") or "")})
+            elif kind == "image":
+                image = _ensure_pil_format(part.get("image"))
+                if isinstance(image, PILImage.Image):
+                    parts.append({"type": "image", "image": OutlinesImage(image)})
+                elif image is not None:
+                    parts.append({"type": "image", "image": OutlinesImage(image)})
+            elif isinstance(part.get("image"), PILImage.Image):
+                image = _ensure_pil_format(part["image"])
+                parts.append({"type": "image", "image": OutlinesImage(image)})
+
+        if parts:
+            converted.append({"role": role, "content": parts})
+
+    if not converted:
+        raise ValueError("No valid chat messages for Outlines generation")
+
+    return Chat(converted)
+
+
 @app.cls(
     gpu="L4",
     image=image,
     timeout=600,
-    scaledown_window=120,
+    scaledown_window=900,
     volumes={"/lora": lora_vol},
     secrets=[hf_secret],
 )
@@ -233,28 +713,45 @@ class MedGemmaModel:
             self.model = base
 
         self.model.eval()
+        self._outlines = None
 
-    def _generate(self, messages: list[dict[str, Any]], max_new_tokens: int = 1200) -> str:
-        import torch
+    def _outlines_model(self):
+        import outlines
 
-        inputs = self.processor.apply_chat_template(
-            messages,
-            add_generation_prompt=True,
-            tokenize=True,
-            return_dict=True,
-            return_tensors="pt",
-        ).to(self.model.device, dtype=torch.bfloat16)
+        if self._outlines is None:
+            # Wrap already-loaded MedGemma (+ optional LoRA) for constrained decoding.
+            # https://dottxt-ai.github.io/outlines/latest/guide/vlm/
+            self._outlines = outlines.from_transformers(self.model, self.processor)
+        return self._outlines
 
-        input_len = inputs["input_ids"].shape[-1]
-        with torch.inference_mode():
-            generation = self.model.generate(
-                **inputs,
-                max_new_tokens=max_new_tokens,
-                do_sample=False,
-            )
-            generation = generation[0][input_len:]
+    def _generate_structured(
+        self,
+        messages: list[dict[str, Any]],
+        schema: dict[str, Any],
+        *,
+        max_new_tokens: int = 1200,
+    ) -> dict[str, Any]:
+        import outlines
+        from outlines.types import JsonSchema
 
-        return self.processor.decode(generation, skip_special_tokens=True)
+        model = self._outlines_model()
+        output_type = JsonSchema(schema)
+        chat = _to_outlines_chat(messages)
+
+        # Outlines >=1: Generator + Chat multimodal input.
+        # Docs: https://dottxt-ai.github.io/outlines/latest/features/models/transformers_multimodal/
+        if hasattr(outlines, "Generator"):
+            generator = outlines.Generator(model, output_type)
+            try:
+                result = generator(chat, max_new_tokens=max_new_tokens)
+            except TypeError:
+                result = generator(chat)
+            return _parse_structured(result)
+
+        from outlines import generate, samplers
+
+        generator = generate.json(model, output_type, sampler=samplers.greedy())
+        return _parse_structured(generator(chat))
 
     @modal.method()
     def status(self) -> dict[str, str]:
@@ -263,51 +760,8 @@ class MedGemmaModel:
     @modal.method()
     def analyze_image(self, payload: dict[str, Any]) -> dict[str, Any]:
         pil = _load_image(payload)
-        modality = payload.get("modality", "xray")
-        language = payload.get("language", "en")
-
-        if modality == "dermatology":
-            task = (
-                "You are a clinical decision-support assistant reviewing a dermatology photo. "
-                "Describe visible lesion features. Do not give a definitive diagnosis."
-            )
-        elif modality == "xray":
-            task = (
-                "You are a clinical decision-support assistant reviewing a chest X-ray. "
-                "Describe radiographic findings. Do not give a definitive diagnosis."
-            )
-        elif modality in {"ct", "mri"}:
-            task = (
-                f"You are a clinical decision-support assistant reviewing a {modality.upper()} "
-                "multi-slice montage (mid-volume slices). Describe notable findings. "
-                "Do not give a definitive diagnosis."
-            )
-        elif modality == "histopath":
-            task = (
-                "You are a clinical decision-support assistant reviewing a histopathology "
-                "patch montage (tiled center-region patches). Describe tissue patterns. "
-                "Do not give a definitive diagnosis."
-            )
-        elif modality == "ophthalmology":
-            task = (
-                "You are a clinical decision-support assistant reviewing an ophthalmology "
-                "image (fundus / retinal photo). Describe visible findings. "
-                "Do not give a definitive diagnosis."
-            )
-        else:
-            task = (
-                "You are a clinical decision-support assistant reviewing a medical image. "
-                "Describe notable findings. Do not give a definitive diagnosis."
-            )
-
-        schema = (
-            "Return ONLY valid JSON with keys: findings (array of "
-            "{label, description, confidence 0-1, severity one of normal|borderline|abnormal|critical}), "
-            "differential_diagnosis (array of {condition, confidence}), "
-            "overall_confidence (0-1), "
-            "bounding_boxes (array of {label, x, y, width, height, confidence} with all coords normalized 0-1 "
-            "relative to image; include one box per localized finding when possible)."
-        )
+        modality = str(payload.get("modality") or "xray")
+        language = str(payload.get("language") or "en")
 
         messages = [
             {
@@ -316,66 +770,83 @@ class MedGemmaModel:
                     {"type": "image", "image": pil},
                     {
                         "type": "text",
-                        "text": f"{task}\nReport language preference: {language}.\n{schema}",
+                        "text": build_imaging_prompt(modality, language),
                     },
                 ],
             }
         ]
 
-        decoded = self._generate(messages)
-        return _normalize_result(_extract_json(decoded), getattr(self, "adapter_id", "none"))
+        decoded = self._generate_structured(
+            messages,
+            IMAGING_RESULT_SCHEMA,
+        )
+        return _normalize_result(decoded, getattr(self, "adapter_id", "none"))
 
     @modal.method()
     def analyze_clinical_text(self, text: str, language: str = "en") -> dict[str, Any]:
-        schema = (
-            "Return ONLY valid JSON with keys: findings (array of "
-            "{label, description, severity, confidence}), "
-            "overall_confidence (0-1), bounding_boxes ([]), differential_diagnosis ([])."
-        )
         messages = [
             {
                 "role": "user",
                 "content": [
                     {
                         "type": "text",
-                        "text": (
-                            "Summarize this de-identified clinical document "
-                            "(discharge summary / clinic note). Extract key diagnoses, "
-                            "medications, and follow-up plans. "
-                            f"Language preference: {language}.\n{schema}\n\nDOCUMENT:\n{text[:10000]}"
-                        ),
+                        "text": build_clinical_text_prompt(text, language),
                     }
                 ],
             }
         ]
-        decoded = self._generate(messages, max_new_tokens=1500)
-        return _normalize_result(_extract_json(decoded), getattr(self, "adapter_id", "none"))
+        decoded = self._generate_structured(
+            messages,
+            IMAGING_RESULT_SCHEMA,
+            max_new_tokens=1500,
+        )
+        return _normalize_result(decoded, getattr(self, "adapter_id", "none"))
 
     @modal.method()
     def analyze_lab_text(self, text: str, language: str = "en") -> dict[str, Any]:
-        schema = (
-            "Return ONLY valid JSON with keys: findings (array of "
-            "{label, value, unit, reference, severity, confidence}), "
-            "biomarkers (array of {name, value, unit, reference_low, reference_high, "
-            "status one of normal|borderline|abnormal|critical}), "
-            "overall_confidence (0-1), bounding_boxes ([]), differential_diagnosis ([])."
-        )
         messages = [
             {
                 "role": "user",
                 "content": [
                     {
                         "type": "text",
-                        "text": (
-                            "Extract structured lab biomarkers from this de-identified lab report text. "
-                            f"Language preference: {language}.\n{schema}\n\nREPORT:\n{text[:10000]}"
-                        ),
+                        "text": build_lab_text_prompt(text, language),
                     }
                 ],
             }
         ]
-        decoded = self._generate(messages, max_new_tokens=1500)
-        return _normalize_result(_extract_json(decoded), getattr(self, "adapter_id", "none"))
+        decoded = self._generate_structured(
+            messages,
+            LAB_RESULT_SCHEMA,
+            max_new_tokens=1500,
+        )
+        return _normalize_result(decoded, getattr(self, "adapter_id", "none"))
+
+    @modal.method()
+    def analyze_lab_image(self, payload: dict[str, Any]) -> dict[str, Any]:
+        """Vision fallback when PDF/image OCR yields no text."""
+        pil = _load_image(payload)
+        language = str(payload.get("language") or "en")
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image", "image": pil},
+                    {
+                        "type": "text",
+                        "text": build_lab_image_prompt(language),
+                    },
+                ],
+            }
+        ]
+        decoded = self._generate_structured(
+            messages,
+            LAB_RESULT_SCHEMA,
+            max_new_tokens=1500,
+        )
+        result = _normalize_result(decoded, getattr(self, "adapter_id", "none"))
+        result["engine"] = f"{result.get('engine', 'medgemma')}+lab-vision"
+        return result
 
     @modal.method()
     def classify(self, payload: dict[str, Any]) -> dict[str, Any]:
@@ -387,17 +858,17 @@ class MedGemmaModel:
                     {"type": "image", "image": pil},
                     {
                         "type": "text",
-                        "text": (
-                            "Classify this medical image. Return ONLY JSON: "
-                            '{"modality":"xray|dermatology|ct|mri|histopath|ophthalmology|other",'
-                            '"confidence":0-1}'
-                        ),
+                        "text": build_classify_prompt(),
                     },
                 ],
             }
         ]
-        decoded = self._generate(messages, max_new_tokens=128)
-        raw = _extract_json(decoded)
+        decoded = self._generate_structured(
+            messages,
+            CLASSIFY_RESULT_SCHEMA,
+            max_new_tokens=128,
+        )
+        raw = decoded
         modality = str(raw.get("modality", "other")).lower()
         confidence = float(raw.get("confidence", 0.7))
         allowed = {
@@ -422,7 +893,7 @@ class MedGemmaModel:
     gpu="T4",
     image=image,
     timeout=300,
-    scaledown_window=120,
+    scaledown_window=900,
     secrets=[hf_secret],
 )
 class SttModel:
@@ -485,8 +956,36 @@ class SttModel:
 
 @app.function(
     image=web_image,
+    timeout=120,
+    memory=4096,
+)
+def probe_lab_ocr(file_b64: str) -> dict[str, Any]:
+    """One-shot remote check: OCR the given PDF/image bytes on the web image."""
+    import base64
+    import inspect
+    import os
+
+    from app import api as api_mod
+    from app.lab_ocr import extract_lab_text
+
+    data = base64.b64decode(file_b64)
+    text, meta = extract_lab_text(data)
+    src = inspect.getsource(api_mod._analyze_lab)
+    return {
+        "build": os.environ.get("SIHAT_AI_BUILD"),
+        "meta": meta,
+        "text_len": len(text or ""),
+        "text_preview": (text or "")[:240],
+        "has_vision_fallback": "_analyze_lab_vision" in src,
+        "cv2_ok": True,
+    }
+
+
+@app.function(
+    image=web_image,
     timeout=900,
     memory=4096,
+    scaledown_window=120,
     secrets=[webhook_secret],
 )
 def run_analyze_job(payload: dict[str, Any]) -> None:
@@ -500,6 +999,7 @@ def run_analyze_job(payload: dict[str, Any]) -> None:
     image=web_image,
     timeout=600,
     memory=4096,
+    scaledown_window=120,
     secrets=[webhook_secret],
 )
 @modal.asgi_app()
