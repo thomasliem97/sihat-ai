@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
 class AiPipelineService
@@ -50,7 +49,7 @@ class AiPipelineService
 
         $modality = $record->detected_modality ?? $record->modality;
         $baseUrl = rtrim((string) config('services.modal.url'), '/');
-        $webhookUrl = URL::route('ai.webhook');
+        $webhookUrl = rtrim((string) config('app.url'), '/').'/api/ai/webhook';
         $path = $record->inferenceFilePath();
         $bytes = Storage::disk('local')->get($path);
 
