@@ -177,7 +177,6 @@ onMounted(() => {
         )
         .forEach((el) => observer?.observe(el));
 
-    // Hero should animate in immediately; don't wait for IO.
     requestAnimationFrame(() => {
         document
             .querySelectorAll(
@@ -428,7 +427,6 @@ onUnmounted(() => {
                         </div>
                     </div>
 
-                    <!-- Dominant hero visual -->
                     <div
                         class="welcome-reveal-scale relative space-y-4"
                         style="--reveal-delay: 180ms"

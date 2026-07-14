@@ -8,7 +8,6 @@ const props = defineProps<{
 const pct = computed(() => Math.round(props.confidence * 100));
 
 const config = computed(() => {
-    // Pitch bands: publish ≥80 · hedge 50–80 · abstain <50
     if (pct.value >= 80) {
         return {
             dot: 'bg-clinical-normal shadow-[0_0_0_4px_color-mix(in_srgb,var(--clinical-normal)_20%,transparent)]',
