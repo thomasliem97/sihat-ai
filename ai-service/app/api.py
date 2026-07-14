@@ -1,5 +1,8 @@
 """
-SihatAI FastAPI microservice — Modal MedGemma inference + signed Laravel webhook.
+SihatAI FastAPI — Laravel /api/v1/* contract (runs on Modal ASGI).
+
+GPU work goes through MedGemmaModel / SttModel via modal.Cls.from_name.
+Analyze jobs are spawned as run_analyze_job → signed webhook back to Laravel.
 """
 
 from __future__ import annotations
@@ -12,24 +15,14 @@ import os
 import re
 import tempfile
 from enum import Enum
-from pathlib import Path
 from typing import Any
 
 import httpx
-from fastapi import BackgroundTasks, FastAPI, HTTPException
-from pydantic import BaseModel, Field
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("sihat-ai")
-
-try:
-    from dotenv import load_dotenv
-
-    _service_root = Path(__file__).resolve().parent.parent
-    load_dotenv(_service_root / ".env")
-    load_dotenv(_service_root.parent / ".env")
-except ImportError:
-    pass
 
 app = FastAPI(title="SihatAI AI Service", version="0.2.0")
 
@@ -40,21 +33,6 @@ def _env(name: str, default: str = "") -> str:
 
 def _webhook_secret() -> str:
     return _env("SIHAT_AI_WEBHOOK_SECRET")
-
-
-def _modal_url() -> str:
-    return _env("SIHAT_AI_MODAL_URL").rstrip("/")
-
-
-def _require_modal() -> str:
-    url = _modal_url()
-    if not url:
-        raise RuntimeError("SIHAT_AI_MODAL_URL is required")
-    return url
-
-
-WEBHOOK_SECRET = _webhook_secret()
-MODAL_URL = _modal_url()
 
 
 class Modality(str, Enum):
@@ -92,27 +70,26 @@ class AnalyzeResponse(BaseModel):
 def health() -> dict[str, str]:
     secret = _webhook_secret()
     lora = _env("SIHAT_AI_LORA_PATH")
+    if not lora and os.path.isdir("/lora/adapter"):
+        lora = "/lora/adapter"
     return {
         "status": "ok",
         "service": "sihat-ai",
-        "modal": "configured" if _modal_url() else "missing",
+        "inference": "modal",
         "webhook_secret": "set" if secret else "missing",
-        "adapter": f"configured:{lora}" if lora else "none",
+        "adapter": f"configured:{lora}" if lora else "gpu-volume",
     }
 
 
 @app.post("/api/v1/transcribe")
 def transcribe_audio(payload: dict[str, Any]) -> dict[str, Any]:
-    """STT proxy — audio_b64 required."""
+    """STT — audio_b64 required."""
     audio_b64 = payload.get("audio_b64")
     if not audio_b64:
         raise HTTPException(status_code=422, detail="audio_b64 required")
 
-    if not _modal_url():
-        raise HTTPException(status_code=503, detail="SIHAT_AI_MODAL_URL required for STT")
-
     try:
-        return _call_modal(
+        return _invoke(
             "/transcribe",
             {
                 "audio_b64": audio_b64,
@@ -120,18 +97,23 @@ def transcribe_audio(payload: dict[str, Any]) -> dict[str, Any]:
             },
         )
     except Exception as exc:  # noqa: BLE001
-        logger.warning("Modal STT failed: %s", exc)
+        logger.warning("STT failed: %s", exc)
         raise HTTPException(status_code=502, detail=f"STT failed: {exc}") from exc
 
 
 @app.post("/api/v1/analyze", response_model=AnalyzeResponse)
-def analyze(request: AnalyzeRequest, background_tasks: BackgroundTasks) -> AnalyzeResponse:
-    background_tasks.add_task(_run_pipeline, request)
+def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
+    import modal
+
+    modal.Function.from_name("sihat-medgemma", "run_analyze_job").spawn(
+        request.model_dump(mode="json")
+    )
     return AnalyzeResponse(
         job_id=request.job_id,
         status="accepted",
         message="Analysis job queued",
     )
+
 
 
 _CLASSIFY_MODALITIES = {
@@ -184,9 +166,9 @@ def classify_modality(payload: dict[str, Any]) -> dict[str, Any]:
     if hinted and float(hinted["confidence"]) >= 0.7:
         return hinted
 
-    if _modal_url() and payload.get("image_b64"):
+    if payload.get("image_b64"):
         try:
-            result = _call_modal(
+            result = _invoke(
                 "/classify",
                 {
                     "image_b64": payload["image_b64"],
@@ -201,7 +183,7 @@ def classify_modality(payload: dict[str, Any]) -> dict[str, Any]:
                 confidence = min(confidence, 0.5)
             return {"modality": modality, "confidence": confidence}
         except Exception as exc:  # noqa: BLE001
-            logger.warning("Modal classify failed: %s", exc)
+            logger.warning("Classify failed: %s", exc)
 
     if hinted:
         return hinted
@@ -300,8 +282,7 @@ def _analyze_volume(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
     if not montage_b64:
         raise RuntimeError("Could not build volume montage for analysis")
 
-    _require_modal()
-    result = _call_modal(
+    result = _invoke(
         "/analyze",
         {
             "image_b64": montage_b64,
@@ -322,8 +303,7 @@ def _analyze_histopath(request: AnalyzeRequest) -> dict[str, Any]:
     if not montage_b64:
         raise RuntimeError("Could not build histopath patches for analysis")
 
-    _require_modal()
-    result = _call_modal(
+    result = _invoke(
         "/analyze",
         {
             "image_b64": montage_b64,
@@ -499,12 +479,11 @@ def _grid_montage(images: list[Any], cols: int = 4) -> Any:
 
 
 def _analyze_vision(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
-    _require_modal()
     data = _download_bytes(request)
     if not data:
-        raise RuntimeError("Could not download study file for Modal vision analysis")
+        raise RuntimeError("Could not download study file for vision analysis")
 
-    return _call_modal(
+    return _invoke(
         "/analyze",
         {
             "image_b64": _vision_image_b64(
@@ -538,9 +517,8 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
     if not text.strip():
         raise RuntimeError("No lab text extracted from PDF")
 
-    _require_modal()
     try:
-        result = _call_modal(
+        result = _invoke(
             "/analyze_lab",
             {
                 "text": text[:12000],
@@ -553,7 +531,7 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
             result["lab_text_meta"] = ocr_meta
         return result
     except Exception as exc:  # noqa: BLE001
-        logger.warning("Modal lab analyze failed, using regex parse: %s", exc)
+        logger.warning("Lab analyze failed, using regex parse: %s", exc)
 
     parsed = _regex_parse_lab(text)
     if ocr_meta:
@@ -584,9 +562,8 @@ def _analyze_clinical_document(request: AnalyzeRequest) -> dict[str, Any]:
     if not text.strip():
         raise RuntimeError("No text extracted from clinical document")
 
-    _require_modal()
     try:
-        return _call_modal(
+        return _invoke(
             "/analyze_clinical",
             {
                 "text": text[:12000],
@@ -596,7 +573,7 @@ def _analyze_clinical_document(request: AnalyzeRequest) -> dict[str, Any]:
             },
         )
     except Exception as exc:  # noqa: BLE001
-        logger.warning("Modal clinical document analyze failed: %s", exc)
+        logger.warning("Clinical document analyze failed: %s", exc)
         raise RuntimeError(f"Clinical document analysis failed: {exc}") from exc
 
 
@@ -735,26 +712,49 @@ def _regex_parse_lab(text: str) -> dict[str, Any]:
     }
 
 
-def _call_modal(path: str, payload: dict[str, Any]) -> dict[str, Any]:
-    modal_url = _modal_url()
-    if not modal_url:
-        raise RuntimeError("SIHAT_AI_MODAL_URL is not set")
+def _invoke(path: str, payload: dict[str, Any]) -> dict[str, Any]:
+    """Call GPU Modal classes (MedGemma / STT)."""
+    import modal
 
     route = path.lstrip("/").replace("-", "_")
-    body = {**payload, "route": route}
-    with httpx.Client(timeout=300.0) as client:
-        resp = client.post(modal_url, json=body)
-        data = resp.json() if resp.content else {}
-        if resp.status_code >= 400:
-            detail = data.get("error") or data.get("traceback") or resp.text
-            raise RuntimeError(f"Modal HTTP {resp.status_code}: {detail}")
-        if not isinstance(data, dict):
-            raise RuntimeError("Modal returned non-object JSON")
-        if data.get("error") and not data.get("findings") and route not in {"status", "transcribe", "stt", "classify"}:
-            raise RuntimeError(f"Modal error: {data.get('error')}")
-        if "bounding_boxes" in data:
-            data["bounding_boxes"] = _clamp_boxes_local(data.get("bounding_boxes"))
-        return data
+    app_name = "sihat-medgemma"
+
+    if route in {"transcribe", "stt"}:
+        stt = modal.Cls.from_name(app_name, "SttModel")()
+        data = stt.transcribe.remote(payload["audio_b64"], payload.get("language"))
+    else:
+        model = modal.Cls.from_name(app_name, "MedGemmaModel")()
+        if route == "analyze":
+            data = model.analyze_image.remote(payload)
+        elif route in {"analyze_lab", "analyze-lab"}:
+            data = model.analyze_lab_text.remote(
+                payload.get("text", ""),
+                payload.get("language", "en"),
+            )
+        elif route in {"analyze_clinical", "analyze-clinical"}:
+            data = model.analyze_clinical_text.remote(
+                payload.get("text", ""),
+                payload.get("language", "en"),
+            )
+        elif route == "classify":
+            data = model.classify.remote(payload)
+        elif route in {"status", "health"}:
+            data = model.status.remote()
+        else:
+            raise RuntimeError(f"Unknown inference route: {route}")
+
+    if not isinstance(data, dict):
+        raise RuntimeError("Inference returned non-object JSON")
+    if data.get("error") and not data.get("findings") and route not in {
+        "status",
+        "transcribe",
+        "stt",
+        "classify",
+    }:
+        raise RuntimeError(f"Inference error: {data.get('error')}")
+    if "bounding_boxes" in data:
+        data["bounding_boxes"] = _clamp_boxes_local(data.get("bounding_boxes"))
+    return data
 
 
 def _clamp_boxes_local(boxes: Any) -> list[dict[str, Any]]:
@@ -816,7 +816,7 @@ def _post_webhook(
     if not secret:
         logger.error(
             "SIHAT_AI_WEBHOOK_SECRET is empty — Laravel will reject the webhook. "
-            "Set it in ai-service/.env or the process environment."
+            "Set Modal secret sihat-webhook-secret."
         )
     else:
         headers["X-Sihat-Signature"] = hmac.new(
@@ -831,8 +831,3 @@ def _post_webhook(
             logger.error("Webhook failed %s: %s", resp.status_code, resp.text)
 
 
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run("app.api:app", host="127.0.0.1", port=8005, reload=True)

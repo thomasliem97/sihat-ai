@@ -18,9 +18,14 @@ modal volume get sihat-lora adapter ai-service/lora
 
 ## Serve
 
-Redeploy `ai-service/app/modal_app.py` — it mounts `sihat-lora` at `/lora` and loads `/lora/adapter` by default.
+Laravel talks to Modal ASGI:
 
-Optional: set `SIHAT_AI_LORA_PATH` to a HF repo id or absolute path.
+```bash
+modal deploy ai-service/app/modal_app.py
+# SIHAT_AI_URL=https://<ws>--sihat-medgemma-web.modal.run
+```
+
+Loads LoRA from volume `sihat-lora` at `/lora/adapter` on the GPU class.
 
 ## Cleanup
 

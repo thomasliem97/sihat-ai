@@ -35,8 +35,7 @@ def decode_dicom_frames(
         from PIL import Image
     except ImportError as exc:
         raise RuntimeError(
-            "DICOM decode requires pydicom, numpy, and Pillow "
-            "(pip install -r requirements.txt from ai-service/)"
+            "DICOM decode requires pydicom, numpy, and Pillow (bundled in Modal web image)"
         ) from exc
 
     meta: dict[str, Any] = {

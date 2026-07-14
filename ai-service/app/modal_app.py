@@ -1,13 +1,15 @@
 """
-Modal MedGemma 1.5 + optional MY-LoRA + STT for SihatAI.
+Modal MedGemma 1.5 + MY-LoRA + Laravel-facing FastAPI glue.
 
-Deploy:
+Deploy (from repo root):
   modal secret create huggingface-secret HF_TOKEN=hf_...
+  modal secret create sihat-webhook-secret SIHAT_AI_WEBHOOK_SECRET=...
   modal deploy ai-service/app/modal_app.py
 
-Adapter (pick one):
-  - Default: Modal volume sihat-lora mounted at /lora/adapter (from training)
-  - Or set SIHAT_AI_LORA_PATH to a HF repo id / absolute path
+Laravel:
+  SIHAT_AI_URL=https://<workspace>--sihat-medgemma-web.modal.run
+
+Adapter: volume sihat-lora at /lora/adapter (or SIHAT_AI_LORA_PATH).
 """
 
 from __future__ import annotations
@@ -16,7 +18,6 @@ import base64
 import json
 import os
 import re
-import traceback
 from io import BytesIO
 from typing import Any
 
@@ -45,8 +46,32 @@ image = (
     .run_commands("python -m pip uninstall -y hf-xet || true")
 )
 
+# CPU glue: Laravel /api/v1/* + PDF/OCR (calls GPU classes via .remote())
+web_image = (
+    modal.Image.debian_slim(python_version="3.11")
+    .pip_install(
+        "fastapi",
+        "httpx",
+        "pydantic",
+        "Pillow",
+        "numpy",
+        "pydicom",
+        "pylibjpeg",
+        "pylibjpeg-libjpeg",
+        "pylibjpeg-openjpeg",
+        "pymupdf",
+        "pypdf",
+        "rapidocr",
+        "onnxruntime",
+    )
+    .env({"PYTHONPATH": "/root"})
+    .add_local_dir("ai-service/app", remote_path="/root/app")
+)
+
 MODEL_ID = "google/medgemma-1.5-4b-it"
 lora_vol = modal.Volume.from_name("sihat-lora", create_if_missing=True)
+webhook_secret = modal.Secret.from_name("sihat-webhook-secret")
+hf_secret = modal.Secret.from_name("huggingface-secret")
 
 
 def _lora_path() -> str:
@@ -180,7 +205,7 @@ def _normalize_result(raw: dict[str, Any], adapter: str) -> dict[str, Any]:
     timeout=600,
     scaledown_window=120,
     volumes={"/lora": lora_vol},
-    secrets=[modal.Secret.from_name("huggingface-secret")],
+    secrets=[hf_secret],
 )
 class MedGemmaModel:
     @modal.enter()
@@ -398,7 +423,7 @@ class MedGemmaModel:
     image=image,
     timeout=300,
     scaledown_window=120,
-    secrets=[modal.Secret.from_name("huggingface-secret")],
+    secrets=[hf_secret],
 )
 class SttModel:
     """MedASR primary; Whisper fallback when license/load fails."""
@@ -458,43 +483,28 @@ class SttModel:
         }
 
 
-@app.function(image=image, timeout=600)
-@modal.fastapi_endpoint(method="POST")
-def fastapi_app(payload: dict[str, Any]) -> dict[str, Any]:
-    try:
-        route = str(payload.get("route") or "analyze")
+@app.function(
+    image=web_image,
+    timeout=900,
+    memory=4096,
+    secrets=[webhook_secret],
+)
+def run_analyze_job(payload: dict[str, Any]) -> None:
+    """Background analyze → signed Laravel webhook."""
+    from app.api import AnalyzeRequest, _run_pipeline
 
-        if route in {"status", "health"}:
-            return MedGemmaModel().status.remote()
+    _run_pipeline(AnalyzeRequest(**payload))
 
-        if route in {"transcribe", "stt"}:
-            return SttModel().transcribe.remote(
-                payload["audio_b64"],
-                payload.get("language"),
-            )
 
-        model = MedGemmaModel()
+@app.function(
+    image=web_image,
+    timeout=600,
+    memory=4096,
+    secrets=[webhook_secret],
+)
+@modal.asgi_app()
+def web():
+    """Laravel-facing FastAPI: /health, /api/v1/analyze|classify|transcribe."""
+    from app.api import app as fastapi_app
 
-        if route in {"classify"}:
-            return model.classify.remote(payload)
-
-        if route in {"analyze_lab", "analyze-lab"}:
-            return model.analyze_lab_text.remote(
-                payload.get("text", ""),
-                payload.get("language", "en"),
-            )
-
-        if route in {"analyze_clinical", "analyze-clinical"}:
-            return model.analyze_clinical_text.remote(
-                payload.get("text", ""),
-                payload.get("language", "en"),
-            )
-
-        return model.analyze_image.remote(payload)
-    except Exception as exc:  # noqa: BLE001
-        return {
-            "error": str(exc),
-            "traceback": traceback.format_exc()[-2000:],
-            "findings": [],
-            "overall_confidence": 0.0,
-        }
+    return fastapi_app
