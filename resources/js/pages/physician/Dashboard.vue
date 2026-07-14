@@ -196,7 +196,7 @@ defineOptions({
                         :icon="Flag"
                         title="No abnormal biomarkers"
                         description="Flagged labs will appear here for rapid review."
-                        class="!py-8"
+                        class="py-8!"
                     />
                 </CardContent>
             </Card>

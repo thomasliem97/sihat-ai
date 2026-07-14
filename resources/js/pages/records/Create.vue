@@ -78,7 +78,7 @@ defineOptions({
             <div v-if="patients.length" class="space-y-2">
                 <FieldLabel>Patient</FieldLabel>
                 <Select v-model="patientId">
-                    <SelectTrigger>
+                    <SelectTrigger class="w-full">
                         <SelectValue placeholder="Select patient" />
                     </SelectTrigger>
                     <SelectContent>

@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
-import SecurityController from '@/actions/App/Http/Controllers/Settings/SecurityController';
+import { Head } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
-import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { edit } from '@/routes/security';
 
-type Props = {
+defineProps<{
     passwordRules: string;
-};
-
-const props = defineProps<Props>();
+}>();
 
 defineOptions({
     layout: {
@@ -38,20 +34,7 @@ defineOptions({
             description="Ensure your account is using a long, random password to stay secure"
         />
 
-        <Form
-            v-bind="SecurityController.update.form()"
-            :options="{
-                preserveScroll: true,
-            }"
-            reset-on-success
-            :reset-on-error="[
-                'password',
-                'password_confirmation',
-                'current_password',
-            ]"
-            class="space-y-6"
-            v-slot="{ errors, processing }"
-        >
+        <form class="space-y-6" @submit.prevent>
             <div class="grid gap-2">
                 <Label for="current_password">Current password</Label>
                 <PasswordInput
@@ -60,8 +43,8 @@ defineOptions({
                     class="mt-1 block w-full"
                     autocomplete="current-password"
                     placeholder="Current password"
+                    disabled
                 />
-                <InputError :message="errors.current_password" />
             </div>
 
             <div class="grid gap-2">
@@ -72,9 +55,8 @@ defineOptions({
                     class="mt-1 block w-full"
                     autocomplete="new-password"
                     placeholder="New password"
-                    :passwordrules="props.passwordRules"
+                    disabled
                 />
-                <InputError :message="errors.password" />
             </div>
 
             <div class="grid gap-2">
@@ -85,19 +67,22 @@ defineOptions({
                     class="mt-1 block w-full"
                     autocomplete="new-password"
                     placeholder="Confirm password"
-                    :passwordrules="props.passwordRules"
+                    disabled
                 />
-                <InputError :message="errors.password_confirmation" />
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="space-y-3">
                 <Button
-                    :disabled="processing"
+                    type="button"
+                    disabled
                     data-test="update-password-button"
                 >
                     Save
                 </Button>
+                <p class="text-sm text-muted-foreground">
+                    Password updates are disabled in demo mode.
+                </p>
             </div>
-        </Form>
+        </form>
     </div>
 </template>
