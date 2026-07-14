@@ -166,7 +166,7 @@ test('honest technical notes report engine truthfully', function () {
 
 test('partial findings include imaging specialist for xray', function () {
     Notification::fake();
-    config(['services.sihat_ai.webhook_secret' => 'test-secret']);
+    config(['services.modal.webhook_secret' => 'test-secret']);
 
     GuidelineChunk::create([
         'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',

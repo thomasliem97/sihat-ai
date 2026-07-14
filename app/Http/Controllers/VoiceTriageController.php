@@ -53,7 +53,7 @@ class VoiceTriageController extends Controller
      */
     private function speechToText(string $audioB64): array
     {
-        $baseUrl = rtrim((string) config('services.sihat_ai.url'), '/');
+        $baseUrl = rtrim((string) config('services.modal.url'), '/');
 
         try {
             $response = Http::timeout(120)->post("{$baseUrl}/api/v1/transcribe", [

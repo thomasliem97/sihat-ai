@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Services\RagService;
 
 beforeEach(function () {
-    config(['services.sihat_ai.webhook_secret' => 'test-secret']);
+    config(['services.modal.webhook_secret' => 'test-secret']);
 });
 
 test('webhook rejects invalid signature', function () {

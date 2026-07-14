@@ -49,7 +49,7 @@ class AiPipelineService
         $this->prepareRecord($record, $job);
 
         $modality = $record->detected_modality ?? $record->modality;
-        $baseUrl = rtrim((string) config('services.sihat_ai.url'), '/');
+        $baseUrl = rtrim((string) config('services.modal.url'), '/');
         $webhookUrl = URL::route('ai.webhook');
         $fileUrl = URL::temporarySignedRoute(
             'ai.file',
@@ -71,7 +71,7 @@ class AiPipelineService
                 'original_filename' => $record->original_filename,
                 'route_confidence' => $record->route_confidence,
                 'engine' => 'medgemma',
-                'adapter' => config('services.sihat_ai.lora_path') ? 'configured' : 'none',
+                'adapter' => config('services.modal.lora_path') ? 'configured' : 'none',
             ]);
 
         if (! $response->successful()) {
@@ -169,7 +169,7 @@ class AiPipelineService
         $modalityEnum = $record->detected_modality ?? $record->modality;
         $modality = $modalityEnum->value;
         $result['engine'] = $result['engine'] ?? 'medgemma';
-        $result['adapter'] = $result['adapter'] ?? (config('services.sihat_ai.lora_path') ? 'configured' : 'none');
+        $result['adapter'] = $result['adapter'] ?? (config('services.modal.lora_path') ? 'configured' : 'none');
 
         $trace[] = $this->hop('router', 'completed', 'Modality '.$modality, $record->route_confidence);
         if ($record->safe_file_path) {
@@ -561,8 +561,6 @@ class AiPipelineService
         return Modality::Xray;
     }
 
-    /**
-     */
     private function modalityFromDicomFile(MedicalRecord $record): ?Modality
     {
         $path = $record->file_path;
@@ -675,7 +673,7 @@ class AiPipelineService
         }
 
         $engine = (string) ($result['engine'] ?? 'medgemma');
-        $adapter = (string) ($result['adapter'] ?? (config('services.sihat_ai.lora_path') ? 'configured' : 'none'));
+        $adapter = (string) ($result['adapter'] ?? (config('services.modal.lora_path') ? 'configured' : 'none'));
         $modalityLabel = ($record->detected_modality ?? $record->modality)->label();
 
         $technicalNotes = $abstain

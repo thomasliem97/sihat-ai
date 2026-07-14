@@ -7,7 +7,7 @@ use App\Models\MedicalRecord;
 use App\Models\User;
 
 beforeEach(function () {
-    config(['services.sihat_ai.webhook_secret' => 'test-secret']);
+    config(['services.modal.webhook_secret' => 'test-secret']);
 });
 
 test('webhook persists typed agent hop traces', function () {

@@ -35,10 +35,9 @@ return [
         ],
     ],
 
-    'sihat_ai' => [
-        'url' => env('SIHAT_AI_URL', 'http://127.0.0.1:8005'),
+    'modal' => [
+        'url' => env('SIHAT_AI_URL', 'https://thomasliem--sihat-medgemma-web.modal.run'),
         'webhook_secret' => env('SIHAT_AI_WEBHOOK_SECRET'),
-        'modal_url' => env('SIHAT_AI_MODAL_URL'),
         'lora_path' => env('SIHAT_AI_LORA_PATH'),
     ],
 

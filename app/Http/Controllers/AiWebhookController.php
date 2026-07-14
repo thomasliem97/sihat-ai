@@ -106,7 +106,7 @@ class AiWebhookController extends Controller
 
     private function signatureValid(Request $request): bool
     {
-        $secret = (string) config('services.sihat_ai.webhook_secret');
+        $secret = (string) config('services.modal.webhook_secret');
 
         if ($secret === '') {
             return app()->environment('local', 'testing');
