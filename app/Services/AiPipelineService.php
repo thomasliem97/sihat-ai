@@ -720,10 +720,10 @@ class AiPipelineService
 
         if ($critical) {
             $recs[] = match ($language) {
-                ReportLanguage::Malay => 'Nilai kritikal — eskalasi segera kepada pakar yang bertugas.',
-                ReportLanguage::Mandarin => '危急值 — 立即上报值班医师。',
-                ReportLanguage::Tamil => 'முக்கிய மதிப்பு — உடனடி மருத்துவர் அறிவிப்பு தேவை.',
-                default => 'Critical value — escalate immediately to the covering clinician.',
+                ReportLanguage::Malay => 'Nilai kritikal: eskalasi segera kepada pakar yang bertugas.',
+                ReportLanguage::Mandarin => '危急值：立即上报值班医师。',
+                ReportLanguage::Tamil => 'முக்கிய மதிப்பு: உடனடி மருத்துவர் அறிவிப்பு தேவை.',
+                default => 'Critical value: escalate immediately to the covering clinician.',
             };
         }
 
@@ -783,10 +783,10 @@ class AiPipelineService
         $label = is_array($first) ? ($first['label'] ?? 'your study') : 'your study';
 
         $base = match ($language) {
-            ReportLanguage::Malay => "Analisis AI melihat: {$label}. Ini bukan diagnosis — doktor anda akan menerangkan maksudnya.",
-            ReportLanguage::Mandarin => "AI 审阅提示：{$label}。这不是诊断 — 请由医生解释对您的意义。",
-            ReportLanguage::Tamil => "AI ஆய்வு குறிப்பு: {$label}. இது நோயறிவு அல்ல — மருத்துவர் விளக்குவார்.",
-            default => "The AI review noted: {$label}. This is not a diagnosis — your doctor will explain what it means for you.",
+            ReportLanguage::Malay => "Analisis AI melihat: {$label}. Ini bukan diagnosis; doktor anda akan menerangkan maksudnya.",
+            ReportLanguage::Mandarin => "AI 审阅提示：{$label}。这不是诊断，请由医生解释对您的意义。",
+            ReportLanguage::Tamil => "AI ஆய்வு குறிப்பு: {$label}. இது நோயறிவு அல்ல; மருத்துவர் விளக்குவார்.",
+            default => "The AI review noted: {$label}. This is not a diagnosis; your doctor will explain what it means for you.",
         };
 
         if (! $hedge) {
