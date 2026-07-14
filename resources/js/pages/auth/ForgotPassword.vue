@@ -1,18 +1,15 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
-import InputError from '@/components/InputError.vue';
+import { Head } from '@inertiajs/vue3';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/ui/spinner';
 import { login } from '@/routes';
-import { email } from '@/routes/password';
 
 defineOptions({
     layout: {
         title: 'Forgot password',
-        description: 'Enter your email to receive a password reset link',
+        description: 'Password reset is not available in this demo',
     },
 });
 
@@ -24,15 +21,8 @@ defineProps<{
 <template>
     <Head title="Forgot password" />
 
-    <div
-        v-if="status"
-        class="mb-4 text-center text-sm font-medium text-green-600"
-    >
-        {{ status }}
-    </div>
-
     <div class="space-y-6">
-        <Form v-bind="email.form()" v-slot="{ errors, processing }">
+        <form @submit.prevent>
             <div class="grid gap-2">
                 <Label for="email">Email address</Label>
                 <Input
@@ -40,23 +30,25 @@ defineProps<{
                     type="email"
                     name="email"
                     autocomplete="off"
-                    autofocus
+                    disabled
                     placeholder="email@example.com"
                 />
-                <InputError :message="errors.email" />
             </div>
 
-            <div class="my-6 flex items-center justify-start">
+            <div class="my-6 space-y-3">
                 <Button
+                    type="button"
                     class="w-full"
-                    :disabled="processing"
+                    disabled
                     data-test="email-password-reset-link-button"
                 >
-                    <Spinner v-if="processing" />
                     Email password reset link
                 </Button>
+                <p class="text-center text-sm text-muted-foreground">
+                    Password reset is disabled in demo mode.
+                </p>
             </div>
-        </Form>
+        </form>
 
         <div class="space-x-1 text-center text-sm text-muted-foreground">
             <span>Or, return to</span>

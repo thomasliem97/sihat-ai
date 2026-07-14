@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
+import SectionTag from '@/components/patterns/SectionTag.vue';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useCurrentUrl } from '@/composables/useCurrentUrl';
@@ -29,7 +30,10 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
 </script>
 
 <template>
-    <div class="px-4 py-6">
+    <div>
+        <div class="mb-2">
+            <SectionTag>Account</SectionTag>
+        </div>
         <Heading
             title="Settings"
             description="Manage your profile and account settings"
@@ -46,8 +50,11 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
                         :key="toUrl(item.href)"
                         variant="ghost"
                         :class="[
-                            'w-full justify-start',
-                            { 'bg-muted': isCurrentOrParentUrl(item.href) },
+                            'w-full justify-start font-medium',
+                            {
+                                'bg-muted text-accent-foreground':
+                                    isCurrentOrParentUrl(item.href),
+                            },
                         ]"
                         as-child
                     >
@@ -62,7 +69,7 @@ const { isCurrentOrParentUrl } = useCurrentUrl();
             <Separator class="my-6 lg:hidden" />
 
             <div class="flex-1 md:max-w-2xl">
-                <section class="max-w-xl space-y-12">
+                <section class="paper-panel max-w-xl space-y-12 p-6">
                     <slot />
                 </section>
             </div>

@@ -23,11 +23,18 @@ defineProps<Props>();
             <template v-for="(item, index) in breadcrumbs" :key="index">
                 <BreadcrumbItem>
                     <template v-if="index === breadcrumbs.length - 1">
-                        <BreadcrumbPage>{{ item.title }}</BreadcrumbPage>
+                        <BreadcrumbPage class="font-mono text-xs font-semibold tracking-wide uppercase">
+                            {{ item.title }}
+                        </BreadcrumbPage>
                     </template>
                     <template v-else>
                         <BreadcrumbLink as-child>
-                            <Link :href="item.href">{{ item.title }}</Link>
+                            <Link
+                                :href="item.href"
+                                class="font-mono text-xs font-medium tracking-wide uppercase text-muted-foreground hover:text-foreground"
+                            >
+                                {{ item.title }}
+                            </Link>
                         </BreadcrumbLink>
                     </template>
                 </BreadcrumbItem>

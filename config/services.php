@@ -35,4 +35,15 @@ return [
         ],
     ],
 
+    'modal' => [
+        'url' => env('SIHAT_AI_URL', 'https://thomasliem--sihat-medgemma-web.modal.run'),
+        'webhook_secret' => env('SIHAT_AI_WEBHOOK_SECRET'),
+        'lora_path' => env('SIHAT_AI_LORA_PATH'),
+    ],
+
+    'openai' => [
+        'api_key' => env('OPENAI_API_KEY'),
+        'embedding_model' => env('OPENAI_EMBEDDING_MODEL', 'text-embedding-3-small'),
+    ],
+
 ];

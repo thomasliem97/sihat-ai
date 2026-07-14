@@ -1,6 +1,5 @@
 import type { Auth } from '@/types/auth';
 
-// Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
     interface ImportMetaEnv {
         readonly VITE_APP_NAME: string;

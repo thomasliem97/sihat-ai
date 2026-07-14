@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">SihatAI multimodal medical intelligence</title>
+  <desc id="desc">Clinical Field Atlas illustration showing imaging, laboratory reports, documents, and voice connected to one findings object.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#bddce6" stroke-width="1" opacity=".45"/>
+    </pattern>
+    <radialGradient id="wash" cx="80%" cy="18%" r="70%">
+      <stop offset="0" stop-color="#ccebf3" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#f3fbfd" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="8" dy="10" stdDeviation="0" flood-color="#ccebf3"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="520" rx="32" fill="#f3fbfd"/>
+  <rect width="1200" height="520" rx="32" fill="url(#grid)"/>
+  <rect width="1200" height="520" rx="32" fill="url(#wash)"/>
+  <rect x="14" y="14" width="1172" height="492" rx="26" fill="none" stroke="#83bdcf" stroke-opacity=".55"/>
+
+  <g transform="translate(70 70)">
+    <g>
+      <circle cx="18" cy="17" r="8" fill="#f26b5e"/>
+      <text x="38" y="22" fill="#0c527f" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700" letter-spacing="2">MULTIMODAL MEDICAL INTELLIGENCE</text>
+    </g>
+    <text x="0" y="120" fill="#102f4a" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="76" font-weight="800" letter-spacing="-4">Sihat<tspan fill="#176ca5">AI</tspan></text>
+    <text x="0" y="175" fill="#102f4a" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="29" font-weight="700">From any medical artifact</text>
+    <text x="0" y="214" fill="#176ca5" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="29" font-weight="700">to an actionable clinical report.</text>
+    <text x="0" y="272" fill="#48697d" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18">One grounded findings object. Two useful voices.</text>
+
+    <g transform="translate(0 317)">
+      <rect width="146" height="42" rx="21" fill="#fff" stroke="#bddce6"/>
+      <text x="73" y="27" text-anchor="middle" fill="#0c527f" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="700">PHYSICIAN</text>
+      <rect x="158" width="124" height="42" rx="21" fill="#dcf5f2" stroke="#9edbd5"/>
+      <text x="220" y="27" text-anchor="middle" fill="#086772" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="700">PATIENT</text>
+      <rect x="294" width="156" height="42" rx="21" fill="#fff0ed" stroke="#f5b4ac"/>
+      <text x="372" y="27" text-anchor="middle" fill="#9e3e36" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="700">MALAYSIA</text>
+    </g>
+  </g>
+
+  <g transform="translate(850 260)">
+    <circle r="178" fill="none" stroke="#176ca5" stroke-width="2" stroke-dasharray="7 10" opacity=".32"/>
+    <circle r="124" fill="none" stroke="#0b8994" stroke-width="1.5" opacity=".26"/>
+    <rect x="-83" y="-83" width="166" height="166" rx="62" fill="#176ca5" stroke="#fff" stroke-width="10" filter="url(#shadow)"/>
+    <text x="0" y="-12" text-anchor="middle" fill="#fff" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="45" font-weight="800">{ }</text>
+    <text x="0" y="18" text-anchor="middle" fill="#dff4f8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1">FINDINGS</text>
+    <text x="0" y="36" text-anchor="middle" fill="#dff4f8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700" letter-spacing="1">OBJECT</text>
+
+    <g transform="translate(-224 -152)" filter="url(#shadow)">
+      <rect width="180" height="72" rx="20" fill="#fff" stroke="#83bdcf"/>
+      <circle cx="36" cy="36" r="20" fill="#e4f5fa"/>
+      <path d="M27 36h18M36 27v18" stroke="#176ca5" stroke-width="3" stroke-linecap="round"/>
+      <text x="66" y="32" fill="#102f4a" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700">Imaging</text>
+      <text x="66" y="50" fill="#48697d" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">SEE + LOCALIZE</text>
+    </g>
+
+    <g transform="translate(72 -148)" filter="url(#shadow)">
+      <rect width="180" height="72" rx="20" fill="#fff" stroke="#83bdcf"/>
+      <circle cx="36" cy="36" r="20" fill="#e4f5fa"/>
+      <path d="M29 27h14v18H29zM32 32h8M32 36h8M32 40h5" fill="none" stroke="#176ca5" stroke-width="2" stroke-linecap="round"/>
+      <text x="66" y="32" fill="#102f4a" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700">Labs</text>
+      <text x="66" y="50" fill="#48697d" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">STRUCTURE + TREND</text>
+    </g>
+
+    <g transform="translate(-236 92)" filter="url(#shadow)">
+      <rect width="190" height="72" rx="20" fill="#fff" stroke="#83bdcf"/>
+      <circle cx="36" cy="36" r="20" fill="#e4f5fa"/>
+      <path d="M29 25h11l5 5v17H29zM40 25v6h5M33 36h8M33 40h8" fill="none" stroke="#176ca5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="66" y="32" fill="#102f4a" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700">Documents</text>
+      <text x="66" y="50" fill="#48697d" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">EXTRACT + GROUND</text>
+    </g>
+
+    <g transform="translate(76 98)" filter="url(#shadow)">
+      <rect width="170" height="72" rx="20" fill="#fff" stroke="#83bdcf"/>
+      <circle cx="36" cy="36" r="20" fill="#e4f5fa"/>
+      <rect x="32" y="24" width="8" height="18" rx="4" fill="none" stroke="#176ca5" stroke-width="2"/>
+      <path d="M28 37c0 6 4 9 8 9s8-3 8-9M36 46v5" fill="none" stroke="#176ca5" stroke-width="2" stroke-linecap="round"/>
+      <text x="66" y="32" fill="#102f4a" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" font-weight="700">Voice</text>
+      <text x="66" y="50" fill="#48697d" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9">LISTEN + TRIAGE</text>
+    </g>
+  </g>
+
+  <text x="1130" y="474" text-anchor="end" fill="#7795a6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600" letter-spacing="1">CLINICAL FIELD ATLAS &#183; 2026</text>
+</svg>
