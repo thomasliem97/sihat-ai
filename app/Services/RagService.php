@@ -12,7 +12,15 @@ class RagService
 {
     private bool $lastRetrievalWeak = false;
 
+    private const MMR_LAMBDA = 0.7;
+
+    private const TOP_K = 3;
+
+    private const CANDIDATE_K = 8;
+
     /**
+     * Hybrid dense + BM25 retrieval with MMR rerank.
+     *
      * @param  array<int, array<string, mixed>>  $findings
      * @return array<int, array<string, mixed>>
      */
@@ -41,44 +49,27 @@ class RagService
         if ($chunks->isEmpty()) {
             $this->lastRetrievalWeak = true;
 
-            return $this->defaultCitations();
+            return [];
         }
 
         $queryEmbedding = $this->embed($query);
-
-        if ($queryEmbedding === null) {
-            // ponytail: lexical fallback when no embedding API; upgrade by setting OPENAI_API_KEY
-            return $this->lexicalRetrieve($chunks, $query);
-        }
-
         $this->ensureChunkEmbeddings($chunks);
 
-        $scored = $chunks->map(function (GuidelineChunk $chunk) use ($queryEmbedding, $query) {
-            $embedding = $chunk->embedding;
-            $score = is_array($embedding) && $embedding !== []
-                ? $this->cosineSimilarity($queryEmbedding, $embedding)
-                : 0.0;
+        $dense = $this->denseCandidates($chunks, $queryEmbedding, $query);
+        $bm25 = $this->bm25Candidates($chunks, $query);
+        $fused = $this->fuseCandidates($dense, $bm25);
+        $reranked = $this->mmrRerank($fused, $queryEmbedding, self::TOP_K);
 
-            return [
-                'source' => $chunk->source,
-                'section' => $chunk->section,
-                'excerpt' => mb_substr($chunk->content, 0, 200).'…',
-                'relevance' => round($score, 3),
-                'query' => $query,
-            ];
-        })
-            ->sortByDesc('relevance')
-            ->take(3)
-            ->values();
+        $top = (float) ($reranked[0]['relevance'] ?? 0);
+        // Hash embeddings are coarse; BM25 carries most offline signal.
+        $this->lastRetrievalWeak = $reranked === [] || $top < 0.2;
 
-        $top = (float) ($scored->first()['relevance'] ?? 0);
-        $this->lastRetrievalWeak = $top < 0.35;
-
-        if ($scored->isEmpty() || $this->lastRetrievalWeak) {
-            return $this->defaultCitations();
+        // Weak retrieve: empty citations (no static stubs in live path)
+        if ($this->lastRetrievalWeak) {
+            return [];
         }
 
-        return $scored->all();
+        return $reranked;
     }
 
     public function wasWeakRetrieval(array $citations = []): bool
@@ -87,8 +78,29 @@ class RagService
     }
 
     /**
-     * Embed text; returns null when embeddings are unavailable.
+     * Static stubs kept for tests / offline demos only. Not used by retrieveCitations.
      *
+     * @return array<int, array<string, mixed>>
+     */
+    public function defaultCitations(): array
+    {
+        return [
+            [
+                'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
+                'section' => '4.2 Diagnosis',
+                'excerpt' => 'Chest radiograph may show lobar or patchy consolidation. Clinical correlation is essential.',
+                'relevance' => 0.4,
+            ],
+            [
+                'source' => 'MOH Malaysia CPG - Tuberculosis',
+                'section' => '3.1 Imaging',
+                'excerpt' => 'Upper lobe cavitary lesions are characteristic but lower lobe involvement can occur.',
+                'relevance' => 0.35,
+            ],
+        ];
+    }
+
+    /**
      * @return array<int, float>|null
      */
     public function embed(string $text): ?array
@@ -125,8 +137,6 @@ class RagService
     }
 
     /**
-     * Deterministic bag-of-tokens embedding for offline MVP (no API key).
-     *
      * @return array<int, float>
      */
     public function localHashEmbed(string $text): array
@@ -164,38 +174,187 @@ class RagService
 
     /**
      * @param  Collection<int, GuidelineChunk>  $chunks
+     * @param  array<int, float>|null  $queryEmbedding
      * @return array<int, array<string, mixed>>
      */
-    private function lexicalRetrieve($chunks, string $query): array
+    private function denseCandidates($chunks, ?array $queryEmbedding, string $query): array
     {
-        $terms = preg_split('/\W+/u', mb_strtolower($query), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        if ($queryEmbedding === null) {
+            return [];
+        }
 
-        $scored = $chunks->map(function (GuidelineChunk $chunk) use ($terms, $query) {
-            $hay = mb_strtolower($chunk->source.' '.$chunk->section.' '.$chunk->content);
-            $hits = 0;
-            foreach ($terms as $term) {
-                if ($term !== '' && str_contains($hay, $term)) {
-                    $hits++;
-                }
-            }
-            $score = count($terms) > 0 ? $hits / count($terms) : 0;
+        return $chunks->map(function (GuidelineChunk $chunk) use ($queryEmbedding, $query) {
+            $embedding = $chunk->embedding;
+            $score = is_array($embedding) && $embedding !== []
+                ? $this->cosineSimilarity($queryEmbedding, $embedding)
+                : 0.0;
 
-            return [
-                'source' => $chunk->source,
-                'section' => $chunk->section,
-                'excerpt' => mb_substr($chunk->content, 0, 200).'…',
-                'relevance' => round(min(1, $score + 0.2), 3),
-                'query' => $query,
-            ];
+            return $this->citationRow($chunk, $score, $query, $embedding);
         })
             ->sortByDesc('relevance')
-            ->take(3)
-            ->values();
+            ->take(self::CANDIDATE_K)
+            ->values()
+            ->all();
+    }
 
-        $top = (float) ($scored->first()['relevance'] ?? 0);
-        $this->lastRetrievalWeak = $top < 0.35;
+    /**
+     * In-PHP BM25 over guideline chunks (no external deps).
+     *
+     * @param  Collection<int, GuidelineChunk>  $chunks
+     * @return array<int, array<string, mixed>>
+     */
+    private function bm25Candidates($chunks, string $query): array
+    {
+        $terms = preg_split('/\W+/u', mb_strtolower($query), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        if ($terms === []) {
+            return [];
+        }
 
-        return $scored->all();
+        $k1 = 1.2;
+        $b = 0.75;
+        $docs = $chunks->map(function (GuidelineChunk $chunk) {
+            $tokens = preg_split('/\W+/u', mb_strtolower($chunk->source.' '.$chunk->section.' '.$chunk->content), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+
+            return ['chunk' => $chunk, 'tokens' => $tokens, 'len' => count($tokens)];
+        });
+
+        $avgdl = max(1.0, (float) $docs->avg('len'));
+        $n = max(1, $docs->count());
+        $df = [];
+        foreach ($terms as $term) {
+            $df[$term] = $docs->filter(fn ($d) => in_array($term, $d['tokens'], true))->count();
+        }
+
+        $scored = $docs->map(function (array $doc) use ($terms, $df, $n, $k1, $b, $avgdl, $query) {
+            $tfMap = array_count_values($doc['tokens']);
+            $score = 0.0;
+            foreach ($terms as $term) {
+                $tf = (int) ($tfMap[$term] ?? 0);
+                if ($tf === 0) {
+                    continue;
+                }
+                $idf = log(1 + ($n - $df[$term] + 0.5) / ($df[$term] + 0.5));
+                $score += $idf * (($tf * ($k1 + 1)) / ($tf + $k1 * (1 - $b + $b * ($doc['len'] / $avgdl))));
+            }
+
+            // Scale BM25 into ~0..1; offline hash-dense is weak so BM25 must carry the fuse.
+            $norm = min(1.0, $score / max(1.0, log(1 + count($terms)) * 2));
+
+            return $this->citationRow($doc['chunk'], $norm, $query, $doc['chunk']->embedding);
+        })
+            ->sortByDesc('relevance')
+            ->take(self::CANDIDATE_K)
+            ->values()
+            ->all();
+
+        return $scored;
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $dense
+     * @param  array<int, array<string, mixed>>  $bm25
+     * @return array<int, array<string, mixed>>
+     */
+    private function fuseCandidates(array $dense, array $bm25): array
+    {
+        $byKey = [];
+        foreach (array_merge($dense, $bm25) as $row) {
+            $key = ($row['source'] ?? '').'|'.($row['section'] ?? '');
+            if (! isset($byKey[$key]) || ($row['relevance'] ?? 0) > ($byKey[$key]['relevance'] ?? 0)) {
+                $byKey[$key] = $row;
+            } else {
+                // Boost when both retrievers hit
+                $byKey[$key]['relevance'] = min(1.0, (float) $byKey[$key]['relevance'] + 0.05);
+            }
+        }
+
+        return array_values($byKey);
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $candidates
+     * @param  array<int, float>|null  $queryEmbedding
+     * @return array<int, array<string, mixed>>
+     */
+    private function mmrRerank(array $candidates, ?array $queryEmbedding, int $k): array
+    {
+        if ($candidates === []) {
+            return [];
+        }
+
+        usort($candidates, fn ($a, $b) => ($b['relevance'] ?? 0) <=> ($a['relevance'] ?? 0));
+
+        $selected = [];
+        $remaining = $candidates;
+
+        while (count($selected) < $k && $remaining !== []) {
+            $bestIdx = 0;
+            $bestScore = -INF;
+
+            foreach ($remaining as $i => $cand) {
+                $rel = (float) ($cand['relevance'] ?? 0);
+                $div = 0.0;
+                if ($queryEmbedding !== null && $selected !== []) {
+                    foreach ($selected as $sel) {
+                        $div = max($div, $this->citationSimilarity($cand, $sel, $queryEmbedding));
+                    }
+                }
+                $mmr = self::MMR_LAMBDA * $rel - (1 - self::MMR_LAMBDA) * $div;
+                if ($mmr > $bestScore) {
+                    $bestScore = $mmr;
+                    $bestIdx = $i;
+                }
+            }
+
+            $selected[] = $remaining[$bestIdx];
+            array_splice($remaining, $bestIdx, 1);
+        }
+
+        return array_map(function (array $row) {
+            unset($row['_embedding']);
+
+            return $row;
+        }, $selected);
+    }
+
+    /**
+     * @param  array<int, float>|null  $embedding
+     * @return array<string, mixed>
+     */
+    private function citationRow(GuidelineChunk $chunk, float $score, string $query, ?array $embedding): array
+    {
+        return [
+            'source' => $chunk->source,
+            'section' => $chunk->section,
+            'excerpt' => mb_substr($chunk->content, 0, 200).'…',
+            'relevance' => round($score, 3),
+            'query' => $query,
+            '_embedding' => is_array($embedding) ? $embedding : null,
+        ];
+    }
+
+    /**
+     * @param  array<string, mixed>  $a
+     * @param  array<string, mixed>  $b
+     * @param  array<int, float>  $queryEmbedding
+     */
+    private function citationSimilarity(array $a, array $b, array $queryEmbedding): float
+    {
+        $ea = $a['_embedding'] ?? null;
+        $eb = $b['_embedding'] ?? null;
+        if (is_array($ea) && is_array($eb) && $ea !== [] && $eb !== []) {
+            return $this->cosineSimilarity($ea, $eb);
+        }
+
+        // Fallback: lexical overlap of excerpts
+        $ta = preg_split('/\W+/u', mb_strtolower((string) ($a['excerpt'] ?? '')), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        $tb = preg_split('/\W+/u', mb_strtolower((string) ($b['excerpt'] ?? '')), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        if ($ta === [] || $tb === []) {
+            return 0.0;
+        }
+        $overlap = count(array_intersect($ta, $tb));
+
+        return $overlap / max(count($ta), count($tb));
     }
 
     /**
@@ -221,26 +380,5 @@ class RagService
         $denom = sqrt($na) * sqrt($nb);
 
         return $denom > 0 ? $dot / $denom : 0.0;
-    }
-
-    /**
-     * @return array<int, array<string, mixed>>
-     */
-    private function defaultCitations(): array
-    {
-        return [
-            [
-                'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
-                'section' => '4.2 Diagnosis',
-                'excerpt' => 'Chest radiograph may show lobar or patchy consolidation. Clinical correlation is essential.',
-                'relevance' => 0.4,
-            ],
-            [
-                'source' => 'MOH Malaysia CPG - Tuberculosis',
-                'section' => '3.1 Imaging',
-                'excerpt' => 'Upper lobe cavitary lesions are characteristic but lower lobe involvement can occur.',
-                'relevance' => 0.35,
-            ],
-        ];
     }
 }
