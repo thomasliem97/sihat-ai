@@ -72,7 +72,14 @@ test('filename hints route histopath and ct zip', function () {
         'original_filename' => 'abdomen_ct_volume.zip',
         'mime_type' => 'application/zip',
     ]);
+    $chestCt = MedicalRecord::factory()->make([
+        'modality' => Modality::Unknown,
+        'original_filename' => 'chest_ct_slice.png',
+        'mime_type' => 'image/png',
+        'file_path' => '',
+    ]);
 
     expect($pipeline->detectModality($histo)['modality'])->toBe(Modality::Histopath)
-        ->and($pipeline->detectModality($ctZip)['modality'])->toBe(Modality::Ct);
+        ->and($pipeline->detectModality($ctZip)['modality'])->toBe(Modality::Ct)
+        ->and($pipeline->detectModality($chestCt)['modality'])->toBe(Modality::Ct);
 });

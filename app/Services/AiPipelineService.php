@@ -9,6 +9,7 @@ use App\Jobs\ProcessMedicalRecord;
 use App\Models\AnalysisJob;
 use App\Models\MedicalRecord;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
@@ -357,36 +358,17 @@ class AiPipelineService
         }
 
         if (str_ends_with($filename, '.dcm') || str_contains($mime, 'dicom')) {
-            $fromDicom = $this->modalityFromDicomHint($filename);
+            $fromFile = $this->modalityFromDicomFile($record);
+            if ($fromFile !== null) {
+                return ['modality' => $fromFile, 'confidence' => 0.9];
+            }
 
-            return ['modality' => $fromDicom, 'confidence' => 0.85];
+            return ['modality' => $this->modalityFromDicomHint($filename), 'confidence' => 0.85];
         }
 
-        if (str_contains($filename, 'derm') || str_contains($filename, 'skin') || str_contains($filename, 'lesion')) {
-            return ['modality' => Modality::Dermatology, 'confidence' => 0.8];
-        }
-
-        if (str_contains($filename, 'histo') || str_contains($filename, 'pathology') || str_contains($filename, 'wsi')) {
-            return ['modality' => Modality::Histopath, 'confidence' => 0.85];
-        }
-
-        if (str_ends_with($filename, '.zip') && (str_contains($filename, 'ct') || str_contains($filename, 'mri'))) {
-            return [
-                'modality' => str_contains($filename, 'mri') ? Modality::Mri : Modality::Ct,
-                'confidence' => 0.8,
-            ];
-        }
-
-        if (str_contains($filename, 'xray') || str_contains($filename, 'cxr') || str_contains($filename, 'chest')) {
-            return ['modality' => Modality::Xray, 'confidence' => 0.85];
-        }
-
-        if (str_contains($filename, 'ct')) {
-            return ['modality' => Modality::Ct, 'confidence' => 0.8];
-        }
-
-        if (str_contains($filename, 'mri')) {
-            return ['modality' => Modality::Mri, 'confidence' => 0.8];
+        $fromName = $this->modalityFromFilenameHints($filename);
+        if ($fromName !== null) {
+            return $fromName;
         }
 
         if (str_contains($mime, 'image')) {
@@ -397,9 +379,66 @@ class AiPipelineService
         return ['modality' => Modality::Unknown, 'confidence' => 0.3];
     }
 
+    /**
+     * Specific-first filename/zip routing shared with the FastAPI keyword fallback.
+     *
+     * @return array{modality: Modality, confidence: float}|null
+     */
+    private function modalityFromFilenameHints(string $filename): ?array
+    {
+        if ($this->filenameContainsAny($filename, ['fundus', 'retina', 'ophthal', 'cataract', 'glaucoma', 'eyepacs', 'oct'])) {
+            return ['modality' => Modality::Ophthalmology, 'confidence' => 0.85];
+        }
+
+        if ($this->filenameContainsAny($filename, ['derm', 'skin', 'lesion', 'melanoma', 'nevus', 'isic', 'dermos'])) {
+            return ['modality' => Modality::Dermatology, 'confidence' => 0.85];
+        }
+
+        if ($this->filenameContainsAny($filename, ['histo', 'pathology', 'pathmnist', 'wsi', 'slide', 'biopsy', 'seminoma', 'pcam'])) {
+            return ['modality' => Modality::Histopath, 'confidence' => 0.85];
+        }
+
+        // CT before chest/xray so names like chest_ct_slice route correctly
+        if ($this->filenameContainsAny($filename, ['hrct', 'computed tomography', 'computed_tomography'])
+            || str_contains($filename, 'ct')) {
+            return ['modality' => Modality::Ct, 'confidence' => 0.85];
+        }
+
+        if (str_contains($filename, 'mri') || str_contains($filename, 'mr_')) {
+            return ['modality' => Modality::Mri, 'confidence' => 0.85];
+        }
+
+        if (str_ends_with($filename, '.zip') && (str_contains($filename, 'ct') || str_contains($filename, 'mri'))) {
+            return [
+                'modality' => str_contains($filename, 'mri') ? Modality::Mri : Modality::Ct,
+                'confidence' => 0.8,
+            ];
+        }
+
+        if ($this->filenameContainsAny($filename, ['xray', 'x-ray', 'cxr', 'chest', 'radiograph'])) {
+            return ['modality' => Modality::Xray, 'confidence' => 0.85];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param  list<string>  $needles
+     */
+    private function filenameContainsAny(string $filename, array $needles): bool
+    {
+        foreach ($needles as $needle) {
+            if (str_contains($filename, $needle)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private function modalityFromDicomHint(string $filename): Modality
     {
-        if (str_contains($filename, 'mr')) {
+        if (str_contains($filename, 'mri') || str_contains($filename, 'mr_') || str_contains($filename, 'mr')) {
             return Modality::Mri;
         }
 
@@ -408,6 +447,43 @@ class AiPipelineService
         }
 
         return Modality::Xray;
+    }
+
+    /**
+     * ponytail: scan DICOM bytes for Modality (0008,0060) / common codes; no pydicom.
+     */
+    private function modalityFromDicomFile(MedicalRecord $record): ?Modality
+    {
+        $path = $record->file_path;
+        if ($path === '' || ! Storage::disk('local')->exists($path)) {
+            return null;
+        }
+
+        $bytes = @file_get_contents(Storage::disk('local')->path($path), false, null, 0, 2_000_000);
+        if ($bytes === false || $bytes === '') {
+            return null;
+        }
+
+        // Explicit VR Modality element often appears as "CS" + padded code near tag 0008,0060
+        if (preg_match('/\x08\x00\x60\x00CS(.{2})([A-Z]{2})/s', $bytes, $m) === 1) {
+            return $this->mapDicomModalityCode(trim($m[2]));
+        }
+
+        // Implicit VR / loose ASCII codes common in test fixtures
+        if (preg_match('/\b(CT|MR|CR|DX|PX|XA|RF|MG|US|PT|NM)\b/', $bytes, $m) === 1) {
+            return $this->mapDicomModalityCode($m[1]);
+        }
+
+        return null;
+    }
+
+    private function mapDicomModalityCode(string $code): Modality
+    {
+        return match (strtoupper($code)) {
+            'CT', 'PT' => Modality::Ct,
+            'MR' => Modality::Mri,
+            default => Modality::Xray,
+        };
     }
 
     /**
@@ -517,7 +593,8 @@ class AiPipelineService
                 ],
             ],
             'bounding_boxes' => [
-                ['label' => 'Opacity', 'x' => 0.62, 'y' => 0.45, 'width' => 0.18, 'height' => 0.22, 'confidence' => 0.87],
+                // RLL opacity sits on image-left (patient right) in the lower third of the demo CXR.
+                ['label' => 'Opacity', 'x' => 0.08, 'y' => 0.56, 'width' => 0.34, 'height' => 0.3, 'confidence' => 0.87],
                 ['label' => 'Heart', 'x' => 0.38, 'y' => 0.35, 'width' => 0.28, 'height' => 0.35, 'confidence' => 0.72],
             ],
             'longitudinal_diff' => [
