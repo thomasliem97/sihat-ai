@@ -1,0 +1,28 @@
+path|source|license|note|url
+docs/testing-dataset/chest-xray/01-normal-pa.png|File:Chest.png|CC BY-SA 3.0|Normal PA chest|https://commons.wikimedia.org/wiki/File:Chest.png
+docs/testing-dataset/chest-xray/02-pa-view.jpg|File:Chest x-ray - posteroanterior view.jpg|CC BY-SA 3.0|PA chest radiograph|https://commons.wikimedia.org/wiki/File:Chest_x-ray_-_posteroanterior_view.jpg
+docs/testing-dataset/chest-xray/03-boy-normal.jpg|File:Boy chest x-ray pic.jpg|CC BY-SA 4.0|Healthy adolescent chest XR|https://commons.wikimedia.org/wiki/File:Boy_chest_x-ray_pic.jpg
+docs/testing-dataset/chest-xray/04-covid-cxr.jpeg|ieee8023/covid-chestxray-dataset|see dataset README|COVID CXR open dataset|https://github.com/ieee8023/covid-chestxray-dataset
+docs/testing-dataset/ct-scan/01-brain-axial.png|File:Computed tomography of human brain - large.png|CC0|Brain CT axial|https://commons.wikimedia.org/wiki/File:Computed_tomography_of_human_brain_-_large.png
+docs/testing-dataset/ct-scan/02-brain-slice.png|File:Computed tomography of human brain (12).png|CC0|Brain CT slice|https://commons.wikimedia.org/wiki/File:Computed_tomography_of_human_brain_(12).png
+docs/testing-dataset/ct-scan/03-brain-slice-22.png|File:Computed tomography of human brain (22).png|CC0|Brain CT slice|https://commons.wikimedia.org/wiki/File:Computed_tomography_of_human_brain_(22).png
+docs/testing-dataset/ct-scan/04-covid-ct-sample.jpg|ieee8023/covid-chestxray-dataset|see dataset README|COVID-related chest imaging|https://github.com/ieee8023/covid-chestxray-dataset
+docs/testing-dataset/ct-scan/05-sample.dcm|ivmartel/dwv osirix-toutatix-100.dcm|see dwv LICENSE|Sample CT DICOM|https://github.com/ivmartel/dwv
+docs/testing-dataset/dermatology/01-nevus-ISIC_0000000.jpg|ISIC_0000000|CC-0|Dysplastic nevus|https://api.isic-archive.com/api/v2/images/ISIC_0000000/
+docs/testing-dataset/dermatology/02-nevus-ISIC_0000001.jpg|ISIC_0000001|CC-0|Dysplastic nevus|https://api.isic-archive.com/api/v2/images/ISIC_0000001/
+docs/testing-dataset/dermatology/03-melanoma-ISIC_0000002.jpg|ISIC_0000002|CC-0|Melanoma, NOS|https://api.isic-archive.com/api/v2/images/ISIC_0000002/
+docs/testing-dataset/dermatology/04-melanoma-ISIC_0000004.jpg|ISIC_0000004|CC-0|Melanoma, NOS|https://api.isic-archive.com/api/v2/images/ISIC_0000004/
+docs/testing-dataset/dermatology/05-melanoma-ISIC_0000013.jpg|ISIC_0000013|CC-0|Melanoma invasive|https://api.isic-archive.com/api/v2/images/ISIC_0000013/
+docs/testing-dataset/dermatology/06-melanoma-ISIC_0000022.jpg|ISIC_0000022|CC-0|Melanoma in situ|https://api.isic-archive.com/api/v2/images/ISIC_0000022/
+docs/testing-dataset/histopathology/01-pcam-sample.jpg|basveeling/pcam|CC0 / research|PatchCamelyon sample|https://github.com/basveeling/pcam
+docs/testing-dataset/histopathology/02-thyroid-hyperplasia.png|File:Histopathology of nodular hyperplasia of the thyroid.png|CC BY 4.0|Thyroid hyperplasia H&E|https://commons.wikimedia.org/wiki/File:Histopathology_of_nodular_hyperplasia_of_the_thyroid.png
+docs/testing-dataset/histopathology/03-seminoma.jpg|File:Histopathology of seminoma.png|CC0|Seminoma H&E (resized JPG)|https://commons.wikimedia.org/wiki/File:Histopathology_of_seminoma.png
+docs/testing-dataset/lab-report/01-synthetic-cbc-metabolic.pdf|synthetic|CC0|Synthetic CBC + metabolic panel|local
+docs/testing-dataset/lab-report/02-synthetic-liver-panel.pdf|synthetic|CC0|Synthetic liver panel|local
+docs/testing-dataset/mri/01-brain-mri.jpg|File:Brain MRI 0145 02.jpg|CC BY-SA 3.0|Brain MRI|https://commons.wikimedia.org/wiki/File:Brain_MRI_0145_02.jpg
+docs/testing-dataset/mri/02-sample.dcm|ivmartel/dwv bbmri-53323851.dcm|see dwv LICENSE|Sample MRI DICOM|https://github.com/ivmartel/dwv
+docs/testing-dataset/mri/03-sample.dcm|ivmartel/dwv bbmri-53323707.dcm|see dwv LICENSE|Sample MRI DICOM|https://github.com/ivmartel/dwv
+docs/testing-dataset/ophthalmology/01-normal-fundus.jpg|yiweichen04/retina_dataset NL_001|see repo README|Normal fundus|https://github.com/yiweichen04/retina_dataset
+docs/testing-dataset/ophthalmology/02-normal-fundus.jpg|yiweichen04/retina_dataset NL_002|see repo README|Normal fundus|https://github.com/yiweichen04/retina_dataset
+docs/testing-dataset/ophthalmology/03-cataract.jpg|yiweichen04/retina_dataset cataract_001|see repo README|Cataract|https://github.com/yiweichen04/retina_dataset
+docs/testing-dataset/ophthalmology/04-glaucoma.jpg|yiweichen04/retina_dataset Glaucoma_001|see repo README|Glaucoma|https://github.com/yiweichen04/retina_dataset

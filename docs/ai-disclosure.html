@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SihatAI AI Disclosure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --field: #f3fbfd;
+  --paper: #ffffff;
+  --paper-blue: #e4f5fa;
+  --ink: #102f4a;
+  --ink-soft: #48697d;
+  --ink-faint: #7795a6;
+  --cobalt: #176ca5;
+  --cobalt-deep: #0c527f;
+  --teal: #0b8994;
+  --coral: #f26b5e;
+  --line: #bddce6;
+  --font: "Bricolage Grotesque", system-ui, sans-serif;
+  --mono: "Azeret Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(23,108,165,.12), transparent 55%),
+    linear-gradient(180deg, #e8f6fb 0%, var(--field) 28%, #eef8fb 100%);
+  background-attachment: fixed;
+  font: 400 15px/1.55 var(--font);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image:
+    linear-gradient(rgba(189,220,230,.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(189,220,230,.55) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,.55), transparent 70%);
+}
+.wrap { position: relative; max-width: 820px; margin: 0 auto; padding: 28px 18px 64px; }
+.masthead {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px 28px 24px;
+  box-shadow: 8px 10px 0 rgba(23,108,165,.08);
+  margin-bottom: 22px;
+}
+.kicker {
+  font: 700 11px/1 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin: 0 0 12px;
+}
+h1 {
+  margin: 0 0 10px;
+  font: 800 1.85rem/1.15 var(--font);
+  letter-spacing: -.02em;
+}
+.lede { margin: 0; color: var(--ink-soft); font-size: .98rem; max-width: 62ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--line); background: var(--paper-blue);
+  color: var(--cobalt-deep); border-radius: 999px; padding: 6px 11px;
+  font: 600 11px/1 var(--mono);
+}
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+nav.toc {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 18px; padding: 18px 20px; margin-bottom: 22px;
+}
+nav.toc h2 {
+  margin: 0 0 10px; font: 700 12px/1 var(--mono);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--teal);
+}
+nav.toc ol { margin: 0; padding-left: 1.2rem; }
+@media (min-width: 720px) { nav.toc ol { columns: 2; gap: 24px; } }
+nav.toc a { color: var(--ink); text-decoration: none; font-size: .92rem; }
+nav.toc a:hover { color: var(--cobalt); text-decoration: underline; }
+nav.toc li { margin: 0 0 7px; break-inside: avoid; }
+.paper {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 18px; padding: 22px 24px; margin: 0 0 16px;
+}
+.section-tag {
+  display: inline-block; margin: 0 0 8px;
+  font: 700 11px/1 var(--mono); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--coral);
+}
+h2 { margin: 0 0 12px; font: 700 1.28rem/1.2 var(--font); letter-spacing: -.015em; }
+h3 { margin: 18px 0 8px; font: 700 1.02rem/1.3 var(--font); color: var(--cobalt-deep); }
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+ul, ol { margin: 0 0 12px; padding-left: 1.2rem; }
+li { margin: 0 0 6px; }
+li::marker { color: var(--cobalt); }
+hr.rule { border: 0; border-top: 2px solid var(--coral); width: 48px; margin: 0 0 14px; }
+.callout {
+  border-left: 3px solid var(--teal); background: var(--paper-blue);
+  border-radius: 0 12px 12px 0; padding: 12px 14px; margin: 14px 0 0;
+  color: var(--ink-soft); font-size: .94rem;
+}
+.footer {
+  margin-top: 28px; text-align: center; color: var(--ink-faint);
+  font: 500 11px/1.4 var(--mono);
+}
+@media print {
+  body { background: white; }
+  body::before { display: none; }
+  .wrap { max-width: none; padding: 0; }
+  .paper, .masthead, nav.toc { break-inside: avoid; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <p class="kicker">AI use · Data · Safety · Authorship</p>
+    <h1>SihatAI AI Disclosure</h1>
+    <p class="lede">This document explains how SihatAI uses AI in the product and during development, and how data, safety, privacy, authorship, and accountability are governed for technical review, due diligence, and academic publication.</p>
+    <div class="meta"><span class="pill">14 July 2026</span><span class="pill">Version 2.1</span></div>
+  </header>
+  <nav class="toc" aria-label="Contents"><h2>Contents</h2><ol><li><a href="#executive">Executive declaration</a></li><li><a href="#purpose">Purpose and intended users</a></li><li><a href="#architecture">Product AI architecture</a></li><li><a href="#perception">Medical image and document intelligence</a></li><li><a href="#rag">Retrieval-augmented generation</a></li><li><a href="#voice">Voice and language intelligence</a></li><li><a href="#safety">Confidence, abstention, and safety</a></li><li><a href="#data">Data sources and provenance</a></li><li><a href="#privacy">Privacy and de-identification</a></li><li><a href="#security">Security and access control</a></li><li><a href="#eval">Evaluation and quality assurance</a></li><li><a href="#devai">AI-assisted development</a></li><li><a href="#risks">Known limitations and risks</a></li><li><a href="#use">Intended and prohibited use</a></li><li><a href="#audit">Traceability and audit</a></li><li><a href="#accountability">Final accountability statement</a></li><li><a href="#appendix-a">Appendix A — Public-facing disclosure</a></li><li><a href="#appendix-b">Appendix B — Judge-ready disclosure</a></li></ol></nav>
+  <section class="paper" id="executive"><div class="section-tag">01</div><h2>Executive declaration</h2><hr class="rule"><p>SihatAI is a multimodal clinical decision-support platform designed for Malaysia’s healthcare ecosystem. It transforms medical images, laboratory documents, historical records, and spoken symptoms into structured, evidence-grounded outputs for physicians and patients.</p><p>Artificial intelligence was used in two distinct layers:</p><ul><li>Product intelligence: MedGemma 1.5 4B-IT with the shipped Malaysia-focused MY-LoRA (QLoRA) adapter, hybrid retrieval-augmented generation, MedASR with Whisper fallback, structured extraction, heuristic confidence gating, and ALLOW/WARN safety orchestration power the clinical workflow.</li><li>Development assistance: Cursor AI, including GPT-5.6 Sol, assisted with ideation, implementation, debugging, test development, interface copy, documentation, manuscript drafting, and pitch refinement.</li></ul><p>The SihatAI team retains responsibility for the problem definition, architecture, feature selection, model configuration, source selection, safety policy, evaluation criteria, final code, final wording, and all claims made about the project. AI-generated development output was reviewed, tested, edited, and approved by the team.</p><div class="callout">AI accelerated execution. It did not own the decisions. SihatAI is decision support, not autonomous diagnosis or treatment. Clinical outputs require professional review alongside the original artifact, history, examination, and standard of care.</div></section><section class="paper" id="purpose"><div class="section-tag">02</div><h2>Purpose and intended users</h2><hr class="rule"><p>SihatAI reduces the distance between raw medical evidence and a clear, inspectable clinical summary.</p><h3>Physicians receive</h3><ul><li>Structured findings and severity labels.</li><li>Finding-level and overall confidence values.</li><li>Visual localization overlays.</li><li>Differential-diagnosis suggestions.</li><li>Longitudinal comparisons.</li><li>Extracted biomarkers and trends.</li><li>Guideline-grounded recommendations and citations.</li><li>Technical reports suitable for clinical review and sign-off.</li></ul><h3>Patients receive</h3><ul><li>Plain-language explanations derived from the same findings.</li><li>Practical next steps and warning signs.</li><li>Questions to discuss with their clinician.</li><li>Reports adapted to their selected language.</li><li>Patient-facing copy only after physician sign-off when policy allows (ALLOW), and never when WARN withholding applies.</li></ul><p>The platform follows a “one clinical truth, two useful voices” principle. Physician and patient reports are generated from the same structured findings object. The wording changes by audience; the underlying evidence does not.</p></section><section class="paper" id="architecture"><div class="section-tag">03</div><h2>Product AI architecture</h2><hr class="rule"><h3>2.1 Multimodal foundation model</h3><p>MedGemma 1.5 4B-IT provides multimodal medical reasoning across supported images and documents. Production inference runs on Modal with live FastAPI orchestration by default.</p><ul><li>Chest X-ray.</li><li>CT and MRI (mid-slice montage summarization).</li><li>Dermatology and ophthalmology images.</li><li>Histopathology imagery (center-crop patch montage).</li><li>Laboratory PDFs and clinical documents.</li></ul><p>Each inference request records the model identifier, adapter state, processing pathway, engine labels, and analysis-job identifier for traceability.</p><h3>2.2 Malaysia-focused MY-LoRA adapter</h3><p>SihatAI implements MY-LoRA end to end: curated training and validation splits, Modal QLoRA training, shipped adapter weights, and PEFT load at serve time via SIHAT_AI_LORA_PATH.</p><ul><li>Malaysian clinical terminology.</li><li>Bahasa Melayu medical phrasing.</li><li>Local reporting conventions.</li><li>Malaysia-relevant disease context.</li><li>Physician and patient communication styles.</li></ul><p>The adapter is independently versioned for evaluation, update, or rollback. Served responses label the loaded adapter. Clinical outcome trials of adapter versus base model are outside this software disclosure.</p><h3>2.3 Agentic orchestration</h3><p>Every submission passes through a bounded pipeline:</p><ul><li>Upload and validation.</li><li>PII and PHI de-identification to a sibling scrubbed artifact (safe file path / safe URI).</li><li>Modality detection and routing.</li><li>Multimodal analysis, including imaging and document specialist hops with partial-findings merge.</li><li>Hybrid evidence retrieval.</li><li>Clinical guardrail evaluation (ALLOW / WARN).</li><li>Physician and patient report composition.</li></ul><h3>2.4 Structured findings object</h3><ul><li>Finding label and description; anatomical location; severity or clinical flag.</li><li>Confidence value; bounding-box coordinates where applicable.</li><li>Extracted biomarkers, units, and reference ranges.</li><li>Differential diagnoses; longitudinal changes; guideline citations.</li><li>Guardrail decisions (ALLOW / WARN); engine and adapter labels; partial findings.</li></ul></section><section class="paper" id="perception"><div class="section-tag">04</div><h2>Medical image and document intelligence</h2><hr class="rule"><h3>3.1 Medical imaging</h3><p>SihatAI analyzes supported medical images and returns structured findings with normalized localization coordinates overlaid on the original image for review.</p><ul><li>Input-format and image-quality validation.</li><li>Modality-aware preprocessing and structured finding generation.</li><li>Bounding-box localization; severity and confidence assignment.</li><li>Comparison with available prior studies.</li></ul><p>Visual overlays are explanatory aids. Bounding boxes are prompted generative coordinates with clamping, not outputs from a dedicated validated detector.</p><h3>3.2 Laboratory and clinical documents</h3><ul><li>Test and biomarker names; numeric or categorical values; units; reference ranges.</li><li>Abnormal, borderline, normal, and critical flags; collection dates.</li><li>Clinical-document content for discharge and clinic-note style PDFs.</li></ul><h3>3.3 Longitudinal reasoning</h3><ul><li>New, stable, improved, worsened, or resolved findings.</li><li>Clinically relevant biomarker trends.</li><li>Preserved source dates and comparison basis for reviewer verification.</li></ul></section><section class="paper" id="rag"><div class="section-tag">05</div><h2>Retrieval-augmented generation</h2><hr class="rule"><p>SihatAI grounds clinical explanations and recommendations in curated Malaysia Ministry of Health Clinical Practice Guidelines and relevant patient history.</p><ul><li>Builds a query from structured findings and clinical context.</li><li>Performs dense semantic and lexical BM25 retrieval.</li><li>Combines results through hybrid ranking.</li><li>Applies maximal marginal relevance to reduce redundant sources.</li><li>Enforces a relevance threshold and returns source metadata.</li><li>Returns empty citations and records weak grounding when suitable evidence is unavailable (no static stub injection on the live path).</li></ul></section><section class="paper" id="voice"><div class="section-tag">06</div><h2>Voice and language intelligence</h2><hr class="rule"><p>Production STT prefers Google MedASR on Modal and falls back to Whisper when MedASR cannot be loaded; responses label the active engine. Minimal browser text-to-speech supports preclinical interview prompts.</p><ul><li>English.</li><li>Bahasa Melayu.</li><li>Mandarin.</li><li>Tamil.</li></ul><p>Voice triage is decision support, not emergency dispatch. Users in a medical emergency should contact local emergency services immediately.</p></section><section class="paper" id="safety"><div class="section-tag">07</div><h2>Confidence, abstention, and safety</h2><hr class="rule"><h3>6.1 Confidence presentation</h3><p>SihatAI displays confidence at finding and report levels with plain-language bands. Values are model-reported scores used for heuristic policy gating, not calibrated empirical probabilities.</p><h3>6.2 Guardrail control plane</h3><p>The guardrail layer returns ALLOW or WARN and can abstain, withhold, or escalate. Critical findings trigger inline alert, clinician notification, durable audit event, and review requirement. WARN vetoes patient-facing model prose. Patient-facing output is released only after physician sign-off when policy allows.</p><h3>6.3 Human oversight</h3><ul><li>Inspect the original artifact; review confidence and localization; verify citations.</li><li>Accept, reject, or correct findings; disregard suggested differentials.</li><li>Approve, amend, and sign the physician draft.</li></ul></section><section class="paper" id="data"><div class="section-tag">08</div><h2>Data sources and provenance</h2><hr class="rule"><p>Development and evaluation use public benchmarks and openly licensed fixtures, curated MOH guidelines, licensed or permissioned medical data, synthetic clinical records, and de-identified demonstration records. Identifiable patient data is not used for training without approved legal basis and governance.</p><p>Synthetic data is labelled synthetic. Seeded evaluation gauges are marked demo_seed and watermarked. MY-LoRA is documented through a model card covering base revision, adapter checksum, training summary, configuration, evaluation methodology, failure modes, and intended uses.</p></section><section class="paper" id="privacy"><div class="section-tag">09</div><h2>Privacy and de-identification</h2><hr class="rule"><p>SihatAI applies pattern-based de-identification before inference and writes a sibling scrubbed artifact used for remote analysis when available. Coverage includes filenames, common DICOM keywords and metadata stripping, PDF metadata and text-layer patterns, OCR identity patterns where applicable, and configured contact or identity strings.</p><p>Burned-in pixel text removal and full DICOM PS3.15 conformance are not claimed. Production processing requires lawful basis, minimization, retention policy, encryption, access logs, incident response, and approved cross-border arrangements where applicable.</p></section><section class="paper" id="security"><div class="section-tag">10</div><h2>Security and access control</h2><hr class="rule"><ul><li>Laravel Fortify authentication and verified-email requirements.</li><li>Physician and patient roles with policy-based record authorization.</li><li>Protected file-serving routes, including scrubbed siblings.</li><li>HMAC-signed service webhooks; environment-backed secrets.</li><li>Audit logging for access, analysis, review, critical escalation, and sign-off.</li></ul><p>Patients can access only their own records. Physician access is role-scoped; finer organization and care-team scopes remain institutional hardening targets.</p></section><section class="paper" id="eval"><div class="section-tag">11</div><h2>Evaluation and quality assurance</h2><hr class="rule"><h3>10.1 Engineering quality</h3><p>Pest tests, Larastan, Pint, TypeScript, ESLint, Prettier, Vue production builds, integration and failure-path tests, and sihat:eval-gate regression checks in CI.</p><h3>10.2 AI evaluation</h3><p>The dashboard tracks medical reasoning, extraction quality, report usefulness, citation grounding, localization, confidence presentation, safety, abstention, language quality, and latency, with clear separation of demo_seed versus live runs.</p><h3>10.3 Clinical evidence boundary</h3><p>Engineering and benchmark evaluation do not constitute regulatory approval or proof of improved patient outcomes. Clinical validation and medical-device status require applicable independent evidence and process.</p></section><section class="paper" id="devai"><div class="section-tag">12</div><h2>AI-assisted development</h2><hr class="rule"><p>Cursor AI, including GPT-5.6 Sol, supported ideation, architecture, implementation, debugging, tests, interface wording, documentation, academic manuscript drafting, pitch refinement, and this disclosure.</p><p>Development AI was not given independent authority to approve clinical claims, certify safety or regulatory status, approve patient-data use, grant licenses, replace clinician review, or publish evaluation results without verification.</p><p>The team claims authorship through direction, review, integration, final approval, and accountability. It does not claim that every line was typed without generative assistance.</p></section><section class="paper" id="risks"><div class="section-tag">13</div><h2>Known limitations and risks</h2><hr class="rule"><ul><li>Hallucination, omission, false positives, and false precision.</li><li>Retrieval error; language risk; population bias; input-quality sensitivity.</li><li>Automation bias and distribution shift.</li><li>Montage ceilings for CT/MRI and histopathology summarization.</li></ul><p>These risks are reduced through structured outputs, hybrid grounding, ALLOW/WARN guardrails, audit logs, sign-off, and clinician review. They cannot be eliminated entirely.</p></section><section class="paper" id="use"><div class="section-tag">14</div><h2>Intended and prohibited use</h2><hr class="rule"><h3>Intended use</h3><ul><li>Clinical decision support and structured review of supported artifacts.</li><li>Guideline-grounded explanation and patient-friendly communication.</li><li>Longitudinal review and clinician-supervised triage support.</li><li>Evaluation and research under approved governance.</li></ul><h3>Prohibited reliance</h3><ul><li>Autonomous diagnosis, treatment, or emergency dispatch.</li><li>Prescribing without authorized professional review.</li><li>Final clinical reporting without sign-off.</li><li>Processing identifiable health data outside an approved environment.</li><li>Claiming regulatory status beyond obtained evidence.</li></ul></section><section class="paper" id="audit"><div class="section-tag">15</div><h2>Traceability and audit</h2><hr class="rule"><p>Each analysis records identifiers, model and adapter versions, prompt and schema versions, retrieval-index versions, de-identification outcome and safe-file path, pipeline hops and timing, findings and confidence, citations, guardrail decisions, reviewer actions, sign-off and escalation status, and deployment identifier.</p><p>Auditability does not guarantee correctness, but it makes errors investigable and supports reproducibility, correction, and governance.</p></section><section class="paper" id="accountability"><div class="section-tag">16</div><h2>Final accountability statement</h2><hr class="rule"><p>SihatAI was developed with substantial AI assistance, but it is not autonomously authored, governed, or clinically accountable. The team accepts responsibility for software and product design, model and dataset selection, safety rules and public claims, evaluation methodology, privacy and security controls, licensing compliance, deployment decisions, and academic disclosures.</p><div class="callout">Clinician review is required. Outputs may be incomplete, incorrect, biased, outdated, or misleading. SihatAI is not a substitute for professional medical advice, diagnosis, or treatment.</div></section><section class="paper" id="appendix-a"><div class="section-tag">A</div><h2>Appendix A — Public-facing disclosure</h2><hr class="rule"><p>SihatAI uses MedGemma 1.5 4B-IT with a shipped Malaysia-focused MY-LoRA adapter, MedASR with Whisper fallback, and hybrid retrieval-augmented generation to transform supported medical artifacts into structured, evidence-grounded reports for physicians and patients.</p><p>Cursor AI, including GPT-5.6 Sol, assisted the team with ideation, implementation, debugging, testing, documentation, manuscript drafting, interface copy, and presentation refinement. The team reviewed and approved the final work and remains responsible for every product, safety, data, and publication decision.</p><p>SihatAI is clinical decision support, not autonomous diagnosis or treatment. Qualified clinician review and sign-off are required. AI accelerated execution; it did not own the decisions.</p></section><section class="paper" id="appendix-b"><div class="section-tag">B</div><h2>Appendix B — Judge-ready disclosure</h2><hr class="rule"><p>We used AI in two layers.</p><p>First, SihatAI uses MedGemma 1.5 with implemented MY-LoRA, MedASR with Whisper fallback, and hybrid BM25 plus dense retrieval with MMR. Its end-to-end workflow covers sibling scrubbing, multimodal analysis with specialist hops, structured findings, localization, longitudinal comparison, ALLOW/WARN safety with audit and notify, sign-gated patient release, and separate physician and patient reports.</p><p>Second, Cursor AI, including GPT-5.6 Sol, assisted with development, testing, documentation, manuscript drafting, and pitch refinement.</p><p>The team owns the architecture, model configuration, data governance, safety policy, evaluation, and release decisions. Every AI-assisted artifact remained subject to human review. SihatAI supports clinicians; it does not replace them.</p></section>
+  <p class="footer">SihatAI · Clinical Field Atlas</p>
+</div>
+</body>
+</html>

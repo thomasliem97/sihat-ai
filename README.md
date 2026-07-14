@@ -201,6 +201,8 @@ tests/                    Pest feature and unit tests
 
 - **[Interactive pitch deck](docs/pitch-deck/SihatAI-Pitch-Deck.html)**: product story, experience, architecture, responsible AI, and differentiation.
 - **[Project summary](docs/project-summary.html)**: concise overview of the platform, pipeline, audiences, technology, and quality strategy.
+- **[AI disclosure](docs/ai-disclosure.html)**: how SihatAI uses AI in the product and during development, including data, safety, privacy, authorship, and accountability.
+- **[Technical paper](docs/academic-paper/SihatAI-Academic-Paper.html)**: academic write-up of the multimodal clinical intelligence system, methods, and evaluation ([PDF](docs/academic-paper/SihatAI-Academic-Paper.pdf)).
 
 ---
 
