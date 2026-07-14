@@ -14,7 +14,7 @@ Route::inertia('/', 'Welcome')->name('home');
 
 Route::post('/api/ai/webhook', AiWebhookController::class)->name('ai.webhook');
 Route::get('/api/ai/files/{record}', AiFileController::class)
-    ->middleware('signed')
+    ->middleware('signed:relative')
     ->name('ai.file');
 
 Route::middleware(['auth', 'verified'])->group(function () {

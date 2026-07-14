@@ -58,7 +58,17 @@ test('remote pipeline accepts analyze job via Http fake', function () {
         ->and($record->safe_file_path)->not->toBeNull()
         ->and($job->status)->toBe('running');
 
-    Http::assertSent(fn ($request) => str_contains($request->url(), '/api/v1/analyze'));
+    Http::assertSent(function ($request) {
+        if (! str_contains($request->url(), '/api/v1/analyze')) {
+            return false;
+        }
+        $body = $request->data();
+
+        return is_array($body)
+            && ! empty($body['file_b64'])
+            && empty($body['file_url'] ?? null)
+            && base64_decode((string) $body['file_b64'], true) !== false;
+    });
 
     $result = $pipeline->completeFromWebhook($record->fresh(), $job->fresh(), [
         'findings' => [

@@ -51,20 +51,21 @@ class AiPipelineService
         $modality = $record->detected_modality ?? $record->modality;
         $baseUrl = rtrim((string) config('services.modal.url'), '/');
         $webhookUrl = URL::route('ai.webhook');
-        $fileUrl = URL::temporarySignedRoute(
-            'ai.file',
-            now()->addHours(2),
-            ['record' => $record->id],
-        );
+        $path = $record->inferenceFilePath();
+        $bytes = Storage::disk('local')->get($path);
 
-        $response = Http::timeout(30)
+        if ($bytes === null || $bytes === '') {
+            throw new \RuntimeException('Inference file missing for analyze handoff: '.$path);
+        }
+
+        // Always embed bytes. Modal cannot pull trycloudflare/ngrok signed URLs (datacenter IP blocked).
+        $response = Http::timeout(120)
             ->post("{$baseUrl}/api/v1/analyze", [
                 'job_id' => $job->external_job_id,
                 'record_id' => $record->id,
                 'modality' => $modality->value,
-                'file_path' => $record->inferenceFilePath(),
-                'safe_uri' => $fileUrl,
-                'file_url' => $fileUrl,
+                'file_path' => $path,
+                'file_b64' => base64_encode($bytes),
                 'language' => $record->language->value,
                 'webhook_url' => $webhookUrl,
                 'mime_type' => $record->mime_type,
