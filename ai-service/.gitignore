@@ -1,3 +1,10 @@
 /.env
 __pycache__/
 *.py[cod]
+lora/adapter/**/*.safetensors
+lora/adapter/checkpoints/
+lora/adapter/**/*.pt
+lora/adapter/**/*.pth
+lora/adapter/**/*.bin
+lora/adapter/tokenizer.json
+lora/adapter/tokenizer.model

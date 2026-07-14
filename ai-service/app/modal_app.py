@@ -5,8 +5,9 @@ Deploy:
   modal secret create huggingface-secret HF_TOKEN=hf_...
   modal deploy ai-service/app/modal_app.py
 
-Env (Modal secret or app env):
-  SIHAT_AI_LORA_PATH=  # HF adapter repo id; empty = base only
+Adapter (pick one):
+  - Default: Modal volume sihat-lora mounted at /lora/adapter (from training)
+  - Or set SIHAT_AI_LORA_PATH to a HF repo id / absolute path
 """
 
 from __future__ import annotations
@@ -41,13 +42,20 @@ image = (
         "pylibjpeg-libjpeg",
         "pylibjpeg-openjpeg",
     )
+    .run_commands("python -m pip uninstall -y hf-xet || true")
 )
 
 MODEL_ID = "google/medgemma-1.5-4b-it"
+lora_vol = modal.Volume.from_name("sihat-lora", create_if_missing=True)
 
 
 def _lora_path() -> str:
-    return (os.environ.get("SIHAT_AI_LORA_PATH") or "").strip()
+    env = (os.environ.get("SIHAT_AI_LORA_PATH") or "").strip()
+    if env:
+        return env
+    if os.path.isdir("/lora/adapter"):
+        return "/lora/adapter"
+    return ""
 
 
 def _load_image(payload: dict[str, Any]):
@@ -171,6 +179,7 @@ def _normalize_result(raw: dict[str, Any], adapter: str) -> dict[str, Any]:
     image=image,
     timeout=600,
     scaledown_window=120,
+    volumes={"/lora": lora_vol},
     secrets=[modal.Secret.from_name("huggingface-secret")],
 )
 class MedGemmaModel:

@@ -4,12 +4,12 @@ Train MY-LoRA (QLoRA) on Modal — fast path for SihatAI Path A.
 
 Usage (from repo root):
   modal volume create sihat-lora   # once
-  modal run ai-service/modal_train.py
+  modal run ai-service/lora/modal_train.py
 
 Download adapter when done:
-  modal volume get sihat-lora /adapter ai-service/my-lora-sihat
+  modal volume get sihat-lora adapter ai-service/lora
 
-Then set SIHAT_AI_LORA_PATH and redeploy modal_app.py.
+Serve loads from Modal volume sihat-lora:/adapter (see app/modal_app.py).
 """
 
 from __future__ import annotations
@@ -55,7 +55,7 @@ image = (
 
 # Local JSONL → baked into image for reliable upload
 image = image.add_local_dir(
-    "ai-service/data",
+    "ai-service/lora/data",
     remote_path="/data",
 )
 
@@ -200,5 +200,5 @@ def main() -> None:
     print(info)
     print(
         "\nDownload with:\n"
-        "  modal volume get sihat-lora /adapter ai-service/my-lora-sihat\n"
+        "  modal volume get sihat-lora adapter ai-service/lora\n"
     )

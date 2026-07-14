@@ -7,11 +7,11 @@ Prereqs:
   2. HF_TOKEN in env (or `huggingface-cli login`)
   3. CUDA GPU (Kaggle T4 / Colab / Modal / local)
 
-Run (from ai-service/ on a GPU machine):
+Run (from ai-service/lora/ on a GPU machine):
   pip install -U "transformers>=4.50" peft trl bitsandbytes datasets accelerate
   python train_my_lora.py
 
-Outputs adapter weights to ./my-lora-sihat/ (adapter_config.json + *.safetensors).
+Outputs adapter weights to ./adapter/ (adapter_config.json + *.safetensors).
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 TRAIN_FILE = DATA / "train_split.jsonl"
 VAL_FILE = DATA / "val_split.jsonl"
-OUT_DIR = ROOT / "my-lora-sihat"
+OUT_DIR = ROOT / "adapter"
 
 
 def main() -> None:
@@ -119,7 +119,7 @@ def main() -> None:
     trainer.model.save_pretrained(OUT_DIR)
     tokenizer.save_pretrained(OUT_DIR)
     print(f"Adapter saved -> {OUT_DIR}")
-    print("Next: set SIHAT_AI_LORA_PATH to this folder (or a HF repo) and redeploy Modal.")
+    print("Next: sync to Modal volume sihat-lora:/adapter (or set SIHAT_AI_LORA_PATH) and redeploy.")
 
 
 if __name__ == "__main__":
