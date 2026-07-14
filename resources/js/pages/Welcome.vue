@@ -1257,7 +1257,7 @@ onUnmounted(() => {
                                     Structure the PDF
                                 </h3>
                                 <div
-                                    class="space-y-1.5 rounded-2xl border border-border bg-muted/30 p-3 font-mono text-xs"
+                                    class="flex aspect-4/3 flex-col gap-1.5 rounded-2xl border border-border bg-muted/30 p-3 font-mono text-xs"
                                 >
                                     <div
                                         v-for="row in [
@@ -1267,7 +1267,7 @@ onUnmounted(() => {
                                             ['CRP', '48', 'HIGH'],
                                         ]"
                                         :key="row[0]"
-                                        class="flex items-center justify-between gap-2 rounded-lg bg-paper px-2.5 py-1.5"
+                                        class="flex flex-1 items-center justify-between gap-2 rounded-lg bg-paper px-2.5"
                                     >
                                         <span class="text-ink-soft">{{
                                             row[0]
@@ -1315,12 +1315,13 @@ onUnmounted(() => {
                                     Reason over time
                                 </h3>
                                 <div
-                                    class="rounded-2xl border border-border bg-muted/30 p-3"
+                                    class="flex aspect-4/3 items-center rounded-2xl border border-border bg-muted/30 p-3"
                                 >
                                     <svg
                                         viewBox="0 0 320 160"
-                                        class="w-full text-primary"
+                                        class="h-full w-full text-primary"
                                         aria-label="Declining biomarker trend"
+                                        preserveAspectRatio="xMidYMid meet"
                                     >
                                         <polyline
                                             points="10,28 70,42 125,52 185,88 245,118 310,145"
@@ -1496,7 +1497,7 @@ onUnmounted(() => {
                                 berkaitan dengan jangkitan. Dapatan ini perlu
                                 dinilai bersama gejala dan pemeriksaan doktor.
                             </p>
-                            <div class="citation-stamp">
+                            <div class="citation-stamp w-full">
                                 <span>[MOH-CPG-01]</span>
                                 <span>Garis Panduan Pneumonia</span>
                                 <i class="not-italic opacity-70"
@@ -1810,7 +1811,7 @@ onUnmounted(() => {
                                         ],
                                     ]"
                                     :key="pillar[0]"
-                                    class="rounded-2xl border border-border/80 bg-muted/30 px-4 py-3"
+                                    class="rounded-2xl border border-border/80 bg-muted/30 px-5 py-4"
                                 >
                                     <p
                                         class="font-mono text-[0.65rem] text-primary"
