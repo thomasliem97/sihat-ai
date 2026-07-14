@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Services\RagService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class MedicalDemoSeeder extends Seeder
 {
@@ -36,10 +37,47 @@ class MedicalDemoSeeder extends Seeder
             'locale' => ReportLanguage::Malay,
         ]);
 
+        $this->seedDemoFiles();
         $this->seedGuidelines();
         $this->seedEvalRuns();
         $this->seedDemoRecords($physician, $patient);
         $this->seedBiomarkerTrends($patient);
+    }
+
+    private function seedDemoFiles(): void
+    {
+        $disk = Storage::disk('local');
+        $disk->makeDirectory('medical-records');
+
+        $cxr = public_path('images/chest-xray.png');
+        if (is_file($cxr)) {
+            $disk->put('medical-records/demo-cxr.png', file_get_contents($cxr));
+        }
+
+        // Minimal one-page PDF for the lab demo specimen.
+        $disk->put('medical-records/demo-lab.pdf', <<<'PDF'
+%PDF-1.4
+1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj
+2 0 obj<< /Type /Pages /Kids [3 0 R] /Count 1 >>endobj
+3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources<< /Font<< /F1 5 0 R >> >> >>endobj
+4 0 obj<< /Length 68 >>stream
+BT /F1 18 Tf 72 720 Td (SihatAI demo FBC report) Tj ET
+endstream
+endobj
+5 0 obj<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000266 00000 n 
+0000000385 00000 n 
+trailer<< /Size 6 /Root 1 0 R >>
+startxref
+462
+%%EOF
+PDF);
     }
 
     private function seedGuidelines(): void
@@ -124,9 +162,9 @@ class MedicalDemoSeeder extends Seeder
             'modality' => Modality::Xray,
             'detected_modality' => Modality::Xray,
             'status' => RecordStatus::Completed,
-            'file_path' => 'medical-records/demo-cxr.jpg',
-            'original_filename' => 'cxr_anterior.jpg',
-            'mime_type' => 'image/jpeg',
+            'file_path' => 'medical-records/demo-cxr.png',
+            'original_filename' => 'cxr_anterior.png',
+            'mime_type' => 'image/png',
             'language' => ReportLanguage::Malay,
             'overall_confidence' => 0.84,
             'findings' => [
@@ -151,7 +189,8 @@ class MedicalDemoSeeder extends Seeder
                 ['source' => 'MOH CPG - CAP', 'section' => '4.2', 'excerpt' => 'Chest radiograph may show patchy consolidation.', 'relevance' => 0.82],
             ],
             'bounding_boxes' => [
-                ['label' => 'Opacity', 'x' => 0.62, 'y' => 0.45, 'width' => 0.18, 'height' => 0.22, 'confidence' => 0.87],
+                // RLL opacity sits on image-left (patient right) in the lower third of the demo CXR.
+                ['label' => 'Opacity', 'x' => 0.08, 'y' => 0.56, 'width' => 0.34, 'height' => 0.3, 'confidence' => 0.87],
             ],
             'longitudinal_diff' => [
                 'has_prior' => true,

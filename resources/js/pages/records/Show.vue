@@ -275,7 +275,11 @@ defineOptions({
 
             <div
                 class="grid gap-6"
-                :class="viewMode === 'physician' ? 'lg:grid-cols-2' : ''"
+                :class="
+                    viewMode === 'physician' && record.bounding_boxes?.length
+                        ? 'lg:grid-cols-2'
+                        : ''
+                "
             >
                 <ImageOverlay
                     v-if="record.bounding_boxes?.length"
