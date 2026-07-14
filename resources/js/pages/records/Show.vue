@@ -15,7 +15,6 @@ import SectionTag from '@/components/patterns/SectionTag.vue';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
 import { Textarea } from '@/components/ui/textarea';
 import { index as recordsIndex, show as recordShow, sign as signReport } from '@/routes/records';
 import { update as updateReport } from '@/routes/records/report';
@@ -270,11 +269,6 @@ defineOptions({
                     </CardTitle>
                 </CardHeader>
                 <CardContent class="space-y-4">
-                    <div class="grid gap-2">
-                        <Skeleton class="h-4 w-full" />
-                        <Skeleton class="h-4 w-3/4" />
-                        <Skeleton class="h-32 w-full rounded-2xl" />
-                    </div>
                     <AnalysisStepper
                         v-if="record.pipeline_steps"
                         :steps="record.pipeline_steps"
@@ -418,7 +412,7 @@ defineOptions({
                         <li
                             v-for="(hop, i) in record.agent_trace"
                             :key="i"
-                            class="flex flex-wrap items-start justify-between gap-2 rounded-xl border border-border px-3 py-2"
+                            class="flex flex-wrap items-start justify-between gap-2 rounded-xl border border-border p-4"
                         >
                             <div>
                                 <p
@@ -459,7 +453,7 @@ defineOptions({
                         v-for="c in similarCases"
                         :key="c.id"
                         :href="recordShow.url(c.id)"
-                        class="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border px-3 py-2 text-sm transition-colors hover:bg-muted/40"
+                        class="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border p-4 text-sm transition-colors hover:bg-muted/40"
                     >
                         <div>
                             <p class="font-semibold">{{ c.title }}</p>

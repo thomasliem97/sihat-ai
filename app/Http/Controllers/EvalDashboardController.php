@@ -28,7 +28,7 @@ class EvalDashboardController extends Controller
             $live = $typed->firstWhere('demo_seed', false);
             $row = $live ?? $typed->first();
 
-            return $row ? $row->toArray() : null;
+            return $row;
         };
 
         $medqa = $latestPreferLive('medqa');
