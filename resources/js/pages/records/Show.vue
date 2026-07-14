@@ -32,12 +32,16 @@ const props = defineProps<{
         physician_report: Record<string, unknown> | null;
         patient_report: Record<string, unknown> | null;
         patient_report_withheld?: boolean;
+        patient_awaiting_sign?: boolean;
         citations: Array<Record<string, unknown>> | null;
         bounding_boxes: Array<Record<string, unknown>> | null;
         longitudinal_diff: Record<string, unknown> | null;
         volume_meta?: Record<string, unknown> | null;
         patch_meta?: Record<string, unknown> | null;
+        partial_findings?: Record<string, unknown> | null;
         guardrail_flags: string[] | null;
+        guardrail_code?: string | null;
+        safe_uri?: string | null;
         pipeline_steps: Array<{
             step: string;
             label: string;
@@ -236,6 +240,18 @@ defineOptions({
                 Your care team is reviewing this study before sharing the
                 detailed AI summary. Please contact your clinic if you have
                 urgent concerns.
+            </AlertDescription>
+        </Alert>
+
+        <Alert
+            v-else-if="record.patient_awaiting_sign && viewMode === 'patient'"
+            class="border-line bg-paper-blue"
+        >
+            <AlertTitle>Awaiting physician sign-off</AlertTitle>
+            <AlertDescription>
+                Your report is ready for clinician signature. The detailed
+                patient summary will appear after your physician signs the
+                draft.
             </AlertDescription>
         </Alert>
 

@@ -13,6 +13,7 @@ use App\Services\SimilarCaseService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -111,17 +112,26 @@ class MedicalRecordController extends Controller
         $record->load(['user:id,name', 'biomarkers', 'analysisJob', 'signedByUser:id,name']);
 
         $viewMode = $request->user()->isPhysician() ? 'physician' : 'patient';
-        $flags = $record->guardrail_flags ?? [];
-        $withholdPatient = in_array('critical_value_escalation', $flags, true)
+        $flags = $record->guardrailFlagList();
+        $guardrailCode = $record->guardrailCode();
+        $withholdPatient = $guardrailCode === 'WARN'
+            || in_array('critical_value_escalation', $flags, true)
             || in_array('low_confidence_abstention', $flags, true);
+        $awaitingSign = $viewMode === 'patient'
+            && $record->status === RecordStatus::Completed
+            && ! $record->isSigned();
 
         $patientReport = $record->patient_report;
-        if ($viewMode === 'patient' && $withholdPatient) {
+        if ($viewMode === 'patient' && ($withholdPatient || $awaitingSign)) {
             $patientReport = null;
         }
 
         $physicianReport = $viewMode === 'physician'
             ? ($record->signed_physician_report ?? $record->physician_report)
+            : null;
+
+        $safeUri = $record->safe_file_path
+            ? URL::temporarySignedRoute('ai.file', now()->addHours(2), ['record' => $record->id])
             : null;
 
         return Inertia::render('records/Show', [
@@ -134,16 +144,20 @@ class MedicalRecordController extends Controller
                 'detected_modality_label' => $record->detected_modality?->label(),
                 'status' => $record->status->value,
                 'overall_confidence' => $record->overall_confidence,
-                'findings' => $viewMode === 'patient' && $withholdPatient ? null : $record->findings,
+                'findings' => $viewMode === 'patient' && ($withholdPatient || $awaitingSign) ? null : $record->findings,
+                'partial_findings' => $viewMode === 'physician' ? $record->partial_findings : null,
                 'physician_report' => $physicianReport,
                 'patient_report' => $patientReport,
                 'patient_report_withheld' => $viewMode === 'patient' && $withholdPatient,
-                'citations' => $viewMode === 'patient' && $withholdPatient ? null : $record->citations,
-                'bounding_boxes' => $viewMode === 'patient' && $withholdPatient ? null : $record->bounding_boxes,
+                'patient_awaiting_sign' => $awaitingSign,
+                'citations' => $viewMode === 'patient' && ($withholdPatient || $awaitingSign) ? null : $record->citations,
+                'bounding_boxes' => $viewMode === 'patient' && ($withholdPatient || $awaitingSign) ? null : $record->bounding_boxes,
                 'longitudinal_diff' => $viewMode === 'physician' ? $record->longitudinal_diff : null,
                 'volume_meta' => $viewMode === 'physician' ? $record->volume_meta : null,
                 'patch_meta' => $viewMode === 'physician' ? $record->patch_meta : null,
                 'guardrail_flags' => $flags,
+                'guardrail_code' => $guardrailCode,
+                'safe_uri' => $viewMode === 'physician' ? $safeUri : null,
                 'pipeline_steps' => $record->pipeline_steps,
                 'agent_trace' => $viewMode === 'physician' ? $record->agent_trace : null,
                 'is_signed' => $record->isSigned(),
@@ -152,7 +166,7 @@ class MedicalRecordController extends Controller
                 'can_edit_report' => $viewMode === 'physician' && $record->status === RecordStatus::Completed && ! $record->isSigned(),
                 'error_message' => $record->error_message,
                 'patient_name' => $record->user->name,
-                'file_url' => $record->status === RecordStatus::Completed && ! ($viewMode === 'patient' && $withholdPatient)
+                'file_url' => $record->status === RecordStatus::Completed && ! ($viewMode === 'patient' && ($withholdPatient || $awaitingSign))
                     ? route('records.file', $record)
                     : ($viewMode === 'physician' && $record->status === RecordStatus::Completed
                         ? route('records.file', $record)
@@ -163,7 +177,7 @@ class MedicalRecordController extends Controller
             'similarCases' => $viewMode === 'physician' && $record->status === RecordStatus::Completed
                 ? $similarCases->retrieve($record)
                 : [],
-            'biomarkers' => ($viewMode === 'patient' && $withholdPatient)
+            'biomarkers' => ($viewMode === 'patient' && ($withholdPatient || $awaitingSign))
                 ? []
                 : $record->biomarkers->map(fn ($b) => [
                     'id' => $b->id,

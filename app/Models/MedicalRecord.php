@@ -23,17 +23,19 @@ use Illuminate\Support\Carbon;
  * @property float|null $route_confidence
  * @property RecordStatus $status
  * @property string $file_path
+ * @property string|null $safe_file_path
  * @property string $original_filename
  * @property string $mime_type
  * @property ReportLanguage $language
  * @property float|null $overall_confidence
  * @property array<string, mixed>|null $findings
+ * @property array<string, mixed>|null $partial_findings
  * @property array<string, mixed>|null $physician_report
  * @property array<string, mixed>|null $patient_report
  * @property array<int, mixed>|null $citations
  * @property array<int, mixed>|null $bounding_boxes
  * @property array<string, mixed>|null $longitudinal_diff
- * @property array<int, mixed>|null $guardrail_flags
+ * @property array<string, mixed>|null $guardrail_flags
  * @property array<int, mixed>|null $pipeline_steps
  * @property array<int, mixed>|null $agent_trace
  * @property array<int, float>|null $findings_embedding
@@ -62,11 +64,13 @@ class MedicalRecord extends Model
         'route_confidence',
         'status',
         'file_path',
+        'safe_file_path',
         'original_filename',
         'mime_type',
         'language',
         'overall_confidence',
         'findings',
+        'partial_findings',
         'physician_report',
         'patient_report',
         'citations',
@@ -96,6 +100,7 @@ class MedicalRecord extends Model
             'overall_confidence' => 'float',
             'route_confidence' => 'float',
             'findings' => 'array',
+            'partial_findings' => 'array',
             'physician_report' => 'array',
             'patient_report' => 'array',
             'citations' => 'array',
@@ -112,6 +117,49 @@ class MedicalRecord extends Model
             'analyzed_at' => 'datetime',
             'signed_at' => 'datetime',
         ];
+    }
+
+    /**
+     * Normalize guardrail payload to {code, flags}. Accepts legacy flat flag lists.
+     *
+     * @param  array<int|string, mixed>|null  $guardrails
+     * @return array{code: string, flags: list<string>}
+     */
+    public static function normalizeGuardrails(?array $guardrails): array
+    {
+        $guardrails ??= [];
+
+        if (isset($guardrails['flags']) && is_array($guardrails['flags'])) {
+            /** @var list<string> $flags */
+            $flags = array_values(array_filter($guardrails['flags'], 'is_string'));
+            $code = is_string($guardrails['code'] ?? null) ? $guardrails['code'] : 'ALLOW';
+
+            return ['code' => $code, 'flags' => $flags];
+        }
+
+        /** @var list<string> $flags */
+        $flags = array_values(array_filter($guardrails, 'is_string'));
+        $warn = in_array('critical_value_escalation', $flags, true)
+            || in_array('low_confidence_abstention', $flags, true)
+            || in_array('weak_guideline_grounding', $flags, true);
+
+        return ['code' => $warn ? 'WARN' : 'ALLOW', 'flags' => $flags];
+    }
+
+    /** @return list<string> */
+    public function guardrailFlagList(): array
+    {
+        return self::normalizeGuardrails($this->guardrail_flags)['flags'];
+    }
+
+    public function guardrailCode(): string
+    {
+        return self::normalizeGuardrails($this->guardrail_flags)['code'];
+    }
+
+    public function inferenceFilePath(): string
+    {
+        return $this->safe_file_path ?: $this->file_path;
     }
 
     public function isSigned(): bool
@@ -147,5 +195,11 @@ class MedicalRecord extends Model
     public function analysisJob(): HasOne
     {
         return $this->hasOne(AnalysisJob::class)->latestOfMany();
+    }
+
+    /** @return HasMany<AuditEvent, $this> */
+    public function auditEvents(): HasMany
+    {
+        return $this->hasMany(AuditEvent::class);
     }
 }

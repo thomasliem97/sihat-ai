@@ -27,8 +27,8 @@ test('webhook completes analysis with valid signature', function () {
     GuidelineChunk::create([
         'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
         'section' => '4.2 Diagnosis',
-        'content' => 'Chest radiograph may show lobar or patchy consolidation.',
-        'embedding' => app(RagService::class)->localHashEmbed('pneumonia consolidation chest'),
+        'content' => 'Right lower lobe opacity with patchy consolidation on chest radiograph suggests community-acquired pneumonia.',
+        'embedding' => app(RagService::class)->localHashEmbed('Right lower lobe opacity patchy consolidation pneumonia chest radiograph'),
     ]);
 
     $user = User::factory()->physician()->create();
@@ -92,7 +92,8 @@ test('webhook completes analysis with valid signature', function () {
         ->and($record->physician_report)->not->toBeNull()
         ->and($record->patient_report)->not->toBeNull()
         ->and($record->citations)->not->toBeEmpty()
-        ->and($record->guardrail_flags)->toContain('confidence_publish')
+        ->and($record->guardrailFlagList())->toContain('confidence_publish')
+        ->and($record->guardrailCode())->toBe('ALLOW')
         ->and($job->status)->toBe('completed');
 });
 

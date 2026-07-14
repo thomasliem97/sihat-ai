@@ -28,7 +28,8 @@ test('guardrails abstain below 0.50 and withhold patient report', function () {
     $flags = $pipeline->applyGuardrails($result);
     $reports = $pipeline->composeReports($record, $result, $flags);
 
-    expect($flags)->toContain('low_confidence_abstention')
+    expect($flags['flags'])->toContain('low_confidence_abstention')
+        ->and($flags['code'])->toBe('WARN')
         ->and($reports['patient_report'])->toBeNull()
         ->and($reports['physician_report'])->not->toBeNull();
 });
@@ -50,8 +51,9 @@ test('guardrails escalate critical and withhold patient copy', function () {
     $flags = $pipeline->applyGuardrails($result);
     $reports = $pipeline->composeReports($record, $result, $flags);
 
-    expect($flags)->toContain('critical_value_escalation')
-        ->and($flags)->toContain('confidence_publish')
+    expect($flags['flags'])->toContain('critical_value_escalation')
+        ->and($flags['flags'])->toContain('confidence_publish')
+        ->and($flags['code'])->toBe('WARN')
         ->and($reports['patient_report'])->toBeNull();
 });
 
@@ -71,7 +73,8 @@ test('hedge band softens patient language between 0.50 and 0.80', function () {
     $flags = $pipeline->applyGuardrails($result);
     $reports = $pipeline->composeReports($record, $result, $flags);
 
-    expect($flags)->toContain('confidence_hedge')
+    expect($flags['flags'])->toContain('confidence_hedge')
+        ->and($flags['code'])->toBe('ALLOW')
         ->and($reports['patient_report']['summary'])->toContain('preliminary');
 });
 
@@ -82,8 +85,12 @@ test('patient show withholds report when critical flag set', function () {
         'status' => RecordStatus::Completed,
         'patient_report' => ['summary' => 'secret'],
         'physician_report' => ['summary' => 'clinical'],
-        'guardrail_flags' => ['critical_value_escalation', 'medical_disclaimer_required', 'not_a_diagnosis'],
+        'guardrail_flags' => [
+            'code' => 'WARN',
+            'flags' => ['critical_value_escalation', 'medical_disclaimer_required', 'not_a_diagnosis'],
+        ],
         'findings' => [['label' => 'Critical finding', 'severity' => 'critical']],
+        'signed_at' => now(),
     ]);
 
     $this->actingAs($patient)

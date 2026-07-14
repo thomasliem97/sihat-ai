@@ -10,12 +10,14 @@ class AiFileController extends Controller
 {
     public function __invoke(MedicalRecord $record): StreamedResponse
     {
-        if (! Storage::disk('local')->exists($record->file_path)) {
+        $path = $record->inferenceFilePath();
+
+        if (! Storage::disk('local')->exists($path)) {
             abort(404);
         }
 
         return Storage::disk('local')->response(
-            $record->file_path,
+            $path,
             $record->original_filename,
         );
     }

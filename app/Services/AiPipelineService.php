@@ -7,8 +7,12 @@ use App\Enums\RecordStatus;
 use App\Enums\ReportLanguage;
 use App\Jobs\ProcessMedicalRecord;
 use App\Models\AnalysisJob;
+use App\Models\AuditEvent;
 use App\Models\MedicalRecord;
+use App\Notifications\CriticalEscalationNotification;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -38,21 +42,6 @@ class AiPipelineService
     }
 
     /**
-     * Full synchronous pipeline used when SIHAT_AI_USE_MOCK=true.
-     *
-     * @return array<string, mixed>
-     */
-    public function analyze(MedicalRecord $record, AnalysisJob $job): array
-    {
-        $this->prepareRecord($record, $job);
-
-        $result = $this->mockAnalysis($record);
-        $job->update(['steps_completed' => ['upload', 'deidentify', 'route', 'analyze']]);
-
-        return $this->finalizeResult($record, $job, $result);
-    }
-
-    /**
      * De-identify, route, and hand off to FastAPI. Record stays processing until webhook.
      */
     public function beginRemoteAnalysis(MedicalRecord $record, AnalysisJob $job): void
@@ -73,13 +62,16 @@ class AiPipelineService
                 'job_id' => $job->external_job_id,
                 'record_id' => $record->id,
                 'modality' => $modality->value,
-                'file_path' => $record->file_path,
+                'file_path' => $record->inferenceFilePath(),
+                'safe_uri' => $fileUrl,
                 'file_url' => $fileUrl,
                 'language' => $record->language->value,
                 'webhook_url' => $webhookUrl,
                 'mime_type' => $record->mime_type,
                 'original_filename' => $record->original_filename,
                 'route_confidence' => $record->route_confidence,
+                'engine' => 'medgemma',
+                'adapter' => config('services.sihat_ai.lora_path') ? 'configured' : 'none',
             ]);
 
         if (! $response->successful()) {
@@ -126,6 +118,7 @@ class AiPipelineService
             'detected_modality' => $result['detected_modality'] ?? $record->detected_modality,
             'route_confidence' => $result['route_confidence'] ?? $record->route_confidence,
             'findings' => $result['findings'] ?? null,
+            'partial_findings' => $result['partial_findings'] ?? null,
             'physician_report' => $result['physician_report'] ?? null,
             'patient_report' => $result['patient_report'] ?? null,
             'citations' => $result['citations'] ?? null,
@@ -173,35 +166,73 @@ class AiPipelineService
     private function finalizeResult(MedicalRecord $record, AnalysisJob $job, array $result): array
     {
         $trace = [];
-        $modality = ($record->detected_modality ?? $record->modality)->value;
-        $analyzeHop = str_contains($modality, 'lab') ? 'lab' : 'imaging';
+        $modalityEnum = $record->detected_modality ?? $record->modality;
+        $modality = $modalityEnum->value;
+        $result['engine'] = $result['engine'] ?? 'medgemma';
+        $result['adapter'] = $result['adapter'] ?? (config('services.sihat_ai.lora_path') ? 'configured' : 'none');
 
         $trace[] = $this->hop('router', 'completed', 'Modality '.$modality, $record->route_confidence);
+        if ($record->safe_file_path) {
+            $trace[] = $this->hop('deidentify', 'completed', 'safe_uri sibling ready', null);
+        }
+
+        $t0 = microtime(true);
+        $partial = $this->buildPartialFindings($modalityEnum, $result);
+        $result['partial_findings'] = $partial;
+        $parallelStarted = microtime(true);
+        $trace[] = $this->hop(
+            'imaging_specialist',
+            $partial['imaging'] !== null ? 'completed' : 'skipped',
+            $partial['imaging'] !== null
+                ? count($partial['imaging']['findings'] ?? []).' imaging findings'
+                : 'N/A for '.$modality,
+            $partial['imaging']['overall_confidence'] ?? null,
+            $parallelStarted,
+        );
+        $trace[] = $this->hop(
+            'doc_specialist',
+            $partial['document'] !== null ? 'completed' : 'skipped',
+            $partial['document'] !== null
+                ? count($partial['document']['findings'] ?? []).' document findings'
+                : 'N/A for '.$modality,
+            $partial['document']['overall_confidence'] ?? null,
+            $parallelStarted,
+        );
+        $result['findings'] = $this->mergePartialFindings($partial, $result['findings'] ?? []);
+        $trace[] = $this->hop('merge', 'completed', 'partial_findings merged', $result['overall_confidence'] ?? null, $t0);
 
         $t0 = microtime(true);
         $citations = $this->rag->retrieveCitations($record, $result['findings'] ?? []);
         $result['citations'] = $citations;
         $result['rag_weak'] = $this->rag->wasWeakRetrieval($citations);
-        $trace[] = $this->hop('rag', 'completed', count($citations).' citations', null, $t0);
+        $trace[] = $this->hop(
+            'rag',
+            'completed',
+            count($citations).' citations (BM25+dense+MMR)',
+            null,
+            $t0,
+        );
         $job->update(['steps_completed' => ['upload', 'deidentify', 'route', 'analyze', 'rag']]);
 
         $t0 = microtime(true);
         $guardrails = $this->applyGuardrails($result);
         $result['guardrail_flags'] = $guardrails;
-        $trace[] = $this->hop('guardrail', 'completed', implode(',', $guardrails), null, $t0);
+        $trace[] = $this->hop(
+            'guardrail',
+            'completed',
+            $guardrails['code'].':'.implode(',', $guardrails['flags']),
+            null,
+            $t0,
+        );
         $job->update(['steps_completed' => ['upload', 'deidentify', 'route', 'analyze', 'rag', 'guardrail']]);
+
+        $this->handleCriticalEscalation($record, $guardrails);
 
         $t0 = microtime(true);
         if (empty($result['longitudinal_diff'])) {
             $result['longitudinal_diff'] = $this->buildLongitudinalDiff($record, $result);
         }
         $reports = $this->composeReports($record, $result, $guardrails);
-        $adapter = $result['adapter'] ?? (config('services.sihat_ai.lora_path') ? 'configured' : 'none');
-        if (isset($reports['physician_report']) && is_array($reports['physician_report'])) {
-            $reports['physician_report']['technical_notes'] = ($reports['physician_report']['technical_notes'] ?? '')
-                .' Adapter: '.$adapter.'.';
-        }
-        $trace[] = $this->hop($analyzeHop, 'completed', 'Findings ready', $result['overall_confidence'] ?? null);
         $trace[] = $this->hop('compose', 'completed', $record->language->value.' dual reports', null, $t0);
         $job->update(['steps_completed' => ['upload', 'deidentify', 'route', 'analyze', 'rag', 'guardrail', 'compose']]);
 
@@ -213,6 +244,84 @@ class AiPipelineService
                 'upload', 'deidentify', 'route', 'analyze', 'rag', 'guardrail', 'compose',
             ]),
         ]);
+    }
+
+    /**
+     * @param  array<string, mixed>  $result
+     * @return array{imaging: ?array<string, mixed>, document: ?array<string, mixed>}
+     */
+    private function buildPartialFindings(Modality $modality, array $result): array
+    {
+        $bundle = [
+            'findings' => $result['findings'] ?? [],
+            'overall_confidence' => $result['overall_confidence'] ?? null,
+            'biomarkers' => $result['biomarkers'] ?? null,
+            'bounding_boxes' => $result['bounding_boxes'] ?? null,
+        ];
+
+        if ($modality->isDocument()) {
+            return ['imaging' => null, 'document' => $bundle];
+        }
+
+        if ($modality->isImaging()) {
+            return ['imaging' => $bundle, 'document' => null];
+        }
+
+        return ['imaging' => $bundle, 'document' => null];
+    }
+
+    /**
+     * @param  array{imaging: ?array<string, mixed>, document: ?array<string, mixed>}  $partial
+     * @param  array<int, array<string, mixed>>  $fallback
+     * @return array<int, array<string, mixed>>
+     */
+    private function mergePartialFindings(array $partial, array $fallback): array
+    {
+        $merged = [];
+        foreach (['imaging', 'document'] as $key) {
+            $findings = $partial[$key]['findings'] ?? null;
+            if (is_array($findings)) {
+                foreach ($findings as $finding) {
+                    $merged[] = is_array($finding)
+                        ? array_merge($finding, ['specialist' => $key])
+                        : $finding;
+                }
+            }
+        }
+
+        return $merged !== [] ? $merged : $fallback;
+    }
+
+    /**
+     * @param  array{code: string, flags: list<string>}  $guardrails
+     */
+    private function handleCriticalEscalation(MedicalRecord $record, array $guardrails): void
+    {
+        if (! in_array('critical_value_escalation', $guardrails['flags'], true)) {
+            return;
+        }
+
+        AuditEvent::create([
+            'actor_type' => 'system',
+            'actor_id' => null,
+            'event' => 'critical_value_escalation',
+            'medical_record_id' => $record->id,
+            'payload' => [
+                'guardrail_code' => $guardrails['code'],
+                'flags' => $guardrails['flags'],
+                'title' => $record->title,
+            ],
+        ]);
+
+        Log::warning('Critical escalation', [
+            'medical_record_id' => $record->id,
+            'flags' => $guardrails['flags'],
+        ]);
+
+        $physician = $record->uploadedBy;
+        if ($physician && $physician->isPhysician()) {
+            Notification::send($physician, new CriticalEscalationNotification($record));
+        }
     }
 
     /**
@@ -259,7 +368,7 @@ class AiPipelineService
             ];
         }
 
-        if ($modality === Modality::LabPdf) {
+        if ($modality === Modality::LabPdf || $modality === Modality::ClinicalDocument) {
             return $this->diffLabRecords($prior, $result);
         }
 
@@ -354,6 +463,12 @@ class AiPipelineService
         $filename = strtolower($record->original_filename);
 
         if (str_contains($mime, 'pdf') || str_ends_with($filename, '.pdf')) {
+            if ($this->filenameContainsAny($filename, [
+                'discharge', 'summary', 'clinic', 'consult', 'progress', 'note', 'referral', 'letter',
+            ])) {
+                return ['modality' => Modality::ClinicalDocument, 'confidence' => 0.9];
+            }
+
             return ['modality' => Modality::LabPdf, 'confidence' => 0.95];
         }
 
@@ -487,191 +602,10 @@ class AiPipelineService
     }
 
     /**
-     * @return array<string, mixed>
-     */
-    private function mockAnalysis(MedicalRecord $record): array
-    {
-        $modality = $record->detected_modality ?? $record->modality;
-
-        return match ($modality) {
-            Modality::LabPdf => $this->mockLabAnalysis(),
-            Modality::Xray => $this->mockXrayAnalysis(),
-            Modality::Dermatology => $this->mockDermAnalysis(),
-            Modality::Ct, Modality::Mri => $this->mockVolumeAnalysis($modality),
-            Modality::Histopath => $this->mockHistopathAnalysis(),
-            default => $this->mockGenericImagingAnalysis($modality),
-        };
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function mockVolumeAnalysis(Modality $modality): array
-    {
-        $label = $modality === Modality::Ct ? 'Ground-glass opacity' : 'T2 hyperintensity';
-
-        return [
-            'findings' => [
-                [
-                    'label' => $label,
-                    'description' => 'Finding reviewed on mid-volume montage (demo volume path).',
-                    'confidence' => 0.81,
-                    'severity' => 'abnormal',
-                ],
-            ],
-            'bounding_boxes' => [
-                ['label' => $label, 'x' => 0.4, 'y' => 0.35, 'width' => 0.2, 'height' => 0.2, 'confidence' => 0.81],
-            ],
-            'volume_meta' => [
-                'slice_count' => 24,
-                'used_slices' => [8, 9, 10, 11, 12, 13, 14, 15],
-                'note' => 'ponytail: mid-slice montage (max 8); not a full 3D viewer',
-            ],
-            'overall_confidence' => 0.81,
-            'differential_diagnosis' => [
-                ['condition' => 'Inflammatory process', 'confidence' => 0.6],
-            ],
-        ];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function mockHistopathAnalysis(): array
-    {
-        return [
-            'findings' => [
-                [
-                    'label' => 'Atypical glandular architecture',
-                    'description' => 'Aggregated from center-region patches (demo WSI path).',
-                    'confidence' => 0.79,
-                    'severity' => 'abnormal',
-                    'patch' => '1,1',
-                ],
-                [
-                    'label' => 'Inflammatory infiltrate',
-                    'description' => 'Lymphocytic infiltrate noted on peripheral patch.',
-                    'confidence' => 0.74,
-                    'severity' => 'borderline',
-                    'patch' => '0,2',
-                ],
-            ],
-            'bounding_boxes' => [],
-            'patch_meta' => [
-                'grid' => '3x3',
-                'patch_count' => 9,
-                'note' => 'ponytail: fixed center-region grid; not OpenSlide pyramid',
-                'patches' => [
-                    ['id' => '1,1', 'finding' => 'Atypical glandular architecture'],
-                    ['id' => '0,2', 'finding' => 'Inflammatory infiltrate'],
-                ],
-            ],
-            'overall_confidence' => 0.78,
-        ];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function mockXrayAnalysis(): array
-    {
-        return [
-            'findings' => [
-                [
-                    'label' => 'Right lower lobe opacity',
-                    'description' => 'Patchy airspace opacity in the right lower lobe, suggestive of consolidation.',
-                    'confidence' => 0.87,
-                    'severity' => 'abnormal',
-                    'location' => 'right_lower_lobe',
-                ],
-                [
-                    'label' => 'Cardiomegaly',
-                    'description' => 'Cardiothoracic ratio approximately 0.55, borderline cardiomegaly.',
-                    'confidence' => 0.72,
-                    'severity' => 'borderline',
-                    'location' => 'heart',
-                ],
-            ],
-            'bounding_boxes' => [
-                // RLL opacity sits on image-left (patient right) in the lower third of the demo CXR.
-                ['label' => 'Opacity', 'x' => 0.08, 'y' => 0.56, 'width' => 0.34, 'height' => 0.3, 'confidence' => 0.87],
-                ['label' => 'Heart', 'x' => 0.38, 'y' => 0.35, 'width' => 0.28, 'height' => 0.35, 'confidence' => 0.72],
-            ],
-            'longitudinal_diff' => [
-                'has_prior' => true,
-                'summary' => 'New right lower lobe opacity compared to prior study 3 months ago. Cardiomegaly stable.',
-                'changes' => [
-                    ['finding' => 'Right lower lobe opacity', 'change' => 'new', 'prior_date' => '2026-04-01'],
-                    ['finding' => 'Cardiomegaly', 'change' => 'stable', 'prior_date' => '2026-04-01'],
-                ],
-            ],
-            'overall_confidence' => 0.84,
-            'differential_diagnosis' => [
-                ['condition' => 'Community-acquired pneumonia', 'confidence' => 0.78],
-                ['condition' => 'Pulmonary tuberculosis', 'confidence' => 0.62],
-                ['condition' => 'Atelectasis', 'confidence' => 0.45],
-            ],
-        ];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function mockLabAnalysis(): array
-    {
-        return [
-            'findings' => [
-                ['label' => 'Hemoglobin', 'value' => 9.2, 'unit' => 'g/dL', 'reference' => '12.0-16.0', 'severity' => 'abnormal', 'confidence' => 0.95],
-                ['label' => 'Platelet count', 'value' => 85, 'unit' => '×10³/µL', 'reference' => '150-400', 'severity' => 'abnormal', 'confidence' => 0.93],
-                ['label' => 'WBC', 'value' => 3.8, 'unit' => '×10³/µL', 'reference' => '4.0-11.0', 'severity' => 'borderline', 'confidence' => 0.91],
-            ],
-            'biomarkers' => [
-                ['name' => 'Hemoglobin', 'value' => 9.2, 'unit' => 'g/dL', 'reference_low' => 12.0, 'reference_high' => 16.0, 'status' => 'abnormal'],
-                ['name' => 'Platelet count', 'value' => 85, 'unit' => '×10³/µL', 'reference_low' => 150, 'reference_high' => 400, 'status' => 'abnormal'],
-                ['name' => 'WBC', 'value' => 3.8, 'unit' => '×10³/µL', 'reference_low' => 4.0, 'reference_high' => 11.0, 'status' => 'borderline'],
-            ],
-            'overall_confidence' => 0.92,
-        ];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function mockDermAnalysis(): array
-    {
-        return [
-            'findings' => [
-                ['label' => 'Melanocytic nevus', 'description' => '6mm brown macule with regular borders on left forearm.', 'confidence' => 0.88, 'severity' => 'normal'],
-            ],
-            'bounding_boxes' => [],
-            'overall_confidence' => 0.88,
-        ];
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function mockGenericImagingAnalysis(Modality $modality): array
-    {
-        return [
-            'findings' => [
-                [
-                    'label' => $modality->label().' finding',
-                    'description' => 'No acute abnormality detected on preliminary review.',
-                    'confidence' => 0.75,
-                    'severity' => 'normal',
-                ],
-            ],
-            'bounding_boxes' => [],
-            'overall_confidence' => 0.75,
-        ];
-    }
-
-    /**
      * Confidence bands: publish ≥0.80 · hedge 0.50–0.80 · abstain <0.50
      *
      * @param  array<string, mixed>  $result
-     * @return array<int, string>
+     * @return array{code: string, flags: list<string>}
      */
     public function applyGuardrails(array $result): array
     {
@@ -698,30 +632,45 @@ class AiPipelineService
             $flags[] = 'confidence_publish';
         }
 
-        if (! empty($result['rag_weak']) && $confidence < 0.80) {
+        if (! empty($result['rag_weak'])) {
             $flags[] = 'weak_guideline_grounding';
             if ($confidence < 0.50) {
                 $flags[] = 'low_confidence_abstention';
             }
         }
 
-        return array_values(array_unique($flags));
+        $flags = array_values(array_unique($flags));
+        $warn = in_array('critical_value_escalation', $flags, true)
+            || in_array('low_confidence_abstention', $flags, true)
+            || in_array('weak_guideline_grounding', $flags, true);
+
+        return [
+            'code' => $warn ? 'WARN' : 'ALLOW',
+            'flags' => $flags,
+        ];
     }
 
     /**
      * @param  array<string, mixed>  $result
-     * @param  array<int, string>  $guardrails
+     * @param  array<int|string, mixed>  $guardrails
      * @return array<string, mixed>
      */
     public function composeReports(MedicalRecord $record, array $result, array $guardrails = []): array
     {
+        $normalized = MedicalRecord::normalizeGuardrails(
+            isset($guardrails['flags']) ? $guardrails : ['flags' => $guardrails]
+        );
+        $flagList = $normalized['flags'];
+        $code = $normalized['code'];
+
         $language = $record->language;
         $findings = $result['findings'] ?? [];
         $citations = $result['citations'] ?? [];
         $confidence = (float) ($result['overall_confidence'] ?? 0);
-        $hedge = in_array('confidence_hedge', $guardrails, true);
-        $abstain = in_array('low_confidence_abstention', $guardrails, true);
-        $critical = in_array('critical_value_escalation', $guardrails, true);
+        $hedge = in_array('confidence_hedge', $flagList, true);
+        $abstain = in_array('low_confidence_abstention', $flagList, true);
+        $critical = in_array('critical_value_escalation', $flagList, true);
+        $warn = $code === 'WARN';
 
         $citationNote = collect($citations)
             ->take(3)
@@ -733,18 +682,38 @@ class AiPipelineService
             $physicianSummary .= ' Guidelines: '.$citationNote.'.';
         }
 
+        $engine = (string) ($result['engine'] ?? 'medgemma');
+        $adapter = (string) ($result['adapter'] ?? (config('services.sihat_ai.lora_path') ? 'configured' : 'none'));
+        $modalityLabel = ($record->detected_modality ?? $record->modality)->label();
+
+        $technicalNotes = $abstain
+            ? 'Report withheld from automatic patient release due to low confidence or weak guideline grounding.'
+            : sprintf(
+                'Analysis engine=%s; adapter=%s; modality=%s; guardrail=%s. RAG: hybrid BM25+dense with MMR.',
+                $engine,
+                $adapter,
+                $modalityLabel,
+                $code,
+            );
+
+        if ($warn) {
+            $technicalNotes .= ' WARN: patient-facing model prose vetoed.';
+        }
+
         $physicianReport = [
             'summary' => $physicianSummary,
             'differential_diagnosis' => $result['differential_diagnosis'] ?? [],
             'recommendations' => $this->physicianRecommendations($findings, $language, $hedge, $abstain, $critical),
-            'technical_notes' => $abstain
-                ? 'Report withheld from automatic patient release due to low confidence or weak guideline grounding.'
-                : 'Analysis via MedGemma 1.5 (Modal). RAG-grounded with MOH CPG references where available.',
+            'technical_notes' => $technicalNotes,
             'confidence_band' => $abstain ? 'abstain' : ($hedge ? 'hedge' : 'publish'),
+            'engine' => $engine,
+            'adapter' => $adapter,
+            'guardrail_code' => $code,
         ];
 
+        // Hard veto: WARN never releases patient copy from compose
         $patientReport = null;
-        if (! $abstain && ! $critical) {
+        if (! $warn && ! $abstain && ! $critical) {
             $patientReport = [
                 'summary' => $this->patientSummary($findings, $language, $hedge),
                 'what_this_means' => $this->patientExplanation($findings, $language, $hedge),
@@ -930,8 +899,8 @@ class AiPipelineService
             'upload' => 'Upload received',
             'deidentify' => 'PII de-identified',
             'route' => 'Modality routed',
-            'analyze' => 'MedGemma analysis',
-            'rag' => 'RAG retrieval',
+            'analyze' => 'Model analysis',
+            'rag' => 'Hybrid RAG (BM25+dense+MMR)',
             'guardrail' => 'Safety guardrails',
             'compose' => 'Report composed',
         ];

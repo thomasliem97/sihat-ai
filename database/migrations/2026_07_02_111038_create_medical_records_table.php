@@ -18,11 +18,13 @@ return new class extends Migration
             $table->decimal('route_confidence', 5, 2)->nullable();
             $table->string('status')->default('pending');
             $table->string('file_path');
+            $table->string('safe_file_path')->nullable();
             $table->string('original_filename');
             $table->string('mime_type');
             $table->string('language')->default('en');
             $table->decimal('overall_confidence', 5, 2)->nullable();
             $table->json('findings')->nullable();
+            $table->json('partial_findings')->nullable();
             $table->json('physician_report')->nullable();
             $table->json('patient_report')->nullable();
             $table->json('citations')->nullable();

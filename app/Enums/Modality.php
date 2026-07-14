@@ -11,6 +11,7 @@ enum Modality: string
     case Dermatology = 'dermatology';
     case Ophthalmology = 'ophthalmology';
     case LabPdf = 'lab_pdf';
+    case ClinicalDocument = 'clinical_document';
     case Unknown = 'unknown';
 
     public function label(): string
@@ -23,7 +24,21 @@ enum Modality: string
             self::Dermatology => 'Dermatology',
             self::Ophthalmology => 'Ophthalmology',
             self::LabPdf => 'Lab Report (PDF)',
+            self::ClinicalDocument => 'Clinical Document (PDF)',
             self::Unknown => 'Unknown',
+        };
+    }
+
+    public function isDocument(): bool
+    {
+        return $this === self::LabPdf || $this === self::ClinicalDocument;
+    }
+
+    public function isImaging(): bool
+    {
+        return match ($this) {
+            self::Xray, self::Ct, self::Mri, self::Histopath, self::Dermatology, self::Ophthalmology => true,
+            default => false,
         };
     }
 }

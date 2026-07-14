@@ -6,7 +6,7 @@ use App\Models\MedicalRecord;
 use App\Models\User;
 use App\Services\AiPipelineService;
 
-test('mock ct analysis includes volume_meta', function () {
+test('ct webhook result persists volume_meta', function () {
     $user = User::factory()->create();
     $record = MedicalRecord::factory()->create([
         'user_id' => $user->id,
@@ -19,10 +19,26 @@ test('mock ct analysis includes volume_meta', function () {
         'status' => 'running',
     ]);
 
-    config(['services.sihat_ai.use_mock' => true]);
-
-    $result = app(AiPipelineService::class)->analyze($record, $job);
-    app(AiPipelineService::class)->persistCompleted($record, $job, $result);
+    $pipeline = app(AiPipelineService::class);
+    $result = $pipeline->completeFromWebhook($record, $job, [
+        'findings' => [
+            [
+                'label' => 'Ground-glass opacity',
+                'description' => 'Finding on mid-volume montage.',
+                'confidence' => 0.81,
+                'severity' => 'abnormal',
+            ],
+        ],
+        'volume_meta' => [
+            'slice_count' => 24,
+            'used_slices' => [8, 9, 10, 11, 12, 13, 14, 15],
+            'note' => 'ponytail: mid-slice montage (max 8); not a full 3D viewer',
+        ],
+        'overall_confidence' => 0.81,
+        'engine' => 'medgemma',
+        'adapter' => 'none',
+    ]);
+    $pipeline->persistCompleted($record, $job, $result);
 
     expect($result['volume_meta'] ?? null)->toBeArray()
         ->and($result['volume_meta']['slice_count'] ?? null)->not->toBeNull()
@@ -33,7 +49,7 @@ test('mock ct analysis includes volume_meta', function () {
         ->and($record->findings_embedding)->not->toBeEmpty();
 });
 
-test('mock histopath analysis includes patch_meta', function () {
+test('histopath webhook result persists patch_meta', function () {
     $user = User::factory()->create();
     $record = MedicalRecord::factory()->create([
         'user_id' => $user->id,
@@ -46,10 +62,27 @@ test('mock histopath analysis includes patch_meta', function () {
         'status' => 'running',
     ]);
 
-    config(['services.sihat_ai.use_mock' => true]);
-
-    $result = app(AiPipelineService::class)->analyze($record, $job);
-    app(AiPipelineService::class)->persistCompleted($record, $job, $result);
+    $pipeline = app(AiPipelineService::class);
+    $result = $pipeline->completeFromWebhook($record, $job, [
+        'findings' => [
+            [
+                'label' => 'Atypical glandular architecture',
+                'description' => 'Aggregated from center-region patches.',
+                'confidence' => 0.79,
+                'severity' => 'abnormal',
+                'patch' => '1,1',
+            ],
+        ],
+        'patch_meta' => [
+            'grid' => '3x3',
+            'patch_count' => 9,
+            'note' => 'ponytail: fixed center-region grid; not OpenSlide pyramid',
+        ],
+        'overall_confidence' => 0.78,
+        'engine' => 'medgemma',
+        'adapter' => 'none',
+    ]);
+    $pipeline->persistCompleted($record, $job, $result);
 
     expect($result['patch_meta'] ?? null)->toBeArray()
         ->and($result['patch_meta']['grid'] ?? null)->toBe('3x3')

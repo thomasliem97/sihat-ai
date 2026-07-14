@@ -74,8 +74,8 @@ test('webhook persists typed agent hop traces', function () {
 
     expect($record->agent_trace)->toBeArray()
         ->and(collect($record->agent_trace)->pluck('hop')->all())
-        ->toContain('router', 'rag', 'guardrail', 'imaging', 'compose')
+        ->toContain('router', 'rag', 'guardrail', 'imaging_specialist', 'doc_specialist', 'compose')
         ->and($record->bounding_boxes)->not->toBeEmpty()
         ->and($record->longitudinal_diff)->toBeArray()
-        ->and($record->physician_report['technical_notes'] ?? '')->toContain('Adapter:');
+        ->and($record->physician_report['technical_notes'] ?? '')->toContain('adapter=');
 });

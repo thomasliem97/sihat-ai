@@ -4,12 +4,12 @@ namespace App\Services;
 
 use App\Models\MedicalRecord;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class DeidentificationService
 {
     /**
-     * Scrub filename PHI, EXIF, and DICOM tag payloads before inference.
-     * Sets scrubbed sibling file when binary scrubbing succeeds.
+     * Scrub PHI into a sibling safe file; leave original for physician download.
      */
     public function deidentify(MedicalRecord $record): void
     {
@@ -28,24 +28,31 @@ class DeidentificationService
             $updates['original_filename'] = $sanitizedName;
         }
 
-        if ($updates !== []) {
-            $record->update($updates);
-        }
-
         $path = $record->file_path;
         if (! Storage::disk('local')->exists($path)) {
+            if ($updates !== []) {
+                $record->update($updates);
+            }
+
             return;
         }
 
-        $absolute = Storage::disk('local')->path($path);
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+        $safeRelative = 'medical-records/safe/'.Str::uuid().($ext !== '' ? '.'.$ext : '');
+        Storage::disk('local')->copy($path, $safeRelative);
+
+        $absolute = Storage::disk('local')->path($safeRelative);
         $mime = strtolower($record->mime_type);
-        $lower = strtolower($record->original_filename);
+        $lower = strtolower($sanitizedName);
 
         if (str_ends_with($lower, '.dcm') || str_contains($mime, 'dicom')) {
             $this->scrubDicomTags($absolute);
         } elseif (str_contains($mime, 'jpeg') || str_contains($mime, 'jpg') || str_contains($mime, 'png')) {
             $this->stripImageExif($absolute, $mime);
         }
+
+        $updates['safe_file_path'] = $safeRelative;
+        $record->update($updates);
     }
 
     /**
@@ -95,7 +102,6 @@ class DeidentificationService
             $scrubbed = str_ireplace($keyword, str_repeat('X', strlen($keyword)), $scrubbed);
         }
 
-        // Malaysian IC-like patterns in binary ASCII
         $scrubbed = preg_replace('/\d{6}-\d{2}-\d{4}/', 'XXXXXX-XX-XXXX', $scrubbed) ?? $scrubbed;
 
         if ($scrubbed !== $bytes) {

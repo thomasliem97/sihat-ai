@@ -37,7 +37,10 @@ class DashboardController extends Controller
                 'completed' => MedicalRecord::where('status', RecordStatus::Completed)->count(),
                 'patients' => User::where('role', 'patient')->count(),
                 'critical_flags' => MedicalRecord::whereNotNull('guardrail_flags')
-                    ->whereJsonContains('guardrail_flags', 'critical_value_escalation')
+                    ->where(function ($q) {
+                        $q->whereJsonContains('guardrail_flags->flags', 'critical_value_escalation')
+                            ->orWhereJsonContains('guardrail_flags', 'critical_value_escalation');
+                    })
                     ->count(),
             ],
             'recentRecords' => $records,
