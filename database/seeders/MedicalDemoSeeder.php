@@ -125,6 +125,7 @@ PDF);
                 'accuracy' => 0.684,
                 'f1_macro' => 0.671,
                 'categories' => ['anatomy' => 0.72, 'diagnosis' => 0.65, 'treatment' => 0.69],
+                'demo_seed' => true,
             ],
         ]);
 
@@ -138,6 +139,7 @@ PDF);
                 'grounding' => 4.4,
                 'safety' => 4.5,
                 'scale' => '1-5',
+                'demo_seed' => true,
             ],
         ]);
 
@@ -149,6 +151,7 @@ PDF);
                 'disclaimer_rate' => 1.0,
                 'critical_escalation_rate' => 0.98,
                 'diagnosis_refusal_rate' => 0.95,
+                'demo_seed' => true,
             ],
         ]);
     }
@@ -196,7 +199,10 @@ PDF);
                 'has_prior' => true,
                 'summary' => 'New RLL opacity vs prior 3 months ago.',
             ],
-            'guardrail_flags' => ['medical_disclaimer_required', 'not_a_diagnosis'],
+            'guardrail_flags' => [
+                'code' => 'ALLOW',
+                'flags' => ['medical_disclaimer_required', 'not_a_diagnosis', 'confidence_publish'],
+            ],
             'pipeline_steps' => [
                 ['step' => 'upload', 'label' => 'Upload received', 'status' => 'completed'],
                 ['step' => 'analyze', 'label' => 'MedGemma analysis', 'status' => 'completed'],
@@ -228,7 +234,10 @@ PDF);
                 'summary' => 'Some results need your doctor\'s attention.',
                 'what_this_means' => 'Your blood test shows lower than normal hemoglobin and platelets.',
             ],
-            'guardrail_flags' => ['medical_disclaimer_required', 'not_a_diagnosis'],
+            'guardrail_flags' => [
+                'code' => 'ALLOW',
+                'flags' => ['medical_disclaimer_required', 'not_a_diagnosis', 'confidence_publish'],
+            ],
             'analyzed_at' => now()->subDay(),
         ]);
     }

@@ -16,12 +16,16 @@ const props = defineProps<{
         sample_count: number;
         avg_score: number | null;
         metrics: Record<string, unknown> | null;
+        demo_seed?: boolean;
         created_at: string;
     }>;
     summary: {
         medqa_accuracy: number;
         report_quality: number;
         safety_compliance: number;
+        medqa_demo_seed?: boolean;
+        report_quality_demo_seed?: boolean;
+        safety_demo_seed?: boolean;
     };
     canRun: boolean;
 }>();
@@ -88,8 +92,17 @@ defineOptions({
                         </CardTitle>
                     </div>
                 </CardHeader>
-                <CardContent class="text-3xl font-bold tabular-nums">
-                    {{ summary.medqa_accuracy }}%
+                <CardContent>
+                    <p class="text-3xl font-bold tabular-nums">
+                        {{ summary.medqa_accuracy }}%
+                    </p>
+                    <AnnotationPill
+                        v-if="summary.medqa_demo_seed"
+                        variant="amber"
+                        class="mt-2"
+                    >
+                        Demo seed
+                    </AnnotationPill>
                 </CardContent>
             </Card>
             <Card class="paper-panel--focal border-0 shadow-offset">
@@ -105,8 +118,17 @@ defineOptions({
                         </CardTitle>
                     </div>
                 </CardHeader>
-                <CardContent class="text-3xl font-bold tabular-nums">
-                    {{ summary.report_quality }}/5
+                <CardContent>
+                    <p class="text-3xl font-bold tabular-nums">
+                        {{ summary.report_quality }}/5
+                    </p>
+                    <AnnotationPill
+                        v-if="summary.report_quality_demo_seed"
+                        variant="amber"
+                        class="mt-2"
+                    >
+                        Demo seed
+                    </AnnotationPill>
                 </CardContent>
             </Card>
             <Card class="paper-panel--focal border-0 shadow-offset">
@@ -122,8 +144,17 @@ defineOptions({
                         </CardTitle>
                     </div>
                 </CardHeader>
-                <CardContent class="text-3xl font-bold tabular-nums">
-                    {{ summary.safety_compliance }}%
+                <CardContent>
+                    <p class="text-3xl font-bold tabular-nums">
+                        {{ summary.safety_compliance }}%
+                    </p>
+                    <AnnotationPill
+                        v-if="summary.safety_demo_seed"
+                        variant="amber"
+                        class="mt-2"
+                    >
+                        Demo seed
+                    </AnnotationPill>
                 </CardContent>
             </Card>
         </div>
@@ -133,9 +164,17 @@ defineOptions({
                 <CardHeader class="space-y-2">
                     <div class="flex items-center justify-between gap-2">
                         <SectionTag>Run</SectionTag>
-                        <AnnotationPill variant="teal">
-                            {{ run.run_type.replace('_', ' ') }}
-                        </AnnotationPill>
+                        <div class="flex flex-wrap gap-1">
+                            <AnnotationPill
+                                v-if="run.demo_seed || run.metrics?.demo_seed"
+                                variant="amber"
+                            >
+                                Demo seed
+                            </AnnotationPill>
+                            <AnnotationPill variant="teal">
+                                {{ run.run_type.replace('_', ' ') }}
+                            </AnnotationPill>
+                        </div>
                     </div>
                     <CardTitle class="text-lg capitalize">
                         {{ run.run_type.replace('_', ' ') }}

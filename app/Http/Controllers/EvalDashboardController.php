@@ -19,17 +19,31 @@ class EvalDashboardController extends Controller
             'sample_count' => $run->sample_count,
             'avg_score' => $run->avg_score,
             'metrics' => $run->metrics,
+            'demo_seed' => (bool) data_get($run->metrics, 'demo_seed', false),
             'created_at' => $run->created_at?->toIso8601String(),
         ]);
 
-        $latest = fn (string $type) => $runs->firstWhere('run_type', $type);
+        $latestPreferLive = function (string $type) use ($runs): ?array {
+            $typed = $runs->where('run_type', $type)->values();
+            $live = $typed->firstWhere('demo_seed', false);
+            $row = $live ?? $typed->first();
+
+            return $row ? $row->toArray() : null;
+        };
+
+        $medqa = $latestPreferLive('medqa');
+        $judge = $latestPreferLive('llm_judge');
+        $safety = $latestPreferLive('safety');
 
         return Inertia::render('eval/Index', [
             'runs' => $runs,
             'summary' => [
-                'medqa_accuracy' => $latest('medqa')?->avg_score ?? 0,
-                'report_quality' => $latest('llm_judge')?->avg_score ?? 0,
-                'safety_compliance' => $latest('safety')?->avg_score ?? 0,
+                'medqa_accuracy' => $medqa['avg_score'] ?? 0,
+                'report_quality' => $judge['avg_score'] ?? 0,
+                'safety_compliance' => $safety['avg_score'] ?? 0,
+                'medqa_demo_seed' => (bool) ($medqa['demo_seed'] ?? false),
+                'report_quality_demo_seed' => (bool) ($judge['demo_seed'] ?? false),
+                'safety_demo_seed' => (bool) ($safety['demo_seed'] ?? false),
             ],
             'canRun' => $request->user()?->isPhysician() ?? false,
         ]);
