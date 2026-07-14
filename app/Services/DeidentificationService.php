@@ -78,7 +78,6 @@ class DeidentificationService
 
     private function scrubDicomTags(string $absolutePath): void
     {
-        // ponytail: binary tag wipe without pydicom; strips common PHI tag keyword ASCII blobs
         $bytes = @file_get_contents($absolutePath);
         if ($bytes === false || $bytes === '') {
             return;

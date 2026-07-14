@@ -61,10 +61,8 @@ class RagService
         $reranked = $this->mmrRerank($fused, $queryEmbedding, self::TOP_K);
 
         $top = (float) ($reranked[0]['relevance'] ?? 0);
-        // Hash embeddings are coarse; BM25 carries most offline signal.
         $this->lastRetrievalWeak = $reranked === [] || $top < 0.2;
 
-        // Weak retrieve: empty citations (no static stubs in live path)
         if ($this->lastRetrievalWeak) {
             return [];
         }
@@ -78,8 +76,6 @@ class RagService
     }
 
     /**
-     * Static stubs kept for tests / offline demos only. Not used by retrieveCitations.
-     *
      * @return array<int, array<string, mixed>>
      */
     public function defaultCitations(): array
@@ -198,8 +194,6 @@ class RagService
     }
 
     /**
-     * In-PHP BM25 over guideline chunks (no external deps).
-     *
      * @param  Collection<int, GuidelineChunk>  $chunks
      * @return array<int, array<string, mixed>>
      */
@@ -237,7 +231,6 @@ class RagService
                 $score += $idf * (($tf * ($k1 + 1)) / ($tf + $k1 * (1 - $b + $b * ($doc['len'] / $avgdl))));
             }
 
-            // Scale BM25 into ~0..1; offline hash-dense is weak so BM25 must carry the fuse.
             $norm = min(1.0, $score / max(1.0, log(1 + count($terms)) * 2));
 
             return $this->citationRow($doc['chunk'], $norm, $query, $doc['chunk']->embedding);
@@ -263,7 +256,6 @@ class RagService
             if (! isset($byKey[$key]) || ($row['relevance'] ?? 0) > ($byKey[$key]['relevance'] ?? 0)) {
                 $byKey[$key] = $row;
             } else {
-                // Boost when both retrievers hit
                 $byKey[$key]['relevance'] = min(1.0, (float) $byKey[$key]['relevance'] + 0.05);
             }
         }
@@ -346,7 +338,6 @@ class RagService
             return $this->cosineSimilarity($ea, $eb);
         }
 
-        // Fallback: lexical overlap of excerpts
         $ta = preg_split('/\W+/u', mb_strtolower((string) ($a['excerpt'] ?? '')), -1, PREG_SPLIT_NO_EMPTY) ?: [];
         $tb = preg_split('/\W+/u', mb_strtolower((string) ($b['excerpt'] ?? '')), -1, PREG_SPLIT_NO_EMPTY) ?: [];
         if ($ta === [] || $tb === []) {

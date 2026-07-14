@@ -140,7 +140,6 @@ class EvalHarnessService
         $lettered = collect($options)->map(fn ($o, $i) => chr(65 + $i).') '.$o)->implode("\n");
 
         if (! $apiKey) {
-            // ponytail: keyword heuristic when OPENAI_API_KEY unset; upgrade to real MedQA model call
             $q = mb_strtolower($question);
             if (str_contains($q, 'hemoglobin') || str_contains($q, 'anemia')) {
                 return 'C';

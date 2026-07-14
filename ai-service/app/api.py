@@ -22,7 +22,6 @@ from pydantic import BaseModel, Field
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("sihat-ai")
 
-# Load ai-service/.env then repo-root .env (Laravel) so webhook secret matches without manual export
 try:
     from dotenv import load_dotenv
 
@@ -50,11 +49,10 @@ def _modal_url() -> str:
 def _require_modal() -> str:
     url = _modal_url()
     if not url:
-        raise RuntimeError("SIHAT_AI_MODAL_URL is required; local mock fallbacks are removed")
+        raise RuntimeError("SIHAT_AI_MODAL_URL is required")
     return url
 
 
-# Back-compat names used below
 WEBHOOK_SECRET = _webhook_secret()
 MODAL_URL = _modal_url()
 
@@ -157,7 +155,6 @@ def _filename_modality_hints(name: str) -> dict[str, Any] | None:
         return {"modality": "dermatology", "confidence": 0.85}
     if any(k in name for k in ("histo", "pathology", "pathmnist", "wsi", "slide", "biopsy", "seminoma", "pcam")):
         return {"modality": "histopath", "confidence": 0.85}
-    # CT before chest/xray so chest_ct_slice routes to ct
     if any(k in name for k in ("hrct", "computed tomography", "computed_tomography")) or "ct" in name:
         return {"modality": "ct", "confidence": 0.85}
     if "mri" in name or "mr_" in name:
@@ -294,7 +291,6 @@ def _run_pipeline(request: AnalyzeRequest) -> None:
 
 
 def _analyze_volume(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
-    """ponytail: mid-slice montage (max 8); not a full 3D DICOM viewer."""
     data = _download_bytes(request)
     name = (request.original_filename or "").lower()
     mime = (request.mime_type or "").lower()
@@ -320,7 +316,6 @@ def _analyze_volume(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
 
 
 def _analyze_histopath(request: AnalyzeRequest) -> dict[str, Any]:
-    """ponytail: fixed center-region grid patches; not OpenSlide pyramid."""
     data = _download_bytes(request)
     montage_b64, patch_meta = _build_histopath_patches(data)
 
@@ -352,7 +347,7 @@ def _build_volume_montage(
     meta: dict[str, Any] = {
         "slice_count": 0,
         "used_slices": [],
-        "note": "ponytail: mid-slice montage (max 8); not a full 3D viewer",
+        "note": "Mid-slice montage (max 8)",
     }
 
     try:
@@ -454,7 +449,7 @@ def _build_histopath_patches(data: bytes) -> tuple[str | None, dict[str, Any]]:
     meta: dict[str, Any] = {
         "grid": "3x3",
         "patch_count": 9,
-        "note": "ponytail: fixed center-region grid; not OpenSlide pyramid",
+        "note": "3x3 center grid",
         "patches": [],
     }
 
@@ -469,7 +464,6 @@ def _build_histopath_patches(data: bytes) -> tuple[str | None, dict[str, Any]]:
         return (base64.b64encode(data).decode("ascii") if data else None, meta)
 
     w, h = img.size
-    # Center crop 60% then 3x3 grid
     cw, ch = int(w * 0.6), int(h * 0.6)
     left, top = (w - cw) // 2, (h - ch) // 2
     crop = img.crop((left, top, left + cw, top + ch))
@@ -493,7 +487,6 @@ def _grid_montage(images: list[Any], cols: int = 4) -> Any:
 
     if not images:
         raise ValueError("no images")
-    # Normalize tile size
     tw = min(img.width for img in images)
     th = min(img.height for img in images)
     tiles = [img.resize((tw, th)) for img in images]
@@ -621,7 +614,6 @@ def _extract_pdf_text(request: AnalyzeRequest) -> str:
     except Exception as exc:  # noqa: BLE001
         logger.info("lab_ocr extract skipped: %s", exc)
 
-    # Legacy fallbacks kept for environments without lab_ocr deps
     try:
         from pypdf import PdfReader  # type: ignore
 
@@ -680,11 +672,7 @@ def _scrub_phi(text: str) -> str:
 
 
 def _regex_parse_lab(text: str) -> dict[str, Any]:
-    """ponytail: naive name/value extractor; Modal path preferred for messy PDFs.
-
-    OCR often emits label and value on separate lines, so allow up to ~80 chars
-    of non-digit gap (newlines/spaces/units noise).
-    """
+    """Extract biomarkers with regex; allow label/value on nearby lines."""
     biomarkers: list[dict[str, Any]] = []
     findings: list[dict[str, Any]] = []
 
@@ -748,7 +736,6 @@ def _regex_parse_lab(text: str) -> dict[str, Any]:
 
 
 def _call_modal(path: str, payload: dict[str, Any]) -> dict[str, Any]:
-    # Single Modal web endpoint; path maps to payload["route"]
     modal_url = _modal_url()
     if not modal_url:
         raise RuntimeError("SIHAT_AI_MODAL_URL is not set")

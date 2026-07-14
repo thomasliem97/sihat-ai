@@ -98,7 +98,6 @@ class SimilarCaseService
             return $this->rag->cosineSimilarity($queryEmbedding, $candidateEmbedding);
         }
 
-        // ponytail: lexical fallback when embeddings missing; upgrade by ensuring findings_embedding on complete
         $hay = mb_strtolower($this->embeddingText($candidate));
         $terms = preg_split('/\W+/u', mb_strtolower($queryText), -1, PREG_SPLIT_NO_EMPTY) ?: [];
         if ($terms === []) {

@@ -71,7 +71,6 @@ def _load_image(payload: dict[str, Any]):
     try:
         return Image.open(BytesIO(raw)).convert("RGB")
     except Exception:
-        # Fallback when FastAPI ever forwards raw DICOM
         try:
             import pydicom
             import numpy as np
@@ -376,7 +375,6 @@ class MedGemmaModel:
             "ophthalmology",
         }
         if modality == "other" or modality not in allowed:
-            # ponytail: ambiguous → soft xray default so Laravel/FastAPI can still re-route
             modality = "xray"
             confidence = min(confidence, 0.5)
         return {

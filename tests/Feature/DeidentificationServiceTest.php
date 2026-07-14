@@ -55,8 +55,6 @@ test('jpeg exif strip rewrites image bytes when gd available', function () {
         'original_filename' => 'test.jpg',
     ]);
 
-    // Point storage path to fake disk absolute path via override; use real path helper
-    // Storage::fake doesn't provide real GD rewrite path easily; assert service runs without error.
     expect(fn () => app(DeidentificationService::class)->deidentify($record->fresh()))
         ->not->toThrow(Throwable::class);
 });

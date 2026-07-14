@@ -1,8 +1,4 @@
-"""Decode DICOM bytes to RGB PIL images for MedGemma / montage.
-
-ponytail: single-frame + multi-frame mid-slice window; not a full PACS viewer.
-Ceiling: compressed transfer syntaxes need pylibjpeg plugins; uncompressed works with pydicom+numpy only.
-"""
+"""Decode DICOM bytes to RGB images for analysis montages."""
 
 from __future__ import annotations
 
@@ -20,7 +16,6 @@ def looks_like_dicom(data: bytes, filename: str = "", mime: str = "") -> bool:
         return True
     if len(data) >= 132 and data[128:132] == b"DICM":
         return True
-    # Some Implicit VR files omit the preamble
     return b"DICM" in data[:512]
 
 
@@ -50,7 +45,7 @@ def decode_dicom_frames(
         "transfer_syntax": None,
         "slice_count": 0,
         "used_slices": [],
-        "note": "ponytail: mid-slice DICOM decode (max 8); not a full 3D viewer",
+        "note": "Mid-slice DICOM decode (max 8)",
     }
 
     ds = pydicom.dcmread(BytesIO(data), force=True)
@@ -92,7 +87,6 @@ def dicom_to_jpeg_bytes(data: bytes, *, quality: int = 90) -> tuple[bytes, dict[
         images[0].save(buf, format="JPEG", quality=quality)
         return buf.getvalue(), meta
 
-    # Lazy import montage helper from caller context avoided — simple horizontal strip
     widths, heights = zip(*(im.size for im in images), strict=True)
     montage_w = sum(widths)
     montage_h = max(heights)
@@ -116,9 +110,7 @@ def _normalize_frames(arr: Any) -> list[Any]:
     if a.ndim == 2:
         return [a]
     if a.ndim == 3:
-        # (frames, H, W) or (H, W, channels)
         if a.shape[-1] in (3, 4) and a.shape[0] > 4:
-            # ambiguous; prefer frames-first when first dim is smallish
             if a.shape[0] <= 512 and a.shape[0] < a.shape[1]:
                 return [a[i] for i in range(a.shape[0])]
             return [a]
@@ -126,7 +118,6 @@ def _normalize_frames(arr: Any) -> list[Any]:
             return [a]
         return [a[i] for i in range(a.shape[0])]
     if a.ndim == 4:
-        # (frames, H, W, C)
         return [a[i] for i in range(a.shape[0])]
     return [a.reshape(a.shape[-2], a.shape[-1])]
 

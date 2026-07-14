@@ -60,7 +60,6 @@ test('remote pipeline accepts analyze job via Http fake', function () {
 
     Http::assertSent(fn ($request) => str_contains($request->url(), '/api/v1/analyze'));
 
-    // Simulate FastAPI webhook completion
     $result = $pipeline->completeFromWebhook($record->fresh(), $job->fresh(), [
         'findings' => [
             [

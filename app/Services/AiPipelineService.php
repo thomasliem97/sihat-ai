@@ -432,7 +432,6 @@ class AiPipelineService
             }
             $delta = $value - (float) $old->value;
             $change = abs($delta) < 0.05 * max(abs((float) $old->value), 1) ? 'stable' : ($delta > 0 ? 'worse' : 'improved');
-            // ponytail: "worse/improved" ignores directionality of each analyte; upgrade with per-marker polarity
             $changes[] = [
                 'finding' => $marker['name'] ?? $name,
                 'change' => $change,
@@ -487,7 +486,6 @@ class AiPipelineService
         }
 
         if (str_contains($mime, 'image')) {
-            // ponytail: default imaging guess; FastAPI may refine via MedGemma classify
             return ['modality' => Modality::Xray, 'confidence' => 0.55];
         }
 
@@ -495,7 +493,7 @@ class AiPipelineService
     }
 
     /**
-     * Specific-first filename/zip routing shared with the FastAPI keyword fallback.
+     * Filename / zip modality routing shared with FastAPI.
      *
      * @return array{modality: Modality, confidence: float}|null
      */
@@ -513,7 +511,6 @@ class AiPipelineService
             return ['modality' => Modality::Histopath, 'confidence' => 0.85];
         }
 
-        // CT before chest/xray so names like chest_ct_slice route correctly
         if ($this->filenameContainsAny($filename, ['hrct', 'computed tomography', 'computed_tomography'])
             || str_contains($filename, 'ct')) {
             return ['modality' => Modality::Ct, 'confidence' => 0.85];
@@ -565,7 +562,6 @@ class AiPipelineService
     }
 
     /**
-     * ponytail: scan DICOM bytes for Modality (0008,0060) / common codes; no pydicom.
      */
     private function modalityFromDicomFile(MedicalRecord $record): ?Modality
     {
@@ -579,12 +575,10 @@ class AiPipelineService
             return null;
         }
 
-        // Explicit VR Modality element often appears as "CS" + padded code near tag 0008,0060
         if (preg_match('/\x08\x00\x60\x00CS(.{2})([A-Z]{2})/s', $bytes, $m) === 1) {
             return $this->mapDicomModalityCode(trim($m[2]));
         }
 
-        // Implicit VR / loose ASCII codes common in test fixtures
         if (preg_match('/\b(CT|MR|CR|DX|PX|XA|RF|MG|US|PT|NM)\b/', $bytes, $m) === 1) {
             return $this->mapDicomModalityCode($m[1]);
         }
@@ -602,8 +596,6 @@ class AiPipelineService
     }
 
     /**
-     * Confidence bands: publish ≥0.80 · hedge 0.50–0.80 · abstain <0.50
-     *
      * @param  array<string, mixed>  $result
      * @return array{code: string, flags: list<string>}
      */
@@ -711,7 +703,6 @@ class AiPipelineService
             'guardrail_code' => $code,
         ];
 
-        // Hard veto: WARN never releases patient copy from compose
         $patientReport = null;
         if (! $warn && ! $abstain && ! $critical) {
             $patientReport = [

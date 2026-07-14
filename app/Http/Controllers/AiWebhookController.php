@@ -109,7 +109,6 @@ class AiWebhookController extends Controller
         $secret = (string) config('services.sihat_ai.webhook_secret');
 
         if ($secret === '') {
-            // ponytail: empty secret only for local stub tests; production must set SIHAT_AI_WEBHOOK_SECRET
             return app()->environment('local', 'testing');
         }
 

@@ -1,9 +1,4 @@
-"""OCR image-only lab PDFs (and page images) for biomarker extraction.
-
-ponytail: RapidOCR ONNX first; optional pytesseract if system Tesseract exists.
-Ceiling: table cells OCR as separate tokens; join + regex, not full table reconstruction.
-Upgrade path: layout-aware table parser or MedGemma vision-on-page.
-"""
+"""OCR image-only lab PDFs for biomarker extraction."""
 
 from __future__ import annotations
 
@@ -122,7 +117,6 @@ def _ocr_rapid(img: Any) -> str:
         logger.warning("RapidOCR failed: %s", exc)
         return ""
 
-    # RapidOCROutput.txts or legacy list of (box, text, score)
     txts = getattr(result, "txts", None)
     if txts:
         return "\n".join(str(t) for t in txts if t)

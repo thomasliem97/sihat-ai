@@ -32,7 +32,7 @@ test('ct webhook result persists volume_meta', function () {
         'volume_meta' => [
             'slice_count' => 24,
             'used_slices' => [8, 9, 10, 11, 12, 13, 14, 15],
-            'note' => 'ponytail: mid-slice montage (max 8); not a full 3D viewer',
+            'note' => 'Mid-slice montage (max 8)',
         ],
         'overall_confidence' => 0.81,
         'engine' => 'medgemma',
@@ -76,7 +76,7 @@ test('histopath webhook result persists patch_meta', function () {
         'patch_meta' => [
             'grid' => '3x3',
             'patch_count' => 9,
-            'note' => 'ponytail: fixed center-region grid; not OpenSlide pyramid',
+            'note' => '3x3 center grid',
         ],
         'overall_confidence' => 0.78,
         'engine' => 'medgemma',
