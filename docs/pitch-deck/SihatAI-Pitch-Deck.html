@@ -1,0 +1,2259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>SihatAI · Multimodal Medical Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --stage-bg: #d9eef5;
+      --slide-bg: #f3fbfd;
+      --paper: #ffffff;
+      --paper-blue: #e4f5fa;
+      --paper-deep: #ccebf3;
+      --ink: #102f4a;
+      --ink-soft: #48697d;
+      --ink-faint: #7795a6;
+      --blue: #176ca5;
+      --blue-dark: #0c527f;
+      --teal: #0b8994;
+      --mint: #67c8ba;
+      --coral: #f26b5e;
+      --amber: #eab941;
+      --green: #2e9d78;
+      --line: #bddce6;
+      --line-strong: #83bdcf;
+      --shadow: 0 24px 70px rgba(25, 87, 115, .14);
+      --font-display: "Bricolage Grotesque", sans-serif;
+      --font-mono: "Azeret Mono", monospace;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--stage-bg, #000);
+    }
+
+    .deck-viewport {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        background: var(--stage-bg, #000);
+    }
+
+    .deck-stage {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        transform-origin: 0 0;
+        background: var(--slide-bg, #fff);
+    }
+
+    .slide {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        background: var(--slide-bg, #fff);
+    }
+
+    .slide.active,
+    .slide.visible {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 1;
+    }
+
+    img,
+    video,
+    canvas,
+    svg {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .deck-controls {
+        position: fixed;
+        left: 50%;
+        bottom: 22px;
+        transform: translateX(-50%);
+        z-index: 1000;
+    }
+
+    @media print {
+        html,
+        body {
+            width: 1920px;
+            height: auto;
+            overflow: visible;
+            background: #fff;
+        }
+
+        .deck-viewport {
+            position: static;
+            overflow: visible;
+            background: #fff;
+        }
+
+        .deck-stage {
+            position: static;
+            width: auto;
+            height: auto;
+            transform: none !important;
+            background: none;
+        }
+
+        .slide {
+            position: relative;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            width: 1920px;
+            height: 1080px;
+            break-after: page;
+            page-break-after: always;
+        }
+
+        .slide:last-child {
+            break-after: auto;
+            page-break-after: auto;
+        }
+
+        .deck-controls {
+            display: none !important;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.2s !important;
+        }
+    }
+
+
+    body {
+      color: var(--ink);
+      font-family: var(--font-display);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .slide {
+      padding: 68px 84px 62px;
+      background:
+        linear-gradient(rgba(16, 92, 130, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 92, 130, .055) 1px, transparent 1px),
+        radial-gradient(circle at 88% 3%, rgba(105, 203, 218, .27), transparent 27%),
+        #f3fbfd;
+      background-size: 48px 48px, 48px 48px, auto, auto;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(23, 108, 165, .18);
+      border-radius: 40px;
+      pointer-events: none;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -72px;
+      bottom: -84px;
+      border: 28px solid rgba(23, 108, 165, .06);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    h1, h2, h3, p, pre { margin: 0; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    h1 {
+      font-size: 112px;
+      line-height: .93;
+      letter-spacing: -6px;
+      font-weight: 750;
+    }
+
+    h2 {
+      font-size: 68px;
+      line-height: 1;
+      letter-spacing: -3.5px;
+      font-weight: 720;
+    }
+
+    h3 {
+      font-size: 30px;
+      line-height: 1.12;
+      letter-spacing: -1px;
+    }
+
+    .display-accent { color: var(--blue); }
+    .display-soft { color: #6c91a4; }
+    .display-coral { color: var(--coral); }
+
+    .topline {
+      position: relative;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .brand-mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: white;
+      background: var(--blue);
+      border-radius: 50% 50% 46% 54%;
+      box-shadow: 9px 8px 0 var(--paper-deep);
+      font: 700 18px/1 var(--font-mono);
+    }
+
+    .brand-ai { color: var(--blue); }
+
+    .section-tag,
+    .micro-label,
+    .page-no {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--blue);
+    }
+
+    .section-tag::before {
+      content: "";
+      width: 26px;
+      border-top: 3px solid var(--coral);
+    }
+
+    .page-no { color: var(--ink-faint); }
+
+    .title-row {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 54px;
+    }
+
+    .subtitle {
+      max-width: 820px;
+      margin-top: 20px;
+      color: var(--ink-soft);
+      font-size: 24px;
+      line-height: 1.48;
+    }
+
+    .ink-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      color: var(--blue-dark);
+      background: rgba(255, 255, 255, .8);
+      border: 1px solid var(--line-strong);
+      border-radius: 12px 18px 14px 10px;
+      box-shadow: 5px 5px 0 var(--paper-deep);
+      font: 600 13px/1 var(--font-mono);
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      transform: rotate(-1deg);
+    }
+
+    .ink-note::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .hairline { border-top: 1px solid var(--line); }
+
+
+    .reveal,
+    .reveal-left,
+    .reveal-scale {
+      opacity: 0;
+      transition:
+        opacity .65s var(--ease),
+        transform .65s var(--ease),
+        filter .65s var(--ease);
+    }
+
+    .reveal { transform: translateY(28px); }
+    .reveal-left { transform: translateX(-38px); }
+    .reveal-scale { transform: scale(.94); filter: blur(5px); }
+
+    .slide.visible .reveal,
+    .slide.visible .reveal-left,
+    .slide.visible .reveal-scale,
+    .slide.active .reveal,
+    .slide.active .reveal-left,
+    .slide.active .reveal-scale {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+    .d5 { transition-delay: .40s; }
+    .d6 { transition-delay: .48s; }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+      50% { transform: translateY(-10px) rotate(var(--tilt, 0deg)); }
+    }
+
+    @keyframes trace {
+      to { stroke-dashoffset: -32; }
+    }
+
+    @keyframes breathe {
+      50% { transform: scale(1.04); opacity: .72; }
+    }
+
+
+    .paper-panel {
+      position: relative;
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .paper-panel::before {
+      content: "";
+      position: absolute;
+      width: 64px;
+      height: 18px;
+      top: -9px;
+      left: 50%;
+      background: rgba(181, 221, 231, .66);
+      transform: translateX(-50%) rotate(-1deg);
+    }
+
+    .specimen-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--ink-faint);
+      font: 600 12px/1 var(--font-mono);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .specimen-label b { color: var(--blue); font-weight: 700; }
+
+    .icon-disc {
+      display: grid;
+      place-items: center;
+      width: 62px;
+      height: 62px;
+      color: var(--blue);
+      background: var(--paper-blue);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+
+    .icon-disc svg,
+    .icon-disc .lucide {
+      width: 31px;
+      height: 31px;
+      stroke-width: 2;
+    }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pill {
+      padding: 10px 15px;
+      color: var(--blue-dark);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font: 600 13px/1 var(--font-mono);
+    }
+
+    .pill.teal { color: #086772; background: #dcf5f2; border-color: #9edbd5; }
+    .pill.coral { color: #9e3e36; background: #fff0ed; border-color: #f5b4ac; }
+    .pill.amber { color: #846311; background: #fff8d9; border-color: #ead77e; }
+
+    .connector-svg {
+      position: absolute;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .connector-svg path {
+      fill: none;
+      stroke: var(--blue);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 7 10;
+      animation: trace 1.5s linear infinite;
+    }
+
+
+    .slide-hero {
+      background:
+        radial-gradient(circle at 70% 38%, rgba(104, 205, 218, .3), transparent 30%),
+        linear-gradient(rgba(16, 92, 130, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 92, 130, .055) 1px, transparent 1px),
+        #f4fcfe;
+      background-size: auto, 48px 48px, 48px 48px, auto;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 52% 48%;
+      height: 810px;
+      align-items: center;
+    }
+
+    .hero-copy { padding-left: 32px; }
+    .hero-copy h1 { margin: 30px 0 26px; }
+    .hero-copy .subtitle { max-width: 760px; font-size: 27px; }
+    .hero-copy .pill-row { margin-top: 34px; }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue-dark);
+      font: 600 15px/1 var(--font-mono);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker i {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 8px rgba(242, 107, 94, .13);
+    }
+
+    .hero-atlas {
+      position: relative;
+      height: 720px;
+    }
+
+    .atlas-orbit {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 570px;
+      height: 570px;
+      border: 2px dashed rgba(23, 108, 165, .24);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+    }
+
+    .atlas-orbit::before,
+    .atlas-orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+
+    .atlas-orbit::before { inset: 58px; }
+    .atlas-orbit::after { inset: 128px; border-color: rgba(11, 137, 148, .3); }
+
+    .atlas-core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      display: grid;
+      place-items: center;
+      width: 214px;
+      height: 214px;
+      color: white;
+      background: var(--blue);
+      border: 12px solid white;
+      border-radius: 45% 55% 52% 48%;
+      box-shadow: 0 28px 70px rgba(23, 108, 165, .27), 14px 18px 0 var(--paper-deep);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .atlas-core strong { display: block; font-size: 76px; line-height: .84; letter-spacing: -5px; }
+    .atlas-core small { display: block; margin-top: 12px; font: 600 12px/1.3 var(--font-mono); letter-spacing: 1px; text-transform: uppercase; }
+
+    .atlas-card {
+      --tilt: 0deg;
+      position: absolute;
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      align-items: center;
+      gap: 14px;
+      width: 246px;
+      min-height: 104px;
+      padding: 17px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid var(--line-strong);
+      border-radius: 22px 28px 20px 26px;
+      box-shadow: 9px 11px 0 rgba(173, 216, 228, .72);
+      animation: drift 5.2s ease-in-out infinite;
+    }
+
+    .atlas-card .icon-disc { width: 54px; height: 54px; }
+    .atlas-card .icon-disc svg,
+    .atlas-card .icon-disc .lucide { width: 28px; height: 28px; }
+    .atlas-card b { display: block; font-size: 19px; }
+    .atlas-card small { display: block; margin-top: 6px; color: var(--ink-soft); font: 500 10px/1.35 var(--font-mono); }
+    .atlas-xray { --tilt: -3deg; left: 2px; top: 94px; }
+    .atlas-lab { --tilt: 2deg; right: -4px; top: 120px; animation-delay: -.8s; }
+    .atlas-voice { --tilt: 2deg; left: -8px; bottom: 104px; animation-delay: -1.7s; }
+    .atlas-doc { --tilt: -2deg; right: 4px; bottom: 84px; animation-delay: -2.4s; }
+
+    .hero-footer {
+      position: absolute;
+      z-index: 10;
+      left: 116px;
+      right: 116px;
+      bottom: 56px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      padding-top: 18px;
+      color: var(--ink-faint);
+      border-top: 1px solid var(--line);
+      font: 500 12px/1 var(--font-mono);
+    }
+
+
+    .fracture-wrap {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 126px 1fr 126px 1fr 126px 1fr;
+      align-items: center;
+      margin-top: 66px;
+    }
+
+    .fracture-piece {
+      position: relative;
+      height: 376px;
+      padding: 34px 28px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 10px 14px 0 var(--paper-deep);
+    }
+
+    .fracture-piece:nth-of-type(1) { border-radius: 36px 18px 30px 24px; transform: rotate(-1deg); }
+    .fracture-piece:nth-of-type(2) { border-radius: 24px 34px 18px 30px; transform: rotate(1deg); }
+    .fracture-piece:nth-of-type(3) { border-radius: 30px 20px 36px 18px; transform: rotate(-.7deg); }
+    .fracture-piece:nth-of-type(4) { border-radius: 18px 34px 24px 32px; transform: rotate(.8deg); }
+    .fracture-piece .index { color: var(--coral); font: 700 13px/1 var(--font-mono); letter-spacing: 1px; }
+    .fracture-piece .icon-disc { margin: 48px 0 31px; }
+    .fracture-piece h3 { margin-bottom: 14px; }
+    .fracture-piece p { color: var(--ink-soft); font-size: 19px; line-height: 1.46; }
+
+    .fracture-gap {
+      position: relative;
+      height: 300px;
+    }
+
+    .fracture-gap::before,
+    .fracture-gap::after {
+      content: "";
+      position: absolute;
+      left: 52%;
+      height: 138px;
+      border-left: 3px dashed rgba(242, 107, 94, .62);
+    }
+
+    .fracture-gap::before { top: 0; transform: rotate(17deg); }
+    .fracture-gap::after { bottom: 0; transform: rotate(-17deg); }
+    .fracture-gap span {
+      position: absolute;
+      left: 42px;
+      top: 134px;
+      color: var(--coral);
+      font: 700 12px/1 var(--font-mono);
+      transform: rotate(-90deg);
+      text-transform: uppercase;
+    }
+
+    .opportunity-ribbon {
+      position: relative;
+      z-index: 6;
+      display: grid;
+      grid-template-columns: 190px 1fr auto;
+      align-items: center;
+      gap: 28px;
+      margin-top: 48px;
+      padding: 20px 28px;
+      background: #dff3f7;
+      border: 1px solid var(--line-strong);
+      border-radius: 18px 28px 18px 25px;
+      transform: rotate(-.2deg);
+    }
+
+    .opportunity-ribbon span:first-child { color: var(--blue); font: 700 12px/1 var(--font-mono); letter-spacing: 1.3px; }
+    .opportunity-ribbon strong { font-size: 22px; }
+
+
+    .findings-stage {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 520px 1fr 520px;
+      gap: 90px;
+      align-items: center;
+      margin-top: 55px;
+      height: 560px;
+    }
+
+    .persona-sheet {
+      position: relative;
+      min-height: 420px;
+      padding: 34px;
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid var(--line-strong);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .persona-sheet.physician { transform: rotate(-1.2deg); }
+    .persona-sheet.patient { transform: rotate(1.2deg); }
+    .persona-head { display: flex; align-items: center; gap: 18px; }
+    .persona-head .icon-disc { color: white; background: var(--blue); border: 0; }
+    .patient .persona-head .icon-disc { background: var(--teal); }
+    .persona-head small { display: block; margin-bottom: 7px; color: var(--ink-faint); font: 600 11px/1 var(--font-mono); letter-spacing: 1.2px; text-transform: uppercase; }
+    .persona-head b { font-size: 28px; }
+
+    .report-lines { margin-top: 34px; }
+    .report-line {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .report-line b { font-size: 18px; }
+    .report-line small { display: block; margin-top: 5px; color: var(--ink-soft); font-size: 14px; }
+    .confidence-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 6px rgba(46, 157, 120, .11); }
+    .confidence-dot.watch { background: var(--amber); box-shadow: 0 0 0 6px rgba(234, 185, 65, .13); }
+    .patient-summary { margin-top: 34px; color: var(--ink-soft); font-size: 22px; line-height: 1.55; }
+    .patient-summary strong { color: var(--ink); }
+    .next-step { margin-top: 28px; padding: 18px; background: #e8f7f5; border-radius: 18px; color: #176b70; font-size: 17px; }
+
+    .object-capsule {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 430px;
+      height: 430px;
+      margin: auto;
+      border: 2px solid var(--line-strong);
+      border-radius: 48% 52% 44% 56%;
+      background:
+        radial-gradient(circle at 50% 48%, white 0 41%, transparent 42%),
+        conic-gradient(from 15deg, #d7f2f2, #ccebf3, #e3f7fa, #d7f2f2);
+      box-shadow: 0 28px 80px rgba(23, 108, 165, .15);
+    }
+
+    .object-capsule::before {
+      content: "";
+      position: absolute;
+      inset: 36px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 50%;
+      animation: breathe 5s ease-in-out infinite;
+    }
+
+    .object-capsule strong { position: relative; font-size: 82px; line-height: .85; letter-spacing: -5px; color: var(--blue); }
+    .object-capsule span { position: relative; margin-top: 18px; color: var(--ink-soft); font: 600 13px/1.4 var(--font-mono); text-align: center; text-transform: uppercase; }
+    .object-capsule code { position: relative; margin-top: 24px; padding: 10px 14px; background: var(--ink); color: #c8f4ef; border-radius: 10px; font: 500 11px/1 var(--font-mono); }
+
+    .findings-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      width: 118px;
+      height: 3px;
+      overflow: visible;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--blue) 0 8px,
+        transparent 8px 14px
+      );
+      transform: translateY(-50%);
+    }
+    .findings-arrow.left { left: 518px; }
+    .findings-arrow.right { right: 518px; }
+    .findings-arrow::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -1px;
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 12px solid var(--blue);
+      transform: translateY(-50%);
+    }
+    .findings-arrow.left::after {
+      right: auto;
+      left: -1px;
+      border-left: 0;
+      border-right: 12px solid var(--blue);
+    }
+
+    .product-steps {
+      position: relative;
+      z-index: 8;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: -12px;
+    }
+
+    .product-steps span {
+      padding: 10px 16px;
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, .8);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font: 600 11px/1 var(--font-mono);
+      text-transform: uppercase;
+    }
+    .product-steps i { align-self: center; color: var(--coral); font-style: normal; }
+
+
+    .app-cutaway {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      height: 600px;
+      margin-top: 46px;
+      overflow: hidden;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--line-strong);
+      border-radius: 34px;
+      box-shadow: 18px 24px 0 var(--paper-deep), 0 34px 80px rgba(23, 108, 165, .16);
+      transform: rotate(-.25deg);
+    }
+
+    .app-rail {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      color: white;
+      background: var(--blue-dark);
+    }
+
+    .app-rail-logo { display: grid; place-items: center; margin-bottom: 28px; }
+    .app-rail-logo .brand-mark { width: 36px; height: 36px; font-size: 15px; box-shadow: none; }
+    .rail-icon { display: grid; place-items: center; width: 44px; height: 44px; margin: 8px 0; color: #b8d9e7; border-radius: 15px; }
+    .rail-icon.active { color: var(--blue-dark); background: #dff4f8; box-shadow: 5px 5px 0 #79bacd; }
+    .rail-icon svg,
+    .rail-icon .lucide { width: 21px; height: 21px; stroke-width: 2; }
+    .rail-avatar { position: absolute; left: 50%; bottom: 20px; display: grid; place-items: center; width: 40px; height: 40px; color: var(--blue-dark); background: #dff4f8; border-radius: 50%; font: 700 10px/1 var(--font-mono); transform: translateX(-50%); }
+
+    .app-shell { background: #f7fbfc; }
+    .app-bar { display: flex; align-items: center; justify-content: space-between; height: 88px; padding: 0 30px; background: white; border-bottom: 1px solid #dcebef; }
+    .app-bar small { display: block; margin-bottom: 7px; color: #7b98a8; font: 600 9px/1 var(--font-mono); letter-spacing: .8px; }
+    .app-bar b { font-size: 18px; }
+    .persona-toggle { display: flex; padding: 4px; background: #e8f2f5; border-radius: 13px; }
+    .persona-toggle span { padding: 9px 15px; color: #77909e; font-size: 12px; }
+    .persona-toggle .selected { color: white; background: var(--blue); border-radius: 10px; }
+
+    .app-body { display: grid; grid-template-columns: 47% 53%; height: 512px; }
+    .viewer { position: relative; margin: 20px 10px 20px 20px; overflow: hidden; background: #102a3a; border-radius: 20px; }
+    .viewer-toolbar { display: flex; justify-content: space-between; padding: 15px 18px; color: #b4ccd7; border-bottom: 1px solid rgba(255,255,255,.1); font: 500 10px/1 var(--font-mono); }
+    .xray-stage { position: relative; height: 424px; overflow: hidden; background: #0a1a24; }
+    .scan-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .finding-box { position: absolute; z-index: 2; left: 12%; bottom: 11%; width: 28%; height: 38%; border: 3px solid #f7cb54; background: rgba(247, 203, 84, .08); }
+    .finding-box span { position: absolute; top: -29px; left: -3px; padding: 8px 10px; color: #25323a; background: #f7cb54; font: 700 9px/1 var(--font-mono); white-space: nowrap; }
+
+    .report-board { padding: 23px 24px 20px 16px; }
+    .report-summary { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; background: #e4f4f7; border-radius: 17px; }
+    .report-summary small { display: block; color: #6e8d9e; font: 600 8px/1 var(--font-mono); }
+    .report-summary strong { display: block; margin-top: 5px; color: var(--blue-dark); font-size: 32px; }
+    .complete-badge { padding: 8px 11px; color: #146c55; background: #d8f3e9; border-radius: 999px; font: 700 8px/1 var(--font-mono); }
+    .app-finding { padding: 19px 3px; border-bottom: 1px solid #dce9ed; }
+    .app-finding .finding-title { display: flex; align-items: center; justify-content: space-between; }
+    .app-finding b { font-size: 15px; }
+    .app-finding p { margin: 7px 0 11px; color: #66818f; font-size: 12px; }
+    .app-finding .pill { padding: 6px 8px; font-size: 8px; }
+    .confidence-bar { height: 7px; overflow: hidden; background: #dcebef; border-radius: 99px; }
+    .confidence-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--blue)); border-radius: inherit; }
+    .citation { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; margin-top: 18px; padding: 14px; background: #edf6ff; border: 1px solid #c8dff0; border-radius: 14px; font-size: 11px; }
+    .citation span { padding: 6px; color: white; background: var(--blue); border-radius: 7px; font: 700 8px/1 var(--font-mono); }
+    .citation b { color: var(--blue); font: 700 9px/1 var(--font-mono); }
+    .feature-ribbon { position: relative; z-index: 6; display: flex; justify-content: center; gap: 58px; margin-top: 39px; color: var(--ink-soft); font: 600 13px/1 var(--font-mono); }
+    .feature-ribbon span::before { content: "↳"; margin-right: 9px; color: var(--coral); font-weight: 800; }
+
+
+    .metro-map {
+      position: relative;
+      z-index: 5;
+      height: 590px;
+      margin-top: 43px;
+      padding: 46px 54px;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      box-shadow: 14px 17px 0 var(--paper-deep);
+    }
+
+    .metro-lane { position: relative; display: grid; grid-template-columns: 160px repeat(3, 1fr); align-items: center; height: 150px; }
+    .metro-lane + .metro-lane { margin-top: 0; }
+    .lane-name { color: var(--blue-dark); font: 700 13px/1.4 var(--font-mono); letter-spacing: 1.2px; text-transform: uppercase; }
+    .lane-track { position: absolute; left: 174px; right: 34px; top: 73px; height: 8px; border-radius: 9px; background: var(--blue); }
+    .lane-track.ai { background: var(--teal); }
+
+    .station {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 260px;
+      height: 112px;
+      margin: auto;
+      background: white;
+      border: 2px solid var(--blue);
+      border-radius: 23px 29px 21px 26px;
+      box-shadow: 7px 8px 0 #d6ecf2;
+      text-align: center;
+    }
+    .metro-lane.ai .station { border-color: var(--teal); }
+    .station::after { content: ""; position: absolute; left: 50%; bottom: -23px; width: 20px; height: 20px; background: white; border: 5px solid currentColor; border-radius: 50%; transform: translateX(-50%); color: var(--blue); }
+    .metro-lane.ai .station::after { color: var(--teal); }
+    .station b { font-size: 20px; }
+    .station small { margin-top: 7px; color: var(--ink-soft); font: 500 12px/1.35 var(--font-mono); }
+
+    .metro-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 58px;
+      margin: 4px 0 4px 160px;
+    }
+
+    .async-contract {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 11px 18px;
+      background: #fffaf4;
+      border: 1px solid #efd7b3;
+      border-radius: 999px;
+      box-shadow: 5px 6px 0 #f3e6cf;
+    }
+
+    .async-contract code {
+      color: var(--coral);
+      font: 700 11px/1 var(--font-mono);
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .async-contract .link-bridge {
+      position: relative;
+      width: 42px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .async-contract .link-bridge::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 18px;
+      background: var(--coral);
+      transform: translateX(-50%);
+      border-radius: 99px;
+    }
+
+    .async-contract .link-bridge::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -1px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 7px solid var(--coral);
+      transform: translateX(-50%);
+    }
+
+    .storage-stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 32px; }
+    .storage-stop { position: relative; padding: 20px 22px 18px 48px; background: #e8f4f7; border: 1px solid var(--line); border-radius: 18px; }
+    .storage-stop::before { content: ""; position: absolute; left: 20px; top: 24px; width: 13px; height: 13px; background: var(--amber); border-radius: 50%; }
+    .storage-stop b { display: block; font-size: 16px; }
+    .storage-stop small { display: block; margin-top: 6px; color: var(--ink-soft); font: 500 11px/1.3 var(--font-mono); }
+
+
+    .relay {
+      position: relative;
+      z-index: 5;
+      height: 480px;
+      margin-top: 58px;
+    }
+
+    .relay-track {
+      position: absolute;
+      left: 93px;
+      right: 93px;
+      top: 223px;
+      height: 16px;
+      z-index: 1;
+    }
+
+    .relay-rail {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 2px;
+      transform: translateY(-50%);
+      background: linear-gradient(90deg, rgba(23, 108, 165, .25), rgba(23, 108, 165, .45) 50%, rgba(26, 138, 130, .45));
+      border-radius: 99px;
+    }
+
+    .relay-dot {
+      position: absolute;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      background: white;
+      border: 3px solid var(--blue);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(23, 108, 165, .1);
+      transform: translate(-50%, -50%);
+    }
+
+    .relay-dot:nth-child(2) { left: 48px; }
+    .relay-dot:nth-child(3) { left: 342px; }
+    .relay-dot:nth-child(4) { left: 636px; }
+    .relay-dot:nth-child(5) { left: 930px; }
+    .relay-dot:nth-child(6) { left: 1224px; width: 14px; height: 14px; border-color: var(--coral); box-shadow: 0 0 0 5px rgba(228, 98, 88, .12); }
+    .relay-dot:nth-child(7) { left: 1518px; border-color: var(--teal); box-shadow: 0 0 0 5px rgba(26, 138, 130, .12); }
+
+    .relay-agent {
+      position: absolute;
+      top: 98px;
+      width: 222px;
+      text-align: center;
+      z-index: 2;
+    }
+    .relay-agent:nth-child(2) { left: 30px; }
+    .relay-agent:nth-child(3) { left: 324px; top: 243px; }
+    .relay-agent:nth-child(4) { left: 618px; }
+    .relay-agent:nth-child(5) { left: 912px; top: 243px; }
+    .relay-agent:nth-child(6) { left: 1206px; }
+    .relay-agent:nth-child(7) { left: 1500px; top: 243px; }
+
+    .relay-agent::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(23, 108, 165, .08), rgba(23, 108, 165, .35));
+      border-radius: 99px;
+      z-index: -1;
+    }
+
+    .relay-agent:nth-child(2)::after,
+    .relay-agent:nth-child(4)::after,
+    .relay-agent:nth-child(6)::after { top: 112px; height: 21px; }
+
+    .relay-agent:nth-child(3)::after,
+    .relay-agent:nth-child(5)::after,
+    .relay-agent:nth-child(7)::after { top: -12px; height: 12px; background: linear-gradient(180deg, rgba(23, 108, 165, .35), rgba(23, 108, 165, .08)); }
+
+    .agent-token {
+      display: grid;
+      place-items: center;
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 17px;
+      color: white;
+      background: var(--blue);
+      border: 9px solid white;
+      border-radius: 42% 58% 50% 50%;
+      box-shadow: 9px 10px 0 var(--paper-deep), 0 20px 40px rgba(23, 108, 165, .14);
+    }
+    .relay-agent:nth-child(2) .agent-token,
+    .relay-agent:nth-child(4) .agent-token,
+    .relay-agent:nth-child(6) .agent-token { margin-bottom: 42px; }
+    .relay-agent:nth-child(even) .agent-token { background: var(--teal); border-radius: 55% 45% 43% 57%; }
+    .relay-agent.guard .agent-token { background: var(--coral); }
+    .agent-token svg,
+    .agent-token .lucide { width: 48px; height: 48px; stroke-width: 1.75; }
+    .relay-agent b { display: block; font-size: 20px; }
+    .relay-agent small { display: block; margin-top: 7px; color: var(--ink-soft); font: 500 12px/1.35 var(--font-mono); }
+    .relay-agent code { display: inline-block; margin-top: 10px; padding: 6px 8px; color: var(--blue-dark); background: white; border: 1px solid var(--line); border-radius: 8px; font: 500 11px/1 var(--font-mono); }
+
+    .trace-tape {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 180px repeat(6, 1fr);
+      align-items: stretch;
+      margin-top: -12px;
+      overflow: hidden;
+      background: var(--ink);
+      border-radius: 18px 28px 18px 24px;
+      box-shadow: 10px 12px 0 #b8dbe5;
+    }
+    .trace-tape > div { padding: 18px 16px; border-right: 1px solid rgba(255,255,255,.13); }
+    .trace-tape > div:last-child { border: 0; }
+    .trace-head { color: #a7d7df; font: 700 11px/1.35 var(--font-mono); }
+    .trace-hop span { display: block; color: #70c9cf; font: 700 11px/1 var(--font-mono); }
+    .trace-hop code { display: block; margin-top: 8px; color: #e4f7f6; font: 500 11px/1.35 var(--font-mono); }
+
+
+    .specimen-grid {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .specimen {
+      position: relative;
+      height: 520px;
+      padding: 25px;
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid var(--line-strong);
+      border-radius: 26px 34px 24px 31px;
+      box-shadow: 10px 13px 0 var(--paper-deep);
+    }
+    .specimen:nth-child(2), .specimen:nth-child(4) { transform: translateY(20px); }
+    .specimen h3 { margin: 22px 0 18px; font-size: 26px; }
+    .specimen-visual { position: relative; height: 270px; overflow: hidden; background: #0a1a24; border: 1px solid var(--line); border-radius: 20px; }
+    .specimen-visual .scan-image { object-fit: cover; object-position: center; }
+    .coord-visual .scan-image { object-position: 40% 55%; }
+    .specimen footer { margin-top: 19px; color: var(--ink-soft); font: 500 12px/1.45 var(--font-mono); }
+
+
+    .mini-xray .mini-box { position: absolute; z-index: 2; left: 12%; bottom: 12%; width: 28%; height: 34%; border: 3px solid var(--amber); background: rgba(247, 203, 84, .08); }
+    .mini-xray .mini-box::before { content: "0.91"; position: absolute; top: -24px; left: -3px; padding: 6px; color: #26343a; background: var(--amber); font: 700 10px/1 var(--font-mono); }
+
+    .coord-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(rgba(23, 108, 165, .14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 108, 165, .14) 1px, transparent 1px);
+      background-size: 34px 34px;
+      pointer-events: none;
+    }
+
+    .coord-visual .target { position: absolute; z-index: 2; left: 14%; top: 28%; width: 60%; height: 52%; border: 4px solid var(--blue); background: rgba(23, 108, 165, .06); }
+    .coord-visual .target::before { content: "bbox / f1"; position: absolute; top: -30px; left: -4px; padding: 7px; color: white; background: var(--blue); font: 700 10px/1 var(--font-mono); }
+    .coord-visual code { position: absolute; z-index: 2; right: 15px; bottom: 14px; color: #c8dde6; font: 500 11px/1 var(--font-mono); }
+
+    .lab-visual {
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      padding: 8px 14px;
+      background: #f8fcfd;
+    }
+    .lab-row {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      align-items: center;
+      padding: 0 8px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+    .lab-row:last-child { border-bottom: 0; }
+    .lab-row b { color: var(--blue-dark); font: 700 15px/1 var(--font-mono); }
+    .lab-row i { padding: 5px 7px; color: #9d443a; background: #ffebe7; border-radius: 7px; font: 700 10px/1 var(--font-mono); font-style: normal; }
+    .lab-row i.high { color: #8a5a12; background: #fff1d6; }
+    .lab-row i.ok { color: #146c55; background: #d8f3e9; }
+
+    .trend-visual { padding: 18px; background: #eff8fa; }
+    .trend-visual .range { position: absolute; left: 18px; right: 18px; top: 98px; height: 75px; background: rgba(46, 157, 120, .09); border-top: 2px dashed rgba(46, 157, 120, .25); border-bottom: 2px dashed rgba(46, 157, 120, .25); }
+    .trend-visual svg { position: relative; z-index: 2; width: 100%; height: 225px; overflow: visible; }
+
+
+    .grounding-layout {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 56% 44%;
+      gap: 44px;
+      height: 590px;
+      margin-top: 48px;
+    }
+
+    .retrieval-desk { position: relative; padding: 32px; background: rgba(255,255,255,.8); border: 1px solid var(--line); border-radius: 34px; box-shadow: 12px 15px 0 var(--paper-deep); }
+    .query-slip { position: relative; z-index: 3; padding: 23px 25px; background: #fffbe9; border: 1px solid #e7d68a; border-radius: 14px 20px 14px 17px; box-shadow: 5px 6px 0 #eadfba; }
+    .query-slip small { display: block; color: #8e771e; font: 700 10px/1 var(--font-mono); letter-spacing: 1px; }
+    .query-slip b { display: block; margin-top: 13px; font-size: 23px; }
+    .retrieval-path { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+    .retrieve-step { position: relative; padding: 22px 18px; background: #e7f4f7; border: 1px solid var(--line); border-radius: 17px; }
+    .retrieve-step span { color: var(--coral); font: 700 10px/1 var(--font-mono); }
+    .retrieve-step b { display: block; margin-top: 13px; font-size: 18px; }
+    .retrieve-step small { display: block; margin-top: 7px; color: var(--ink-soft); font-size: 12px; line-height: 1.4; }
+    .retrieved-stack { margin-top: 28px; }
+    .source-strip { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 15px; padding: 15px 17px; border-bottom: 1px solid var(--line); }
+    .source-strip b { color: var(--blue); font: 700 12px/1 var(--font-mono); }
+    .source-strip span { font-size: 15px; }
+    .source-strip em { color: var(--teal); font: 600 11px/1 var(--font-mono); font-style: normal; }
+
+    .malaysia-report { position: relative; padding: 38px; overflow: hidden; background: white; border: 1px solid var(--line-strong); border-radius: 32px 24px 36px 26px; box-shadow: var(--shadow); }
+    .malaysia-watermark { position: absolute; right: -80px; bottom: -55px; width: 430px; color: rgba(23,108,165,.07); }
+    .language-tabs { position: relative; display: inline-flex; gap: 6px; padding: 5px; background: #e4f1f4; border-radius: 13px; }
+    .language-tabs span { padding: 9px 12px; color: var(--ink-faint); font: 600 10px/1 var(--font-mono); }
+    .language-tabs .active { color: white; background: var(--blue); border-radius: 9px; }
+    .malaysia-report > small { position: relative; display: block; margin-top: 40px; color: var(--teal); font: 700 10px/1 var(--font-mono); letter-spacing: 1.2px; }
+    .malaysia-report h3 { position: relative; margin-top: 19px; font-size: 36px; line-height: 1.22; }
+    .malaysia-report p { position: relative; margin-top: 21px; color: var(--ink-soft); font-size: 19px; line-height: 1.55; }
+    .citation-stamp { position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; margin-top: 28px; padding: 15px; background: #edf7ff; border: 1px dashed var(--blue); border-radius: 15px; }
+    .citation-stamp span { color: var(--blue); font: 700 10px/1 var(--font-mono); }
+    .citation-stamp b { font-size: 13px; }
+    .citation-stamp i { color: var(--teal); font: 600 9px/1 var(--font-mono); font-style: normal; }
+    .lora-tag { position: relative; display: flex; align-items: center; gap: 14px; margin-top: 28px; padding-top: 23px; border-top: 1px solid var(--line); }
+    .lora-tag > span { padding: 12px; color: white; background: var(--teal); border-radius: 10px; font: 700 10px/1 var(--font-mono); }
+    .lora-tag b, .lora-tag small { display: block; }
+    .lora-tag b { font-size: 15px; }
+    .lora-tag small { margin-top: 5px; color: var(--ink-soft); font-size: 11px; }
+
+
+    .safety-layout {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 58% 42%;
+      gap: 42px;
+      margin-top: 55px;
+    }
+
+    .safety-valve {
+      position: relative;
+      height: 500px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      box-shadow: 12px 15px 0 var(--paper-deep);
+    }
+
+    .pipe { position: absolute; left: 96px; right: 96px; top: 246px; height: 24px; background: #9ac9d7; border-top: 3px solid #75aec0; border-bottom: 3px solid #75aec0; }
+    .pipe::before, .pipe::after { content: ""; position: absolute; top: -10px; width: 15px; height: 38px; background: var(--blue); border-radius: 5px; }
+    .pipe::before { left: 0; }.pipe::after { right: 0; }
+
+    .input-vial, .output-vial {
+      position: absolute;
+      top: 148px;
+      width: 250px;
+      padding: 24px;
+      background: white;
+      border: 1px solid var(--line-strong);
+      border-radius: 22px;
+      box-shadow: 7px 9px 0 var(--paper-deep);
+    }
+    .input-vial { left: 62px; }
+    .output-vial { right: 62px; }
+    .input-vial small, .output-vial small { color: var(--ink-faint); font: 700 9px/1 var(--font-mono); letter-spacing: 1px; }
+    .input-vial b { display: block; margin-top: 17px; color: var(--coral); font-size: 26px; }
+    .input-vial span { display: block; margin-top: 7px; color: var(--ink-soft); font-size: 12px; }
+    .output-vial b { display: block; margin-top: 15px; color: var(--coral); font-size: 20px; }
+    .output-vial span { display: block; margin-top: 10px; padding: 7px 9px; color: #963d35; background: #ffebe8; border-radius: 7px; font: 700 8px/1 var(--font-mono); }
+
+    .valve-core {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      top: 50%;
+      display: grid;
+      place-items: center;
+      width: 190px;
+      height: 190px;
+      color: white;
+      background: var(--coral);
+      border: 14px solid white;
+      border-radius: 48% 52% 55% 45%;
+      box-shadow: 0 24px 55px rgba(242,107,94,.22), 10px 12px 0 #f2c7c1;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .valve-core svg,
+    .valve-core .lucide { width: 56px; height: 56px; stroke-width: 1.75; }
+    .valve-core b { display: block; margin-top: 4px; font: 700 14px/1 var(--font-mono); }
+    .valve-core small { display: block; margin-top: 6px; font: 600 9px/1 var(--font-mono); }
+
+    .veto-stamp {
+      position: absolute;
+      left: 50%;
+      bottom: 38px;
+      padding: 13px 19px;
+      color: var(--coral);
+      border: 4px double var(--coral);
+      border-radius: 8px;
+      font: 800 15px/1 var(--font-mono);
+      transform: translateX(-50%);
+    }
+
+    .safety-principles { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .principle { min-height: 220px; padding: 26px; background: white; border: 1px solid var(--line); border-radius: 22px 29px 20px 25px; }
+    .principle span { display: grid; place-items: center; width: 38px; height: 38px; color: white; background: var(--blue); border-radius: 50%; font: 700 10px/1 var(--font-mono); }
+    .principle h3 { margin: 26px 0 10px; font-size: 23px; }
+    .principle p { color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
+
+
+    .eval-lab {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 42% 58%;
+      gap: 30px;
+      margin-top: 48px;
+    }
+
+    .gauges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .gauge {
+      position: relative;
+      height: 370px;
+      padding: 26px 18px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 8px 10px 0 var(--paper-deep);
+      text-align: center;
+    }
+    .gauge small { color: var(--ink-faint); font: 700 11px/1.4 var(--font-mono); letter-spacing: .8px; }
+    .gauge-ring { --score: 75; position: relative; display: grid; place-items: center; width: 150px; height: 150px; margin: 43px auto 28px; border-radius: 50%; background: conic-gradient(var(--blue) calc(var(--score) * 1%), #d9edf2 0); }
+    .gauge-ring::before { content: ""; position: absolute; inset: 18px; background: white; border-radius: 50%; }
+    .gauge-ring strong { position: relative; color: var(--blue-dark); font-size: 36px; letter-spacing: -2px; }
+    .gauge-ring sup { font-size: 15px; }
+    .gauge > b { font-size: 18px; }
+    .gauge > p { margin-top: 9px; color: var(--ink-soft); font-size: 12px; }
+
+    .harness {
+      padding: 30px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: 11px 14px 0 var(--paper-deep);
+    }
+    .harness-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+    .harness-head span { color: var(--teal); font: 700 11px/1 var(--font-mono); letter-spacing: 1px; }
+    .harness-head b { font-size: 18px; }
+    .harness-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 24px; }
+    .harness-step { position: relative; min-height: 132px; padding: 18px; background: #e8f4f7; border: 1px solid var(--line); border-radius: 17px; }
+    .harness-step:not(:last-child)::after { content: "→"; position: absolute; right: -18px; top: 50px; z-index: 3; color: var(--coral); font-size: 22px; }
+    .harness-step span { color: var(--coral); font: 700 11px/1 var(--font-mono); }
+    .harness-step b { display: block; margin-top: 19px; font-size: 16px; }
+    .harness-step small { display: block; margin-top: 7px; color: var(--ink-soft); font-size: 12px; line-height: 1.35; }
+
+    .stack-swatch { margin-top: 25px; padding: 20px; color: white; background: var(--ink); border-radius: 18px; }
+    .stack-swatch > small { color: #8fc4d0; font: 700 11px/1 var(--font-mono); letter-spacing: 1px; }
+    .stack-line { display: grid; grid-template-columns: 75px repeat(5, 1fr); gap: 8px; align-items: center; margin-top: 13px; }
+    .stack-line b { color: #79ced0; font: 700 11px/1 var(--font-mono); }
+    .stack-line span { padding: 8px 6px; color: #dff4f5; background: rgba(255,255,255,.08); border-radius: 7px; font: 500 10px/1 var(--font-mono); text-align: center; }
+
+    .slide-advantage {
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(121, 211, 218, .28), transparent 28%),
+        radial-gradient(circle at 82% 88%, rgba(23, 108, 165, .08), transparent 32%),
+        var(--slide-bg);
+    }
+
+    .slide-advantage .title-row {
+      flex-shrink: 0;
+      margin-top: 44px;
+    }
+
+    .slide-advantage h2 { font-size: 62px; letter-spacing: -2.8px; line-height: .98; }
+
+    .advantage-board {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      margin-top: 30px;
+    }
+
+    .advantage-pillars {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      min-height: 0;
+    }
+
+    .advantage-card {
+      --accent: var(--blue);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      padding: 26px 28px 24px 32px;
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 9px 10px 0 var(--paper-deep);
+      overflow: hidden;
+    }
+
+    .advantage-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: var(--accent);
+    }
+
+    .advantage-card:nth-child(2) { --accent: var(--teal); }
+    .advantage-card:nth-child(3) { --accent: var(--coral); }
+    .advantage-card:nth-child(4) {
+      --accent: var(--green);
+      color: white;
+      background: linear-gradient(145deg, #0f5f8f 0%, #0b8994 100%);
+      border-color: rgba(255, 255, 255, .14);
+      box-shadow: 11px 12px 0 rgba(12, 82, 127, .2);
+    }
+
+    .advantage-card:nth-child(4)::before { background: rgba(255, 255, 255, .42); }
+    .advantage-card:nth-child(4) p,
+    .advantage-card:nth-child(4) .advantage-tags li { color: rgba(255, 255, 255, .86); }
+    .advantage-card:nth-child(4) .advantage-tags li { background: rgba(255, 255, 255, .12); border-color: rgba(255, 255, 255, .18); }
+    .advantage-card:nth-child(4) .advantage-icon { background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .22); }
+    .advantage-card:nth-child(4) span { color: rgba(255, 255, 255, .72); }
+
+    .advantage-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .advantage-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      color: white;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 12px 24px rgba(23, 108, 165, .14);
+      flex-shrink: 0;
+    }
+
+    .advantage-icon svg,
+    .advantage-icon .lucide { width: 24px; height: 24px; stroke-width: 2; }
+
+    .advantage-card span {
+      color: var(--accent);
+      font: 700 11px/1 var(--font-mono);
+      letter-spacing: .9px;
+    }
+
+    .advantage-card h3 { margin-top: 18px; font-size: 26px; line-height: 1.1; letter-spacing: -.45px; }
+    .advantage-card p {
+      margin-top: 10px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.48;
+    }
+
+    .advantage-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding: 16px 0 0;
+      list-style: none;
+    }
+
+    .advantage-tags li {
+      padding: 7px 11px;
+      color: var(--blue-dark);
+      background: #edf7fa;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font: 600 9px/1 var(--font-mono);
+      letter-spacing: .35px;
+      text-transform: uppercase;
+    }
+
+    .advantage-rail {
+      flex-shrink: 0;
+      margin-top: 36px;
+      padding: 20px 22px 22px;
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      box-shadow: 8px 9px 0 var(--paper-deep);
+    }
+
+    .advantage-rail > small {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--teal);
+      font: 700 10px/1 var(--font-mono);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .advantage-stops {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .advantage-stop {
+      position: relative;
+      min-height: 92px;
+      padding: 16px 18px;
+      background: #e8f4f7;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .advantage-stop:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      z-index: 2;
+      color: var(--coral);
+      font: 800 20px/1 var(--font-mono);
+      transform: translateY(-50%);
+    }
+
+    .advantage-stop b { display: block; font-size: 18px; line-height: 1.15; }
+    .advantage-stop small { display: block; margin-top: 7px; color: var(--ink-soft); font-size: 12px; line-height: 1.35; }
+
+
+    .slide-close {
+      background:
+        radial-gradient(circle at 50% 42%, rgba(121, 211, 218, .33), transparent 34%),
+        linear-gradient(rgba(16, 92, 130, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 92, 130, .055) 1px, transparent 1px),
+        #f3fbfd;
+      background-size: auto, 48px 48px, 48px 48px, auto;
+    }
+    .close-layout { position: relative; z-index: 5; height: 850px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .close-layout .section-tag { margin-bottom: 28px; }
+    .close-layout h2 { max-width: 1380px; font-size: 92px; line-height: .96; letter-spacing: -5px; }
+    .close-layout > p { max-width: 970px; margin-top: 28px; color: var(--ink-soft); font-size: 25px; line-height: 1.5; }
+
+    .close-orbit { position: absolute; left: 50%; top: 48%; width: 1110px; height: 530px; border: 2px dashed rgba(23,108,165,.17); border-radius: 50%; transform: translate(-50%, -50%) rotate(-5deg); pointer-events: none; }
+    .close-artifact { --tilt: 0deg; position: absolute; display: flex; align-items: center; gap: 12px; padding: 15px 18px; background: white; border: 1px solid var(--line); border-radius: 18px; box-shadow: 7px 8px 0 var(--paper-deep); animation: drift 5s ease-in-out infinite; }
+    .close-artifact svg,
+    .close-artifact .lucide { width: 27px; height: 27px; color: var(--blue); stroke-width: 2; }
+    .close-artifact b { font-size: 15px; }
+    .close-a { --tilt: -3deg; left: 130px; top: 210px; }
+    .close-b { --tilt: 3deg; right: 120px; top: 235px; animation-delay: -1s; }
+    .close-c { --tilt: 2deg; left: 100px; top: 318px; animation-delay: -2s; }
+    .close-d { --tilt: -2deg; right: 96px; top: 343px; animation-delay: -3s; }
+
+    .close-pillars { position: relative; z-index: 6; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; width: 1220px; margin-top: 48px; }
+    .close-pillar { padding: 22px; background: rgba(255,255,255,.84); border: 1px solid var(--line); border-radius: 18px; }
+    .close-pillar span { color: var(--coral); font: 700 11px/1 var(--font-mono); }
+    .close-pillar b { display: block; margin-top: 9px; font-size: 21px; }
+    .close-pillar small { display: block; margin-top: 6px; color: var(--ink-soft); font-size: 13px; }
+
+    .close-footer { position: absolute; z-index: 8; left: 116px; right: 116px; bottom: 55px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 30px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .demo-ready { display: flex; align-items: center; gap: 14px; }
+    .demo-ready i { width: 12px; height: 12px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 7px rgba(46,157,120,.12); }
+    .demo-ready b { display: block; font-size: 16px; }
+    .demo-ready small { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 12px; }
+    .contact-line { color: var(--ink-faint); font: 600 12px/1.3 var(--font-mono); }
+    .contact-line a { color: var(--blue-dark); text-decoration: none; border-bottom: 1px solid rgba(12, 82, 127, .28); }
+    .contact-line a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+
+
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px;
+      color: white;
+      background: rgba(9, 53, 78, .91);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 16px;
+      box-shadow: 0 16px 45px rgba(16, 54, 74, .24);
+      backdrop-filter: blur(15px);
+    }
+
+    .deck-controls button {
+      border: 0;
+      color: white;
+      background: transparent;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      width: 38px;
+      height: 34px;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    .deck-controls button:hover { background: rgba(255,255,255,.12); }
+    .deck-counter { min-width: 72px; color: #c7e4eb; font: 600 10px/1 var(--font-mono); text-align: center; }
+    .progress-track { position: fixed; z-index: 999; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(9,53,78,.12); }
+    .progress-bar { width: 0; height: 100%; background: var(--coral); transition: width .35s var(--ease); }
+
+    @page { size: 13.333333in 7.5in; margin: 0; }
+    html.export .deck-controls,
+    html.export .progress-track { display: none !important; }
+    html.export .reveal,
+    html.export .reveal-left,
+    html.export .reveal-scale { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+    html.export .atlas-card,
+    html.export .close-artifact { animation: none !important; }
+    @media print {
+      .progress-track { display: none !important; }
+      .reveal, .reveal-left, .reveal-scale { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .atlas-card, .close-artifact { animation: none !important; }
+      .slide { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-viewport">
+    <main class="deck-stage" id="deckStage">
+
+      <section class="slide slide-hero active" data-slide="1">
+        <div class="topline">
+          <div class="brand"><span class="brand-mark">S</span><span>Sihat<span class="brand-ai">AI</span></span></div>
+          <span class="section-tag">T2: AI for Healthcare &amp; Medical · MAIC Nexus Challenge</span>
+        </div>
+
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <div class="hero-kicker reveal-left"><i></i> Multimodal medical intelligence</div>
+            <h1 class="reveal d1">From any medical<br>artifact to actual<br><span class="display-accent">clinical report.</span></h1>
+            <p class="subtitle reveal d2">One agentic engine understands imaging, labs, documents and voice, then composes grounded outputs for physicians and patients.</p>
+            <div class="pill-row reveal d3">
+              <span class="pill">Multimodal reasoning</span>
+              <span class="pill teal">Agentic orchestration</span>
+              <span class="pill coral">Malaysia-localized</span>
+            </div>
+          </div>
+
+          <div class="hero-atlas reveal-scale d2" aria-label="Illustration of medical artifacts orbiting one findings object">
+            <div class="atlas-orbit"></div>
+            <div class="atlas-core"><div><strong>01</strong><small>grounded<br>findings object</small></div></div>
+            <div class="atlas-card atlas-xray">
+              <span class="icon-disc"><i data-lucide="scan-line"></i></span>
+              <div><b>Chest X-ray</b><small>vision + localization</small></div>
+            </div>
+            <div class="atlas-card atlas-lab">
+              <span class="icon-disc"><i data-lucide="file-text"></i></span>
+              <div><b>Lab panel</b><small>biomarker extraction</small></div>
+            </div>
+            <div class="atlas-card atlas-voice">
+              <span class="icon-disc"><i data-lucide="mic"></i></span>
+              <div><b>Voice intake</b><small>triage structuring</small></div>
+            </div>
+            <div class="atlas-card atlas-doc">
+              <span class="icon-disc"><i data-lucide="clipboard-list"></i></span>
+              <div><b>Clinical PDF</b><small>notes + discharge summary</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-footer">
+          <span>SihatAI Pitch Deck</span>
+          <span class="page-no">01 / 12</span>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="2">
+        <div class="topline">
+          <span class="section-tag">01 · The gap</span>
+          <span class="page-no">02 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">Medical data is multimodal.<br><span class="display-soft">Every handoff breaks the chain.</span></h2>
+            <p class="subtitle reveal d1">Four gaps stand between what clinicians upload and what patients and doctors can safely act on.</p>
+          </div>
+          <span class="ink-note reveal-scale d2">4 disconnected moments</span>
+        </div>
+
+        <div class="fracture-wrap">
+          <article class="fracture-piece reveal-scale d1">
+            <span class="index">01 / SEE</span>
+            <span class="icon-disc"><i data-lucide="scan-line"></i></span>
+            <h3>Imaging stays invisible</h3>
+            <p>Text-first assistants cannot inspect a film or point to the anatomy behind a finding.</p>
+          </article>
+          <div class="fracture-gap"><span>handoff</span></div>
+          <article class="fracture-piece reveal-scale d2">
+            <span class="index">02 / STRUCTURE</span>
+            <span class="icon-disc"><i data-lucide="file-text"></i></span>
+            <h3>Labs stay unstructured</h3>
+            <p>Hb, WBC, and renal panels get summarized as text, not stored as data you can trend.</p>
+          </article>
+          <div class="fracture-gap"><span>handoff</span></div>
+          <article class="fracture-piece reveal-scale d3">
+            <span class="index">03 / GROUND</span>
+            <span class="icon-disc"><i data-lucide="book-open-text"></i></span>
+            <h3>Context goes missing</h3>
+            <p>Generic answers ignore patient history, Malaysia MOH guidance and local priors.</p>
+          </article>
+          <div class="fracture-gap"><span>handoff</span></div>
+          <article class="fracture-piece reveal-scale d4">
+            <span class="index">04 / EXPLAIN</span>
+            <span class="icon-disc"><i data-lucide="heart-handshake"></i></span>
+            <h3>One voice fits nobody</h3>
+            <p>Clinical language overwhelms patients; simplified output underserves doctors.</p>
+          </article>
+        </div>
+
+        <div class="opportunity-ribbon reveal d5">
+          <span>THE OPPORTUNITY</span>
+          <strong>Replace four handoffs with one safe, grounded source of truth.</strong>
+          <span class="pill teal">Built for Malaysia</span>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="3">
+        <div class="topline">
+          <span class="section-tag">02 · The product</span>
+          <span class="page-no">03 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">One clinical truth.<br><span class="display-accent">Two useful voices.</span></h2>
+            <p class="subtitle reveal d1">SihatAI routes any artifact into one canonical findings object, then adapts the explanation, not the evidence.</p>
+          </div>
+          <span class="ink-note reveal-scale d2">No duplicated inference</span>
+        </div>
+
+        <div class="findings-stage">
+          <article class="persona-sheet physician reveal-scale d2">
+            <div class="persona-head">
+              <span class="icon-disc"><i data-lucide="stethoscope"></i></span>
+              <div><small>Dense + inspectable</small><b>Physician view</b></div>
+            </div>
+            <div class="report-lines">
+              <div class="report-line"><div><b>RLL opacity</b><small>Localized · MOH citation [01]</small></div><span class="confidence-dot"></span></div>
+              <div class="report-line"><div><b>Mild cardiomegaly</b><small>Review recommended</small></div><span class="confidence-dot watch"></span></div>
+              <div class="report-line"><div><b>Confidence + DDx</b><small>Raw scores remain visible</small></div><span class="pill">88%</span></div>
+            </div>
+          </article>
+
+          <div class="findings-arrow left"></div>
+          <div class="object-capsule reveal-scale d1">
+            <strong>{ }</strong>
+            <span>Findings<br>object</span>
+            <code>schema_valid: true</code>
+          </div>
+          <div class="findings-arrow right"></div>
+
+          <article class="persona-sheet patient reveal-scale d3">
+            <div class="persona-head">
+              <span class="icon-disc"><i data-lucide="heart-handshake"></i></span>
+              <div><small>Plain + actionable</small><b>Patient view</b></div>
+            </div>
+            <p class="patient-summary">“There is a change in the <strong>lower part of your right lung</strong>. Your doctor should review it together with your symptoms.”</p>
+            <div class="next-step"><b>Next step</b> · Bring this report and your symptom history to your clinician.</div>
+          </article>
+        </div>
+
+        <div class="product-steps reveal d4">
+          <span>Ingest</span><i>→</i><span>Route</span><i>→</i><span>Analyze</span><i>→</i><span>Ground</span><i>→</i><span>Guard</span><i>→</i><span>Compose</span>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="4">
+        <div class="topline">
+          <span class="section-tag">03 · Product experience</span>
+          <span class="page-no">04 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">The evidence stays<br><span class="display-accent">in the room.</span></h2>
+          </div>
+          <span class="ink-note reveal-scale d2">Conceptual product view</span>
+        </div>
+
+        <div class="app-cutaway reveal-scale d2">
+          <aside class="app-rail">
+            <div class="app-rail-logo"><span class="brand-mark" aria-label="SihatAI">S</span></div>
+            <div class="rail-icon active"><i data-lucide="scan-line"></i></div>
+            <div class="rail-icon"><i data-lucide="file-text"></i></div>
+            <div class="rail-icon"><i data-lucide="chart-line"></i></div>
+            <div class="rail-icon"><i data-lucide="mic"></i></div>
+            <div class="rail-avatar">AR</div>
+          </aside>
+          <div class="app-shell">
+            <div class="app-bar">
+              <div><small>MEDICAL RECORD / MR-2048</small><b>Chest X-ray analysis</b></div>
+              <div class="persona-toggle"><span class="selected">Physician</span><span>Patient</span></div>
+            </div>
+            <div class="app-body">
+              <div class="viewer">
+                <div class="viewer-toolbar"><span>PA CHEST · 2048 × 2048</span><span>100% · OVERLAY ON</span></div>
+                <div class="xray-stage">
+                  <img class="scan-image" src="images/chest-xray.png" alt="PA chest radiograph">
+                  <div class="finding-box"><span>RLL opacity · 91%</span></div>
+                </div>
+              </div>
+              <div class="report-board">
+                <div class="report-summary"><div><small>OVERALL CONFIDENCE</small><strong>88%</strong></div><span class="complete-badge">ANALYSIS COMPLETE</span></div>
+                <div class="app-finding"><div class="finding-title"><b>Right lower lobe opacity</b><span class="pill coral">ABNORMAL</span></div><p>Patchy airspace opacity localized to the right lower zone.</p><div class="confidence-bar"><i style="width:91%"></i></div></div>
+                <div class="app-finding"><div class="finding-title"><b>Mild cardiomegaly</b><span class="pill amber">REVIEW</span></div><p>Cardiothoracic ratio is mildly increased.</p><div class="confidence-bar"><i style="width:84%"></i></div></div>
+                <div class="citation"><span>MOH CPG</span><p>Community Acquired Pneumonia in Adults</p><b>[01]</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-ribbon reveal d4">
+          <span>Bounding-box localization</span><span>Confidence calibration</span><span>Inline citations</span><span>Longitudinal comparison</span>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="5">
+        <div class="topline">
+          <span class="section-tag">04 · System architecture</span>
+          <span class="page-no">05 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">Laravel orchestrates.<br><span class="display-accent">Python reasons.</span></h2>
+            <p class="subtitle reveal d1">A clean asynchronous contract lets product engineering and model inference scale independently.</p>
+          </div>
+          <span class="ink-note reveal-scale d2">One async interchange</span>
+        </div>
+
+        <div class="metro-map reveal-scale d2" aria-label="Metro-map illustration of the SihatAI architecture">
+          <div class="metro-lane">
+            <span class="lane-name">Application<br>line</span>
+            <div class="lane-track"></div>
+            <div class="station"><b>Inertia + Vue</b><small>dual-persona interface</small></div>
+            <div class="station"><b>Laravel 13</b><small>auth · policy · API</small></div>
+            <div class="station"><b>Queue Job</b><small>retry · state · webhook</small></div>
+          </div>
+          <div class="metro-link" aria-label="Async contract between application and AI lines">
+            <div class="async-contract">
+              <code>POST /analyze</code>
+              <span class="link-bridge" aria-hidden="true"></span>
+              <code>signed webhook</code>
+            </div>
+          </div>
+          <div class="metro-lane ai">
+            <span class="lane-name">AI intelligence<br>line</span>
+            <div class="lane-track ai"></div>
+            <div class="station"><b>FastAPI</b><small>Pydantic contract</small></div>
+            <div class="station"><b>Agent Graph</b><small>typed state machine</small></div>
+            <div class="station"><b>MedGemma 1.5</b><small>4B multimodal</small></div>
+          </div>
+          <div class="storage-stops">
+            <div class="storage-stop"><b>Clinical records</b><small>MySQL · findings · trends</small></div>
+            <div class="storage-stop"><b>Artifacts</b><small>DICOM · images · PDFs</small></div>
+            <div class="storage-stop"><b>Grounding index</b><small>MOH CPG · patient history</small></div>
+            <div class="storage-stop"><b>Eval traces</b><small>agent hops · model versions</small></div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="6">
+        <div class="topline">
+          <span class="section-tag">05 · Agentic orchestration</span>
+          <span class="page-no">06 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">Six specialists.<br><span class="display-soft">One inspectable relay.</span></h2>
+          </div>
+          <span class="ink-note reveal-scale d2">Bounded hops · typed tools</span>
+        </div>
+
+        <div class="relay">
+          <div class="relay-track reveal-scale d1" aria-hidden="true">
+            <div class="relay-rail"></div>
+            <span class="relay-dot"></span>
+            <span class="relay-dot"></span>
+            <span class="relay-dot"></span>
+            <span class="relay-dot"></span>
+            <span class="relay-dot"></span>
+            <span class="relay-dot"></span>
+          </div>
+          <div class="relay-agent reveal-scale d1"><div class="agent-token"><i data-lucide="eye-off"></i></div><b>De-ID</b><small>scrub PII / PHI</small><code>safe_uri</code></div>
+          <div class="relay-agent reveal-scale d2"><div class="agent-token"><i data-lucide="route"></i></div><b>Router</b><small>detect modality</small><code>route_confidence</code></div>
+          <div class="relay-agent reveal-scale d3"><div class="agent-token"><i data-lucide="brain-circuit"></i></div><b>Imaging / Doc</b><small>parallel specialists</small><code>partial_findings</code></div>
+          <div class="relay-agent reveal-scale d4"><div class="agent-token"><i data-lucide="library-big"></i></div><b>Retriever</b><small>hybrid RAG</small><code>citations[]</code></div>
+          <div class="relay-agent guard reveal-scale d5"><div class="agent-token"><i data-lucide="shield-alert"></i></div><b>Guardrail</b><small>veto + escalate</small><code>ALLOW | WARN</code></div>
+          <div class="relay-agent reveal-scale d6"><div class="agent-token"><i data-lucide="scroll-text"></i></div><b>Composer</b><small>audience adapt</small><code>reports{}</code></div>
+        </div>
+
+        <div class="trace-tape reveal d5">
+          <div class="trace-head">LIVE TRACE<br>JOB_7F3A · COMPLETE</div>
+          <div class="trace-hop"><span>00</span><code>deidentify()<br>120 ms</code></div>
+          <div class="trace-hop"><span>01</span><code>detect_modality()<br>800 ms</code></div>
+          <div class="trace-hop"><span>02</span><code>medgemma_infer()<br>11.2 s</code></div>
+          <div class="trace-hop"><span>03</span><code>rag_retrieve()<br>900 ms</code></div>
+          <div class="trace-hop"><span>04</span><code>safety_check()<br>450 ms</code></div>
+          <div class="trace-hop"><span>05</span><code>compose(locale=bm)<br>3.1 s</code></div>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="7">
+        <div class="topline">
+          <span class="section-tag">06 · Multimodal intelligence</span>
+          <span class="page-no">07 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">Not a chatbot.<br><span class="display-accent">A clinical perception stack.</span></h2>
+          </div>
+          <span class="ink-note reveal-scale d2">google / medgemma-1.5-4b-it</span>
+        </div>
+
+        <div class="specimen-grid">
+          <article class="specimen reveal-scale d1">
+            <div class="specimen-label"><span>01 · Vision</span><b>IMAGE</b></div>
+            <h3>See the finding</h3>
+            <div class="specimen-visual mini-xray">
+              <img class="scan-image" src="images/chest-xray.png" alt="Full PA chest radiograph with AI finding">
+              <div class="mini-box"></div>
+            </div>
+            <footer>pixel tensor → structured observations[]</footer>
+          </article>
+          <article class="specimen reveal-scale d2">
+            <div class="specimen-label"><span>02 · Grounding</span><b>WHERE</b></div>
+            <h3>Point to anatomy</h3>
+            <div class="specimen-visual coord-visual">
+              <img class="scan-image" src="images/specimen-xray.png" alt="Zoomed right lower lobe with bounding box overlay">
+              <div class="target"></div>
+              <code>[x, y, w, h]</code>
+            </div>
+            <footer>normalized bbox → viewport-aware overlay</footer>
+          </article>
+          <article class="specimen reveal-scale d3">
+            <div class="specimen-label"><span>03 · Document AI</span><b>DATA</b></div>
+            <h3>Structure the PDF</h3>
+            <div class="specimen-visual lab-visual">
+              <div class="lab-row"><span>Hb</span><b>9.2</b><i>LOW</i></div>
+              <div class="lab-row"><span>Hct</span><b>28.1</b><i>LOW</i></div>
+              <div class="lab-row"><span>RBC</span><b>3.4</b><i>LOW</i></div>
+              <div class="lab-row"><span>WBC</span><b>3.8</b><i>LOW</i></div>
+              <div class="lab-row"><span>Neut</span><b>1.2</b><i>LOW</i></div>
+              <div class="lab-row"><span>PLT</span><b>85</b><i>LOW</i></div>
+              <div class="lab-row"><span>MCV</span><b>72</b><i>LOW</i></div>
+              <div class="lab-row"><span>CRP</span><b>48</b><i class="high">HIGH</i></div>
+            </div>
+            <footer>PDF / OCR → Pydantic schema → MySQL</footer>
+          </article>
+          <article class="specimen reveal-scale d4">
+            <div class="specimen-label"><span>04 · Temporal</span><b>CHANGE</b></div>
+            <h3>Reason over time</h3>
+            <div class="specimen-visual trend-visual"><span class="range"></span><svg viewBox="0 0 320 220" aria-label="Declining biomarker trend"><polyline points="10,35 70,54 125,66 185,108 245,144 310,180" fill="none" stroke="#176ca5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><g fill="#f26b5e"><circle cx="10" cy="35" r="7"/><circle cx="70" cy="54" r="7"/><circle cx="125" cy="66" r="7"/><circle cx="185" cy="108" r="7"/><circle cx="245" cy="144" r="7"/><circle cx="310" cy="180" r="7"/></g></svg></div>
+            <footer>current ⊕ prior → new | stable | resolved</footer>
+          </article>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="8">
+        <div class="topline">
+          <span class="section-tag">07 · Grounding + localization</span>
+          <span class="page-no">08 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">Grounded in evidence.<br><span class="display-accent">Fluent in Malaysia.</span></h2>
+          </div>
+          <div class="pill-row reveal-scale d2"><span class="pill">BM</span><span class="pill">EN</span><span class="pill">中文</span><span class="pill">தமிழ்</span></div>
+        </div>
+
+        <div class="grounding-layout">
+          <div class="retrieval-desk reveal-scale d2">
+            <div class="query-slip"><small>RETRIEVAL QUERY</small><b>“RLL opacity + fever + cough”</b></div>
+            <div class="retrieval-path">
+              <div class="retrieve-step"><span>01</span><b>Hybrid search</b><small>dense vectors + lexical BM25</small></div>
+              <div class="retrieve-step"><span>02</span><b>MMR rerank</b><small>relevance × diversity</small></div>
+              <div class="retrieve-step"><span>03</span><b>Confidence gate</b><small>abstain below threshold</small></div>
+            </div>
+            <div class="retrieved-stack">
+              <div class="source-strip"><b>#1</b><span>MOH CPG · Community Acquired Pneumonia</span><em>0.89</em></div>
+              <div class="source-strip"><b>#2</b><span>Patient history · respiratory episode</span><em>0.82</em></div>
+              <div class="source-strip"><b>#3</b><span>MOH CPG · Tuberculosis management</span><em>0.76</em></div>
+            </div>
+          </div>
+
+          <article class="malaysia-report reveal-scale d3">
+            <svg class="malaysia-watermark" viewBox="0 0 500 280" aria-hidden="true"><path d="M31 72c32-24 65-20 96-7l25 24 36 10 23 34-14 30-41 13-22 35-51 7-34-26-23-42 18-30-13-48Zm246 57 28-17 23 8 25-21 35 8 18-17 27 23 40 3-9 31 17 25-35 14-28-5-20 23-32-15-32 8-22-26-29-7 14-26Z" fill="currentColor"/></svg>
+            <div class="language-tabs"><span>English</span><span class="active">Bahasa Melayu</span></div>
+            <small>RINGKASAN UNTUK PESAKIT</small>
+            <h3>Terdapat perubahan pada bahagian bawah paru-paru kanan.</h3>
+            <p>Imej menunjukkan kawasan legap yang mungkin berkaitan dengan jangkitan. Dapatan ini perlu dinilai bersama gejala dan pemeriksaan doktor.</p>
+            <div class="citation-stamp"><span>[MOH-CPG-01]</span><b>Garis Panduan Pneumonia</b><i>89% relevance</i></div>
+            <div class="lora-tag"><span>MY-LoRA</span><div><b>QLoRA adapter</b><small>BM medical register · local disease priors</small></div></div>
+          </article>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="9">
+        <div class="topline">
+          <span class="section-tag">08 · Responsible AI</span>
+          <span class="page-no">09 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">Safety is a control plane.<br><span class="display-coral">Not a disclaimer.</span></h2>
+          </div>
+          <span class="ink-note reveal-scale d2">Guardrail has veto power</span>
+        </div>
+
+        <div class="safety-layout">
+          <div class="safety-valve reveal-scale d2">
+            <div class="pipe"></div>
+            <div class="input-vial"><small>FINDING INPUT</small><b>K⁺ 6.8 mmol/L</b><span>confidence 0.96 · critical &gt; 6.5</span></div>
+            <div class="valve-core"><div><i data-lucide="octagon-alert"></i><b>ESCALATE</b><small>POLICY + RULES</small></div></div>
+            <div class="output-vial"><small>CONTROL ACTIONS</small><b>Critical alert</b><span>NOTIFY CLINICIAN</span><span>AUDIT EVENT</span></div>
+            <div class="veto-stamp">PATIENT COPY WITHHELD</div>
+          </div>
+          <div class="safety-principles">
+            <article class="principle reveal-scale d2"><span>01</span><h3>De-identify first</h3><p>DICOM tags, document PII and metadata are scrubbed before inference.</p></article>
+            <article class="principle reveal-scale d3"><span>02</span><h3>Calibrate uncertainty</h3><p>Publish ≥ .80 · hedge .50-.80 · abstain below .50.</p></article>
+            <article class="principle reveal-scale d4"><span>03</span><h3>Constrain claims</h3><p>Structured DDx with confidence, never unsupported certainty.</p></article>
+            <article class="principle reveal-scale d5"><span>04</span><h3>Preserve oversight</h3><p>Physicians inspect evidence, boxes and citations before sign-off.</p></article>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="slide" data-slide="10">
+        <div class="topline">
+          <span class="section-tag">09 · Proof + engineering</span>
+          <span class="page-no">10 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">We measure the system.<br><span class="display-soft">Not just the interface.</span></h2>
+          </div>
+          <span class="ink-note reveal-scale d2">Benchmarked pipeline</span>
+        </div>
+
+        <div class="eval-lab">
+          <div class="gauges">
+            <article class="gauge reveal-scale d1"><small>MEDICAL<br>REASONING</small><div class="gauge-ring" style="--score:68.4"><strong>68.4<sup>%</sup></strong></div><b>MedQA subset</b><p>reasoning accuracy</p></article>
+            <article class="gauge reveal-scale d2"><small>REPORT<br>QUALITY</small><div class="gauge-ring" style="--score:84"><strong>4.2<sup>/5</sup></strong></div><b>Judge rubric</b><p>coherence + utility</p></article>
+            <article class="gauge reveal-scale d3"><small>SAFETY<br>COMPLIANCE</small><div class="gauge-ring" style="--score:96.5"><strong>96.5<sup>%</sup></strong></div><b>Red-team set</b><p>policy compliance</p></article>
+          </div>
+
+          <div class="harness reveal-scale d3">
+            <div class="harness-head"><span>EVAL HARNESS</span><b>Model / adapter regression loop</b></div>
+            <div class="harness-flow">
+              <div class="harness-step"><span>01</span><b>Dataset</b><small>MedQA · PDFs · red-team</small></div>
+              <div class="harness-step"><span>02</span><b>Candidate</b><small>base model + adapter</small></div>
+              <div class="harness-step"><span>03</span><b>Judges</b><small>rules + LLM rubric</small></div>
+              <div class="harness-step"><span>04</span><b>Gate</b><small>block regression</small></div>
+            </div>
+            <div class="stack-swatch">
+              <small>PRODUCTION-ORIENTED STACK</small>
+              <div class="stack-line"><b>PRODUCT</b><span>Laravel 13</span><span>Inertia v3</span><span>Vue 3</span><span>MySQL</span><span>Redis</span></div>
+              <div class="stack-line"><b>AI</b><span>FastAPI</span><span>Pydantic</span><span>MedGemma</span><span>QLoRA</span><span>RAG</span></div>
+              <div class="stack-line"><b>MLOPS</b><span>GPU serving</span><span>adapters</span><span>trace logs</span><span>eval runs</span><span>webhooks</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="slide slide-advantage" data-slide="11">
+        <div class="topline">
+          <span class="section-tag">10 · Why SihatAI wins</span>
+          <span class="page-no">11 / 12</span>
+        </div>
+        <div class="title-row">
+          <div>
+            <h2 class="reveal-left">Our advantage is not one model.<br><span class="display-accent">It is the system around it.</span></h2>
+          </div>
+          <span class="ink-note reveal-scale d2">17 integrated capabilities</span>
+        </div>
+
+        <div class="advantage-board">
+          <div class="advantage-pillars">
+            <article class="advantage-card reveal-scale d1">
+              <div class="advantage-head">
+                <div class="advantage-icon"><i data-lucide="layers"></i></div>
+                <span>01</span>
+              </div>
+              <h3>Understands more</h3>
+              <p>X-rays, CT, labs, PDFs and voice all route through one pipeline. Modality detection sends each artifact to the right specialist without re-uploading.</p>
+              <ul class="advantage-tags">
+                <li>X-ray · CT · MRI</li>
+                <li>Lab PDFs</li>
+                <li>Voice intake</li>
+              </ul>
+            </article>
+            <article class="advantage-card reveal-scale d2">
+              <div class="advantage-head">
+                <div class="advantage-icon"><i data-lucide="book-open-text"></i></div>
+                <span>02</span>
+              </div>
+              <h3>Grounded in Malaysia</h3>
+              <p>MOH Clinical Practice Guidelines, traceable citations and a localized adapter keep every claim grounded. Reports ship in BM, EN and other local languages.</p>
+              <ul class="advantage-tags">
+                <li>MOH CPG</li>
+                <li>Citations</li>
+                <li>BM · EN · ZH · TA</li>
+              </ul>
+            </article>
+            <article class="advantage-card reveal-scale d3">
+              <div class="advantage-head">
+                <div class="advantage-icon"><i data-lucide="shield-check"></i></div>
+                <span>03</span>
+              </div>
+              <h3>Fails safely</h3>
+              <p>De-ID runs before inference, and confidence bands decide when to publish, hedge or abstain. Guardrails can veto unsafe output and escalate critical values.</p>
+              <ul class="advantage-tags">
+                <li>De-ID first</li>
+                <li>Abstention</li>
+                <li>Veto + escalate</li>
+              </ul>
+            </article>
+            <article class="advantage-card reveal-scale d4">
+              <div class="advantage-head">
+                <div class="advantage-icon"><i data-lucide="users"></i></div>
+                <span>04</span>
+              </div>
+              <h3>One truth, two audiences</h3>
+              <p>MedGemma runs once to produce a single structured findings object. That same truth becomes a physician report and a patient-friendly summary without duplicated inference.</p>
+              <ul class="advantage-tags">
+                <li>Physician report</li>
+                <li>Patient report</li>
+                <li>Shared findings</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="advantage-rail reveal d4">
+            <small>System outcome chain</small>
+            <div class="advantage-stops">
+              <div class="advantage-stop"><b>Multimodal intake</b><small>Any clinical artifact enters one routed pipeline</small></div>
+              <div class="advantage-stop"><b>Inspectable reasoning</b><small>Agent hops, traces and citations stay visible</small></div>
+              <div class="advantage-stop"><b>Safer clinical action</b><small>Guardrails route uncertainty to clinicians</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="slide slide-close" data-slide="12">
+        <div class="topline">
+          <div class="brand"><span class="brand-mark">S</span><span>Sihat<span class="brand-ai">AI</span></span></div>
+          <span class="section-tag">T2: AI for Healthcare &amp; Medical · MAIC Nexus Challenge</span>
+        </div>
+
+        <div class="close-layout">
+          <div class="close-orbit"></div>
+          <div class="close-artifact close-a"><i data-lucide="scan-line"></i><b>Understands images</b></div>
+          <div class="close-artifact close-b"><i data-lucide="book-open-text"></i><b>Grounds every claim</b></div>
+          <div class="close-artifact close-c"><i data-lucide="shield-check"></i><b>Escalates safely</b></div>
+          <div class="close-artifact close-d"><i data-lucide="heart-handshake"></i><b>Adapts to people</b></div>
+
+          <span class="section-tag reveal">The next interface is not a chatbox</span>
+          <h2 class="reveal d1">It is a safe, grounded<br><span class="display-accent">clinical intelligence layer.</span></h2>
+          <p class="reveal d2">SihatAI combines multimodal perception, agentic reasoning, local evidence and audience-adaptive generation in one inspectable pipeline.</p>
+          <div class="close-pillars reveal d3">
+            <div class="close-pillar"><span>01</span><b>Understands</b><small>imaging · labs · documents · voice</small></div>
+            <div class="close-pillar"><span>02</span><b>Reasons</b><small>agents · RAG · longitudinal context</small></div>
+            <div class="close-pillar"><span>03</span><b>Protects</b><small>de-ID · abstention · escalation</small></div>
+            <div class="close-pillar"><span>04</span><b>Adapts</b><small>physician · patient · multilingual</small></div>
+          </div>
+        </div>
+
+        <div class="close-footer">
+          <div class="demo-ready"><i></i><div><b>Demo ready</b><small>Try it on our demo application.</small></div></div>
+          <span class="contact-line">SihatAI · <a href="https://sihat-ai.vxms.dev" target="_blank" rel="noopener noreferrer">sihat-ai.vxms.dev</a> · <a href="https://github.com/thomasliem97/sihat-ai" target="_blank" rel="noopener noreferrer">github.com/thomasliem97/sihat-ai</a></span>
+          <span class="page-no">12 / 12</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+
+  <nav class="deck-controls" aria-label="Slide navigation">
+    <button type="button" id="prev" aria-label="Previous slide">←</button>
+    <span class="deck-counter" id="counter">01 / 12</span>
+    <button type="button" id="next" aria-label="Next slide">→</button>
+  </nav>
+  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+  <script src="https://unpkg.com/lucide@1.24.0/dist/umd/lucide.min.js"></script>
+  <script>
+
+    class SlidePresentation {
+      constructor() {
+        this.slides = [...document.querySelectorAll('.slide')];
+        this.stage = document.getElementById('deckStage');
+        this.counter = document.getElementById('counter');
+        this.progress = document.getElementById('progressBar');
+        this.currentSlide = Math.max(0, Math.min(
+          Number.parseInt(window.location.hash.replace('#', ''), 10) - 1 || 0,
+          this.slides.length - 1
+        ));
+        this.wheelLocked = false;
+        this.touchStartX = 0;
+
+        this.scaleStage();
+        this.bindNavigation();
+        this.showSlide(this.currentSlide);
+        window.addEventListener('resize', () => this.scaleStage());
+      }
+
+      scaleStage() {
+        const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+        const x = (window.innerWidth - 1920 * factor) / 2;
+        const y = (window.innerHeight - 1080 * factor) / 2;
+        this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+      }
+
+      showSlide(index) {
+        this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+        this.slides.forEach((slide, slideIndex) => {
+          const isCurrent = slideIndex === this.currentSlide;
+          slide.classList.toggle('active', isCurrent);
+          slide.classList.toggle('visible', isCurrent);
+          slide.setAttribute('aria-hidden', String(!isCurrent));
+        });
+        this.counter.textContent = `${String(this.currentSlide + 1).padStart(2, '0')} / ${this.slides.length}`;
+        this.progress.style.width = `${((this.currentSlide + 1) / this.slides.length) * 100}%`;
+        window.history.replaceState(null, '', `#${this.currentSlide + 1}`);
+      }
+
+      next() { this.showSlide(this.currentSlide + 1); }
+      previous() { this.showSlide(this.currentSlide - 1); }
+
+      bindNavigation() {
+        document.getElementById('prev').addEventListener('click', () => this.previous());
+        document.getElementById('next').addEventListener('click', () => this.next());
+
+        document.addEventListener('keydown', (event) => {
+          if (['ArrowRight', 'PageDown', ' '].includes(event.key)) {
+            event.preventDefault();
+            this.next();
+          }
+          if (['ArrowLeft', 'PageUp'].includes(event.key)) {
+            event.preventDefault();
+            this.previous();
+          }
+          if (event.key === 'Home') this.showSlide(0);
+          if (event.key === 'End') this.showSlide(this.slides.length - 1);
+        });
+
+        document.addEventListener('wheel', (event) => {
+          if (this.wheelLocked || Math.abs(event.deltaY) < 12) return;
+          this.wheelLocked = true;
+          event.deltaY > 0 ? this.next() : this.previous();
+          window.setTimeout(() => { this.wheelLocked = false; }, 520);
+        }, { passive: true });
+
+        document.addEventListener('touchstart', (event) => {
+          this.touchStartX = event.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (event) => {
+          const distance = event.changedTouches[0].screenX - this.touchStartX;
+          if (Math.abs(distance) < 50) return;
+          distance < 0 ? this.next() : this.previous();
+        }, { passive: true });
+      }
+    }
+
+    if (new URLSearchParams(window.location.search).has('export')) {
+      document.documentElement.classList.add('export');
+    }
+    const presentation = new SlidePresentation();
+    lucide.createIcons();
+  </script>
+</body>
+</html>
