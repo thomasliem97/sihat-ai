@@ -47,14 +47,16 @@ def _modal_url() -> str:
     return _env("SIHAT_AI_MODAL_URL").rstrip("/")
 
 
-def _use_local_mock() -> bool:
-    return _env("SIHAT_AI_LOCAL_MOCK", "false").lower() in {"1", "true", "yes"}
+def _require_modal() -> str:
+    url = _modal_url()
+    if not url:
+        raise RuntimeError("SIHAT_AI_MODAL_URL is required; local mock fallbacks are removed")
+    return url
 
 
 # Back-compat names used below
 WEBHOOK_SECRET = _webhook_secret()
 MODAL_URL = _modal_url()
-USE_LOCAL_MOCK = _use_local_mock()
 
 
 class Modality(str, Enum):
@@ -65,6 +67,7 @@ class Modality(str, Enum):
     dermatology = "dermatology"
     ophthalmology = "ophthalmology"
     lab_pdf = "lab_pdf"
+    clinical_document = "clinical_document"
     unknown = "unknown"
 
 
@@ -107,24 +110,20 @@ def transcribe_audio(payload: dict[str, Any]) -> dict[str, Any]:
     if not audio_b64:
         raise HTTPException(status_code=422, detail="audio_b64 required")
 
-    if _modal_url() and not _use_local_mock():
-        try:
-            return _call_modal(
-                "/transcribe",
-                {
-                    "audio_b64": audio_b64,
-                    "language": payload.get("language"),
-                },
-            )
-        except Exception as exc:  # noqa: BLE001
-            logger.warning("Modal STT failed: %s", exc)
+    if not _modal_url():
+        raise HTTPException(status_code=503, detail="SIHAT_AI_MODAL_URL required for STT")
 
-    # Local fallback for demos without Modal
-    return {
-        "transcript": payload.get("hint") or "",
-        "engine": "fallback-empty",
-        "error": "STT unavailable; provide transcript text",
-    }
+    try:
+        return _call_modal(
+            "/transcribe",
+            {
+                "audio_b64": audio_b64,
+                "language": payload.get("language"),
+            },
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Modal STT failed: %s", exc)
+        raise HTTPException(status_code=502, detail=f"STT failed: {exc}") from exc
 
 
 @app.post("/api/v1/analyze", response_model=AnalyzeResponse)
@@ -145,6 +144,7 @@ _CLASSIFY_MODALITIES = {
     "histopath",
     "ophthalmology",
     "lab_pdf",
+    "clinical_document",
 }
 
 
@@ -176,13 +176,18 @@ def classify_modality(payload: dict[str, Any]) -> dict[str, Any]:
     name = (payload.get("original_filename") or "").lower()
 
     if "pdf" in mime or name.endswith(".pdf"):
+        if any(
+            k in name
+            for k in ("discharge", "summary", "clinic", "consult", "progress", "note", "referral", "letter")
+        ):
+            return {"modality": "clinical_document", "confidence": 0.9}
         return {"modality": "lab_pdf", "confidence": 0.95}
 
     hinted = _filename_modality_hints(name)
     if hinted and float(hinted["confidence"]) >= 0.7:
         return hinted
 
-    if _modal_url() and not _use_local_mock() and payload.get("image_b64"):
+    if _modal_url() and payload.get("image_b64"):
         try:
             result = _call_modal(
                 "/classify",
@@ -261,6 +266,8 @@ def _run_pipeline(request: AnalyzeRequest) -> None:
 
         if modality == Modality.lab_pdf:
             result = _analyze_lab(request)
+        elif modality == Modality.clinical_document:
+            result = _analyze_clinical_document(request)
         elif modality == Modality.histopath:
             result = _analyze_histopath(request)
         elif modality in {Modality.ct, Modality.mri}:
@@ -294,21 +301,20 @@ def _analyze_volume(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
 
     montage_b64, volume_meta = _build_volume_montage(data, name, mime)
 
-    if _modal_url() and not _use_local_mock() and montage_b64:
-        result = _call_modal(
-            "/analyze",
-            {
-                "image_b64": montage_b64,
-                "modality": kind,
-                "language": request.language,
-                "job_id": request.job_id,
-                "record_id": request.record_id,
-            },
-        )
-        result["volume_meta"] = volume_meta
-        return result
+    if not montage_b64:
+        raise RuntimeError("Could not build volume montage for analysis")
 
-    result = _mock_result(Modality(kind) if kind in Modality.__members__ else Modality.ct)
+    _require_modal()
+    result = _call_modal(
+        "/analyze",
+        {
+            "image_b64": montage_b64,
+            "modality": kind,
+            "language": request.language,
+            "job_id": request.job_id,
+            "record_id": request.record_id,
+        },
+    )
     result["volume_meta"] = volume_meta
     return result
 
@@ -318,21 +324,20 @@ def _analyze_histopath(request: AnalyzeRequest) -> dict[str, Any]:
     data = _download_bytes(request)
     montage_b64, patch_meta = _build_histopath_patches(data)
 
-    if _modal_url() and not _use_local_mock() and montage_b64:
-        result = _call_modal(
-            "/analyze",
-            {
-                "image_b64": montage_b64,
-                "modality": "histopath",
-                "language": request.language,
-                "job_id": request.job_id,
-                "record_id": request.record_id,
-            },
-        )
-        result["patch_meta"] = patch_meta
-        return result
+    if not montage_b64:
+        raise RuntimeError("Could not build histopath patches for analysis")
 
-    result = _mock_result(Modality.histopath)
+    _require_modal()
+    result = _call_modal(
+        "/analyze",
+        {
+            "image_b64": montage_b64,
+            "modality": "histopath",
+            "language": request.language,
+            "job_id": request.job_id,
+            "record_id": request.record_id,
+        },
+    )
     result["patch_meta"] = patch_meta
     return result
 
@@ -501,28 +506,25 @@ def _grid_montage(images: list[Any], cols: int = 4) -> Any:
 
 
 def _analyze_vision(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
-    modal_url = _modal_url()
-    if modal_url and not _use_local_mock():
-        data = _download_bytes(request)
-        if not data:
-            raise RuntimeError("Could not download study file for Modal vision analysis")
+    _require_modal()
+    data = _download_bytes(request)
+    if not data:
+        raise RuntimeError("Could not download study file for Modal vision analysis")
 
-        return _call_modal(
-            "/analyze",
-            {
-                "image_b64": _vision_image_b64(
-                    data,
-                    request.original_filename or "",
-                    request.mime_type or "",
-                ),
-                "modality": kind,
-                "language": request.language,
-                "job_id": request.job_id,
-                "record_id": request.record_id,
-            },
-        )
-
-    return _mock_result(Modality(kind) if kind in Modality.__members__ else Modality.xray)
+    return _call_modal(
+        "/analyze",
+        {
+            "image_b64": _vision_image_b64(
+                data,
+                request.original_filename or "",
+                request.mime_type or "",
+            ),
+            "modality": kind,
+            "language": request.language,
+            "job_id": request.job_id,
+            "record_id": request.record_id,
+        },
+    )
 
 
 def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
@@ -540,31 +542,69 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
         text = _extract_pdf_text(request)
 
     text = _scrub_phi(text)
+    if not text.strip():
+        raise RuntimeError("No lab text extracted from PDF")
 
-    if _modal_url() and not _use_local_mock() and text.strip():
-        try:
-            result = _call_modal(
-                "/analyze_lab",
-                {
-                    "text": text[:12000],
-                    "language": request.language,
-                    "job_id": request.job_id,
-                    "record_id": request.record_id,
-                },
-            )
-            if ocr_meta:
-                result["lab_text_meta"] = ocr_meta
-            return result
-        except Exception as exc:  # noqa: BLE001
-            logger.warning("Modal lab analyze failed, using regex parse: %s", exc)
+    _require_modal()
+    try:
+        result = _call_modal(
+            "/analyze_lab",
+            {
+                "text": text[:12000],
+                "language": request.language,
+                "job_id": request.job_id,
+                "record_id": request.record_id,
+            },
+        )
+        if ocr_meta:
+            result["lab_text_meta"] = ocr_meta
+        return result
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Modal lab analyze failed, using regex parse: %s", exc)
 
     parsed = _regex_parse_lab(text)
     if ocr_meta:
         parsed["lab_text_meta"] = ocr_meta
     if parsed["biomarkers"]:
+        parsed["engine"] = "regex-parse"
         return parsed
 
-    return _mock_result(Modality.lab_pdf)
+    raise RuntimeError(f"Lab analysis failed after Modal error: {exc}")
+
+
+def _analyze_clinical_document(request: AnalyzeRequest) -> dict[str, Any]:
+    """Discharge / clinic note PDF: prose findings, not biomarker schema."""
+    data = _download_bytes(request)
+    text = ""
+    if data:
+        try:
+            from app.lab_ocr import extract_lab_text
+
+            text, _meta = extract_lab_text(data)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Clinical document extract failed: %s", exc)
+            text = _extract_pdf_text(request)
+    else:
+        text = _extract_pdf_text(request)
+
+    text = _scrub_phi(text)
+    if not text.strip():
+        raise RuntimeError("No text extracted from clinical document")
+
+    _require_modal()
+    try:
+        return _call_modal(
+            "/analyze_clinical",
+            {
+                "text": text[:12000],
+                "language": request.language,
+                "job_id": request.job_id,
+                "record_id": request.record_id,
+            },
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Modal clinical document analyze failed: %s", exc)
+        raise RuntimeError(f"Clinical document analysis failed: {exc}") from exc
 
 
 def _extract_pdf_text(request: AnalyzeRequest) -> str:
@@ -803,163 +843,6 @@ def _post_webhook(
         if resp.status_code >= 400:
             logger.error("Webhook failed %s: %s", resp.status_code, resp.text)
 
-
-def _mock_result(modality: Modality) -> dict[str, Any]:
-    if modality == Modality.lab_pdf:
-        return {
-            "findings": [
-                {
-                    "label": "Hemoglobin",
-                    "value": 9.2,
-                    "unit": "g/dL",
-                    "severity": "abnormal",
-                    "confidence": 0.95,
-                    "reference": "12.0-16.0",
-                },
-                {
-                    "label": "Platelet count",
-                    "value": 85,
-                    "unit": "×10³/µL",
-                    "severity": "abnormal",
-                    "confidence": 0.93,
-                    "reference": "150-400",
-                },
-            ],
-            "biomarkers": [
-                {
-                    "name": "Hemoglobin",
-                    "value": 9.2,
-                    "unit": "g/dL",
-                    "reference_low": 12.0,
-                    "reference_high": 16.0,
-                    "status": "abnormal",
-                },
-                {
-                    "name": "Platelet count",
-                    "value": 85,
-                    "unit": "×10³/µL",
-                    "reference_low": 150,
-                    "reference_high": 400,
-                    "status": "abnormal",
-                },
-            ],
-            "bounding_boxes": [],
-            "overall_confidence": 0.92,
-        }
-
-    if modality == Modality.dermatology:
-        return {
-            "findings": [
-                {
-                    "label": "Melanocytic nevus",
-                    "description": "Pigmented lesion with regular borders; no overt melanoma features on visual review.",
-                    "confidence": 0.86,
-                    "severity": "normal",
-                }
-            ],
-            "bounding_boxes": [],
-            "overall_confidence": 0.86,
-            "differential_diagnosis": [
-                {"condition": "Benign melanocytic nevus", "confidence": 0.8},
-                {"condition": "Seborrheic keratosis", "confidence": 0.35},
-            ],
-        }
-
-    if modality == Modality.xray:
-        return {
-            "findings": [
-                {
-                    "label": "Right lower lobe opacity",
-                    "description": "Patchy airspace opacity in the right lower lobe.",
-                    "confidence": 0.87,
-                    "severity": "abnormal",
-                }
-            ],
-            "bounding_boxes": [
-                {
-                    "label": "Right lower lobe opacity",
-                    "x": 0.52,
-                    "y": 0.55,
-                    "width": 0.28,
-                    "height": 0.22,
-                    "confidence": 0.87,
-                }
-            ],
-            "overall_confidence": 0.84,
-            "differential_diagnosis": [
-                {"condition": "Community-acquired pneumonia", "confidence": 0.78},
-                {"condition": "Pulmonary tuberculosis", "confidence": 0.62},
-            ],
-            "adapter": "none",
-        }
-
-    if modality in {Modality.ct, Modality.mri}:
-        label = "Ground-glass opacity" if modality == Modality.ct else "T2 hyperintensity"
-        return {
-            "findings": [
-                {
-                    "label": label,
-                    "description": "Finding reviewed on mid-volume montage (demo volume path).",
-                    "confidence": 0.81,
-                    "severity": "abnormal",
-                }
-            ],
-            "bounding_boxes": [
-                {"label": label, "x": 0.4, "y": 0.35, "width": 0.2, "height": 0.2, "confidence": 0.81}
-            ],
-            "volume_meta": {
-                "slice_count": 24,
-                "used_slices": [8, 9, 10, 11, 12, 13, 14, 15],
-                "note": "ponytail: mid-slice montage (max 8); not a full 3D viewer",
-            },
-            "overall_confidence": 0.81,
-            "adapter": "none",
-        }
-
-    if modality == Modality.histopath:
-        return {
-            "findings": [
-                {
-                    "label": "Atypical glandular architecture",
-                    "description": "Aggregated from center-region patches (demo WSI path).",
-                    "confidence": 0.79,
-                    "severity": "abnormal",
-                    "patch": "1,1",
-                },
-                {
-                    "label": "Inflammatory infiltrate",
-                    "description": "Lymphocytic infiltrate noted on peripheral patch.",
-                    "confidence": 0.74,
-                    "severity": "borderline",
-                    "patch": "0,2",
-                },
-            ],
-            "bounding_boxes": [],
-            "patch_meta": {
-                "grid": "3x3",
-                "patch_count": 9,
-                "note": "ponytail: fixed center-region grid; not OpenSlide pyramid",
-                "patches": [
-                    {"id": "1,1", "finding": "Atypical glandular architecture"},
-                    {"id": "0,2", "finding": "Inflammatory infiltrate"},
-                ],
-            },
-            "overall_confidence": 0.78,
-            "adapter": "none",
-        }
-
-    return {
-        "findings": [
-            {
-                "label": "No acute abnormality",
-                "description": "No acute abnormality detected on preliminary review.",
-                "confidence": 0.75,
-                "severity": "normal",
-            }
-        ],
-        "bounding_boxes": [],
-        "overall_confidence": 0.75,
-    }
 
 
 if __name__ == "__main__":

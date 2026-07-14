@@ -26,16 +26,6 @@ class ProcessMedicalRecord implements ShouldQueue
     public function handle(AiPipelineService $pipeline): void
     {
         try {
-            $useMock = (bool) config('services.sihat_ai.use_mock', true);
-
-            if ($useMock) {
-                $result = $pipeline->analyze($this->record, $this->analysisJob);
-                $pipeline->persistCompleted($this->record, $this->analysisJob, $result);
-                $this->persistBiomarkers($result['biomarkers'] ?? []);
-
-                return;
-            }
-
             $pipeline->beginRemoteAnalysis($this->record, $this->analysisJob);
         } catch (\Throwable $e) {
             Log::error('Medical record analysis failed', [

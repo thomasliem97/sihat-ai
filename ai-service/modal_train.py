@@ -26,12 +26,20 @@ MAX_STEPS = 800
 app = modal.App(APP_NAME)
 
 volume = modal.Volume.from_name("sihat-lora", create_if_missing=True)
+# Persist HF downloads across runs (avoids re-pulling ~GBs after a hang)
+hf_cache = modal.Volume.from_name("sihat-hf-cache", create_if_missing=True)
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
+    .env(
+        {
+            "HF_HOME": "/hf-cache",
+            "HF_HUB_CACHE": "/hf-cache/hub",
+        }
+    )
     .pip_install(
         "torch",
-        "transformers>=4.50.0",
+        "transformers>=4.50.0,<5",
         "accelerate",
         "peft",
         "trl",
@@ -39,7 +47,10 @@ image = (
         "datasets",
         "sentencepiece",
         "protobuf",
+        "huggingface_hub",
     )
+    # hf-xet hangs / 403 SignatureError on MedGemma CDN; plain HTTP works
+    .run_commands("python -m pip uninstall -y hf-xet || true")
 )
 
 # Local JSONL → baked into image for reliable upload
@@ -54,21 +65,26 @@ image = image.add_local_dir(
     gpu=GPU,
     timeout=6 * 60 * 60,
     memory=32768,
-    volumes={"/vol": volume},
+    volumes={"/vol": volume, "/hf-cache": hf_cache},
     secrets=[modal.Secret.from_name("huggingface-secret")],
 )
 def train() -> dict:
     import os
+    import sys
     from pathlib import Path
 
     import torch
     from datasets import load_dataset
+    from huggingface_hub import snapshot_download
     from peft import LoraConfig
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
     from trl import SFTConfig, SFTTrainer
 
+    def log(msg: str) -> None:
+        print(msg, flush=True)
+        sys.stdout.flush()
+
     train_file = Path("/data/train_split.jsonl")
-    val_file = Path("/data/val_split.jsonl")
     out_dir = Path("/vol/adapter")
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -79,8 +95,15 @@ def train() -> dict:
     use_bf16 = torch.cuda.is_bf16_supported()
     compute_dtype = torch.bfloat16 if use_bf16 else torch.float16
 
-    print(f"GPU: {torch.cuda.get_device_name(0)}")
-    print(f"dtype: {compute_dtype}, max_steps={MAX_STEPS or 'full epoch'}")
+    log(f"GPU: {torch.cuda.get_device_name(0)}")
+    log(f"dtype: {compute_dtype}, max_steps={MAX_STEPS or 'full epoch'}")
+    log(f"HF token present: {bool(token)}")
+
+    # Explicit download first so we see progress / fail fast (not silent xet hang)
+    log(f"Downloading {MODEL_ID} into HF cache…")
+    local_model = snapshot_download(MODEL_ID, token=token)
+    log(f"Model cached at {local_model}")
+    hf_cache.commit()
 
     bnb = BitsAndBytesConfig(
         load_in_4bit=True,
@@ -89,12 +112,14 @@ def train() -> dict:
         bnb_4bit_compute_dtype=compute_dtype,
     )
 
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token=token)
+    log("Loading tokenizer…")
+    tokenizer = AutoTokenizer.from_pretrained(local_model, token=token)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
+    log("Loading 4-bit model onto GPU…")
     model = AutoModelForCausalLM.from_pretrained(
-        MODEL_ID,
+        local_model,
         quantization_config=bnb,
         device_map="auto",
         token=token,
@@ -102,15 +127,14 @@ def train() -> dict:
     )
     model.gradient_checkpointing_enable()
     model.config.use_cache = False
+    log("Model loaded.")
 
     train_ds = load_dataset("json", data_files=str(train_file), split="train")
-    val_ds = load_dataset("json", data_files=str(val_file), split="train")
     drop = [c for c in train_ds.column_names if c != "messages"]
     if drop:
         train_ds = train_ds.remove_columns(drop)
-        val_ds = val_ds.remove_columns([c for c in val_ds.column_names if c != "messages"])
 
-    print(f"train={len(train_ds)} val={len(val_ds)}")
+    log(f"train={len(train_ds)}")
 
     lora = LoraConfig(
         r=16,
@@ -136,14 +160,15 @@ def train() -> dict:
         "gradient_accumulation_steps": 4,  # effective batch 8
         "learning_rate": 2e-4,
         "logging_steps": 10,
-        "save_steps": 200,
-        "eval_strategy": "steps",
-        "eval_steps": 200,
+        "save_steps": 400,
+        "eval_strategy": "no",  # L4 OOMs on full-seq eval logits
         "fp16": not use_bf16,
         "bf16": use_bf16,
         "max_length": 1024,
         "report_to": "none",
         "save_total_limit": 2,
+        # chunked_nll breaks MedGemma/Gemma3 (no last_hidden_state on CausalLM output)
+        "loss_type": "nll",
     }
     if MAX_STEPS and MAX_STEPS > 0:
         sft_kwargs["max_steps"] = MAX_STEPS
@@ -154,7 +179,6 @@ def train() -> dict:
         model=model,
         args=args,
         train_dataset=train_ds,
-        eval_dataset=val_ds,
         processing_class=tokenizer,
         peft_config=lora,
     )

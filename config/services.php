@@ -37,7 +37,6 @@ return [
 
     'sihat_ai' => [
         'url' => env('SIHAT_AI_URL', 'http://127.0.0.1:8005'),
-        'use_mock' => filter_var(env('SIHAT_AI_USE_MOCK', true), FILTER_VALIDATE_BOOLEAN),
         'webhook_secret' => env('SIHAT_AI_WEBHOOK_SECRET'),
         'modal_url' => env('SIHAT_AI_MODAL_URL'),
         'lora_path' => env('SIHAT_AI_LORA_PATH'),

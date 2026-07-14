@@ -293,6 +293,32 @@ class MedGemmaModel:
         return _normalize_result(_extract_json(decoded), getattr(self, "adapter_id", "none"))
 
     @modal.method()
+    def analyze_clinical_text(self, text: str, language: str = "en") -> dict[str, Any]:
+        schema = (
+            "Return ONLY valid JSON with keys: findings (array of "
+            "{label, description, severity, confidence}), "
+            "overall_confidence (0-1), bounding_boxes ([]), differential_diagnosis ([])."
+        )
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": (
+                            "Summarize this de-identified clinical document "
+                            "(discharge summary / clinic note). Extract key diagnoses, "
+                            "medications, and follow-up plans. "
+                            f"Language preference: {language}.\n{schema}\n\nDOCUMENT:\n{text[:10000]}"
+                        ),
+                    }
+                ],
+            }
+        ]
+        decoded = self._generate(messages, max_new_tokens=1500)
+        return _normalize_result(_extract_json(decoded), getattr(self, "adapter_id", "none"))
+
+    @modal.method()
     def analyze_lab_text(self, text: str, language: str = "en") -> dict[str, Any]:
         schema = (
             "Return ONLY valid JSON with keys: findings (array of "
@@ -368,13 +394,27 @@ class MedGemmaModel:
     secrets=[modal.Secret.from_name("huggingface-secret")],
 )
 class SttModel:
-    """ponytail: Whisper STT stand-in until MedASR packaging is stable on Modal."""
+    """MedASR primary; Whisper fallback when license/load fails."""
 
     @modal.enter()
     def load(self) -> None:
-        import whisper
+        self.engine = "whisper-base"
+        self.medasr = None
+        self.whisper = None
+        try:
+            from transformers import pipeline
 
-        self.model = whisper.load_model("base")
+            self.medasr = pipeline(
+                "automatic-speech-recognition",
+                model="google/medasr",
+            )
+            self.engine = "medasr"
+        except Exception as exc:  # noqa: BLE001
+            print(f"MedASR unavailable, falling back to Whisper: {exc}")
+            import whisper
+
+            self.whisper = whisper.load_model("base")
+            self.engine = "whisper-base"
 
     @modal.method()
     def transcribe(self, audio_b64: str, language: str | None = None) -> dict[str, Any]:
@@ -385,7 +425,24 @@ class SttModel:
             tmp.write(raw)
             path = tmp.name
 
-        result = self.model.transcribe(path, language=language or None)
+        if self.engine == "medasr" and self.medasr is not None:
+            try:
+                out = self.medasr(path)
+                text = (out.get("text") if isinstance(out, dict) else str(out)).strip()
+                return {
+                    "transcript": text,
+                    "language": language,
+                    "engine": "medasr",
+                }
+            except Exception as exc:  # noqa: BLE001
+                print(f"MedASR inference failed, Whisper fallback: {exc}")
+                if self.whisper is None:
+                    import whisper
+
+                    self.whisper = whisper.load_model("base")
+
+        assert self.whisper is not None
+        result = self.whisper.transcribe(path, language=language or None)
         text = (result.get("text") or "").strip()
         return {
             "transcript": text,
@@ -416,6 +473,12 @@ def fastapi_app(payload: dict[str, Any]) -> dict[str, Any]:
 
         if route in {"analyze_lab", "analyze-lab"}:
             return model.analyze_lab_text.remote(
+                payload.get("text", ""),
+                payload.get("language", "en"),
+            )
+
+        if route in {"analyze_clinical", "analyze-clinical"}:
+            return model.analyze_clinical_text.remote(
                 payload.get("text", ""),
                 payload.get("language", "en"),
             )
