@@ -1,0 +1,1 @@
+Cursor AI (GPT-5.6 Sol) for ideation, coding, tests, docs, and pitch. Product AI: MedGemma 1.5 4B-IT + MY-LoRA, MedASR/Whisper, hybrid RAG. Team reviewed and owns all decisions; SihatAI is decision support, not autonomous diagnosis.
