@@ -33,6 +33,7 @@ app = modal.App("sihat-medgemma")
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
+    .apt_install("ffmpeg")
     .pip_install(
         "torch",
         "transformers>=4.50.0",
@@ -85,7 +86,7 @@ web_image = (
     )
     .env({
         "PYTHONPATH": "/root",
-        "SIHAT_AI_BUILD": "imaging-v6-20260715",
+        "SIHAT_AI_BUILD": "imaging-v6-20260716",
         "OPENAI_STRUCTURE_MODEL": "gpt-5.6-terra",
         "OPENAI_STRUCTURE_EFFORT": "high",
     })
@@ -597,6 +598,64 @@ def _structure_classify(pil: Any, draft: str) -> dict[str, Any]:
     )
 
 
+TRIAGE_RESULT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "assistant_message": _STRING,
+        "urgency": {"type": "string", "enum": ["routine", "urgent", "emergency"]},
+        "chief_complaint": _STRING,
+        "summary": _STRING,
+        "suggested_followups": {
+            "type": "array",
+            "items": _STRING,
+        },
+        "done": {"type": "boolean"},
+    },
+    "required": [
+        "assistant_message",
+        "urgency",
+        "chief_complaint",
+        "summary",
+        "suggested_followups",
+        "done",
+    ],
+}
+
+
+def _structure_triage(
+    draft: str,
+    *,
+    summary: str = "",
+    user_message: str = "",
+) -> dict[str, Any]:
+    return _openai_structured(
+        name="triage_result",
+        schema=TRIAGE_RESULT_SCHEMA,
+        instructions=(
+            "You are SihatAI's voice-triage structurer.\n"
+            "Input: a MedGemma English triage draft, optional prior summary, and the current user message.\n"
+            "Output: one JSON object matching the schema.\n"
+            "assistant_message: preserve useful clinical content from the draft. Do not strip "
+            "medication suggestions, treatment options, self-care, or care-pathway advice. "
+            "Do not rewrite into a vague 'seek medical advice' message.\n"
+            "urgency: routine|urgent|emergency based on red flags.\n"
+            "chief_complaint: short English phrase.\n"
+            "summary: updated English running handoff summary of the whole triage so far.\n"
+            "suggested_followups: up to 3 short English questions that advance triage.\n"
+            "done: true only if enough info exists for a stable handoff summary."
+        ),
+        user_text=(
+            "Prior summary:\n"
+            + ((summary or "").strip() or "(none)")
+            + "\n\nCurrent user message:\n"
+            + ((user_message or "").strip() or "(empty)")
+            + "\n\nMedGemma triage draft:\n\n"
+            + ((draft or "").strip() or "(empty)")
+        ),
+    )
+
+
 def _language_instruction(language: str) -> str:
     lang = (language or "en").strip().lower()
     if lang.startswith("ms") or lang in {"bm", "malay"}:
@@ -604,6 +663,18 @@ def _language_instruction(language: str) -> str:
             "Write human-readable text in Bahasa Melayu."
         )
     return "Write human-readable text in clear clinical English."
+
+
+def _triage_reply_rules() -> str:
+    return """
+Triage reply rules:
+- Be clinically useful. Clarify, triage severity, and give concrete recommendations when appropriate.
+- You may suggest likely condition categories, evidence-based treatments, OTC or common medications, dosing ranges when standard, and when to escalate care.
+- Do not invent facts. Prefer established medical knowledge.
+- Do not default to vague "seek medical advice" / "consult a professional" filler.
+- Prior medical record context is BACKGROUND ONLY. Do not summarize, interpret, or re-triage prior records unless the user asks about them or clearly describes related current symptoms.
+- If the user only greets or has not described a current problem yet, reply briefly and ask what brings them in today. Do not lead with prior-record findings.
+""".strip()
 
 
 def _safety_rules() -> str:
@@ -939,9 +1010,78 @@ class MedGemmaModel:
             getattr(self, "adapter_id", "none"),
         )
 
+    @modal.method()
+    def triage_chat(self, payload: dict[str, Any]) -> dict[str, Any]:
+        """Free-text triage draft (EN) + GPT structured JSON."""
+        role = str(payload.get("role_context") or "patient")
+        summary = str(payload.get("summary") or "").strip()
+        recent_dialog = str(payload.get("recent_dialog") or "").strip()
+        record_context = str(payload.get("record_context") or "").strip()
+        user_message = str(payload.get("user_message") or "").strip()
+        subject_name = str(payload.get("subject_name") or "").strip()
 
+        if role == "physician":
+            role_block = (
+                "You are SihatAI Voice Triage for a physician doing intake.\n"
+                "Help gather clinically useful history and discuss differentials, workup, "
+                "and treatment options as clinical decision support.\n"
+            )
+            if subject_name:
+                role_block += f"Patient under discussion: {subject_name}.\n"
+            else:
+                role_block += "No linked patient; answer free-form clinical questions.\n"
+        else:
+            role_block = (
+                "You are SihatAI Voice Triage for a patient.\n"
+                "Help with symptom triage and practical guidance: likely causes to consider, "
+                "self-care, evidence-based treatments, and medication options when appropriate.\n"
+                "Escalate clearly when red flags fit.\n"
+            )
+
+        parts = [role_block, _triage_reply_rules()]
+        if record_context:
+            parts.append(
+                "Prior medical record context (background only; do not dump "
+                "or analyze unless the current user message asks about it or "
+                "describes related symptoms):\n"
+                + record_context
+            )
+        if summary:
+            parts.append("Running conversation summary (English):\n" + summary)
+        if recent_dialog:
+            parts.append(
+                "Recent dialog (English, up to last 10 messages; prefer this for "
+                "immediate continuity):\n"
+                + recent_dialog
+            )
+        parts.append("Current user message (English):\n" + (user_message or "(empty)"))
+        parts.append(
+            "Write the next triage reply in clear English. Be helpful and specific. "
+            "Plain text only, not JSON."
+        )
+
+        draft = self._generate_text(
+            [{"role": "user", "content": "\n\n".join(parts)}],
+            max_new_tokens=600,
+        )
+        structured = _structure_triage(draft, summary=summary, user_message=user_message)
+
+        return {
+            "draft": draft,
+            "structured": structured,
+            "engine": f"medgemma+{_structure_model()}",
+            "adapter": getattr(self, "adapter_id", "none"),
+        }
+
+
+@app.cls(
+    gpu="L4",
+    image=image,
+    timeout=300,
+    scaledown_window=300,
+)
 class SttModel:
-    """MedASR primary; Whisper fallback when license/load fails."""
+    """MedASR for English medical speech; Whisper for multilingual / fallback."""
 
     @modal.enter()
     def load(self) -> None:
@@ -972,13 +1112,18 @@ class SttModel:
             tmp.write(raw)
             path = tmp.name
 
-        if self.engine == "medasr" and self.medasr is not None:
+        lang = (language or "").strip().lower() or None
+        prefer_medasr = self.engine == "medasr" and self.medasr is not None and (
+            lang is None or lang.startswith("en")
+        )
+
+        if prefer_medasr:
             try:
                 out = self.medasr(path)
                 text = (out.get("text") if isinstance(out, dict) else str(out)).strip()
                 return {
                     "transcript": text,
-                    "language": language,
+                    "language": lang or "en",
                     "engine": "medasr",
                 }
             except Exception as exc:  # noqa: BLE001
@@ -989,11 +1134,20 @@ class SttModel:
                     self.whisper = whisper.load_model("base")
 
         assert self.whisper is not None
-        result = self.whisper.transcribe(path, language=language or None)
+        try:
+            result = self.whisper.transcribe(path, language=lang or None)
+        except Exception as exc:  # noqa: BLE001
+            print(f"Whisper transcription failed: {exc}")
+            return {
+                "transcript": "",
+                "language": lang,
+                "engine": "whisper-base",
+                "error": str(exc),
+            }
         text = (result.get("text") or "").strip()
         return {
             "transcript": text,
-            "language": result.get("language"),
+            "language": result.get("language") or lang,
             "engine": "whisper-base",
         }
 

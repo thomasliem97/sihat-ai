@@ -77,7 +77,7 @@ def health() -> dict[str, str]:
         "status": "ok",
         "service": "sihat-ai",
         "inference": "modal",
-        "build": _env("SIHAT_AI_BUILD") or "imaging-v5-20260715",
+        "build": _env("SIHAT_AI_BUILD") or "imaging-v5-20260716",
         "webhook_secret": "set" if secret else "missing",
         "adapter": f"configured:{lora}" if lora else "gpu-volume",
         "structurer": _env("OPENAI_STRUCTURE_MODEL") or "gpt-5.6-terra",
@@ -103,6 +103,19 @@ def transcribe_audio(payload: dict[str, Any]) -> dict[str, Any]:
     except Exception as exc:  # noqa: BLE001
         logger.warning("STT failed: %s", exc)
         raise HTTPException(status_code=502, detail=f"STT failed: {exc}") from exc
+
+
+@app.post("/api/v1/triage")
+def triage_chat(payload: dict[str, Any]) -> dict[str, Any]:
+    """MedGemma triage draft + GPT structured JSON."""
+    if not str(payload.get("user_message") or "").strip():
+        raise HTTPException(status_code=422, detail="user_message required")
+
+    try:
+        return _invoke("/triage", payload)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Triage failed: %s", exc)
+        raise HTTPException(status_code=502, detail=f"Triage failed: {exc}") from exc
 
 
 @app.post("/api/v1/analyze", response_model=AnalyzeResponse)
@@ -823,6 +836,8 @@ def _invoke(path: str, payload: dict[str, Any]) -> dict[str, Any]:
             )
         elif route == "classify":
             data = model.classify.remote(payload)
+        elif route in {"triage", "triage_chat"}:
+            data = model.triage_chat.remote(payload)
         elif route in {"status", "health"}:
             data = model.status.remote()
         else:
@@ -835,6 +850,8 @@ def _invoke(path: str, payload: dict[str, Any]) -> dict[str, Any]:
         "transcribe",
         "stt",
         "classify",
+        "triage",
+        "triage_chat",
     }:
         raise RuntimeError(f"Inference error: {data.get('error')}")
     if "bounding_boxes" in data:

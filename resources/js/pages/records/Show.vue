@@ -7,7 +7,6 @@ import CitationChip from '@/components/medical/CitationChip.vue';
 import ClinicalBadge from '@/components/medical/ClinicalBadge.vue';
 import ConfidenceBadge from '@/components/medical/ConfidenceBadge.vue';
 import ImageOverlay from '@/components/medical/ImageOverlay.vue';
-import MedicalDisclaimer from '@/components/medical/MedicalDisclaimer.vue';
 import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
@@ -1042,8 +1041,6 @@ defineOptions({
                     />
                 </CardContent>
             </Card>
-
-            <MedicalDisclaimer />
         </template>
 
         <Alert v-else-if="record.status === 'failed'" variant="destructive">

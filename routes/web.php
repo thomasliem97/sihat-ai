@@ -47,7 +47,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('voice')->name('voice.')->group(function () {
         Route::get('triage', [VoiceTriageController::class, 'show'])->name('triage');
-        Route::post('triage', [VoiceTriageController::class, 'transcribe'])->name('triage.transcribe');
+        Route::post('triage/sessions', [VoiceTriageController::class, 'store'])->name('triage.sessions.store');
+        Route::get('triage/sessions/{session}', [VoiceTriageController::class, 'session'])->name('triage.sessions.show');
+        Route::post('triage/sessions/{session}/messages', [VoiceTriageController::class, 'message'])->name('triage.sessions.messages');
+        Route::post('triage/sessions/{session}/messages/{message}/speak', [VoiceTriageController::class, 'speak'])->name('triage.sessions.messages.speak');
+        Route::post('triage/sessions/{session}/archive', [VoiceTriageController::class, 'archive'])->name('triage.sessions.archive');
+        Route::post('triage/sessions/{session}/share', [VoiceTriageController::class, 'share'])->name('triage.sessions.share');
     });
 });
 

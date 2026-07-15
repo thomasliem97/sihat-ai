@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppContent from '@/components/AppContent.vue';
+import AppFooter from '@/components/AppFooter.vue';
 import AppShell from '@/components/AppShell.vue';
 import AppSidebar from '@/components/AppSidebar.vue';
 import AppSidebarHeader from '@/components/AppSidebarHeader.vue';
@@ -30,6 +31,7 @@ withDefaults(defineProps<Props>(), {
                     </div>
                 </div>
             </div>
+            <AppFooter />
         </AppContent>
         <Toaster />
     </AppShell>
