@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
 class AiPipelineService
@@ -50,7 +49,7 @@ class AiPipelineService
 
         $modality = $record->detected_modality ?? $record->modality;
         $baseUrl = rtrim((string) config('services.modal.url'), '/');
-        $webhookUrl = URL::route('ai.webhook');
+        $webhookUrl = rtrim((string) config('app.url'), '/').'/api/ai/webhook';
         $path = $record->inferenceFilePath();
         $bytes = Storage::disk('local')->get($path);
 
@@ -171,6 +170,13 @@ class AiPipelineService
         $modality = $modalityEnum->value;
         $result['engine'] = $result['engine'] ?? 'medgemma';
         $result['adapter'] = $result['adapter'] ?? (config('services.modal.lora_path') ? 'configured' : 'none');
+        $result['findings'] = $this->sanitizeImagingFindings($modalityEnum, $result);
+        if ($this->imagingFindingsNeedReview($modalityEnum, $result['findings'])) {
+            $result['overall_confidence'] = min((float) ($result['overall_confidence'] ?? 1), 0.35);
+        }
+        $result['differential_diagnosis'] = $this->sanitizeDifferential(
+            $result['differential_diagnosis'] ?? []
+        );
 
         $trace[] = $this->hop('router', 'completed', 'Modality '.$modality, $record->route_confidence);
         if ($record->safe_file_path) {
@@ -245,6 +251,157 @@ class AiPipelineService
                 'upload', 'deidentify', 'route', 'analyze', 'rag', 'guardrail', 'compose',
             ]),
         ]);
+    }
+
+    /**
+     * Drop punctuation-only / empty labels. Salvage leading junk (":Multiple…" → usable).
+     * When imaging has no usable findings, force a review item instead of inventing "normal".
+     *
+     * @param  array<string, mixed>  $result
+     * @return array<int, array<string, mixed>>
+     */
+    private function sanitizeImagingFindings(Modality $modality, array $result): array
+    {
+        $findings = [];
+        foreach ($result['findings'] ?? [] as $finding) {
+            if (! is_array($finding)) {
+                continue;
+            }
+
+            $label = $this->repairClinicalText($finding['label'] ?? null);
+            if ($label === null) {
+                continue;
+            }
+
+            $item = $finding;
+            $item['label'] = $label;
+            $item['severity'] = $this->coerceFindingSeverity($label, $finding['severity'] ?? null);
+
+            if (isset($finding['description']) && is_string($finding['description'])) {
+                $description = $this->repairClinicalText($finding['description']);
+                if ($description !== null) {
+                    $item['description'] = $description;
+                } else {
+                    unset($item['description']);
+                }
+            }
+
+            $findings[] = $item;
+        }
+
+        if ($findings !== [] || ! $modality->isImaging()) {
+            return $findings;
+        }
+
+        return [[
+            'label' => 'Unusable model output',
+            'description' => 'The model did not return clinically usable findings. Manual review of the source image is required.',
+            'severity' => 'borderline',
+            'confidence' => 0.2,
+        ]];
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $findings
+     */
+    private function imagingFindingsNeedReview(Modality $modality, array $findings): bool
+    {
+        if (! $modality->isImaging()) {
+            return false;
+        }
+
+        if ($findings === []) {
+            return true;
+        }
+
+        return count($findings) === 1
+            && ($findings[0]['label'] ?? null) === 'Unusable model output';
+    }
+
+    /**
+     * @param  array<int, mixed>  $differential
+     * @return array<int, array<string, mixed>>
+     */
+    private function sanitizeDifferential(array $differential): array
+    {
+        $clean = [];
+        foreach ($differential as $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+
+            $condition = $this->repairClinicalText($row['condition'] ?? null);
+            if ($condition === null) {
+                continue;
+            }
+
+            $confidence = is_numeric($row['confidence'] ?? null) ? (float) $row['confidence'] : 0.0;
+            if ($confidence <= 0) {
+                continue;
+            }
+
+            $item = $row;
+            $item['condition'] = $condition;
+            $item['confidence'] = $confidence;
+            $clean[] = $item;
+        }
+
+        return $clean;
+    }
+
+    private function repairClinicalText(mixed $value): ?string
+    {
+        if (! is_string($value)) {
+            return null;
+        }
+
+        $trimmed = trim($value);
+        while ($trimmed !== '' && preg_match('/^[\p{L}\p{N}]/u', $trimmed) !== 1) {
+            $trimmed = ltrim(mb_substr($trimmed, 1));
+        }
+
+        if (mb_strlen($trimmed) < 3) {
+            return null;
+        }
+
+        return $trimmed;
+    }
+
+    private function isUsableClinicalLabel(mixed $label): bool
+    {
+        return $this->repairClinicalText($label) !== null;
+    }
+
+    private function coerceFindingSeverity(string $label, mixed $severity): string
+    {
+        $sev = is_string($severity) ? strtolower(trim($severity)) : 'borderline';
+        if (! in_array($sev, ['normal', 'borderline', 'abnormal', 'critical'], true)) {
+            $sev = 'borderline';
+        }
+
+        $labelLower = strtolower($label);
+        $abnormalCues = [
+            'nodule',
+            'mass',
+            'consolidat',
+            'pneumothorax',
+            'effusion',
+            'infiltrat',
+            'opacit',
+            'fracture',
+            'hemorrhage',
+            'lesion',
+        ];
+
+        if ($sev === 'normal') {
+            foreach ($abnormalCues as $cue) {
+                if (str_contains($labelLower, $cue)) {
+                    return 'abnormal';
+                }
+            }
+        }
+
+        return $sev;
     }
 
     /**

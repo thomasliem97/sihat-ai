@@ -32,7 +32,13 @@ watch(
             class="flex items-center justify-between border-b border-white/10 px-4 py-3 font-mono text-xs tracking-wide uppercase"
         >
             <span>Scan viewer</span>
-            <span class="text-ink-faint">{{ boxes.length }} finding(s)</span>
+            <span class="text-ink-faint">
+                {{
+                    boxes.length
+                        ? `${boxes.length} finding(s)`
+                        : 'No overlays'
+                }}
+            </span>
         </div>
         <div class="relative">
             <img

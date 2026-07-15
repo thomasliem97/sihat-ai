@@ -97,6 +97,133 @@ test('webhook completes analysis with valid signature', function () {
         ->and($job->status)->toBe('completed');
 });
 
+test('webhook punctuation-only imaging findings force review abstention', function () {
+    $user = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'status' => RecordStatus::Processing,
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'deidentified_at' => now(),
+    ]);
+    AnalysisJob::factory()->create([
+        'medical_record_id' => $record->id,
+        'status' => 'running',
+        'external_job_id' => 'job-garbage-findings',
+    ]);
+
+    $payload = [
+        'job_id' => 'job-garbage-findings',
+        'status' => 'completed',
+        'detected_modality' => 'xray',
+        'route_confidence' => 0.9,
+        'result' => [
+            'findings' => [
+                [
+                    'label' => ':',
+                    'description' => ':',
+                    'confidence' => 0,
+                    'severity' => 'normal',
+                ],
+            ],
+            'overall_confidence' => 0.72,
+            'differential_diagnosis' => [],
+            'bounding_boxes' => [],
+        ],
+    ];
+
+    $raw = json_encode($payload, JSON_THROW_ON_ERROR);
+    $signature = hash_hmac('sha256', $raw, 'test-secret');
+
+    $this->call(
+        'POST',
+        route('ai.webhook'),
+        [],
+        [],
+        [],
+        [
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_X_SIHAT_SIGNATURE' => $signature,
+        ],
+        $raw,
+    )->assertSuccessful();
+
+    $record->refresh();
+
+    expect($record->status)->toBe(RecordStatus::Completed)
+        ->and($record->findings)->toHaveCount(1)
+        ->and($record->findings[0]['label'])->toBe('Unusable model output')
+        ->and($record->findings[0]['severity'])->toBe('borderline')
+        ->and((float) $record->overall_confidence)->toBeLessThan(0.5)
+        ->and($record->guardrailFlagList())->toContain('low_confidence_abstention');
+});
+
+test('webhook salvages leading-colon imaging findings and severity', function () {
+    $user = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'status' => RecordStatus::Processing,
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'deidentified_at' => now(),
+    ]);
+    AnalysisJob::factory()->create([
+        'medical_record_id' => $record->id,
+        'status' => 'running',
+        'external_job_id' => 'job-salvage-colon',
+    ]);
+
+    $payload = [
+        'job_id' => 'job-salvage-colon',
+        'status' => 'completed',
+        'detected_modality' => 'xray',
+        'route_confidence' => 0.9,
+        'result' => [
+            'findings' => [
+                [
+                    'label' => ':Multiple bilateral pulmonary nodules',
+                    'description' => ':Numerous small nodules scattered through both lung fields.',
+                    'confidence' => 0.78,
+                    'severity' => 'normal',
+                ],
+            ],
+            'overall_confidence' => 0.74,
+            'differential_diagnosis' => [
+                ['condition' => ':Miliary tuberculosis', 'confidence' => 0],
+                ['condition' => ':Metastatic disease', 'confidence' => 0.31],
+            ],
+            'bounding_boxes' => [],
+        ],
+    ];
+
+    $raw = json_encode($payload, JSON_THROW_ON_ERROR);
+    $signature = hash_hmac('sha256', $raw, 'test-secret');
+
+    $this->call(
+        'POST',
+        route('ai.webhook'),
+        [],
+        [],
+        [],
+        [
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_X_SIHAT_SIGNATURE' => $signature,
+        ],
+        $raw,
+    )->assertSuccessful();
+
+    $record->refresh();
+
+    expect($record->status)->toBe(RecordStatus::Completed)
+        ->and($record->findings)->toHaveCount(1)
+        ->and($record->findings[0]['label'])->toBe('Multiple bilateral pulmonary nodules')
+        ->and($record->findings[0]['description'])->toBe('Numerous small nodules scattered through both lung fields.')
+        ->and($record->findings[0]['severity'])->toBe('abnormal')
+        ->and($record->physician_report['differential_diagnosis'] ?? null)->toHaveCount(1)
+        ->and($record->physician_report['differential_diagnosis'][0]['condition'])->toBe('Metastatic disease')
+        ->and($record->guardrailFlagList())->not->toContain('low_confidence_abstention');
+});
+
 test('webhook failure marks record failed', function () {
     $user = User::factory()->create();
     $record = MedicalRecord::factory()->create([
