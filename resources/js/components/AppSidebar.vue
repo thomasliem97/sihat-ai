@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import {
-    BarChart3,
-    FileText,
-    House,
-    LayoutGrid,
-    Mic,
-} from '@lucide/vue';
+import { FileText, House, LayoutGrid, Mic } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
@@ -21,7 +15,6 @@ import {
     SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { dashboard, home } from '@/routes';
-import { index as evalIndex } from '@/routes/evaluation';
 import { index as recordsIndex } from '@/routes/records';
 import { triage as voiceTriage } from '@/routes/voice';
 import { dashboard as physicianDashboard } from '@/routes/physician';
@@ -32,36 +25,23 @@ import { computed } from 'vue';
 const page = usePage();
 const role = computed(() => (page.props.auth as { user?: { role?: string } })?.user?.role);
 
-const mainNavItems = computed<NavItem[]>(() => {
-    const items: NavItem[] = [
-        {
-            title: 'Dashboard',
-            href: dashboard(),
-            icon: LayoutGrid,
-        },
-        {
-            title: 'Records',
-            href: recordsIndex(),
-            icon: FileText,
-        },
-    ];
-
-    if (role.value === 'physician') {
-        items.push({
-            title: 'Evaluation',
-            href: evalIndex(),
-            icon: BarChart3,
-        });
-    }
-
-    items.push({
+const mainNavItems = computed<NavItem[]>(() => [
+    {
+        title: 'Dashboard',
+        href: dashboard(),
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Records',
+        href: recordsIndex(),
+        icon: FileText,
+    },
+    {
         title: 'Voice Triage',
         href: voiceTriage(),
         icon: Mic,
-    });
-
-    return items;
-});
+    },
+]);
 </script>
 
 <template>

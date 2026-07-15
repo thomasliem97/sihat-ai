@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('uploaded_by_user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('subject_user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('title');
             $table->string('modality')->default('unknown');
             $table->string('detected_modality')->nullable();

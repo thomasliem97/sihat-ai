@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $user_id
  * @property int|null $uploaded_by_user_id
+ * @property int|null $subject_user_id
  * @property string $title
  * @property Modality $modality
  * @property Modality|null $detected_modality
@@ -58,6 +59,7 @@ class MedicalRecord extends Model
     protected $fillable = [
         'user_id',
         'uploaded_by_user_id',
+        'subject_user_id',
         'title',
         'modality',
         'detected_modality',
@@ -177,6 +179,12 @@ class MedicalRecord extends Model
     public function uploadedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'uploaded_by_user_id');
+    }
+
+    /** @return BelongsTo<User, $this> */
+    public function subjectUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'subject_user_id');
     }
 
     /** @return BelongsTo<User, $this> */

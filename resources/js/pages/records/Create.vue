@@ -21,11 +21,13 @@ defineProps<{
     modalities: Array<{ value: string; label: string }>;
     languages: Array<{ value: string; label: string }>;
     patients: Array<{ id: number; name: string }>;
+    isPhysician: boolean;
 }>();
 
 const modality = ref('unknown');
 const language = ref('en');
-const patientId = ref('');
+const patientId = ref('__none__');
+const subject = ref('self');
 
 defineOptions({
     layout: {
@@ -58,10 +60,16 @@ defineOptions({
             <input type="hidden" name="modality" :value="modality" />
             <input type="hidden" name="language" :value="language" />
             <input
-                v-if="patientId"
+                v-if="isPhysician && patientId !== '__none__'"
                 type="hidden"
                 name="patient_id"
                 :value="patientId"
+            />
+            <input
+                v-if="!isPhysician"
+                type="hidden"
+                name="subject"
+                :value="subject"
             />
 
             <div class="space-y-2">
@@ -75,13 +83,14 @@ defineOptions({
                 <InputError :message="errors.title" />
             </div>
 
-            <div v-if="patients.length" class="space-y-2">
+            <div v-if="isPhysician" class="space-y-2">
                 <FieldLabel>Patient</FieldLabel>
                 <Select v-model="patientId">
                     <SelectTrigger class="w-full">
-                        <SelectValue placeholder="Select patient" />
+                        <SelectValue placeholder="Select patient, or leave unassigned" />
                     </SelectTrigger>
                     <SelectContent>
+                        <SelectItem value="__none__">Unassigned</SelectItem>
                         <SelectItem
                             v-for="p in patients"
                             :key="p.id"
@@ -91,6 +100,27 @@ defineOptions({
                         </SelectItem>
                     </SelectContent>
                 </Select>
+                <InputError :message="errors.patient_id" />
+                <p class="text-sm text-muted-foreground">
+                    Leave empty for an unassigned upload. Longitudinal history
+                    only runs when a patient is selected.
+                </p>
+            </div>
+
+            <div v-else class="space-y-2">
+                <FieldLabel required>Who is this for?</FieldLabel>
+                <Select v-model="subject">
+                    <SelectTrigger class="w-full">
+                        <SelectValue placeholder="Select who this scan belongs to" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="self">Myself</SelectItem>
+                        <SelectItem value="other">
+                            Someone else (family or relative)
+                        </SelectItem>
+                    </SelectContent>
+                </Select>
+                <InputError :message="errors.subject" />
             </div>
 
             <div class="grid gap-5 sm:grid-cols-2">

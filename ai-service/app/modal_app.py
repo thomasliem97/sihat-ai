@@ -1,9 +1,14 @@
 """
 Modal MedGemma 1.5 + MY-LoRA + Laravel-facing FastAPI glue.
 
+All MedGemma paths are free-form text. OpenAI Structured Outputs (json_schema) is the
+only JSON enforcer (imaging, classify, clinical text, lab).
+Structurer model/effort: OPENAI_STRUCTURE_MODEL / OPENAI_STRUCTURE_EFFORT (Modal openai-secret).
+
 Deploy (from repo root):
   modal secret create huggingface-secret HF_TOKEN=hf_...
   modal secret create sihat-webhook-secret SIHAT_AI_WEBHOOK_SECRET=...
+  modal secret create openai-secret OPENAI_API_KEY=sk-... OPENAI_STRUCTURE_MODEL=gpt-... OPENAI_STRUCTURE_EFFORT=...
   modal deploy ai-service/app/modal_app.py
 
 Laravel:
@@ -28,6 +33,7 @@ app = modal.App("sihat-medgemma")
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
+    .apt_install("ffmpeg")
     .pip_install(
         "torch",
         "transformers>=4.50.0",
@@ -43,7 +49,7 @@ image = (
         "pylibjpeg",
         "pylibjpeg-libjpeg",
         "pylibjpeg-openjpeg",
-        "outlines",
+        "openai",
     )
     # hf-xet is intentionally removed: Xet CDN has caused HF 403 SignatureError on Modal.
     # HuggingFace then falls back to regular HTTP (slower, but reliable).
@@ -78,7 +84,12 @@ web_image = (
         "python -m pip install --force-reinstall opencv-python-headless",
         'python -c "import cv2; from rapidocr import RapidOCR; RapidOCR()"',
     )
-    .env({"PYTHONPATH": "/root", "SIHAT_AI_BUILD": "imaging-salvage-v1-20260715"})
+    .env({
+        "PYTHONPATH": "/root",
+        "SIHAT_AI_BUILD": "imaging-v6-20260716",
+        "OPENAI_STRUCTURE_MODEL": "gpt-5.6-terra",
+        "OPENAI_STRUCTURE_EFFORT": "high",
+    })
     .add_local_dir(
         "ai-service/app",
         remote_path="/root/app",
@@ -91,6 +102,7 @@ MODEL_ID = "google/medgemma-1.5-4b-it"
 lora_vol = modal.Volume.from_name("sihat-lora", create_if_missing=True)
 webhook_secret = modal.Secret.from_name("sihat-webhook-secret")
 hf_secret = modal.Secret.from_name("huggingface-secret")
+openai_secret = modal.Secret.from_name("openai-secret")
 
 # MY-LoRA is text SFT. Suffix targets like "q_proj" also match vision_tower.*.q_proj and
 # create empty LoRA slots → PEFT "missing adapter keys". Keep adapters on language path only.
@@ -98,19 +110,13 @@ _LANGUAGE_LORA_TARGET_MODULES = (
     r"^(?!.*vision_tower).*(?:q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
 )
 
-# Outlines enforces this at decode time: string values must start with alnum (never ":").
-_CLINICAL_TEXT = {
-    "type": "string",
-    "minLength": 3,
-    "maxLength": 240,
-    "pattern": r"^[A-Za-z0-9].*$",
-}
-_CLINICAL_LABEL = {
-    "type": "string",
-    "minLength": 3,
-    "maxLength": 120,
-    "pattern": r"^[A-Za-z0-9].*$",
-}
+
+def _structure_model() -> str:
+    return (os.environ.get("OPENAI_STRUCTURE_MODEL") or "gpt-5.6-terra").strip()
+
+
+def _structure_effort() -> str:
+    return (os.environ.get("OPENAI_STRUCTURE_EFFORT") or "high").strip()
 
 
 def _lora_path() -> str:
@@ -173,10 +179,10 @@ def _load_image(payload: dict[str, Any]):
             raise ValueError(f"Could not decode image/DICOM payload: {exc}") from exc
 
 
-# Structured output via Outlines + pure JSON Schema (no Pydantic models).
-# Docs: https://dottxt-ai.github.io/outlines/latest/features/core/output_types/
-# Wrap dicts with outlines.types.JsonSchema(...).
+# GPT Structured Outputs schemas (OpenAI json_schema). MedGemma never sees these.
 _SEVERITY = {"type": "string", "enum": ["normal", "borderline", "abnormal", "critical"]}
+_STRING = {"type": "string"}
+_NUMBER = {"type": "number"}
 
 IMAGING_RESULT_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -188,9 +194,9 @@ IMAGING_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "label": _CLINICAL_LABEL,
-                    "description": _CLINICAL_TEXT,
-                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                    "label": _STRING,
+                    "description": _STRING,
+                    "confidence": _NUMBER,
                     "severity": _SEVERITY,
                 },
                 "required": ["label", "description", "confidence", "severity"],
@@ -202,25 +208,25 @@ IMAGING_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "condition": _CLINICAL_LABEL,
-                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                    "condition": _STRING,
+                    "confidence": _NUMBER,
                 },
                 "required": ["condition", "confidence"],
             },
         },
-        "overall_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "overall_confidence": _NUMBER,
         "bounding_boxes": {
             "type": "array",
             "items": {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "label": _CLINICAL_LABEL,
-                    "x": {"type": "number", "minimum": 0, "maximum": 1},
-                    "y": {"type": "number", "minimum": 0, "maximum": 1},
-                    "width": {"type": "number", "minimum": 0, "maximum": 1},
-                    "height": {"type": "number", "minimum": 0, "maximum": 1},
-                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                    "label": _STRING,
+                    "x": _NUMBER,
+                    "y": _NUMBER,
+                    "width": _NUMBER,
+                    "height": _NUMBER,
+                    "confidence": _NUMBER,
                 },
                 "required": ["label", "x", "y", "width", "height", "confidence"],
             },
@@ -244,15 +250,23 @@ LAB_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "label": _CLINICAL_LABEL,
-                    "value": {"type": ["number", "string", "null"]},
-                    "unit": {"type": ["string", "null"]},
-                    "reference": {"type": ["string", "null"]},
+                    "label": _STRING,
+                    "value": _STRING,
+                    "unit": _STRING,
+                    "reference": _STRING,
                     "severity": _SEVERITY,
-                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
-                    "description": _CLINICAL_TEXT,
+                    "confidence": _NUMBER,
+                    "description": _STRING,
                 },
-                "required": ["label", "severity", "confidence"],
+                "required": [
+                    "label",
+                    "value",
+                    "unit",
+                    "reference",
+                    "severity",
+                    "confidence",
+                    "description",
+                ],
             },
         },
         "biomarkers": {
@@ -261,14 +275,21 @@ LAB_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "name": _CLINICAL_LABEL,
-                    "value": {"type": ["number", "string", "null"]},
-                    "unit": {"type": ["string", "null"]},
-                    "reference_low": {"type": ["number", "null"]},
-                    "reference_high": {"type": ["number", "null"]},
+                    "name": _STRING,
+                    "value": _STRING,
+                    "unit": _STRING,
+                    "reference_low": _STRING,
+                    "reference_high": _STRING,
                     "status": _SEVERITY,
                 },
-                "required": ["name", "status"],
+                "required": [
+                    "name",
+                    "value",
+                    "unit",
+                    "reference_low",
+                    "reference_high",
+                    "status",
+                ],
             },
         },
         "differential_diagnosis": {
@@ -277,14 +298,29 @@ LAB_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "condition": _CLINICAL_LABEL,
-                    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                    "condition": _STRING,
+                    "confidence": _NUMBER,
                 },
                 "required": ["condition", "confidence"],
             },
         },
-        "overall_confidence": {"type": "number", "minimum": 0, "maximum": 1},
-        "bounding_boxes": {"type": "array", "items": {"type": "object"}},
+        "overall_confidence": _NUMBER,
+        "bounding_boxes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "label": _STRING,
+                    "x": _NUMBER,
+                    "y": _NUMBER,
+                    "width": _NUMBER,
+                    "height": _NUMBER,
+                    "confidence": _NUMBER,
+                },
+                "required": ["label", "x", "y", "width", "height", "confidence"],
+            },
+        },
     },
     "required": [
         "findings",
@@ -311,26 +347,10 @@ CLASSIFY_RESULT_SCHEMA: dict[str, Any] = {
                 "other",
             ],
         },
-        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "confidence": _NUMBER,
     },
     "required": ["modality", "confidence"],
 }
-
-
-def _parse_structured(result: Any) -> dict[str, Any]:
-    """Outlines returns a JSON string for JsonSchema output types."""
-    if isinstance(result, dict):
-        return result
-    if isinstance(result, str):
-        parsed = json.loads(result)
-        if not isinstance(parsed, dict):
-            raise ValueError("Structured output must be a JSON object")
-        return parsed
-    if hasattr(result, "model_dump"):
-        return result.model_dump()
-    if hasattr(result, "dict"):
-        return result.dict()
-    raise ValueError(f"Unexpected structured result type: {type(result)}")
 
 
 def _clamp_boxes(boxes: Any) -> list[dict[str, Any]]:
@@ -362,158 +382,308 @@ def _clamp_boxes(boxes: Any) -> list[dict[str, Any]]:
     return out[:8]
 
 
-_ABNORMAL_LABEL_CUES = (
-    "nodule",
-    "mass",
-    "consolidat",
-    "pneumothorax",
-    "effusion",
-    "infiltrat",
-    "opacit",
-    "fracture",
-    "hemorrhage",
-    "lesion",
-)
-
-
-def _strip_leading_junk(value: Any) -> str | None:
-    """Salvage ':Multiple nodules' → 'Multiple nodules'. Drop punctuation-only junk."""
-    if not isinstance(value, str):
-        return None
-    trimmed = value.strip()
-    while trimmed and not trimmed[0].isalnum():
-        trimmed = trimmed[1:].lstrip()
-    if len(trimmed) < 3:
-        return None
-    return trimmed
-
-
 def _usable_clinical_label(label: Any) -> bool:
-    return _strip_leading_junk(label) is not None
-
-
-def _coerce_severity(label: str, severity: Any) -> str:
-    sev = str(severity or "borderline").strip().lower()
-    if sev not in {"normal", "borderline", "abnormal", "critical"}:
-        sev = "borderline"
-    label_l = label.lower()
-    if sev == "normal" and any(cue in label_l for cue in _ABNORMAL_LABEL_CUES):
-        return "abnormal"
-    return sev
+    if not isinstance(label, str):
+        return False
+    trimmed = label.strip()
+    if len(trimmed) < 3:
+        return False
+    return re.search(r"[^\W_]", trimmed, flags=re.UNICODE) is not None
 
 
 def _normalize_result(raw: dict[str, Any], adapter: str) -> dict[str, Any]:
     findings_in = raw.get("findings") or []
     if not isinstance(findings_in, list):
         findings_in = []
-    findings: list[dict[str, Any]] = []
-    for f in findings_in:
-        if not isinstance(f, dict):
-            continue
-        label = _strip_leading_junk(f.get("label"))
-        if label is None:
-            continue
-        item = dict(f)
-        item["label"] = label
-        item["severity"] = _coerce_severity(label, f.get("severity"))
-        desc = f.get("description")
-        if isinstance(desc, str) and desc.strip():
-            repaired_desc = _strip_leading_junk(desc)
-            if repaired_desc is not None:
-                item["description"] = repaired_desc
-            else:
-                item.pop("description", None)
-        findings.append(item)
+    findings = [
+        f
+        for f in findings_in
+        if isinstance(f, dict) and _usable_clinical_label(f.get("label"))
+    ]
 
     differentials_in = raw.get("differential_diagnosis") or []
     if not isinstance(differentials_in, list):
         differentials_in = []
-    differentials = []
-    for d in differentials_in:
-        if not isinstance(d, dict):
-            continue
-        condition = _strip_leading_junk(d.get("condition"))
-        if condition is None:
-            continue
-        try:
-            conf = float(d.get("confidence", 0))
-        except (TypeError, ValueError):
-            conf = 0.0
-        if conf <= 0:
-            continue
-        row = dict(d)
-        row["condition"] = condition
-        row["confidence"] = conf
-        differentials.append(row)
+    differentials = [
+        d
+        for d in differentials_in
+        if isinstance(d, dict) and _usable_clinical_label(d.get("condition"))
+    ]
 
     confidence = raw.get("overall_confidence")
     if confidence is None and findings:
         confs = [float(f.get("confidence", 0.5)) for f in findings if isinstance(f, dict)]
         confidence = sum(confs) / len(confs) if confs else 0.5
     if not findings:
-        # Empty / garbage structured output must not look like a confident normal study.
         confidence = min(float(confidence or 0.5), 0.35)
-
-    boxes = _clamp_boxes(raw.get("bounding_boxes"))
-    for box in boxes:
-        repaired = _strip_leading_junk(box.get("label"))
-        if repaired is not None:
-            box["label"] = repaired
 
     return {
         "findings": findings,
         "differential_diagnosis": differentials,
-        "bounding_boxes": boxes,
+        "bounding_boxes": _clamp_boxes(raw.get("bounding_boxes")),
         "biomarkers": raw.get("biomarkers") or [],
         "overall_confidence": float(confidence or 0.5),
         "adapter": adapter,
+        "engine": f"medgemma+{_structure_model()}",
+        "structurer": _structure_model(),
     }
+
+
+def _normalize_classify(raw: dict[str, Any], adapter: str) -> dict[str, Any]:
+    allowed = {
+        "xray",
+        "dermatology",
+        "ct",
+        "mri",
+        "histopath",
+        "ophthalmology",
+    }
+    modality = str(raw.get("modality") or "other").strip().lower()
+    try:
+        confidence = float(raw.get("confidence", 0.5))
+    except (TypeError, ValueError):
+        confidence = 0.5
+    confidence = max(0.0, min(1.0, confidence))
+    if modality == "other" or modality not in allowed:
+        modality = "xray"
+        confidence = min(confidence, 0.5)
+    return {
+        "modality": modality,
+        "confidence": confidence,
+        "adapter": adapter,
+        "engine": f"medgemma+{_structure_model()}",
+        "structurer": _structure_model(),
+    }
+
+
+def _pil_to_data_url(pil: Any, *, max_side: int = 1280, quality: int = 85) -> str:
+    from PIL import Image as PILImage
+
+    image = pil
+    if not isinstance(image, PILImage.Image):
+        raise TypeError("expected PIL image")
+    image = image.convert("RGB")
+    w, h = image.size
+    scale = min(1.0, float(max_side) / float(max(w, h)))
+    if scale < 1.0:
+        image = image.resize((max(1, int(w * scale)), max(1, int(h * scale))))
+    buf = BytesIO()
+    image.save(buf, format="JPEG", quality=quality, optimize=True)
+    b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+    return f"data:image/jpeg;base64,{b64}"
+
+
+def _openai_structured(
+    *,
+    name: str,
+    schema: dict[str, Any],
+    instructions: str,
+    user_text: str,
+    pil: Any | None = None,
+) -> dict[str, Any]:
+    """OpenAI Structured Outputs is the only JSON enforcer in this service."""
+    from openai import OpenAI
+
+    api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY is not set")
+
+    content: list[dict[str, Any]] = [
+        {"type": "input_text", "text": user_text},
+    ]
+    if pil is not None:
+        content.append({"type": "input_image", "image_url": _pil_to_data_url(pil)})
+
+    client = OpenAI(api_key=api_key)
+    response = client.responses.create(
+        model=_structure_model(),
+        reasoning={"effort": _structure_effort()},
+        instructions=instructions,
+        input=[{"role": "user", "content": content}],
+        text={
+            "format": {
+                "type": "json_schema",
+                "name": name,
+                "strict": True,
+                "schema": schema,
+            }
+        },
+    )
+
+    text_out = getattr(response, "output_text", None)
+    if not text_out:
+        chunks: list[str] = []
+        for item in getattr(response, "output", None) or []:
+            for part in getattr(item, "content", None) or []:
+                part_text = getattr(part, "text", None)
+                if part_text:
+                    chunks.append(str(part_text))
+        text_out = "".join(chunks)
+    if not text_out:
+        raise RuntimeError(f"OpenAI structurer ({name}) returned empty output")
+
+    decoded = json.loads(text_out)
+    if not isinstance(decoded, dict):
+        raise RuntimeError(f"OpenAI structurer ({name}) returned non-object JSON")
+    return decoded
+
+
+def _structure_imaging(pil: Any, draft: str, *, modality: str) -> dict[str, Any]:
+    return _openai_structured(
+        name="imaging_result",
+        schema=IMAGING_RESULT_SCHEMA,
+        instructions=(
+            "You are SihatAI's imaging structurer.\n"
+            "Inputs: a medical image and a MedGemma draft report (plain text).\n"
+            "Output: one JSON object matching the schema.\n"
+            "Use the MedGemma draft as the primary clinical source. You may clarify, "
+            "normalize wording, calibrate severity/confidence, add differentials, estimate "
+            "bounding boxes, and elaborate from the image when the draft is thin.\n"
+            f"Modality: {modality}.\n"
+            "Severity: normal|borderline|abnormal|critical. "
+            "Nodules/masses/consolidations/opacities/effusions/pneumothorax are not normal.\n"
+            "Bounding boxes: normalized [0,1] x,y top-left with width/height."
+        ),
+        user_text="MedGemma draft report:\n\n" + ((draft or "").strip() or "(empty)"),
+        pil=pil,
+    )
+
+
+def _structure_clinical(draft: str) -> dict[str, Any]:
+    return _openai_structured(
+        name="clinical_result",
+        schema=IMAGING_RESULT_SCHEMA,
+        instructions=(
+            "You are SihatAI's clinical-document structurer.\n"
+            "Input: a MedGemma free-form extraction note from a de-identified document.\n"
+            "Output: JSON matching the schema. Map problems/meds/allergies/plans into findings.\n"
+            "bounding_boxes must be []. Prefer stated content; do not invent diagnoses."
+        ),
+        user_text="MedGemma clinical draft:\n\n" + ((draft or "").strip() or "(empty)"),
+    )
+
+
+def _structure_lab(draft: str, pil: Any | None = None) -> dict[str, Any]:
+    return _openai_structured(
+        name="lab_result",
+        schema=LAB_RESULT_SCHEMA,
+        instructions=(
+            "You are SihatAI's lab-report structurer.\n"
+            "Input: a MedGemma free-form lab extraction note"
+            + (" and the lab page image" if pil is not None else "")
+            + ".\n"
+            "Output: JSON matching the schema with findings + biomarkers.\n"
+            "Use exact values from the draft/image. Missing fields use empty strings. "
+            "status/severity: normal|borderline|abnormal|critical. "
+            "bounding_boxes optional for row locations; else []."
+        ),
+        user_text="MedGemma lab draft:\n\n" + ((draft or "").strip() or "(empty)"),
+        pil=pil,
+    )
+
+
+def _structure_classify(pil: Any, draft: str) -> dict[str, Any]:
+    return _openai_structured(
+        name="classify_result",
+        schema=CLASSIFY_RESULT_SCHEMA,
+        instructions=(
+            "You are SihatAI's modality router structurer.\n"
+            "Inputs: medical image + MedGemma modality note.\n"
+            "Output: modality + confidence JSON.\n"
+            "Allowed: xray, dermatology, ct, mri, histopath, ophthalmology, other.\n"
+            "Use the draft as primary cue; refine from the image if needed."
+        ),
+        user_text="MedGemma modality draft:\n\n" + ((draft or "").strip() or "(empty)"),
+        pil=pil,
+    )
+
+
+TRIAGE_RESULT_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "assistant_message": _STRING,
+        "urgency": {"type": "string", "enum": ["routine", "urgent", "emergency"]},
+        "chief_complaint": _STRING,
+        "summary": _STRING,
+        "suggested_followups": {
+            "type": "array",
+            "items": _STRING,
+        },
+        "done": {"type": "boolean"},
+    },
+    "required": [
+        "assistant_message",
+        "urgency",
+        "chief_complaint",
+        "summary",
+        "suggested_followups",
+        "done",
+    ],
+}
+
+
+def _structure_triage(
+    draft: str,
+    *,
+    summary: str = "",
+    user_message: str = "",
+) -> dict[str, Any]:
+    return _openai_structured(
+        name="triage_result",
+        schema=TRIAGE_RESULT_SCHEMA,
+        instructions=(
+            "You are SihatAI's voice-triage structurer.\n"
+            "Input: a MedGemma English triage draft, optional prior summary, and the current user message.\n"
+            "Output: one JSON object matching the schema.\n"
+            "assistant_message: preserve useful clinical content from the draft. Do not strip "
+            "medication suggestions, treatment options, self-care, or care-pathway advice. "
+            "Do not rewrite into a vague 'seek medical advice' message.\n"
+            "urgency: routine|urgent|emergency based on red flags.\n"
+            "chief_complaint: short English phrase.\n"
+            "summary: updated English running handoff summary of the whole triage so far.\n"
+            "suggested_followups: up to 3 short English questions that advance triage.\n"
+            "done: true only if enough info exists for a stable handoff summary."
+        ),
+        user_text=(
+            "Prior summary:\n"
+            + ((summary or "").strip() or "(none)")
+            + "\n\nCurrent user message:\n"
+            + ((user_message or "").strip() or "(empty)")
+            + "\n\nMedGemma triage draft:\n\n"
+            + ((draft or "").strip() or "(empty)")
+        ),
+    )
 
 
 def _language_instruction(language: str) -> str:
     lang = (language or "en").strip().lower()
     if lang.startswith("ms") or lang in {"bm", "malay"}:
         return (
-            "Write every human-readable string (labels, descriptions, conditions) in Bahasa Melayu. "
-            "Keep JSON keys in English exactly as specified."
+            "Write human-readable text in Bahasa Melayu."
         )
-    return (
-        "Write every human-readable string (labels, descriptions, conditions) in clear clinical English. "
-        "Keep JSON keys in English exactly as specified."
-    )
+    return "Write human-readable text in clear clinical English."
+
+
+def _triage_reply_rules() -> str:
+    return """
+Triage reply rules:
+- Be clinically useful. Clarify, triage severity, and give concrete recommendations when appropriate.
+- You may suggest likely condition categories, evidence-based treatments, OTC or common medications, dosing ranges when standard, and when to escalate care.
+- Do not invent facts. Prefer established medical knowledge.
+- Do not default to vague "seek medical advice" / "consult a professional" filler.
+- Prior medical record context is BACKGROUND ONLY. Do not summarize, interpret, or re-triage prior records unless the user asks about them or clearly describes related current symptoms.
+- If the user only greets or has not described a current problem yet, reply briefly and ask what brings them in today. Do not lead with prior-record findings.
+""".strip()
 
 
 def _safety_rules() -> str:
     return """
 Safety and scope:
-- You are clinical decision-support only. Never state a definitive diagnosis as fact.
-- Prefer observable findings over conclusions. Put possible conditions only in differential_diagnosis.
-- If image/text quality is poor or evidence is weak, lower confidence and say so in descriptions.
+- Clinical decision-support only. Never state a definitive diagnosis as fact.
+- Prefer observable findings over conclusions.
+- If quality is poor or evidence is weak, say so clearly.
 - Do not invent anatomy, labs, medications, or findings that are not visible or stated.
-- If nothing abnormal is seen, return findings with severity "normal" and empty or low-confidence differentials.
-""".strip()
-
-
-def _confidence_rules() -> str:
-    return """
-Confidence and severity calibration:
-- confidence / overall_confidence: float from 0.0 to 1.0. Use 0.9+ only when the finding is unmistakable.
-- severity:
-  - normal: expected / no concerning change
-  - borderline: subtle, nonspecific, or uncertain
-  - abnormal: clear pathologic or clinically important change
-  - critical: potentially urgent (e.g. tension physiology, large hemorrhage, airway threat). Use sparingly.
-""".strip()
-
-
-def _imaging_bbox_rules() -> str:
-    return """
-Bounding boxes:
-- Use normalized image coordinates in [0, 1]: x,y = top-left of the box; width,height extend right/down.
-- Provide one box per localized finding when a region can be pointed to.
-- Skip boxes for diffuse/global impressions (e.g. "poor inspiration") or when location is unclear.
-- Box label should match the related finding label.
-- Prefer tight boxes around the abnormality; avoid whole-image boxes unless the finding truly fills the field.
 """.strip()
 
 
@@ -584,71 +754,19 @@ Review systematically for quality, anatomy in view, focal abnormalities, and dev
     ).strip()
 
 
-def _imaging_output_contract() -> str:
-    return """
-Output contract (JSON object only; decoding already enforces schema):
-{
-  "findings": [
-    {
-      "label": "Multiple bilateral pulmonary nodules",
-      "description": "Numerous small nodules scattered through both lung fields.",
-      "confidence": 0.78,
-      "severity": "abnormal"
-    }
-  ],
-  "differential_diagnosis": [
-    {"condition": "Miliary tuberculosis", "confidence": 0.42},
-    {"condition": "Metastatic disease", "confidence": 0.31}
-  ],
-  "overall_confidence": 0.74,
-  "bounding_boxes": [
-    {"label": "Multiple bilateral pulmonary nodules", "x": 0.12, "y": 0.18, "width": 0.40, "height": 0.35, "confidence": 0.70}
-  ]
-}
-
-Severity enum values: normal | borderline | abnormal | critical.
-Use "abnormal" (not "normal") for nodules, masses, consolidations, opacities, effusions, pneumothorax.
-
-Content rules:
-- findings: 1 to 8 items. Separate distinct abnormalities. Do not dump prose into one finding.
-- label: short clinical name only. Must start with a letter or digit. Never start with ":" or other punctuation.
-- description: separate sentence from label. Must also start with a letter or digit. Never copy a leading ":".
-- BAD label: ":multiple small nodules throughout both lungs"
-- GOOD label: "Multiple bilateral pulmonary nodules"
-- differential_diagnosis: 0 to 5 plausible conditions ranked by likelihood; confidence must be > 0 when listed.
-- overall_confidence: your confidence in the whole assessment, not the max of single findings.
-- Prefer precise radiology/clinical wording over vague phrases like "abnormality noted".
-""".strip()
-
-
-def _assert_clinical_strings(decoded: dict[str, Any], *, fields: tuple[str, ...]) -> None:
-    """Fail if salvaged output still has no usable clinical strings."""
-    salvaged = _normalize_result(decoded, adapter="assert")
-    raw_findings = decoded.get("findings") or []
-    if isinstance(raw_findings, list) and raw_findings and not salvaged["findings"]:
-        raise ValueError("findings were present but none were clinically usable after salvage")
-
-
-_REPAIR_SUFFIX = (
-    "\n\nCONTRACT VIOLATION on your previous JSON:\n"
-    "- label and description MUST start with A-Z or 0-9 (never ':')\n"
-    "- do not mark nodules/masses/consolidations/opacities as severity normal\n"
-    "- differential confidence must be > 0 when listed\n"
-    "Emit corrected JSON only."
-)
-
-
 def build_imaging_prompt(modality: str, language: str) -> str:
     return "\n\n".join(
         [
-            "You are SihatAI's imaging specialist: a careful clinical decision-support model for Malaysian care workflows.",
+            "You are SihatAI's imaging specialist.",
             _safety_rules(),
             _imaging_review_checklist(modality),
-            _confidence_rules(),
-            _imaging_bbox_rules(),
             _language_instruction(language),
-            _imaging_output_contract(),
-            "Analyze the attached image now. Return only the JSON object.",
+            """
+Write a concise radiology-style clinical report in plain text (not JSON).
+Use sections such as FINDINGS: and IMPRESSION: when helpful.
+Normal report punctuation is fine.
+""".strip(),
+            "Analyze the attached image now. Write the radiology report only.",
         ]
     )
 
@@ -657,21 +775,15 @@ def build_clinical_text_prompt(text: str, language: str) -> str:
     body = text[:10000]
     return "\n\n".join(
         [
-            "You are SihatAI's document specialist extracting structured clinical signals from a de-identified note.",
+            "You are SihatAI's document specialist.",
             _safety_rules(),
-            _confidence_rules(),
             _language_instruction(language),
             """
-Task:
-- Extract key problems, procedures, medications, allergies, and follow-up plans that are explicitly stated.
-- Put each discrete item in findings (label + description). Use severity based on clinical urgency implied by the text.
-- differential_diagnosis may list stated working diagnoses or differentials from the note; do not invent new disease labels.
-- Set bounding_boxes to [].
-- If the document is empty or unusable, return findings=[] with low overall_confidence.
+Read the de-identified clinical document and write a plain-text extraction note (not JSON).
+List problems, procedures, medications, allergies, and follow-up plans that are explicitly stated.
 """.strip(),
-            _imaging_output_contract(),
             f"DOCUMENT:\n{body}",
-            "Return only the JSON object.",
+            "Write the extraction note only.",
         ]
     )
 
@@ -682,33 +794,14 @@ def build_lab_text_prompt(text: str, language: str) -> str:
         [
             "You are SihatAI's laboratory extraction specialist.",
             _safety_rules(),
-            _confidence_rules(),
             _language_instruction(language),
             """
-Task:
-- Extract every readable analyte/biomarker with value, unit, and reference range when present.
-- Do not invent numbers. Use null for missing value/unit/reference fields.
-- Mirror each biomarker into findings with matching severity.
-- status/severity mapping:
-  - normal: within reference
-  - borderline: near limits or weakly out of range
-  - abnormal: clearly out of range
-  - critical: panic-level if explicitly marked or extreme vs typical adult ranges when range missing
-- differential_diagnosis usually [] unless the report itself states interpretive conditions.
-- bounding_boxes must be [].
-""".strip(),
-            """
-Output contract:
-{
-  "findings": [{"label":"Hemoglobin","value":12.1,"unit":"g/dL","reference":"12-15","severity":"normal","confidence":0.9,"description":"..."}],
-  "biomarkers": [{"name":"Hemoglobin","value":12.1,"unit":"g/dL","reference_low":12.0,"reference_high":15.0,"status":"normal"}],
-  "differential_diagnosis": [],
-  "overall_confidence": 0.0,
-  "bounding_boxes": []
-}
+Read the lab report text and write a plain-text extraction note (not JSON).
+List every readable analyte with value, unit, and reference range when present.
+Do not invent numbers. If something is unreadable, say so.
 """.strip(),
             f"LAB REPORT TEXT:\n{body}",
-            "Return only the JSON object.",
+            "Write the lab extraction note only.",
         ]
     )
 
@@ -716,28 +809,15 @@ Output contract:
 def build_lab_image_prompt(language: str) -> str:
     return "\n\n".join(
         [
-            "You are SihatAI's laboratory vision extraction specialist reading a lab report page image.",
+            "You are SihatAI's laboratory vision specialist.",
             _safety_rules(),
-            _confidence_rules(),
             _language_instruction(language),
             """
-Task:
-- OCR-read the page carefully. Extract every analyte you can read with value/unit/reference.
-- Prefer exact printed strings. If a digit is unreadable, omit that analyte rather than guessing.
-- Populate both biomarkers and findings consistently.
-- bounding_boxes: optional boxes around analyte rows if clearly localizable; otherwise [].
+Read the attached lab report page image and write a plain-text extraction note (not JSON).
+List every analyte you can read with value/unit/reference. Prefer exact printed strings.
+If a digit is unreadable, omit that analyte rather than guessing.
 """.strip(),
-            """
-Output contract:
-{
-  "findings": [{"label":"WBC","value":11.2,"unit":"x10^9/L","reference":"4-10","severity":"abnormal","confidence":0.8,"description":"..."}],
-  "biomarkers": [{"name":"WBC","value":11.2,"unit":"x10^9/L","reference_low":4.0,"reference_high":10.0,"status":"abnormal"}],
-  "differential_diagnosis": [],
-  "overall_confidence": 0.0,
-  "bounding_boxes": []
-}
-""".strip(),
-            "Analyze the attached lab report image now. Return only the JSON object.",
+            "Write the lab extraction note only.",
         ]
     )
 
@@ -747,91 +827,22 @@ def build_classify_prompt() -> str:
         [
             "You are SihatAI's modality router.",
             """
-Classify the attached medical image into exactly one modality:
-- xray: radiographic projection (especially chest X-ray)
-- ct: computed tomography slices/montage
-- mri: magnetic resonance slices/montage
-- histopath: microscopy / pathology slide patches
-- dermatology: clinical skin photograph
-- ophthalmology: fundus / retinal photograph
-- other: not clearly any of the above
-
-Rules:
-- Choose the most specific matching class.
-- confidence reflects certainty of the modality call only (not disease severity).
-- If ambiguous between classes, pick the best guess and lower confidence below 0.6.
+Look at the attached medical image and write a short plain-text note (not JSON) about what it is.
+Possible modalities: chest/projection x-ray, CT, MRI, histopathology microscopy, dermatology skin photo, ophthalmology fundus/retina, or unclear/other.
+If unsure, say so and name your best guess.
 """.strip(),
-            """
-Output contract:
-{"modality":"xray","confidence":0.0}
-""".strip(),
-            "Return only the JSON object.",
+            "Write the modality note only.",
         ]
     )
-
-
-def _ensure_pil_format(image: Any) -> Any:
-    """Outlines Image assets expect PIL images with a format attribute set."""
-    try:
-        from PIL import Image as PILImage
-    except ImportError:  # pragma: no cover
-        return image
-
-    if isinstance(image, PILImage.Image) and not getattr(image, "format", None):
-        image.format = "PNG"
-    return image
-
-
-def _to_outlines_chat(messages: list[dict[str, Any]]):
-    """Convert HF-style multimodal messages into Outlines Chat input."""
-    from outlines.inputs import Chat, Image as OutlinesImage
-    from PIL import Image as PILImage
-
-    converted: list[dict[str, Any]] = []
-    for message in messages:
-        role = str(message.get("role") or "user")
-        content = message.get("content")
-
-        if isinstance(content, str):
-            converted.append({"role": role, "content": content})
-            continue
-
-        if not isinstance(content, list):
-            continue
-
-        parts: list[Any] = []
-        for part in content:
-            if not isinstance(part, dict):
-                continue
-            kind = part.get("type")
-            if kind == "text":
-                parts.append({"type": "text", "text": str(part.get("text") or "")})
-            elif kind == "image":
-                image = _ensure_pil_format(part.get("image"))
-                if isinstance(image, PILImage.Image):
-                    parts.append({"type": "image", "image": OutlinesImage(image)})
-                elif image is not None:
-                    parts.append({"type": "image", "image": OutlinesImage(image)})
-            elif isinstance(part.get("image"), PILImage.Image):
-                image = _ensure_pil_format(part["image"])
-                parts.append({"type": "image", "image": OutlinesImage(image)})
-
-        if parts:
-            converted.append({"role": role, "content": parts})
-
-    if not converted:
-        raise ValueError("No valid chat messages for Outlines generation")
-
-    return Chat(converted)
 
 
 @app.cls(
     gpu="L4",
     image=image,
-    timeout=600,
+    timeout=900,
     scaledown_window=900,
     volumes={"/lora": lora_vol},
-    secrets=[hf_secret],
+    secrets=[hf_secret, openai_secret],
 )
 class MedGemmaModel:
     @modal.enter()
@@ -857,45 +868,37 @@ class MedGemmaModel:
             self.model = base
 
         self.model.eval()
-        self._outlines = None
 
-    def _outlines_model(self):
-        import outlines
-
-        if self._outlines is None:
-            # Wrap already-loaded MedGemma (+ optional LoRA) for constrained decoding.
-            # https://dottxt-ai.github.io/outlines/latest/guide/vlm/
-            self._outlines = outlines.from_transformers(self.model, self.processor)
-        return self._outlines
-
-    def _generate_structured(
+    def _generate_text(
         self,
         messages: list[dict[str, Any]],
-        schema: dict[str, Any],
         *,
         max_new_tokens: int = 1200,
-    ) -> dict[str, Any]:
-        import outlines
-        from outlines.types import JsonSchema
+    ) -> str:
+        """Free-form MedGemma generation (never JSON-constrained)."""
+        import torch
 
-        model = self._outlines_model()
-        output_type = JsonSchema(schema)
-        chat = _to_outlines_chat(messages)
-
-        # Outlines >=1: Generator + Chat multimodal input.
-        # Docs: https://dottxt-ai.github.io/outlines/latest/features/models/transformers_multimodal/
-        if hasattr(outlines, "Generator"):
-            generator = outlines.Generator(model, output_type)
-            try:
-                result = generator(chat, max_new_tokens=max_new_tokens)
-            except TypeError:
-                result = generator(chat)
-            return _parse_structured(result)
-
-        from outlines import generate, samplers
-
-        generator = generate.json(model, output_type, sampler=samplers.greedy())
-        return _parse_structured(generator(chat))
+        templated = self.processor.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            tokenize=True,
+            return_dict=True,
+            return_tensors="pt",
+        )
+        model_device = next(self.model.parameters()).device
+        inputs = {
+            key: value.to(model_device) if hasattr(value, "to") else value
+            for key, value in templated.items()
+        }
+        input_len = int(inputs["input_ids"].shape[-1])
+        with torch.inference_mode():
+            generated = self.model.generate(
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+            )
+        new_tokens = generated[0][input_len:]
+        return self.processor.decode(new_tokens, skip_special_tokens=True).strip()
 
     @modal.method()
     def status(self) -> dict[str, str]:
@@ -906,158 +909,179 @@ class MedGemmaModel:
         pil = _load_image(payload)
         modality = str(payload.get("modality") or "xray")
         language = str(payload.get("language") or "en")
-        prompt = build_imaging_prompt(modality, language)
-
-        decoded: dict[str, Any] | None = None
-        last_error = "unknown contract violation"
-        for attempt in range(2):
-            text = prompt if attempt == 0 else prompt + _REPAIR_SUFFIX
-            messages = [
+        draft = self._generate_text(
+            [
                 {
                     "role": "user",
                     "content": [
                         {"type": "image", "image": pil},
-                        {"type": "text", "text": text},
+                        {"type": "text", "text": build_imaging_prompt(modality, language)},
                     ],
                 }
             ]
-            candidate = self._generate_structured(messages, IMAGING_RESULT_SCHEMA)
-            try:
-                _assert_clinical_strings(candidate, fields=("label", "description"))
-                decoded = candidate
-                break
-            except ValueError as exc:
-                last_error = str(exc)
-                print(f"sihat-ai: imaging contract rejected attempt {attempt + 1}: {exc}")
-                continue
-
-        if decoded is None:
-            print(f"sihat-ai: imaging contract failed closed after retries: {last_error}")
-            decoded = {
-                "findings": [],
-                "differential_diagnosis": [],
-                "overall_confidence": 0.2,
-                "bounding_boxes": [],
-            }
-
-        return _normalize_result(decoded, getattr(self, "adapter_id", "none"))
+        )
+        return _normalize_result(
+            _structure_imaging(pil, draft, modality=modality),
+            getattr(self, "adapter_id", "none"),
+        )
 
     @modal.method()
     def analyze_clinical_text(self, text: str, language: str = "en") -> dict[str, Any]:
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": build_clinical_text_prompt(text, language),
-                    }
-                ],
-            }
-        ]
-        decoded = self._generate_structured(
-            messages,
-            IMAGING_RESULT_SCHEMA,
+        draft = self._generate_text(
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": build_clinical_text_prompt(text, language),
+                        }
+                    ],
+                }
+            ],
             max_new_tokens=1500,
         )
-        return _normalize_result(decoded, getattr(self, "adapter_id", "none"))
+        return _normalize_result(
+            _structure_clinical(draft),
+            getattr(self, "adapter_id", "none"),
+        )
 
     @modal.method()
     def analyze_lab_text(self, text: str, language: str = "en") -> dict[str, Any]:
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": build_lab_text_prompt(text, language),
-                    }
-                ],
-            }
-        ]
-        decoded = self._generate_structured(
-            messages,
-            LAB_RESULT_SCHEMA,
+        draft = self._generate_text(
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": build_lab_text_prompt(text, language),
+                        }
+                    ],
+                }
+            ],
             max_new_tokens=1500,
         )
-        return _normalize_result(decoded, getattr(self, "adapter_id", "none"))
+        return _normalize_result(
+            _structure_lab(draft),
+            getattr(self, "adapter_id", "none"),
+        )
 
     @modal.method()
     def analyze_lab_image(self, payload: dict[str, Any]) -> dict[str, Any]:
-        """Vision fallback when PDF/image OCR yields no text."""
         pil = _load_image(payload)
         language = str(payload.get("language") or "en")
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "image", "image": pil},
-                    {
-                        "type": "text",
-                        "text": build_lab_image_prompt(language),
-                    },
-                ],
-            }
-        ]
-        decoded = self._generate_structured(
-            messages,
-            LAB_RESULT_SCHEMA,
+        draft = self._generate_text(
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "image", "image": pil},
+                        {"type": "text", "text": build_lab_image_prompt(language)},
+                    ],
+                }
+            ],
             max_new_tokens=1500,
         )
-        result = _normalize_result(decoded, getattr(self, "adapter_id", "none"))
+        result = _normalize_result(
+            _structure_lab(draft, pil=pil),
+            getattr(self, "adapter_id", "none"),
+        )
         result["engine"] = f"{result.get('engine', 'medgemma')}+lab-vision"
         return result
 
     @modal.method()
     def classify(self, payload: dict[str, Any]) -> dict[str, Any]:
         pil = _load_image(payload)
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "image", "image": pil},
-                    {
-                        "type": "text",
-                        "text": build_classify_prompt(),
-                    },
-                ],
-            }
-        ]
-        decoded = self._generate_structured(
-            messages,
-            CLASSIFY_RESULT_SCHEMA,
-            max_new_tokens=128,
+        draft = self._generate_text(
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "image", "image": pil},
+                        {"type": "text", "text": build_classify_prompt()},
+                    ],
+                }
+            ],
+            max_new_tokens=256,
         )
-        raw = decoded
-        modality = str(raw.get("modality", "other")).lower()
-        confidence = float(raw.get("confidence", 0.7))
-        allowed = {
-            "xray",
-            "dermatology",
-            "ct",
-            "mri",
-            "histopath",
-            "ophthalmology",
-        }
-        if modality == "other" or modality not in allowed:
-            modality = "xray"
-            confidence = min(confidence, 0.5)
+        return _normalize_classify(
+            _structure_classify(pil, draft),
+            getattr(self, "adapter_id", "none"),
+        )
+
+    @modal.method()
+    def triage_chat(self, payload: dict[str, Any]) -> dict[str, Any]:
+        """Free-text triage draft (EN) + GPT structured JSON."""
+        role = str(payload.get("role_context") or "patient")
+        summary = str(payload.get("summary") or "").strip()
+        recent_dialog = str(payload.get("recent_dialog") or "").strip()
+        record_context = str(payload.get("record_context") or "").strip()
+        user_message = str(payload.get("user_message") or "").strip()
+        subject_name = str(payload.get("subject_name") or "").strip()
+
+        if role == "physician":
+            role_block = (
+                "You are SihatAI Voice Triage for a physician doing intake.\n"
+                "Help gather clinically useful history and discuss differentials, workup, "
+                "and treatment options as clinical decision support.\n"
+            )
+            if subject_name:
+                role_block += f"Patient under discussion: {subject_name}.\n"
+            else:
+                role_block += "No linked patient; answer free-form clinical questions.\n"
+        else:
+            role_block = (
+                "You are SihatAI Voice Triage for a patient.\n"
+                "Help with symptom triage and practical guidance: likely causes to consider, "
+                "self-care, evidence-based treatments, and medication options when appropriate.\n"
+                "Escalate clearly when red flags fit.\n"
+            )
+
+        parts = [role_block, _triage_reply_rules()]
+        if record_context:
+            parts.append(
+                "Prior medical record context (background only; do not dump "
+                "or analyze unless the current user message asks about it or "
+                "describes related symptoms):\n"
+                + record_context
+            )
+        if summary:
+            parts.append("Running conversation summary (English):\n" + summary)
+        if recent_dialog:
+            parts.append(
+                "Recent dialog (English, up to last 10 messages; prefer this for "
+                "immediate continuity):\n"
+                + recent_dialog
+            )
+        parts.append("Current user message (English):\n" + (user_message or "(empty)"))
+        parts.append(
+            "Write the next triage reply in clear English. Be helpful and specific. "
+            "Plain text only, not JSON."
+        )
+
+        draft = self._generate_text(
+            [{"role": "user", "content": "\n\n".join(parts)}],
+            max_new_tokens=600,
+        )
+        structured = _structure_triage(draft, summary=summary, user_message=user_message)
+
         return {
-            "modality": modality,
-            "confidence": confidence,
+            "draft": draft,
+            "structured": structured,
+            "engine": f"medgemma+{_structure_model()}",
             "adapter": getattr(self, "adapter_id", "none"),
         }
 
 
 @app.cls(
-    gpu="T4",
+    gpu="L4",
     image=image,
     timeout=300,
-    scaledown_window=900,
-    secrets=[hf_secret],
+    scaledown_window=300,
 )
 class SttModel:
-    """MedASR primary; Whisper fallback when license/load fails."""
+    """MedASR for English medical speech; Whisper for multilingual / fallback."""
 
     @modal.enter()
     def load(self) -> None:
@@ -1088,13 +1112,18 @@ class SttModel:
             tmp.write(raw)
             path = tmp.name
 
-        if self.engine == "medasr" and self.medasr is not None:
+        lang = (language or "").strip().lower() or None
+        prefer_medasr = self.engine == "medasr" and self.medasr is not None and (
+            lang is None or lang.startswith("en")
+        )
+
+        if prefer_medasr:
             try:
                 out = self.medasr(path)
                 text = (out.get("text") if isinstance(out, dict) else str(out)).strip()
                 return {
                     "transcript": text,
-                    "language": language,
+                    "language": lang or "en",
                     "engine": "medasr",
                 }
             except Exception as exc:  # noqa: BLE001
@@ -1105,11 +1134,20 @@ class SttModel:
                     self.whisper = whisper.load_model("base")
 
         assert self.whisper is not None
-        result = self.whisper.transcribe(path, language=language or None)
+        try:
+            result = self.whisper.transcribe(path, language=lang or None)
+        except Exception as exc:  # noqa: BLE001
+            print(f"Whisper transcription failed: {exc}")
+            return {
+                "transcript": "",
+                "language": lang,
+                "engine": "whisper-base",
+                "error": str(exc),
+            }
         text = (result.get("text") or "").strip()
         return {
             "transcript": text,
-            "language": result.get("language"),
+            "language": result.get("language") or lang,
             "engine": "whisper-base",
         }
 

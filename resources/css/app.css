@@ -638,6 +638,163 @@
         animation: welcome-float 5.8s ease-in-out 0.6s infinite;
     }
 
+    /* Voice triage: hold-to-talk listening chrome */
+    .triage-listen-shell {
+        position: relative;
+        display: flex;
+        min-height: 2.75rem;
+        flex: 1;
+        align-items: center;
+        gap: 0.75rem;
+        overflow: hidden;
+        border-radius: 1rem;
+        border: 1px dashed color-mix(in srgb, var(--primary) 45%, var(--line));
+        background:
+            linear-gradient(
+                120deg,
+                color-mix(in srgb, var(--primary) 8%, transparent),
+                color-mix(in srgb, var(--coral, #f26b5e) 6%, transparent)
+            );
+        padding: 0.5rem 1rem;
+    }
+
+    .triage-listen-shell::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(
+                to right,
+                color-mix(in srgb, var(--line) 55%, transparent) 1px,
+                transparent 1px
+            );
+        background-size: 24px 100%;
+        opacity: 0.35;
+        pointer-events: none;
+    }
+
+    .triage-listen-rec {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--primary);
+        white-space: nowrap;
+    }
+
+    .triage-listen-rec::before {
+        content: '';
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 9999px;
+        background: var(--coral, #f26b5e);
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--coral, #f26b5e) 55%, transparent);
+        animation: triage-rec-pulse 1.4s ease-out infinite;
+    }
+
+    .triage-wave {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        height: 1.35rem;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+    }
+
+    .triage-wave span {
+        display: block;
+        width: 0.18rem;
+        height: 100%;
+        transform-origin: center;
+        border-radius: 9999px;
+        background: color-mix(in srgb, var(--primary) 75%, var(--foreground));
+        animation: triage-wave 1.05s ease-in-out infinite;
+    }
+
+    .triage-wave--live span {
+        animation: none;
+        will-change: transform;
+        transition: transform 90ms ease-out;
+    }
+
+    .triage-wave span:nth-child(1) { animation-delay: -0.9s; }
+    .triage-wave span:nth-child(2) { animation-delay: -0.75s; }
+    .triage-wave span:nth-child(3) { animation-delay: -0.6s; }
+    .triage-wave span:nth-child(4) { animation-delay: -0.45s; }
+    .triage-wave span:nth-child(5) { animation-delay: -0.3s; }
+    .triage-wave span:nth-child(6) { animation-delay: -0.15s; }
+    .triage-wave span:nth-child(7) { animation-delay: 0s; }
+    .triage-wave span:nth-child(8) { animation-delay: -0.2s; }
+    .triage-wave span:nth-child(9) { animation-delay: -0.35s; }
+    .triage-wave span:nth-child(10) { animation-delay: -0.5s; }
+    .triage-wave span:nth-child(11) { animation-delay: -0.65s; }
+    .triage-wave span:nth-child(12) { animation-delay: -0.8s; }
+
+    .triage-mic-wrap {
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .triage-mic-ring,
+    .triage-mic-ring-delay {
+        position: absolute;
+        inset: -0.35rem;
+        border-radius: 9999px;
+        border: 1.5px solid color-mix(in srgb, var(--primary) 45%, transparent);
+        pointer-events: none;
+    }
+
+    .triage-mic-ring {
+        animation: triage-mic-ring 1.6s ease-out infinite;
+    }
+
+    .triage-mic-ring-delay {
+        animation: triage-mic-ring 1.6s ease-out 0.45s infinite;
+    }
+
+    @keyframes triage-wave {
+        0%,
+        100% {
+            transform: scaleY(0.28);
+            opacity: 0.55;
+        }
+        50% {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes triage-rec-pulse {
+        0% {
+            box-shadow: 0 0 0 0 color-mix(in srgb, var(--coral, #f26b5e) 50%, transparent);
+        }
+        70% {
+            box-shadow: 0 0 0 0.45rem transparent;
+        }
+        100% {
+            box-shadow: 0 0 0 0 transparent;
+        }
+    }
+
+    @keyframes triage-mic-ring {
+        0% {
+            transform: scale(0.92);
+            opacity: 0.7;
+        }
+        100% {
+            transform: scale(1.35);
+            opacity: 0;
+        }
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .atlas-reveal {
             animation: none;
@@ -662,7 +819,11 @@
         .welcome-orbit-inner,
         .welcome-core-pulse,
         .welcome-float,
-        .welcome-float-delay {
+        .welcome-float-delay,
+        .triage-wave span,
+        .triage-listen-rec::before,
+        .triage-mic-ring,
+        .triage-mic-ring-delay {
             animation: none;
         }
     }

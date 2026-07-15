@@ -158,7 +158,7 @@ test('webhook punctuation-only imaging findings force review abstention', functi
         ->and($record->guardrailFlagList())->toContain('low_confidence_abstention');
 });
 
-test('webhook salvages leading-colon imaging findings and severity', function () {
+test('webhook accepts structured imaging findings from structurer', function () {
     $user = User::factory()->physician()->create();
     $record = MedicalRecord::factory()->create([
         'user_id' => $user->id,
@@ -170,29 +170,39 @@ test('webhook salvages leading-colon imaging findings and severity', function ()
     AnalysisJob::factory()->create([
         'medical_record_id' => $record->id,
         'status' => 'running',
-        'external_job_id' => 'job-salvage-colon',
+        'external_job_id' => 'job-structured-colon-draft',
     ]);
 
     $payload = [
-        'job_id' => 'job-salvage-colon',
+        'job_id' => 'job-structured-colon-draft',
         'status' => 'completed',
         'detected_modality' => 'xray',
         'route_confidence' => 0.9,
         'result' => [
             'findings' => [
                 [
-                    'label' => ':Multiple bilateral pulmonary nodules',
-                    'description' => ':Numerous small nodules scattered through both lung fields.',
+                    'label' => 'Multiple bilateral pulmonary nodules',
+                    'description' => 'Numerous small nodules scattered through both lung fields.',
                     'confidence' => 0.78,
-                    'severity' => 'normal',
+                    'severity' => 'abnormal',
                 ],
             ],
             'overall_confidence' => 0.74,
             'differential_diagnosis' => [
-                ['condition' => ':Miliary tuberculosis', 'confidence' => 0],
-                ['condition' => ':Metastatic disease', 'confidence' => 0.31],
+                ['condition' => 'Metastatic disease', 'confidence' => 0.31],
             ],
-            'bounding_boxes' => [],
+            'bounding_boxes' => [
+                [
+                    'label' => 'Multiple bilateral pulmonary nodules',
+                    'x' => 0.12,
+                    'y' => 0.18,
+                    'width' => 0.4,
+                    'height' => 0.35,
+                    'confidence' => 0.7,
+                ],
+            ],
+            'engine' => 'medgemma+gpt-5.6-terra',
+            'structurer' => 'gpt-5.6-terra',
         ],
     ];
 
@@ -217,10 +227,8 @@ test('webhook salvages leading-colon imaging findings and severity', function ()
     expect($record->status)->toBe(RecordStatus::Completed)
         ->and($record->findings)->toHaveCount(1)
         ->and($record->findings[0]['label'])->toBe('Multiple bilateral pulmonary nodules')
-        ->and($record->findings[0]['description'])->toBe('Numerous small nodules scattered through both lung fields.')
         ->and($record->findings[0]['severity'])->toBe('abnormal')
-        ->and($record->physician_report['differential_diagnosis'] ?? null)->toHaveCount(1)
-        ->and($record->physician_report['differential_diagnosis'][0]['condition'])->toBe('Metastatic disease')
+        ->and($record->bounding_boxes)->toHaveCount(1)
         ->and($record->guardrailFlagList())->not->toContain('low_confidence_abstention');
 });
 

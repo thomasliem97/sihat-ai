@@ -26,7 +26,13 @@ class AiPipelineService
 
     public function dispatch(MedicalRecord $record): AnalysisJob
     {
-        $record->update(['status' => RecordStatus::Processing]);
+        $record->update([
+            'status' => RecordStatus::Processing,
+            'pipeline_steps' => $this->formatPipelineSteps(
+                ['upload'],
+                running: 'deidentify',
+            ),
+        ]);
 
         $job = AnalysisJob::create([
             'medical_record_id' => $record->id,
@@ -46,6 +52,7 @@ class AiPipelineService
     public function beginRemoteAnalysis(MedicalRecord $record, AnalysisJob $job): void
     {
         $this->prepareRecord($record, $job);
+        $job->refresh();
 
         $modality = $record->detected_modality ?? $record->modality;
         $baseUrl = rtrim((string) config('services.modal.url'), '/');
@@ -56,6 +63,8 @@ class AiPipelineService
         if ($bytes === null || $bytes === '') {
             throw new \RuntimeException('Inference file missing for analyze handoff: '.$path);
         }
+
+        $analyzeStartedAt = microtime(true);
 
         // Always embed bytes. Modal cannot pull trycloudflare/ngrok signed URLs (datacenter IP blocked).
         $response = Http::timeout(120)
@@ -80,9 +89,13 @@ class AiPipelineService
             );
         }
 
+        $timings = $job->hop_timings ?? [];
+        $timings['analyze_started_at'] = $analyzeStartedAt;
+
         $job->update([
             'status' => 'running',
             'steps_completed' => ['upload', 'deidentify', 'route', 'analyze'],
+            'hop_timings' => $timings,
         ]);
 
         $record->update([
@@ -145,18 +158,56 @@ class AiPipelineService
     private function prepareRecord(MedicalRecord $record, AnalysisJob $job): void
     {
         $job->update(['steps_completed' => ['upload'], 'status' => 'running']);
+        $timings = $job->hop_timings ?? [];
+        $record->update([
+            'pipeline_steps' => $this->formatPipelineSteps(
+                ['upload'],
+                running: 'deidentify',
+            ),
+        ]);
 
+        $t0 = microtime(true);
         $this->deidentification->deidentify($record);
         $record->refresh();
-        $record->update(['deidentified_at' => now()]);
-        $job->update(['steps_completed' => ['upload', 'deidentify']]);
+        $timings['deidentify'] = [
+            'duration_ms' => $this->elapsedMs($t0),
+            'status' => 'completed',
+            'detail' => $record->safe_file_path
+                ? 'Created a de-identified copy for analysis.'
+                : 'Patient identifiers were removed.',
+        ];
+        $record->update([
+            'deidentified_at' => now(),
+            'pipeline_steps' => $this->formatPipelineSteps(
+                ['upload', 'deidentify'],
+                running: 'route',
+            ),
+        ]);
+        $job->update([
+            'steps_completed' => ['upload', 'deidentify'],
+            'hop_timings' => $timings,
+        ]);
 
+        $t0 = microtime(true);
         $routed = $this->detectModality($record);
+        $timings['router'] = [
+            'duration_ms' => $this->elapsedMs($t0),
+            'status' => 'completed',
+            'detail' => 'Detected study type: '.$routed['modality']->label(),
+            'confidence' => $routed['confidence'],
+        ];
         $record->update([
             'detected_modality' => $routed['modality'],
             'route_confidence' => $routed['confidence'],
+            'pipeline_steps' => $this->formatPipelineSteps(
+                ['upload', 'deidentify', 'route'],
+                running: 'analyze',
+            ),
         ]);
-        $job->update(['steps_completed' => ['upload', 'deidentify', 'route']]);
+        $job->update([
+            'steps_completed' => ['upload', 'deidentify', 'route'],
+            'hop_timings' => $timings,
+        ]);
     }
 
     /**
@@ -166,6 +217,7 @@ class AiPipelineService
     private function finalizeResult(MedicalRecord $record, AnalysisJob $job, array $result): array
     {
         $trace = [];
+        $timings = $job->hop_timings ?? [];
         $modalityEnum = $record->detected_modality ?? $record->modality;
         $modality = $modalityEnum->value;
         $result['engine'] = $result['engine'] ?? 'medgemma';
@@ -178,44 +230,80 @@ class AiPipelineService
             $result['differential_diagnosis'] ?? []
         );
 
-        $trace[] = $this->hop('router', 'completed', 'Modality '.$modality, $record->route_confidence);
-        if ($record->safe_file_path) {
-            $trace[] = $this->hop('deidentify', 'completed', 'safe_uri sibling ready', null);
+        $routerTiming = is_array($timings['router'] ?? null) ? $timings['router'] : [];
+        $trace[] = $this->hop(
+            'router',
+            (string) ($routerTiming['status'] ?? 'completed'),
+            (string) ($routerTiming['detail'] ?? 'Detected study type: '.$modalityEnum->label()),
+            isset($routerTiming['confidence']) ? (float) $routerTiming['confidence'] : $record->route_confidence,
+            durationMs: isset($routerTiming['duration_ms']) ? (int) $routerTiming['duration_ms'] : null,
+        );
+
+        $deidentifyTiming = is_array($timings['deidentify'] ?? null) ? $timings['deidentify'] : [];
+        if ($record->safe_file_path || $deidentifyTiming !== []) {
+            $trace[] = $this->hop(
+                'deidentify',
+                (string) ($deidentifyTiming['status'] ?? 'completed'),
+                (string) ($deidentifyTiming['detail'] ?? 'Created a de-identified copy for analysis.'),
+                durationMs: isset($deidentifyTiming['duration_ms']) ? (int) $deidentifyTiming['duration_ms'] : null,
+            );
         }
+
+        $analyzeMs = isset($timings['analyze_started_at'])
+            ? $this->elapsedMs((float) $timings['analyze_started_at'])
+            : null;
 
         $t0 = microtime(true);
         $partial = $this->buildPartialFindings($modalityEnum, $result);
         $result['partial_findings'] = $partial;
-        $parallelStarted = microtime(true);
+        $imagingActive = $partial['imaging'] !== null;
+        $docActive = $partial['document'] !== null;
+        $imagingCount = count($partial['imaging']['findings'] ?? []);
+        $docCount = count($partial['document']['findings'] ?? []);
         $trace[] = $this->hop(
             'imaging_specialist',
-            $partial['imaging'] !== null ? 'completed' : 'skipped',
-            $partial['imaging'] !== null
-                ? count($partial['imaging']['findings'] ?? []).' imaging findings'
-                : 'N/A for '.$modality,
+            $imagingActive ? 'completed' : 'skipped',
+            $imagingActive
+                ? ($imagingCount === 1
+                    ? 'Found 1 imaging finding.'
+                    : "Found {$imagingCount} imaging findings.")
+                : 'Skipped for '.$modalityEnum->label().' studies.',
             $partial['imaging']['overall_confidence'] ?? null,
-            $parallelStarted,
+            durationMs: $imagingActive ? $analyzeMs : null,
         );
         $trace[] = $this->hop(
             'doc_specialist',
-            $partial['document'] !== null ? 'completed' : 'skipped',
-            $partial['document'] !== null
-                ? count($partial['document']['findings'] ?? []).' document findings'
-                : 'N/A for '.$modality,
+            $docActive ? 'completed' : 'skipped',
+            $docActive
+                ? ($docCount === 1
+                    ? 'Found 1 document finding.'
+                    : "Found {$docCount} document findings.")
+                : 'Skipped for '.$modalityEnum->label().' studies.',
             $partial['document']['overall_confidence'] ?? null,
-            $parallelStarted,
+            durationMs: $docActive ? $analyzeMs : null,
         );
         $result['findings'] = $this->mergePartialFindings($partial, $result['findings'] ?? []);
-        $trace[] = $this->hop('merge', 'completed', 'partial_findings merged', $result['overall_confidence'] ?? null, $t0);
+        $trace[] = $this->hop(
+            'merge',
+            'completed',
+            'Combined specialist findings into one result set.',
+            $result['overall_confidence'] ?? null,
+            $t0,
+        );
 
         $t0 = microtime(true);
         $citations = $this->rag->retrieveCitations($record, $result['findings'] ?? []);
         $result['citations'] = $citations;
         $result['rag_weak'] = $this->rag->wasWeakRetrieval($citations);
+        $citationCount = count($citations);
         $trace[] = $this->hop(
             'rag',
             'completed',
-            count($citations).' citations (BM25+dense+MMR)',
+            $citationCount === 0
+                ? 'No matching guideline citations were found.'
+                : ($citationCount === 1
+                    ? 'Retrieved 1 supporting guideline citation.'
+                    : "Retrieved {$citationCount} supporting guideline citations."),
             null,
             $t0,
         );
@@ -227,7 +315,7 @@ class AiPipelineService
         $trace[] = $this->hop(
             'guardrail',
             'completed',
-            $guardrails['code'].':'.implode(',', $guardrails['flags']),
+            $this->formatGuardrailHopDetail($guardrails),
             null,
             $t0,
         );
@@ -240,7 +328,19 @@ class AiPipelineService
             $result['longitudinal_diff'] = $this->buildLongitudinalDiff($record, $result);
         }
         $reports = $this->composeReports($record, $result, $guardrails);
-        $trace[] = $this->hop('compose', 'completed', $record->language->value.' dual reports', null, $t0);
+        $languageLabel = match ($record->language) {
+            ReportLanguage::English => 'English',
+            ReportLanguage::Malay => 'Bahasa Melayu',
+            ReportLanguage::Mandarin => 'Mandarin',
+            ReportLanguage::Tamil => 'Tamil',
+        };
+        $trace[] = $this->hop(
+            'compose',
+            'completed',
+            'Wrote physician and patient reports in '.$languageLabel.'.',
+            null,
+            $t0,
+        );
         $job->update(['steps_completed' => ['upload', 'deidentify', 'route', 'analyze', 'rag', 'guardrail', 'compose']]);
 
         return array_merge($result, $reports, [
@@ -254,7 +354,7 @@ class AiPipelineService
     }
 
     /**
-     * Drop punctuation-only / empty labels. Salvage leading junk (":Multiple…" → usable).
+     * Drop punctuation-only / empty labels.
      * When imaging has no usable findings, force a review item instead of inventing "normal".
      *
      * @param  array<string, mixed>  $result
@@ -264,29 +364,10 @@ class AiPipelineService
     {
         $findings = [];
         foreach ($result['findings'] ?? [] as $finding) {
-            if (! is_array($finding)) {
+            if (! is_array($finding) || ! $this->isUsableClinicalLabel($finding['label'] ?? null)) {
                 continue;
             }
-
-            $label = $this->repairClinicalText($finding['label'] ?? null);
-            if ($label === null) {
-                continue;
-            }
-
-            $item = $finding;
-            $item['label'] = $label;
-            $item['severity'] = $this->coerceFindingSeverity($label, $finding['severity'] ?? null);
-
-            if (isset($finding['description']) && is_string($finding['description'])) {
-                $description = $this->repairClinicalText($finding['description']);
-                if ($description !== null) {
-                    $item['description'] = $description;
-                } else {
-                    unset($item['description']);
-                }
-            }
-
-            $findings[] = $item;
+            $findings[] = $finding;
         }
 
         if ($findings !== [] || ! $modality->isImaging()) {
@@ -326,82 +407,27 @@ class AiPipelineService
     {
         $clean = [];
         foreach ($differential as $row) {
-            if (! is_array($row)) {
+            if (! is_array($row) || ! $this->isUsableClinicalLabel($row['condition'] ?? null)) {
                 continue;
             }
-
-            $condition = $this->repairClinicalText($row['condition'] ?? null);
-            if ($condition === null) {
-                continue;
-            }
-
-            $confidence = is_numeric($row['confidence'] ?? null) ? (float) $row['confidence'] : 0.0;
-            if ($confidence <= 0) {
-                continue;
-            }
-
-            $item = $row;
-            $item['condition'] = $condition;
-            $item['confidence'] = $confidence;
-            $clean[] = $item;
+            $clean[] = $row;
         }
 
         return $clean;
     }
 
-    private function repairClinicalText(mixed $value): ?string
-    {
-        if (! is_string($value)) {
-            return null;
-        }
-
-        $trimmed = trim($value);
-        while ($trimmed !== '' && preg_match('/^[\p{L}\p{N}]/u', $trimmed) !== 1) {
-            $trimmed = ltrim(mb_substr($trimmed, 1));
-        }
-
-        if (mb_strlen($trimmed) < 3) {
-            return null;
-        }
-
-        return $trimmed;
-    }
-
     private function isUsableClinicalLabel(mixed $label): bool
     {
-        return $this->repairClinicalText($label) !== null;
-    }
-
-    private function coerceFindingSeverity(string $label, mixed $severity): string
-    {
-        $sev = is_string($severity) ? strtolower(trim($severity)) : 'borderline';
-        if (! in_array($sev, ['normal', 'borderline', 'abnormal', 'critical'], true)) {
-            $sev = 'borderline';
+        if (! is_string($label)) {
+            return false;
         }
 
-        $labelLower = strtolower($label);
-        $abnormalCues = [
-            'nodule',
-            'mass',
-            'consolidat',
-            'pneumothorax',
-            'effusion',
-            'infiltrat',
-            'opacit',
-            'fracture',
-            'hemorrhage',
-            'lesion',
-        ];
-
-        if ($sev === 'normal') {
-            foreach ($abnormalCues as $cue) {
-                if (str_contains($labelLower, $cue)) {
-                    return 'abnormal';
-                }
-            }
+        $trimmed = trim($label);
+        if (mb_strlen($trimmed) < 3) {
+            return false;
         }
 
-        return $sev;
+        return preg_match('/^[\p{P}\p{S}\s]+$/u', $trimmed) !== 1;
     }
 
     /**
@@ -485,18 +511,94 @@ class AiPipelineService
     /**
      * @return array<string, mixed>
      */
-    private function hop(string $name, string $status, string $detail, ?float $confidence = null, ?float $startedAt = null): array
-    {
-        $ended = microtime(true);
+    private function hop(
+        string $name,
+        string $status,
+        string $detail,
+        ?float $confidence = null,
+        ?float $startedAt = null,
+        ?int $durationMs = null,
+    ): array {
+        $resolvedMs = $durationMs;
+        if ($resolvedMs === null && $startedAt !== null) {
+            $resolvedMs = $this->elapsedMs($startedAt);
+        }
 
         return [
             'hop' => $name,
             'status' => $status,
             'detail' => $detail,
             'confidence' => $confidence,
-            'duration_ms' => $startedAt ? (int) round(($ended - $startedAt) * 1000) : null,
+            'duration_ms' => $status === 'skipped' ? null : $resolvedMs,
             'ended_at' => now()->toIso8601String(),
         ];
+    }
+
+    private function elapsedMs(float $startedAt): int
+    {
+        return (int) round((microtime(true) - $startedAt) * 1000);
+    }
+
+    /**
+     * @param  array{code?: string, flags?: list<string>}  $guardrails
+     */
+    public function formatGuardrailHopDetail(array $guardrails): string
+    {
+        $code = strtoupper((string) ($guardrails['code'] ?? 'ALLOW'));
+        $codeLabel = match ($code) {
+            'WARN' => 'Proceed with caution',
+            default => 'Allowed to proceed',
+        };
+
+        $flagLabels = [
+            'medical_disclaimer_required' => 'Medical disclaimer required',
+            'not_a_diagnosis' => 'Not a diagnosis',
+            'confidence_publish' => 'Confidence high enough to publish',
+            'confidence_hedge' => 'Mid confidence; patient language softened',
+            'low_confidence_abstention' => 'Low confidence; patient report withheld',
+            'critical_value_escalation' => 'Critical finding; escalate and withhold patient copy',
+            'weak_guideline_grounding' => 'Guideline grounding was weak',
+        ];
+
+        $flags = [];
+        foreach ($guardrails['flags'] ?? [] as $flag) {
+            if (! is_string($flag) || $flag === '') {
+                continue;
+            }
+            $flags[] = $flagLabels[$flag] ?? str_replace('_', ' ', $flag);
+        }
+
+        return $flags === []
+            ? $codeLabel.'.'
+            : $codeLabel.'. '.implode('; ', $flags).'.';
+    }
+
+    public function formatTechnicalNotes(
+        string $engine,
+        string $adapter,
+        string $modalityLabel,
+        string $guardrailCode,
+    ): string {
+        $engineLabel = match (true) {
+            str_contains($engine, '+') => 'MedGemma + secondary LLM',
+            str_contains(strtolower($engine), 'medgemma') => 'MedGemma',
+            default => $engine,
+        };
+
+        $adapterLabel = match (true) {
+            $adapter === 'none', $adapter === '' => 'none',
+            str_starts_with($adapter, 'loaded:') => 'LoRA (loaded)',
+            $adapter === 'configured' => 'LoRA (configured)',
+            default => 'LoRA',
+        };
+
+        return sprintf(
+            'Engine: %s. Adapter: %s. Modality: %s. Guardrail: %s. Retrieval: hybrid RAG.',
+            $engineLabel,
+            $adapterLabel,
+            $modalityLabel,
+            strtoupper($guardrailCode),
+        );
     }
 
     /**
@@ -505,10 +607,20 @@ class AiPipelineService
      */
     public function buildLongitudinalDiff(MedicalRecord $record, array $result): ?array
     {
+        $empty = [
+            'has_prior' => false,
+            'summary' => 'No patient previous history is found.',
+            'changes' => [],
+        ];
+
+        if ($record->subject_user_id === null) {
+            return $empty;
+        }
+
         $modality = $record->detected_modality ?? $record->modality;
 
         $prior = MedicalRecord::query()
-            ->where('user_id', $record->user_id)
+            ->where('subject_user_id', $record->subject_user_id)
             ->where('id', '!=', $record->id)
             ->where('status', RecordStatus::Completed)
             ->where(function ($q) use ($modality) {
@@ -519,11 +631,7 @@ class AiPipelineService
             ->first();
 
         if (! $prior) {
-            return [
-                'has_prior' => false,
-                'summary' => 'No prior study for this patient and modality.',
-                'changes' => [],
-            ];
+            return $empty;
         }
 
         if ($modality === Modality::LabPdf || $modality === Modality::ClinicalDocument) {
@@ -835,17 +943,11 @@ class AiPipelineService
         $modalityLabel = ($record->detected_modality ?? $record->modality)->label();
 
         $technicalNotes = $abstain
-            ? 'Report withheld from automatic patient release due to low confidence or weak guideline grounding.'
-            : sprintf(
-                'Analysis engine=%s; adapter=%s; modality=%s; guardrail=%s. RAG: hybrid BM25+dense with MMR.',
-                $engine,
-                $adapter,
-                $modalityLabel,
-                $code,
-            );
+            ? 'Patient report withheld: low confidence or weak guideline grounding.'
+            : $this->formatTechnicalNotes($engine, $adapter, $modalityLabel, $code);
 
         if ($warn) {
-            $technicalNotes .= ' WARN: patient-facing model prose vetoed.';
+            $technicalNotes .= ' Patient-facing prose vetoed (WARN).';
         }
 
         $physicianReport = [
@@ -1056,10 +1158,17 @@ class AiPipelineService
 
         return collect($all)->map(function (string $step) use ($steps, $running, $labels, $all) {
             $status = 'pending';
-            if (in_array($step, $steps, true)) {
-                $status = $running === $step ? 'running' : 'completed';
-            } elseif ($running !== null && array_search($step, $all, true) < array_search($running, $all, true)) {
+
+            if ($running === $step) {
+                $status = 'running';
+            } elseif (in_array($step, $steps, true)) {
                 $status = 'completed';
+            } elseif ($running !== null) {
+                $runningIndex = array_search($running, $all, true);
+                $stepIndex = array_search($step, $all, true);
+                if ($runningIndex !== false && $stepIndex !== false && $stepIndex < $runningIndex) {
+                    $status = 'completed';
+                }
             }
 
             return [

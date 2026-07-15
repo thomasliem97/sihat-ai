@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Modality;
 use App\Models\MedicalRecord;
 use App\Models\User;
 
@@ -30,6 +31,24 @@ test('physician can view records index', function () {
 
     $response = $this->get(route('records.index'));
     $response->assertOk();
+});
+
+test('records index prefers detected modality over selected', function () {
+    $user = User::factory()->physician()->create();
+    MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'modality' => Modality::Unknown,
+        'detected_modality' => Modality::LabPdf,
+    ]);
+
+    $this->actingAs($user);
+
+    $this->get(route('records.index'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->component('records/Index')
+            ->where('records.data.0.modality_label', 'Lab Report (PDF)')
+            ->where('records.data.0.modality', 'lab_pdf'));
 });
 
 test('patient cannot access physician dashboard', function () {

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AiFileController;
 use App\Http\Controllers\AiWebhookController;
-use App\Http\Controllers\EvalDashboardController;
 use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\Patient\DashboardController as PatientDashboardController;
 use App\Http\Controllers\Physician\DashboardController as PhysicianDashboardController;
@@ -46,12 +45,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('{record}/file', [MedicalRecordController::class, 'file'])->name('file');
     });
 
-    Route::get('evaluation', EvalDashboardController::class)->name('evaluation.index');
-    Route::post('evaluation/run', [EvalDashboardController::class, 'run'])->name('evaluation.run');
-
     Route::prefix('voice')->name('voice.')->group(function () {
         Route::get('triage', [VoiceTriageController::class, 'show'])->name('triage');
-        Route::post('triage', [VoiceTriageController::class, 'transcribe'])->name('triage.transcribe');
+        Route::post('triage/sessions', [VoiceTriageController::class, 'store'])->name('triage.sessions.store');
+        Route::get('triage/sessions/{session}', [VoiceTriageController::class, 'session'])->name('triage.sessions.show');
+        Route::post('triage/sessions/{session}/messages', [VoiceTriageController::class, 'message'])->name('triage.sessions.messages');
+        Route::post('triage/sessions/{session}/messages/{message}/speak', [VoiceTriageController::class, 'speak'])->name('triage.sessions.messages.speak');
+        Route::post('triage/sessions/{session}/archive', [VoiceTriageController::class, 'archive'])->name('triage.sessions.archive');
+        Route::post('triage/sessions/{session}/share', [VoiceTriageController::class, 'share'])->name('triage.sessions.share');
     });
 });
 

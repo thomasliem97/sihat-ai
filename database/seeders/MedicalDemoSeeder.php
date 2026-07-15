@@ -8,7 +8,6 @@ use App\Enums\RecordStatus;
 use App\Enums\ReportLanguage;
 use App\Enums\UserRole;
 use App\Models\Biomarker;
-use App\Models\EvalRun;
 use App\Models\GuidelineChunk;
 use App\Models\MedicalRecord;
 use App\Models\User;
@@ -39,7 +38,6 @@ class MedicalDemoSeeder extends Seeder
 
         $this->seedDemoFiles();
         $this->seedGuidelines();
-        $this->seedEvalRuns();
         $this->seedDemoRecords($physician, $patient);
         $this->seedBiomarkerTrends($patient);
     }
@@ -115,52 +113,12 @@ PDF);
         }
     }
 
-    private function seedEvalRuns(): void
-    {
-        EvalRun::create([
-            'run_type' => 'medqa',
-            'sample_count' => 1273,
-            'avg_score' => 68.4,
-            'metrics' => [
-                'accuracy' => 0.684,
-                'f1_macro' => 0.671,
-                'categories' => ['anatomy' => 0.72, 'diagnosis' => 0.65, 'treatment' => 0.69],
-                'demo_seed' => true,
-            ],
-        ]);
-
-        EvalRun::create([
-            'run_type' => 'llm_judge',
-            'sample_count' => 150,
-            'avg_score' => 4.2,
-            'metrics' => [
-                'clarity' => 4.3,
-                'accuracy' => 4.1,
-                'grounding' => 4.4,
-                'safety' => 4.5,
-                'scale' => '1-5',
-                'demo_seed' => true,
-            ],
-        ]);
-
-        EvalRun::create([
-            'run_type' => 'safety',
-            'sample_count' => 200,
-            'avg_score' => 96.5,
-            'metrics' => [
-                'disclaimer_rate' => 1.0,
-                'critical_escalation_rate' => 0.98,
-                'diagnosis_refusal_rate' => 0.95,
-                'demo_seed' => true,
-            ],
-        ]);
-    }
-
     private function seedDemoRecords(User $physician, User $patient): void
     {
         MedicalRecord::create([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $physician->id,
+            'subject_user_id' => $patient->id,
             'title' => 'Chest X-ray, cough 2 weeks',
             'modality' => Modality::Xray,
             'detected_modality' => Modality::Xray,
@@ -214,6 +172,7 @@ PDF);
         MedicalRecord::create([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $patient->id,
+            'subject_user_id' => $patient->id,
             'title' => 'Full blood count, routine screening',
             'modality' => Modality::LabPdf,
             'detected_modality' => Modality::LabPdf,

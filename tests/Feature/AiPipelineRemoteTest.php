@@ -47,6 +47,12 @@ test('remote pipeline accepts analyze job via Http fake', function () {
     expect($job)->toBeInstanceOf(AnalysisJob::class);
     Queue::assertPushed(ProcessMedicalRecord::class);
 
+    $steps = collect($record->fresh()->pipeline_steps);
+    expect($steps->firstWhere('step', 'upload')['status'])->toBe('completed')
+        ->and($steps->firstWhere('step', 'deidentify')['status'])->toBe('running')
+        ->and($steps->firstWhere('step', 'route')['status'])->toBe('pending')
+        ->and($steps->firstWhere('step', 'analyze')['status'])->toBe('pending');
+
     $queued = new ProcessMedicalRecord($record->fresh(), $job->fresh());
     $queued->handle($pipeline);
 

@@ -25,7 +25,7 @@ class DashboardController extends Controller
                 'title' => $r->title,
                 'status' => $r->status->value,
                 'patient_name' => $r->user->name,
-                'modality_label' => $r->modality->label(),
+                'modality_label' => ($r->detected_modality ?? $r->modality)->label(),
                 'overall_confidence' => $r->overall_confidence,
                 'created_at' => $r->created_at?->toIso8601String(),
             ]);

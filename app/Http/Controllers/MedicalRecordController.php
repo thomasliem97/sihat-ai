@@ -24,7 +24,7 @@ class MedicalRecordController extends Controller
         $this->authorize('viewAny', MedicalRecord::class);
 
         $query = MedicalRecord::query()
-            ->with(['user:id,name', 'analysisJob'])
+            ->with(['user:id,name,role', 'subjectUser:id,name', 'analysisJob'])
             ->latest();
 
         if ($request->user()->isPatient()) {
@@ -34,12 +34,13 @@ class MedicalRecordController extends Controller
         $records = $query->paginate(15)->through(fn (MedicalRecord $record) => [
             'id' => $record->id,
             'title' => $record->title,
-            'modality' => $record->modality->value,
-            'modality_label' => $record->modality->label(),
+            'modality' => ($record->detected_modality ?? $record->modality)->value,
+            'modality_label' => ($record->detected_modality ?? $record->modality)->label(),
             'detected_modality' => $record->detected_modality?->value,
             'status' => $record->status->value,
             'overall_confidence' => $record->overall_confidence,
-            'patient_name' => $record->user->name,
+            'patient_name' => $record->subjectUser?->name
+                ?? ($record->user->isPatient() ? $record->user->name : 'Unassigned'),
             'created_at' => $record->created_at?->toIso8601String(),
             'analyzed_at' => $record->analyzed_at?->toIso8601String(),
         ]);
@@ -73,6 +74,7 @@ class MedicalRecordController extends Controller
                 },
             ]),
             'patients' => $patients,
+            'isPhysician' => $request->user()->isPhysician(),
         ]);
     }
 
@@ -82,14 +84,22 @@ class MedicalRecordController extends Controller
 
         $file = $request->file('file');
         $path = $file->store('medical-records', 'local');
+        $uploader = $request->user();
 
-        $patientId = $request->user()->isPhysician()
-            ? ($request->integer('patient_id') ?: $request->user()->id)
-            : $request->user()->id;
+        if ($uploader->isPhysician()) {
+            $subjectUserId = $request->filled('patient_id') ? $request->integer('patient_id') : null;
+            $chartOwnerId = $subjectUserId ?? $uploader->id;
+        } else {
+            $chartOwnerId = $uploader->id;
+            $subjectUserId = $request->string('subject')->toString() === 'self'
+                ? $uploader->id
+                : null;
+        }
 
         $record = MedicalRecord::create([
-            'user_id' => $patientId,
-            'uploaded_by_user_id' => $request->user()->id,
+            'user_id' => $chartOwnerId,
+            'uploaded_by_user_id' => $uploader->id,
+            'subject_user_id' => $subjectUserId,
             'title' => $request->string('title')->toString(),
             'modality' => $request->enum('modality', Modality::class) ?? Modality::Unknown,
             'status' => RecordStatus::Pending,
@@ -109,7 +119,13 @@ class MedicalRecordController extends Controller
     {
         $this->authorize('view', $record);
 
-        $record->load(['user:id,name', 'biomarkers', 'analysisJob', 'signedByUser:id,name']);
+        $record->load([
+            'user:id,name,role',
+            'subjectUser:id,name',
+            'biomarkers',
+            'analysisJob',
+            'signedByUser:id,name',
+        ]);
 
         $viewMode = $request->user()->isPhysician() ? 'physician' : 'patient';
         $flags = $record->guardrailFlagList();
@@ -165,7 +181,8 @@ class MedicalRecordController extends Controller
                 'signed_by_name' => $record->signedByUser?->name,
                 'can_edit_report' => $viewMode === 'physician' && $record->status === RecordStatus::Completed && ! $record->isSigned(),
                 'error_message' => $record->error_message,
-                'patient_name' => $record->user->name,
+                'patient_name' => $record->subjectUser?->name
+                    ?? ($record->user->isPatient() ? $record->user->name : 'Unassigned'),
                 'file_url' => $record->status === RecordStatus::Completed && ! ($viewMode === 'patient' && ($withholdPatient || $awaitingSign))
                     ? route('records.file', $record)
                     : ($viewMode === 'physician' && $record->status === RecordStatus::Completed

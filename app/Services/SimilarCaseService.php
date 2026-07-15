@@ -7,6 +7,11 @@ use App\Models\MedicalRecord;
 
 class SimilarCaseService
 {
+    /**
+     * Drop neighbors below this cosine/text score so the UI only shows useful matches.
+     */
+    public const MIN_SCORE = 0.6;
+
     public function __construct(private RagService $rag) {}
 
     /**
@@ -52,11 +57,13 @@ class SimilarCaseService
                 'id' => $candidate->id,
                 'title' => $candidate->title,
                 'modality' => $candModality,
+                'modality_label' => ($candidate->detected_modality ?? $candidate->modality)?->label(),
                 'score' => round($score, 3),
                 'findings_preview' => $preview !== '' ? $preview : 'No labeled findings',
                 'analyzed_at' => $candidate->analyzed_at?->toIso8601String(),
             ];
         })
+            ->filter(fn (array $row) => $row['score'] >= self::MIN_SCORE)
             ->sortByDesc('score')
             ->take($limit)
             ->values()

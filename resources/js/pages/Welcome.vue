@@ -14,7 +14,6 @@ import {
     Route,
     ScanLine,
     ScrollText,
-    Shield,
     ShieldAlert,
     ShieldCheck,
     Stethoscope,
@@ -1852,13 +1851,6 @@ onUnmounted(() => {
                             imaging and labs: MedGemma analysis, RAG citations,
                             and dual physician / patient reports.
                         </p>
-                        <div class="flex items-center gap-2">
-                            <Shield class="size-4 text-primary" />
-                            <p class="text-xs text-muted-foreground">
-                                AI assist only, not a substitute for clinical
-                                judgment.
-                            </p>
-                        </div>
                     </div>
 
                     <div>
