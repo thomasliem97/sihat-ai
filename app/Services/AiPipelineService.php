@@ -254,7 +254,7 @@ class AiPipelineService
     }
 
     /**
-     * Drop punctuation-only / empty labels. Salvage leading junk (":Multiple…" → usable).
+     * Drop punctuation-only / empty labels.
      * When imaging has no usable findings, force a review item instead of inventing "normal".
      *
      * @param  array<string, mixed>  $result
@@ -264,29 +264,10 @@ class AiPipelineService
     {
         $findings = [];
         foreach ($result['findings'] ?? [] as $finding) {
-            if (! is_array($finding)) {
+            if (! is_array($finding) || ! $this->isUsableClinicalLabel($finding['label'] ?? null)) {
                 continue;
             }
-
-            $label = $this->repairClinicalText($finding['label'] ?? null);
-            if ($label === null) {
-                continue;
-            }
-
-            $item = $finding;
-            $item['label'] = $label;
-            $item['severity'] = $this->coerceFindingSeverity($label, $finding['severity'] ?? null);
-
-            if (isset($finding['description']) && is_string($finding['description'])) {
-                $description = $this->repairClinicalText($finding['description']);
-                if ($description !== null) {
-                    $item['description'] = $description;
-                } else {
-                    unset($item['description']);
-                }
-            }
-
-            $findings[] = $item;
+            $findings[] = $finding;
         }
 
         if ($findings !== [] || ! $modality->isImaging()) {
@@ -326,82 +307,27 @@ class AiPipelineService
     {
         $clean = [];
         foreach ($differential as $row) {
-            if (! is_array($row)) {
+            if (! is_array($row) || ! $this->isUsableClinicalLabel($row['condition'] ?? null)) {
                 continue;
             }
-
-            $condition = $this->repairClinicalText($row['condition'] ?? null);
-            if ($condition === null) {
-                continue;
-            }
-
-            $confidence = is_numeric($row['confidence'] ?? null) ? (float) $row['confidence'] : 0.0;
-            if ($confidence <= 0) {
-                continue;
-            }
-
-            $item = $row;
-            $item['condition'] = $condition;
-            $item['confidence'] = $confidence;
-            $clean[] = $item;
+            $clean[] = $row;
         }
 
         return $clean;
     }
 
-    private function repairClinicalText(mixed $value): ?string
-    {
-        if (! is_string($value)) {
-            return null;
-        }
-
-        $trimmed = trim($value);
-        while ($trimmed !== '' && preg_match('/^[\p{L}\p{N}]/u', $trimmed) !== 1) {
-            $trimmed = ltrim(mb_substr($trimmed, 1));
-        }
-
-        if (mb_strlen($trimmed) < 3) {
-            return null;
-        }
-
-        return $trimmed;
-    }
-
     private function isUsableClinicalLabel(mixed $label): bool
     {
-        return $this->repairClinicalText($label) !== null;
-    }
-
-    private function coerceFindingSeverity(string $label, mixed $severity): string
-    {
-        $sev = is_string($severity) ? strtolower(trim($severity)) : 'borderline';
-        if (! in_array($sev, ['normal', 'borderline', 'abnormal', 'critical'], true)) {
-            $sev = 'borderline';
+        if (! is_string($label)) {
+            return false;
         }
 
-        $labelLower = strtolower($label);
-        $abnormalCues = [
-            'nodule',
-            'mass',
-            'consolidat',
-            'pneumothorax',
-            'effusion',
-            'infiltrat',
-            'opacit',
-            'fracture',
-            'hemorrhage',
-            'lesion',
-        ];
-
-        if ($sev === 'normal') {
-            foreach ($abnormalCues as $cue) {
-                if (str_contains($labelLower, $cue)) {
-                    return 'abnormal';
-                }
-            }
+        $trimmed = trim($label);
+        if (mb_strlen($trimmed) < 3) {
+            return false;
         }
 
-        return $sev;
+        return preg_match('/^[\p{P}\p{S}\s]+$/u', $trimmed) !== 1;
     }
 
     /**

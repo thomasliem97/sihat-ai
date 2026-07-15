@@ -44,6 +44,8 @@ return [
     'openai' => [
         'api_key' => env('OPENAI_API_KEY'),
         'embedding_model' => env('OPENAI_EMBEDDING_MODEL', 'text-embedding-3-small'),
+        'structure_model' => env('OPENAI_STRUCTURE_MODEL', 'gpt-5.6-terra'),
+        'structure_effort' => env('OPENAI_STRUCTURE_EFFORT', 'high'),
     ],
 
 ];
