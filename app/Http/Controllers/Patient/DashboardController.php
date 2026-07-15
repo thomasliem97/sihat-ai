@@ -26,7 +26,7 @@ class DashboardController extends Controller
                 'id' => $r->id,
                 'title' => $r->title,
                 'status' => $r->status->value,
-                'modality_label' => $r->modality->label(),
+                'modality_label' => ($r->detected_modality ?? $r->modality)->label(),
                 'overall_confidence' => $r->overall_confidence,
                 'created_at' => $r->created_at?->toIso8601String(),
             ]);

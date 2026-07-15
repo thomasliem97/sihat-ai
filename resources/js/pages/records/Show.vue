@@ -18,6 +18,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { index as recordsIndex, show as recordShow, sign as signReport } from '@/routes/records';
 import { update as updateReport } from '@/routes/records/report';
+import {
+    formatAgentHopDetail,
+    formatAgentHopLabel,
+    formatAgentHopStatus,
+    formatDurationMs,
+    formatTechnicalNotes,
+} from '@/lib/agent-trace';
+import { parseFindingMeasurements } from '@/lib/finding-measurements';
 
 const props = defineProps<{
     record: {
@@ -69,6 +77,7 @@ const props = defineProps<{
         id: number;
         title: string;
         modality: string | null;
+        modality_label?: string | null;
         score: number;
         findings_preview: string;
         analyzed_at: string | null;
@@ -95,6 +104,55 @@ const showScanViewer = computed(() => {
 
     return modality !== 'lab_pdf' && modality !== 'clinical_document';
 });
+
+const headerDescription = computed(() => {
+    const parts: string[] = [];
+    const setValue = props.record.modality;
+    const setLabel = props.record.modality_label;
+    const detectedValue = props.record.detected_modality;
+    const detectedLabel = props.record.detected_modality_label;
+
+    if (detectedValue && detectedLabel) {
+        if (setValue === 'unknown' || setValue === detectedValue) {
+            parts.push(detectedLabel);
+        } else {
+            parts.push(setLabel, `detected ${detectedLabel}`);
+        }
+    } else if (setLabel) {
+        parts.push(setLabel);
+    }
+
+    if (props.viewMode === 'physician' && props.record.patient_name) {
+        parts.push(props.record.patient_name);
+    }
+
+    return parts.join(' · ');
+});
+
+const findingsView = computed(() =>
+    (props.record.findings ?? []).map((finding) => ({
+        finding,
+        measurements: parseFindingMeasurements(
+            finding.value,
+            finding.reference,
+            props.biomarkers,
+        ),
+    })),
+);
+
+const fallbackPipelineSteps = [
+    { step: 'upload', label: 'Upload received', status: 'completed' },
+    { step: 'deidentify', label: 'PII de-identified', status: 'running' },
+    { step: 'route', label: 'Modality routed', status: 'pending' },
+    { step: 'analyze', label: 'Model analysis', status: 'pending' },
+    {
+        step: 'rag',
+        label: 'Hybrid RAG (BM25+dense+MMR)',
+        status: 'pending',
+    },
+    { step: 'guardrail', label: 'Safety guardrails', status: 'pending' },
+    { step: 'compose', label: 'Report composed', status: 'pending' },
+];
 
 const editing = ref(false);
 const draftSummary = ref('');
@@ -179,39 +237,36 @@ defineOptions({
     <Head :title="record.title" />
 
     <div class="space-y-6">
-        <div class="flex flex-wrap items-start justify-between gap-4">
+        <div class="flex flex-wrap items-end justify-between gap-4">
             <PageHeader
+                class="min-w-0 flex-1"
                 :tag="viewMode === 'physician' ? 'Specimen' : 'Your result'"
                 :title="record.title"
-                :description="
-                    [
-                        record.modality_label,
-                        record.detected_modality_label
-                            ? `detected ${record.detected_modality_label}`
-                            : null,
-                        viewMode === 'physician' ? record.patient_name : null,
-                    ]
-                        .filter(Boolean)
-                        .join(' · ')
-                "
-                :meta="`REC-${String(record.id).padStart(4, '0')}`"
+                :description="headerDescription"
             />
-            <div class="flex flex-wrap items-center gap-2">
-                <AnnotationPill
-                    :variant="
-                        record.status === 'completed'
-                            ? 'teal'
-                            : record.status === 'failed'
-                              ? 'coral'
-                              : 'amber'
-                    "
+            <div class="flex flex-col items-end gap-2">
+                <p
+                    class="font-mono text-xs font-semibold tracking-wider text-ink-faint uppercase"
                 >
-                    {{ record.status }}
-                </AnnotationPill>
-                <ConfidenceBadge
-                    v-if="record.overall_confidence"
-                    :confidence="record.overall_confidence"
-                />
+                    REC-{{ String(record.id).padStart(4, '0') }}
+                </p>
+                <div class="flex flex-wrap items-center justify-end gap-2">
+                    <AnnotationPill
+                        :variant="
+                            record.status === 'completed'
+                                ? 'teal'
+                                : record.status === 'failed'
+                                  ? 'coral'
+                                  : 'amber'
+                        "
+                    >
+                        {{ record.status }}
+                    </AnnotationPill>
+                    <ConfidenceBadge
+                        v-if="record.overall_confidence"
+                        :confidence="record.overall_confidence"
+                    />
+                </div>
             </div>
         </div>
 
@@ -283,18 +338,27 @@ defineOptions({
                 </CardHeader>
                 <CardContent class="space-y-4">
                     <AnalysisStepper
-                        v-if="record.pipeline_steps"
-                        :steps="record.pipeline_steps"
+                        :steps="
+                            record.pipeline_steps ?? fallbackPipelineSteps
+                        "
                     />
                 </CardContent>
             </Card>
         </div>
 
         <template v-else-if="record.status === 'completed'">
-            <AnalysisStepper
+            <Card
                 v-if="record.pipeline_steps"
-                :steps="record.pipeline_steps"
-            />
+                class="paper-panel--focal border-0 shadow-offset"
+            >
+                <CardHeader class="space-y-2">
+                    <SectionTag>Pipeline</SectionTag>
+                    <CardTitle class="text-lg">Analysis complete</CardTitle>
+                </CardHeader>
+                <CardContent class="space-y-4">
+                    <AnalysisStepper :steps="record.pipeline_steps" />
+                </CardContent>
+            </Card>
 
             <div
                 class="grid gap-6"
@@ -335,51 +399,176 @@ defineOptions({
                             }}
                         </p>
                         <div
-                            v-for="(finding, i) in record.findings"
+                            v-for="(item, i) in findingsView"
                             :key="i"
                             class="rounded-xl border border-border p-4"
                         >
-                            <div
-                                class="flex flex-wrap items-center justify-between gap-2"
-                            >
+                            <div class="flex flex-col gap-2">
                                 <span class="font-semibold">{{
-                                    finding.label
+                                    item.finding.label
                                 }}</span>
-                                <div class="flex flex-wrap items-center gap-2">
+                                <div
+                                    v-if="
+                                        item.finding.severity ||
+                                        item.finding.confidence
+                                    "
+                                    class="flex flex-wrap items-center gap-2"
+                                >
                                     <ClinicalBadge
-                                        v-if="finding.severity"
-                                        :status="String(finding.severity)"
+                                        v-if="item.finding.severity"
+                                        :status="String(item.finding.severity)"
                                     />
                                     <ConfidenceBadge
-                                        v-if="finding.confidence"
+                                        v-if="item.finding.confidence"
                                         :confidence="
-                                            Number(finding.confidence)
+                                            Number(item.finding.confidence)
                                         "
                                     />
                                 </div>
                             </div>
                             <p
-                                v-if="finding.description"
+                                v-if="item.finding.description"
                                 class="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground"
                             >
-                                {{ finding.description }}
+                                {{ item.finding.description }}
                             </p>
-                            <p
-                                v-if="finding.value"
-                                class="mt-2 font-mono text-sm tabular-nums"
+                            <div
+                                v-if="item.measurements?.length"
+                                class="mt-3 overflow-x-auto"
                             >
-                                {{ finding.value }} {{ finding.unit }}
-                                <span
-                                    v-if="finding.reference"
-                                    class="text-muted-foreground"
+                                <table class="w-full table-fixed text-sm">
+                                    <thead>
+                                        <tr
+                                            class="border-b border-border text-left font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                                        >
+                                            <th class="w-1/4 pb-2 font-semibold">
+                                                Marker
+                                            </th>
+                                            <th class="w-1/4 pb-2 font-semibold">
+                                                Value
+                                            </th>
+                                            <th class="w-1/4 pb-2 font-semibold">
+                                                Reference
+                                            </th>
+                                            <th class="w-1/4 pb-2 font-semibold">
+                                                Status
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(row, rowIndex) in item.measurements"
+                                            :key="rowIndex"
+                                            class="border-b border-border"
+                                        >
+                                            <td class="py-2 pr-3">
+                                                {{ row.name }}
+                                            </td>
+                                            <td
+                                                class="py-2 pr-3 font-mono tabular-nums"
+                                            >
+                                                {{ row.value }}
+                                            </td>
+                                            <td
+                                                class="py-2 pr-3 font-mono text-xs tabular-nums text-muted-foreground"
+                                            >
+                                                {{ row.reference ?? '-' }}
+                                            </td>
+                                            <td class="py-2">
+                                                <ClinicalBadge
+                                                    v-if="row.status"
+                                                    :status="row.status"
+                                                />
+                                                <span
+                                                    v-else
+                                                    class="text-muted-foreground"
+                                                >
+                                                    -
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div
+                                v-else-if="item.finding.value"
+                                class="mt-2 space-y-1"
+                            >
+                                <p
+                                    class="font-mono text-sm tabular-nums text-ink"
                                 >
-                                    (ref: {{ finding.reference }})
-                                </span>
-                            </p>
+                                    {{ item.finding.value }}
+                                    <span
+                                        v-if="item.finding.unit"
+                                        class="text-muted-foreground"
+                                    >
+                                        {{ item.finding.unit }}
+                                    </span>
+                                </p>
+                                <p
+                                    v-if="item.finding.reference"
+                                    class="font-mono text-xs tabular-nums text-muted-foreground"
+                                >
+                                    Reference {{ item.finding.reference }}
+                                </p>
+                            </div>
                         </div>
                     </CardContent>
                 </Card>
             </div>
+
+            <Card v-if="biomarkers.length">
+                <CardHeader class="space-y-2">
+                    <SectionTag>Labs</SectionTag>
+                    <CardTitle class="text-lg">Extracted biomarkers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <table class="w-full table-fixed text-sm">
+                        <thead>
+                            <tr
+                                class="border-b border-border text-left font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                            >
+                                <th class="w-1/4 pb-2 font-semibold">Marker</th>
+                                <th class="w-1/4 pb-2 font-semibold">Value</th>
+                                <th class="w-1/4 pb-2 font-semibold">
+                                    Reference
+                                </th>
+                                <th class="w-1/4 pb-2 font-semibold">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                v-for="b in biomarkers"
+                                :key="b.id"
+                                class="border-b border-border"
+                            >
+                                <td class="py-2 pr-3">{{ b.name }}</td>
+                                <td class="py-2 pr-3 font-mono tabular-nums">
+                                    {{ b.value }} {{ b.unit }}
+                                </td>
+                                <td
+                                    class="py-2 pr-3 font-mono text-xs tabular-nums text-muted-foreground"
+                                >
+                                    <template
+                                        v-if="
+                                            b.reference_low != null &&
+                                            b.reference_high != null
+                                        "
+                                    >
+                                        {{ b.reference_low }}–{{
+                                            b.reference_high
+                                        }}
+                                    </template>
+                                    <template v-else>-</template>
+                                </td>
+                                <td class="py-2">
+                                    <ClinicalBadge :status="b.status" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </CardContent>
+            </Card>
 
             <Card
                 v-if="viewMode === 'physician' && record.longitudinal_diff"
@@ -389,33 +578,44 @@ defineOptions({
                     <CardTitle class="text-lg">Longitudinal comparison</CardTitle>
                 </CardHeader>
                 <CardContent class="space-y-3">
-                    <p class="max-w-prose text-sm leading-relaxed">
-                        {{ record.longitudinal_diff.summary }}
-                    </p>
-                    <ul
+                    <template
                         v-if="
+                            record.longitudinal_diff.has_prior &&
                             Array.isArray(record.longitudinal_diff.changes) &&
                             record.longitudinal_diff.changes.length
                         "
-                        class="space-y-1 text-sm"
                     >
-                        <li
-                            v-for="(change, i) in record.longitudinal_diff
-                                .changes as Array<Record<string, unknown>>"
-                            :key="i"
-                            class="flex flex-wrap items-center justify-between gap-2 border-b border-border py-2"
-                        >
-                            <span>{{ change.finding }}</span>
-                            <span
-                                class="font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                        <p class="max-w-prose text-sm leading-relaxed">
+                            {{ record.longitudinal_diff.summary }}
+                        </p>
+                        <ul class="space-y-1 text-sm">
+                            <li
+                                v-for="(change, i) in record.longitudinal_diff
+                                    .changes as Array<Record<string, unknown>>"
+                                :key="i"
+                                class="flex flex-wrap items-center justify-between gap-2 border-b border-border py-2"
                             >
-                                {{ change.change }}
-                                <template v-if="change.prior_date">
-                                    · prior {{ change.prior_date }}
-                                </template>
-                            </span>
-                        </li>
-                    </ul>
+                                <span>{{ change.finding }}</span>
+                                <span
+                                    class="font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                                >
+                                    {{ change.change }}
+                                    <template v-if="change.prior_date">
+                                        · prior {{ change.prior_date }}
+                                    </template>
+                                </span>
+                            </li>
+                        </ul>
+                    </template>
+                    <p
+                        v-else
+                        class="max-w-prose text-sm leading-relaxed text-muted-foreground"
+                    >
+                        {{
+                            record.longitudinal_diff.summary ||
+                            'No patient previous history is found.'
+                        }}
+                    </p>
                 </CardContent>
             </Card>
 
@@ -431,26 +631,48 @@ defineOptions({
                         <li
                             v-for="(hop, i) in record.agent_trace"
                             :key="i"
-                            class="flex flex-wrap items-start justify-between gap-2 rounded-xl border border-border p-4"
+                            class="flex flex-wrap items-start justify-between gap-3 rounded-xl border border-border p-4"
                         >
                             <div>
-                                <p
-                                    class="font-mono text-xs font-semibold tracking-wide uppercase"
-                                >
-                                    {{ hop.hop }}
+                                <p class="text-sm font-semibold text-ink">
+                                    {{ formatAgentHopLabel(String(hop.hop)) }}
                                 </p>
-                                <p class="text-sm text-muted-foreground">
-                                    {{ hop.detail }}
+                                <p class="text-sm leading-relaxed text-muted-foreground">
+                                    {{
+                                        formatAgentHopDetail(
+                                            String(hop.detail ?? ''),
+                                        )
+                                    }}
                                 </p>
                             </div>
-                            <span
-                                class="font-mono text-xs tabular-nums text-muted-foreground"
+                            <div
+                                class="flex shrink-0 flex-col items-end gap-1.5 sm:flex-row sm:items-center"
                             >
-                                <template v-if="hop.duration_ms != null">
-                                    {{ hop.duration_ms }}ms
-                                </template>
-                                · {{ hop.status }}
-                            </span>
+                                <span
+                                    v-if="
+                                        hop.status !== 'skipped' &&
+                                        typeof hop.duration_ms === 'number'
+                                    "
+                                    class="mr-2 font-mono text-xs tabular-nums text-ink-soft"
+                                >
+                                    {{ formatDurationMs(Number(hop.duration_ms)) }}
+                                </span>
+                                <AnnotationPill
+                                    :variant="
+                                        hop.status === 'failed'
+                                            ? 'coral'
+                                            : hop.status === 'skipped'
+                                              ? 'amber'
+                                              : 'teal'
+                                    "
+                                >
+                                    {{
+                                        formatAgentHopStatus(
+                                            String(hop.status ?? ''),
+                                        )
+                                    }}
+                                </AnnotationPill>
+                            </div>
                         </li>
                     </ol>
                 </CardContent>
@@ -465,29 +687,35 @@ defineOptions({
             >
                 <CardHeader class="space-y-2">
                     <SectionTag>Similar cases</SectionTag>
-                    <CardTitle class="text-lg">Embedding neighbors</CardTitle>
+                    <CardTitle class="text-lg">Nearby past cases</CardTitle>
                 </CardHeader>
                 <CardContent class="space-y-2">
                     <a
                         v-for="c in similarCases"
                         :key="c.id"
                         :href="recordShow.url(c.id)"
-                        class="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border p-4 text-sm transition-colors hover:bg-muted/40"
+                        class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border p-4 text-sm transition-colors hover:bg-muted/40"
                     >
-                        <div>
+                        <div class="min-w-0">
                             <p class="font-semibold">{{ c.title }}</p>
                             <p class="text-muted-foreground">
                                 {{ c.findings_preview }}
                             </p>
                         </div>
-                        <span
-                            class="font-mono text-xs tabular-nums text-muted-foreground"
+                        <div
+                            class="flex shrink-0 flex-col items-end gap-1.5 sm:flex-row sm:items-center"
                         >
-                            {{ Math.round(c.score * 100) }}%
-                            <template v-if="c.modality">
-                                · {{ c.modality }}
-                            </template>
-                        </span>
+                            <span
+                                class="mr-2 font-mono text-xs tabular-nums text-ink-soft"
+                            >
+                                {{ Math.round(c.score * 100) }}% confidence
+                            </span>
+                            <AnnotationPill
+                                v-if="c.modality_label || c.modality"
+                            >
+                                {{ c.modality_label || c.modality }}
+                            </AnnotationPill>
+                        </div>
                     </a>
                 </CardContent>
             </Card>
@@ -637,17 +865,23 @@ defineOptions({
                         "
                     >
                         <p>{{ record.physician_report.summary }}</p>
-                        <div
-                            v-if="
-                                record.physician_report.differential_diagnosis
-                            "
-                        >
+                        <div>
                             <h3
                                 class="mb-2 font-mono text-xs font-semibold tracking-wide uppercase"
                             >
                                 Differential diagnosis
                             </h3>
-                            <ul class="space-y-1">
+                            <ul
+                                v-if="
+                                    Array.isArray(
+                                        record.physician_report
+                                            .differential_diagnosis,
+                                    ) &&
+                                    record.physician_report
+                                        .differential_diagnosis.length
+                                "
+                                class="space-y-1"
+                            >
                                 <li
                                     v-for="(ddx, i) in record.physician_report
                                         .differential_diagnosis as any[]"
@@ -662,14 +896,27 @@ defineOptions({
                                     </span>
                                 </li>
                             </ul>
+                            <p
+                                v-else
+                                class="text-muted-foreground"
+                            >
+                                -
+                            </p>
                         </div>
-                        <div v-if="record.physician_report.recommendations">
+                        <div>
                             <h3
                                 class="mb-2 font-mono text-xs font-semibold tracking-wide uppercase"
                             >
                                 Recommendations
                             </h3>
                             <ul
+                                v-if="
+                                    Array.isArray(
+                                        record.physician_report.recommendations,
+                                    ) &&
+                                    record.physician_report.recommendations
+                                        .length
+                                "
                                 class="list-inside list-disc space-y-1 text-muted-foreground"
                             >
                                 <li
@@ -680,13 +927,35 @@ defineOptions({
                                     {{ rec }}
                                 </li>
                             </ul>
+                            <p
+                                v-else
+                                class="text-muted-foreground"
+                            >
+                                -
+                            </p>
                         </div>
-                        <p
+                        <div
                             v-if="record.physician_report.technical_notes"
-                            class="font-mono text-xs text-muted-foreground"
+                            class="rounded-xl border border-dashed border-border/80 bg-muted/25 px-3 py-2.5"
                         >
-                            {{ record.physician_report.technical_notes }}
-                        </p>
+                            <p
+                                class="font-mono text-[0.65rem] font-semibold tracking-wide text-ink-faint uppercase"
+                            >
+                                Analysis meta
+                            </p>
+                            <p
+                                class="mt-1 text-xs leading-relaxed text-muted-foreground"
+                            >
+                                {{
+                                    formatTechnicalNotes(
+                                        String(
+                                            record.physician_report
+                                                .technical_notes,
+                                        ),
+                                    )
+                                }}
+                            </p>
+                        </div>
                         <div
                             v-if="record.can_edit_report"
                             class="flex flex-wrap gap-2 pt-2"
@@ -771,57 +1040,6 @@ defineOptions({
                         :index="i + 1"
                         :citation="(citation as any)"
                     />
-                </CardContent>
-            </Card>
-
-            <Card v-if="biomarkers.length">
-                <CardHeader class="space-y-2">
-                    <SectionTag>Labs</SectionTag>
-                    <CardTitle class="text-lg">Extracted biomarkers</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <table class="w-full text-sm">
-                        <thead>
-                            <tr
-                                class="border-b border-border text-left font-mono text-xs tracking-wide text-muted-foreground uppercase"
-                            >
-                                <th class="pb-2 font-semibold">Test</th>
-                                <th class="pb-2 font-semibold">Value</th>
-                                <th class="pb-2 font-semibold">Reference</th>
-                                <th class="pb-2 font-semibold">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                v-for="b in biomarkers"
-                                :key="b.id"
-                                class="border-b border-border"
-                            >
-                                <td class="py-2">{{ b.name }}</td>
-                                <td class="py-2 font-mono tabular-nums">
-                                    {{ b.value }} {{ b.unit }}
-                                </td>
-                                <td
-                                    class="py-2 font-mono text-xs tabular-nums text-muted-foreground"
-                                >
-                                    <template
-                                        v-if="
-                                            b.reference_low != null &&
-                                            b.reference_high != null
-                                        "
-                                    >
-                                        {{ b.reference_low }}–{{
-                                            b.reference_high
-                                        }}
-                                    </template>
-                                    <template v-else>-</template>
-                                </td>
-                                <td class="py-2">
-                                    <ClinicalBadge :status="b.status" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </CardContent>
             </Card>
 

@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('status')->default('pending');
             $table->string('external_job_id')->nullable();
             $table->json('steps_completed')->nullable();
+            $table->json('hop_timings')->nullable();
             $table->text('error_message')->nullable();
             $table->timestamp('started_at')->nullable();
             $table->timestamp('completed_at')->nullable();

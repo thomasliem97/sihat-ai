@@ -43,10 +43,42 @@ test('similar case retrieval excludes self and ranks closer embeddings higher', 
     ]);
 
     $results = app(SimilarCaseService::class)->retrieve($anchor, 5);
+    $ids = collect($results)->pluck('id');
 
-    expect(collect($results)->pluck('id'))->not->toContain($anchor->id)
+    expect($ids)->not->toContain($anchor->id)
+        ->and($results)->toHaveCount(1)
         ->and($results[0]['id'])->toBe($similar->id)
-        ->and($results[0]['score'])->toBeGreaterThan($results[count($results) - 1]['score'] ?? 0);
+        ->and($results[0]['score'])->toBeGreaterThanOrEqual(SimilarCaseService::MIN_SCORE)
+        ->and($results[0]['modality_label'])->toBe('Chest X-ray');
+});
+
+test('similar case retrieval drops neighbors below the score threshold', function () {
+    $rag = app(RagService::class);
+    $near = $rag->localHashEmbed('right lower lobe opacity pneumonia xray');
+    $far = $rag->localHashEmbed('hemoglobin anemia lab blood count');
+
+    $anchor = MedicalRecord::factory()->completed()->create([
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'findings' => [
+            ['label' => 'Right lower lobe opacity', 'severity' => 'abnormal'],
+        ],
+        'findings_embedding' => $near,
+    ]);
+
+    $distant = MedicalRecord::factory()->completed()->create([
+        'modality' => Modality::LabPdf,
+        'detected_modality' => Modality::LabPdf,
+        'findings' => [
+            ['label' => 'Hemoglobin', 'severity' => 'abnormal'],
+        ],
+        'findings_embedding' => $far,
+    ]);
+
+    $results = app(SimilarCaseService::class)->retrieve($anchor, 5);
+
+    expect($results)->toBeEmpty()
+        ->and(collect($results)->pluck('id'))->not->toContain($distant->id);
 });
 
 test('physician show includes similar cases for completed records', function () {

@@ -7,9 +7,10 @@ use App\Models\User;
 use App\Services\AiPipelineService;
 
 test('longitudinal diff marks new imaging findings against prior record', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->patient()->create();
     $prior = MedicalRecord::factory()->completed()->create([
         'user_id' => $user->id,
+        'subject_user_id' => $user->id,
         'modality' => Modality::Xray,
         'detected_modality' => Modality::Xray,
         'findings' => [
@@ -20,6 +21,7 @@ test('longitudinal diff marks new imaging findings against prior record', functi
 
     $current = MedicalRecord::factory()->create([
         'user_id' => $user->id,
+        'subject_user_id' => $user->id,
         'modality' => Modality::Xray,
         'detected_modality' => Modality::Xray,
         'status' => RecordStatus::Processing,
@@ -39,9 +41,10 @@ test('longitudinal diff marks new imaging findings against prior record', functi
 });
 
 test('longitudinal lab diff compares biomarker values to prior', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->patient()->create();
     $prior = MedicalRecord::factory()->completed()->create([
         'user_id' => $user->id,
+        'subject_user_id' => $user->id,
         'modality' => Modality::LabPdf,
         'detected_modality' => Modality::LabPdf,
         'analyzed_at' => now()->subWeek(),
@@ -57,6 +60,7 @@ test('longitudinal lab diff compares biomarker values to prior', function () {
 
     $current = MedicalRecord::factory()->create([
         'user_id' => $user->id,
+        'subject_user_id' => $user->id,
         'modality' => Modality::LabPdf,
         'detected_modality' => Modality::LabPdf,
     ]);
@@ -69,4 +73,66 @@ test('longitudinal lab diff compares biomarker values to prior', function () {
 
     expect($diff['has_prior'])->toBeTrue()
         ->and($diff['changes'][0]['change'])->toBe('worse');
+});
+
+test('longitudinal diff skips records without a subject', function () {
+    $physician = User::factory()->physician()->create();
+    MedicalRecord::factory()->completed()->create([
+        'user_id' => $physician->id,
+        'subject_user_id' => null,
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'findings' => [
+            ['label' => 'Cardiomegaly', 'severity' => 'borderline'],
+        ],
+        'analyzed_at' => now()->subMonth(),
+    ]);
+
+    $current = MedicalRecord::factory()->create([
+        'user_id' => $physician->id,
+        'subject_user_id' => null,
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+    ]);
+
+    $diff = app(AiPipelineService::class)->buildLongitudinalDiff($current, [
+        'findings' => [
+            ['label' => 'Cardiomegaly', 'severity' => 'borderline'],
+        ],
+    ]);
+
+    expect($diff['has_prior'])->toBeFalse()
+        ->and($diff['changes'])->toBe([])
+        ->and($diff['summary'])->toBe('No patient previous history is found.');
+});
+
+test('longitudinal diff ignores other-subject uploads on the same account', function () {
+    $patient = User::factory()->patient()->create();
+
+    MedicalRecord::factory()->completed()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => null,
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'findings' => [
+            ['label' => 'Cardiomegaly', 'severity' => 'borderline'],
+        ],
+        'analyzed_at' => now()->subMonth(),
+    ]);
+
+    $current = MedicalRecord::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+    ]);
+
+    $diff = app(AiPipelineService::class)->buildLongitudinalDiff($current, [
+        'findings' => [
+            ['label' => 'Cardiomegaly', 'severity' => 'borderline'],
+        ],
+    ]);
+
+    expect($diff['has_prior'])->toBeFalse()
+        ->and($diff['summary'])->toBe('No patient previous history is found.');
 });

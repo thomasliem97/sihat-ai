@@ -161,6 +161,7 @@ PDF);
         MedicalRecord::create([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $physician->id,
+            'subject_user_id' => $patient->id,
             'title' => 'Chest X-ray, cough 2 weeks',
             'modality' => Modality::Xray,
             'detected_modality' => Modality::Xray,
@@ -214,6 +215,7 @@ PDF);
         MedicalRecord::create([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $patient->id,
+            'subject_user_id' => $patient->id,
             'title' => 'Full blood count, routine screening',
             'modality' => Modality::LabPdf,
             'detected_modality' => Modality::LabPdf,

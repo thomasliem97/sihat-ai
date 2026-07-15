@@ -14,6 +14,7 @@ use Illuminate\Support\Carbon;
  * @property string $status
  * @property string|null $external_job_id
  * @property array<int, mixed>|null $steps_completed
+ * @property array<string, mixed>|null $hop_timings
  * @property string|null $error_message
  * @property Carbon|null $started_at
  * @property Carbon|null $completed_at
@@ -28,6 +29,7 @@ class AnalysisJob extends Model
         'status',
         'external_job_id',
         'steps_completed',
+        'hop_timings',
         'error_message',
         'started_at',
         'completed_at',
@@ -37,6 +39,7 @@ class AnalysisJob extends Model
     {
         return [
             'steps_completed' => 'array',
+            'hop_timings' => 'array',
             'started_at' => 'datetime',
             'completed_at' => 'datetime',
         ];

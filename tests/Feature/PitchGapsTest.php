@@ -160,7 +160,10 @@ test('honest technical notes report engine truthfully', function () {
         'adapter' => 'none',
     ], ['code' => 'ALLOW', 'flags' => ['confidence_publish', 'medical_disclaimer_required', 'not_a_diagnosis']]);
 
-    expect($reports['physician_report']['technical_notes'])->toContain('engine=medgemma')
+    expect($reports['physician_report']['technical_notes'])->toContain('MedGemma')
+        ->and($reports['physician_report']['technical_notes'])->toContain('Guardrail: ALLOW')
+        ->and($reports['physician_report']['technical_notes'])->toContain('hybrid RAG')
+        ->and($reports['physician_report']['technical_notes'])->not->toContain('engine=')
         ->and($reports['physician_report']['technical_notes'])->not->toContain('Analysis via MedGemma 1.5 (Modal)');
 });
 
