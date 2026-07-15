@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AiFileController;
 use App\Http\Controllers\AiWebhookController;
-use App\Http\Controllers\EvalDashboardController;
 use App\Http\Controllers\MedicalRecordController;
 use App\Http\Controllers\Patient\DashboardController as PatientDashboardController;
 use App\Http\Controllers\Physician\DashboardController as PhysicianDashboardController;
@@ -45,9 +44,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('{record}/sign', [MedicalRecordController::class, 'sign'])->name('sign');
         Route::get('{record}/file', [MedicalRecordController::class, 'file'])->name('file');
     });
-
-    Route::get('evaluation', EvalDashboardController::class)->name('evaluation.index');
-    Route::post('evaluation/run', [EvalDashboardController::class, 'run'])->name('evaluation.run');
 
     Route::prefix('voice')->name('voice.')->group(function () {
         Route::get('triage', [VoiceTriageController::class, 'show'])->name('triage');
