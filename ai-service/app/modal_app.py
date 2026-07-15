@@ -17,6 +17,7 @@ from __future__ import annotations
 import base64
 import json
 import os
+import re
 from io import BytesIO
 from typing import Any
 
@@ -44,6 +45,8 @@ image = (
         "pylibjpeg-openjpeg",
         "outlines",
     )
+    # hf-xet is intentionally removed: Xet CDN has caused HF 403 SignatureError on Modal.
+    # HuggingFace then falls back to regular HTTP (slower, but reliable).
     .run_commands("python -m pip uninstall -y hf-xet || true")
 )
 
@@ -75,7 +78,7 @@ web_image = (
         "python -m pip install --force-reinstall opencv-python-headless",
         'python -c "import cv2; from rapidocr import RapidOCR; RapidOCR()"',
     )
-    .env({"PYTHONPATH": "/root", "SIHAT_AI_BUILD": "labocr-v3-20260714"})
+    .env({"PYTHONPATH": "/root", "SIHAT_AI_BUILD": "imaging-salvage-v1-20260715"})
     .add_local_dir(
         "ai-service/app",
         remote_path="/root/app",
@@ -89,6 +92,26 @@ lora_vol = modal.Volume.from_name("sihat-lora", create_if_missing=True)
 webhook_secret = modal.Secret.from_name("sihat-webhook-secret")
 hf_secret = modal.Secret.from_name("huggingface-secret")
 
+# MY-LoRA is text SFT. Suffix targets like "q_proj" also match vision_tower.*.q_proj and
+# create empty LoRA slots → PEFT "missing adapter keys". Keep adapters on language path only.
+_LANGUAGE_LORA_TARGET_MODULES = (
+    r"^(?!.*vision_tower).*(?:q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+)
+
+# Outlines enforces this at decode time: string values must start with alnum (never ":").
+_CLINICAL_TEXT = {
+    "type": "string",
+    "minLength": 3,
+    "maxLength": 240,
+    "pattern": r"^[A-Za-z0-9].*$",
+}
+_CLINICAL_LABEL = {
+    "type": "string",
+    "minLength": 3,
+    "maxLength": 120,
+    "pattern": r"^[A-Za-z0-9].*$",
+}
+
 
 def _lora_path() -> str:
     env = (os.environ.get("SIHAT_AI_LORA_PATH") or "").strip()
@@ -97,6 +120,16 @@ def _lora_path() -> str:
     if os.path.isdir("/lora/adapter"):
         return "/lora/adapter"
     return ""
+
+
+def _load_peft_model(base: Any, lora_path: str, token: str | None) -> Any:
+    """Load MY-LoRA without attaching empty adapters to the vision tower."""
+    from peft import PeftConfig, PeftModel
+
+    config = PeftConfig.from_pretrained(lora_path, token=token)
+    if hasattr(config, "target_modules"):
+        config.target_modules = _LANGUAGE_LORA_TARGET_MODULES
+    return PeftModel.from_pretrained(base, lora_path, config=config, token=token)
 
 
 def _load_image(payload: dict[str, Any]):
@@ -155,8 +188,8 @@ IMAGING_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "label": {"type": "string"},
-                    "description": {"type": "string"},
+                    "label": _CLINICAL_LABEL,
+                    "description": _CLINICAL_TEXT,
                     "confidence": {"type": "number", "minimum": 0, "maximum": 1},
                     "severity": _SEVERITY,
                 },
@@ -169,7 +202,7 @@ IMAGING_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "condition": {"type": "string"},
+                    "condition": _CLINICAL_LABEL,
                     "confidence": {"type": "number", "minimum": 0, "maximum": 1},
                 },
                 "required": ["condition", "confidence"],
@@ -182,7 +215,7 @@ IMAGING_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "label": {"type": "string"},
+                    "label": _CLINICAL_LABEL,
                     "x": {"type": "number", "minimum": 0, "maximum": 1},
                     "y": {"type": "number", "minimum": 0, "maximum": 1},
                     "width": {"type": "number", "minimum": 0, "maximum": 1},
@@ -211,13 +244,13 @@ LAB_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "label": {"type": "string"},
+                    "label": _CLINICAL_LABEL,
                     "value": {"type": ["number", "string", "null"]},
                     "unit": {"type": ["string", "null"]},
                     "reference": {"type": ["string", "null"]},
                     "severity": _SEVERITY,
                     "confidence": {"type": "number", "minimum": 0, "maximum": 1},
-                    "description": {"type": "string"},
+                    "description": _CLINICAL_TEXT,
                 },
                 "required": ["label", "severity", "confidence"],
             },
@@ -228,7 +261,7 @@ LAB_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "name": {"type": "string"},
+                    "name": _CLINICAL_LABEL,
                     "value": {"type": ["number", "string", "null"]},
                     "unit": {"type": ["string", "null"]},
                     "reference_low": {"type": ["number", "null"]},
@@ -244,7 +277,7 @@ LAB_RESULT_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "condition": {"type": "string"},
+                    "condition": _CLINICAL_LABEL,
                     "confidence": {"type": "number", "minimum": 0, "maximum": 1},
                 },
                 "required": ["condition", "confidence"],
@@ -329,20 +362,108 @@ def _clamp_boxes(boxes: Any) -> list[dict[str, Any]]:
     return out[:8]
 
 
+_ABNORMAL_LABEL_CUES = (
+    "nodule",
+    "mass",
+    "consolidat",
+    "pneumothorax",
+    "effusion",
+    "infiltrat",
+    "opacit",
+    "fracture",
+    "hemorrhage",
+    "lesion",
+)
+
+
+def _strip_leading_junk(value: Any) -> str | None:
+    """Salvage ':Multiple nodules' → 'Multiple nodules'. Drop punctuation-only junk."""
+    if not isinstance(value, str):
+        return None
+    trimmed = value.strip()
+    while trimmed and not trimmed[0].isalnum():
+        trimmed = trimmed[1:].lstrip()
+    if len(trimmed) < 3:
+        return None
+    return trimmed
+
+
+def _usable_clinical_label(label: Any) -> bool:
+    return _strip_leading_junk(label) is not None
+
+
+def _coerce_severity(label: str, severity: Any) -> str:
+    sev = str(severity or "borderline").strip().lower()
+    if sev not in {"normal", "borderline", "abnormal", "critical"}:
+        sev = "borderline"
+    label_l = label.lower()
+    if sev == "normal" and any(cue in label_l for cue in _ABNORMAL_LABEL_CUES):
+        return "abnormal"
+    return sev
+
+
 def _normalize_result(raw: dict[str, Any], adapter: str) -> dict[str, Any]:
-    findings = raw.get("findings") or []
-    if not isinstance(findings, list):
-        findings = []
+    findings_in = raw.get("findings") or []
+    if not isinstance(findings_in, list):
+        findings_in = []
+    findings: list[dict[str, Any]] = []
+    for f in findings_in:
+        if not isinstance(f, dict):
+            continue
+        label = _strip_leading_junk(f.get("label"))
+        if label is None:
+            continue
+        item = dict(f)
+        item["label"] = label
+        item["severity"] = _coerce_severity(label, f.get("severity"))
+        desc = f.get("description")
+        if isinstance(desc, str) and desc.strip():
+            repaired_desc = _strip_leading_junk(desc)
+            if repaired_desc is not None:
+                item["description"] = repaired_desc
+            else:
+                item.pop("description", None)
+        findings.append(item)
+
+    differentials_in = raw.get("differential_diagnosis") or []
+    if not isinstance(differentials_in, list):
+        differentials_in = []
+    differentials = []
+    for d in differentials_in:
+        if not isinstance(d, dict):
+            continue
+        condition = _strip_leading_junk(d.get("condition"))
+        if condition is None:
+            continue
+        try:
+            conf = float(d.get("confidence", 0))
+        except (TypeError, ValueError):
+            conf = 0.0
+        if conf <= 0:
+            continue
+        row = dict(d)
+        row["condition"] = condition
+        row["confidence"] = conf
+        differentials.append(row)
 
     confidence = raw.get("overall_confidence")
     if confidence is None and findings:
         confs = [float(f.get("confidence", 0.5)) for f in findings if isinstance(f, dict)]
         confidence = sum(confs) / len(confs) if confs else 0.5
+    if not findings:
+        # Empty / garbage structured output must not look like a confident normal study.
+        confidence = min(float(confidence or 0.5), 0.35)
+
+    boxes = _clamp_boxes(raw.get("bounding_boxes"))
+    for box in boxes:
+        repaired = _strip_leading_junk(box.get("label"))
+        if repaired is not None:
+            box["label"] = repaired
 
     return {
         "findings": findings,
-        "differential_diagnosis": raw.get("differential_diagnosis") or [],
-        "bounding_boxes": _clamp_boxes(raw.get("bounding_boxes")),
+        "differential_diagnosis": differentials,
+        "bounding_boxes": boxes,
         "biomarkers": raw.get("biomarkers") or [],
         "overall_confidence": float(confidence or 0.5),
         "adapter": adapter,
@@ -469,27 +590,52 @@ Output contract (JSON object only; decoding already enforces schema):
 {
   "findings": [
     {
-      "label": "short finding name",
-      "description": "what you see + location + pertinent negatives if useful",
-      "confidence": 0.0,
-      "severity": "normal|borderline|abnormal|critical"
+      "label": "Multiple bilateral pulmonary nodules",
+      "description": "Numerous small nodules scattered through both lung fields.",
+      "confidence": 0.78,
+      "severity": "abnormal"
     }
   ],
   "differential_diagnosis": [
-    {"condition": "possible condition", "confidence": 0.0}
+    {"condition": "Miliary tuberculosis", "confidence": 0.42},
+    {"condition": "Metastatic disease", "confidence": 0.31}
   ],
-  "overall_confidence": 0.0,
+  "overall_confidence": 0.74,
   "bounding_boxes": [
-    {"label": "matching finding label", "x": 0.0, "y": 0.0, "width": 0.0, "height": 0.0, "confidence": 0.0}
+    {"label": "Multiple bilateral pulmonary nodules", "x": 0.12, "y": 0.18, "width": 0.40, "height": 0.35, "confidence": 0.70}
   ]
 }
 
+Severity enum values: normal | borderline | abnormal | critical.
+Use "abnormal" (not "normal") for nodules, masses, consolidations, opacities, effusions, pneumothorax.
+
 Content rules:
 - findings: 1 to 8 items. Separate distinct abnormalities. Do not dump prose into one finding.
-- differential_diagnosis: 0 to 5 plausible conditions ranked by likelihood; not a confirmed diagnosis list.
+- label: short clinical name only. Must start with a letter or digit. Never start with ":" or other punctuation.
+- description: separate sentence from label. Must also start with a letter or digit. Never copy a leading ":".
+- BAD label: ":multiple small nodules throughout both lungs"
+- GOOD label: "Multiple bilateral pulmonary nodules"
+- differential_diagnosis: 0 to 5 plausible conditions ranked by likelihood; confidence must be > 0 when listed.
 - overall_confidence: your confidence in the whole assessment, not the max of single findings.
 - Prefer precise radiology/clinical wording over vague phrases like "abnormality noted".
 """.strip()
+
+
+def _assert_clinical_strings(decoded: dict[str, Any], *, fields: tuple[str, ...]) -> None:
+    """Fail if salvaged output still has no usable clinical strings."""
+    salvaged = _normalize_result(decoded, adapter="assert")
+    raw_findings = decoded.get("findings") or []
+    if isinstance(raw_findings, list) and raw_findings and not salvaged["findings"]:
+        raise ValueError("findings were present but none were clinically usable after salvage")
+
+
+_REPAIR_SUFFIX = (
+    "\n\nCONTRACT VIOLATION on your previous JSON:\n"
+    "- label and description MUST start with A-Z or 0-9 (never ':')\n"
+    "- do not mark nodules/masses/consolidations/opacities as severity normal\n"
+    "- differential confidence must be > 0 when listed\n"
+    "Emit corrected JSON only."
+)
 
 
 def build_imaging_prompt(modality: str, language: str) -> str:
@@ -698,16 +844,14 @@ class MedGemmaModel:
         self.processor = AutoProcessor.from_pretrained(MODEL_ID, token=token)
         base = AutoModelForImageTextToText.from_pretrained(
             MODEL_ID,
-            torch_dtype=torch.bfloat16,
+            dtype=torch.bfloat16,
             device_map="auto",
             token=token,
         )
 
         lora = _lora_path()
         if lora:
-            from peft import PeftModel
-
-            self.model = PeftModel.from_pretrained(base, lora, token=token)
+            self.model = _load_peft_model(base, lora, token)
             self.adapter_id = f"loaded:{lora}"
         else:
             self.model = base
@@ -762,24 +906,40 @@ class MedGemmaModel:
         pil = _load_image(payload)
         modality = str(payload.get("modality") or "xray")
         language = str(payload.get("language") or "en")
+        prompt = build_imaging_prompt(modality, language)
 
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "image", "image": pil},
-                    {
-                        "type": "text",
-                        "text": build_imaging_prompt(modality, language),
-                    },
-                ],
+        decoded: dict[str, Any] | None = None
+        last_error = "unknown contract violation"
+        for attempt in range(2):
+            text = prompt if attempt == 0 else prompt + _REPAIR_SUFFIX
+            messages = [
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "image", "image": pil},
+                        {"type": "text", "text": text},
+                    ],
+                }
+            ]
+            candidate = self._generate_structured(messages, IMAGING_RESULT_SCHEMA)
+            try:
+                _assert_clinical_strings(candidate, fields=("label", "description"))
+                decoded = candidate
+                break
+            except ValueError as exc:
+                last_error = str(exc)
+                print(f"sihat-ai: imaging contract rejected attempt {attempt + 1}: {exc}")
+                continue
+
+        if decoded is None:
+            print(f"sihat-ai: imaging contract failed closed after retries: {last_error}")
+            decoded = {
+                "findings": [],
+                "differential_diagnosis": [],
+                "overall_confidence": 0.2,
+                "bounding_boxes": [],
             }
-        ]
 
-        decoded = self._generate_structured(
-            messages,
-            IMAGING_RESULT_SCHEMA,
-        )
         return _normalize_result(decoded, getattr(self, "adapter_id", "none"))
 
     @modal.method()

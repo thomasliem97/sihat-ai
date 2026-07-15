@@ -142,15 +142,11 @@ def train() -> dict:
         lora_dropout=0.05,
         bias="none",
         task_type="CAUSAL_LM",
-        target_modules=[
-            "q_proj",
-            "k_proj",
-            "v_proj",
-            "o_proj",
-            "gate_proj",
-            "up_proj",
-            "down_proj",
-        ],
+        # Text/language path only. Short names like "q_proj" also match vision_tower and
+        # create empty LoRA slots on MedGemma VLMs.
+        target_modules=(
+            r"^(?!.*vision_tower).*(?:q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)$"
+        ),
     )
 
     sft_kwargs: dict = {

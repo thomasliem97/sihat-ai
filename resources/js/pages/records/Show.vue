@@ -23,7 +23,9 @@ const props = defineProps<{
     record: {
         id: number;
         title: string;
+        modality: string;
         modality_label: string;
+        detected_modality?: string | null;
         detected_modality_label?: string | null;
         status: string;
         overall_confidence: number | null;
@@ -82,6 +84,17 @@ const props = defineProps<{
     }>;
     viewMode: 'physician' | 'patient';
 }>();
+
+const showScanViewer = computed(() => {
+    if (!props.record.file_url) {
+        return false;
+    }
+
+    const modality =
+        props.record.detected_modality ?? props.record.modality;
+
+    return modality !== 'lab_pdf' && modality !== 'clinical_document';
+});
 
 const editing = ref(false);
 const draftSummary = ref('');
@@ -285,21 +298,17 @@ defineOptions({
 
             <div
                 class="grid gap-6"
-                :class="
-                    viewMode === 'physician' && record.bounding_boxes?.length
-                        ? 'lg:grid-cols-2'
-                        : ''
-                "
+                :class="showScanViewer ? 'lg:grid-cols-2' : ''"
             >
                 <ImageOverlay
-                    v-if="record.bounding_boxes?.length"
+                    v-if="showScanViewer"
                     :image-url="record.file_url"
-                    :boxes="(record.bounding_boxes as any)"
+                    :boxes="(record.bounding_boxes as any) ?? []"
                 />
 
                 <Card
                     :class="
-                        !record.bounding_boxes?.length
+                        !showScanViewer
                             ? 'paper-panel--focal border-0 shadow-offset'
                             : ''
                     "
@@ -315,6 +324,16 @@ defineOptions({
                         </CardTitle>
                     </CardHeader>
                     <CardContent class="space-y-4">
+                        <p
+                            v-if="!record.findings?.length"
+                            class="text-sm leading-relaxed text-muted-foreground"
+                        >
+                            {{
+                                viewMode === 'physician'
+                                    ? 'No findings were returned for this study.'
+                                    : 'No specific results to show for this study.'
+                            }}
+                        </p>
                         <div
                             v-for="(finding, i) in record.findings"
                             :key="i"
