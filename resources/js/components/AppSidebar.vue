@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { FileText, House, LayoutGrid, Mic } from '@lucide/vue';
+import { FileText, House, LayoutGrid, LifeBuoy, Mic } from '@lucide/vue';
+import { computed } from 'vue';
 import AppLogo from '@/components/AppLogo.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
@@ -15,12 +16,11 @@ import {
     SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { dashboard, home } from '@/routes';
+import { dashboard as patientDashboard } from '@/routes/patient';
+import { dashboard as physicianDashboard } from '@/routes/physician';
 import { index as recordsIndex } from '@/routes/records';
 import { triage as voiceTriage } from '@/routes/voice';
-import { dashboard as physicianDashboard } from '@/routes/physician';
-import { dashboard as patientDashboard } from '@/routes/patient';
 import type { NavItem } from '@/types';
-import { computed } from 'vue';
 
 const page = usePage();
 const role = computed(() => (page.props.auth as { user?: { role?: string } })?.user?.role);
@@ -64,6 +64,18 @@ const mainNavItems = computed<NavItem[]>(() => [
 
         <SidebarFooter>
             <SidebarMenu>
+                <SidebarMenuItem>
+                    <SidebarMenuButton
+                        as-child
+                        tooltip="Contact support"
+                        class="text-muted-foreground hover:text-foreground"
+                    >
+                        <a href="mailto:thomasliem@veximus.com.my">
+                            <LifeBuoy />
+                            <span>Contact support</span>
+                        </a>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
                 <SidebarMenuItem>
                     <SidebarMenuButton
                         as-child
