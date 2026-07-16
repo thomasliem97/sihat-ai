@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\ReportLanguage;
 use App\Enums\TriageRoleContext;
 use App\Enums\TriageSessionStatus;
+use App\Jobs\ProcessTriageVoiceTurn;
 use App\Models\TriageMessage;
 use App\Models\TriageSession;
 use App\Models\User;
+use App\Services\TriageTurnStatus;
 use App\Services\VoiceTriageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -52,15 +53,6 @@ class VoiceTriageController extends Controller
             'sessions' => $ownSessions,
             'sharedSessions' => $sharedSessions,
             'patients' => $patients,
-            'languages' => collect(ReportLanguage::cases())->map(fn (ReportLanguage $l) => [
-                'value' => $l->value,
-                'label' => match ($l) {
-                    ReportLanguage::English => 'English',
-                    ReportLanguage::Malay => 'Bahasa Melayu',
-                    ReportLanguage::Mandarin => 'Mandarin',
-                    ReportLanguage::Tamil => 'Tamil',
-                },
-            ]),
             'isPhysician' => $user->isPhysician(),
             'activeSessionId' => null,
         ]);
@@ -73,7 +65,6 @@ class VoiceTriageController extends Controller
         $this->authorize('create', TriageSession::class);
 
         $validated = $request->validate([
-            'locale' => ['required', 'in:en,ms,zh,ta'],
             'subject_user_id' => ['nullable', 'integer', 'exists:users,id'],
         ]);
 
@@ -92,7 +83,7 @@ class VoiceTriageController extends Controller
             'user_id' => $user->id,
             'subject_user_id' => $subjectId,
             'role_context' => $role,
-            'locale' => ReportLanguage::from($validated['locale']),
+            'locale' => '',
             'status' => TriageSessionStatus::Active,
         ]);
 
@@ -124,12 +115,50 @@ class VoiceTriageController extends Controller
             return response()->json(['message' => 'Provide text or audio.'], 422);
         }
 
+        if ($request->hasFile('audio')) {
+            $audio = $request->file('audio');
+            assert($audio !== null);
+
+            if ($audio->getSize() < 1500) {
+                return response()->json([
+                    'message' => 'Hold the mic and speak before releasing.',
+                ], 422);
+            }
+
+            $pending = TriageTurnStatus::get($session->id);
+            if (($pending['status'] ?? null) === 'processing') {
+                return response()->json([
+                    'message' => 'Still processing the previous voice message.',
+                ], 409);
+            }
+
+            $path = $audio->store('triage-audio/'.$session->id, 'local');
+            if ($path === false) {
+                return response()->json(['message' => 'Could not store recording.'], 500);
+            }
+
+            TriageTurnStatus::markProcessing($session->id);
+            ProcessTriageVoiceTurn::dispatch(
+                $session->id,
+                (int) $request->user()->id,
+                $path,
+            );
+
+            $session->load(['messages', 'subjectUser:id,name', 'user:id,name']);
+
+            return response()->json([
+                'status' => 'processing',
+                'session' => $this->sessionPayload($session, includeMessages: true),
+                'pending_turn' => TriageTurnStatus::get($session->id),
+            ], 202);
+        }
+
         try {
             $result = $triage->sendMessage(
                 $session,
                 $request->user(),
                 $validated['text'] ?? null,
-                $request->file('audio'),
+                null,
             );
         } catch (\InvalidArgumentException $e) {
             return response()->json(['message' => $e->getMessage()], 422);
@@ -145,7 +174,6 @@ class VoiceTriageController extends Controller
             ],
             'audio_base64' => $result['audio_base64'],
             'phases' => $result['phases'],
-            'suggested_followups' => $result['suggested_followups'],
             'done' => $result['done'],
         ]);
     }
@@ -205,7 +233,7 @@ class VoiceTriageController extends Controller
         $payload = [
             'id' => $session->id,
             'role_context' => $session->role_context->value,
-            'locale' => $session->locale->value,
+            'locale' => $session->locale,
             'status' => $session->status->value,
             'urgency' => $session->urgency?->value,
             'chief_complaint' => $session->chief_complaint,
@@ -219,6 +247,7 @@ class VoiceTriageController extends Controller
             'last_message_at' => $lastMessageAt
                 ? Carbon::parse($lastMessageAt)->toIso8601String()
                 : null,
+            'pending_turn' => TriageTurnStatus::get($session->id),
         ];
 
         if ($includeMessages) {

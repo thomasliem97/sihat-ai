@@ -656,6 +656,51 @@
                 color-mix(in srgb, var(--coral, #f26b5e) 6%, transparent)
             );
         padding: 0.5rem 1rem;
+        transition:
+            border-color 120ms ease,
+            background 120ms ease;
+    }
+
+    .triage-listen-shell--cancel {
+        border-color: color-mix(in srgb, var(--coral, #f26b5e) 70%, var(--line));
+        background:
+            linear-gradient(
+                120deg,
+                color-mix(in srgb, var(--coral, #f26b5e) 14%, transparent),
+                color-mix(in srgb, var(--coral, #f26b5e) 6%, transparent)
+            );
+    }
+
+    .triage-listen-shell--cancel .triage-listen-rec {
+        color: var(--coral, #f26b5e);
+    }
+
+    .triage-listen-cue {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        width: 5.25rem;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.1rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+        white-space: nowrap;
+    }
+
+    .triage-listen-cue-label {
+        display: inline-block;
+        width: 3.75rem;
+        text-align: left;
+    }
+
+    .triage-listen-cue--armed {
+        color: var(--coral, #f26b5e);
     }
 
     .triage-listen-shell::before {
@@ -677,6 +722,7 @@
         position: relative;
         z-index: 1;
         display: inline-flex;
+        flex-shrink: 0;
         align-items: center;
         gap: 0.4rem;
         font-family: var(--font-mono);
@@ -703,10 +749,11 @@
         z-index: 1;
         display: flex;
         height: 1.35rem;
-        flex: 1;
+        min-width: 0;
+        flex: 1 1 auto;
         align-items: center;
         justify-content: center;
-        gap: 0.2rem;
+        gap: 0.15rem;
     }
 
     .triage-wave span {
@@ -793,6 +840,45 @@
             transform: scale(1.35);
             opacity: 0;
         }
+    }
+
+    /* Sonner action buttons: theme primary + breathing room from toast copy */
+    .toaster[data-sonner-toaster] [data-sonner-toast][data-styled='true'] {
+        gap: 1rem;
+    }
+
+    .toaster[data-sonner-toaster]
+        [data-sonner-toast][data-styled='true']
+        [data-content] {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding-inline-end: 0.25rem;
+    }
+
+    .toaster[data-sonner-toaster]
+        [data-sonner-toast][data-styled='true']
+        [data-button] {
+        margin-left: 0;
+        margin-right: 0;
+        height: 2rem;
+        border-radius: 0.5rem;
+        padding-inline: 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: var(--primary);
+        color: var(--primary-foreground);
+    }
+
+    .toaster[data-sonner-toaster]
+        [data-sonner-toast][data-styled='true']
+        [data-button]:hover {
+        background: color-mix(in srgb, var(--primary) 88%, var(--foreground));
+    }
+
+    .toaster[data-sonner-toaster]
+        [data-sonner-toast][data-styled='true']
+        [data-button]:focus-visible {
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 35%, transparent);
     }
 
     @media (prefers-reduced-motion: reduce) {

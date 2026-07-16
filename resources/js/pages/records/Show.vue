@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head, router, useForm } from '@inertiajs/vue3';
 import { AlertTriangle, RefreshCw } from '@lucide/vue';
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed, onUnmounted, ref, watch } from 'vue';
 import AnalysisStepper from '@/components/medical/AnalysisStepper.vue';
 import CitationChip from '@/components/medical/CitationChip.vue';
 import ClinicalBadge from '@/components/medical/ClinicalBadge.vue';
@@ -24,6 +24,7 @@ import {
     formatDurationMs,
     formatTechnicalNotes,
 } from '@/lib/agent-trace';
+import { beginColdStartWatch, endColdStartWatch } from '@/lib/coldStartNotice';
 import { parseFindingMeasurements } from '@/lib/finding-measurements';
 
 const props = defineProps<{
@@ -205,21 +206,42 @@ const patchList = computed(() => {
 
 let pollInterval: ReturnType<typeof setInterval> | null = null;
 
-onMounted(() => {
-    if (
+const isAnalysisRunning = computed(
+    () =>
         props.record.status === 'processing' ||
-        props.record.status === 'pending'
-    ) {
-        pollInterval = setInterval(() => {
-            router.reload({ only: ['record', 'biomarkers', 'similarCases'] });
-        }, 3000);
-    }
-});
+        props.record.status === 'pending',
+);
 
-onUnmounted(() => {
+function syncAnalysisPolling(running: boolean): void {
+    if (running) {
+        beginColdStartWatch();
+        if (!pollInterval) {
+            pollInterval = setInterval(() => {
+                router.reload({
+                    only: ['record', 'biomarkers', 'similarCases'],
+                });
+            }, 3000);
+        }
+        return;
+    }
+
+    endColdStartWatch();
     if (pollInterval) {
         clearInterval(pollInterval);
+        pollInterval = null;
     }
+}
+
+watch(
+    isAnalysisRunning,
+    (running) => {
+        syncAnalysisPolling(running);
+    },
+    { immediate: true },
+);
+
+onUnmounted(() => {
+    syncAnalysisPolling(false);
 });
 
 defineOptions({

@@ -2,6 +2,7 @@
 import { Head, usePage } from '@inertiajs/vue3';
 import {
     Archive,
+    ChevronLeft,
     CircleStop,
     Copy,
     Ellipsis,
@@ -58,6 +59,7 @@ import {
 } from '@/components/ui/sheet';
 import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
+import { beginColdStartWatch, endColdStartWatch } from '@/lib/coldStartNotice';
 import { triage } from '@/routes/voice';
 
 type TriageMessage = {
@@ -67,6 +69,11 @@ type TriageMessage = {
     input_modality?: string;
     stt_engine?: string | null;
     created_at?: string | null;
+};
+
+type PendingTurn = {
+    status: string;
+    message?: string;
 };
 
 type TriageSession = {
@@ -84,6 +91,7 @@ type TriageSession = {
     created_at?: string | null;
     updated_at?: string | null;
     last_message_at?: string | null;
+    pending_turn?: PendingTurn | null;
     messages?: TriageMessage[];
 };
 
@@ -93,7 +101,6 @@ const props = defineProps<{
     sessions: TriageSession[];
     sharedSessions: TriageSession[];
     patients: Array<{ id: number; name: string }>;
-    languages: Array<{ value: string; label: string }>;
     isPhysician: boolean;
     activeSessionId: number | null;
 }>();
@@ -103,16 +110,12 @@ const ownSessions = ref<TriageSession[]>([...props.sessions]);
 const sharedSessions = ref<TriageSession[]>([...props.sharedSessions]);
 const active = ref<TriageSession | null>(null);
 const draft = ref('');
-const locale = ref(
-    props.languages.find((l) => l.value === 'en')?.value ??
-        props.languages[0]?.value ??
-        'en',
-);
 const subjectUserId = ref<string>('__none__');
 const swapping = ref(false);
 const recording = ref(false);
+const WAVE_BAR_COUNT = 36;
 const waveLevels = ref<number[]>(
-    Array.from({ length: 24 }, () => 0.12),
+    Array.from({ length: WAVE_BAR_COUNT }, () => 0.12),
 );
 const autoplay = ref(false);
 const summaryOpen = ref(false);
@@ -133,14 +136,25 @@ let mediaStream: MediaStream | null = null;
 let waveStream: MediaStream | null = null;
 const chunks: BlobPart[] = [];
 let audioEl: HTMLAudioElement | null = null;
+let audioPlaybackEpoch = 0;
 let micPointerId: number | null = null;
 let waveAudioContext: AudioContext | null = null;
 let waveAnalyser: AnalyserNode | null = null;
 let waveFrame = 0;
 let waveSamples: Uint8Array<ArrayBuffer> | null = null;
 let stoppingRecording = false;
+let recordingStartedAt = 0;
+/** Peak |sample-128| from the live waveform (0–128). Silence stays near 0. */
+let recordingPeak = 0;
+let micDownClientX = 0;
+const cancelArmed = ref(false);
 
-const WAVE_BAR_COUNT = 24;
+/** Whisper hallucinates on near-empty / silent clips; require a real hold + energy. */
+const MIN_RECORDING_MS = 1000;
+const MIN_AUDIO_BYTES = 1500;
+const MIN_RECORDING_PEAK = 6;
+/** Slide left past this while holding to discard on release. */
+const CANCEL_SLIDE_PX = 72;
 
 const AUTOPLAY_KEY = 'sihat.triage.autoplay';
 
@@ -222,6 +236,17 @@ const phaseLabel = computed(() => {
 });
 
 const isActivePending = computed(() => activePhase.value !== 'idle');
+
+watch(
+    activePhase,
+    (phase) => {
+        if (phase === 'transcribing' || phase === 'thinking') {
+            beginColdStartWatch();
+        } else {
+            endColdStartWatch();
+        }
+    },
+);
 
 const canCompose = computed(
     () =>
@@ -409,6 +434,7 @@ async function scrollThreadToEnd() {
 }
 
 function stopMessageAudio() {
+    audioPlaybackEpoch += 1;
     audioEl?.pause();
     if (audioEl) {
         audioEl.currentTime = 0;
@@ -429,6 +455,11 @@ function attachAudioLifecycle(messageId: number) {
 }
 
 async function playMessageAudioUrl(messageId: number, url: string) {
+    if (recording.value) {
+        return;
+    }
+
+    const epoch = audioPlaybackEpoch;
     audioEl?.pause();
     audioEl = new Audio(url);
     attachAudioLifecycle(messageId);
@@ -436,6 +467,11 @@ async function playMessageAudioUrl(messageId: number, url: string) {
 
     try {
         await audioEl.play();
+        if (epoch !== audioPlaybackEpoch) {
+            audioEl.pause();
+            audioEl.currentTime = 0;
+            playingMessageId.value = null;
+        }
     } catch {
         playingMessageId.value = null;
     }
@@ -468,10 +504,6 @@ function storeMessageAudio(messageId: number, base64: string, play: boolean) {
 }
 
 function onMessageActionsOpenChange(messageId: number, open: boolean) {
-    if (!open && loadingSpeechMessageId.value === messageId) {
-        return;
-    }
-
     openMessageActionsId.value = open ? messageId : null;
 }
 
@@ -489,16 +521,23 @@ function onReplayVoiceSelect(event: Event, messageId: number) {
     }
 
     event.preventDefault();
-    void fetchAndPlayMessageAudio(messageId);
+    void fetchAndPlayMessageAudio(messageId, { showMenu: true });
 }
 
-async function fetchAndPlayMessageAudio(messageId: number) {
+async function fetchAndPlayMessageAudio(
+    messageId: number,
+    options?: { showMenu?: boolean },
+) {
     if (!active.value || loadingSpeechMessageId.value === messageId) {
         return;
     }
 
+    const showMenu = options?.showMenu ?? false;
+    const epoch = audioPlaybackEpoch;
     loadingSpeechMessageId.value = messageId;
-    openMessageActionsId.value = messageId;
+    if (showMenu) {
+        openMessageActionsId.value = messageId;
+    }
 
     try {
         const response = await fetch(
@@ -521,10 +560,12 @@ async function fetchAndPlayMessageAudio(messageId: number) {
 
         storeMessageAudio(messageId, data.audio_base64, false);
         const url = audioByMessageId.value[messageId];
-        if (url) {
+        if (url && !recording.value && epoch === audioPlaybackEpoch) {
             await playMessageAudioUrl(messageId, url);
         }
-        openMessageActionsId.value = null;
+        if (showMenu) {
+            openMessageActionsId.value = null;
+        }
     } catch {
         toast.error('Could not play voice');
     } finally {
@@ -543,6 +584,8 @@ async function copyMessage(content: string) {
 
 function toggleAutoplay() {
     autoplay.value = !autoplay.value;
+    stopMessageAudio();
+    loadingSpeechMessageId.value = null;
 }
 
 function startNewTriage() {
@@ -577,7 +620,7 @@ async function ensureActiveSession(
         return null;
     }
 
-    const body: Record<string, unknown> = { locale: locale.value };
+    const body: Record<string, unknown> = {};
     if (
         props.isPhysician &&
         subjectUserId.value !== '__none__' &&
@@ -631,8 +674,11 @@ async function openSession(id: number) {
     if (
         viewingSessionId.value === id &&
         active.value?.id === id &&
-        active.value.messages
+        !swapping.value &&
+        (active.value.messages?.length ?? 0) > 0
     ) {
+        void resumePendingVoiceTurn(active.value);
+
         return;
     }
 
@@ -643,17 +689,42 @@ async function openSession(id: number) {
         recording.value = false;
         stopMediaTracks();
     }
+    stopMessageAudio();
 
     viewingSessionId.value = id;
     draft.value = draftByKey.value[String(id)] ?? '';
     openMessageActionsId.value = null;
 
     const cached = sessionCache.value[id];
-    if (cached?.messages) {
+    const listed =
+        ownSessions.value.find((s) => s.id === id) ??
+        sharedSessions.value.find((s) => s.id === id) ??
+        null;
+    const cachedMessages = cached?.messages;
+
+    if (cachedMessages && cachedMessages.length > 0) {
         active.value = cached;
         swapping.value = false;
         await scrollThreadToEnd();
     } else {
+        active.value = cached
+            ? { ...cached, messages: cachedMessages ?? [] }
+            : {
+                  ...(listed ?? {
+                      id,
+                      role_context: props.isPhysician
+                          ? 'physician'
+                          : 'patient',
+                      locale: '',
+                      status: 'active',
+                      urgency: null,
+                      chief_complaint: null,
+                      summary: null,
+                      shared_at: null,
+                      subject_user_id: null,
+                  }),
+                  messages: [],
+              };
         swapping.value = true;
     }
 
@@ -664,8 +735,10 @@ async function openSession(id: number) {
                 'X-CSRF-TOKEN': csrf.value,
             },
         });
-        const data = await response.json();
+        const data = await response.json().catch(() => ({}));
         if (!response.ok) {
+            toast.error(data.message || 'Could not open session');
+
             return;
         }
 
@@ -687,12 +760,14 @@ async function openSession(id: number) {
             if (viewingSessionId.value === id) {
                 active.value = merged;
             }
+            void resumePendingVoiceTurn(merged);
         } else {
             putSessionCache(serverSession);
             if (viewingSessionId.value === id) {
                 active.value = serverSession;
                 await scrollThreadToEnd();
             }
+            void resumePendingVoiceTurn(serverSession);
         }
     } finally {
         if (viewingSessionId.value === id) {
@@ -754,6 +829,7 @@ function startWaveform(stream: MediaStream) {
             for (let j = start; j < end; j++) {
                 peak = Math.max(peak, Math.abs((waveSamples[j] ?? 128) - 128));
             }
+            recordingPeak = Math.max(recordingPeak, peak);
             next.push(Math.max(0.1, Math.min(1, (peak / 128) * 3.4)));
         }
 
@@ -771,6 +847,9 @@ async function startRecording() {
     if (recording.value || !canCompose.value) {
         return;
     }
+
+    stopMessageAudio();
+    loadingSpeechMessageId.value = null;
 
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     mediaStream = stream;
@@ -792,11 +871,14 @@ async function startRecording() {
     };
     // Timeslice keeps chunks flowing; final chunk still arrives on stop.
     mediaRecorder.start(250);
+    recordingStartedAt = Date.now();
+    recordingPeak = 0;
 
     try {
         startWaveform(stream.clone());
     } catch {
         // Clone unavailable: skip live waveform rather than starve the recorder.
+        recordingPeak = MIN_RECORDING_PEAK;
     }
 
     recording.value = true;
@@ -834,17 +916,49 @@ function stopRecordingBlob(): Promise<Blob | null> {
     });
 }
 
+async function discardRecording() {
+    if (stoppingRecording) {
+        return;
+    }
+
+    stoppingRecording = true;
+    cancelArmed.value = false;
+    recordingStartedAt = 0;
+    recordingPeak = 0;
+
+    try {
+        await stopRecordingBlob();
+    } finally {
+        stoppingRecording = false;
+    }
+}
+
 async function stopRecordingAndSend() {
     if (stoppingRecording) {
         return;
     }
 
     stoppingRecording = true;
+    cancelArmed.value = false;
 
     try {
+        const heldMs = recordingStartedAt > 0 ? Date.now() - recordingStartedAt : 0;
+        const peak = recordingPeak;
+        recordingStartedAt = 0;
+        recordingPeak = 0;
+
         const blob = await stopRecordingBlob();
-        if (!blob || blob.size < 256) {
-            toast.error('No speech captured. Hold the mic and try again.');
+        if (
+            !blob ||
+            blob.size < MIN_AUDIO_BYTES ||
+            heldMs < MIN_RECORDING_MS ||
+            peak < MIN_RECORDING_PEAK
+        ) {
+            toast.error(
+                peak < MIN_RECORDING_PEAK
+                    ? 'No speech heard. Speak closer to the mic and try again.'
+                    : 'Hold the mic and speak before releasing.',
+            );
 
             return;
         }
@@ -869,7 +983,17 @@ async function onMicPointerDown(event: PointerEvent) {
         target.setPointerCapture(event.pointerId);
     }
     micPointerId = event.pointerId;
+    micDownClientX = event.clientX;
+    cancelArmed.value = false;
     await startRecording();
+}
+
+function onMicPointerMove(event: PointerEvent) {
+    if (!recording.value || event.pointerId !== micPointerId) {
+        return;
+    }
+
+    cancelArmed.value = micDownClientX - event.clientX >= CANCEL_SLIDE_PX;
 }
 
 async function onMicPointerUp(event: PointerEvent) {
@@ -877,7 +1001,9 @@ async function onMicPointerUp(event: PointerEvent) {
         return;
     }
 
+    const shouldCancel = cancelArmed.value;
     micPointerId = null;
+    cancelArmed.value = false;
     const target = event.currentTarget;
     if (target instanceof HTMLElement && target.hasPointerCapture(event.pointerId)) {
         target.releasePointerCapture(event.pointerId);
@@ -887,7 +1013,205 @@ async function onMicPointerUp(event: PointerEvent) {
         return;
     }
 
+    if (shouldCancel) {
+        await discardRecording();
+
+        return;
+    }
+
     await stopRecordingAndSend();
+}
+
+function onRecordingKeydown(event: KeyboardEvent) {
+    if (event.key !== 'Escape' || !recording.value) {
+        return;
+    }
+
+    event.preventDefault();
+    micPointerId = null;
+    void discardRecording();
+}
+
+watch(recording, (isRecording) => {
+    if (isRecording) {
+        window.addEventListener('keydown', onRecordingKeydown);
+    } else {
+        window.removeEventListener('keydown', onRecordingKeydown);
+        cancelArmed.value = false;
+    }
+});
+
+function sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function rollbackOptimisticMessage(
+    sessionId: number,
+    pendingId: number,
+    restoreText?: string,
+) {
+    const current =
+        sessionCache.value[sessionId] ??
+        (viewingSessionId.value === sessionId ? active.value : null);
+
+    if (!current) {
+        return;
+    }
+
+    const rolledBack: TriageSession = {
+        ...current,
+        messages: (current.messages ?? []).filter((m) => m.id !== pendingId),
+    };
+    putSessionCache(rolledBack);
+    if (viewingSessionId.value === sessionId) {
+        active.value = rolledBack;
+        if (restoreText) {
+            draft.value = restoreText;
+        }
+    }
+}
+
+const pollingSessionIds = new Set<number>();
+
+async function pollVoiceTurn(
+    sessionId: number,
+    seed?: TriageSession,
+): Promise<TriageSession> {
+    const deadline = Date.now() + 5 * 60_000;
+    let nextSeed = seed ?? null;
+
+    while (Date.now() < deadline) {
+        let session: TriageSession;
+
+        if (nextSeed) {
+            session = nextSeed;
+            nextSeed = null;
+        } else {
+            const response = await fetch(showSessionRoute.url(sessionId), {
+                headers: {
+                    Accept: 'application/json',
+                    'X-CSRF-TOKEN': csrf.value,
+                },
+            });
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(data.message || 'Could not load triage session');
+            }
+            session = data.session as TriageSession;
+        }
+
+        const pending = session.pending_turn;
+        if (!pending || pending.status !== 'processing') {
+            if (pending?.status === 'failed') {
+                throw new Error(
+                    pending.message ||
+                        'No speech heard. Speak closer to the mic and try again.',
+                );
+            }
+
+            return session;
+        }
+
+        putSessionCache(session);
+        if (viewingSessionId.value === sessionId) {
+            setPhase(sessionId, 'transcribing');
+        }
+        await sleep(1000);
+    }
+
+    throw new Error('Voice processing timed out. Please try again.');
+}
+
+async function awaitPendingVoiceTurn(
+    sessionId: number,
+    seed?: TriageSession,
+): Promise<TriageSession> {
+    if (pollingSessionIds.has(sessionId)) {
+        while (pollingSessionIds.has(sessionId)) {
+            await sleep(250);
+        }
+
+        const response = await fetch(showSessionRoute.url(sessionId), {
+            headers: {
+                Accept: 'application/json',
+                'X-CSRF-TOKEN': csrf.value,
+            },
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+            throw new Error(data.message || 'Could not load triage session');
+        }
+
+        return data.session as TriageSession;
+    }
+
+    pollingSessionIds.add(sessionId);
+    setPhase(sessionId, 'transcribing');
+
+    try {
+        return await pollVoiceTurn(sessionId, seed);
+    } finally {
+        pollingSessionIds.delete(sessionId);
+    }
+}
+
+async function resumePendingVoiceTurn(session: TriageSession): Promise<void> {
+    const sessionId = session.id;
+    if (
+        !sessionId ||
+        sessionId <= 0 ||
+        session.pending_turn?.status !== 'processing'
+    ) {
+        return;
+    }
+
+    try {
+        const result = await awaitPendingVoiceTurn(sessionId, session);
+        if (viewingSessionId.value === sessionId) {
+            setPhase(sessionId, 'speaking');
+        }
+        await applyCompletedTurn(result, sessionId);
+    } catch (error) {
+        if (viewingSessionId.value === sessionId) {
+            const message =
+                error instanceof Error
+                    ? error.message
+                    : 'Could not process voice message';
+            toast.error(message);
+        }
+    } finally {
+        setPhase(sessionId, 'idle');
+    }
+}
+
+async function applyCompletedTurn(
+    session: TriageSession,
+    requestSessionId: number,
+    options?: { audioBase64?: string | null; assistantId?: number },
+) {
+    putSessionCache(session);
+    ownSessions.value = ownSessions.value.map((s) =>
+        s.id === session.id ? { ...s, ...session, messages: undefined } : s,
+    );
+
+    const assistantId =
+        options?.assistantId ??
+        [...(session.messages ?? [])]
+            .reverse()
+            .find((m) => m.role === 'assistant')?.id;
+
+    if (viewingSessionId.value === requestSessionId) {
+        active.value = session;
+        await scrollThreadToEnd();
+
+        if (options?.audioBase64 && assistantId) {
+            storeMessageAudio(assistantId, options.audioBase64, autoplay.value);
+        } else if (autoplay.value && assistantId) {
+            void fetchAndPlayMessageAudio(assistantId);
+        }
+    } else if (options?.audioBase64 && assistantId) {
+        storeMessageAudio(assistantId, options.audioBase64, false);
+    }
 }
 
 async function sendMessage(options?: { audio?: Blob; text?: string }) {
@@ -924,7 +1248,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
             active.value = {
                 id: 0,
                 role_context: props.isPhysician ? 'physician' : 'patient',
-                locale: locale.value,
+                locale: '',
                 status: 'active',
                 urgency: null,
                 chief_complaint: null,
@@ -1029,63 +1353,47 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
             },
         );
 
-        if (audio) {
-            setPhase(requestSessionId, 'thinking');
-            if (viewingSessionId.value === requestSessionId) {
-                await scrollThreadToEnd();
-            }
-        }
+        const data = await response.json().catch(() => ({}));
 
-        const data = await response.json();
-        if (!response.ok) {
-            toast.error(data.message || 'Could not send message');
-
-            const current =
-                sessionCache.value[requestSessionId] ??
-                (viewingSessionId.value === requestSessionId
-                    ? active.value
-                    : null);
-
-            if (current) {
-                const rolledBack: TriageSession = {
-                    ...current,
-                    messages: (current.messages ?? []).filter(
-                        (m) => m.id !== pendingId,
-                    ),
-                };
-                putSessionCache(rolledBack);
-                if (viewingSessionId.value === requestSessionId) {
-                    active.value = rolledBack;
-                    if (text) {
-                        draft.value = text;
-                    }
-                }
+        if (response.status === 202) {
+            try {
+                const session = await awaitPendingVoiceTurn(
+                    requestSessionId,
+                    data.session as TriageSession | undefined,
+                );
+                setPhase(requestSessionId, 'speaking');
+                await applyCompletedTurn(session, requestSessionId);
+            } catch (error) {
+                const message =
+                    error instanceof Error
+                        ? error.message
+                        : 'Could not process voice message';
+                toast.error(message);
+                rollbackOptimisticMessage(requestSessionId, pendingId);
             }
 
             return;
         }
 
-        const session = data.session as TriageSession;
-        putSessionCache(session);
-        ownSessions.value = ownSessions.value.map((s) =>
-            s.id === session.id
-                ? { ...s, ...session, messages: undefined }
-                : s,
-        );
-
-        const assistantId = data.assistant_message?.id as number | undefined;
-        if (data.audio_base64 && assistantId) {
-            storeMessageAudio(
-                assistantId,
-                data.audio_base64,
-                viewingSessionId.value === requestSessionId && autoplay.value,
+        if (!response.ok) {
+            toast.error(data.message || 'Could not send message');
+            rollbackOptimisticMessage(
+                requestSessionId,
+                pendingId,
+                text || undefined,
             );
+
+            return;
         }
 
-        if (viewingSessionId.value === requestSessionId) {
-            active.value = session;
-            await scrollThreadToEnd();
+        if (audio) {
+            setPhase(requestSessionId, 'thinking');
         }
+
+        await applyCompletedTurn(data.session as TriageSession, requestSessionId, {
+            audioBase64: data.audio_base64,
+            assistantId: data.assistant_message?.id as number | undefined,
+        });
     } finally {
         if (requestSessionId > 0) {
             setPhase(requestSessionId, 'idle');
@@ -1152,6 +1460,8 @@ async function shareSession() {
 }
 
 onUnmounted(() => {
+    endColdStartWatch();
+    window.removeEventListener('keydown', onRecordingKeydown);
     micPointerId = null;
     if (recording.value) {
         mediaRecorder?.stop();
@@ -1163,6 +1473,15 @@ onUnmounted(() => {
 
 if (props.activeSessionId) {
     void openSession(props.activeSessionId);
+} else {
+    const pendingSession = [
+        ...props.sessions,
+        ...props.sharedSessions,
+    ].find((session) => session.pending_turn?.status === 'processing');
+
+    if (pendingSession) {
+        void openSession(pendingSession.id);
+    }
 }
 
 defineOptions({
@@ -1197,30 +1516,12 @@ defineOptions({
                         New session
                     </Button>
 
-                    <div class="space-y-2">
-                        <FieldLabel>Language</FieldLabel>
-                        <Select v-model="locale">
-                            <SelectTrigger class="w-full">
-                                <SelectValue placeholder="Select language" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem
-                                    v-for="l in languages"
-                                    :key="l.value"
-                                    :value="l.value"
-                                >
-                                    {{ l.label }}
-                                </SelectItem>
-                            </SelectContent>
-                        </Select>
-                    </div>
-
                     <div v-if="isPhysician" class="space-y-2">
                         <FieldLabel>Patient</FieldLabel>
                         <Select v-model="subjectUserId">
                             <SelectTrigger class="w-full">
                                 <SelectValue
-                                    placeholder="Optional patient for intake"
+                                    placeholder="Select patient"
                                 />
                             </SelectTrigger>
                             <SelectContent>
@@ -1360,16 +1661,11 @@ defineOptions({
                             >
                                 {{ active.status }}
                             </AnnotationPill>
-                            <AnnotationPill variant="teal">
+                            <AnnotationPill
+                                v-if="active.locale"
+                                variant="teal"
+                            >
                                 {{ active.locale }}
-                            </AnnotationPill>
-                        </div>
-                        <div
-                            v-else
-                            class="flex flex-wrap items-center gap-2"
-                        >
-                            <AnnotationPill variant="teal">
-                                {{ locale }}
                             </AnnotationPill>
                         </div>
                     </div>
@@ -1473,7 +1769,7 @@ defineOptions({
                             "
                             class="text-center text-sm text-muted-foreground"
                         >
-                            Loading thread…
+                            Loading session…
                         </p>
 
                         <p
@@ -1664,6 +1960,11 @@ defineOptions({
                             <div
                                 v-if="recording"
                                 class="triage-listen-shell"
+                                :class="
+                                    cancelArmed
+                                        ? 'triage-listen-shell--cancel'
+                                        : ''
+                                "
                                 aria-live="polite"
                             >
                                 <span class="triage-listen-rec">Listening</span>
@@ -1680,9 +1981,20 @@ defineOptions({
                                     />
                                 </div>
                                 <span
-                                    class="relative z-10 font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                                    class="triage-listen-cue"
+                                    :class="
+                                        cancelArmed
+                                            ? 'triage-listen-cue--armed'
+                                            : ''
+                                    "
                                 >
-                                    Release to send
+                                    <ChevronLeft
+                                        class="size-3.5 shrink-0"
+                                        aria-hidden="true"
+                                    />
+                                    <span class="triage-listen-cue-label">{{
+                                        cancelArmed ? 'Release' : 'Cancel'
+                                    }}</span>
                                 </span>
                             </div>
                             <Textarea
@@ -1712,18 +2024,23 @@ defineOptions({
                                     class="size-11 shrink-0 touch-none select-none"
                                     :class="
                                         recording
-                                            ? 'border-primary bg-primary/10 text-primary'
+                                            ? cancelArmed
+                                                ? 'border-coral bg-coral/10 text-coral'
+                                                : 'border-primary bg-primary/10 text-primary'
                                             : ''
                                     "
                                     :disabled="isActivePending && !recording"
                                     :aria-pressed="recording"
                                     :aria-label="
                                         recording
-                                            ? 'Release to send'
+                                            ? cancelArmed
+                                                ? 'Release to cancel'
+                                                : 'Release to send, or slide left to cancel'
                                             : 'Hold to talk'
                                     "
                                     @contextmenu.prevent
                                     @pointerdown="onMicPointerDown"
+                                    @pointermove="onMicPointerMove"
                                     @pointerup="onMicPointerUp"
                                     @pointercancel="onMicPointerUp"
                                     @lostpointercapture="onMicPointerUp"
@@ -1804,7 +2121,10 @@ defineOptions({
                         >
                             {{ active.status }}
                         </AnnotationPill>
-                        <AnnotationPill variant="teal">
+                        <AnnotationPill
+                            v-if="active.locale"
+                            variant="teal"
+                        >
                             {{ active.locale }}
                         </AnnotationPill>
                     </div>

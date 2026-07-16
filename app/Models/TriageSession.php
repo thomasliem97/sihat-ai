@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\ReportLanguage;
 use App\Enums\TriageRoleContext;
 use App\Enums\TriageSessionStatus;
 use App\Enums\TriageUrgency;
@@ -18,7 +17,7 @@ use Illuminate\Support\Carbon;
  * @property int $user_id
  * @property int|null $subject_user_id
  * @property TriageRoleContext $role_context
- * @property ReportLanguage $locale
+ * @property string $locale
  * @property TriageSessionStatus $status
  * @property TriageUrgency|null $urgency
  * @property string|null $chief_complaint
@@ -48,7 +47,6 @@ class TriageSession extends Model
     {
         return [
             'role_context' => TriageRoleContext::class,
-            'locale' => ReportLanguage::class,
             'status' => TriageSessionStatus::class,
             'urgency' => TriageUrgency::class,
             'shared_at' => 'datetime',
