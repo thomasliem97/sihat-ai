@@ -86,7 +86,7 @@ web_image = (
     )
     .env({
         "PYTHONPATH": "/root",
-        "SIHAT_AI_BUILD": "imaging-v6-20260716",
+        "SIHAT_AI_BUILD": "imaging-v9-20260716",
         "OPENAI_STRUCTURE_MODEL": "gpt-5.6-terra",
         "OPENAI_STRUCTURE_EFFORT": "high",
     })
@@ -1079,29 +1079,32 @@ class MedGemmaModel:
     image=image,
     timeout=300,
     scaledown_window=300,
+    secrets=[hf_secret],
 )
 class SttModel:
     """MedASR for English medical speech; Whisper for multilingual / fallback."""
 
     @modal.enter()
     def load(self) -> None:
-        self.engine = "whisper-base"
+        self.engine = "whisper-turbo"
         self.medasr = None
         self.whisper = None
         try:
             from transformers import pipeline
 
+            token = os.environ.get("HF_TOKEN") or os.environ.get("HUGGINGFACE_HUB_TOKEN")
             self.medasr = pipeline(
                 "automatic-speech-recognition",
                 model="google/medasr",
+                token=token,
             )
             self.engine = "medasr"
         except Exception as exc:  # noqa: BLE001
             print(f"MedASR unavailable, falling back to Whisper: {exc}")
             import whisper
 
-            self.whisper = whisper.load_model("base")
-            self.engine = "whisper-base"
+            self.whisper = whisper.load_model("turbo")
+            self.engine = "whisper-turbo"
 
     @modal.method()
     def transcribe(self, audio_b64: str, language: str | None = None) -> dict[str, Any]:
@@ -1131,7 +1134,7 @@ class SttModel:
                 if self.whisper is None:
                     import whisper
 
-                    self.whisper = whisper.load_model("base")
+                    self.whisper = whisper.load_model("turbo")
 
         assert self.whisper is not None
         try:
@@ -1141,42 +1144,15 @@ class SttModel:
             return {
                 "transcript": "",
                 "language": lang,
-                "engine": "whisper-base",
+                "engine": "whisper-turbo",
                 "error": str(exc),
             }
         text = (result.get("text") or "").strip()
         return {
             "transcript": text,
             "language": result.get("language") or lang,
-            "engine": "whisper-base",
+            "engine": "whisper-turbo",
         }
-
-
-@app.function(
-    image=web_image,
-    timeout=120,
-    memory=4096,
-)
-def probe_lab_ocr(file_b64: str) -> dict[str, Any]:
-    """One-shot remote check: OCR the given PDF/image bytes on the web image."""
-    import base64
-    import inspect
-    import os
-
-    from app import api as api_mod
-    from app.lab_ocr import extract_lab_text
-
-    data = base64.b64decode(file_b64)
-    text, meta = extract_lab_text(data)
-    src = inspect.getsource(api_mod._analyze_lab)
-    return {
-        "build": os.environ.get("SIHAT_AI_BUILD"),
-        "meta": meta,
-        "text_len": len(text or ""),
-        "text_preview": (text or "")[:240],
-        "has_vision_fallback": "_analyze_lab_vision" in src,
-        "cv2_ok": True,
-    }
 
 
 @app.function(
