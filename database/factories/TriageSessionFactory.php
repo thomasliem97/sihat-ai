@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\ReportLanguage;
 use App\Enums\TriageRoleContext;
 use App\Enums\TriageSessionStatus;
 use App\Models\TriageSession;
@@ -25,7 +24,7 @@ class TriageSessionFactory extends Factory
             'user_id' => User::factory(),
             'subject_user_id' => null,
             'role_context' => TriageRoleContext::Patient,
-            'locale' => ReportLanguage::English,
+            'locale' => '',
             'status' => TriageSessionStatus::Active,
             'urgency' => null,
             'chief_complaint' => null,

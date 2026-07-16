@@ -49,8 +49,6 @@ image = (
         "protobuf",
         "huggingface_hub",
     )
-    # hf-xet hangs / 403 SignatureError on MedGemma CDN; plain HTTP works
-    .run_commands("python -m pip uninstall -y hf-xet || true")
 )
 
 # Local JSONL → baked into image for reliable upload
@@ -99,7 +97,7 @@ def train() -> dict:
     log(f"dtype: {compute_dtype}, max_steps={MAX_STEPS or 'full epoch'}")
     log(f"HF token present: {bool(token)}")
 
-    # Explicit download first so we see progress / fail fast (not silent xet hang)
+    # Explicit download first so we see progress / fail fast before training setup.
     log(f"Downloading {MODEL_ID} into HF cache…")
     local_model = snapshot_download(MODEL_ID, token=token)
     log(f"Model cached at {local_model}")

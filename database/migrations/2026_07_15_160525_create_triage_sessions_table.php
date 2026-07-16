@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('subject_user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('role_context');
-            $table->string('locale', 8)->default('en');
+            $table->string('locale', 16)->default('');
             $table->string('status')->default('active');
             $table->string('urgency')->nullable();
             $table->string('chief_complaint')->nullable();
