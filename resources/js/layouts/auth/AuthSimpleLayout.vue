@@ -25,7 +25,7 @@ defineProps<{
                         <span
                             class="font-mono text-[0.65rem] font-semibold tracking-wider text-ink-faint uppercase"
                         >
-                            Sihat AI
+                            SihatAI
                         </span>
                         <span class="sr-only">{{ title }}</span>
                     </Link>
