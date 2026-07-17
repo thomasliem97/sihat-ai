@@ -85,7 +85,7 @@ web_image = (
     )
     .env({
         "PYTHONPATH": "/root",
-        "SIHAT_AI_BUILD": "imaging-v1-20260717",
+        "SIHAT_AI_BUILD": "imaging-v3-20260717",
         "OPENAI_STRUCTURE_MODEL": "gpt-5.6-terra",
         "OPENAI_STRUCTURE_EFFORT": "high",
     })

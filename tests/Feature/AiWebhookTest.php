@@ -3,6 +3,7 @@
 use App\Enums\Modality;
 use App\Enums\RecordStatus;
 use App\Models\AnalysisJob;
+use App\Models\AuditEvent;
 use App\Models\GuidelineChunk;
 use App\Models\MedicalRecord;
 use App\Models\User;
@@ -230,6 +231,72 @@ test('webhook accepts structured imaging findings from structurer', function () 
         ->and($record->findings[0]['severity'])->toBe('abnormal')
         ->and($record->bounding_boxes)->toHaveCount(1)
         ->and($record->guardrailFlagList())->not->toContain('low_confidence_abstention');
+});
+
+test('webhook redelivery does not duplicate biomarkers or escalations', function () {
+    $user = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'uploaded_by_user_id' => $user->id,
+        'status' => RecordStatus::Processing,
+        'modality' => Modality::LabPdf,
+        'detected_modality' => Modality::LabPdf,
+        'deidentified_at' => now(),
+    ]);
+    AnalysisJob::factory()->create([
+        'medical_record_id' => $record->id,
+        'status' => 'running',
+        'external_job_id' => 'job-lab-dup',
+    ]);
+
+    $payload = [
+        'job_id' => 'job-lab-dup',
+        'status' => 'completed',
+        'detected_modality' => 'lab_pdf',
+        'route_confidence' => 0.9,
+        'result' => [
+            'findings' => [
+                [
+                    'label' => 'Elevated potassium',
+                    'description' => 'K is critically high',
+                    'confidence' => 0.95,
+                    'severity' => 'critical',
+                ],
+            ],
+            'overall_confidence' => 0.95,
+            'differential_diagnosis' => [],
+            'bounding_boxes' => [],
+            'biomarkers' => [
+                [
+                    'name' => 'Potassium',
+                    'value' => '6.8',
+                    'unit' => 'mmol/L',
+                    'reference_low' => '3.5',
+                    'reference_high' => '5.1',
+                    'status' => 'critical',
+                ],
+            ],
+        ],
+    ];
+
+    $raw = json_encode($payload, JSON_THROW_ON_ERROR);
+    $signature = hash_hmac('sha256', $raw, 'test-secret');
+    $server = [
+        'CONTENT_TYPE' => 'application/json',
+        'HTTP_X_SIHAT_SIGNATURE' => $signature,
+    ];
+
+    $this->call('POST', route('ai.webhook'), [], [], [], $server, $raw)->assertSuccessful();
+    $this->call('POST', route('ai.webhook'), [], [], [], $server, $raw)->assertSuccessful();
+
+    $record->refresh();
+
+    expect($record->status)->toBe(RecordStatus::Completed)
+        ->and($record->biomarkers()->count())->toBe(1)
+        ->and(AuditEvent::query()
+            ->where('medical_record_id', $record->id)
+            ->where('event', 'critical_value_escalation')
+            ->count())->toBe(1);
 });
 
 test('webhook failure marks record failed', function () {

@@ -69,22 +69,42 @@ const fractures = [
 ] as const;
 
 const agents = [
-    { name: 'De-ID', detail: 'Scrub PII / PHI', code: 'safe_uri', icon: EyeOff },
-    { name: 'Router', detail: 'Detect modality', code: 'route_confidence', icon: Route },
+    {
+        name: 'De-ID',
+        detail: 'Scrub PII / PHI',
+        code: 'safe_uri',
+        icon: EyeOff,
+    },
+    {
+        name: 'Router',
+        detail: 'Detect modality',
+        code: 'route_confidence',
+        icon: Route,
+    },
     {
         name: 'Specialists',
         detail: 'Imaging / document',
         code: 'partial_findings',
         icon: BrainCircuit,
     },
-    { name: 'Retriever', detail: 'Hybrid RAG', code: 'citations[]', icon: LibraryBig },
+    {
+        name: 'Retriever',
+        detail: 'Hybrid RAG',
+        code: 'citations[]',
+        icon: LibraryBig,
+    },
     {
         name: 'Guardrail',
         detail: 'Veto + escalate',
         code: 'ALLOW | WARN',
         icon: ShieldAlert,
     },
-    { name: 'Composer', detail: 'Audience adapt', code: 'reports{}', icon: ScrollText },
+    {
+        name: 'Composer',
+        detail: 'Audience adapt',
+        code: 'reports{}',
+        icon: ScrollText,
+    },
 ] as const;
 
 const advantages = [
@@ -391,18 +411,10 @@ onUnmounted(() => {
                             >
                                 <Link :href="login()">View Demo</Link>
                             </Button>
-                            <Button
-                                v-else
-                                as-child
-                                size="lg"
-                            >
+                            <Button v-else as-child size="lg">
                                 <Link :href="dashboard()">Open dashboard</Link>
                             </Button>
-                            <Button
-                                as-child
-                                variant="outline"
-                                size="lg"
-                            >
+                            <Button as-child variant="outline" size="lg">
                                 <a
                                     href="#product"
                                     @click.prevent="scrollToId('product')"
@@ -416,7 +428,9 @@ onUnmounted(() => {
                             class="welcome-reveal flex flex-wrap gap-2 pt-1"
                             style="--reveal-delay: 400ms"
                         >
-                            <AnnotationPill>Multimodal reasoning</AnnotationPill>
+                            <AnnotationPill
+                                >Multimodal reasoning</AnnotationPill
+                            >
                             <AnnotationPill variant="teal"
                                 >Agentic orchestration</AnnotationPill
                             >
@@ -447,19 +461,21 @@ onUnmounted(() => {
                             />
 
                             <div
-                                class="welcome-finding-box left-[11%] bottom-[12%] h-[36%] w-[27%]"
+                                class="welcome-finding-box bottom-[12%] left-[11%] h-[36%] w-[27%]"
                             >
                                 <span
-                                    class="absolute -top-7 left-0 whitespace-nowrap bg-clinical-borderline px-2.5 py-1 font-mono text-[0.65rem] font-bold tracking-wide text-ink uppercase"
+                                    class="absolute -top-7 left-0 bg-clinical-borderline px-2.5 py-1 font-mono text-[0.65rem] font-bold tracking-wide whitespace-nowrap text-ink uppercase"
                                 >
                                     RLL opacity · 91%
                                 </span>
                             </div>
 
                             <div
-                                class="absolute inset-x-0 bottom-0 z-20 space-y-2 border-t border-white/10 bg-linear-to-t from-black/75 via-black/45 to-transparent px-4 pb-4 pt-10"
+                                class="absolute inset-x-0 bottom-0 z-20 space-y-2 border-t border-white/10 bg-linear-to-t from-black/75 via-black/45 to-transparent px-4 pt-10 pb-4"
                             >
-                                <div class="flex items-end justify-between gap-3">
+                                <div
+                                    class="flex items-end justify-between gap-3"
+                                >
                                     <div>
                                         <p
                                             class="font-mono text-[0.65rem] tracking-wider text-white/60 uppercase"
@@ -467,7 +483,7 @@ onUnmounted(() => {
                                             Overall confidence
                                         </p>
                                         <p
-                                            class="text-2xl font-bold tabular-nums text-white"
+                                            class="text-2xl font-bold text-white tabular-nums"
                                         >
                                             88%
                                         </p>
@@ -484,7 +500,10 @@ onUnmounted(() => {
                                     class="citation-stamp border-dashed border-primary/60 bg-paper/10 text-white/90"
                                 >
                                     <span>[01]</span>
-                                    <span>MOH CPG · Community Acquired Pneumonia</span>
+                                    <span
+                                        >MOH CPG · Community Acquired
+                                        Pneumonia</span
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -549,7 +568,10 @@ onUnmounted(() => {
             </section>
 
             <!-- Problem -->
-            <section id="problem" class="scroll-mt-24 border-b border-border/60">
+            <section
+                id="problem"
+                class="scroll-mt-24 border-b border-border/60"
+            >
                 <div class="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-24">
                     <div
                         class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
@@ -627,7 +649,10 @@ onUnmounted(() => {
             </section>
 
             <!-- Product: dual voices -->
-            <section id="product" class="scroll-mt-24 border-b border-border/60 bg-paper/40">
+            <section
+                id="product"
+                class="scroll-mt-24 border-b border-border/60 bg-paper/40"
+            >
                 <div class="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-24">
                     <div class="mb-12 max-w-3xl space-y-4">
                         <SectionTag class="welcome-reveal"
@@ -888,8 +913,7 @@ onUnmounted(() => {
                                             class="rounded-full bg-primary px-3 py-1 text-primary-foreground"
                                             >Physician</span
                                         >
-                                        <span
-                                            class="px-3 py-1 text-ink-soft"
+                                        <span class="px-3 py-1 text-ink-soft"
                                             >Patient</span
                                         >
                                     </div>
@@ -913,10 +937,10 @@ onUnmounted(() => {
                                             class="size-full object-cover"
                                         />
                                         <div
-                                            class="welcome-finding-box left-[12%] bottom-[14%] h-[34%] w-[26%]"
+                                            class="welcome-finding-box bottom-[14%] left-[12%] h-[34%] w-[26%]"
                                         >
                                             <span
-                                                class="absolute -top-7 left-0 whitespace-nowrap bg-clinical-borderline px-2 py-1 font-mono text-[0.6rem] font-bold text-ink uppercase"
+                                                class="absolute -top-7 left-0 bg-clinical-borderline px-2 py-1 font-mono text-[0.6rem] font-bold whitespace-nowrap text-ink uppercase"
                                             >
                                                 RLL opacity · 91%
                                             </span>
@@ -942,7 +966,8 @@ onUnmounted(() => {
                                                 </p>
                                             </div>
                                             <AnnotationPill
-                                                >Analysis complete</AnnotationPill
+                                                >Analysis
+                                                complete</AnnotationPill
                                             >
                                         </div>
                                         <div
@@ -951,7 +976,9 @@ onUnmounted(() => {
                                             <div
                                                 class="flex items-center justify-between gap-2"
                                             >
-                                                <p class="text-sm font-semibold">
+                                                <p
+                                                    class="text-sm font-semibold"
+                                                >
                                                     Right lower lobe opacity
                                                 </p>
                                                 <AnnotationPill variant="coral"
@@ -961,8 +988,9 @@ onUnmounted(() => {
                                             <p
                                                 class="text-xs leading-relaxed text-muted-foreground"
                                             >
-                                                Patchy airspace opacity localized
-                                                to the right lower zone.
+                                                Patchy airspace opacity
+                                                localized to the right lower
+                                                zone.
                                             </p>
                                             <div
                                                 class="h-1.5 overflow-hidden rounded-full bg-muted"
@@ -978,7 +1006,9 @@ onUnmounted(() => {
                                             <div
                                                 class="flex items-center justify-between gap-2"
                                             >
-                                                <p class="text-sm font-semibold">
+                                                <p
+                                                    class="text-sm font-semibold"
+                                                >
                                                     Mild cardiomegaly
                                                 </p>
                                                 <AnnotationPill variant="amber"
@@ -1013,9 +1043,7 @@ onUnmounted(() => {
                         </div>
                     </div>
 
-                    <div
-                        class="welcome-reveal mt-6 flex flex-wrap gap-2"
-                    >
+                    <div class="welcome-reveal mt-6 flex flex-wrap gap-2">
                         <AnnotationPill
                             v-for="label in [
                                 'Bounding-box localization',
@@ -1032,7 +1060,10 @@ onUnmounted(() => {
             </section>
 
             <!-- Pipeline -->
-            <section id="pipeline" class="scroll-mt-24 border-b border-border/60 bg-paper/40">
+            <section
+                id="pipeline"
+                class="scroll-mt-24 border-b border-border/60 bg-paper/40"
+            >
                 <div class="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-24">
                     <div class="mb-12 max-w-3xl space-y-4">
                         <SectionTag class="welcome-reveal"
@@ -1047,25 +1078,25 @@ onUnmounted(() => {
                         <p
                             class="welcome-reveal text-base leading-relaxed text-muted-foreground md:text-lg"
                         >
-                            Six specialists. One inspectable relay. A clean async
-                            contract lets product engineering and model inference
-                            scale independently.
+                            Six specialists. One inspectable relay. A clean
+                            async contract lets product engineering and model
+                            inference scale independently.
                         </p>
                     </div>
 
-                    <div
-                        class="welcome-reveal mb-10 grid gap-3 md:grid-cols-3"
-                    >
+                    <div class="welcome-reveal mb-10 grid gap-3 md:grid-cols-3">
                         <div class="paper-panel space-y-2 p-5">
                             <p
                                 class="font-mono text-[0.65rem] font-semibold tracking-wider text-primary uppercase"
                             >
                                 Application line
                             </p>
-                            <p class="font-semibold">Inertia + Vue → Laravel 13 → Queue</p>
+                            <p class="font-semibold">
+                                Inertia + Vue → Laravel 13 → Queue
+                            </p>
                             <p class="text-sm text-muted-foreground">
-                                Dual-persona UI, auth, policy, retries, and signed
-                                webhooks.
+                                Dual-persona UI, auth, policy, retries, and
+                                signed webhooks.
                             </p>
                         </div>
                         <div
@@ -1113,7 +1144,10 @@ onUnmounted(() => {
                                 :style="{ '--reveal-delay': `${i * 70}ms` }"
                             >
                                 <IconDisc class="mx-auto">
-                                    <component :is="agent.icon" class="size-5" />
+                                    <component
+                                        :is="agent.icon"
+                                        class="size-5"
+                                    />
                                 </IconDisc>
                                 <h3 class="text-sm font-semibold">
                                     {{ agent.name }}
@@ -1180,7 +1214,7 @@ onUnmounted(() => {
                                         class="size-full object-cover"
                                     />
                                     <div
-                                        class="welcome-finding-box left-[14%] bottom-[16%] h-[32%] w-[28%]"
+                                        class="welcome-finding-box bottom-[16%] left-[14%] h-[32%] w-[28%]"
                                     />
                                 </div>
                                 <p
@@ -1220,7 +1254,7 @@ onUnmounted(() => {
                                         class="size-full object-cover"
                                     />
                                     <div
-                                        class="welcome-finding-box left-[22%] top-[18%] h-[48%] w-[42%]"
+                                        class="welcome-finding-box top-[18%] left-[22%] h-[48%] w-[42%]"
                                     />
                                     <code
                                         class="absolute right-2 bottom-2 rounded bg-black/55 px-2 py-1 font-mono text-[0.6rem] text-white"
@@ -1382,7 +1416,9 @@ onUnmounted(() => {
                     </div>
 
                     <div class="grid gap-6 lg:grid-cols-2">
-                        <div class="welcome-reveal-scale paper-panel space-y-4 p-6">
+                        <div
+                            class="welcome-reveal-scale paper-panel space-y-4 p-6"
+                        >
                             <div
                                 class="rounded-2xl border border-dashed border-primary/40 bg-primary/5 px-4 py-3"
                             >
@@ -1425,7 +1461,9 @@ onUnmounted(() => {
                                         <p class="text-sm font-semibold">
                                             {{ step[1] }}
                                         </p>
-                                        <p class="text-xs text-muted-foreground">
+                                        <p
+                                            class="text-xs text-muted-foreground"
+                                        >
                                             {{ step[2] }}
                                         </p>
                                     </div>
@@ -1460,7 +1498,7 @@ onUnmounted(() => {
                                         src[1]
                                     }}</span>
                                     <em
-                                        class="font-mono text-xs not-italic text-ink-faint"
+                                        class="font-mono text-xs text-ink-faint not-italic"
                                         >{{ src[2] }}</em
                                     >
                                 </div>
@@ -1474,7 +1512,9 @@ onUnmounted(() => {
                             <div
                                 class="flex w-fit gap-1 rounded-full border border-border bg-muted/40 p-1 font-mono text-[0.65rem] font-semibold uppercase"
                             >
-                                <span class="px-3 py-1 text-ink-soft">English</span>
+                                <span class="px-3 py-1 text-ink-soft"
+                                    >English</span
+                                >
                                 <span
                                     class="rounded-full bg-primary px-3 py-1 text-primary-foreground"
                                     >Bahasa Melayu</span
@@ -1565,7 +1605,9 @@ onUnmounted(() => {
                                 <div
                                     class="flex flex-col items-center rounded-2xl border-2 border-coral bg-coral/10 px-4 py-3 text-center"
                                 >
-                                    <ShieldAlert class="mb-1 size-5 text-coral" />
+                                    <ShieldAlert
+                                        class="mb-1 size-5 text-coral"
+                                    />
                                     <p class="text-sm font-bold text-coral">
                                         Escalate
                                     </p>
@@ -1665,7 +1707,9 @@ onUnmounted(() => {
                                     >0{{ i + 1 }}</span
                                 >
                             </div>
-                            <h3 class="text-lg font-semibold">{{ item.title }}</h3>
+                            <h3 class="text-lg font-semibold">
+                                {{ item.title }}
+                            </h3>
                             <p
                                 class="text-sm leading-relaxed text-muted-foreground"
                             >
@@ -1685,7 +1729,10 @@ onUnmounted(() => {
                         <div
                             class="paper-panel flex flex-col items-center gap-3 p-6 text-center"
                         >
-                            <div class="welcome-gauge-ring" style="--score: 68.4">
+                            <div
+                                class="welcome-gauge-ring"
+                                style="--score: 68.4"
+                            >
                                 <strong class="text-xl tabular-nums"
                                     >68.4%</strong
                                 >
@@ -1715,7 +1762,10 @@ onUnmounted(() => {
                         <div
                             class="paper-panel flex flex-col items-center gap-3 p-6 text-center"
                         >
-                            <div class="welcome-gauge-ring" style="--score: 96.5">
+                            <div
+                                class="welcome-gauge-ring"
+                                style="--score: 96.5"
+                            >
                                 <strong class="text-xl tabular-nums"
                                     >96.5%</strong
                                 >
@@ -1834,11 +1884,12 @@ onUnmounted(() => {
         <!-- Footer -->
         <footer class="border-t border-border/80 bg-paper/70">
             <div class="mx-auto max-w-7xl px-4 py-12 md:px-6">
-                <div
-                    class="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr] md:gap-8"
-                >
+                <div class="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr] md:gap-8">
                     <div class="space-y-4">
-                        <Link :href="home()" class="inline-flex items-center gap-2.5">
+                        <Link
+                            :href="home()"
+                            class="inline-flex items-center gap-2.5"
+                        >
                             <AppLogoIcon class="size-9 rounded-xl" />
                             <span class="text-lg font-bold tracking-tight"
                                 >Sihat<span class="text-primary">AI</span></span
@@ -1926,8 +1977,7 @@ onUnmounted(() => {
                     class="mt-10 flex flex-col gap-3 border-t border-border/70 pt-6 sm:flex-row sm:items-center sm:justify-between"
                 >
                     <p class="font-mono text-xs text-ink-faint">
-                        © {{ new Date().getFullYear() }} SihatAI · MAIC Nexus
-                        Challenge
+                        © {{ new Date().getFullYear() }} SihatAI
                     </p>
                     <p
                         class="text-xs leading-relaxed text-muted-foreground sm:whitespace-nowrap"

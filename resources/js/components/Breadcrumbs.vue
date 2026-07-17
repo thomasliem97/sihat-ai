@@ -23,7 +23,9 @@ defineProps<Props>();
             <template v-for="(item, index) in breadcrumbs" :key="index">
                 <BreadcrumbItem>
                     <template v-if="index === breadcrumbs.length - 1">
-                        <BreadcrumbPage class="font-mono text-xs font-semibold tracking-wide uppercase">
+                        <BreadcrumbPage
+                            class="font-mono text-xs font-semibold tracking-wide uppercase"
+                        >
                             {{ item.title }}
                         </BreadcrumbPage>
                     </template>
@@ -31,7 +33,7 @@ defineProps<Props>();
                         <BreadcrumbLink as-child>
                             <Link
                                 :href="item.href"
-                                class="font-mono text-xs font-medium tracking-wide uppercase text-muted-foreground hover:text-foreground"
+                                class="font-mono text-xs font-medium tracking-wide text-muted-foreground uppercase hover:text-foreground"
                             >
                                 {{ item.title }}
                             </Link>

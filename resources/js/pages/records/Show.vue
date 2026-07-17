@@ -15,8 +15,6 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
-import { index as recordsIndex, show as recordShow, sign as signReport } from '@/routes/records';
-import { update as updateReport } from '@/routes/records/report';
 import {
     formatAgentHopDetail,
     formatAgentHopLabel,
@@ -26,6 +24,12 @@ import {
 } from '@/lib/agent-trace';
 import { beginColdStartWatch, endColdStartWatch } from '@/lib/coldStartNotice';
 import { parseFindingMeasurements } from '@/lib/finding-measurements';
+import {
+    index as recordsIndex,
+    show as recordShow,
+    sign as signReport,
+} from '@/routes/records';
+import { update as updateReport } from '@/routes/records/report';
 
 const props = defineProps<{
     record: {
@@ -99,8 +103,7 @@ const showScanViewer = computed(() => {
         return false;
     }
 
-    const modality =
-        props.record.detected_modality ?? props.record.modality;
+    const modality = props.record.detected_modality ?? props.record.modality;
 
     return modality !== 'lab_pdf' && modality !== 'clinical_document';
 });
@@ -165,6 +168,7 @@ watch(
         if (!report) {
             return;
         }
+
         draftSummary.value = String(report.summary ?? '');
         draftNotes.value = String(report.technical_notes ?? '');
         draftRecommendations.value = Array.isArray(report.recommendations)
@@ -201,6 +205,7 @@ function signDraft() {
 
 const patchList = computed(() => {
     const patches = props.record.patch_meta?.patches;
+
     return Array.isArray(patches) ? patches : [];
 });
 
@@ -215,6 +220,7 @@ const isAnalysisRunning = computed(
 function syncAnalysisPolling(running: boolean): void {
     if (running) {
         beginColdStartWatch();
+
         if (!pollInterval) {
             pollInterval = setInterval(() => {
                 router.reload({
@@ -222,10 +228,12 @@ function syncAnalysisPolling(running: boolean): void {
                 });
             }, 3000);
         }
+
         return;
     }
 
     endColdStartWatch();
+
     if (pollInterval) {
         clearInterval(pollInterval);
         pollInterval = null;
@@ -293,6 +301,7 @@ defineOptions({
 
         <Alert
             v-if="
+                viewMode === 'physician' &&
                 record.guardrail_flags?.includes('critical_value_escalation')
             "
             variant="destructive"
@@ -307,6 +316,7 @@ defineOptions({
 
         <Alert
             v-if="
+                viewMode === 'physician' &&
                 record.guardrail_flags?.includes('low_confidence_abstention')
             "
             class="border-clinical-borderline/40 bg-clinical-borderline/10"
@@ -344,9 +354,7 @@ defineOptions({
         </Alert>
 
         <div
-            v-if="
-                record.status === 'processing' || record.status === 'pending'
-            "
+            v-if="record.status === 'processing' || record.status === 'pending'"
             class="space-y-4"
         >
             <Card class="paper-panel--focal border-0 shadow-offset">
@@ -359,9 +367,7 @@ defineOptions({
                 </CardHeader>
                 <CardContent class="space-y-4">
                     <AnalysisStepper
-                        :steps="
-                            record.pipeline_steps ?? fallbackPipelineSteps
-                        "
+                        :steps="record.pipeline_steps ?? fallbackPipelineSteps"
                     />
                 </CardContent>
             </Card>
@@ -462,23 +468,33 @@ defineOptions({
                                         <tr
                                             class="border-b border-border text-left font-mono text-xs tracking-wide text-muted-foreground uppercase"
                                         >
-                                            <th class="w-1/4 pb-2 font-semibold">
+                                            <th
+                                                class="w-1/4 pb-2 font-semibold"
+                                            >
                                                 Marker
                                             </th>
-                                            <th class="w-1/4 pb-2 font-semibold">
+                                            <th
+                                                class="w-1/4 pb-2 font-semibold"
+                                            >
                                                 Value
                                             </th>
-                                            <th class="w-1/4 pb-2 font-semibold">
+                                            <th
+                                                class="w-1/4 pb-2 font-semibold"
+                                            >
                                                 Reference
                                             </th>
-                                            <th class="w-1/4 pb-2 font-semibold">
+                                            <th
+                                                class="w-1/4 pb-2 font-semibold"
+                                            >
                                                 Status
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr
-                                            v-for="(row, rowIndex) in item.measurements"
+                                            v-for="(
+                                                row, rowIndex
+                                            ) in item.measurements"
                                             :key="rowIndex"
                                             class="border-b border-border"
                                         >
@@ -491,7 +507,7 @@ defineOptions({
                                                 {{ row.value }}
                                             </td>
                                             <td
-                                                class="py-2 pr-3 font-mono text-xs tabular-nums text-muted-foreground"
+                                                class="py-2 pr-3 font-mono text-xs text-muted-foreground tabular-nums"
                                             >
                                                 {{ row.reference ?? '-' }}
                                             </td>
@@ -516,7 +532,7 @@ defineOptions({
                                 class="mt-2 space-y-1"
                             >
                                 <p
-                                    class="font-mono text-sm tabular-nums text-ink"
+                                    class="font-mono text-sm text-ink tabular-nums"
                                 >
                                     {{ item.finding.value }}
                                     <span
@@ -528,7 +544,7 @@ defineOptions({
                                 </p>
                                 <p
                                     v-if="item.finding.reference"
-                                    class="font-mono text-xs tabular-nums text-muted-foreground"
+                                    class="font-mono text-xs text-muted-foreground tabular-nums"
                                 >
                                     Reference {{ item.finding.reference }}
                                 </p>
@@ -568,7 +584,7 @@ defineOptions({
                                     {{ b.value }} {{ b.unit }}
                                 </td>
                                 <td
-                                    class="py-2 pr-3 font-mono text-xs tabular-nums text-muted-foreground"
+                                    class="py-2 pr-3 font-mono text-xs text-muted-foreground tabular-nums"
                                 >
                                     <template
                                         v-if="
@@ -591,12 +607,12 @@ defineOptions({
                 </CardContent>
             </Card>
 
-            <Card
-                v-if="viewMode === 'physician' && record.longitudinal_diff"
-            >
+            <Card v-if="viewMode === 'physician' && record.longitudinal_diff">
                 <CardHeader class="space-y-2">
                     <SectionTag>Comparison</SectionTag>
-                    <CardTitle class="text-lg">Longitudinal comparison</CardTitle>
+                    <CardTitle class="text-lg"
+                        >Longitudinal comparison</CardTitle
+                    >
                 </CardHeader>
                 <CardContent class="space-y-3">
                     <template
@@ -640,9 +656,7 @@ defineOptions({
                 </CardContent>
             </Card>
 
-            <Card
-                v-if="viewMode === 'physician' && record.agent_trace?.length"
-            >
+            <Card v-if="viewMode === 'physician' && record.agent_trace?.length">
                 <CardHeader class="space-y-2">
                     <SectionTag>Agent relay</SectionTag>
                     <CardTitle class="text-lg">Hop traces</CardTitle>
@@ -658,7 +672,9 @@ defineOptions({
                                 <p class="text-sm font-semibold text-ink">
                                     {{ formatAgentHopLabel(String(hop.hop)) }}
                                 </p>
-                                <p class="text-sm leading-relaxed text-muted-foreground">
+                                <p
+                                    class="text-sm leading-relaxed text-muted-foreground"
+                                >
                                     {{
                                         formatAgentHopDetail(
                                             String(hop.detail ?? ''),
@@ -674,9 +690,13 @@ defineOptions({
                                         hop.status !== 'skipped' &&
                                         typeof hop.duration_ms === 'number'
                                     "
-                                    class="mr-2 font-mono text-xs tabular-nums text-ink-soft"
+                                    class="mr-2 font-mono text-xs text-ink-soft tabular-nums"
                                 >
-                                    {{ formatDurationMs(Number(hop.duration_ms)) }}
+                                    {{
+                                        formatDurationMs(
+                                            Number(hop.duration_ms),
+                                        )
+                                    }}
                                 </span>
                                 <AnnotationPill
                                     :variant="
@@ -727,7 +747,7 @@ defineOptions({
                             class="flex shrink-0 flex-col items-end gap-1.5 sm:flex-row sm:items-center"
                         >
                             <span
-                                class="mr-2 font-mono text-xs tabular-nums text-ink-soft"
+                                class="mr-2 font-mono text-xs text-ink-soft tabular-nums"
                             >
                                 {{ Math.round(c.score * 100) }}% confidence
                             </span>
@@ -799,12 +819,11 @@ defineOptions({
 
             <Card class="paper-panel--focal border-0 shadow-offset">
                 <CardHeader class="space-y-2">
-                    <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div
+                        class="flex flex-wrap items-center justify-between gap-2"
+                    >
                         <SectionTag>Report</SectionTag>
-                        <AnnotationPill
-                            v-if="record.is_signed"
-                            variant="teal"
-                        >
+                        <AnnotationPill v-if="record.is_signed" variant="teal">
                             Signed
                         </AnnotationPill>
                     </div>
@@ -843,7 +862,7 @@ defineOptions({
                             <FieldLabel required>Summary</FieldLabel>
                             <Textarea
                                 v-model="draftSummary"
-                                rows="4"
+                                :rows="4"
                                 placeholder="Clinical summary for the signed report"
                             />
                         </div>
@@ -851,7 +870,7 @@ defineOptions({
                             <FieldLabel>Recommendations</FieldLabel>
                             <Textarea
                                 v-model="draftRecommendations"
-                                rows="3"
+                                :rows="3"
                                 placeholder="One recommendation per line"
                             />
                         </div>
@@ -859,7 +878,7 @@ defineOptions({
                             <FieldLabel>Technical notes</FieldLabel>
                             <Textarea
                                 v-model="draftNotes"
-                                rows="2"
+                                :rows="2"
                                 placeholder="Pipeline or review notes"
                             />
                         </div>
@@ -917,12 +936,7 @@ defineOptions({
                                     </span>
                                 </li>
                             </ul>
-                            <p
-                                v-else
-                                class="text-muted-foreground"
-                            >
-                                -
-                            </p>
+                            <p v-else class="text-muted-foreground">-</p>
                         </div>
                         <div>
                             <h3
@@ -948,12 +962,7 @@ defineOptions({
                                     {{ rec }}
                                 </li>
                             </ul>
-                            <p
-                                v-else
-                                class="text-muted-foreground"
-                            >
-                                -
-                            </p>
+                            <p v-else class="text-muted-foreground">-</p>
                         </div>
                         <div
                             v-if="record.physician_report.technical_notes"
@@ -1059,7 +1068,7 @@ defineOptions({
                         v-for="(citation, i) in record.citations"
                         :key="i"
                         :index="i + 1"
-                        :citation="(citation as any)"
+                        :citation="citation as any"
                     />
                 </CardContent>
             </Card>

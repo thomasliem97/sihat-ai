@@ -169,6 +169,15 @@ class MedicalRecord extends Model
         return $this->signed_at !== null;
     }
 
+    public function patientDisplayName(): string
+    {
+        if ($this->subject_user_id !== null) {
+            return $this->subjectUser->name;
+        }
+
+        return $this->user->isPatient() ? $this->user->name : 'Unassigned';
+    }
+
     /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {

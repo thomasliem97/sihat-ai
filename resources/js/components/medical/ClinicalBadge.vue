@@ -5,8 +5,9 @@ import {
     CircleAlert,
     TriangleAlert,
 } from '@lucide/vue';
+import { computed } from 'vue';
+import type { Component } from 'vue';
 import { Badge } from '@/components/ui/badge';
-import { computed, type Component } from 'vue';
 
 const props = defineProps<{
     status: string;

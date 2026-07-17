@@ -616,6 +616,28 @@ test('voice turn accepts audio asynchronously and omits stt language hint', func
     expect($session->fresh()->messages)->toHaveCount(2);
 });
 
+test('text messages are rejected while a voice turn is processing', function () {
+    Queue::fake();
+    fakeTriageHttp();
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => '',
+    ]);
+
+    $this->actingAs($patient)->post(
+        route('voice.triage.sessions.messages', $session),
+        ['audio' => fakeTriageWebm()],
+        ['Accept' => 'application/json'],
+    )->assertAccepted();
+
+    $this->actingAs($patient)->postJson(
+        route('voice.triage.sessions.messages', $session),
+        ['text' => 'I also have chest pain'],
+    )->assertStatus(409);
+});
+
 test('voice turn dispatches queue job without blocking on fake queue', function () {
     Queue::fake();
     fakeTriageHttp();

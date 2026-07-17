@@ -45,4 +45,11 @@ class UserFactory extends Factory
             'role' => UserRole::Patient,
         ]);
     }
+
+    public function unverified(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
+    }
 }

@@ -34,9 +34,7 @@ watch(
             <span>Scan viewer</span>
             <span class="text-ink-faint">
                 {{
-                    boxes.length
-                        ? `${boxes.length} finding(s)`
-                        : 'No overlays'
+                    boxes.length ? `${boxes.length} finding(s)` : 'No overlays'
                 }}
             </span>
         </div>
@@ -60,7 +58,7 @@ watch(
                     }"
                 >
                     <span
-                        class="absolute -top-7 left-0 rounded bg-clinical-borderline px-2 py-1 font-mono text-[0.65rem] font-bold tracking-wide text-ink uppercase whitespace-nowrap"
+                        class="absolute -top-7 left-0 rounded bg-clinical-borderline px-2 py-1 font-mono text-[0.65rem] font-bold tracking-wide whitespace-nowrap text-ink uppercase"
                     >
                         {{ box.label }}
                     </span>

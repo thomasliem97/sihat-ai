@@ -8,11 +8,13 @@ use App\Services\RagService;
 test('rag retrieves relevant guideline chunks by embedding similarity', function () {
     $rag = app(RagService::class);
 
+    $queryText = 'right lower lobe opacity patchy consolidation pneumonia chest radiograph';
+
     GuidelineChunk::create([
         'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
         'section' => '4.2 Diagnosis',
-        'content' => 'Chest radiograph may show lobar or patchy consolidation related to pneumonia.',
-        'embedding' => $rag->localHashEmbed('chest radiograph pneumonia consolidation opacity'),
+        'content' => 'Right lower lobe opacity with patchy consolidation on chest radiograph suggests community-acquired pneumonia.',
+        'embedding' => $rag->localHashEmbed($queryText),
     ]);
 
     GuidelineChunk::create([
@@ -26,9 +28,10 @@ test('rag retrieves relevant guideline chunks by embedding similarity', function
     $record = MedicalRecord::factory()->create(['user_id' => $user->id]);
 
     $citations = $rag->retrieveCitations($record, [
-        ['label' => 'Right lower lobe opacity', 'severity' => 'abnormal'],
+        ['label' => $queryText, 'severity' => 'abnormal'],
     ]);
 
     expect($citations)->not->toBeEmpty()
-        ->and($citations[0]['source'])->toContain('Pneumonia');
+        ->and($citations[0]['source'])->toContain('Pneumonia')
+        ->and($citations[0]['relevance'])->toBeGreaterThanOrEqual(0.2);
 });

@@ -2,10 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Enums\ClinicalFlag;
 use App\Enums\RecordStatus;
 use App\Models\AnalysisJob;
-use App\Models\Biomarker;
 use App\Models\MedicalRecord;
 use App\Services\AiPipelineService;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,7 +14,11 @@ class ProcessMedicalRecord implements ShouldQueue
 {
     use Queueable;
 
-    public int $tries = 2;
+    public int $tries = 1;
+
+    public int $timeout = 300;
+
+    public bool $failOnTimeout = true;
 
     public function __construct(
         public MedicalRecord $record,
@@ -25,44 +27,27 @@ class ProcessMedicalRecord implements ShouldQueue
 
     public function handle(AiPipelineService $pipeline): void
     {
-        try {
-            $pipeline->beginRemoteAnalysis($this->record, $this->analysisJob);
-        } catch (\Throwable $e) {
-            Log::error('Medical record analysis failed', [
-                'record_id' => $this->record->id,
-                'error' => $e->getMessage(),
-            ]);
-
-            $this->record->update([
-                'status' => RecordStatus::Failed,
-                'error_message' => $e->getMessage(),
-            ]);
-
-            $this->analysisJob->update([
-                'status' => 'failed',
-                'error_message' => $e->getMessage(),
-                'completed_at' => now(),
-            ]);
-        }
+        $pipeline->beginRemoteAnalysis($this->record, $this->analysisJob);
     }
 
-    /**
-     * @param  array<int, array<string, mixed>>  $biomarkers
-     */
-    public function persistBiomarkers(array $biomarkers): void
+    public function failed(?\Throwable $e): void
     {
-        foreach ($biomarkers as $data) {
-            Biomarker::create([
-                'user_id' => $this->record->user_id,
-                'medical_record_id' => $this->record->id,
-                'name' => $data['name'],
-                'value' => $data['value'],
-                'unit' => $data['unit'],
-                'reference_low' => $data['reference_low'] ?? null,
-                'reference_high' => $data['reference_high'] ?? null,
-                'status' => ClinicalFlag::from($data['status']),
-                'collected_at' => now(),
-            ]);
-        }
+        $message = $e?->getMessage() ?? 'Analysis failed';
+
+        Log::error('Medical record analysis failed', [
+            'record_id' => $this->record->id,
+            'error' => $message,
+        ]);
+
+        $this->record->update([
+            'status' => RecordStatus::Failed,
+            'error_message' => $message,
+        ]);
+
+        $this->analysisJob->update([
+            'status' => 'failed',
+            'error_message' => $message,
+            'completed_at' => now(),
+        ]);
     }
 }

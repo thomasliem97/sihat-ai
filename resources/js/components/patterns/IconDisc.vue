@@ -15,13 +15,7 @@ withDefaults(
 
 <template>
     <div
-        :class="
-            cn(
-                'icon-disc',
-                size === 'sm' && 'icon-disc--sm',
-                $props.class,
-            )
-        "
+        :class="cn('icon-disc', size === 'sm' && 'icon-disc--sm', $props.class)"
     >
         <slot />
     </div>

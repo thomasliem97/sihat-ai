@@ -49,7 +49,10 @@ class MedicalDemoSeeder extends Seeder
 
         $cxr = public_path('images/chest-xray.png');
         if (is_file($cxr)) {
-            $disk->put('medical-records/demo-cxr.png', file_get_contents($cxr));
+            $contents = file_get_contents($cxr);
+            if (is_string($contents)) {
+                $disk->put('medical-records/demo-cxr.png', $contents);
+            }
         }
 
         // Minimal one-page PDF for the lab demo specimen.

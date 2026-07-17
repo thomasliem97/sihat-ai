@@ -20,6 +20,7 @@ export function parseFindingMeasurements(
     biomarkers: BiomarkerLike[] = [],
 ): FindingMeasurementRow[] | null {
     const valueText = normalizeLabGlyphs(String(value ?? '').trim());
+
     if (valueText === '') {
         return null;
     }
@@ -42,11 +43,13 @@ export function parseFindingMeasurements(
     }
 
     const refByName = new Map<string, string>();
+
     for (const part of String(reference ?? '')
         .split(';')
         .map((item) => item.trim())
         .filter(Boolean)) {
         const parsed = splitNamedMeasurement(normalizeLabGlyphs(part));
+
         if (parsed) {
             refByName.set(normalizeKey(parsed.name), parsed.value);
         }
@@ -81,6 +84,7 @@ export function resolveMeasurementStatus(
 ): string | null {
     for (const key of measurementKeys(name)) {
         const status = biomarkerByKey.get(key);
+
         if (status) {
             return status;
         }
@@ -88,6 +92,7 @@ export function resolveMeasurementStatus(
 
     const numericValue = parseLeadingNumber(valueText);
     const range = parseReferenceRange(referenceText);
+
     if (numericValue === null || range === null) {
         return null;
     }
@@ -118,11 +123,13 @@ function measurementKeys(name: string): string[] {
 
 function parseLeadingNumber(text: string): number | null {
     const match = text.match(/-?\d+(?:\.\d+)?/);
+
     if (!match) {
         return null;
     }
 
     const value = Number(match[0]);
+
     return Number.isFinite(value) ? value : null;
 }
 
@@ -136,12 +143,14 @@ function parseReferenceRange(
     const match = text.match(
         /(-?\d+(?:\.\d+)?)\s*[-–—to]+\s*(-?\d+(?:\.\d+)?)/i,
     );
+
     if (!match) {
         return null;
     }
 
     const low = Number(match[1]);
     const high = Number(match[2]);
+
     if (!Number.isFinite(low) || !Number.isFinite(high)) {
         return null;
     }
@@ -152,9 +161,8 @@ function parseReferenceRange(
 function splitNamedMeasurement(
     part: string,
 ): { name: string; value: string } | null {
-    const match = part.match(
-        /^([A-Za-z][A-Za-z0-9%/().\s-]{0,40}?)\s+(\d.*)$/,
-    );
+    const match = part.match(/^([A-Za-z][A-Za-z0-9%/().\s-]{0,40}?)\s+(\d.*)$/);
+
     if (!match) {
         return null;
     }

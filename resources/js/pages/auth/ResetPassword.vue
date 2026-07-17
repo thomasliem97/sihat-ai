@@ -3,9 +3,9 @@ import { Form, Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
+import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { update } from '@/routes/password';
 
@@ -36,7 +36,7 @@ const inputEmail = ref(props.email);
     >
         <div class="grid gap-6">
             <div class="grid gap-2">
-                <Label for="email">Email</Label>
+                <FieldLabel html-for="email" required>Email</FieldLabel>
                 <Input
                     id="email"
                     type="email"
@@ -45,32 +45,35 @@ const inputEmail = ref(props.email);
                     v-model="inputEmail"
                     class="mt-1 block w-full"
                     readonly
+                    placeholder="name@example.com"
                 />
                 <InputError :message="errors.email" class="mt-2" />
             </div>
 
             <div class="grid gap-2">
-                <Label for="password">Password</Label>
+                <FieldLabel html-for="password" required>Password</FieldLabel>
                 <PasswordInput
                     id="password"
                     name="password"
                     autocomplete="new-password"
                     class="mt-1 block w-full"
                     autofocus
-                    placeholder="Password"
+                    placeholder="Enter a new password"
                     :passwordrules="passwordRules"
                 />
                 <InputError :message="errors.password" />
             </div>
 
             <div class="grid gap-2">
-                <Label for="password_confirmation"> Confirm password </Label>
+                <FieldLabel html-for="password_confirmation" required>
+                    Confirm password
+                </FieldLabel>
                 <PasswordInput
                     id="password_confirmation"
                     name="password_confirmation"
                     autocomplete="new-password"
                     class="mt-1 block w-full"
-                    placeholder="Confirm password"
+                    placeholder="Re-enter your new password"
                     :passwordrules="passwordRules"
                 />
                 <InputError :message="errors.password_confirmation" />

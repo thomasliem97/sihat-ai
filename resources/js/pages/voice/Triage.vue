@@ -29,12 +29,7 @@ import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
 import SectionTag from '@/components/patterns/SectionTag.vue';
 import { Button } from '@/components/ui/button';
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -237,16 +232,13 @@ const phaseLabel = computed(() => {
 
 const isActivePending = computed(() => activePhase.value !== 'idle');
 
-watch(
-    activePhase,
-    (phase) => {
-        if (phase === 'transcribing' || phase === 'thinking') {
-            beginColdStartWatch();
-        } else {
-            endColdStartWatch();
-        }
-    },
-);
+watch(activePhase, (phase) => {
+    if (phase === 'transcribing' || phase === 'thinking') {
+        beginColdStartWatch();
+    } else {
+        endColdStartWatch();
+    }
+});
 
 const canCompose = computed(
     () =>
@@ -266,6 +258,7 @@ function formatRelativeTime(iso: string | null | undefined): string {
     }
 
     const then = new Date(iso).getTime();
+
     if (Number.isNaN(then)) {
         return '-';
     }
@@ -277,12 +270,15 @@ function formatRelativeTime(iso: string | null | undefined): string {
     if (abs < 60) {
         return rtf.format(seconds, 'second');
     }
+
     if (abs < 3600) {
         return rtf.format(Math.round(seconds / 60), 'minute');
     }
+
     if (abs < 86400) {
         return rtf.format(Math.round(seconds / 3600), 'hour');
     }
+
     if (abs < 604800) {
         return rtf.format(Math.round(seconds / 86400), 'day');
     }
@@ -310,6 +306,7 @@ function formatTimedDayLabel(
     }
 
     const date = new Date(iso);
+
     if (Number.isNaN(date.getTime())) {
         return '-';
     }
@@ -436,9 +433,11 @@ async function scrollThreadToEnd() {
 function stopMessageAudio() {
     audioPlaybackEpoch += 1;
     audioEl?.pause();
+
     if (audioEl) {
         audioEl.currentTime = 0;
     }
+
     playingMessageId.value = null;
 }
 
@@ -467,6 +466,7 @@ async function playMessageAudioUrl(messageId: number, url: string) {
 
     try {
         await audioEl.play();
+
         if (epoch !== audioPlaybackEpoch) {
             audioEl.pause();
             audioEl.currentTime = 0;
@@ -480,15 +480,18 @@ async function playMessageAudioUrl(messageId: number, url: string) {
 function storeMessageAudio(messageId: number, base64: string, play: boolean) {
     const binary = atob(base64);
     const bytes = new Uint8Array(binary.length);
+
     for (let i = 0; i < binary.length; i++) {
         bytes[i] = binary.charCodeAt(i);
     }
+
     const blob = new Blob([bytes], { type: 'audio/mpeg' });
     const url = URL.createObjectURL(blob);
 
     if (audioByMessageId.value[messageId]) {
         URL.revokeObjectURL(audioByMessageId.value[messageId]);
     }
+
     audioByMessageId.value = {
         ...audioByMessageId.value,
         [messageId]: url,
@@ -535,6 +538,7 @@ async function fetchAndPlayMessageAudio(
     const showMenu = options?.showMenu ?? false;
     const epoch = audioPlaybackEpoch;
     loadingSpeechMessageId.value = messageId;
+
     if (showMenu) {
         openMessageActionsId.value = messageId;
     }
@@ -560,9 +564,11 @@ async function fetchAndPlayMessageAudio(
 
         storeMessageAudio(messageId, data.audio_base64, false);
         const url = audioByMessageId.value[messageId];
+
         if (url && !recording.value && epoch === audioPlaybackEpoch) {
             await playMessageAudioUrl(messageId, url);
         }
+
         if (showMenu) {
             openMessageActionsId.value = null;
         }
@@ -592,11 +598,13 @@ function startNewTriage() {
     stashCurrentView();
 
     micPointerId = null;
+
     if (recording.value) {
         mediaRecorder?.stop();
         recording.value = false;
         stopMediaTracks();
     }
+
     stopMessageAudio();
     viewingSessionId.value = null;
     active.value = null;
@@ -621,6 +629,7 @@ async function ensureActiveSession(
     }
 
     const body: Record<string, unknown> = {};
+
     if (
         props.isPhysician &&
         subjectUserId.value !== '__none__' &&
@@ -689,6 +698,7 @@ async function openSession(id: number) {
         recording.value = false;
         stopMediaTracks();
     }
+
     stopMessageAudio();
 
     viewingSessionId.value = id;
@@ -712,9 +722,7 @@ async function openSession(id: number) {
             : {
                   ...(listed ?? {
                       id,
-                      role_context: props.isPhysician
-                          ? 'physician'
-                          : 'patient',
+                      role_context: props.isPhysician ? 'physician' : 'patient',
                       locale: '',
                       status: 'active',
                       urgency: null,
@@ -736,6 +744,7 @@ async function openSession(id: number) {
             },
         });
         const data = await response.json().catch(() => ({}));
+
         if (!response.ok) {
             toast.error(data.message || 'Could not open session');
 
@@ -757,16 +766,20 @@ async function openSession(id: number) {
                 messages: cachedDuringFetch.messages,
             };
             putSessionCache(merged);
+
             if (viewingSessionId.value === id) {
                 active.value = merged;
             }
+
             void resumePendingVoiceTurn(merged);
         } else {
             putSessionCache(serverSession);
+
             if (viewingSessionId.value === id) {
                 active.value = serverSession;
                 await scrollThreadToEnd();
             }
+
             void resumePendingVoiceTurn(serverSession);
         }
     } finally {
@@ -787,12 +800,15 @@ function stopWaveform() {
         cancelAnimationFrame(waveFrame);
         waveFrame = 0;
     }
+
     waveAnalyser = null;
     waveSamples = null;
+
     if (waveAudioContext) {
         void waveAudioContext.close().catch(() => {});
         waveAudioContext = null;
     }
+
     waveStream?.getTracks().forEach((track) => track.stop());
     waveStream = null;
     waveLevels.value = Array.from({ length: WAVE_BAR_COUNT }, () => 0.12);
@@ -826,9 +842,11 @@ function startWaveform(stream: MediaStream) {
             let peak = 0;
             const start = i * bucket;
             const end = Math.min(start + bucket, waveSamples.length);
+
             for (let j = start; j < end; j++) {
                 peak = Math.max(peak, Math.abs((waveSamples[j] ?? 128) - 128));
             }
+
             recordingPeak = Math.max(recordingPeak, peak);
             next.push(Math.max(0.1, Math.min(1, (peak / 128) * 3.4)));
         }
@@ -840,6 +858,7 @@ function startWaveform(stream: MediaStream) {
     if (context.state === 'suspended') {
         void context.resume();
     }
+
     waveFrame = requestAnimationFrame(tick);
 }
 
@@ -890,6 +909,7 @@ function stopRecordingBlob(): Promise<Blob | null> {
             recording.value = false;
             stopMediaTracks();
             resolve(null);
+
             return;
         }
 
@@ -898,7 +918,9 @@ function stopRecordingBlob(): Promise<Blob | null> {
 
         recorder.onstop = () => {
             const blob =
-                chunks.length > 0 ? new Blob(chunks, { type: recordedType }) : null;
+                chunks.length > 0
+                    ? new Blob(chunks, { type: recordedType })
+                    : null;
             recording.value = false;
             stopMediaTracks();
             resolve(blob);
@@ -942,12 +964,14 @@ async function stopRecordingAndSend() {
     cancelArmed.value = false;
 
     try {
-        const heldMs = recordingStartedAt > 0 ? Date.now() - recordingStartedAt : 0;
+        const heldMs =
+            recordingStartedAt > 0 ? Date.now() - recordingStartedAt : 0;
         const peak = recordingPeak;
         recordingStartedAt = 0;
         recordingPeak = 0;
 
         const blob = await stopRecordingBlob();
+
         if (
             !blob ||
             blob.size < MIN_AUDIO_BYTES ||
@@ -962,6 +986,7 @@ async function stopRecordingAndSend() {
 
             return;
         }
+
         await sendMessage({ audio: blob });
     } finally {
         stoppingRecording = false;
@@ -979,9 +1004,11 @@ async function onMicPointerDown(event: PointerEvent) {
 
     event.preventDefault();
     const target = event.currentTarget;
+
     if (target instanceof HTMLElement) {
         target.setPointerCapture(event.pointerId);
     }
+
     micPointerId = event.pointerId;
     micDownClientX = event.clientX;
     cancelArmed.value = false;
@@ -1005,7 +1032,11 @@ async function onMicPointerUp(event: PointerEvent) {
     micPointerId = null;
     cancelArmed.value = false;
     const target = event.currentTarget;
-    if (target instanceof HTMLElement && target.hasPointerCapture(event.pointerId)) {
+
+    if (
+        target instanceof HTMLElement &&
+        target.hasPointerCapture(event.pointerId)
+    ) {
         target.releasePointerCapture(event.pointerId);
     }
 
@@ -1063,8 +1094,10 @@ function rollbackOptimisticMessage(
         messages: (current.messages ?? []).filter((m) => m.id !== pendingId),
     };
     putSessionCache(rolledBack);
+
     if (viewingSessionId.value === sessionId) {
         active.value = rolledBack;
+
         if (restoreText) {
             draft.value = restoreText;
         }
@@ -1094,13 +1127,18 @@ async function pollVoiceTurn(
                 },
             });
             const data = await response.json().catch(() => ({}));
+
             if (!response.ok) {
-                throw new Error(data.message || 'Could not load triage session');
+                throw new Error(
+                    data.message || 'Could not load triage session',
+                );
             }
+
             session = data.session as TriageSession;
         }
 
         const pending = session.pending_turn;
+
         if (!pending || pending.status !== 'processing') {
             if (pending?.status === 'failed') {
                 throw new Error(
@@ -1113,9 +1151,11 @@ async function pollVoiceTurn(
         }
 
         putSessionCache(session);
+
         if (viewingSessionId.value === sessionId) {
             setPhase(sessionId, 'transcribing');
         }
+
         await sleep(1000);
     }
 
@@ -1138,6 +1178,7 @@ async function awaitPendingVoiceTurn(
             },
         });
         const data = await response.json().catch(() => ({}));
+
         if (!response.ok) {
             throw new Error(data.message || 'Could not load triage session');
         }
@@ -1157,6 +1198,7 @@ async function awaitPendingVoiceTurn(
 
 async function resumePendingVoiceTurn(session: TriageSession): Promise<void> {
     const sessionId = session.id;
+
     if (
         !sessionId ||
         sessionId <= 0 ||
@@ -1167,9 +1209,11 @@ async function resumePendingVoiceTurn(session: TriageSession): Promise<void> {
 
     try {
         const result = await awaitPendingVoiceTurn(sessionId, session);
+
         if (viewingSessionId.value === sessionId) {
             setPhase(sessionId, 'speaking');
         }
+
         await applyCompletedTurn(result, sessionId);
     } catch (error) {
         if (viewingSessionId.value === sessionId) {
@@ -1225,6 +1269,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
 
     const text = (options?.text ?? draft.value).trim();
     const audio = options?.audio ?? null;
+
     if (!text && !audio) {
         return;
     }
@@ -1266,11 +1311,9 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         } else {
             active.value = {
                 ...active.value,
-                messages: [
-                    ...(active.value.messages ?? []),
-                    optimisticMessage,
-                ],
+                messages: [...(active.value.messages ?? []), optimisticMessage],
             };
+
             if ((active.value.id ?? 0) > 0) {
                 putSessionCache(active.value);
             }
@@ -1293,6 +1336,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
 
         if (!ensured?.id) {
             setPhase(provisionalKey, 'idle');
+
             if (optimisticAttached) {
                 if (viewingSessionId.value === null) {
                     startNewTriage();
@@ -1306,10 +1350,12 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                             (m) => m.id !== pendingId,
                         ),
                     };
+
                     if ((active.value.id ?? 0) > 0) {
                         putSessionCache(active.value);
                     }
                 }
+
                 if (text && viewingSessionId.value === provisionalKey) {
                     draft.value = text;
                 }
@@ -1319,6 +1365,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         }
 
         requestSessionId = ensured.id;
+
         if (provisionalKey === 0) {
             setPhase(
                 requestSessionId,
@@ -1334,9 +1381,11 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         putSessionCache(ensured);
 
         const form = new FormData();
+
         if (text) {
             form.append('text', text);
         }
+
         if (audio) {
             form.append('audio', audio, 'triage.webm');
         }
@@ -1390,10 +1439,14 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
             setPhase(requestSessionId, 'thinking');
         }
 
-        await applyCompletedTurn(data.session as TriageSession, requestSessionId, {
-            audioBase64: data.audio_base64,
-            assistantId: data.assistant_message?.id as number | undefined,
-        });
+        await applyCompletedTurn(
+            data.session as TriageSession,
+            requestSessionId,
+            {
+                audioBase64: data.audio_base64,
+                assistantId: data.assistant_message?.id as number | undefined,
+            },
+        );
     } finally {
         if (requestSessionId > 0) {
             setPhase(requestSessionId, 'idle');
@@ -1414,6 +1467,7 @@ async function archiveSession() {
     if (!active.value) {
         return;
     }
+
     const response = await fetch(archiveSessionRoute.url(active.value.id), {
         method: 'POST',
         headers: {
@@ -1422,11 +1476,17 @@ async function archiveSession() {
         },
     });
     const data = await response.json();
+
     if (response.ok) {
         const archivedId = data.session.id as number;
-        ownSessions.value = ownSessions.value.filter((s) => s.id !== archivedId);
-        const { [archivedId]: _removed, ...rest } = sessionCache.value;
-        sessionCache.value = rest;
+        ownSessions.value = ownSessions.value.filter(
+            (s) => s.id !== archivedId,
+        );
+        sessionCache.value = Object.fromEntries(
+            Object.entries(sessionCache.value).filter(
+                ([id]) => Number(id) !== archivedId,
+            ),
+        );
         setPhase(archivedId, 'idle');
         startNewTriage();
         toast.success('Triage archived');
@@ -1437,6 +1497,7 @@ async function shareSession() {
     if (!active.value) {
         return;
     }
+
     const response = await fetch(shareSessionRoute.url(active.value.id), {
         method: 'POST',
         headers: {
@@ -1445,11 +1506,14 @@ async function shareSession() {
         },
     });
     const data = await response.json();
+
     if (response.ok) {
         putSessionCache(data.session);
+
         if (viewingSessionId.value === data.session.id) {
             active.value = data.session;
         }
+
         ownSessions.value = ownSessions.value.map((s) =>
             s.id === data.session.id
                 ? { ...data.session, messages: undefined }
@@ -1463,9 +1527,11 @@ onUnmounted(() => {
     endColdStartWatch();
     window.removeEventListener('keydown', onRecordingKeydown);
     micPointerId = null;
+
     if (recording.value) {
         mediaRecorder?.stop();
     }
+
     stopMediaTracks();
     audioEl?.pause();
     revokeAudioMap();
@@ -1474,10 +1540,9 @@ onUnmounted(() => {
 if (props.activeSessionId) {
     void openSession(props.activeSessionId);
 } else {
-    const pendingSession = [
-        ...props.sessions,
-        ...props.sharedSessions,
-    ].find((session) => session.pending_turn?.status === 'processing');
+    const pendingSession = [...props.sessions, ...props.sharedSessions].find(
+        (session) => session.pending_turn?.status === 'processing',
+    );
 
     if (pendingSession) {
         void openSession(pendingSession.id);
@@ -1520,9 +1585,7 @@ defineOptions({
                         <FieldLabel>Patient</FieldLabel>
                         <Select v-model="subjectUserId">
                             <SelectTrigger class="w-full">
-                                <SelectValue
-                                    placeholder="Select patient"
-                                />
+                                <SelectValue placeholder="Select patient" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem value="__none__">
@@ -1606,7 +1669,9 @@ defineOptions({
                                         "
                                         @click="openSession(s.id)"
                                     >
-                                        <span class="block truncate font-medium">
+                                        <span
+                                            class="block truncate font-medium"
+                                        >
                                             {{
                                                 s.chief_complaint ||
                                                 s.owner_name ||
@@ -1632,450 +1697,463 @@ defineOptions({
             </Card>
 
             <div class="min-w-0">
-            <Card
-                class="paper-panel--focal flex h-[min(85vh,56rem)] max-h-[min(85vh,56rem)] flex-col gap-0 overflow-hidden border-0 py-0 shadow-offset"
-            >
-                <CardHeader
-                    class="flex flex-row items-start justify-between gap-3 space-y-0 border-b border-border/70 py-4"
+                <Card
+                    class="paper-panel--focal flex h-[min(85vh,56rem)] max-h-[min(85vh,56rem)] flex-col gap-0 overflow-hidden border-0 py-0 shadow-offset"
                 >
-                    <div class="min-w-0 space-y-2">
-                        <SectionTag>Conversation</SectionTag>
-                        <CardTitle class="truncate text-lg">
-                            {{
-                                active
-                                    ? active.chief_complaint ||
-                                      `Session ${active.id}`
-                                    : 'New session'
-                            }}
-                        </CardTitle>
-                        <div
-                            v-if="active"
-                            class="flex flex-wrap items-center gap-2"
-                        >
-                            <AnnotationPill
-                                :variant="
-                                    active.status === 'archived'
-                                        ? 'coral'
-                                        : 'teal'
-                                "
-                            >
-                                {{ active.status }}
-                            </AnnotationPill>
-                            <AnnotationPill
-                                v-if="active.locale"
-                                variant="teal"
-                            >
-                                {{ active.locale }}
-                            </AnnotationPill>
-                        </div>
-                    </div>
-
-                    <div class="flex shrink-0 items-center gap-1">
-                        <Button
-                            type="button"
-                            variant="ghost"
-                            size="icon"
-                            :aria-pressed="autoplay"
-                            :aria-label="
-                                autoplay
-                                    ? 'Autoplay voice on'
-                                    : 'Autoplay voice off'
-                            "
-                            @click="toggleAutoplay"
-                        >
-                            <Volume2 v-if="autoplay" class="size-4" />
-                            <VolumeX v-else class="size-4" />
-                        </Button>
-
-                        <DropdownMenu v-if="active">
-                            <DropdownMenuTrigger as-child>
-                                <Button
-                                    type="button"
-                                    variant="ghost"
-                                    size="icon"
-                                    aria-label="Session actions"
-                                >
-                                    <Ellipsis class="size-4" />
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                <DropdownMenuItem
-                                    :disabled="!active.summary"
-                                    @click="summaryOpen = true"
-                                >
-                                    <ScrollText />
-                                    View summary
-                                </DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem
-                                    v-if="
-                                        !isPhysician &&
-                                        active.status === 'active'
-                                    "
-                                    @click="shareSession"
-                                >
-                                    <Share2 />
-                                    Share with doctor
-                                </DropdownMenuItem>
-                                <DropdownMenuItem
-                                    v-if="active.status === 'active'"
-                                    variant="destructive"
-                                    @click="archiveSession"
-                                >
-                                    <Archive />
-                                    Archive
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </div>
-                </CardHeader>
-
-                <div
-                    v-if="showUrgencyBanner"
-                    class="sticky top-0 z-20 border-b px-4 py-2.5 text-sm"
-                    :class="
-                        active?.urgency === 'emergency'
-                            ? 'border-clinical-critical/30 bg-clinical-critical/10 text-clinical-critical'
-                            : 'border-clinical-borderline/40 bg-clinical-borderline/15 text-foreground'
-                    "
-                >
-                    <p class="font-medium">
-                        {{
-                            active?.urgency === 'emergency'
-                                ? 'Possible emergency'
-                                : 'Urgent symptoms'
-                        }}
-                    </p>
-                    <p class="mt-0.5 text-xs leading-relaxed opacity-90">
-                        {{
-                            active?.urgency === 'emergency'
-                                ? 'If this reflects real symptoms, get emergency care now. This tool is not emergency dispatch.'
-                                : 'Consider same-day clinical care if symptoms worsen or you are unsure.'
-                        }}
-                    </p>
-                </div>
-
-                <CardContent
-                    class="flex min-h-0 flex-1 flex-col gap-0 overflow-hidden p-0"
-                >
-                    <div
-                        class="min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-4 md:px-6"
+                    <CardHeader
+                        class="flex flex-row items-start justify-between gap-3 space-y-0 border-b border-border/70 py-4"
                     >
-                        <p
-                            v-if="
-                                swapping &&
-                                active &&
-                                !(active.messages || []).length
-                            "
-                            class="text-center text-sm text-muted-foreground"
-                        >
-                            Loading session…
-                        </p>
-
-                        <p
-                            v-else-if="threadItems.length === 0 && !phaseLabel"
-                            class="text-center text-sm text-muted-foreground"
-                        >
-                            Describe symptoms by text or voice to begin.
-                        </p>
-
-                        <template
-                            v-for="item in threadItems"
-                            :key="item.message.id"
-                        >
-                            <p
-                                v-if="item.clusterLabel"
-                                class="py-3 text-center text-xs text-muted-foreground"
-                            >
-                                {{ item.clusterLabel }}
-                            </p>
-
+                        <div class="min-w-0 space-y-2">
+                            <SectionTag>Conversation</SectionTag>
+                            <CardTitle class="truncate text-lg">
+                                {{
+                                    active
+                                        ? active.chief_complaint ||
+                                          `Session ${active.id}`
+                                        : 'New session'
+                                }}
+                            </CardTitle>
                             <div
-                                class="w-fit max-w-[min(100%,36rem)] space-y-2"
-                                :class="
-                                    item.message.role === 'user'
-                                        ? 'ml-auto'
-                                        : 'max-w-prose'
-                                "
+                                v-if="active"
+                                class="flex flex-wrap items-center gap-2"
                             >
-                                <p
-                                    class="font-mono text-xs tracking-wide text-muted-foreground uppercase"
-                                    :class="
-                                        item.message.role === 'user'
-                                            ? 'text-right'
-                                            : ''
+                                <AnnotationPill
+                                    :variant="
+                                        active.status === 'archived'
+                                            ? 'coral'
+                                            : 'teal'
                                     "
                                 >
-                                    {{
-                                        item.message.role === 'user'
-                                            ? 'You'
-                                            : 'SihatAI'
-                                    }}
-                                    <template
-                                        v-if="
-                                            item.message.input_modality ===
-                                            'voice'
-                                        "
-                                    >
-                                        · voice
-                                    </template>
-                                </p>
-                                <div
-                                    class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap"
-                                    :class="
-                                        item.message.role === 'user'
-                                            ? 'ml-auto bg-primary text-primary-foreground'
-                                            : 'border border-border bg-card text-card-foreground'
-                                    "
+                                    {{ active.status }}
+                                </AnnotationPill>
+                                <AnnotationPill
+                                    v-if="active.locale"
+                                    variant="teal"
                                 >
-                                    {{ item.message.content }}
-                                </div>
-                                <div
-                                    v-if="item.message.role === 'assistant'"
-                                    class="flex items-center gap-0.5 pt-0.5"
-                                >
+                                    {{ active.locale }}
+                                </AnnotationPill>
+                            </div>
+                        </div>
+
+                        <div class="flex shrink-0 items-center gap-1">
+                            <Button
+                                type="button"
+                                variant="ghost"
+                                size="icon"
+                                :aria-pressed="autoplay"
+                                :aria-label="
+                                    autoplay
+                                        ? 'Autoplay voice on'
+                                        : 'Autoplay voice off'
+                                "
+                                @click="toggleAutoplay"
+                            >
+                                <Volume2 v-if="autoplay" class="size-4" />
+                                <VolumeX v-else class="size-4" />
+                            </Button>
+
+                            <DropdownMenu v-if="active">
+                                <DropdownMenuTrigger as-child>
                                     <Button
                                         type="button"
                                         variant="ghost"
                                         size="icon"
-                                        class="size-7 text-muted-foreground hover:text-foreground"
-                                        aria-label="Copy reply"
-                                        @click="
-                                            copyMessage(item.message.content)
-                                        "
+                                        aria-label="Session actions"
                                     >
-                                        <Copy class="size-3.5" />
+                                        <Ellipsis class="size-4" />
                                     </Button>
-                                    <DropdownMenu
-                                        :open="
-                                            openMessageActionsId ===
-                                            item.message.id
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuItem
+                                        :disabled="!active.summary"
+                                        @click="summaryOpen = true"
+                                    >
+                                        <ScrollText />
+                                        View summary
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem
+                                        v-if="
+                                            !isPhysician &&
+                                            active.status === 'active'
                                         "
-                                        @update:open="
-                                            onMessageActionsOpenChange(
-                                                item.message.id,
-                                                $event,
-                                            )
+                                        @click="shareSession"
+                                    >
+                                        <Share2 />
+                                        Share with doctor
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem
+                                        v-if="active.status === 'active'"
+                                        variant="destructive"
+                                        @click="archiveSession"
+                                    >
+                                        <Archive />
+                                        Archive
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
+                    </CardHeader>
+
+                    <div
+                        v-if="showUrgencyBanner"
+                        class="sticky top-0 z-20 border-b px-4 py-2.5 text-sm"
+                        :class="
+                            active?.urgency === 'emergency'
+                                ? 'border-clinical-critical/30 bg-clinical-critical/10 text-clinical-critical'
+                                : 'border-clinical-borderline/40 bg-clinical-borderline/15 text-foreground'
+                        "
+                    >
+                        <p class="font-medium">
+                            {{
+                                active?.urgency === 'emergency'
+                                    ? 'Possible emergency'
+                                    : 'Urgent symptoms'
+                            }}
+                        </p>
+                        <p class="mt-0.5 text-xs leading-relaxed opacity-90">
+                            {{
+                                active?.urgency === 'emergency'
+                                    ? 'If this reflects real symptoms, get emergency care now. This tool is not emergency dispatch.'
+                                    : 'Consider same-day clinical care if symptoms worsen or you are unsure.'
+                            }}
+                        </p>
+                    </div>
+
+                    <CardContent
+                        class="flex min-h-0 flex-1 flex-col gap-0 overflow-hidden p-0"
+                    >
+                        <div
+                            class="min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-4 md:px-6"
+                        >
+                            <p
+                                v-if="
+                                    swapping &&
+                                    active &&
+                                    !(active.messages || []).length
+                                "
+                                class="text-center text-sm text-muted-foreground"
+                            >
+                                Loading session…
+                            </p>
+
+                            <p
+                                v-else-if="
+                                    threadItems.length === 0 && !phaseLabel
+                                "
+                                class="text-center text-sm text-muted-foreground"
+                            >
+                                Describe symptoms by text or voice to begin.
+                            </p>
+
+                            <template
+                                v-for="item in threadItems"
+                                :key="item.message.id"
+                            >
+                                <p
+                                    v-if="item.clusterLabel"
+                                    class="py-3 text-center text-xs text-muted-foreground"
+                                >
+                                    {{ item.clusterLabel }}
+                                </p>
+
+                                <div
+                                    class="w-fit max-w-[min(100%,36rem)] space-y-2"
+                                    :class="
+                                        item.message.role === 'user'
+                                            ? 'ml-auto'
+                                            : 'max-w-prose'
+                                    "
+                                >
+                                    <p
+                                        class="font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                                        :class="
+                                            item.message.role === 'user'
+                                                ? 'text-right'
+                                                : ''
                                         "
                                     >
-                                        <DropdownMenuTrigger as-child>
-                                            <Button
-                                                type="button"
-                                                variant="ghost"
-                                                size="icon"
-                                                class="size-7 text-muted-foreground hover:text-foreground data-[state=open]:bg-muted data-[state=open]:text-foreground"
-                                                aria-label="More actions"
-                                            >
-                                                <Ellipsis class="size-3.5" />
-                                            </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent
-                                            align="start"
-                                            side="top"
-                                            :side-offset="6"
-                                            class="min-w-52 rounded-xl p-1.5 shadow-lg"
+                                        {{
+                                            item.message.role === 'user'
+                                                ? 'You'
+                                                : 'SihatAI'
+                                        }}
+                                        <template
+                                            v-if="
+                                                item.message.input_modality ===
+                                                'voice'
+                                            "
                                         >
-                                            <DropdownMenuLabel
-                                                class="px-2.5 py-1.5 text-xs font-normal text-muted-foreground"
+                                            · voice
+                                        </template>
+                                    </p>
+                                    <div
+                                        class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap"
+                                        :class="
+                                            item.message.role === 'user'
+                                                ? 'ml-auto bg-primary text-primary-foreground'
+                                                : 'border border-border bg-card text-card-foreground'
+                                        "
+                                    >
+                                        {{ item.message.content }}
+                                    </div>
+                                    <div
+                                        v-if="item.message.role === 'assistant'"
+                                        class="flex items-center gap-0.5 pt-0.5"
+                                    >
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="icon"
+                                            class="size-7 text-muted-foreground hover:text-foreground"
+                                            aria-label="Copy reply"
+                                            @click="
+                                                copyMessage(
+                                                    item.message.content,
+                                                )
+                                            "
+                                        >
+                                            <Copy class="size-3.5" />
+                                        </Button>
+                                        <DropdownMenu
+                                            :open="
+                                                openMessageActionsId ===
+                                                item.message.id
+                                            "
+                                            @update:open="
+                                                onMessageActionsOpenChange(
+                                                    item.message.id,
+                                                    $event,
+                                                )
+                                            "
+                                        >
+                                            <DropdownMenuTrigger as-child>
+                                                <Button
+                                                    type="button"
+                                                    variant="ghost"
+                                                    size="icon"
+                                                    class="size-7 text-muted-foreground hover:text-foreground data-[state=open]:bg-muted data-[state=open]:text-foreground"
+                                                    aria-label="More actions"
+                                                >
+                                                    <Ellipsis
+                                                        class="size-3.5"
+                                                    />
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent
+                                                align="start"
+                                                side="top"
+                                                :side-offset="6"
+                                                class="min-w-52 rounded-xl p-1.5 shadow-lg"
                                             >
-                                                {{
-                                                    formatMessageTime(
-                                                        item.message.created_at,
-                                                    )
-                                                }}
-                                            </DropdownMenuLabel>
-                                            <DropdownMenuItem
-                                                :disabled="
-                                                    loadingSpeechMessageId ===
-                                                    item.message.id
-                                                "
-                                                @select="
-                                                    onReplayVoiceSelect(
-                                                        $event,
-                                                        item.message.id,
-                                                    )
-                                                "
-                                            >
-                                                <Spinner
-                                                    v-if="
+                                                <DropdownMenuLabel
+                                                    class="px-2.5 py-1.5 text-xs font-normal text-muted-foreground"
+                                                >
+                                                    {{
+                                                        formatMessageTime(
+                                                            item.message
+                                                                .created_at,
+                                                        )
+                                                    }}
+                                                </DropdownMenuLabel>
+                                                <DropdownMenuItem
+                                                    :disabled="
                                                         loadingSpeechMessageId ===
                                                         item.message.id
                                                     "
-                                                    class="size-4"
-                                                />
-                                                <CircleStop
-                                                    v-else-if="
-                                                        playingMessageId ===
-                                                        item.message.id
+                                                    @select="
+                                                        onReplayVoiceSelect(
+                                                            $event,
+                                                            item.message.id,
+                                                        )
                                                     "
-                                                />
-                                                <Volume2 v-else />
-                                                {{
-                                                    loadingSpeechMessageId ===
-                                                    item.message.id
-                                                        ? 'Loading voice…'
-                                                        : playingMessageId ===
+                                                >
+                                                    <Spinner
+                                                        v-if="
+                                                            loadingSpeechMessageId ===
                                                             item.message.id
-                                                          ? 'Stop voice'
-                                                          : 'Replay voice'
-                                                }}
-                                            </DropdownMenuItem>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
+                                                        "
+                                                        class="size-4"
+                                                    />
+                                                    <CircleStop
+                                                        v-else-if="
+                                                            playingMessageId ===
+                                                            item.message.id
+                                                        "
+                                                    />
+                                                    <Volume2 v-else />
+                                                    {{
+                                                        loadingSpeechMessageId ===
+                                                        item.message.id
+                                                            ? 'Loading voice…'
+                                                            : playingMessageId ===
+                                                                item.message.id
+                                                              ? 'Stop voice'
+                                                              : 'Replay voice'
+                                                    }}
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <div
+                                v-if="phaseLabel"
+                                class="w-full max-w-prose space-y-2"
+                            >
+                                <p
+                                    class="font-mono text-xs tracking-wide text-muted-foreground uppercase"
+                                >
+                                    SihatAI
+                                </p>
+                                <div
+                                    class="flex items-center gap-2 rounded-2xl border border-dashed border-border bg-muted/30 px-3.5 py-2.5 text-sm text-muted-foreground"
+                                >
+                                    <Spinner class="size-4" />
+                                    <span
+                                        class="font-mono text-xs tracking-wide uppercase"
+                                    >
+                                        {{ phaseLabel }}
+                                    </span>
                                 </div>
                             </div>
-                        </template>
 
-                        <div
-                            v-if="phaseLabel"
-                            class="w-full max-w-prose space-y-2"
-                        >
-                            <p
-                                class="font-mono text-xs tracking-wide text-muted-foreground uppercase"
-                            >
-                                SihatAI
-                            </p>
-                            <div
-                                class="flex items-center gap-2 rounded-2xl border border-dashed border-border bg-muted/30 px-3.5 py-2.5 text-sm text-muted-foreground"
-                            >
-                                <Spinner class="size-4" />
-                                <span
-                                    class="font-mono text-xs tracking-wide uppercase"
-                                >
-                                    {{ phaseLabel }}
-                                </span>
-                            </div>
+                            <div ref="threadEnd" class="h-px" />
                         </div>
 
-                        <div ref="threadEnd" class="h-px" />
-                    </div>
-
-                    <div
-                        class="sticky bottom-0 z-10 border-t border-border/80 bg-card/95 px-4 py-3 backdrop-blur-sm md:px-6"
-                    >
                         <div
-                            v-if="!active || active.status === 'active'"
-                            class="flex items-end gap-2"
+                            class="sticky bottom-0 z-10 border-t border-border/80 bg-card/95 px-4 py-3 backdrop-blur-sm md:px-6"
                         >
                             <div
-                                v-if="recording"
-                                class="triage-listen-shell"
-                                :class="
-                                    cancelArmed
-                                        ? 'triage-listen-shell--cancel'
-                                        : ''
-                                "
-                                aria-live="polite"
+                                v-if="!active || active.status === 'active'"
+                                class="flex items-end gap-2"
                             >
-                                <span class="triage-listen-rec">Listening</span>
                                 <div
-                                    class="triage-wave triage-wave--live"
-                                    aria-hidden="true"
-                                >
-                                    <span
-                                        v-for="(level, index) in waveLevels"
-                                        :key="index"
-                                        :style="{
-                                            transform: `scaleY(${level})`,
-                                        }"
-                                    />
-                                </div>
-                                <span
-                                    class="triage-listen-cue"
+                                    v-if="recording"
+                                    class="triage-listen-shell"
                                     :class="
                                         cancelArmed
-                                            ? 'triage-listen-cue--armed'
+                                            ? 'triage-listen-shell--cancel'
                                             : ''
                                     "
+                                    aria-live="polite"
                                 >
-                                    <ChevronLeft
-                                        class="size-3.5 shrink-0"
+                                    <span class="triage-listen-rec"
+                                        >Listening</span
+                                    >
+                                    <div
+                                        class="triage-wave triage-wave--live"
+                                        aria-hidden="true"
+                                    >
+                                        <span
+                                            v-for="(level, index) in waveLevels"
+                                            :key="index"
+                                            :style="{
+                                                transform: `scaleY(${level})`,
+                                            }"
+                                        />
+                                    </div>
+                                    <span
+                                        class="triage-listen-cue"
+                                        :class="
+                                            cancelArmed
+                                                ? 'triage-listen-cue--armed'
+                                                : ''
+                                        "
+                                    >
+                                        <ChevronLeft
+                                            class="size-3.5 shrink-0"
+                                            aria-hidden="true"
+                                        />
+                                        <span class="triage-listen-cue-label">{{
+                                            cancelArmed ? 'Release' : 'Cancel'
+                                        }}</span>
+                                    </span>
+                                </div>
+                                <Textarea
+                                    v-else
+                                    v-model="draft"
+                                    :rows="1"
+                                    class="max-h-36 min-h-11 flex-1 resize-none py-2.5 leading-6 md:text-sm"
+                                    placeholder="Describe symptoms, or use the mic"
+                                    :disabled="isActivePending"
+                                    @keydown="onComposerKeydown"
+                                />
+                                <div class="triage-mic-wrap">
+                                    <span
+                                        v-if="recording"
+                                        class="triage-mic-ring"
                                         aria-hidden="true"
                                     />
-                                    <span class="triage-listen-cue-label">{{
-                                        cancelArmed ? 'Release' : 'Cancel'
-                                    }}</span>
-                                </span>
-                            </div>
-                            <Textarea
-                                v-else
-                                v-model="draft"
-                                rows="1"
-                                class="max-h-36 min-h-11 flex-1 resize-none py-2.5 leading-6 md:text-sm"
-                                placeholder="Describe symptoms, or use the mic"
-                                :disabled="isActivePending"
-                                @keydown="onComposerKeydown"
-                            />
-                            <div class="triage-mic-wrap">
-                                <span
-                                    v-if="recording"
-                                    class="triage-mic-ring"
-                                    aria-hidden="true"
-                                />
-                                <span
-                                    v-if="recording"
-                                    class="triage-mic-ring-delay"
-                                    aria-hidden="true"
-                                />
+                                    <span
+                                        v-if="recording"
+                                        class="triage-mic-ring-delay"
+                                        aria-hidden="true"
+                                    />
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        size="icon"
+                                        class="size-11 shrink-0 touch-none select-none"
+                                        :class="
+                                            recording
+                                                ? cancelArmed
+                                                    ? 'border-coral bg-coral/10 text-coral'
+                                                    : 'border-primary bg-primary/10 text-primary'
+                                                : ''
+                                        "
+                                        :disabled="
+                                            isActivePending && !recording
+                                        "
+                                        :aria-pressed="recording"
+                                        :aria-label="
+                                            recording
+                                                ? cancelArmed
+                                                    ? 'Release to cancel'
+                                                    : 'Release to send, or slide left to cancel'
+                                                : 'Hold to talk'
+                                        "
+                                        @contextmenu.prevent
+                                        @pointerdown="onMicPointerDown"
+                                        @pointermove="onMicPointerMove"
+                                        @pointerup="onMicPointerUp"
+                                        @pointercancel="onMicPointerUp"
+                                        @lostpointercapture="onMicPointerUp"
+                                    >
+                                        <MicOff
+                                            v-if="recording"
+                                            class="size-4"
+                                        />
+                                        <Mic v-else class="size-4" />
+                                    </Button>
+                                </div>
                                 <Button
                                     type="button"
-                                    variant="outline"
                                     size="icon"
-                                    class="size-11 shrink-0 touch-none select-none"
-                                    :class="
-                                        recording
-                                            ? cancelArmed
-                                                ? 'border-coral bg-coral/10 text-coral'
-                                                : 'border-primary bg-primary/10 text-primary'
-                                            : ''
+                                    class="size-11 shrink-0"
+                                    :disabled="
+                                        recording ||
+                                        !canCompose ||
+                                        !draft.trim()
                                     "
-                                    :disabled="isActivePending && !recording"
-                                    :aria-pressed="recording"
-                                    :aria-label="
-                                        recording
-                                            ? cancelArmed
-                                                ? 'Release to cancel'
-                                                : 'Release to send, or slide left to cancel'
-                                            : 'Hold to talk'
-                                    "
-                                    @contextmenu.prevent
-                                    @pointerdown="onMicPointerDown"
-                                    @pointermove="onMicPointerMove"
-                                    @pointerup="onMicPointerUp"
-                                    @pointercancel="onMicPointerUp"
-                                    @lostpointercapture="onMicPointerUp"
+                                    aria-label="Send message"
+                                    @click="sendMessage()"
                                 >
-                                    <MicOff v-if="recording" class="size-4" />
-                                    <Mic v-else class="size-4" />
+                                    <Spinner
+                                        v-if="isActivePending"
+                                        class="size-4"
+                                    />
+                                    <Send v-else class="size-4" />
                                 </Button>
                             </div>
-                            <Button
-                                type="button"
-                                size="icon"
-                                class="size-11 shrink-0"
-                                :disabled="
-                                    recording || !canCompose || !draft.trim()
-                                "
-                                aria-label="Send message"
-                                @click="sendMessage()"
-                            >
-                                <Spinner
-                                    v-if="isActivePending"
-                                    class="size-4"
-                                />
-                                <Send v-else class="size-4" />
-                            </Button>
+                            <p v-else class="text-sm text-muted-foreground">
+                                This triage is archived. Start a new one to
+                                continue chatting.
+                            </p>
                         </div>
-                        <p
-                            v-else
-                            class="text-sm text-muted-foreground"
-                        >
-                            This triage is archived. Start a new one to continue
-                            chatting.
-                        </p>
-                    </div>
-                </CardContent>
-            </Card>
+                    </CardContent>
+                </Card>
             </div>
         </div>
 
@@ -2090,9 +2168,7 @@ defineOptions({
                     <SectionTag>Physician handoff</SectionTag>
                     <div class="space-y-1.5 pr-8">
                         <SheetTitle class="text-xl font-bold tracking-tight">
-                            {{
-                                active?.chief_complaint || 'Handoff summary'
-                            }}
+                            {{ active?.chief_complaint || 'Handoff summary' }}
                         </SheetTitle>
                         <SheetDescription class="text-sm leading-relaxed">
                             Running English summary for clinical handoff.
@@ -2121,16 +2197,15 @@ defineOptions({
                         >
                             {{ active.status }}
                         </AnnotationPill>
-                        <AnnotationPill
-                            v-if="active.locale"
-                            variant="teal"
-                        >
+                        <AnnotationPill v-if="active.locale" variant="teal">
                             {{ active.locale }}
                         </AnnotationPill>
                     </div>
                 </SheetHeader>
 
-                <div class="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-6 py-5">
+                <div
+                    class="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-6 py-5"
+                >
                     <div
                         class="rounded-2xl border border-border bg-paper p-4 shadow-atlas"
                     >
@@ -2187,7 +2262,7 @@ defineOptions({
                                 Session
                             </dt>
                             <dd
-                                class="font-mono text-xs tabular-nums text-muted-foreground"
+                                class="font-mono text-xs text-muted-foreground tabular-nums"
                             >
                                 #{{ active.id }}
                             </dd>

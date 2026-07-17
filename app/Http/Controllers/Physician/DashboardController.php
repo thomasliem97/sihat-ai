@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function __invoke(Request $request): Response
     {
         $records = MedicalRecord::query()
-            ->with('user:id,name')
+            ->with(['user:id,name,role', 'subjectUser:id,name'])
             ->latest()
             ->limit(5)
             ->get()
@@ -24,7 +24,7 @@ class DashboardController extends Controller
                 'id' => $r->id,
                 'title' => $r->title,
                 'status' => $r->status->value,
-                'patient_name' => $r->user->name,
+                'patient_name' => $r->patientDisplayName(),
                 'modality_label' => ($r->detected_modality ?? $r->modality)->label(),
                 'overall_confidence' => $r->overall_confidence,
                 'created_at' => $r->created_at?->toIso8601String(),
@@ -33,7 +33,7 @@ class DashboardController extends Controller
         return Inertia::render('physician/Dashboard', [
             'stats' => [
                 'total_records' => MedicalRecord::count(),
-                'pending' => MedicalRecord::where('status', RecordStatus::Processing)->count(),
+                'pending' => MedicalRecord::whereIn('status', [RecordStatus::Pending, RecordStatus::Processing])->count(),
                 'completed' => MedicalRecord::where('status', RecordStatus::Completed)->count(),
                 'patients' => User::where('role', 'patient')->count(),
                 'critical_flags' => MedicalRecord::whereNotNull('guardrail_flags')

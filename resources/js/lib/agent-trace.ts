@@ -72,11 +72,13 @@ export function formatAgentHopStatus(status: string): string {
  */
 export function formatAgentHopDetail(detail: string): string {
     const trimmed = detail.trim();
+
     if (trimmed === '') {
         return 'No details recorded.';
     }
 
     const guardrail = trimmed.match(/^(ALLOW|WARN):(.+)$/i);
+
     if (guardrail) {
         const code =
             GUARDRAIL_CODES[guardrail[1].toUpperCase()] ?? guardrail[1];
@@ -90,17 +92,13 @@ export function formatAgentHopDetail(detail: string): string {
                     titleCase(flag.replaceAll('_', ' ')),
             );
 
-        return flags.length > 0
-            ? `${code}. ${flags.join('; ')}.`
-            : `${code}.`;
+        return flags.length > 0 ? `${code}. ${flags.join('; ')}.` : `${code}.`;
     }
 
     const known: Record<string, string> = {
-        'safe_uri sibling ready':
-            'Created a de-identified copy for analysis.',
+        'safe_uri sibling ready': 'Created a de-identified copy for analysis.',
         'de-identify completed': 'Patient identifiers were removed.',
-        'De-identification completed':
-            'Patient identifiers were removed.',
+        'De-identification completed': 'Patient identifiers were removed.',
         'Created a de-identified copy for analysis':
             'Created a de-identified copy for analysis.',
         'partial_findings merged':
@@ -116,6 +114,7 @@ export function formatAgentHopDetail(detail: string): string {
     const modality =
         trimmed.match(/^Modality (.+)$/i) ??
         trimmed.match(/^Detected modality:\s*(.+)$/i);
+
     if (modality) {
         return `Detected study type: ${formatModalityLabel(modality[1])}.`;
     }
@@ -123,8 +122,10 @@ export function formatAgentHopDetail(detail: string): string {
     const citations =
         trimmed.match(/^(\d+) citations \(BM25\+dense\+MMR\)$/i) ??
         trimmed.match(/^Retrieved (\d+) guideline citation\(s\)$/i);
+
     if (citations) {
         const count = Number(citations[1]);
+
         return count === 0
             ? 'No matching guideline citations were found.'
             : `Retrieved ${count} supporting guideline citation${count === 1 ? '' : 's'}.`;
@@ -133,31 +134,35 @@ export function formatAgentHopDetail(detail: string): string {
     const imaging =
         trimmed.match(/^(\d+) imaging findings$/i) ??
         trimmed.match(/^Found (\d+) imaging finding\(s\)$/i);
+
     if (imaging) {
         const count = Number(imaging[1]);
+
         return `Found ${count} imaging finding${count === 1 ? '' : 's'}.`;
     }
 
     const document =
         trimmed.match(/^(\d+) document findings$/i) ??
         trimmed.match(/^Found (\d+) document finding\(s\)$/i);
+
     if (document) {
         const count = Number(document[1]);
+
         return `Found ${count} document finding${count === 1 ? '' : 's'}.`;
     }
 
     const skipped =
         trimmed.match(/^N\/A for (.+)$/i) ??
         trimmed.match(/^Not used for (.+) studies$/i);
+
     if (skipped) {
         return `Skipped for ${formatModalityLabel(skipped[1].replace(/ studies$/i, ''))} studies.`;
     }
 
     const compose =
         trimmed.match(/^(\w+) dual reports$/i) ??
-        trimmed.match(
-            /^Wrote physician and patient reports \((.+)\)$/i,
-        );
+        trimmed.match(/^Wrote physician and patient reports \((.+)\)$/i);
+
     if (compose) {
         return `Wrote physician and patient reports in ${formatLanguageLabel(compose[1])}.`;
     }
@@ -175,6 +180,7 @@ export function formatAgentHopDetail(detail: string): string {
  */
 export function formatTechnicalNotes(detail: string): string {
     const trimmed = detail.trim();
+
     if (trimmed === '') {
         return '';
     }
@@ -270,6 +276,7 @@ export function formatDurationMs(durationMs: number): string {
     }
 
     const seconds = durationMs / 1000;
+
     if (seconds < 60) {
         const rounded =
             seconds >= 10 ? Math.round(seconds) : Number(seconds.toFixed(1));
@@ -286,11 +293,13 @@ export function formatDurationMs(durationMs: number): string {
 
 function formatModalityLabel(value: string): string {
     const key = value.trim().toLowerCase().replaceAll(' ', '_');
+
     return MODALITY_LABELS[key] ?? titleCase(value.replaceAll('_', ' '));
 }
 
 function formatLanguageLabel(value: string): string {
     const key = value.trim().toLowerCase();
+
     return LANGUAGE_LABELS[key] ?? titleCase(value);
 }
 

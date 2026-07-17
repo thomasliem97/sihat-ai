@@ -3,9 +3,9 @@ import { Head, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import DeleteUser from '@/components/DeleteUser.vue';
 import Heading from '@/components/Heading.vue';
+import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { edit } from '@/routes/profile';
 
 defineOptions({
@@ -37,7 +37,7 @@ const user = computed(() => page.props.auth.user);
 
         <form class="space-y-6" @submit.prevent>
             <div class="grid gap-2">
-                <Label for="name">Name</Label>
+                <FieldLabel html-for="name">Name</FieldLabel>
                 <Input
                     id="name"
                     class="mt-1 block w-full"
@@ -45,12 +45,12 @@ const user = computed(() => page.props.auth.user);
                     :default-value="user.name"
                     disabled
                     autocomplete="name"
-                    placeholder="Full name"
+                    placeholder="e.g. Ahmad bin Hassan"
                 />
             </div>
 
             <div class="grid gap-2">
-                <Label for="email">Email address</Label>
+                <FieldLabel html-for="email">Email address</FieldLabel>
                 <Input
                     id="email"
                     type="email"
@@ -59,7 +59,7 @@ const user = computed(() => page.props.auth.user);
                     :default-value="user.email"
                     disabled
                     autocomplete="username"
-                    placeholder="Email address"
+                    placeholder="name@example.com"
                 />
             </div>
 

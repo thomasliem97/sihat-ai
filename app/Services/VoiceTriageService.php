@@ -13,6 +13,7 @@ use App\Models\TriageMessage;
 use App\Models\TriageSession;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -51,7 +52,7 @@ class VoiceTriageService
             }
             $stt = $this->speechToText($audio);
             $sttEngine = is_string($stt['engine'] ?? null) ? $stt['engine'] : null;
-            $transcript = trim((string) ($stt['transcript'] ?? ''));
+            $transcript = trim($stt['transcript']);
             if ($transcript === '' || ! preg_match('/\p{L}|\p{N}/u', $transcript)) {
                 throw new \InvalidArgumentException('No speech heard. Speak closer to the mic and try again.');
             }
@@ -95,7 +96,7 @@ class VoiceTriageService
                 $intent['intent'],
                 $detected['code'],
                 $withSpeech,
-                $intent['redirect_message'] ?? null,
+                $intent['redirect_message'],
             );
         }
 
@@ -198,7 +199,7 @@ class VoiceTriageService
 
     public function share(TriageSession $session): TriageSession
     {
-        $session->shared_at = now();
+        $session->shared_at = Carbon::now();
         $session->save();
 
         return $session->fresh(['messages', 'subjectUser:id,name']);
@@ -388,8 +389,9 @@ class VoiceTriageService
             'user_message' => $userMessage,
             'locale' => $locale,
             'locale_name' => $localeName,
-            'subject_name' => $session->subjectUser?->name
-                ?? ($session->role_context === TriageRoleContext::Patient ? $actor->name : ''),
+            'subject_name' => $session->subject_user_id !== null
+                ? $session->subjectUser->name
+                : ($session->role_context === TriageRoleContext::Patient ? $actor->name : ''),
         ];
 
         try {
@@ -594,14 +596,14 @@ class VoiceTriageService
 
         $lines = [];
         foreach ($records as $record) {
-            $modality = ($record->detected_modality ?? $record->modality)?->label() ?? 'Unknown';
-            $date = ($record->analyzed_at ?? $record->created_at)?->toDateString() ?? '-';
+            $modality = ($record->detected_modality ?? $record->modality)->label();
+            $date = ($record->analyzed_at ?? $record->created_at)->toDateString();
             $summary = '';
             if (is_array($record->physician_report) && isset($record->physician_report['summary'])) {
                 $summary = trim((string) $record->physician_report['summary']);
             }
             if ($summary === '' && is_array($record->findings)) {
-                $labels = collect($record->findings)->pluck('label')->filter()->take(5)->implode(', ');
+                $labels = collect(array_values($record->findings))->pluck('label')->filter()->take(5)->implode(', ');
                 $summary = $labels !== '' ? "Findings: {$labels}" : '';
             }
             $lines[] = "- {$date} · {$modality} · {$record->title}"

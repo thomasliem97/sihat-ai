@@ -16,6 +16,7 @@ const props = defineProps<{
 const maxVal = computed(() => {
     const vals = props.data.map((d) => d.value);
     const refHigh = props.referenceHigh ?? 0;
+
     return Math.max(...vals, refHigh) * 1.1;
 });
 

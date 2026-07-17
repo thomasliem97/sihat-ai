@@ -17,9 +17,11 @@ defineProps<{
                 class="flex items-center gap-2 rounded-full border px-2.5 py-1.5"
                 :class="{
                     'border-primary/40 bg-primary/5 text-primary':
-                        step.status === 'completed' || step.status === 'running',
+                        step.status === 'completed' ||
+                        step.status === 'running',
                     'border-border bg-muted/50 text-muted-foreground':
-                        step.status !== 'completed' && step.status !== 'running',
+                        step.status !== 'completed' &&
+                        step.status !== 'running',
                 }"
             >
                 <span

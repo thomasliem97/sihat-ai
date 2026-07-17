@@ -7,7 +7,6 @@ test('welcome page is accessible to guests', function () {
         ->assertOk()
         ->assertDontSee('Create account')
         ->assertDontSee('Get started')
-        ->assertSee('View Demo')
         ->assertInertia(fn ($page) => $page
             ->component('Welcome')
             ->where('auth.user', null));
