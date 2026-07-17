@@ -79,7 +79,7 @@ def health() -> dict[str, str]:
         "status": "ok",
         "service": "sihat-ai",
         "inference": "modal",
-        "build": _env("SIHAT_AI_BUILD") or "imaging-v2-20260717",
+        "build": _env("SIHAT_AI_BUILD") or "imaging-v3-20260717",
         "webhook_secret": "set" if secret else "missing",
         "adapter": f"configured:{lora}" if lora else "gpu-volume",
         "structurer": _env("OPENAI_STRUCTURE_MODEL") or "gpt-5.6-terra",
