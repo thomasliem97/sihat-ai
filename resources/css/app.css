@@ -110,8 +110,8 @@
             'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
             'Noto Color Emoji';
         --font-mono:
-            'Azeret Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-            'Liberation Mono', 'Courier New', monospace;
+            'Azeret Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
+            Consolas, 'Liberation Mono', 'Courier New', monospace;
     }
 }
 
@@ -233,7 +233,7 @@
         @apply border-border outline-ring/50;
     }
     body {
-        @apply bg-background text-foreground font-sans antialiased;
+        @apply bg-background font-sans text-foreground antialiased;
     }
     button:not(:disabled) {
         cursor: pointer;
@@ -250,7 +250,11 @@
     .atlas-field {
         background:
             linear-gradient(rgba(16, 92, 130, 0.055) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16, 92, 130, 0.055) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(16, 92, 130, 0.055) 1px,
+                transparent 1px
+            ),
             radial-gradient(
                 circle at 88% 3%,
                 rgba(105, 203, 218, 0.27),
@@ -267,7 +271,11 @@
     .dark .atlas-field {
         background:
             linear-gradient(rgba(74, 163, 217, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(74, 163, 217, 0.06) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(74, 163, 217, 0.06) 1px,
+                transparent 1px
+            ),
             radial-gradient(
                 circle at 88% 3%,
                 rgba(23, 108, 165, 0.35),
@@ -520,7 +528,8 @@
     .welcome-orbit {
         position: absolute;
         inset: 8%;
-        border: 1.5px dashed color-mix(in srgb, var(--line-strong) 55%, transparent);
+        border: 1.5px dashed
+            color-mix(in srgb, var(--line-strong) 55%, transparent);
         border-radius: 9999px;
         pointer-events: none;
         animation: welcome-spin 48s linear infinite;
@@ -529,7 +538,8 @@
     .welcome-orbit-inner {
         position: absolute;
         inset: 22%;
-        border: 1.5px dashed color-mix(in srgb, var(--secondary-foreground) 35%, transparent);
+        border: 1.5px dashed
+            color-mix(in srgb, var(--secondary-foreground) 35%, transparent);
         border-radius: 9999px;
         pointer-events: none;
         animation: welcome-spin 36s linear infinite reverse;
@@ -649,12 +659,11 @@
         overflow: hidden;
         border-radius: 1rem;
         border: 1px dashed color-mix(in srgb, var(--primary) 45%, var(--line));
-        background:
-            linear-gradient(
-                120deg,
-                color-mix(in srgb, var(--primary) 8%, transparent),
-                color-mix(in srgb, var(--coral, #f26b5e) 6%, transparent)
-            );
+        background: linear-gradient(
+            120deg,
+            color-mix(in srgb, var(--primary) 8%, transparent),
+            color-mix(in srgb, var(--coral, #f26b5e) 6%, transparent)
+        );
         padding: 0.5rem 1rem;
         transition:
             border-color 120ms ease,
@@ -662,13 +671,16 @@
     }
 
     .triage-listen-shell--cancel {
-        border-color: color-mix(in srgb, var(--coral, #f26b5e) 70%, var(--line));
-        background:
-            linear-gradient(
-                120deg,
-                color-mix(in srgb, var(--coral, #f26b5e) 14%, transparent),
-                color-mix(in srgb, var(--coral, #f26b5e) 6%, transparent)
-            );
+        border-color: color-mix(
+            in srgb,
+            var(--coral, #f26b5e) 70%,
+            var(--line)
+        );
+        background: linear-gradient(
+            120deg,
+            color-mix(in srgb, var(--coral, #f26b5e) 14%, transparent),
+            color-mix(in srgb, var(--coral, #f26b5e) 6%, transparent)
+        );
     }
 
     .triage-listen-shell--cancel .triage-listen-rec {
@@ -707,12 +719,11 @@
         content: '';
         position: absolute;
         inset: 0;
-        background-image:
-            linear-gradient(
-                to right,
-                color-mix(in srgb, var(--line) 55%, transparent) 1px,
-                transparent 1px
-            );
+        background-image: linear-gradient(
+            to right,
+            color-mix(in srgb, var(--line) 55%, transparent) 1px,
+            transparent 1px
+        );
         background-size: 24px 100%;
         opacity: 0.35;
         pointer-events: none;
@@ -740,7 +751,8 @@
         height: 0.45rem;
         border-radius: 9999px;
         background: var(--coral, #f26b5e);
-        box-shadow: 0 0 0 0 color-mix(in srgb, var(--coral, #f26b5e) 55%, transparent);
+        box-shadow: 0 0 0 0
+            color-mix(in srgb, var(--coral, #f26b5e) 55%, transparent);
         animation: triage-rec-pulse 1.4s ease-out infinite;
     }
 
@@ -772,18 +784,42 @@
         transition: transform 90ms ease-out;
     }
 
-    .triage-wave span:nth-child(1) { animation-delay: -0.9s; }
-    .triage-wave span:nth-child(2) { animation-delay: -0.75s; }
-    .triage-wave span:nth-child(3) { animation-delay: -0.6s; }
-    .triage-wave span:nth-child(4) { animation-delay: -0.45s; }
-    .triage-wave span:nth-child(5) { animation-delay: -0.3s; }
-    .triage-wave span:nth-child(6) { animation-delay: -0.15s; }
-    .triage-wave span:nth-child(7) { animation-delay: 0s; }
-    .triage-wave span:nth-child(8) { animation-delay: -0.2s; }
-    .triage-wave span:nth-child(9) { animation-delay: -0.35s; }
-    .triage-wave span:nth-child(10) { animation-delay: -0.5s; }
-    .triage-wave span:nth-child(11) { animation-delay: -0.65s; }
-    .triage-wave span:nth-child(12) { animation-delay: -0.8s; }
+    .triage-wave span:nth-child(1) {
+        animation-delay: -0.9s;
+    }
+    .triage-wave span:nth-child(2) {
+        animation-delay: -0.75s;
+    }
+    .triage-wave span:nth-child(3) {
+        animation-delay: -0.6s;
+    }
+    .triage-wave span:nth-child(4) {
+        animation-delay: -0.45s;
+    }
+    .triage-wave span:nth-child(5) {
+        animation-delay: -0.3s;
+    }
+    .triage-wave span:nth-child(6) {
+        animation-delay: -0.15s;
+    }
+    .triage-wave span:nth-child(7) {
+        animation-delay: 0s;
+    }
+    .triage-wave span:nth-child(8) {
+        animation-delay: -0.2s;
+    }
+    .triage-wave span:nth-child(9) {
+        animation-delay: -0.35s;
+    }
+    .triage-wave span:nth-child(10) {
+        animation-delay: -0.5s;
+    }
+    .triage-wave span:nth-child(11) {
+        animation-delay: -0.65s;
+    }
+    .triage-wave span:nth-child(12) {
+        animation-delay: -0.8s;
+    }
 
     .triage-mic-wrap {
         position: relative;
@@ -821,7 +857,8 @@
 
     @keyframes triage-rec-pulse {
         0% {
-            box-shadow: 0 0 0 0 color-mix(in srgb, var(--coral, #f26b5e) 50%, transparent);
+            box-shadow: 0 0 0 0
+                color-mix(in srgb, var(--coral, #f26b5e) 50%, transparent);
         }
         70% {
             box-shadow: 0 0 0 0.45rem transparent;
@@ -878,7 +915,8 @@
     .toaster[data-sonner-toaster]
         [data-sonner-toast][data-styled='true']
         [data-button]:focus-visible {
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 35%, transparent);
+        box-shadow: 0 0 0 3px
+            color-mix(in srgb, var(--primary) 35%, transparent);
     }
 
     @media (prefers-reduced-motion: reduce) {

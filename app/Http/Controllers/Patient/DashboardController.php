@@ -41,9 +41,9 @@ class DashboardController extends Controller
                 $first = $group->first();
 
                 return [
-                    'unit' => $first?->unit ?? '',
-                    'reference_low' => $first?->reference_low,
-                    'reference_high' => $first?->reference_high,
+                    'unit' => $first->unit ?? '',
+                    'reference_low' => $first->reference_low,
+                    'reference_high' => $first->reference_high,
                     'points' => $group->map(fn (Biomarker $b) => [
                         'value' => $b->value,
                         'collected_at' => $b->collected_at->toIso8601String(),

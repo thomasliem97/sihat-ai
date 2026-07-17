@@ -53,16 +53,19 @@ class TriageSession extends Model
         ];
     }
 
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /** @return BelongsTo<User, $this> */
     public function subjectUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'subject_user_id');
     }
 
+    /** @return HasMany<TriageMessage, $this> */
     public function messages(): HasMany
     {
         return $this->hasMany(TriageMessage::class)->orderBy('id');

@@ -282,7 +282,7 @@ class AiPipelineService
             $partial['document']['overall_confidence'] ?? null,
             durationMs: $docActive ? $analyzeMs : null,
         );
-        $result['findings'] = $this->mergePartialFindings($partial, $result['findings'] ?? []);
+        $result['findings'] = $this->mergePartialFindings($partial, $result['findings']);
         $trace[] = $this->hop(
             'merge',
             'completed',
@@ -292,7 +292,7 @@ class AiPipelineService
         );
 
         $t0 = microtime(true);
-        $citations = $this->rag->retrieveCitations($record, $result['findings'] ?? []);
+        $citations = $this->rag->retrieveCitations($record, $result['findings']);
         $result['citations'] = $citations;
         $result['rag_weak'] = $this->rag->wasWeakRetrieval($citations);
         $citationCount = count($citations);
@@ -485,6 +485,15 @@ class AiPipelineService
             return;
         }
 
+        $alreadyEscalated = AuditEvent::query()
+            ->where('medical_record_id', $record->id)
+            ->where('event', 'critical_value_escalation')
+            ->exists();
+
+        if ($alreadyEscalated) {
+            return;
+        }
+
         AuditEvent::create([
             'actor_type' => 'system',
             'actor_id' => null,
@@ -562,7 +571,7 @@ class AiPipelineService
 
         $flags = [];
         foreach ($guardrails['flags'] ?? [] as $flag) {
-            if (! is_string($flag) || $flag === '') {
+            if ($flag === '') {
                 continue;
             }
             $flags[] = $flagLabels[$flag] ?? str_replace('_', ' ', $flag);
@@ -647,8 +656,10 @@ class AiPipelineService
      */
     private function diffImagingFindings(MedicalRecord $prior, array $result): array
     {
-        $priorLabels = collect($prior->findings ?? [])->pluck('label')->filter()->map(fn ($l) => mb_strtolower((string) $l));
-        $currentLabels = collect($result['findings'] ?? [])->pluck('label')->filter()->map(fn ($l) => mb_strtolower((string) $l));
+        $priorFindings = is_array($prior->findings) ? array_values($prior->findings) : [];
+        $currentFindings = is_array($result['findings'] ?? null) ? array_values($result['findings']) : [];
+        $priorLabels = collect($priorFindings)->pluck('label')->filter()->map(fn ($l) => mb_strtolower((string) $l));
+        $currentLabels = collect($currentFindings)->pluck('label')->filter()->map(fn ($l) => mb_strtolower((string) $l));
 
         $changes = [];
         foreach ($currentLabels as $label) {
@@ -684,7 +695,8 @@ class AiPipelineService
     private function diffLabRecords(MedicalRecord $prior, array $result): array
     {
         $priorMarkers = $prior->biomarkers()->get()->keyBy(fn ($b) => mb_strtolower($b->name));
-        $current = collect($result['biomarkers'] ?? []);
+        $biomarkers = is_array($result['biomarkers'] ?? null) ? array_values($result['biomarkers']) : [];
+        $current = collect($biomarkers);
         $changes = [];
 
         foreach ($current as $marker) {
@@ -784,13 +796,6 @@ class AiPipelineService
 
         if (str_contains($filename, 'mri') || str_contains($filename, 'mr_')) {
             return ['modality' => Modality::Mri, 'confidence' => 0.85];
-        }
-
-        if (str_ends_with($filename, '.zip') && (str_contains($filename, 'ct') || str_contains($filename, 'mri'))) {
-            return [
-                'modality' => str_contains($filename, 'mri') ? Modality::Mri : Modality::Ct,
-                'confidence' => 0.8,
-            ];
         }
 
         if ($this->filenameContainsAny($filename, ['xray', 'x-ray', 'cxr', 'chest', 'radiograph'])) {
@@ -920,8 +925,8 @@ class AiPipelineService
         $code = $normalized['code'];
 
         $language = $record->language;
-        $findings = $result['findings'] ?? [];
-        $citations = $result['citations'] ?? [];
+        $findings = is_array($result['findings'] ?? null) ? $result['findings'] : [];
+        $citations = is_array($result['citations'] ?? null) ? array_values($result['citations']) : [];
         $confidence = (float) ($result['overall_confidence'] ?? 0);
         $hedge = in_array('confidence_hedge', $flagList, true);
         $abstain = in_array('low_confidence_abstention', $flagList, true);
@@ -930,7 +935,14 @@ class AiPipelineService
 
         $citationNote = collect($citations)
             ->take(3)
-            ->map(fn (array $c, int $i) => '['.($i + 1).'] '.$c['source'].' §'.$c['section'])
+            ->map(function (mixed $c, int $i): string {
+                if (! is_array($c)) {
+                    return '';
+                }
+
+                return '['.($i + 1).'] '.($c['source'] ?? '').' §'.($c['section'] ?? '');
+            })
+            ->filter()
             ->implode('; ');
 
         $physicianSummary = $this->physicianSummary($findings, $language, $hedge, $abstain);

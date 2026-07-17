@@ -41,6 +41,7 @@ class TriageMessage extends Model
         ];
     }
 
+    /** @return BelongsTo<TriageSession, $this> */
     public function session(): BelongsTo
     {
         return $this->belongsTo(TriageSession::class, 'triage_session_id');

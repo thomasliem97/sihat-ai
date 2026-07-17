@@ -14,12 +14,14 @@ const config = computed(() => {
             class: 'border-border text-ink-soft',
         };
     }
+
     if (pct.value >= 50) {
         return {
             dot: 'bg-clinical-borderline',
             class: 'border-border text-ink-soft',
         };
     }
+
     return {
         dot: 'bg-clinical-abnormal',
         class: 'border-border text-ink-soft',

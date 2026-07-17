@@ -36,7 +36,9 @@ defineProps<{
                         <h1 class="text-2xl font-bold tracking-tight">
                             {{ title }}
                         </h1>
-                        <p class="text-center text-sm leading-relaxed text-muted-foreground">
+                        <p
+                            class="text-center text-sm leading-relaxed text-muted-foreground"
+                        >
                             {{ description }}
                         </p>
                     </div>

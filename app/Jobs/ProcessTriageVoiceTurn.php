@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Enums\TriageSessionStatus;
 use App\Models\TriageSession;
 use App\Models\User;
 use App\Services\TriageTurnStatus;
@@ -34,6 +35,13 @@ class ProcessTriageVoiceTurn implements ShouldQueue
         $user = User::query()->find($this->userId);
 
         if ($session === null || $user === null) {
+            TriageTurnStatus::clear($this->sessionId);
+            $this->deleteAudio();
+
+            return;
+        }
+
+        if ($session->user_id !== $user->id || $session->status !== TriageSessionStatus::Active) {
             TriageTurnStatus::clear($this->sessionId);
             $this->deleteAudio();
 

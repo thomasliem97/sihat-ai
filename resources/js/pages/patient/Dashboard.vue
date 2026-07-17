@@ -30,7 +30,11 @@ defineProps<{
             unit: string;
             reference_low: number | null;
             reference_high: number | null;
-            points: Array<{ value: number; collected_at: string; status: string }>;
+            points: Array<{
+                value: number;
+                collected_at: string;
+                status: string;
+            }>;
         }
     >;
 }>();
@@ -121,7 +125,9 @@ defineOptions({
                     class="block rounded-2xl border border-border p-5 transition-colors hover:bg-muted/40"
                 >
                     <div class="flex items-center justify-between gap-3">
-                        <p class="text-base font-semibold">{{ record.title }}</p>
+                        <p class="text-base font-semibold">
+                            {{ record.title }}
+                        </p>
                         <AnnotationPill
                             :variant="
                                 record.status === 'completed' ? 'teal' : 'amber'

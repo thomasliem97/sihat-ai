@@ -6,10 +6,35 @@ use App\Models\MedicalRecord;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
-test('authorized users can download a medical record file', function () {
+test('authorized users can download a completed medical record file', function () {
     Storage::fake('local');
 
-    $user = User::factory()->create();
+    $user = User::factory()->patient()->create();
+    Storage::disk('local')->put('medical-records/demo.png', 'fake-image-bytes');
+
+    $record = MedicalRecord::factory()->completed()->create([
+        'user_id' => $user->id,
+        'uploaded_by_user_id' => $user->id,
+        'subject_user_id' => $user->id,
+        'file_path' => 'medical-records/demo.png',
+        'original_filename' => 'demo.png',
+        'mime_type' => 'image/png',
+        'signed_at' => now(),
+        'signed_by' => User::factory()->physician()->create()->id,
+        'physician_report' => ['summary' => 'Signed report'],
+        'signed_physician_report' => ['summary' => 'Signed report'],
+        'guardrail_flags' => ['code' => 'ALLOW', 'flags' => ['medical_disclaimer_required']],
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('records.file', $record))
+        ->assertOk();
+});
+
+test('pending medical record files are forbidden', function () {
+    Storage::fake('local');
+
+    $user = User::factory()->patient()->create();
     Storage::disk('local')->put('medical-records/demo.png', 'fake-image-bytes');
 
     $record = MedicalRecord::factory()->create([
@@ -18,9 +43,78 @@ test('authorized users can download a medical record file', function () {
         'file_path' => 'medical-records/demo.png',
         'original_filename' => 'demo.png',
         'mime_type' => 'image/png',
+        'status' => RecordStatus::Pending,
     ]);
 
     $this->actingAs($user)
+        ->get(route('records.file', $record))
+        ->assertForbidden();
+});
+
+test('patients cannot download files while awaiting physician sign-off', function () {
+    Storage::fake('local');
+
+    $user = User::factory()->patient()->create();
+    Storage::disk('local')->put('medical-records/demo.png', 'fake-image-bytes');
+
+    $record = MedicalRecord::factory()->completed()->create([
+        'user_id' => $user->id,
+        'uploaded_by_user_id' => $user->id,
+        'subject_user_id' => $user->id,
+        'file_path' => 'medical-records/demo.png',
+        'original_filename' => 'demo.png',
+        'mime_type' => 'image/png',
+        'signed_at' => null,
+        'guardrail_flags' => ['code' => 'ALLOW', 'flags' => ['medical_disclaimer_required']],
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('records.file', $record))
+        ->assertForbidden();
+});
+
+test('patients cannot download files when guardrails withhold the report', function () {
+    Storage::fake('local');
+
+    $user = User::factory()->patient()->create();
+    Storage::disk('local')->put('medical-records/demo.png', 'fake-image-bytes');
+
+    $record = MedicalRecord::factory()->completed()->create([
+        'user_id' => $user->id,
+        'uploaded_by_user_id' => $user->id,
+        'subject_user_id' => $user->id,
+        'file_path' => 'medical-records/demo.png',
+        'original_filename' => 'demo.png',
+        'mime_type' => 'image/png',
+        'signed_at' => now(),
+        'signed_by' => User::factory()->physician()->create()->id,
+        'guardrail_flags' => [
+            'code' => 'WARN',
+            'flags' => ['critical_value_escalation', 'medical_disclaimer_required'],
+        ],
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('records.file', $record))
+        ->assertForbidden();
+});
+
+test('physicians can download completed files even when unsigned', function () {
+    Storage::fake('local');
+
+    $physician = User::factory()->physician()->create();
+    Storage::disk('local')->put('medical-records/demo.png', 'fake-image-bytes');
+
+    $record = MedicalRecord::factory()->completed()->create([
+        'user_id' => $physician->id,
+        'uploaded_by_user_id' => $physician->id,
+        'file_path' => 'medical-records/demo.png',
+        'original_filename' => 'demo.png',
+        'mime_type' => 'image/png',
+        'signed_at' => null,
+    ]);
+
+    $this->actingAs($physician)
         ->get(route('records.file', $record))
         ->assertOk();
 });
@@ -28,16 +122,16 @@ test('authorized users can download a medical record file', function () {
 test('missing medical record files return not found', function () {
     Storage::fake('local');
 
-    $user = User::factory()->create();
-    $record = MedicalRecord::factory()->create([
-        'user_id' => $user->id,
-        'uploaded_by_user_id' => $user->id,
+    $physician = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->completed()->create([
+        'user_id' => $physician->id,
+        'uploaded_by_user_id' => $physician->id,
         'file_path' => 'medical-records/missing.png',
         'original_filename' => 'missing.png',
         'mime_type' => 'image/png',
     ]);
 
-    $this->actingAs($user)
+    $this->actingAs($physician)
         ->get(route('records.file', $record))
         ->assertNotFound();
 });

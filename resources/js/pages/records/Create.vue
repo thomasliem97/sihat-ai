@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import InputError from '@/components/InputError.vue';
 import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
 import SectionTag from '@/components/patterns/SectionTag.vue';
-import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -73,7 +73,7 @@ defineOptions({
             />
 
             <div class="space-y-2">
-                <FieldLabel for="title" required>Record title</FieldLabel>
+                <FieldLabel html-for="title" required>Record title</FieldLabel>
                 <Input
                     id="title"
                     name="title"
@@ -87,7 +87,9 @@ defineOptions({
                 <FieldLabel>Patient</FieldLabel>
                 <Select v-model="patientId">
                     <SelectTrigger class="w-full">
-                        <SelectValue placeholder="Select patient, or leave unassigned" />
+                        <SelectValue
+                            placeholder="Select patient, or leave unassigned"
+                        />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="__none__">Unassigned</SelectItem>
@@ -111,7 +113,9 @@ defineOptions({
                 <FieldLabel required>Who is this for?</FieldLabel>
                 <Select v-model="subject">
                     <SelectTrigger class="w-full">
-                        <SelectValue placeholder="Select who this scan belongs to" />
+                        <SelectValue
+                            placeholder="Select who this scan belongs to"
+                        />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="self">Myself</SelectItem>
@@ -162,7 +166,7 @@ defineOptions({
             </div>
 
             <div class="space-y-2">
-                <FieldLabel for="file" required>File</FieldLabel>
+                <FieldLabel html-for="file" required>File</FieldLabel>
                 <Input
                     id="file"
                     name="file"

@@ -2,8 +2,8 @@
 import { Head } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
+import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { edit } from '@/routes/security';
 
 defineProps<{
@@ -36,37 +36,41 @@ defineOptions({
 
         <form class="space-y-6" @submit.prevent>
             <div class="grid gap-2">
-                <Label for="current_password">Current password</Label>
+                <FieldLabel html-for="current_password"
+                    >Current password</FieldLabel
+                >
                 <PasswordInput
                     id="current_password"
                     name="current_password"
                     class="mt-1 block w-full"
                     autocomplete="current-password"
-                    placeholder="Current password"
+                    placeholder="Enter current password"
                     disabled
                 />
             </div>
 
             <div class="grid gap-2">
-                <Label for="password">New password</Label>
+                <FieldLabel html-for="password">New password</FieldLabel>
                 <PasswordInput
                     id="password"
                     name="password"
                     class="mt-1 block w-full"
                     autocomplete="new-password"
-                    placeholder="New password"
+                    placeholder="Enter new password"
                     disabled
                 />
             </div>
 
             <div class="grid gap-2">
-                <Label for="password_confirmation">Confirm password</Label>
+                <FieldLabel html-for="password_confirmation"
+                    >Confirm password</FieldLabel
+                >
                 <PasswordInput
                     id="password_confirmation"
                     name="password_confirmation"
                     class="mt-1 block w-full"
                     autocomplete="new-password"
-                    placeholder="Confirm password"
+                    placeholder="Re-enter new password"
                     disabled
                 />
             </div>

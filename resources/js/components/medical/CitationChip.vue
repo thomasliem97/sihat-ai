@@ -34,8 +34,12 @@ function padIndex(n: number): string {
                     <span class="max-w-28 truncate">{{ citation.source }}</span>
                 </button>
             </TooltipTrigger>
-            <TooltipContent class="max-w-xs space-y-1.5 border-dashed border-primary/40">
-                <p class="font-mono text-xs font-semibold tracking-wide uppercase">
+            <TooltipContent
+                class="max-w-xs space-y-1.5 border-dashed border-primary/40"
+            >
+                <p
+                    class="font-mono text-xs font-semibold tracking-wide uppercase"
+                >
                     {{ citation.source }}
                 </p>
                 <p

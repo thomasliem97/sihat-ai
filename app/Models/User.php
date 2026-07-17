@@ -5,8 +5,10 @@ namespace App\Models;
 use App\Enums\ReportLanguage;
 use App\Enums\UserRole;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,7 +29,7 @@ use Illuminate\Support\Carbon;
  */
 #[Fillable(['name', 'email', 'password', 'role', 'locale'])]
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -50,6 +52,17 @@ class User extends Authenticatable
     public function isPatient(): bool
     {
         return $this->role === UserRole::Patient;
+    }
+
+    /**
+     * @return Collection<int, static>
+     */
+    public static function patientsForSelect(): Collection
+    {
+        return static::query()
+            ->where('role', UserRole::Patient)
+            ->orderBy('name')
+            ->get(['id', 'name']);
     }
 
     /** @return HasMany<MedicalRecord, $this> */

@@ -101,7 +101,9 @@ defineOptions({
                                 >
                                     {{ record.patient_name }}
                                 </td>
-                                <td class="py-3 font-mono text-xs tracking-wide">
+                                <td
+                                    class="py-3 font-mono text-xs tracking-wide"
+                                >
                                     {{ record.modality_label }}
                                 </td>
                                 <td class="py-3">
@@ -117,9 +119,7 @@ defineOptions({
                                         {{ record.status }}
                                     </AnnotationPill>
                                 </td>
-                                <td
-                                    class="py-3 font-mono tabular-nums"
-                                >
+                                <td class="py-3 font-mono tabular-nums">
                                     {{
                                         record.overall_confidence
                                             ? `${Math.round(record.overall_confidence * 100)}%`

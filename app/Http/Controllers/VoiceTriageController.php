@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Enums\TriageRoleContext;
 use App\Enums\TriageSessionStatus;
+use App\Http\Requests\StoreTriageMessageRequest;
+use App\Http\Requests\StoreTriageSessionRequest;
 use App\Jobs\ProcessTriageVoiceTurn;
 use App\Models\TriageMessage;
 use App\Models\TriageSession;
@@ -46,7 +48,7 @@ class VoiceTriageController extends Controller
             : collect();
 
         $patients = $user->isPhysician()
-            ? User::query()->where('role', 'patient')->orderBy('name')->get(['id', 'name'])
+            ? User::patientsForSelect()
             : collect();
 
         return Inertia::render('voice/Triage', [
@@ -58,15 +60,13 @@ class VoiceTriageController extends Controller
         ]);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(StoreTriageSessionRequest $request): JsonResponse
     {
         $user = $request->user();
         assert($user instanceof User);
         $this->authorize('create', TriageSession::class);
 
-        $validated = $request->validate([
-            'subject_user_id' => ['nullable', 'integer', 'exists:users,id'],
-        ]);
+        $validated = $request->validated();
 
         $role = $user->isPhysician() ? TriageRoleContext::Physician : TriageRoleContext::Patient;
         $subjectId = null;
@@ -102,17 +102,21 @@ class VoiceTriageController extends Controller
         ]);
     }
 
-    public function message(Request $request, TriageSession $session, VoiceTriageService $triage): JsonResponse
+    public function message(StoreTriageMessageRequest $request, TriageSession $session, VoiceTriageService $triage): JsonResponse
     {
         $this->authorize('message', $session);
 
-        $validated = $request->validate([
-            'text' => ['nullable', 'string', 'max:5000'],
-            'audio' => ['nullable', 'file', 'max:10240', 'mimetypes:audio/webm,audio/wav,audio/mpeg,audio/mp4,video/webm'],
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['text']) && ! $request->hasFile('audio')) {
             return response()->json(['message' => 'Provide text or audio.'], 422);
+        }
+
+        $pending = TriageTurnStatus::get($session->id);
+        if (($pending['status'] ?? null) === 'processing') {
+            return response()->json([
+                'message' => 'Still processing the previous voice message.',
+            ], 409);
         }
 
         if ($request->hasFile('audio')) {
@@ -123,13 +127,6 @@ class VoiceTriageController extends Controller
                 return response()->json([
                     'message' => 'Hold the mic and speak before releasing.',
                 ], 422);
-            }
-
-            $pending = TriageTurnStatus::get($session->id);
-            if (($pending['status'] ?? null) === 'processing') {
-                return response()->json([
-                    'message' => 'Still processing the previous voice message.',
-                ], 409);
             }
 
             $path = $audio->store('triage-audio/'.$session->id, 'local');
@@ -251,7 +248,7 @@ class VoiceTriageController extends Controller
         ];
 
         if ($includeMessages) {
-            $payload['messages'] = $session->messages->map(fn ($m) => [
+            $payload['messages'] = $session->messages->map(fn (TriageMessage $m) => [
                 'id' => $m->id,
                 'role' => $m->role->value,
                 'content' => $m->content,

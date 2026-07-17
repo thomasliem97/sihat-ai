@@ -70,30 +70,12 @@ class RagService
         return $reranked;
     }
 
+    /**
+     * @param  array<int, array<string, mixed>>  $citations
+     */
     public function wasWeakRetrieval(array $citations = []): bool
     {
         return $this->lastRetrievalWeak;
-    }
-
-    /**
-     * @return array<int, array<string, mixed>>
-     */
-    public function defaultCitations(): array
-    {
-        return [
-            [
-                'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
-                'section' => '4.2 Diagnosis',
-                'excerpt' => 'Chest radiograph may show lobar or patchy consolidation. Clinical correlation is essential.',
-                'relevance' => 0.4,
-            ],
-            [
-                'source' => 'MOH Malaysia CPG - Tuberculosis',
-                'section' => '3.1 Imaging',
-                'excerpt' => 'Upper lobe cavitary lesions are characteristic but lower lobe involvement can occur.',
-                'relevance' => 0.35,
-            ],
-        ];
     }
 
     /**

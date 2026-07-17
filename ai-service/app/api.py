@@ -14,7 +14,9 @@ import logging
 import os
 import re
 import tempfile
+import time
 from enum import Enum
+from pathlib import Path
 from typing import Any
 
 import httpx
@@ -77,7 +79,7 @@ def health() -> dict[str, str]:
         "status": "ok",
         "service": "sihat-ai",
         "inference": "modal",
-        "build": _env("SIHAT_AI_BUILD") or "imaging-v5-20260716",
+        "build": _env("SIHAT_AI_BUILD") or "imaging-v2-20260717",
         "webhook_secret": "set" if secret else "missing",
         "adapter": f"configured:{lora}" if lora else "gpu-volume",
         "structurer": _env("OPENAI_STRUCTURE_MODEL") or "gpt-5.6-terra",
@@ -546,6 +548,7 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
     if not text.strip():
         raise RuntimeError("No lab text extracted from PDF (empty file)")
 
+    modal_err = "unknown lab analyze failure"
     try:
         result = _invoke(
             "/analyze_lab",
@@ -560,7 +563,8 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
             result["lab_text_meta"] = ocr_meta
         return result
     except Exception as exc:  # noqa: BLE001
-        logger.warning("Lab analyze failed, using regex parse: %s", exc)
+        modal_err = str(exc)
+        logger.warning("Lab analyze failed, using regex parse: %s", modal_err)
 
     parsed = _regex_parse_lab(text)
     if ocr_meta:
@@ -569,7 +573,7 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
         parsed["engine"] = "regex-parse"
         return parsed
 
-    raise RuntimeError(f"Lab analysis failed after Modal error: {exc}")
+    raise RuntimeError(f"Lab analysis failed after Modal error: {modal_err}")
 
 
 def _analyze_lab_vision(
@@ -722,8 +726,6 @@ def _download_bytes(request: AnalyzeRequest) -> bytes:
             return resp.content
 
     if request.file_path:
-        from pathlib import Path
-
         path = Path(request.file_path)
         if path.exists():
             return path.read_bytes()
@@ -927,9 +929,22 @@ def _post_webhook(
             hashlib.sha256,
         ).hexdigest()
 
+    last_error: str | None = None
     with httpx.Client(timeout=60.0) as client:
-        resp = client.post(request.webhook_url, content=raw, headers=headers)
-        if resp.status_code >= 400:
-            logger.error("Webhook failed %s: %s", resp.status_code, resp.text)
+        for attempt in range(3):
+            try:
+                resp = client.post(request.webhook_url, content=raw, headers=headers)
+                if resp.status_code < 400:
+                    return
+                last_error = f"{resp.status_code}: {resp.text}"
+                logger.error("Webhook failed %s: %s", resp.status_code, resp.text)
+            except Exception as exc:  # noqa: BLE001
+                last_error = str(exc)
+                logger.error("Webhook request error: %s", exc)
+
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+
+    logger.error("Webhook exhausted retries for job %s: %s", request.job_id, last_error)
 
 

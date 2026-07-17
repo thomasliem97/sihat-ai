@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
+import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { login } from '@/routes';
 
 defineOptions({
@@ -24,14 +24,14 @@ defineProps<{
     <div class="space-y-6">
         <form @submit.prevent>
             <div class="grid gap-2">
-                <Label for="email">Email address</Label>
+                <FieldLabel html-for="email" required>Email address</FieldLabel>
                 <Input
                     id="email"
                     type="email"
                     name="email"
                     autocomplete="off"
                     disabled
-                    placeholder="email@example.com"
+                    placeholder="name@example.com"
                 />
             </div>
 

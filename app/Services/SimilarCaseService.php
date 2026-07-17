@@ -38,16 +38,17 @@ class SimilarCaseService
             return [];
         }
 
-        $modality = ($record->detected_modality ?? $record->modality)?->value;
+        $modality = ($record->detected_modality ?? $record->modality)->value;
 
         $scored = $candidates->map(function (MedicalRecord $candidate) use ($queryEmbedding, $queryText, $modality) {
             $score = $this->score($queryEmbedding, $queryText, $candidate);
-            $candModality = ($candidate->detected_modality ?? $candidate->modality)?->value;
-            if ($modality && $candModality === $modality) {
+            $candModality = ($candidate->detected_modality ?? $candidate->modality)->value;
+            if ($candModality === $modality) {
                 $score = min(1.0, $score + 0.05);
             }
 
-            $preview = collect($candidate->findings ?? [])
+            $candidateFindings = is_array($candidate->findings) ? array_values($candidate->findings) : [];
+            $preview = collect($candidateFindings)
                 ->pluck('label')
                 ->filter()
                 ->take(3)
@@ -57,7 +58,7 @@ class SimilarCaseService
                 'id' => $candidate->id,
                 'title' => $candidate->title,
                 'modality' => $candModality,
-                'modality_label' => ($candidate->detected_modality ?? $candidate->modality)?->label(),
+                'modality_label' => ($candidate->detected_modality ?? $candidate->modality)->label(),
                 'score' => round($score, 3),
                 'findings_preview' => $preview !== '' ? $preview : 'No labeled findings',
                 'analyzed_at' => $candidate->analyzed_at?->toIso8601String(),
@@ -78,10 +79,10 @@ class SimilarCaseService
      */
     public function embedResult(MedicalRecord $record, array $result): array
     {
-        $labels = collect($result['findings'] ?? [])->pluck('label')->filter()->all();
+        $findings = is_array($result['findings'] ?? null) ? array_values($result['findings']) : [];
+        $labels = collect($findings)->pluck('label')->filter()->all();
         $modality = $result['detected_modality']
-            ?? $record->detected_modality?->value
-            ?? $record->modality->value;
+            ?? ($record->detected_modality ?? $record->modality)->value;
         $text = trim(implode(' ', [...$labels, (string) $modality]));
 
         return $this->rag->embed($text !== '' ? $text : $record->title) ?? [];
@@ -89,8 +90,9 @@ class SimilarCaseService
 
     public function embeddingText(MedicalRecord $record): string
     {
-        $labels = collect($record->findings ?? [])->pluck('label')->filter()->all();
-        $modality = ($record->detected_modality ?? $record->modality)?->value ?? '';
+        $findings = is_array($record->findings) ? array_values($record->findings) : [];
+        $labels = collect($findings)->pluck('label')->filter()->all();
+        $modality = ($record->detected_modality ?? $record->modality)->value;
 
         return trim(implode(' ', [...$labels, $modality, $record->title]));
     }
@@ -112,7 +114,7 @@ class SimilarCaseService
         }
         $hits = 0;
         foreach ($terms as $term) {
-            if ($term !== '' && str_contains($hay, $term)) {
+            if (str_contains($hay, $term)) {
                 $hits++;
             }
         }

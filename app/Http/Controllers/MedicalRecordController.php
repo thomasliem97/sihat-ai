@@ -6,6 +6,7 @@ use App\Enums\Modality;
 use App\Enums\RecordStatus;
 use App\Enums\ReportLanguage;
 use App\Http\Requests\StoreMedicalRecordRequest;
+use App\Http\Requests\UpdateMedicalRecordReportRequest;
 use App\Models\MedicalRecord;
 use App\Models\User;
 use App\Services\AiPipelineService;
@@ -39,8 +40,7 @@ class MedicalRecordController extends Controller
             'detected_modality' => $record->detected_modality?->value,
             'status' => $record->status->value,
             'overall_confidence' => $record->overall_confidence,
-            'patient_name' => $record->subjectUser?->name
-                ?? ($record->user->isPatient() ? $record->user->name : 'Unassigned'),
+            'patient_name' => $record->patientDisplayName(),
             'created_at' => $record->created_at?->toIso8601String(),
             'analyzed_at' => $record->analyzed_at?->toIso8601String(),
         ]);
@@ -56,7 +56,7 @@ class MedicalRecordController extends Controller
         $this->authorize('create', MedicalRecord::class);
 
         $patients = $request->user()->isPhysician()
-            ? User::query()->where('role', 'patient')->orderBy('name')->get(['id', 'name'])
+            ? User::patientsForSelect()
             : collect();
 
         return Inertia::render('records/Create', [
@@ -181,13 +181,11 @@ class MedicalRecordController extends Controller
                 'signed_by_name' => $record->signedByUser?->name,
                 'can_edit_report' => $viewMode === 'physician' && $record->status === RecordStatus::Completed && ! $record->isSigned(),
                 'error_message' => $record->error_message,
-                'patient_name' => $record->subjectUser?->name
-                    ?? ($record->user->isPatient() ? $record->user->name : 'Unassigned'),
-                'file_url' => $record->status === RecordStatus::Completed && ! ($viewMode === 'patient' && ($withholdPatient || $awaitingSign))
+                'patient_name' => $record->patientDisplayName(),
+                'file_url' => $record->status === RecordStatus::Completed
+                    && ($viewMode === 'physician' || ! ($withholdPatient || $awaitingSign))
                     ? route('records.file', $record)
-                    : ($viewMode === 'physician' && $record->status === RecordStatus::Completed
-                        ? route('records.file', $record)
-                        : null),
+                    : null,
                 'created_at' => $record->created_at?->toIso8601String(),
                 'analyzed_at' => $record->analyzed_at?->toIso8601String(),
             ],
@@ -210,19 +208,14 @@ class MedicalRecordController extends Controller
         ]);
     }
 
-    public function updateReport(Request $request, MedicalRecord $record): RedirectResponse
+    public function updateReport(UpdateMedicalRecordReportRequest $request, MedicalRecord $record): RedirectResponse
     {
         $this->authorize('updateReport', $record);
 
         abort_unless($record->status === RecordStatus::Completed, 422);
         abort_if($record->isSigned(), 422, 'Report is already signed.');
 
-        $validated = $request->validate([
-            'summary' => ['required', 'string', 'max:5000'],
-            'recommendations' => ['nullable', 'array'],
-            'recommendations.*' => ['string', 'max:1000'],
-            'technical_notes' => ['nullable', 'string', 'max:5000'],
-        ]);
+        $validated = $request->validated();
 
         $report = $record->physician_report ?? [];
         $report['summary'] = $validated['summary'];
@@ -244,7 +237,7 @@ class MedicalRecordController extends Controller
 
         abort_unless($record->status === RecordStatus::Completed, 422);
         abort_if($record->isSigned(), 422, 'Report is already signed.');
-        abort_if($record->physician_report === null, 422, 'No physician report to sign.');
+        abort_if($record->physician_report === null || $record->physician_report === [], 422, 'No physician report to sign.');
 
         $record->update([
             'signed_physician_report' => $record->physician_report,
@@ -258,6 +251,18 @@ class MedicalRecordController extends Controller
     public function file(Request $request, MedicalRecord $record): mixed
     {
         $this->authorize('view', $record);
+
+        abort_unless($record->status === RecordStatus::Completed, 403);
+
+        if ($request->user()->isPatient()) {
+            $flags = $record->guardrailFlagList();
+            $withholdPatient = $record->guardrailCode() === 'WARN'
+                || in_array('critical_value_escalation', $flags, true)
+                || in_array('low_confidence_abstention', $flags, true);
+            $awaitingSign = ! $record->isSigned();
+
+            abort_if($withholdPatient || $awaitingSign, 403);
+        }
 
         if (! Storage::disk('local')->exists($record->file_path)) {
             abort(404);

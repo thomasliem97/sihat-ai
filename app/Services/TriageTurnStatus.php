@@ -27,11 +27,13 @@ class TriageTurnStatus
 
                 $value = Cache::get(self::key($sessionId));
 
-                return is_array($value) ? $value : null;
+                if (! is_array($value)) {
+                    return null;
+                }
             }
         }
 
-        return $value;
+        return self::normalize($value);
     }
 
     public static function markProcessing(int $sessionId): void
@@ -58,5 +60,30 @@ class TriageTurnStatus
     private static function key(int $sessionId): string
     {
         return "triage.pending.{$sessionId}";
+    }
+
+    /**
+     * @param  array<mixed, mixed>  $value
+     * @return array{status: string, message?: string, started_at?: int}|null
+     */
+    private static function normalize(array $value): ?array
+    {
+        $status = $value['status'] ?? null;
+
+        if (! is_string($status) || $status === '') {
+            return null;
+        }
+
+        $normalized = ['status' => $status];
+
+        if (isset($value['message']) && is_string($value['message'])) {
+            $normalized['message'] = $value['message'];
+        }
+
+        if (isset($value['started_at']) && is_numeric($value['started_at'])) {
+            $normalized['started_at'] = (int) $value['started_at'];
+        }
+
+        return $normalized;
     }
 }

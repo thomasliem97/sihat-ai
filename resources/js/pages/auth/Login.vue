@@ -2,12 +2,11 @@
 import { Form, Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import InputError from '@/components/InputError.vue';
-import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
+import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
 import {
     Select,
     SelectContent,
@@ -90,7 +89,9 @@ defineProps<{
 
             <div class="grid gap-2">
                 <div class="flex items-center justify-between">
-                    <Label for="password">Password</Label>
+                    <FieldLabel html-for="password" required
+                        >Password</FieldLabel
+                    >
                     <TextLink
                         v-if="canResetPassword"
                         :href="request()"
@@ -106,17 +107,20 @@ defineProps<{
                     required
                     :tabindex="2"
                     autocomplete="current-password"
-                    placeholder="password"
+                    placeholder="Enter your password"
                     default-value="password"
                 />
                 <InputError :message="errors.password" />
             </div>
 
             <div class="flex items-center justify-between">
-                <Label for="remember" class="flex items-center space-x-3">
+                <FieldLabel
+                    html-for="remember"
+                    class="flex items-center space-x-3"
+                >
                     <Checkbox id="remember" name="remember" :tabindex="3" />
                     <span>Remember me</span>
-                </Label>
+                </FieldLabel>
             </div>
 
             <Button

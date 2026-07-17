@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
-import {
-    Activity,
-    AlertTriangle,
-    FileText,
-    Flag,
-    Users,
-} from '@lucide/vue';
+import { Activity, AlertTriangle, FileText, Flag, Users } from '@lucide/vue';
 import ClinicalBadge from '@/components/medical/ClinicalBadge.vue';
 import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import AtlasEmptyState from '@/components/patterns/AtlasEmptyState.vue';
@@ -140,7 +134,9 @@ defineOptions({
                         class="flex items-center justify-between rounded-xl border border-border p-3 transition-colors hover:bg-muted/50"
                     >
                         <div>
-                            <p class="text-sm font-semibold">{{ record.title }}</p>
+                            <p class="text-sm font-semibold">
+                                {{ record.title }}
+                            </p>
                             <p
                                 class="font-mono text-xs tracking-wide text-muted-foreground"
                             >

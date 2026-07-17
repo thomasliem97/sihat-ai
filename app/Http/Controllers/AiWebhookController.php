@@ -7,9 +7,11 @@ use App\Enums\Modality;
 use App\Enums\RecordStatus;
 use App\Models\AnalysisJob;
 use App\Models\Biomarker;
+use App\Models\MedicalRecord;
 use App\Services\AiPipelineService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class AiWebhookController extends Controller
@@ -29,79 +31,104 @@ class AiWebhookController extends Controller
             'route_confidence' => ['nullable', 'numeric'],
         ]);
 
-        $job = AnalysisJob::query()
-            ->where('external_job_id', $validated['job_id'])
-            ->firstOrFail();
-
-        $record = $job->medicalRecord;
-
-        if ($job->status === 'completed') {
-            return response()->json(['ok' => true, 'message' => 'already completed']);
-        }
-
-        if ($validated['status'] === 'failed') {
-            $record->update([
-                'status' => RecordStatus::Failed,
-                'error_message' => $validated['error'] ?? 'Analysis failed',
-            ]);
-            $job->update([
-                'status' => 'failed',
-                'error_message' => $validated['error'] ?? 'Analysis failed',
-                'completed_at' => now(),
-            ]);
-
-            return response()->json(['ok' => true]);
-        }
-
         try {
-            $raw = $validated['result'] ?? [];
+            return DB::transaction(function () use ($validated, $pipeline) {
+                $job = AnalysisJob::query()
+                    ->where('external_job_id', $validated['job_id'])
+                    ->lockForUpdate()
+                    ->firstOrFail();
 
-            if (! empty($validated['detected_modality'])) {
-                $modality = Modality::tryFrom($validated['detected_modality']);
-                if ($modality) {
-                    $record->update([
-                        'detected_modality' => $modality,
-                        'route_confidence' => $validated['route_confidence'] ?? $record->route_confidence,
-                    ]);
+                $record = $job->medicalRecord()->lockForUpdate()->firstOrFail();
+
+                if ($job->status === 'completed') {
+                    return response()->json(['ok' => true, 'message' => 'already completed']);
                 }
-            }
 
-            $result = $pipeline->completeFromWebhook($record, $job, $raw);
-            $pipeline->persistCompleted($record, $job, $result);
+                if ($validated['status'] === 'failed') {
+                    $record->update([
+                        'status' => RecordStatus::Failed,
+                        'error_message' => $validated['error'] ?? 'Analysis failed',
+                    ]);
+                    $job->update([
+                        'status' => 'failed',
+                        'error_message' => $validated['error'] ?? 'Analysis failed',
+                        'completed_at' => now(),
+                    ]);
 
-            foreach ($result['biomarkers'] ?? $raw['biomarkers'] ?? [] as $data) {
-                Biomarker::create([
-                    'user_id' => $record->user_id,
-                    'medical_record_id' => $record->id,
-                    'name' => $data['name'],
-                    'value' => $data['value'],
-                    'unit' => $data['unit'],
-                    'reference_low' => $data['reference_low'] ?? null,
-                    'reference_high' => $data['reference_high'] ?? null,
-                    'status' => ClinicalFlag::from($data['status']),
-                    'collected_at' => now(),
-                ]);
-            }
+                    return response()->json(['ok' => true]);
+                }
+
+                $raw = $validated['result'] ?? [];
+
+                if (! empty($validated['detected_modality'])) {
+                    $modality = Modality::tryFrom($validated['detected_modality']);
+                    if ($modality) {
+                        $record->update([
+                            'detected_modality' => $modality,
+                            'route_confidence' => $validated['route_confidence'] ?? $record->route_confidence,
+                        ]);
+                    }
+                }
+
+                $result = $pipeline->completeFromWebhook($record, $job, $raw);
+                $pipeline->persistCompleted($record, $job, $result);
+                $this->persistBiomarkers($record, $result['biomarkers'] ?? $raw['biomarkers'] ?? []);
+
+                return response()->json(['ok' => true]);
+            });
         } catch (\Throwable $e) {
             Log::error('AI webhook completion failed', [
                 'job_id' => $validated['job_id'],
                 'error' => $e->getMessage(),
             ]);
 
-            $record->update([
-                'status' => RecordStatus::Failed,
-                'error_message' => $e->getMessage(),
-            ]);
-            $job->update([
-                'status' => 'failed',
-                'error_message' => $e->getMessage(),
-                'completed_at' => now(),
-            ]);
+            $job = AnalysisJob::query()
+                ->where('external_job_id', $validated['job_id'])
+                ->first();
+
+            if ($job && $job->status !== 'completed') {
+                $job->medicalRecord?->update([
+                    'status' => RecordStatus::Failed,
+                    'error_message' => $e->getMessage(),
+                ]);
+                $job->update([
+                    'status' => 'failed',
+                    'error_message' => $e->getMessage(),
+                    'completed_at' => now(),
+                ]);
+            }
 
             return response()->json(['ok' => false, 'message' => $e->getMessage()], 500);
         }
+    }
 
-        return response()->json(['ok' => true]);
+    /**
+     * @param  array<int, array<string, mixed>>  $biomarkers
+     */
+    private function persistBiomarkers(MedicalRecord $record, array $biomarkers): void
+    {
+        if ($biomarkers === [] || $record->biomarkers()->exists()) {
+            return;
+        }
+
+        foreach ($biomarkers as $data) {
+            $status = ClinicalFlag::tryFrom((string) ($data['status'] ?? ''));
+            if ($status === null || empty($data['name'])) {
+                continue;
+            }
+
+            Biomarker::create([
+                'user_id' => $record->user_id,
+                'medical_record_id' => $record->id,
+                'name' => $data['name'],
+                'value' => $data['value'],
+                'unit' => $data['unit'] ?? '',
+                'reference_low' => $data['reference_low'] ?? null,
+                'reference_high' => $data['reference_high'] ?? null,
+                'status' => $status,
+                'collected_at' => now(),
+            ]);
+        }
     }
 
     private function signatureValid(Request $request): bool

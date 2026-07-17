@@ -23,7 +23,9 @@ import { triage as voiceTriage } from '@/routes/voice';
 import type { NavItem } from '@/types';
 
 const page = usePage();
-const role = computed(() => (page.props.auth as { user?: { role?: string } })?.user?.role);
+const role = computed(
+    () => (page.props.auth as { user?: { role?: string } })?.user?.role,
+);
 
 const mainNavItems = computed<NavItem[]>(() => [
     {
@@ -50,7 +52,13 @@ const mainNavItems = computed<NavItem[]>(() => [
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
-                        <Link :href="role === 'physician' ? physicianDashboard() : patientDashboard()">
+                        <Link
+                            :href="
+                                role === 'physician'
+                                    ? physicianDashboard()
+                                    : patientDashboard()
+                            "
+                        >
                             <AppLogo />
                         </Link>
                     </SidebarMenuButton>
