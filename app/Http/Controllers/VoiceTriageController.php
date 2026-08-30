@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class VoiceTriageController extends Controller
 {
@@ -102,7 +103,7 @@ class VoiceTriageController extends Controller
         ]);
     }
 
-    public function message(StoreTriageMessageRequest $request, TriageSession $session, VoiceTriageService $triage): JsonResponse
+    public function message(StoreTriageMessageRequest $request, TriageSession $session, VoiceTriageService $triage): JsonResponse|StreamedResponse
     {
         $this->authorize('message', $session);
 
@@ -119,7 +120,7 @@ class VoiceTriageController extends Controller
             ], 409);
         }
 
-        if ($request->hasFile('audio')) {
+        if ($request->hasFile('audio') && ! str_contains((string) $request->header('Accept'), 'text/event-stream')) {
             $audio = $request->file('audio');
             assert($audio !== null);
 
@@ -151,11 +152,23 @@ class VoiceTriageController extends Controller
         }
 
         try {
+            if (str_contains((string) $request->header('Accept'), 'text/event-stream')) {
+                $audio = $request->file('audio');
+
+                return $triage->streamMessage(
+                    $session,
+                    $request->user(),
+                    $validated['text'] ?? null,
+                    $audio,
+                );
+            }
+
             $result = $triage->sendMessage(
                 $session,
                 $request->user(),
                 $validated['text'] ?? null,
                 null,
+                false,
             );
         } catch (\InvalidArgumentException $e) {
             return response()->json(['message' => $e->getMessage()], 422);
@@ -200,23 +213,15 @@ class VoiceTriageController extends Controller
         TriageSession $session,
         TriageMessage $message,
         VoiceTriageService $triage,
-    ): JsonResponse {
+    ): StreamedResponse {
         $this->authorize('view', $session);
         abort_unless($message->triage_session_id === $session->id, 404);
 
         try {
-            $audioBase64 = $triage->speakMessage($message);
+            return $triage->streamSpeech($message);
         } catch (\InvalidArgumentException $e) {
-            return response()->json(['message' => $e->getMessage()], 422);
+            abort(422, $e->getMessage());
         }
-
-        if ($audioBase64 === null) {
-            return response()->json(['message' => 'Voice playback is unavailable.'], 503);
-        }
-
-        return response()->json([
-            'audio_base64' => $audioBase64,
-        ]);
     }
 
     /**

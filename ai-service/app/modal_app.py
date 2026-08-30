@@ -53,6 +53,9 @@ image = (
         "openai",
         "huggingface_hub",
     )
+    .env({
+        "SIHAT_AI_BUILD": "imaging-v1-20260831",
+    })
 )
 
 # CPU glue: Laravel /api/v1/* + PDF/OCR (calls GPU classes via .remote())
@@ -85,7 +88,7 @@ web_image = (
     )
     .env({
         "PYTHONPATH": "/root",
-        "SIHAT_AI_BUILD": "imaging-v3-20260717",
+        "SIHAT_AI_BUILD": "imaging-v1-20260831",
         "OPENAI_STRUCTURE_MODEL": "gpt-5.6-terra",
         "OPENAI_STRUCTURE_EFFORT": "high",
     })
@@ -187,24 +190,9 @@ def _load_peft_model(base: Any, lora_path: str, token: str | None) -> Any:
     return PeftModel.from_pretrained(base, lora_path, config=config, token=token)
 
 
-def _load_image(payload: dict[str, Any]):
+def _decode_image_bytes(raw: bytes):
     from PIL import Image
 
-    raw: bytes | None = None
-    if payload.get("image_b64"):
-        raw = base64.b64decode(payload["image_b64"])
-    else:
-        file_url = payload.get("file_url")
-        if not file_url:
-            raise ValueError("image_b64 or file_url is required")
-        import httpx
-
-        with httpx.Client(timeout=60.0) as client:
-            resp = client.get(file_url, headers={"User-Agent": "SihatAI-Modal/1.0"}, follow_redirects=True)
-            resp.raise_for_status()
-            raw = resp.content
-
-    assert raw is not None
     try:
         return Image.open(BytesIO(raw)).convert("RGB")
     except Exception:
@@ -226,6 +214,76 @@ def _load_image(payload: dict[str, Any]):
             return Image.fromarray(u8[..., :3]).convert("RGB")
         except Exception as exc:  # noqa: BLE001
             raise ValueError(f"Could not decode image/DICOM payload: {exc}") from exc
+
+
+def _load_image(payload: dict[str, Any]):
+    raw: bytes | None = None
+    if payload.get("image_b64"):
+        raw = base64.b64decode(payload["image_b64"])
+    else:
+        file_url = payload.get("file_url")
+        if not file_url:
+            raise ValueError("image_b64, images_b64, or file_url is required")
+        import httpx
+
+        with httpx.Client(timeout=60.0) as client:
+            resp = client.get(file_url, headers={"User-Agent": "SihatAI-Modal/1.0"}, follow_redirects=True)
+            resp.raise_for_status()
+            raw = resp.content
+
+    assert raw is not None
+    return _decode_image_bytes(raw)
+
+
+def _load_images(payload: dict[str, Any]) -> list[Any]:
+    """One or more PILs. images_b64 wins; image_b64 / file_url remain the one-image fallback."""
+    b64s = payload.get("images_b64")
+    if isinstance(b64s, list):
+        images: list[Any] = []
+        for item in b64s[:9]:
+            if not item or not isinstance(item, str):
+                continue
+            images.append(_decode_image_bytes(base64.b64decode(item)))
+        if images:
+            return images
+    return [_load_image(payload)]
+
+
+def _focus_explain_pils(pils: list[Any], box: Any) -> tuple[list[Any], bool]:
+    """Crop the marked region and put that slice first so CT findings off slice 0 still ground."""
+    if not isinstance(box, dict) or not pils:
+        return pils, False
+    try:
+        x = float(box.get("x", 0))
+        y = float(box.get("y", 0))
+        w = float(box.get("width", 0))
+        h = float(box.get("height", 0))
+        idx = int(box.get("image_index") or 0)
+        if idx < 0 or idx >= len(pils):
+            return pils, False
+        img = pils[idx]
+        rest = [item for i, item in enumerate(pils) if i != idx]
+        iw, ih = img.size
+        crop = img.crop(
+            (
+                int(max(0, x) * iw),
+                int(max(0, y) * ih),
+                int(min(1, x + w) * iw),
+                int(min(1, y + h) * ih),
+            )
+        )
+        if crop.size[0] >= 8 and crop.size[1] >= 8:
+            return [img, crop, *rest], True
+        return [img, *rest], False
+    except Exception as exc:  # noqa: BLE001
+        print(f"Explain crop skipped: {exc}")
+        return pils, False
+
+
+def _vision_user_content(pils: list[Any], text: str) -> list[dict[str, Any]]:
+    return [{"type": "image", "image": pil} for pil in pils] + [
+        {"type": "text", "text": text}
+    ]
 
 
 # GPT Structured Outputs schemas (OpenAI json_schema). MedGemma never sees these.
@@ -264,28 +322,11 @@ IMAGING_RESULT_SCHEMA: dict[str, Any] = {
             },
         },
         "overall_confidence": _NUMBER,
-        "bounding_boxes": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "additionalProperties": False,
-                "properties": {
-                    "label": _STRING,
-                    "x": _NUMBER,
-                    "y": _NUMBER,
-                    "width": _NUMBER,
-                    "height": _NUMBER,
-                    "confidence": _NUMBER,
-                },
-                "required": ["label", "x", "y", "width", "height", "confidence"],
-            },
-        },
     },
     "required": [
         "findings",
         "differential_diagnosis",
         "overall_confidence",
-        "bounding_boxes",
     ],
 }
 
@@ -402,10 +443,85 @@ CLASSIFY_RESULT_SCHEMA: dict[str, Any] = {
 }
 
 
+def medgemma_box_2d_to_xywh(box_2d: Any) -> tuple[float, float, float, float] | None:
+    """Google localization is [y0, x0, y1, x1] in 0-1000 (or already 0-1). Return x,y,w,h in 0-1."""
+    if not isinstance(box_2d, (list, tuple)) or len(box_2d) < 4:
+        return None
+    try:
+        y0, x0, y1, x1 = (float(box_2d[0]), float(box_2d[1]), float(box_2d[2]), float(box_2d[3]))
+    except (TypeError, ValueError):
+        return None
+    scale = 1000.0 if max(abs(y0), abs(x0), abs(y1), abs(x1)) > 1.5 else 1.0
+    x = x0 / scale
+    y = y0 / scale
+    width = (x1 - x0) / scale
+    height = (y1 - y0) / scale
+    if width < 0:
+        x, width = x + width, -width
+    if height < 0:
+        y, height = y + height, -height
+    return (x, y, width, height)
+
+
+def parse_medgemma_localization(text: str) -> list[dict[str, Any]]:
+    """Parse ```json[{box_2d, label, kind, finding_index, image_index}]``` from a MedGemma reply."""
+    blob = text or ""
+    start = blob.find("```json")
+    if start != -1:
+        start += len("```json")
+        end = blob.find("```", start)
+        blob = blob[start:end] if end != -1 else blob[start:]
+    else:
+        start = blob.find("[")
+        end = blob.rfind("]")
+        if start == -1 or end == -1 or end <= start:
+            return []
+        blob = blob[start : end + 1]
+    try:
+        parsed = json.loads(blob.strip())
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(parsed, list):
+        return []
+    out: list[dict[str, Any]] = []
+    for item in parsed:
+        if not isinstance(item, dict):
+            continue
+        xywh = medgemma_box_2d_to_xywh(item.get("box_2d") or item.get("bbox"))
+        if xywh is None:
+            continue
+        x, y, w, h = xywh
+        kind = str(item.get("kind") or "finding").strip().lower()
+        if kind not in {"finding", "anatomy"}:
+            kind = "finding"
+        box: dict[str, Any] = {
+            "label": str(item.get("label") or "Finding"),
+            "x": x,
+            "y": y,
+            "width": w,
+            "height": h,
+            "confidence": float(item.get("confidence") or 0.7),
+            "kind": kind,
+        }
+        if item.get("finding_index") is not None:
+            try:
+                box["finding_index"] = int(item["finding_index"])
+            except (TypeError, ValueError):
+                pass
+        if item.get("image_index") is not None:
+            try:
+                box["image_index"] = int(item["image_index"])
+            except (TypeError, ValueError):
+                pass
+        out.append(box)
+    return out
+
+
 def _clamp_boxes(boxes: Any) -> list[dict[str, Any]]:
     if not isinstance(boxes, list):
         return []
-    out: list[dict[str, Any]] = []
+    findings: list[dict[str, Any]] = []
+    anatomy: list[dict[str, Any]] = []
     for box in boxes:
         if not isinstance(box, dict):
             continue
@@ -418,17 +534,29 @@ def _clamp_boxes(boxes: Any) -> list[dict[str, Any]]:
             continue
         if w < 0.01 or h < 0.01:
             continue
-        out.append(
-            {
-                "label": str(box.get("label") or "Finding"),
-                "x": round(x, 4),
-                "y": round(y, 4),
-                "width": round(w, 4),
-                "height": round(h, 4),
-                "confidence": float(box.get("confidence", 0.5)),
-            }
-        )
-    return out[:8]
+        kind = str(box.get("kind") or "finding").strip().lower()
+        if kind not in {"finding", "anatomy"}:
+            kind = "finding"
+        item: dict[str, Any] = {
+            "label": str(box.get("label") or "Finding"),
+            "x": round(x, 4),
+            "y": round(y, 4),
+            "width": round(w, 4),
+            "height": round(h, 4),
+            "confidence": float(box.get("confidence", 0.5)),
+            "kind": kind,
+            "image_index": int(box.get("image_index") or 0),
+        }
+        if box.get("finding_index") is not None:
+            try:
+                item["finding_index"] = int(box["finding_index"])
+            except (TypeError, ValueError):
+                pass
+        if kind == "anatomy":
+            anatomy.append(item)
+        else:
+            findings.append(item)
+    return findings[:8] + anatomy[:8]
 
 
 def _usable_clinical_label(label: Any) -> bool:
@@ -584,14 +712,12 @@ def _structure_imaging(pil: Any, draft: str, *, modality: str) -> dict[str, Any]
         instructions=(
             "You are SihatAI's imaging structurer.\n"
             "Inputs: a medical image and a MedGemma draft report (plain text).\n"
-            "Output: one JSON object matching the schema.\n"
+            "Output: one JSON object matching the schema (findings, differentials, confidence).\n"
             "Use the MedGemma draft as the primary clinical source. You may clarify, "
-            "normalize wording, calibrate severity/confidence, add differentials, estimate "
-            "bounding boxes, and elaborate from the image when the draft is thin.\n"
+            "normalize wording, and calibrate severity/confidence. Do not invent bounding boxes.\n"
             f"Modality: {modality}.\n"
             "Severity: normal|borderline|abnormal|critical. "
-            "Nodules/masses/consolidations/opacities/effusions/pneumothorax are not normal.\n"
-            "Bounding boxes: normalized [0,1] x,y top-left with width/height."
+            "Nodules/masses/consolidations/opacities/effusions/pneumothorax are not normal."
         ),
         user_text="MedGemma draft report:\n\n" + ((draft or "").strip() or "(empty)"),
         pil=pil,
@@ -737,6 +863,73 @@ Triage reply rules:
 """.strip()
 
 
+def build_triage_prompt(payload: dict[str, Any]) -> str:
+    role = str(payload.get("role_context") or "patient")
+    summary = str(payload.get("summary") or "").strip()
+    recent_dialog = str(payload.get("recent_dialog") or "").strip()
+    record_context = str(payload.get("record_context") or "").strip()
+    user_message = str(payload.get("user_message") or "").strip()
+    subject_name = str(payload.get("subject_name") or "").strip()
+    locale = str(payload.get("locale") or "").strip()
+    locale_name = str(payload.get("locale_name") or "").strip() or (
+        "the user's language" if not locale else locale
+    )
+
+    if role == "physician":
+        role_block = (
+            "You are SihatAI Voice Triage for a physician doing clinical intake.\n"
+            "Help gather clinically useful history and discuss differentials, workup, "
+            "and treatment options as clinical decision support only.\n"
+            "Do not answer non-clinical or general-assistant requests.\n"
+        )
+        if subject_name:
+            role_block += f"Patient under discussion: {subject_name}.\n"
+        else:
+            role_block += (
+                "No linked patient; answer clinical intake or case-discussion "
+                "questions only, not general chat.\n"
+            )
+    else:
+        role_block = (
+            "You are SihatAI Voice Triage for a patient.\n"
+            "Help with symptom triage and practical guidance: likely causes to consider, "
+            "self-care, evidence-based treatments, and medication options when appropriate.\n"
+            "Escalate clearly when red flags fit.\n"
+            "Do not answer non-health or general-assistant requests.\n"
+        )
+
+    parts = [role_block, _triage_reply_rules()]
+    if record_context:
+        parts.append(
+            "Prior medical record context for this patient (use when the "
+            "user asks about past scans/reports/results or clearly refers "
+            "to them; otherwise keep it in the background and do not dump "
+            "it unprompted):\n"
+            + record_context
+        )
+    else:
+        parts.append(
+            "Prior medical record context: (none on file for this subject)."
+        )
+    if summary:
+        parts.append("Running conversation summary (English handoff):\n" + summary)
+    if recent_dialog:
+        parts.append(
+            "Recent dialog (up to last 10 messages; prefer this for "
+            "immediate continuity):\n"
+            + recent_dialog
+        )
+    parts.append("Current user message:\n" + (user_message or "(empty)"))
+    parts.append(
+        f"Write the next triage reply in {locale_name}. Match the user's language. "
+        "Stay in medical triage scope. If the user asks about prior records and "
+        "context is present, answer from that context. If the user is off-topic, "
+        "redirect briefly in fresh wording without answering the off-topic ask. "
+        "Plain text only, not JSON."
+    )
+    return "\n\n".join(parts)
+
+
 def _safety_rules() -> str:
     return """
 Safety and scope:
@@ -760,25 +953,25 @@ Review systematically:
 5) devices / lines if present
 """,
         "ct": """
-Modality focus: CT multi-slice montage (mid-volume representative slices).
+Modality focus: CT volume as ordered axial slices (image 1 is most superior / first).
 Review systematically:
 1) scan coverage and obvious artifacts
 2) lung parenchyma / airways (if chest) or organ parenchyma in view
 3) vessels and mediastinum/retroperitoneum as visible
 4) bones and soft tissues
-5) focal lesions: size, density/attenuation cues, location
+5) focal lesions: size, density/attenuation cues, location, and which image index
 """,
         "mri": """
-Modality focus: MRI multi-slice montage.
+Modality focus: MRI volume as ordered slices (image 1 is first).
 Review systematically:
-1) sequence/quality limitations visible in the montage
+1) sequence/quality limitations visible across the slices
 2) anatomy in view and laterality
 3) signal abnormalities, mass effect, edema, hemorrhage cues
 4) enhancement patterns only if clearly depicted
-5) incidental but clinically relevant findings
+5) incidental but clinically relevant findings, citing image index
 """,
         "histopath": """
-Modality focus: histopathology patch montage.
+Modality focus: histopathology patches as separate images (image 1 is patch 0).
 Review systematically:
 1) staining/quality adequacy
 2) architecture (glandular, nested, diffuse, infiltrative)
@@ -826,9 +1019,90 @@ Write a concise radiology-style clinical report in plain text (not JSON).
 Use sections such as FINDINGS: and IMPRESSION: when helpful.
 Normal report punctuation is fine.
 """.strip(),
-            "Analyze the attached image now. Write the radiology report only.",
+            "Analyze the attached image(s) now. Write the radiology report only.",
         ]
     )
+
+
+def build_localize_prompt(findings: list[Any], modality: str, image_count: int) -> str:
+    labels: list[str] = []
+    for i, finding in enumerate(findings):
+        if isinstance(finding, dict) and finding.get("label"):
+            labels.append(f"{i}. {finding['label']}")
+    finding_block = "\n".join(labels) if labels else "(no labeled findings; box visible abnormalities)"
+    anatomy = ""
+    if (modality or "").lower() in {"xray", "unknown"}:
+        anatomy = (
+            "Also box these anatomical regions if visible: right lung, left lung, heart, "
+            "right costophrenic angle, left costophrenic angle. kind=anatomy for those."
+        )
+    return "\n".join(
+        [
+            "The following user query will require outputting bounding boxes. "
+            "The format of bounding boxes coordinates is [y0, x0, y1, x1] where (y0, x0) "
+            "must be top-left corner and (y1, x1) the bottom-right corner. This implies that "
+            "x0 < x1 and y0 < y1. Always normalize the x and y coordinates the range [0, 1000], "
+            "meaning that a bounding box starting at 15% of the image width would be associated "
+            "with an x coordinate of 150. You MUST output a single parseable json list of objects "
+            "enclosed into ```json...``` brackets, for instance "
+            '```json[{"box_2d": [800, 3, 840, 471], "label": "car", "kind": "finding", '
+            '"finding_index": 0, "image_index": 0}]``` is a valid output.',
+            f"There are {image_count} image(s). image_index is 0-based.",
+            "Localize these findings (kind=finding, finding_index matches the number):",
+            finding_block,
+            anatomy,
+            'Remember "left" refers to the patient\'s left side where the heart is.',
+            "Query: Output boxes for the findings"
+            + (" and anatomy" if anatomy else "")
+            + ". Don't give a final answer without reasoning. Output the final JSON list.",
+        ]
+    )
+
+
+def build_explain_prompt(payload: dict[str, Any]) -> str:
+    audience = str(payload.get("audience") or "physician").strip().lower()
+    question = str(payload.get("question") or "").strip()
+    findings = payload.get("findings") or []
+    labels: list[str] = []
+    if isinstance(findings, list):
+        for i, finding in enumerate(findings):
+            if isinstance(finding, dict) and finding.get("label"):
+                labels.append(f"{i}. {finding.get('label')}")
+    selected = payload.get("selected_finding_index")
+    selected_note = ""
+    if selected is not None:
+        selected_note = f"The user selected finding index {selected}."
+    box = payload.get("selected_box")
+    if isinstance(box, dict) and box.get("label"):
+        selected_note += f" Region of interest: {box.get('label')}."
+    recent = str(payload.get("recent_dialog") or "").strip()
+    if audience == "patient":
+        voice = (
+            "Answer in plain language for the patient. No definitive diagnosis. "
+            "Do not dump raw physician notes. If you cannot tell from this study, say so."
+        )
+    else:
+        voice = (
+            "Answer as clinical decision support for a physician. Cite what is visible. "
+            "Do not state a definitive diagnosis as fact."
+        )
+    parts = [
+        "You are SihatAI's scan explainer. Answer only about the attached study image(s).",
+        _safety_rules(),
+        _language_instruction(str(payload.get("language") or "en")),
+        voice,
+        "Study type: " + str(payload.get("modality") or "unknown") + ".",
+        str(payload.get("study_scope") or "").strip(),
+        "If the question asks about anatomy that is not in this field of view, say so. Do not invent organs, heart size, lungs, or other regions that are not visible.",
+        "If the question is not about this study, refuse and say you can only discuss this scan.",
+        "Findings already extracted:\n" + ("\n".join(labels) if labels else "(none)"),
+        selected_note,
+    ]
+    if recent:
+        parts.append("Recent questions:\n" + recent)
+    parts.append("Question:\n" + (question or "(empty)"))
+    parts.append("Write a concise answer only. Plain text, not JSON.")
+    return "\n\n".join(p for p in parts if p)
 
 
 def build_clinical_text_prompt(text: str, language: str) -> str:
@@ -936,14 +1210,17 @@ class MedGemmaModel:
         self.model.eval()
         _commit_model_cache()
 
-    def _generate_text(
+    def _generate_text_stream(
         self,
         messages: list[dict[str, Any]],
         *,
         max_new_tokens: int = 1200,
-    ) -> str:
-        """Free-form MedGemma generation (never JSON-constrained)."""
+    ):
+        """Yield decoded tokens as they are generated."""
+        from threading import Thread
+
         import torch
+        from transformers import TextIteratorStreamer
 
         templated = self.processor.apply_chat_template(
             messages,
@@ -957,15 +1234,42 @@ class MedGemmaModel:
             key: value.to(model_device) if hasattr(value, "to") else value
             for key, value in templated.items()
         }
-        input_len = int(inputs["input_ids"].shape[-1])
-        with torch.inference_mode():
-            generated = self.model.generate(
-                **inputs,
-                max_new_tokens=max_new_tokens,
-                do_sample=False,
-            )
-        new_tokens = generated[0][input_len:]
-        return self.processor.decode(new_tokens, skip_special_tokens=True).strip()
+        tokenizer = getattr(self.processor, "tokenizer", self.processor)
+        streamer = TextIteratorStreamer(
+            tokenizer,
+            skip_prompt=True,
+            skip_special_tokens=True,
+        )
+
+        def _run() -> None:
+            with torch.inference_mode():
+                self.model.generate(
+                    **inputs,
+                    max_new_tokens=max_new_tokens,
+                    do_sample=False,
+                    streamer=streamer,
+                )
+
+        thread = Thread(target=_run, daemon=True)
+        thread.start()
+        try:
+            for text in streamer:
+                if text:
+                    yield text
+        finally:
+            thread.join()
+
+    def _generate_text(
+        self,
+        messages: list[dict[str, Any]],
+        *,
+        max_new_tokens: int = 1200,
+    ) -> str:
+        """Free-form MedGemma generation (never JSON-constrained)."""
+        return "".join(self._generate_text_stream(messages, max_new_tokens=max_new_tokens)).strip()
+
+    def _explain_pils(self, payload: dict[str, Any]) -> tuple[list[Any], bool]:
+        return _focus_explain_pils(_load_images(payload), payload.get("selected_box"))
 
     @modal.method()
     def status(self) -> dict[str, str]:
@@ -973,24 +1277,89 @@ class MedGemmaModel:
 
     @modal.method()
     def analyze_image(self, payload: dict[str, Any]) -> dict[str, Any]:
-        pil = _load_image(payload)
+        pils = _load_images(payload)
         modality = str(payload.get("modality") or "xray")
         language = str(payload.get("language") or "en")
         draft = self._generate_text(
             [
                 {
                     "role": "user",
-                    "content": [
-                        {"type": "image", "image": pil},
-                        {"type": "text", "text": build_imaging_prompt(modality, language)},
-                    ],
+                    "content": _vision_user_content(
+                        pils, build_imaging_prompt(modality, language)
+                    ),
                 }
             ]
         )
+        structured = _structure_imaging(pils[0], draft, modality=modality)
+        try:
+            loc_text = self._generate_text(
+                [
+                    {
+                        "role": "user",
+                        "content": _vision_user_content(
+                            pils,
+                            build_localize_prompt(
+                                structured.get("findings") or [],
+                                modality,
+                                len(pils),
+                            ),
+                        ),
+                    }
+                ],
+                max_new_tokens=800,
+            )
+            structured["bounding_boxes"] = parse_medgemma_localization(loc_text)
+        except Exception as exc:  # noqa: BLE001
+            print(f"Localization pass failed, continuing without boxes: {exc}")
+            structured["bounding_boxes"] = []
         return _normalize_result(
-            _structure_imaging(pil, draft, modality=modality),
+            structured,
             getattr(self, "adapter_id", "none"),
         )
+
+    @modal.method()
+    def explain_image(self, payload: dict[str, Any]) -> dict[str, Any]:
+        pils, _cropped = self._explain_pils(payload)
+        answer = self._generate_text(
+            [
+                {
+                    "role": "user",
+                    "content": _vision_user_content(pils, build_explain_prompt(payload)),
+                }
+            ],
+            max_new_tokens=700,
+        )
+        return {
+            "answer": answer,
+            "engine": "medgemma",
+            "adapter": getattr(self, "adapter_id", "none"),
+        }
+
+    @modal.method()
+    def explain_image_stream(self, payload: dict[str, Any]):
+        pils, cropped = self._explain_pils(payload)
+        count = len(pils)
+        yield {
+            "hop": "Decoded the study images",
+            "detail": f"{count} image{'s' if count != 1 else ''} ready",
+        }
+        if cropped:
+            yield {
+                "hop": "Cropped the marked region",
+                "detail": "close-up added beside the full study",
+            }
+        question = str(payload.get("question") or "").strip()
+        yield {
+            "hop": "Writing the answer",
+            "detail": question[:120] if question else "the current question",
+        }
+        messages = [
+            {
+                "role": "user",
+                "content": _vision_user_content(pils, build_explain_prompt(payload)),
+            }
+        ]
+        yield from self._generate_text_stream(messages, max_new_tokens=700)
 
     @modal.method()
     def analyze_clinical_text(self, text: str, language: str = "en") -> dict[str, Any]:
@@ -1080,72 +1449,14 @@ class MedGemmaModel:
     @modal.method()
     def triage_chat(self, payload: dict[str, Any]) -> dict[str, Any]:
         """Free-text triage draft in session locale + GPT structured JSON."""
-        role = str(payload.get("role_context") or "patient")
-        summary = str(payload.get("summary") or "").strip()
-        recent_dialog = str(payload.get("recent_dialog") or "").strip()
-        record_context = str(payload.get("record_context") or "").strip()
         user_message = str(payload.get("user_message") or "").strip()
-        subject_name = str(payload.get("subject_name") or "").strip()
+        summary = str(payload.get("summary") or "").strip()
         locale = str(payload.get("locale") or "").strip()
         locale_name = str(payload.get("locale_name") or "").strip() or (
             "the user's language" if not locale else locale
         )
-
-        if role == "physician":
-            role_block = (
-                "You are SihatAI Voice Triage for a physician doing clinical intake.\n"
-                "Help gather clinically useful history and discuss differentials, workup, "
-                "and treatment options as clinical decision support only.\n"
-                "Do not answer non-clinical or general-assistant requests.\n"
-            )
-            if subject_name:
-                role_block += f"Patient under discussion: {subject_name}.\n"
-            else:
-                role_block += (
-                    "No linked patient; answer clinical intake or case-discussion "
-                    "questions only, not general chat.\n"
-                )
-        else:
-            role_block = (
-                "You are SihatAI Voice Triage for a patient.\n"
-                "Help with symptom triage and practical guidance: likely causes to consider, "
-                "self-care, evidence-based treatments, and medication options when appropriate.\n"
-                "Escalate clearly when red flags fit.\n"
-                "Do not answer non-health or general-assistant requests.\n"
-            )
-
-        parts = [role_block, _triage_reply_rules()]
-        if record_context:
-            parts.append(
-                "Prior medical record context for this patient (use when the "
-                "user asks about past scans/reports/results or clearly refers "
-                "to them; otherwise keep it in the background and do not dump "
-                "it unprompted):\n"
-                + record_context
-            )
-        else:
-            parts.append(
-                "Prior medical record context: (none on file for this subject)."
-            )
-        if summary:
-            parts.append("Running conversation summary (English handoff):\n" + summary)
-        if recent_dialog:
-            parts.append(
-                "Recent dialog (up to last 10 messages; prefer this for "
-                "immediate continuity):\n"
-                + recent_dialog
-            )
-        parts.append("Current user message:\n" + (user_message or "(empty)"))
-        parts.append(
-            f"Write the next triage reply in {locale_name}. Match the user's language. "
-            "Stay in medical triage scope. If the user asks about prior records and "
-            "context is present, answer from that context. If the user is off-topic, "
-            "redirect briefly in fresh wording without answering the off-topic ask. "
-            "Plain text only, not JSON."
-        )
-
         draft = self._generate_text(
-            [{"role": "user", "content": "\n\n".join(parts)}],
+            [{"role": "user", "content": build_triage_prompt(payload)}],
             max_new_tokens=600,
         )
         structured = _structure_triage(
@@ -1161,6 +1472,32 @@ class MedGemmaModel:
             "engine": f"medgemma+{_structure_model()}",
             "adapter": getattr(self, "adapter_id", "none"),
         }
+
+    @modal.method()
+    def triage_chat_stream(self, payload: dict[str, Any]):
+        user_message = str(payload.get("user_message") or "").strip()
+        summary = str(payload.get("summary") or "").strip()
+        locale = str(payload.get("locale") or "").strip()
+        locale_name = str(payload.get("locale_name") or "").strip() or (
+            "the user's language" if not locale else locale
+        )
+        yield {"hop": "Writing the reply", "detail": user_message[:120] or "the current message"}
+        draft_parts: list[str] = []
+        for token in self._generate_text_stream(
+            [{"role": "user", "content": build_triage_prompt(payload)}],
+            max_new_tokens=600,
+        ):
+            draft_parts.append(str(token or ""))
+            yield token
+        draft = "".join(draft_parts).strip()
+        yield {"hop": "Checking urgency and summary"}
+        structured = _structure_triage(
+            draft,
+            summary=summary,
+            user_message=user_message,
+            locale_name=locale_name,
+        )
+        yield {"done": True, "draft": draft, "structured": structured}
 
 
 @app.cls(

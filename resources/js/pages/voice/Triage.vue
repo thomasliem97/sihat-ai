@@ -2,10 +2,12 @@
 import { Head, usePage } from '@inertiajs/vue3';
 import {
     Archive,
+    Check,
     ChevronLeft,
     CircleStop,
     Copy,
     Ellipsis,
+    LoaderCircle,
     Mic,
     MicOff,
     ScrollText,
@@ -55,6 +57,7 @@ import {
 import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
 import { beginColdStartWatch, endColdStartWatch } from '@/lib/coldStartNotice';
+import { readSse } from '@/lib/sse';
 import { triage } from '@/routes/voice';
 
 type TriageMessage = {
@@ -92,6 +95,11 @@ type TriageSession = {
 
 type TurnPhase = 'idle' | 'transcribing' | 'thinking' | 'speaking';
 
+type TurnHop = {
+    hop: string;
+    detail?: string;
+};
+
 const props = defineProps<{
     sessions: TriageSession[];
     sharedSessions: TriageSession[];
@@ -124,6 +132,8 @@ const threadEnd = ref<HTMLElement | null>(null);
 const viewingSessionId = ref<number | null>(null);
 const sessionCache = ref<Record<number, TriageSession>>({});
 const phaseBySessionId = ref<Record<number, TurnPhase>>({});
+const turnHops = ref<TurnHop[]>([]);
+const inFlightAssistantId = ref<number | null>(null);
 const draftByKey = ref<Record<string, string>>({});
 
 let mediaRecorder: MediaRecorder | null = null;
@@ -217,14 +227,21 @@ const activePhase = computed<TurnPhase>(() => {
     return getPhase(0);
 });
 
+const hopLog = computed(() => [...turnHops.value].reverse());
+
 const phaseLabel = computed(() => {
+    const current = hopLog.value[0]?.hop;
+    if (current) {
+        return current;
+    }
+
     switch (activePhase.value) {
         case 'transcribing':
-            return 'Transcribing…';
+            return 'Transcribing';
         case 'thinking':
-            return 'Thinking…';
+            return 'Thinking';
         case 'speaking':
-            return 'Speaking…';
+            return 'Speaking';
         default:
             return '';
     }
@@ -418,9 +435,28 @@ function jsonHeaders(): HeadersInit {
     };
 }
 
+function isBlobAudioUrl(url: string | undefined): url is string {
+    return typeof url === 'string' && url.startsWith('blob:');
+}
+
+function rememberMessageAudioUrl(messageId: number, url: string): void {
+    const previous = audioByMessageId.value[messageId];
+
+    if (previous && previous !== url && isBlobAudioUrl(previous)) {
+        URL.revokeObjectURL(previous);
+    }
+
+    audioByMessageId.value = {
+        ...audioByMessageId.value,
+        [messageId]: url,
+    };
+}
+
 function revokeAudioMap() {
     Object.values(audioByMessageId.value).forEach((url) => {
-        URL.revokeObjectURL(url);
+        if (isBlobAudioUrl(url)) {
+            URL.revokeObjectURL(url);
+        }
     });
     audioByMessageId.value = {};
 }
@@ -451,6 +487,13 @@ function attachAudioLifecycle(messageId: number) {
             playingMessageId.value = null;
         }
     };
+
+    audioEl.onerror = () => {
+        if (playingMessageId.value === messageId) {
+            playingMessageId.value = null;
+        }
+        toast.error('Could not play voice');
+    };
 }
 
 async function playMessageAudioUrl(messageId: number, url: string) {
@@ -474,6 +517,7 @@ async function playMessageAudioUrl(messageId: number, url: string) {
         }
     } catch {
         playingMessageId.value = null;
+        toast.error('Tap Replay voice to hear this reply');
     }
 }
 
@@ -488,14 +532,7 @@ function storeMessageAudio(messageId: number, base64: string, play: boolean) {
     const blob = new Blob([bytes], { type: 'audio/mpeg' });
     const url = URL.createObjectURL(blob);
 
-    if (audioByMessageId.value[messageId]) {
-        URL.revokeObjectURL(audioByMessageId.value[messageId]);
-    }
-
-    audioByMessageId.value = {
-        ...audioByMessageId.value,
-        [messageId]: url,
-    };
+    rememberMessageAudioUrl(messageId, url);
 
     if (play) {
         void playMessageAudioUrl(messageId, url);
@@ -517,14 +554,52 @@ function onReplayVoiceSelect(event: Event, messageId: number) {
         return;
     }
 
-    if (audioByMessageId.value[messageId]) {
-        void playMessageAudioUrl(messageId, audioByMessageId.value[messageId]);
+    const cached = audioByMessageId.value[messageId];
+
+    if (isBlobAudioUrl(cached)) {
+        void playMessageAudioUrl(messageId, cached);
 
         return;
     }
 
     event.preventDefault();
     void fetchAndPlayMessageAudio(messageId, { showMenu: true });
+}
+
+async function cacheSpeakAudio(
+    sessionId: number,
+    messageId: number,
+): Promise<string | null> {
+    const cached = audioByMessageId.value[messageId];
+
+    if (isBlobAudioUrl(cached)) {
+        return cached;
+    }
+
+    const response = await fetch(
+        speakMessageRoute.url({
+            session: sessionId,
+            message: messageId,
+        }),
+        {
+            credentials: 'same-origin',
+            headers: { Accept: 'audio/mpeg' },
+        },
+    );
+
+    if (!response.ok) {
+        return null;
+    }
+
+    const type = response.headers.get('content-type') ?? '';
+    if (!type.includes('audio')) {
+        return null;
+    }
+
+    const url = URL.createObjectURL(await response.blob());
+    rememberMessageAudioUrl(messageId, url);
+
+    return url;
 }
 
 async function fetchAndPlayMessageAudio(
@@ -544,28 +619,15 @@ async function fetchAndPlayMessageAudio(
     }
 
     try {
-        const response = await fetch(
-            speakMessageRoute.url({
-                session: active.value.id,
-                message: messageId,
-            }),
-            {
-                method: 'POST',
-                headers: jsonHeaders(),
-            },
-        );
-        const data = await response.json().catch(() => ({}));
+        const url = await cacheSpeakAudio(active.value.id, messageId);
 
-        if (!response.ok || !data.audio_base64) {
-            toast.error(data.message || 'Could not play voice');
+        if (!url) {
+            toast.error('Could not play voice');
 
             return;
         }
 
-        storeMessageAudio(messageId, data.audio_base64, false);
-        const url = audioByMessageId.value[messageId];
-
-        if (url && !recording.value && epoch === audioPlaybackEpoch) {
+        if (!recording.value && epoch === audioPlaybackEpoch) {
             await playMessageAudioUrl(messageId, url);
         }
 
@@ -606,6 +668,8 @@ function startNewTriage() {
     }
 
     stopMessageAudio();
+    turnHops.value = [];
+    inFlightAssistantId.value = null;
     viewingSessionId.value = null;
     active.value = null;
     draft.value = draftByKey.value.new ?? '';
@@ -1080,18 +1144,21 @@ function rollbackOptimisticMessage(
     sessionId: number,
     pendingId: number,
     restoreText?: string,
+    extraIds: number[] = [],
 ) {
     const current =
-        sessionCache.value[sessionId] ??
-        (viewingSessionId.value === sessionId ? active.value : null);
+        viewingSessionId.value === sessionId && active.value
+            ? active.value
+            : (sessionCache.value[sessionId] ?? null);
 
     if (!current) {
         return;
     }
 
+    const drop = new Set([pendingId, ...extraIds]);
     const rolledBack: TriageSession = {
         ...current,
-        messages: (current.messages ?? []).filter((m) => m.id !== pendingId),
+        messages: (current.messages ?? []).filter((m) => !drop.has(m.id)),
     };
     putSessionCache(rolledBack);
 
@@ -1228,6 +1295,100 @@ async function resumePendingVoiceTurn(session: TriageSession): Promise<void> {
     }
 }
 
+function asTriageMessage(value: unknown): TriageMessage | null {
+    if (!value || typeof value !== 'object') {
+        return null;
+    }
+
+    const row = value as Record<string, unknown>;
+    if (
+        typeof row.id !== 'number' ||
+        typeof row.role !== 'string' ||
+        typeof row.content !== 'string'
+    ) {
+        return null;
+    }
+
+    return {
+        id: row.id,
+        role: row.role,
+        content: row.content,
+        input_modality:
+            typeof row.input_modality === 'string' ? row.input_modality : 'text',
+        stt_engine: typeof row.stt_engine === 'string' ? row.stt_engine : null,
+        created_at: typeof row.created_at === 'string' ? row.created_at : null,
+    };
+}
+
+function patchActiveMessage(fromId: number, incoming: TriageMessage): void {
+    if (!active.value) {
+        return;
+    }
+
+    active.value = {
+        ...active.value,
+        messages: (active.value.messages ?? []).map((message) =>
+            message.id === fromId ? { ...message, ...incoming } : message,
+        ),
+    };
+
+    if ((active.value.id ?? 0) > 0) {
+        putSessionCache(active.value);
+    }
+}
+
+function appendActiveToken(messageId: number, token: string): void {
+    if (!active.value) {
+        return;
+    }
+
+    active.value = {
+        ...active.value,
+        messages: (active.value.messages ?? []).map((message) => {
+            if (message.id !== messageId) {
+                return message;
+            }
+
+            const base = message.content === '…' ? '' : message.content;
+
+            return { ...message, content: base + token };
+        }),
+    };
+
+    if ((active.value.id ?? 0) > 0) {
+        putSessionCache(active.value);
+    }
+}
+
+function pushHop(hop: string, detail?: string): void {
+    const last = turnHops.value.at(-1);
+    if (last?.hop === hop) {
+        turnHops.value = [
+            ...turnHops.value.slice(0, -1),
+            { hop, detail: detail || last.detail },
+        ];
+
+        return;
+    }
+
+    turnHops.value = [...turnHops.value, { hop, detail }];
+}
+
+function phaseFromHop(hop: string): TurnPhase {
+    const lower = hop.toLowerCase();
+
+    if (lower.includes('transcrib') || lower.includes('heard')) {
+        return 'transcribing';
+    }
+
+    return 'thinking';
+}
+
+function resetTurnUi(): void {
+    turnHops.value = [];
+    inFlightAssistantId.value = null;
+}
+
 async function applyCompletedTurn(
     session: TriageSession,
     requestSessionId: number,
@@ -1255,6 +1416,8 @@ async function applyCompletedTurn(
         }
     } else if (options?.audioBase64 && assistantId) {
         storeMessageAudio(assistantId, options.audioBase64, false);
+    } else if (autoplay.value && assistantId) {
+        void cacheSpeakAudio(session.id, assistantId);
     }
 }
 
@@ -1274,7 +1437,10 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         return;
     }
 
+    stopMessageAudio();
+
     const pendingId = -Date.now();
+    const pendingAssistantId = pendingId - 1;
     const modality = audio ? 'voice' : 'text';
     const optimisticContent = text || (audio ? '…' : '');
     let requestSessionId = 0;
@@ -1285,6 +1451,13 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         role: 'user',
         content: optimisticContent,
         input_modality: modality,
+        created_at: new Date().toISOString(),
+    };
+    const optimisticAssistant: TriageMessage = {
+        id: pendingAssistantId,
+        role: 'assistant',
+        content: '',
+        input_modality: 'text',
         created_at: new Date().toISOString(),
     };
 
@@ -1305,13 +1478,17 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                     subjectUserId.value !== ''
                         ? Number(subjectUserId.value)
                         : null,
-                messages: [optimisticMessage],
+                messages: [optimisticMessage, optimisticAssistant],
             };
             viewingSessionId.value = null;
         } else {
             active.value = {
                 ...active.value,
-                messages: [...(active.value.messages ?? []), optimisticMessage],
+                messages: [
+                    ...(active.value.messages ?? []),
+                    optimisticMessage,
+                    optimisticAssistant,
+                ],
             };
 
             if ((active.value.id ?? 0) > 0) {
@@ -1320,6 +1497,11 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         }
 
         optimisticAttached = true;
+        inFlightAssistantId.value = pendingAssistantId;
+        pushHop(
+            audio ? 'Transcribing speech' : 'Reading your message',
+            text || 'voice note',
+        );
         draft.value = '';
         draftByKey.value = {
             ...draftByKey.value,
@@ -1336,6 +1518,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
 
         if (!ensured?.id) {
             setPhase(provisionalKey, 'idle');
+            resetTurnUi();
 
             if (optimisticAttached) {
                 if (viewingSessionId.value === null) {
@@ -1347,7 +1530,9 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                     active.value = {
                         ...active.value,
                         messages: (active.value.messages ?? []).filter(
-                            (m) => m.id !== pendingId,
+                            (m) =>
+                                m.id !== pendingId &&
+                                m.id !== pendingAssistantId,
                         ),
                     };
 
@@ -1395,16 +1580,17 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
             {
                 method: 'POST',
                 headers: {
-                    Accept: 'application/json',
+                    Accept: 'text/event-stream',
                     'X-CSRF-TOKEN': csrf.value,
                 },
                 body: form,
             },
         );
 
-        const data = await response.json().catch(() => ({}));
-
         if (response.status === 202) {
+            const data = await response.json().catch(() => ({}));
+            resetTurnUi();
+
             try {
                 const session = await awaitPendingVoiceTurn(
                     requestSessionId,
@@ -1418,36 +1604,137 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                         ? error.message
                         : 'Could not process voice message';
                 toast.error(message);
-                rollbackOptimisticMessage(requestSessionId, pendingId);
+                rollbackOptimisticMessage(
+                    requestSessionId,
+                    pendingId,
+                    undefined,
+                    [pendingAssistantId],
+                );
             }
 
             return;
         }
 
         if (!response.ok) {
-            toast.error(data.message || 'Could not send message');
+            const data = await response.json().catch(() => ({}));
+            toast.error(
+                (data as { message?: string }).message ||
+                    'Could not send message',
+            );
+            resetTurnUi();
             rollbackOptimisticMessage(
                 requestSessionId,
                 pendingId,
                 text || undefined,
+                [pendingAssistantId],
             );
 
             return;
         }
 
-        if (audio) {
-            setPhase(requestSessionId, 'thinking');
+        let streamError: string | null = null;
+        let persistedUser = false;
+        let completedSession: TriageSession | null = null;
+        let assistantId: number | undefined;
+        let streamingId = pendingAssistantId;
+
+        await readSse(response, (data) => {
+            if (data.event === 'error' && typeof data.message === 'string') {
+                streamError = data.message;
+
+                return;
+            }
+
+            if (data.event === 'hop' && typeof data.hop === 'string' && data.hop) {
+                pushHop(
+                    data.hop,
+                    typeof data.detail === 'string' && data.detail
+                        ? data.detail
+                        : undefined,
+                );
+                setPhase(requestSessionId, phaseFromHop(data.hop));
+                void scrollThreadToEnd();
+
+                return;
+            }
+
+            if (data.event === 'user') {
+                const incoming = asTriageMessage(data.message);
+                if (incoming) {
+                    persistedUser = true;
+                    patchActiveMessage(pendingId, incoming);
+                }
+
+                return;
+            }
+
+            if (data.event === 'token' && typeof data.token === 'string') {
+                setPhase(requestSessionId, 'thinking');
+                appendActiveToken(streamingId, data.token);
+                void scrollThreadToEnd();
+
+                return;
+            }
+
+            if (data.event === 'assistant') {
+                const incoming = asTriageMessage(data.message);
+                if (incoming) {
+                    patchActiveMessage(streamingId, incoming);
+                    streamingId = incoming.id;
+                    inFlightAssistantId.value = incoming.id;
+                    assistantId = incoming.id;
+                }
+
+                return;
+            }
+
+            if (data.event === 'session') {
+                const session = data.session as TriageSession | undefined;
+                if (session?.id) {
+                    completedSession = session;
+                }
+            }
+        });
+
+        if (!streamError && !completedSession) {
+            streamError = 'Could not send message';
         }
 
-        await applyCompletedTurn(
-            data.session as TriageSession,
+        if (streamError) {
+            toast.error(streamError);
+            resetTurnUi();
+            rollbackOptimisticMessage(
+                requestSessionId,
+                persistedUser ? pendingAssistantId : pendingId,
+                persistedUser ? undefined : text || undefined,
+                persistedUser ? [] : [pendingAssistantId],
+            );
+
+            return;
+        }
+
+        resetTurnUi();
+
+        if (completedSession) {
+            await applyCompletedTurn(
+                completedSession,
+                requestSessionId,
+                { assistantId },
+            );
+        }
+    } catch (error) {
+        const message =
+            error instanceof Error ? error.message : 'Could not send message';
+        toast.error(message);
+        resetTurnUi();
+        rollbackOptimisticMessage(
             requestSessionId,
-            {
-                audioBase64: data.audio_base64,
-                assistantId: data.assistant_message?.id as number | undefined,
-            },
+            pendingId,
+            text || undefined,
+            [pendingAssistantId],
         );
     } finally {
+        resetTurnUi();
         if (requestSessionId > 0) {
             setPhase(requestSessionId, 'idle');
         } else {
@@ -1887,7 +2174,71 @@ defineOptions({
                                             · voice
                                         </template>
                                     </p>
+                                    <ol
+                                        v-if="
+                                            item.message.role ===
+                                                'assistant' &&
+                                            inFlightAssistantId ===
+                                                item.message.id &&
+                                            hopLog.length
+                                        "
+                                        class="space-y-2 rounded-2xl border border-border bg-muted/40 px-3.5 py-2.5"
+                                        aria-live="polite"
+                                    >
+                                        <li
+                                            v-for="(step, i) in hopLog"
+                                            :key="`${i}-${step.hop}`"
+                                            class="flex items-start gap-2"
+                                        >
+                                            <span
+                                                class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border"
+                                                :class="
+                                                    i === 0
+                                                        ? 'border-primary bg-primary/15 text-primary'
+                                                        : 'border-line-strong bg-paper-blue text-ink-soft'
+                                                "
+                                            >
+                                                <LoaderCircle
+                                                    v-if="i === 0"
+                                                    class="size-3.5 animate-spin"
+                                                    aria-hidden="true"
+                                                />
+                                                <Check
+                                                    v-else
+                                                    class="size-3.5"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
+                                            <span>
+                                                <span
+                                                    class="block text-sm font-semibold"
+                                                    :class="
+                                                        i === 0
+                                                            ? 'text-primary'
+                                                            : 'text-ink'
+                                                    "
+                                                >
+                                                    {{ step.hop }}
+                                                </span>
+                                                <span
+                                                    v-if="step.detail"
+                                                    class="mt-0.5 block text-xs leading-relaxed text-muted-foreground"
+                                                >
+                                                    {{ step.detail }}
+                                                </span>
+                                            </span>
+                                        </li>
+                                    </ol>
                                     <div
+                                        v-if="
+                                            item.message.role === 'user' ||
+                                            item.message.content ||
+                                            !(
+                                                inFlightAssistantId ===
+                                                    item.message.id &&
+                                                hopLog.length
+                                            )
+                                        "
                                         class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap"
                                         :class="
                                             item.message.role === 'user'
@@ -1895,10 +2246,24 @@ defineOptions({
                                                 : 'border border-border bg-card text-card-foreground'
                                         "
                                     >
-                                        {{ item.message.content }}
+                                        {{
+                                            item.message.role ===
+                                                'assistant' &&
+                                            inFlightAssistantId ===
+                                                item.message.id &&
+                                            item.message.content === ''
+                                                ? '…'
+                                                : item.message.content
+                                        }}
                                     </div>
                                     <div
-                                        v-if="item.message.role === 'assistant'"
+                                        v-if="
+                                            item.message.role ===
+                                                'assistant' &&
+                                            item.message.content &&
+                                            inFlightAssistantId !==
+                                                item.message.id
+                                        "
                                         class="flex items-center gap-0.5 pt-0.5"
                                     >
                                         <Button
@@ -1999,7 +2364,7 @@ defineOptions({
                             </template>
 
                             <div
-                                v-if="phaseLabel"
+                                v-if="phaseLabel && !hopLog.length"
                                 class="w-full max-w-prose space-y-2"
                             >
                                 <p

@@ -154,7 +154,27 @@ PDF);
             ],
             'bounding_boxes' => [
                 // RLL opacity sits on image-left (patient right) in the lower third of the demo CXR.
-                ['label' => 'Opacity', 'x' => 0.08, 'y' => 0.56, 'width' => 0.34, 'height' => 0.3, 'confidence' => 0.87],
+                [
+                    'label' => 'Right lower lobe opacity',
+                    'x' => 0.08,
+                    'y' => 0.56,
+                    'width' => 0.34,
+                    'height' => 0.3,
+                    'confidence' => 0.87,
+                    'kind' => 'finding',
+                    'finding_index' => 0,
+                    'image_index' => 0,
+                ],
+                [
+                    'label' => 'Heart',
+                    'x' => 0.32,
+                    'y' => 0.38,
+                    'width' => 0.38,
+                    'height' => 0.32,
+                    'confidence' => 0.9,
+                    'kind' => 'anatomy',
+                    'image_index' => 0,
+                ],
             ],
             'longitudinal_diff' => [
                 'has_prior' => true,

@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Enums\RecordStatus;
 use App\Models\MedicalRecord;
 use App\Models\User;
 
@@ -39,6 +40,23 @@ class MedicalRecordPolicy
     public function sign(User $user, MedicalRecord $medicalRecord): bool
     {
         return $user->isPhysician();
+    }
+
+    public function explain(User $user, MedicalRecord $medicalRecord): bool
+    {
+        if (! $this->view($user, $medicalRecord)) {
+            return false;
+        }
+
+        if ($medicalRecord->status !== RecordStatus::Completed || ! $medicalRecord->isImagingStudy()) {
+            return false;
+        }
+
+        if ($user->isPhysician()) {
+            return true;
+        }
+
+        return $medicalRecord->patientCanAccessResults();
     }
 
     public function delete(User $user, MedicalRecord $medicalRecord): bool

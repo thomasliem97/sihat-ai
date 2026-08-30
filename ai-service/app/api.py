@@ -21,6 +21,7 @@ from typing import Any
 
 import httpx
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 logging.basicConfig(level=logging.INFO)
@@ -79,7 +80,7 @@ def health() -> dict[str, str]:
         "status": "ok",
         "service": "sihat-ai",
         "inference": "modal",
-        "build": _env("SIHAT_AI_BUILD") or "imaging-v3-20260717",
+        "build": _env("SIHAT_AI_BUILD") or "imaging-v1-20260831",
         "webhook_secret": "set" if secret else "missing",
         "adapter": f"configured:{lora}" if lora else "gpu-volume",
         "structurer": _env("OPENAI_STRUCTURE_MODEL") or "gpt-5.6-terra",
@@ -118,6 +119,160 @@ def triage_chat(payload: dict[str, Any]) -> dict[str, Any]:
     except Exception as exc:  # noqa: BLE001
         logger.warning("Triage failed: %s", exc)
         raise HTTPException(status_code=502, detail=f"Triage failed: {exc}") from exc
+
+
+@app.post("/api/v1/explain")
+def explain_scan(payload: dict[str, Any]) -> dict[str, Any]:
+    """Follow-up VQA about a study. MedGemma only; no GPT schema."""
+    question = str(payload.get("question") or "").strip()
+    if not question:
+        raise HTTPException(status_code=422, detail="question required")
+
+    try:
+        prepared = _prepare_explain_payload(payload)
+        return _invoke("/explain", prepared)
+    except HTTPException:
+        raise
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Explain failed: %s", exc)
+        raise HTTPException(status_code=502, detail=f"Explain failed: {exc}") from exc
+
+
+def _explain_stream_hop(chunk: Any) -> dict[str, str] | None:
+    parsed: dict[str, Any] | None = None
+    if isinstance(chunk, dict) and chunk.get("hop"):
+        parsed = chunk
+    elif isinstance(chunk, str) and chunk.lstrip().startswith("{"):
+        try:
+            data = json.loads(chunk)
+        except json.JSONDecodeError:
+            return None
+        if isinstance(data, dict) and data.get("hop"):
+            parsed = data
+    if not parsed:
+        return None
+    hop = str(parsed.get("hop") or "").strip()
+    if not hop:
+        return None
+    event: dict[str, str] = {"hop": hop}
+    detail = parsed.get("detail")
+    if isinstance(detail, str) and detail.strip():
+        event["detail"] = detail.strip()[:240]
+    return event
+
+
+def _modal_stream_event(chunk: Any) -> tuple[str, Any] | None:
+    parsed: dict[str, Any] | None = None
+    if isinstance(chunk, dict):
+        parsed = chunk
+    elif isinstance(chunk, str) and chunk.lstrip().startswith("{"):
+        try:
+            data = json.loads(chunk)
+        except json.JSONDecodeError:
+            text = str(chunk)
+            return ("token", text) if text else None
+        if isinstance(data, dict):
+            parsed = data
+    if parsed:
+        hop = _explain_stream_hop(parsed)
+        if hop:
+            return ("hop", hop)
+        if parsed.get("done"):
+            return ("done", parsed)
+        return None
+    text = str(chunk or "")
+    return ("token", text) if text else None
+
+
+@app.post("/api/v1/explain/stream")
+def explain_scan_stream(payload: dict[str, Any]) -> StreamingResponse:
+    """Same VQA as /explain, yielding SSE token events."""
+    question = str(payload.get("question") or "").strip()
+    if not question:
+        raise HTTPException(status_code=422, detail="question required")
+
+    prepared = _prepare_explain_payload(payload)
+
+    def events():
+        import modal
+
+        parts: list[str] = []
+        try:
+            model = modal.Cls.from_name("sihat-medgemma", "MedGemmaModel")()
+            for chunk in model.explain_image_stream.remote_gen(prepared):
+                kind = _modal_stream_event(chunk)
+                if not kind:
+                    continue
+                event, payload = kind
+                if event == "hop":
+                    yield f"data: {json.dumps(payload)}\n\n"
+                    continue
+                if event == "token":
+                    text = str(payload or "")
+                    if not text:
+                        continue
+                    parts.append(text)
+                    yield f"data: {json.dumps({'token': text})}\n\n"
+            yield f"data: {json.dumps({'done': True, 'answer': ''.join(parts).strip()})}\n\n"
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Explain stream failed: %s", exc)
+            yield f"data: {json.dumps({'error': str(exc)})}\n\n"
+
+    return StreamingResponse(
+        events(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
+
+
+@app.post("/api/v1/triage/stream")
+def triage_chat_stream(payload: dict[str, Any]) -> StreamingResponse:
+    """Same triage turn as /triage, yielding SSE hop/token events then structured JSON."""
+    if not str(payload.get("user_message") or "").strip():
+        raise HTTPException(status_code=422, detail="user_message required")
+
+    def events():
+        import modal
+
+        parts: list[str] = []
+        final: dict[str, Any] | None = None
+        try:
+            model = modal.Cls.from_name("sihat-medgemma", "MedGemmaModel")()
+            for chunk in model.triage_chat_stream.remote_gen(payload):
+                kind = _modal_stream_event(chunk)
+                if not kind:
+                    continue
+                event, data = kind
+                if event == "hop":
+                    yield f"data: {json.dumps(data)}\n\n"
+                    continue
+                if event == "done" and isinstance(data, dict):
+                    final = data
+                    continue
+                text = str(data or "")
+                if not text:
+                    continue
+                parts.append(text)
+                yield f"data: {json.dumps({'token': text})}\n\n"
+            done = final or {}
+            done.setdefault("done", True)
+            done.setdefault("draft", "".join(parts).strip())
+            yield f"data: {json.dumps(done)}\n\n"
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Triage stream failed: %s", exc)
+            yield f"data: {json.dumps({'error': str(exc)})}\n\n"
+
+    return StreamingResponse(
+        events(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @app.post("/api/v1/analyze", response_model=AnalyzeResponse)
@@ -296,15 +451,15 @@ def _analyze_volume(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
     name = (request.original_filename or "").lower()
     mime = (request.mime_type or "").lower()
 
-    montage_b64, volume_meta = _build_volume_montage(data, name, mime)
+    images_b64, volume_meta = _extract_volume_slices(data, name, mime)
 
-    if not montage_b64:
-        raise RuntimeError("Could not build volume montage for analysis")
+    if not images_b64:
+        raise RuntimeError("Could not extract volume slices for analysis")
 
     result = _invoke(
         "/analyze",
         {
-            "image_b64": montage_b64,
+            "images_b64": images_b64,
             "modality": kind,
             "language": request.language,
             "job_id": request.job_id,
@@ -317,15 +472,15 @@ def _analyze_volume(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
 
 def _analyze_histopath(request: AnalyzeRequest) -> dict[str, Any]:
     data = _download_bytes(request)
-    montage_b64, patch_meta = _build_histopath_patches(data)
+    images_b64, patch_meta = _extract_histopath_patches(data)
 
-    if not montage_b64:
+    if not images_b64:
         raise RuntimeError("Could not build histopath patches for analysis")
 
     result = _invoke(
         "/analyze",
         {
-            "image_b64": montage_b64,
+            "images_b64": images_b64,
             "modality": "histopath",
             "language": request.language,
             "job_id": request.job_id,
@@ -336,28 +491,38 @@ def _analyze_histopath(request: AnalyzeRequest) -> dict[str, Any]:
     return result
 
 
-def _build_volume_montage(
-    data: bytes, filename: str, mime: str
-) -> tuple[str | None, dict[str, Any]]:
-    """Extract up to 8 mid slices from zip of images, DICOM, or pass-through single image."""
+def _pils_to_jpeg_b64s(images: list[Any], *, limit: int = 8) -> list[str]:
     import base64
     from io import BytesIO
 
+    out: list[str] = []
+    for img in images[:limit]:
+        buf = BytesIO()
+        img.convert("RGB").save(buf, format="JPEG", quality=85)
+        out.append(base64.b64encode(buf.getvalue()).decode("ascii"))
+    return out
+
+
+def _extract_volume_slices(
+    data: bytes, filename: str, mime: str
+) -> tuple[list[str], dict[str, Any]]:
+    """Extract up to 8 mid slices as separate JPEGs (not a collage)."""
     meta: dict[str, Any] = {
         "slice_count": 0,
         "used_slices": [],
-        "note": "Mid-slice montage (max 8)",
+        "note": "Mid-volume slices sent as separate images (max 8)",
     }
 
     try:
         from PIL import Image
     except ImportError:
-        return (base64.b64encode(data).decode("ascii") if data else None, meta)
+        return ([], meta)
 
     images: list[Any] = []
 
     if filename.endswith(".zip") or "zip" in mime:
         import zipfile
+        from io import BytesIO
 
         try:
             with zipfile.ZipFile(BytesIO(data)) as zf:
@@ -371,7 +536,7 @@ def _build_volume_montage(
                 )
                 meta["slice_count"] = len(names)
                 if not names:
-                    return None, meta
+                    return [], meta
                 start = max(0, len(names) // 2 - 4)
                 chosen = names[start : start + 8]
                 meta["used_slices"] = list(range(start, start + len(chosen)))
@@ -388,8 +553,10 @@ def _build_volume_montage(
                             images.append(Image.open(BytesIO(raw)).convert("RGB"))
         except Exception as exc:  # noqa: BLE001
             logger.warning("Zip volume extract failed: %s", exc)
-            return None, meta
+            return [], meta
     else:
+        from io import BytesIO
+
         from app.dicom import decode_dicom_frames, looks_like_dicom
 
         if looks_like_dicom(data, filename, mime):
@@ -399,7 +566,7 @@ def _build_volume_montage(
             except Exception as exc:  # noqa: BLE001
                 logger.warning("DICOM decode failed: %s", exc)
                 meta["error"] = str(exc)
-                return None, meta
+                return [], meta
         else:
             try:
                 img = Image.open(BytesIO(data)).convert("RGB")
@@ -408,15 +575,12 @@ def _build_volume_montage(
                 meta["used_slices"] = [0]
             except Exception as exc:  # noqa: BLE001
                 logger.warning("Image open failed: %s", exc)
-                return None, meta
+                return [], meta
 
     if not images:
-        return None, meta
+        return [], meta
 
-    montage = _grid_montage(images, cols=min(4, len(images)))
-    buf = BytesIO()
-    montage.save(buf, format="JPEG", quality=85)
-    return base64.b64encode(buf.getvalue()).decode("ascii"), meta
+    return _pils_to_jpeg_b64s(images, limit=8), meta
 
 
 def _vision_image_b64(data: bytes, filename: str = "", mime: str = "") -> str:
@@ -441,26 +605,25 @@ def _vision_image_b64(data: bytes, filename: str = "", mime: str = "") -> str:
         return base64.b64encode(data).decode("ascii")
 
 
-def _build_histopath_patches(data: bytes) -> tuple[str | None, dict[str, Any]]:
-    import base64
+def _extract_histopath_patches(data: bytes) -> tuple[list[str], dict[str, Any]]:
     from io import BytesIO
 
     meta: dict[str, Any] = {
         "grid": "3x3",
         "patch_count": 9,
-        "note": "3x3 center grid",
+        "note": "3x3 center patches sent as separate images",
         "patches": [],
     }
 
     try:
         from PIL import Image
     except ImportError:
-        return (base64.b64encode(data).decode("ascii") if data else None, meta)
+        return [], meta
 
     try:
         img = Image.open(BytesIO(data)).convert("RGB")
     except Exception:
-        return (base64.b64encode(data).decode("ascii") if data else None, meta)
+        return [], meta
 
     w, h = img.size
     cw, ch = int(w * 0.6), int(h * 0.6)
@@ -475,26 +638,7 @@ def _build_histopath_patches(data: bytes) -> tuple[str | None, dict[str, Any]]:
             patches.append(patch)
             meta["patches"].append({"id": pid, "row": row, "col": col})
 
-    montage = _grid_montage(patches, cols=3)
-    buf = BytesIO()
-    montage.save(buf, format="JPEG", quality=85)
-    return base64.b64encode(buf.getvalue()).decode("ascii"), meta
-
-
-def _grid_montage(images: list[Any], cols: int = 4) -> Any:
-    from PIL import Image
-
-    if not images:
-        raise ValueError("no images")
-    tw = min(img.width for img in images)
-    th = min(img.height for img in images)
-    tiles = [img.resize((tw, th)) for img in images]
-    rows = (len(tiles) + cols - 1) // cols
-    canvas = Image.new("RGB", (cols * tw, rows * th), (16, 16, 16))
-    for i, tile in enumerate(tiles):
-        r, c = divmod(i, cols)
-        canvas.paste(tile, (c * tw, r * th))
-    return canvas
+    return _pils_to_jpeg_b64s(patches, limit=9), meta
 
 
 def _analyze_vision(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
@@ -502,14 +646,16 @@ def _analyze_vision(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
     if not data:
         raise RuntimeError("Could not download study file for vision analysis")
 
+    jpeg = _vision_image_b64(
+        data,
+        request.original_filename or "",
+        request.mime_type or "",
+    )
     return _invoke(
         "/analyze",
         {
-            "image_b64": _vision_image_b64(
-                data,
-                request.original_filename or "",
-                request.mime_type or "",
-            ),
+            "images_b64": [jpeg],
+            "image_b64": jpeg,
             "modality": kind,
             "language": request.language,
             "job_id": request.job_id,
@@ -840,6 +986,8 @@ def _invoke(path: str, payload: dict[str, Any]) -> dict[str, Any]:
             data = model.classify.remote(payload)
         elif route in {"triage", "triage_chat"}:
             data = model.triage_chat.remote(payload)
+        elif route in {"explain", "explain_image"}:
+            data = model.explain_image.remote(payload)
         elif route in {"status", "health"}:
             data = model.status.remote()
         else:
@@ -854,6 +1002,8 @@ def _invoke(path: str, payload: dict[str, Any]) -> dict[str, Any]:
         "classify",
         "triage",
         "triage_chat",
+        "explain",
+        "explain_image",
     }:
         raise RuntimeError(f"Inference error: {data.get('error')}")
     if "bounding_boxes" in data:
@@ -864,7 +1014,8 @@ def _invoke(path: str, payload: dict[str, Any]) -> dict[str, Any]:
 def _clamp_boxes_local(boxes: Any) -> list[dict[str, Any]]:
     if not isinstance(boxes, list):
         return []
-    out: list[dict[str, Any]] = []
+    findings: list[dict[str, Any]] = []
+    anatomy: list[dict[str, Any]] = []
     for box in boxes:
         if not isinstance(box, dict):
             continue
@@ -877,17 +1028,64 @@ def _clamp_boxes_local(boxes: Any) -> list[dict[str, Any]]:
             continue
         if w < 0.01 or h < 0.01:
             continue
-        out.append(
-            {
-                "label": str(box.get("label") or "Finding"),
-                "x": round(x, 4),
-                "y": round(y, 4),
-                "width": round(w, 4),
-                "height": round(h, 4),
-                "confidence": float(box.get("confidence", 0.5)),
-            }
-        )
-    return out[:8]
+        kind = str(box.get("kind") or "finding").strip().lower()
+        if kind not in {"finding", "anatomy"}:
+            kind = "finding"
+        item: dict[str, Any] = {
+            "label": str(box.get("label") or "Finding"),
+            "x": round(x, 4),
+            "y": round(y, 4),
+            "width": round(w, 4),
+            "height": round(h, 4),
+            "confidence": float(box.get("confidence", 0.5)),
+            "kind": kind,
+            "image_index": int(box.get("image_index") or 0),
+        }
+        if box.get("finding_index") is not None:
+            try:
+                item["finding_index"] = int(box["finding_index"])
+            except (TypeError, ValueError):
+                pass
+        if kind == "anatomy":
+            anatomy.append(item)
+        else:
+            findings.append(item)
+    return findings[:8] + anatomy[:8]
+
+
+def _prepare_explain_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    """Reuse analyze decode so explain sees the same images MedGemma analyzed."""
+    prepared = dict(payload)
+    if isinstance(payload.get("images_b64"), list) and payload["images_b64"]:
+        return prepared
+    if payload.get("image_b64"):
+        prepared["images_b64"] = [payload["image_b64"]]
+        return prepared
+
+    file_b64 = payload.get("file_b64")
+    if not file_b64:
+        raise HTTPException(status_code=422, detail="image_b64, images_b64, or file_b64 required")
+
+    import base64
+
+    data = base64.b64decode(file_b64)
+    filename = str(payload.get("original_filename") or "file")
+    mime = str(payload.get("mime_type") or "")
+    modality = str(payload.get("modality") or "xray").lower()
+
+    if modality in {"ct", "mri"}:
+        images, _meta = _extract_volume_slices(data, filename.lower(), mime)
+        if images:
+            prepared["images_b64"] = images
+            return prepared
+    if modality == "histopath":
+        images, _meta = _extract_histopath_patches(data)
+        if images:
+            prepared["images_b64"] = images
+            return prepared
+
+    prepared["images_b64"] = [_vision_image_b64(data, filename, mime)]
+    return prepared
 
 
 def _post_webhook(

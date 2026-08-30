@@ -200,6 +200,19 @@ test('webhook accepts structured imaging findings from structurer', function () 
                     'width' => 0.4,
                     'height' => 0.35,
                     'confidence' => 0.7,
+                    'kind' => 'finding',
+                    'finding_index' => 0,
+                    'image_index' => 0,
+                ],
+                [
+                    'label' => 'Lungs',
+                    'x' => 0.08,
+                    'y' => 0.1,
+                    'width' => 0.82,
+                    'height' => 0.72,
+                    'confidence' => 0.88,
+                    'kind' => 'anatomy',
+                    'image_index' => 0,
                 ],
             ],
             'engine' => 'medgemma+gpt-5.6-terra',
@@ -229,7 +242,10 @@ test('webhook accepts structured imaging findings from structurer', function () 
         ->and($record->findings)->toHaveCount(1)
         ->and($record->findings[0]['label'])->toBe('Multiple bilateral pulmonary nodules')
         ->and($record->findings[0]['severity'])->toBe('abnormal')
-        ->and($record->bounding_boxes)->toHaveCount(1)
+        ->and($record->bounding_boxes)->toHaveCount(2)
+        ->and($record->bounding_boxes[0]['kind'] ?? null)->toBe('finding')
+        ->and($record->bounding_boxes[0]['finding_index'] ?? null)->toBe(0)
+        ->and($record->bounding_boxes[1]['kind'] ?? null)->toBe('anatomy')
         ->and($record->guardrailFlagList())->not->toContain('low_confidence_abstention');
 });
 

@@ -6,17 +6,22 @@ use App\Enums\Modality;
 use App\Enums\RecordStatus;
 use App\Enums\ReportLanguage;
 use App\Http\Requests\StoreMedicalRecordRequest;
+use App\Http\Requests\StoreRecordExplainRequest;
 use App\Http\Requests\UpdateMedicalRecordReportRequest;
 use App\Models\MedicalRecord;
+use App\Models\RecordExplainerMessage;
 use App\Models\User;
 use App\Services\AiPipelineService;
+use App\Services\RecordExplainerService;
 use App\Services\SimilarCaseService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class MedicalRecordController extends Controller
 {
@@ -115,7 +120,7 @@ class MedicalRecordController extends Controller
             ->with('success', 'Record uploaded. Analysis in progress.');
     }
 
-    public function show(Request $request, MedicalRecord $record, SimilarCaseService $similarCases): Response
+    public function show(Request $request, MedicalRecord $record, SimilarCaseService $similarCases, RecordExplainerService $explainer): Response
     {
         $this->authorize('view', $record);
 
@@ -130,9 +135,7 @@ class MedicalRecordController extends Controller
         $viewMode = $request->user()->isPhysician() ? 'physician' : 'patient';
         $flags = $record->guardrailFlagList();
         $guardrailCode = $record->guardrailCode();
-        $withholdPatient = $guardrailCode === 'WARN'
-            || in_array('critical_value_escalation', $flags, true)
-            || in_array('low_confidence_abstention', $flags, true);
+        $withholdPatient = $record->withholdsPatientContent();
         $awaitingSign = $viewMode === 'patient'
             && $record->status === RecordStatus::Completed
             && ! $record->isSigned();
@@ -205,6 +208,16 @@ class MedicalRecordController extends Controller
                     'collected_at' => $b->collected_at->toIso8601String(),
                 ]),
             'viewMode' => $viewMode,
+            'canExplain' => $request->user()->can('explain', $record),
+            'explainerMessages' => $request->user()->can('explain', $record)
+                ? $record->explainerMessages()
+                    ->orderBy('id')
+                    ->get()
+                    ->map(fn (RecordExplainerMessage $message) => $this->explainerPayload($message))
+                : [],
+            'explainerSuggestions' => $request->user()->can('explain', $record)
+                ? $explainer->suggestions($request->user()->isPhysician(), $record)
+                : [],
         ]);
     }
 
@@ -255,13 +268,7 @@ class MedicalRecordController extends Controller
         abort_unless($record->status === RecordStatus::Completed, 403);
 
         if ($request->user()->isPatient()) {
-            $flags = $record->guardrailFlagList();
-            $withholdPatient = $record->guardrailCode() === 'WARN'
-                || in_array('critical_value_escalation', $flags, true)
-                || in_array('low_confidence_abstention', $flags, true);
-            $awaitingSign = ! $record->isSigned();
-
-            abort_if($withholdPatient || $awaitingSign, 403);
+            abort_if($record->withholdsPatientContent() || ! $record->isSigned(), 403);
         }
 
         if (! Storage::disk('local')->exists($record->file_path)) {
@@ -269,5 +276,67 @@ class MedicalRecordController extends Controller
         }
 
         return Storage::disk('local')->response($record->file_path, $record->original_filename);
+    }
+
+    public function explain(StoreRecordExplainRequest $request, MedicalRecord $record, RecordExplainerService $explainer): JsonResponse|StreamedResponse
+    {
+        $this->authorize('explain', $record);
+
+        $validated = $request->validated();
+        $box = $validated['selected_box'] ?? null;
+        if (is_array($box) && $box === []) {
+            $box = null;
+        }
+
+        $findingIndex = $validated['finding_index'] ?? null;
+        if ($findingIndex !== null) {
+            $findingIndex = (int) $findingIndex;
+        }
+
+        if (str_contains((string) $request->header('Accept'), 'text/event-stream')) {
+            return $explainer->streamAsk(
+                $record,
+                $request->user(),
+                $validated['question'],
+                $findingIndex,
+                is_array($box) ? $box : null,
+            );
+        }
+
+        $pair = $explainer->ask(
+            $record,
+            $request->user(),
+            $validated['question'],
+            $findingIndex,
+            is_array($box) ? $box : null,
+        );
+
+        return response()->json([
+            'messages' => [
+                $this->explainerPayload($pair['user']),
+                $this->explainerPayload($pair['assistant']),
+            ],
+            'suggestions' => $explainer->nextSuggestions(
+                $request->user()->isPhysician(),
+                $validated['question'],
+                $pair['assistant']->content,
+                is_array($record->findings) ? $record->findings : [],
+                $record,
+            ),
+        ]);
+    }
+
+    /**
+     * @return array{id: int, role: string, content: string, finding_index: int|null, created_at: string|null}
+     */
+    private function explainerPayload(RecordExplainerMessage $message): array
+    {
+        return [
+            'id' => $message->id,
+            'role' => $message->role->value,
+            'content' => $message->content,
+            'finding_index' => $message->finding_index,
+            'created_at' => $message->created_at?->toIso8601String(),
+        ];
     }
 }

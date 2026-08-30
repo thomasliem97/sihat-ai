@@ -87,6 +87,24 @@ function fakeTriageHttp(array $structuredOverrides = [], ?string $transcript = n
     ], $structuredOverrides);
 
     Http::fake(function ($request) use ($structured, $transcript, $engine) {
+        if (str_contains($request->url(), '/api/v1/triage/stream')) {
+            $draft = (string) $structured['assistant_message'];
+            $sse = implode("\n\n", [
+                'data: '.json_encode(['hop' => 'Writing the reply', 'detail' => 'the current message']),
+                'data: '.json_encode(['token' => $draft]),
+                'data: '.json_encode(['hop' => 'Checking urgency and summary']),
+                'data: '.json_encode([
+                    'done' => true,
+                    'draft' => $draft,
+                    'structured' => $structured,
+                ]),
+            ])."\n\n";
+
+            return Http::response($sse, 200, [
+                'Content-Type' => 'text/event-stream',
+            ]);
+        }
+
         if (str_contains($request->url(), '/api/v1/triage')) {
             return Http::response([
                 'draft' => $structured['assistant_message'],
@@ -852,18 +870,88 @@ test('user can synthesize speech for any assistant message in a viewed session',
         'content' => 'I have a fever',
     ]);
 
-    $this->actingAs($patient)
-        ->postJson(route('voice.triage.sessions.messages.speak', [
+    $response = $this->actingAs($patient)
+        ->get(route('voice.triage.sessions.messages.speak', [
             'session' => $session,
             'message' => $assistant,
-        ]))
-        ->assertSuccessful()
-        ->assertJsonPath('audio_base64', base64_encode('replay-mp3'));
+        ]), [
+            'Accept' => 'audio/mpeg',
+        ]);
+
+    $response->assertSuccessful()
+        ->assertHeader('Content-Type', 'audio/mpeg');
+
+    expect($response->streamedContent())->toBe('replay-mp3');
 
     $this->actingAs($patient)
-        ->postJson(route('voice.triage.sessions.messages.speak', [
+        ->get(route('voice.triage.sessions.messages.speak', [
             'session' => $session,
             'message' => $userMessage,
         ]))
         ->assertUnprocessable();
+});
+
+test('triage message stream yields hops tokens and persists the reply', function () {
+    fakeTriageHttp();
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => '',
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $response = $this->actingAs($patient)
+        ->withHeaders(['Accept' => 'text/event-stream'])
+        ->post(route('voice.triage.sessions.messages', $session), [
+            'text' => 'I have a fever',
+        ]);
+
+    $response->assertSuccessful();
+
+    $body = $response->streamedContent();
+
+    expect($body)->toContain('"event":"hop"')
+        ->and($body)->toContain('Reading your message')
+        ->and($body)->toContain('Asking MedGemma')
+        ->and($body)->toContain('Writing the reply')
+        ->and($body)->toContain('"event":"token"')
+        ->and($body)->toContain('How long have you had these symptoms?')
+        ->and($body)->toContain('"event":"assistant"')
+        ->and($body)->toContain('"event":"session"');
+
+    expect($session->fresh()->messages)->toHaveCount(2)
+        ->and($session->fresh()->messages->last()->content)->toBe('How long have you had these symptoms?');
+});
+
+test('sse audio message skips the voice job and transcribes inline', function () {
+    Queue::fake();
+    fakeTriageHttp(transcript: 'I have chest pain');
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => '',
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $response = $this->actingAs($patient)
+        ->withHeaders(['Accept' => 'text/event-stream'])
+        ->post(route('voice.triage.sessions.messages', $session), [
+            'audio' => fakeTriageWebm(),
+        ]);
+
+    $response->assertSuccessful();
+    Queue::assertNothingPushed();
+
+    $body = $response->streamedContent();
+
+    expect($body)->toContain('Transcribing speech')
+        ->and($body)->toContain('Heard you')
+        ->and($body)->toContain('I have chest pain');
+
+    expect($session->fresh()->messages)->toHaveCount(2)
+        ->and($session->fresh()->messages->first()->content)->toBe('I have chest pain');
 });

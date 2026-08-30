@@ -42,6 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('{record}', [MedicalRecordController::class, 'show'])->name('show');
         Route::patch('{record}/report', [MedicalRecordController::class, 'updateReport'])->name('report.update');
         Route::post('{record}/sign', [MedicalRecordController::class, 'sign'])->name('sign');
+        Route::post('{record}/explain', [MedicalRecordController::class, 'explain'])->name('explain');
         Route::get('{record}/file', [MedicalRecordController::class, 'file'])->name('file');
     });
 
@@ -50,7 +51,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('triage/sessions', [VoiceTriageController::class, 'store'])->name('triage.sessions.store');
         Route::get('triage/sessions/{session}', [VoiceTriageController::class, 'session'])->name('triage.sessions.show');
         Route::post('triage/sessions/{session}/messages', [VoiceTriageController::class, 'message'])->name('triage.sessions.messages');
-        Route::post('triage/sessions/{session}/messages/{message}/speak', [VoiceTriageController::class, 'speak'])->name('triage.sessions.messages.speak');
+        Route::match(['GET', 'POST'], 'triage/sessions/{session}/messages/{message}/speak', [VoiceTriageController::class, 'speak'])->name('triage.sessions.messages.speak');
         Route::post('triage/sessions/{session}/archive', [VoiceTriageController::class, 'archive'])->name('triage.sessions.archive');
         Route::post('triage/sessions/{session}/share', [VoiceTriageController::class, 'share'])->name('triage.sessions.share');
     });

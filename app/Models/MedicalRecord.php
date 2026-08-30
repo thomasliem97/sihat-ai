@@ -159,6 +159,32 @@ class MedicalRecord extends Model
         return self::normalizeGuardrails($this->guardrail_flags)['code'];
     }
 
+    public function withholdsPatientContent(): bool
+    {
+        $flags = $this->guardrailFlagList();
+
+        return $this->guardrailCode() === 'WARN'
+            || in_array('critical_value_escalation', $flags, true)
+            || in_array('low_confidence_abstention', $flags, true);
+    }
+
+    public function patientCanAccessResults(): bool
+    {
+        return $this->status === RecordStatus::Completed
+            && $this->isSigned()
+            && ! $this->withholdsPatientContent();
+    }
+
+    public function imagingModality(): Modality
+    {
+        return $this->detected_modality ?? $this->modality;
+    }
+
+    public function isImagingStudy(): bool
+    {
+        return $this->imagingModality()->isImaging();
+    }
+
     public function inferenceFilePath(): string
     {
         return $this->safe_file_path ?: $this->file_path;
@@ -212,6 +238,12 @@ class MedicalRecord extends Model
     public function analysisJob(): HasOne
     {
         return $this->hasOne(AnalysisJob::class)->latestOfMany();
+    }
+
+    /** @return HasMany<RecordExplainerMessage, $this> */
+    public function explainerMessages(): HasMany
+    {
+        return $this->hasMany(RecordExplainerMessage::class);
     }
 
     /** @return HasMany<AuditEvent, $this> */

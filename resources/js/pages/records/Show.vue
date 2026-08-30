@@ -6,7 +6,12 @@ import AnalysisStepper from '@/components/medical/AnalysisStepper.vue';
 import CitationChip from '@/components/medical/CitationChip.vue';
 import ClinicalBadge from '@/components/medical/ClinicalBadge.vue';
 import ConfidenceBadge from '@/components/medical/ConfidenceBadge.vue';
-import ImageOverlay from '@/components/medical/ImageOverlay.vue';
+import ImageOverlay, {
+    type OverlayBox,
+} from '@/components/medical/ImageOverlay.vue';
+import ScanExplainerChat, {
+    type ExplainerMessage,
+} from '@/components/medical/ScanExplainerChat.vue';
 import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
@@ -96,6 +101,9 @@ const props = defineProps<{
         status: string;
     }>;
     viewMode: 'physician' | 'patient';
+    canExplain?: boolean;
+    explainerMessages?: ExplainerMessage[];
+    explainerSuggestions?: string[];
 }>();
 
 const showScanViewer = computed(() => {
@@ -142,6 +150,91 @@ const findingsView = computed(() =>
         ),
     })),
 );
+
+const selectedFindingIndex = ref<number | null>(null);
+const explainerChat = ref<{
+    ask: (
+        question: string,
+        options?: {
+            restoreDraft?: boolean;
+            findingIndex?: number | null;
+            selectedBox?: OverlayBox | null;
+        },
+    ) => Promise<void>;
+    busy: boolean;
+} | null>(null);
+
+const allBoxes = computed(
+    (): OverlayBox[] => (props.record.bounding_boxes ?? []) as OverlayBox[],
+);
+
+const viewerBoxes = computed((): OverlayBox[] =>
+    allBoxes.value.filter((box) => {
+        const index = box.image_index;
+
+        return index === undefined || index === null || index === 0;
+    }),
+);
+
+const explainerSelectedBox = computed((): OverlayBox | null => {
+    if (selectedFindingIndex.value === null) {
+        return null;
+    }
+
+    return boxForFinding(selectedFindingIndex.value);
+});
+
+function selectFinding(index: number): void {
+    applyFindingSelection(
+        selectedFindingIndex.value === index ? null : index,
+    );
+}
+
+function onOverlaySelect(index: number | null): void {
+    applyFindingSelection(index);
+}
+
+function findingLabel(index: number): string {
+    const label = findingsView.value[index]?.finding?.label;
+
+    return typeof label === 'string' && label.trim() !== ''
+        ? label
+        : 'this finding';
+}
+
+function boxForFinding(index: number): OverlayBox | null {
+    return (
+        allBoxes.value.find(
+            (box) =>
+                (box.kind ?? 'finding') === 'finding' &&
+                box.finding_index === index,
+        ) ?? null
+    );
+}
+
+function applyFindingSelection(index: number | null): void {
+    const previous = selectedFindingIndex.value;
+    selectedFindingIndex.value = index;
+
+    if (index == null || index === previous || !props.canExplain) {
+        return;
+    }
+
+    if (explainerChat.value?.busy) {
+        return;
+    }
+
+    void explainerChat.value?.ask(
+        props.viewMode === 'physician'
+            ? `Explain this finding on the scan: ${findingLabel(index)}.`
+            : `What does this mean on my scan: ${findingLabel(index)}?`,
+        {
+            restoreDraft: false,
+            findingIndex: index,
+            selectedBox: boxForFinding(index),
+        },
+    );
+}
 
 const fallbackPipelineSteps = [
     { step: 'upload', label: 'Upload received', status: 'completed' },
@@ -394,7 +487,10 @@ defineOptions({
                 <ImageOverlay
                     v-if="showScanViewer"
                     :image-url="record.file_url"
-                    :boxes="(record.bounding_boxes as any) ?? []"
+                    :boxes="viewerBoxes"
+                    :selected-finding-index="selectedFindingIndex"
+                    :anatomy-toggle="viewMode === 'physician'"
+                    @select="onOverlaySelect"
                 />
 
                 <Card
@@ -428,9 +524,19 @@ defineOptions({
                         <div
                             v-for="(item, i) in findingsView"
                             :key="i"
-                            class="rounded-xl border border-border p-4"
+                            class="rounded-xl border p-4"
+                            :class="
+                                selectedFindingIndex === i
+                                    ? 'border-coral'
+                                    : 'border-border'
+                            "
                         >
-                            <div class="flex flex-col gap-2">
+                            <button
+                                type="button"
+                                class="flex w-full flex-col gap-2 text-left"
+                                :aria-pressed="selectedFindingIndex === i"
+                                @click="selectFinding(i)"
+                            >
                                 <span class="font-semibold">{{
                                     item.finding.label
                                 }}</span>
@@ -452,7 +558,7 @@ defineOptions({
                                         "
                                     />
                                 </div>
-                            </div>
+                            </button>
                             <p
                                 v-if="item.finding.description"
                                 class="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground"
@@ -553,6 +659,24 @@ defineOptions({
                     </CardContent>
                 </Card>
             </div>
+
+            <Card v-if="canExplain">
+                <CardHeader class="space-y-2">
+                    <SectionTag>Explainer</SectionTag>
+                    <CardTitle class="text-lg">Ask the scan</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ScanExplainerChat
+                        ref="explainerChat"
+                        :record-id="record.id"
+                        :messages="explainerMessages ?? []"
+                        :finding-index="selectedFindingIndex"
+                        :selected-box="explainerSelectedBox"
+                        :audience="viewMode"
+                        :suggestions="explainerSuggestions ?? []"
+                    />
+                </CardContent>
+            </Card>
 
             <Card v-if="biomarkers.length">
                 <CardHeader class="space-y-2">
@@ -764,7 +888,7 @@ defineOptions({
             <Card v-if="viewMode === 'physician' && record.volume_meta">
                 <CardHeader class="space-y-2">
                     <SectionTag>Volume</SectionTag>
-                    <CardTitle class="text-lg">CT/MRI montage meta</CardTitle>
+                    <CardTitle class="text-lg">CT/MRI slice sequence</CardTitle>
                 </CardHeader>
                 <CardContent class="space-y-2 font-mono text-xs tracking-wide">
                     <p>
