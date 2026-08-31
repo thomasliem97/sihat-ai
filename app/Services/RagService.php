@@ -75,9 +75,7 @@ class RagService
             return [];
         }
 
-        $chunks = GuidelineChunk::query()->get();
-
-        if ($chunks->isEmpty()) {
+        if (! GuidelineChunk::query()->exists()) {
             $this->lastRetrievalWeak = true;
 
             return [];
@@ -85,12 +83,16 @@ class RagService
 
         $openAiEmbedding = $this->embed($query);
         if ($openAiEmbedding !== null) {
-            $this->ensureChunkEmbeddings($chunks, $openAiEmbedding);
+            $this->backfillMissingEmbeddings($openAiEmbedding);
         }
+
+        $chunks = GuidelineChunk::query()
+            ->select(['id', 'source', 'section', 'content'])
+            ->get();
 
         $dense = $openAiEmbedding === null
             ? []
-            : $this->denseCandidates($chunks, $openAiEmbedding, $query);
+            : $this->denseCandidates($openAiEmbedding, $query);
         $bm25 = $this->bm25Candidates($chunks, $query);
         $fused = array_values(array_filter(
             $this->fuseCandidates($dense, $bm25),
@@ -244,32 +246,35 @@ class RagService
     }
 
     /**
-     * @param  Collection<int, GuidelineChunk>  $chunks
      * @param  array<int, float>  $queryEmbedding
      */
-    private function ensureChunkEmbeddings($chunks, array $queryEmbedding): void
+    private function backfillMissingEmbeddings(array $queryEmbedding): void
     {
-        $stale = $chunks->filter(
-            fn (GuidelineChunk $chunk): bool => ! $this->sameDimension($chunk->embedding, $queryEmbedding)
-        );
-        if ($stale->isEmpty()) {
-            return;
-        }
+        GuidelineChunk::query()
+            ->select(['id', 'source', 'section', 'content', 'embedding'])
+            ->orderBy('id')
+            ->chunkById(32, function ($batch) use ($queryEmbedding): void {
+                $stale = $batch->filter(
+                    fn (GuidelineChunk $chunk): bool => ! $this->sameDimension($chunk->embedding, $queryEmbedding)
+                );
+                if ($stale->isEmpty()) {
+                    return;
+                }
 
-        $texts = $stale
-            ->map(fn (GuidelineChunk $chunk): string => $chunk->source.' '.$chunk->section.' '.$chunk->content)
-            ->values()
-            ->all();
-        $vectors = $this->embedMany($texts);
+                $texts = $stale
+                    ->map(fn (GuidelineChunk $chunk): string => $chunk->source.' '.$chunk->section.' '.$chunk->content)
+                    ->values()
+                    ->all();
+                $vectors = $this->embedMany($texts);
 
-        foreach ($stale->values() as $i => $chunk) {
-            $vector = $vectors[$i] ?? null;
-            if (! is_array($vector) || $vector === []) {
-                continue;
-            }
-            $chunk->update(['embedding' => $vector]);
-            $chunk->embedding = $vector;
-        }
+                foreach ($stale->values() as $i => $chunk) {
+                    $vector = $vectors[$i] ?? null;
+                    if (! is_array($vector) || $vector === []) {
+                        continue;
+                    }
+                    $chunk->update(['embedding' => $vector]);
+                }
+            });
     }
 
     /**
@@ -281,28 +286,31 @@ class RagService
     }
 
     /**
-     * @param  Collection<int, GuidelineChunk>  $chunks
-     * @param  array<int, float>|null  $queryEmbedding
+     * @param  array<int, float>  $queryEmbedding
      * @return array<int, array<string, mixed>>
      */
-    private function denseCandidates($chunks, ?array $queryEmbedding, string $query): array
+    private function denseCandidates(array $queryEmbedding, string $query): array
     {
-        if ($queryEmbedding === null) {
-            return [];
-        }
+        $top = [];
 
-        return $chunks->map(function (GuidelineChunk $chunk) use ($queryEmbedding, $query) {
-            $embedding = $chunk->embedding;
-            $score = $this->sameDimension($embedding, $queryEmbedding)
-                ? $this->cosineSimilarity($queryEmbedding, $embedding)
-                : 0.0;
+        GuidelineChunk::query()
+            ->select(['id', 'source', 'section', 'content', 'embedding'])
+            ->orderBy('id')
+            ->chunkById(32, function ($batch) use (&$top, $queryEmbedding, $query): void {
+                foreach ($batch as $chunk) {
+                    $embedding = $chunk->embedding;
+                    $score = $this->sameDimension($embedding, $queryEmbedding)
+                        ? $this->cosineSimilarity($queryEmbedding, $embedding)
+                        : 0.0;
 
-            return $this->citationRow($chunk, $score, $query, $embedding);
-        })
-            ->sortByDesc('relevance')
-            ->take(self::CANDIDATE_K)
-            ->values()
-            ->all();
+                    $top[] = $this->citationRow($chunk, $score, $query, is_array($embedding) ? $embedding : null);
+                }
+
+                usort($top, fn (array $a, array $b): int => ($b['relevance'] ?? 0) <=> ($a['relevance'] ?? 0));
+                $top = array_slice($top, 0, self::CANDIDATE_K);
+            });
+
+        return $top;
     }
 
     /**

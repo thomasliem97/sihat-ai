@@ -38,7 +38,7 @@ class GuidelineIngestor
 
         GuidelineChunk::query()->delete();
 
-        $rows = [];
+        $count = 0;
         foreach ($files as $file) {
             $text = File::get($file->getPathname());
             if (trim($text) === '') {
@@ -46,6 +46,7 @@ class GuidelineIngestor
             }
 
             $source = $this->sourceFromFilename($file->getFilename());
+            $rows = [];
             foreach ($this->chunks($text) as $content) {
                 $rows[] = [
                     'source' => $source,
@@ -53,19 +54,41 @@ class GuidelineIngestor
                     'content' => $content,
                 ];
             }
+            $count += $this->persist($rows);
         }
 
-        $texts = array_map(
-            fn (array $row): string => $row['source'].' '.$row['section'].' '.$row['content'],
-            $rows,
-        );
-        $embeddings = $this->rag->embedMany($texts);
+        return $count;
+    }
 
-        foreach ($rows as $i => $row) {
-            GuidelineChunk::create([
-                ...$row,
-                'embedding' => $embeddings[$i] ?? null,
-            ]);
+    /**
+     * @param  list<array{source: string, section: string, content: string}>  $rows
+     */
+    private function persist(array $rows): int
+    {
+        if ($rows === []) {
+            return 0;
+        }
+
+        $now = now();
+        foreach (array_chunk($rows, 32) as $batch) {
+            $texts = array_map(
+                fn (array $row): string => $row['source'].' '.$row['section'].' '.$row['content'],
+                $batch,
+            );
+            $embeddings = $this->rag->embedMany($texts);
+            $payload = [];
+            foreach ($batch as $i => $row) {
+                $vector = $embeddings[$i] ?? null;
+                $payload[] = [
+                    'source' => $row['source'],
+                    'section' => $row['section'],
+                    'content' => $row['content'],
+                    'embedding' => is_array($vector) && $vector !== [] ? json_encode($vector) : null,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+            }
+            GuidelineChunk::insert($payload);
         }
 
         return count($rows);

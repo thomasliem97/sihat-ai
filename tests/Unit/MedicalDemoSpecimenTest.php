@@ -44,3 +44,19 @@ test('demo seeder is idempotent', function () {
     expect(User::query()->count())->toBe(2)
         ->and(MedicalRecord::query()->count())->toBe(2);
 });
+
+test('demo seeder resumes when users exist but records do not', function () {
+    User::factory()->physician()->create([
+        'email' => 'physician@sihat-ai.vxms.dev',
+        'password' => MedicalDemoSeeder::DEMO_PASSWORD,
+    ]);
+    User::factory()->patient()->create([
+        'email' => 'patient@sihat-ai.vxms.dev',
+        'password' => MedicalDemoSeeder::DEMO_PASSWORD,
+    ]);
+
+    $this->seed(MedicalDemoSeeder::class);
+
+    expect(User::query()->count())->toBe(2)
+        ->and(MedicalRecord::query()->count())->toBe(2);
+});

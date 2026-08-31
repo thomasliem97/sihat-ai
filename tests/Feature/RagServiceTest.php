@@ -74,6 +74,42 @@ test('rag retrieves relevant guideline chunks by embedding similarity', function
         ->and($citations[0]['relevance'])->toBeGreaterThanOrEqual(0.2);
 });
 
+test('dense retrieval still ranks the nearest chunk when the corpus spans multiple scan batches', function () {
+    $rag = app(RagService::class);
+    $near = array_fill(0, 8, 0.0);
+    $near[0] = 1.0;
+    $far = array_fill(0, 8, 0.0);
+    $far[7] = 1.0;
+    fakeOpenAiEmbedding($near);
+
+    for ($i = 0; $i < 40; $i++) {
+        GuidelineChunk::create([
+            'source' => 'MOH QR - Acne filler '.$i,
+            'section' => 'Quick reference',
+            'content' => 'Acne vulgaris topical retinoids screening of pilosebaceous units '.$i,
+            'embedding' => $far,
+        ]);
+    }
+
+    GuidelineChunk::create([
+        'source' => 'MOH QR - Management of Tuberculosis 4th Edition',
+        'section' => 'Key messages',
+        'content' => 'Adults with productive cough should be screened for pulmonary TB. Chest radiograph should be done in people with suspected EPTB to rule out concomitant PTB.',
+        'embedding' => $near,
+    ]);
+
+    $record = MedicalRecord::factory()->create([
+        'user_id' => User::factory()->create()->id,
+    ]);
+
+    $citations = $rag->retrieveCitations($record, [
+        ['label' => 'pulmonary tuberculosis chest radiograph', 'severity' => 'abnormal'],
+    ]);
+
+    expect($citations)->not->toBeEmpty()
+        ->and($citations[0]['source'])->toContain('Tuberculosis');
+});
+
 test('rag query includes finding description and differential terms', function () {
     config(['services.openai.api_key' => '']);
 

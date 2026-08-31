@@ -8,6 +8,7 @@ use App\Enums\RecordStatus;
 use App\Enums\ReportLanguage;
 use App\Enums\UserRole;
 use App\Models\Biomarker;
+use App\Models\GuidelineChunk;
 use App\Models\MedicalRecord;
 use App\Models\User;
 use App\Services\AiPipelineService;
@@ -24,11 +25,16 @@ class MedicalDemoSeeder extends Seeder
     {
         $this->seedDemoFiles();
 
-        if (User::query()->where('email', 'physician@sihat-ai.vxms.dev')->exists()) {
+        $physician = User::query()->where('email', 'physician@sihat-ai.vxms.dev')->first();
+        $patient = User::query()->where('email', 'patient@sihat-ai.vxms.dev')->first();
+        $hasGuidelines = GuidelineChunk::query()->exists();
+        $hasDemoRecords = MedicalRecord::query()->where('file_path', 'medical-records/demo-cxr.png')->exists();
+
+        if ($physician !== null && $patient !== null && $hasGuidelines && $hasDemoRecords) {
             return;
         }
 
-        $physician = User::factory()->create([
+        $physician ??= User::factory()->create([
             'name' => 'Dr. Aisha Rahman',
             'email' => 'physician@sihat-ai.vxms.dev',
             'password' => self::DEMO_PASSWORD,
@@ -36,7 +42,7 @@ class MedicalDemoSeeder extends Seeder
             'locale' => ReportLanguage::English,
         ]);
 
-        $patient = User::factory()->create([
+        $patient ??= User::factory()->create([
             'name' => 'Ahmad bin Hassan',
             'email' => 'patient@sihat-ai.vxms.dev',
             'password' => self::DEMO_PASSWORD,
@@ -44,9 +50,14 @@ class MedicalDemoSeeder extends Seeder
             'locale' => ReportLanguage::Malay,
         ]);
 
-        $this->seedGuidelines();
-        $this->seedDemoRecords($physician, $patient);
-        $this->seedBiomarkerTrends($patient);
+        if (! $hasGuidelines) {
+            $this->seedGuidelines();
+        }
+
+        if (! $hasDemoRecords) {
+            $this->seedDemoRecords($physician, $patient);
+            $this->seedBiomarkerTrends($patient);
+        }
     }
 
     private function seedDemoFiles(): void

@@ -5,7 +5,9 @@ use App\Models\MedicalRecord;
 use App\Models\User;
 use App\Services\RagService;
 use App\Support\GuidelineIngestor;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 test('ingestor stores official qr text and rag retrieves tuberculosis for a cxr query', function () {
     config(['services.openai.api_key' => '']);
@@ -86,6 +88,38 @@ test('ingestor splits a long paragraph so mysql text columns can store it', func
 
     expect($count)->toBeGreaterThan(10);
     GuidelineChunk::query()->each(fn (GuidelineChunk $chunk) => expect(mb_strlen($chunk->content))->toBeLessThanOrEqual(1100));
+
+    File::deleteDirectory($dir);
+});
+
+test('ingestor embeds and inserts in small batches', function () {
+    $vector = array_fill(0, 8, 0.05);
+    config(['services.openai.api_key' => 'test-key']);
+    Http::fake(function (Request $request) use ($vector) {
+        $input = $request['input'] ?? [];
+        expect($input)->toBeArray()
+            ->and(count($input))->toBeLessThanOrEqual(32);
+
+        $data = [];
+        foreach (array_values($input) as $i => $_) {
+            $data[] = ['index' => $i, 'embedding' => $vector];
+        }
+
+        return Http::response(['data' => $data]);
+    });
+
+    $dir = sys_get_temp_dir().DIRECTORY_SEPARATOR.'sihat-qr-'.uniqid();
+    File::ensureDirectoryExists($dir);
+    File::put(
+        $dir.DIRECTORY_SEPARATOR.'QR_Management_of_Tuberculosis_4th_Edition.txt',
+        str_repeat('Chest radiograph should be done in people with suspected pulmonary tuberculosis. ', 900),
+    );
+
+    $count = app(GuidelineIngestor::class)->ingest($dir);
+
+    expect($count)->toBeGreaterThan(32)
+        ->and(Http::recorded())->toHaveCount((int) ceil($count / 32))
+        ->and(GuidelineChunk::query()->whereNull('embedding')->count())->toBe(0);
 
     File::deleteDirectory($dir);
 });

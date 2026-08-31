@@ -41,7 +41,7 @@ node /assets/scripts/prestart.mjs /assets/nginx.template.conf /etc/nginx.conf
 echo "[prestart] Starting supervisord..."
 cd /app
 php artisan migrate --force
-php artisan db:seed --force
+php -d memory_limit=512M artisan db:seed --force
 exec supervisord -c /etc/supervisord.conf -n
 '''
 
