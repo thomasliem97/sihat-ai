@@ -184,6 +184,22 @@ const explainerSelectedBox = computed((): OverlayBox | null => {
     return boxForFinding(selectedFindingIndex.value);
 });
 
+const overlayCaption = computed((): string | null => {
+    if (!props.record.volume_meta) {
+        return null;
+    }
+
+    return 'This preview is the first extracted slice. Findings on later slices still open Ask the scan.';
+});
+
+const selectedFindingLabel = computed((): string | null => {
+    if (selectedFindingIndex.value === null) {
+        return null;
+    }
+
+    return findingLabel(selectedFindingIndex.value);
+});
+
 function selectFinding(index: number): void {
     applyFindingSelection(
         selectedFindingIndex.value === index ? null : index,
@@ -388,6 +404,13 @@ defineOptions({
                         v-if="record.overall_confidence"
                         :confidence="record.overall_confidence"
                     />
+                    <Button
+                        v-if="viewMode === 'physician' && record.can_edit_report"
+                        type="button"
+                        @click="signDraft"
+                    >
+                        Sign report
+                    </Button>
                 </div>
             </div>
         </div>
@@ -490,6 +513,7 @@ defineOptions({
                     :boxes="viewerBoxes"
                     :selected-finding-index="selectedFindingIndex"
                     :anatomy-toggle="viewMode === 'physician'"
+                    :caption="overlayCaption"
                     @select="onOverlaySelect"
                 />
 
@@ -664,6 +688,15 @@ defineOptions({
                 <CardHeader class="space-y-2">
                     <SectionTag>Explainer</SectionTag>
                     <CardTitle class="text-lg">Ask the scan</CardTitle>
+                    <p
+                        v-if="selectedFindingLabel"
+                        class="text-sm leading-relaxed text-muted-foreground"
+                    >
+                        Selected:
+                        <span class="font-semibold text-foreground">{{
+                            selectedFindingLabel
+                        }}</span>
+                    </p>
                 </CardHeader>
                 <CardContent>
                     <ScanExplainerChat

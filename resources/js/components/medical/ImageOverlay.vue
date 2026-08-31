@@ -21,6 +21,7 @@ const props = defineProps<{
     boxes: OverlayBox[];
     selectedFindingIndex?: number | null;
     anatomyToggle?: boolean;
+    caption?: string | null;
 }>();
 
 const emit = defineEmits<{
@@ -195,5 +196,11 @@ function setLayer(next: OverlayLayer): void {
                 {{ imageUrl ? 'Scan preview unavailable' : 'No scan attached' }}
             </div>
         </div>
+        <p
+            v-if="caption"
+            class="border-t border-white/10 px-6 py-2 font-mono text-xs tracking-wide text-ink-faint normal-case"
+        >
+            {{ caption }}
+        </p>
     </div>
 </template>

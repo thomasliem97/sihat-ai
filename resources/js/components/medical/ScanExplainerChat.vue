@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { usePage } from '@inertiajs/vue3';
 import { Check, LoaderCircle, Send } from '@lucide/vue';
-import { computed, nextTick, ref, watch } from 'vue';
+import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
 import { toast } from 'vue-sonner';
 import type { OverlayBox } from '@/components/medical/ImageOverlay.vue';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
-import { explain as explainRecord } from '@/routes/records';
+import { beginColdStartWatch, endColdStartWatch } from '@/lib/coldStartNotice';
 import { readSse } from '@/lib/sse';
+import { explain as explainRecord } from '@/routes/records';
 
 export type ExplainerMessage = {
     id: number;
@@ -129,6 +130,7 @@ async function ask(
 
     sending.value = true;
     hops.value = [];
+    beginColdStartWatch();
     if (restoreDraft) {
         draft.value = '';
     }
@@ -286,6 +288,7 @@ async function ask(
         }
         toast.error('Could not ask the scan');
     } finally {
+        endColdStartWatch();
         hops.value = [];
         inFlightAssistantId.value = null;
         sending.value = false;
@@ -306,6 +309,10 @@ function onComposerKeydown(event: KeyboardEvent) {
         sendMessage();
     }
 }
+
+onUnmounted(() => {
+    endColdStartWatch();
+});
 
 defineExpose({ ask, busy });
 </script>

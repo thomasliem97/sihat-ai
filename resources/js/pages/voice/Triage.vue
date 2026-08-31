@@ -1848,9 +1848,9 @@ defineOptions({
 
     <div class="space-y-6">
         <PageHeader
-            tag="MedASR triage"
+            tag="Voice triage"
             title="Voice Triage"
-            description="Conversational symptom intake with voice."
+            description="Describe symptoms by voice or text. Hold the mic to talk, or type if the microphone is unavailable."
         />
 
         <div class="grid items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
@@ -1912,15 +1912,21 @@ defineOptions({
                                         }}
                                     </span>
                                     <span
-                                        class="mt-1.5 flex items-center text-xs text-muted-foreground/80"
+                                        class="mt-1.5 flex items-center gap-2 text-xs text-muted-foreground/80"
                                     >
                                         <Spinner
                                             v-if="
                                                 (phaseBySessionId[s.id] ??
                                                     'idle') !== 'idle'
                                             "
-                                            class="mr-1.5 size-3"
+                                            class="size-3"
                                         />
+                                        <AnnotationPill
+                                            v-if="s.shared_at"
+                                            variant="teal"
+                                        >
+                                            Shared
+                                        </AnnotationPill>
                                         {{
                                             formatRelativeTime(
                                                 s.last_message_at ||
@@ -1966,8 +1972,11 @@ defineOptions({
                                             }}
                                         </span>
                                         <span
-                                            class="mt-1.5 block text-xs text-muted-foreground/80"
+                                            class="mt-1.5 flex items-center gap-2 text-xs text-muted-foreground/80"
                                         >
+                                            <AnnotationPill variant="teal">
+                                                Shared
+                                            </AnnotationPill>
                                             {{
                                                 formatRelativeTime(
                                                     s.last_message_at ||
@@ -2019,6 +2028,24 @@ defineOptions({
                                 >
                                     {{ active.locale }}
                                 </AnnotationPill>
+                                <AnnotationPill
+                                    v-if="active.shared_at"
+                                    variant="teal"
+                                >
+                                    Shared with physician
+                                </AnnotationPill>
+                                <AnnotationPill
+                                    v-if="recording"
+                                    variant="coral"
+                                >
+                                    Listening
+                                </AnnotationPill>
+                                <AnnotationPill
+                                    v-else-if="isActivePending"
+                                    variant="amber"
+                                >
+                                    {{ phaseLabel || 'Working' }}
+                                </AnnotationPill>
                             </div>
                         </div>
 
@@ -2062,12 +2089,22 @@ defineOptions({
                                     <DropdownMenuItem
                                         v-if="
                                             !isPhysician &&
-                                            active.status === 'active'
+                                            active.status === 'active' &&
+                                            !active.shared_at
                                         "
                                         @click="shareSession"
                                     >
                                         <Share2 />
                                         Share with doctor
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem
+                                        v-else-if="
+                                            !isPhysician && active.shared_at
+                                        "
+                                        disabled
+                                    >
+                                        <Share2 />
+                                        Shared with doctor
                                     </DropdownMenuItem>
                                     <DropdownMenuItem
                                         v-if="active.status === 'active'"
