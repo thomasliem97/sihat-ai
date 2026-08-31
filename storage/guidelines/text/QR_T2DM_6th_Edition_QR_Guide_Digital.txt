@@ -1,0 +1,620 @@
+MANAGEMENT OF
+TYPE 2 DIABETES MELLITUS
+(6th Edition)
+CLINICAL PRACTICE GUIDELINES
+Ministry of Health
+Malaysia
+Academy of Medicine
+Malaysia
+Malaysia Endocrine
+& Metabolic Society
+Family Medicine Specialists
+Association of Malaysia
+Diabetes Malaysia
+Quick Reference Guide
+for Healthcare Professionals
+This Quick Reference Guide provides KEY MESSAGES and 
+Summary of the main recommendations in the CPG for the 
+Management of Type 2 Diabetes Mellitus, 6 th edition
+*NAFLD will be used in this edition of the T2DM CPG instead of MAFLD. 
+For expansion of abbreviations, refer to the main CPG document.
+KEY MESSAGES
+Risk-based screening for pre- and/or T2DM in adults should be performed in 
+individuals >30 years of age and repeated annually, as ~50% of people with 
+diabetes are undiagnosed.
+HbA1c ≥6.3% (IFCC ≥ 45 mmol/mol) performed by an NGSP-certified method, 
+standardised to DCCT assay is diagnostic of diabetes.
+In asymptomatic individuals, 2 abnormal values (e.g. plasma glucose and HbA1c) 
+from the same blood sample is adequate for diagnosis of T2DM.
+Pre-DM (IFG and/or IGT) predisposes these individuals to progression to overt 
+T2DM as well as increased CV risk. Lifestyle modification with weight loss is the 
+mainstay; but failing this, metformin can be initiated.
+Remission of T2DM may be possible in some individuals with short duration 
+of disease, following significant and sustained weight loss by either caloric 
+restriction or bariatric surgery.
+T2DM is a CVD defining disease, and patients should have their other CVD risk 
+factors, e.g. blood pressure, lipids treated aggressively and closely monitored.
+Target HbA1c is individualised; ≤6.5% for those young, uncomplicated, with short 
+duration of disease; while <7.0% would be appropriate for most other adult 
+T2DM individuals.
+Achieving HbA1c target early, from diagnosis and maintaining glucose control 
+for as long as possible, will result in persistent benefits and reduction of 
+complications in the long-term (Metabolic memory).
+Metabolic associated fatty liver disease (MAFLD)* is a new proposed 
+nomenclature to replace NAFLD as it includes a key driver of this disease which, 
+is presence of metabolic dysfunction. NAFLD is increasingly recognised as a co-
+morbidity associated with T2DM. If left unchecked, it can lead to liver cirrhosis 
+and hepatocellular carcinoma. NAFLD is also associated with higher CV risk and 
+aggressive management of CV risk, including statin therapy is indicated.
+Recent CVOTs have proven that 2 classes of glucose-lowering agents (GLDs) 
+significantly reduce MACE outcomes, in people with established ASCVD or are at 
+high-CV risk, beyond their glucose-lowering effects; GLP1-RAs and SGL T2-i. The 
+data from these trials have resulted in paradigm shifts in recommendations for 
+choice of therapeutic agents.
+SGL T2-i have also been proven to be reno-protective, delaying progression to 
+end-stage renal failure, >40% reduction in eGFR or renal death. This is the 2nd 
+class of therapy proven to be reno-protective, apart from RAS-blockers.
+The newer therapeutic agents are expensive, and may not be affordable to 
+many. In these people, achieving HbA1c remains an important goal.
+Values for diagnosis*
+(A) Diagnostic value for T2DM based on venous plasma glucose
+Fasting Random
+≥7.0 mmol/L ≥11.1 mmol/L
+(B) Diagnostic values for pre-diabetes and T2DM based on HbA1c
+Normal Pre-DM DM
+<5.7 %
+(<39 mmol/mol)
+5.7-<6.3%
+(39-44 mmol/mol)
+≥6.3%
+(≥45 mmol/mol)
+(C) Diagnostic values for glucose intolerance and T2DM based on OGTT
+Category 0 hr 2 hr
+Normal <6.1 <7.8
+IFG 6.1-6.9 -
+IGT - 7.8-11.0
+DM ≥7.0 ≥11.1
+* In asymptomatic patients, a repeat blood test on another day or 2 abnormal values (1 glucose + HbA1c in the same sample) is 
+required to confirm diagnosis. 
+Management of T2DM
+• At diagnosis of T2DM the following should be performed:
+› detailed history and physical examination, focusing on key issues which will 
+affect treatment decision
+› baseline investigations to assess ASCVD risk factors and complications of 
+T2DM
+• Management is based on the results of the above.
+• Management involves lifestyle modification, medications and patient education 
+encouraging self-care and empowerment.
+Test Initial visit
+3-monthly OR
+Every follow-up visit At annual visit
+Physical examination
+Weight √ √ √
+Waist circumference √ √ √
+BMI √ √
+BP √ √ √
+Eye
+Visual acuity
+Fundoscopy/Fundus camera
+√
+√
+√
+√
+Feet
+Pulses/ABI
+Neuropathy
+√
+√
+√
+√
+√
+√
+Dental check-up √ √
+ECG √ √
+Laboratory investigations
+Plasma glucose √ √ √
+HbA1c √ √ √
+Lipid profile √ √
+Creatinine/BUSE + eGFR √ √
+LFT (AST, ALT) √ √
+Urine microscopy √ √
+Urine albumin/microalbumin/
+spot morning urinary ACR √ √
+√: conduct test conduct test if abnormal on initial visit or symptomatic no test is required
+Note: refer to main CPG for important notations.
+T2DM: Targets for control
+Parameters Levels
+Glycaemic control
+Fasting or pre-prandial 4.4 mmol/L-7.0 mmol/L
+Post-prandial 4.4 mmol/L-8.5 mmol/L
+HbA1c
+<7.0% (for most)
+≤6.5 %***
+Lipids
+Triglycerides ≤1.7 mmol/L
+HDL-C Male: >1.0 mmol/L
+Female: >1.2 mmol/L
+LDL-C+ ≤2.6 mmol/L
+BP 130-139/70-79 mmHg
+Exercise 150 minutes/week
+Body weight If overweight or obese, aim for up to 10% weight loss in 6 months
+***Young, healthy, short duration of T2D, no/minimal risk of hypoglycaemia, + Depending on risk category, i.e., moderate (<2.6 
+mmol/L), high (<1.8 mmol/L) and very high (<1.4 mmol/L).
+Relationships between NGSP, IFCC HbA1c and estimated average glucose (eAG)
+NGSP HbA1C (%) IFCC HbA1c (mmol/mol) eAG (mmol/L) (95% CI)
+5.0 31 5.4 (4.2-6.7)
+6.0 42 7.0 (5.5-8.5)
+7.0 53 8.6 (6.8-10.3)
+8.0 64 10.2 (8.1-12.1)
+9.0 75 11.8 (9.4-13.9)
+10.0 86 13.4 (10.7-15.7)
+11.0 97 14.9 (12.0-17.5)
+12.0 108 16.5 (13.3-19.3)
+Individualised HbA1c targets based on patient profile
+≤6.5 % (Tight) 6.6%-7.0% 7.1%-8.0% (Less tight)
+• Newly and recently diagnosed
+• Younger age
+• Healthier (no complications)
+• Low risk of hypoglycaemia
+• All others • Elderly patients
+• Presence of co-morbidities
+• High risk of severe 
+hypoglycaemia; hypo 
+unawareness 
+• Short life expectancy
+Principal recommendation: Medical nutrition therapy & lifestyle modification
+• Weight loss of ≥7%-10% of initial body weight within 6 months has been proven to 
+be effective for diabetes prevention.
+• Proper diet is crucial at all stages of management of diabetes including those on 
+medication.
+• Meal plans that meet individualised caloric goals with a macronutrient distribution 
+that is consistent with healthful eating pattern is recommended for long-term 
+achievement of glycaemia, lipids and weight goals.
+• Encourage foods with low GI in the Malaysian context because excessive rise in 
+post-prandial glycaemia is frequently observed.
+• Encourage moderate-intensity exercise, at least 150 mins/week or at least 75 mins/
+week of vigorous aerobic
+Recommendations for SMBG
+Mode of 
+Treatment
+Breakfast Lunch Dinner
+Pre Post Pre Post Pre Post / Pre-bed
+Diet only √ √ - √ - √
+OGLDs √ √ - √ - √
+Insulin √ √ √ √ √ √
+Glucose-lowering agents (oral & injectable)
+Drugs Formulation Minimum dose Maximum dose
+Biguanides
+Metformin 500/1000 mg Initial dose: 500 mg OD Usual: 1000 mg BD
+*Exception: 1000 mg TDS
+Metformin SR 850 mg Usual dose: 850 mg BD 850 mg TDS
+Metformin XR 500/750/1000 mg Initial dose: 500 mg OD
+Usual dose: 2000 mg OD 2000 mg OD
+Sulphonylureas
+Glibenclamide 5 mg 2.5 mg OD 10 mg BD
+Gliclazide 80 mg 40 mg OM 160 mg BD
+Gliclazide MR 60/30 mg 30 mg OM 120 mg OM
+Glipizide 5 mg 2.5 mg OM 10 mg BD
+Glimepiride 2/3 mg 1 mg OM 6 mg OM
+Meglitinides
+Repaglinide 0.5/1/2 mg 0.5 mg with main meal 4 mg with main meals (not 
+exceeding 16 mg daily)
+α-glucosidase inhibitor
+Acarbose 50/100 mg
+Initial dose: 50 mg OD
+Usual dose: 50-100 mg take 
+at 1st bite of main meals
+100 mg TDS
+Thiazolidinedione
+Rosiglitazone 4/8 mg 4 mg OD 8 mg OD
+Pioglitazone 15/30 mg 15 mg OD 45 mg OD
+DPP4-inhibitors
+Sitagliptin 25/50/100 mg 25 mg OD 100 mg OD
+Vildagliptin 50 mg 50 mg OD 50 mg BD
+Saxagliptin 2.5/5 mg 2.5 mg OD 5 mg OD
+Linagliptin 5 mg 5 mg OD 5 mg OD
+SGLT2-inhibitors
+Dapagliflozin 5/10 mg 5 mg OD 10 mg OD
+Canagliflozin 100/300 mg 100 mg OD 300 mg OD
+Empagliflozin 10/25 mg 10 mg OD 25 mg OD
+Luseogliflozin 2.5/5 mg 2.5 mg OD 5 mg OD
+Ertugliflozin 5/15 mg 5 mg OD 15 mg OD
+GLP1-RA
+Exenatide IR 5 μg/20 μL; 10 μg/40 μL 5 μg BD 10 μg BD
+Exenatide ER 2 mg 2 mg weekly 2 mg weekly
+Dulaglutide 0.75 mg/1.5 mg 0.75 mg weekly 1.5 mg weekly
+Liraglutide 6 mg/mL 0.6 mg OD 1.8 mg OD
+Lixisenatide 50 μg/mL; 100 μg/mL 10 μg OD 20 μg OD
+Semaglutide 0.25/0.5 mg 0.25 weekly 1.0 mg weekly
+Note: Dose escalations will depend on tolerability and according to the PI.
+Efficacy of various GLDs
+MET SU GLN AGI TZD DPP4-i SGLT2-i GLP1-RA Insulin
+HbA1c  % 1.0-1.5 0.4-1.6 1.0-1.2 0.5-0.8 0.5-1.4 0.5-0.8 0.2-0.8 0.5-1.4 >1.5
+FPG vs. PPG FPG Both PPG PPG FPG Both Both Both Both
+Hypoglycaemia         
+Weight change       –  
+GI symptoms         
+CHF         
+CVD         
+Bone loss         
+DKD Avoid* Hypo Hypo  Fluid
+ret’n
+Dose 
+adjustment a † Hypo
+* Avoid if eGFR < 30ml/min/1.73m2; †avoid if eGFR < 15 ml/min/1.73m2; aSGL T2-i can be used until dialysis is initiated and has 
+proven reno-protection although glucose-lowering efficacy is reduced. 
+Increased risk Mild-mod risk Neutral Possible benefit Beneficial
+Note: refer to main CPG for important notations
+Treatment algorithm: Newly diagnosed T2DM
+Note: refer to main CPG for important notations
+Diagnosis of T2DM
+Lifestyle modificationa
+HbA1c <6.5% AND
+FPG <6.0 mmol/L
+Consider 
+metformin 
+monotherapyb
+If post prandial 
+is >11.0 mmol/L 
+and/or metformin 
+is not tolerated, 
+consider one of 
+the following:
+Meglitinide
+AGI
+DPP4-i
+• Follow-up with 
+HbA1c after 3-6 
+months
+• If HbA1c ≤6.5%, 
+continue 
+with lifestyle 
+modification.
+• If HbA1c >6.5%c
+HbA1c 6.5-7.4% 
+OR
+FPG 6.0-7.9 
+mmol/L
+Mono- or dual-
+therapyc with
+Metformind OR
+SU
+DPP4-i
+GLP1-RA
+SGL T2-i
+• Optimise dose 
+of GLD agent in 
+subsequent 3-6 
+months.
+• Follow-up with 
+HbA1c after 3-6 
+months
+• If HbA1c ≤6.5%, 
+continue 
+therapy
+HbA1c 7.5-8.4% 
+OR
+FPG 8.0-9.9 
+mmol/L
+Dual combination 
+therapye with any 
+combination of:
+Metformin
+SU
+Meglitinide
+AGI
+TZD
+DPP4-i
+GLP1-RA
+SGL T2-i
+Insulin
+• Optimise dose 
+of GLD agent in 
+subsequent 3-6 
+months.
+• Follow-up with 
+HbA1c after 3-6 
+months
+• If HbA1c ≤6.5%, 
+continue 
+therapy
+HbA1c 8.5-10.0% 
+OR
+FPG 10.0-13.0 
+mmol/L
+Triple 
+combination 
+therapye with any 
+combination of:
+Metformin
+SU
+Meglitinide
+AGI
+TZD
+DPP4-i
+GLP1-RA
+SGL T2-i
+Insulin
+• Optimise dose 
+of GLD agent in 
+subsequent 3-6 
+months.
+• Follow-up with 
+HbA1c after 3-6 
+months
+• If HbA1c ≤6.5%, 
+continue 
+therapy
+HbA1c >10.0% OR
+FPG >13.0 mmol/
+Lƒ
+Basal/premixed 
+insulin therapy
++
+Combination 
+therapy
+OR
+Intensive insulin 
+therapy 
++
+OGLD
+c. Consider addition of DPP4-i (delays loss of glycaemic control) when initiated early. 
+Note: refer to main CPG for other important notations.
+Efficacious, low risk 
+of hypoglycaemia and 
+weight neutral
+Efficacious, risk of 
+hypoglycaemia and 
+weight gain
+Efficacious, low risk 
+of hypoglycaemia and 
+weight loss
+Moderate efficacy, 
+low risk of 
+hypoglycaemia and 
+weight neutral
+Moderate efficacy, 
+low risk of 
+hypoglycaemia and 
+weight gain
+Moderate efficacy, 
+low risk of 
+hypoglycaemia and 
+weight loss
+Modest efficacy, low 
+risk of hypoglycaemia 
+and weight neutral
+Treatment recommendations: Clinic follow-up
+3-6 months after initiation of therapy 
+HbA1c above individualised target with
+lifestyle modification + existing therapyLifestyle 
+modification must 
+be maintained at 
+every juncture of 
+T2DM treatment. 
+It should include 
+strategies to lose 
+weight, correct diet 
+and incorporate 
+physical activities.f
+0.5%-1% above target
+Reassess HbA1c after 3-6 months**
+1%-2% above target >2% above target
+Add 1 additional GLD 
+from different class
+OR
+Intensification of 
+insulin (if already on 
+insulin)∫
+Consider 2 GLDs from 
+different classes*
+OR
+Intensification of 
+insulin (if already on 
+insulin)∫
+Initiation of insulin± 
+GLP1-RA∫
+OR
+Intensification of 
+insulin∫
+Initiation and optimisation of insulin therapy
+Note: refer to main CPG for important notations.
+Newly diagnosed T2DM
+Not adequately controlled on maximum OGLD ± GLP1-RA
+• Add basal insulin 10 U OD OR 0.1-0.2 U/kg/day
+• TITRATE based on FPG
+• Choose evidence based titration algorithm
+• If hypoglycaemia, reduce dose by 10-20%
+• Premixed insulin OD/co-formulation OD at 
+main meal
+If HbA1c above target despite 
+adequate titration OR basal dose 
+>0.5 U/kg OR FPG at target
+Basal plus:
+• Add prandial insulin 4 U/meal OR 10% 
+of basal dose
+• TITRATE prandial insulin by increasing 
+1-2 U OR 10-15% every 3 days
+• If hypoglycaemia, reduce prandial 
+insulin by 10-20%
+• Stepwise addition of prandial insulin
+If FPG at target but glucose high 
+during the day, consider basal 
+insulin analogue
+• Premixed insulin BD
+• TITRATE based on 
+individual need
+• Premixed analogue insulin TDS
+• Basal bolus regimen
+• Co-formulation BD
+• TITRATE based on individual 
+need
+Pattern of hyperglycaemia FPG + PPG
+• Symptomatic hyperglycaemia regardless of 
+HbA1c or FPG
+• HbA 1c >10% or FPG >13.0 mmol/L
+• T2DM on maximal OGLDs with HbA1c >7% or, > 
+individualised target
+Suggested treatment approach for specific patient profiles
+If HbA1c not to individualised target 
+Note: Reaching HbA1c is the priority (Targets individualised). Cost of newer medications may render them inaccessible. 
+Use therapies that have been shown to be efficacious and safe.
+LIFESTYLE MODIFICATION + METFORMIN
+(unless intolerant or contraindicated / ½ dose at DKD stage 3B, stop at DKD stages 4-5)
+Overweight / 
+obese
+DPP4-iWeight loss 
+through lifestyle 
+modification^
+DPP4-i OR
+SU* SGLT2-iGLP1-RAx SGLT2-i / 
+GLP1-RA
+SGLT2-i
+(stop when 
+initiating dialysis)
+SGLT2-i GLP1-RASGLT2-i GLP1-RA (if SGLT2-i 
+given or vice-versa) GLP1-RA/SGLT2-i
+SU*
+(if DPP4-i given) GLP1-RA∫
+(contraindicated 
+at eGFR <15 ml/
+min/1.73m2)TZD DPP4-iƒ 
+(if not on GLP1-RA) 
+OR SU*
+DPP4-iƒ 
+(if not on GLP1-RA) 
+OR SU
+DPP4-iƒ
+(if not on GLP1-RA) 
+OR SU*
+GLP1-RA 
+(if SGLT2-i given or 
+vice-versa)
+SGLT2-i
+DPP4-i
+GLP1-RA∫
+SU* 
+(if DPP4- given)
+SU* 
+(if DPP4-i given)
+SU* 
+(if DPP4-i given)
+DPP4-i 
+(if not on GLP1-RA)
+GLP1-RA∫
+SU*
+(not advisable in 
+Stages 4-5)
+Low dose SU 
+(2nd generation) Basal OR premixed 
+insulin (escalate to 
+basal bolus/switch 
+to analogues)+
+TZD TZDSU* Basal OR premixed 
+insulin (escalate to 
+basal bolus/switch 
+to analogues)+ Basal OR premixed 
+insulin (escalate to 
+basal bolus/switch 
+to analogues)+
+Basal OR premixed 
+insulin (escalate to 
+basal bolus/switch 
+to analogues)+
+Basal OR premixed 
+OR basal/bolus 
+insulin analogues
+Basal OR premixed 
+insulin (escalate to 
+basal bolus/switch 
+to analogues)+
+Basal OR premixed 
+insulin (escalate to 
+basal bolus/switch 
+to analogues)+
+Normal weight Increased risk 
+of hypoglycaemia DKD Stage 3-5α High risk CVD ASCVD Heart failure
+Dosage of GLDs in renal failure
+Generic Name Usual dose*
+Dose adjustment in renal failure
+Mild (CKD 2)
+(GFR 60-89)
+Moderate (CKD 3)
+(GFR 30-59)
+Severe (CKD 4 & 5)
+(GFR <30)
+Biguanide§
+Metformin 500-1000 mg BD Continue
+45-60: No dose 
+adjustment Avoid
+<45: 50% dose reduction
+Sulphonylurea^
+Glibenclamide 5 mg OD-10 mg BD Use with caution Avoid
+Gliclazide 80 mg OD-160 mg BD No dose adjustment Caution
+Gliclazide MR 30-120 mg OD No dose adjustment Caution
+Glimepiride 1-6 mg OD Initiate with 1 mg OD ≥15: 
+Caution
+<15: 
+Avoid
+Glipizide 2.5 mg OD-10 mg BD No dose adjustment Caution
+Meglitinides
+Repaglinide 0.5-4 mg TDS No dose adjustment Initiate at 0.5 mg with 
+meals
+Alpha-glucosidase Inhibitor
+Acarbose 25-100 mg TDS 50-100% ≥25: 
+50-100%
+<25: 
+Avoid
+Thiazolidinediones
+Pioglitazone 15-45 mg OD No dose adjustment (caution with fluid retention risk)
+DPP4-i
+Sitagliptin 100 mg OD No dose adjustment
+≥50: No dose 
+adjustment 25 mg OD
+30-<50: 50 mg OD
+Vildagliptin 50 mg OD-BD No dose adjustment ≥50: No dose adjustment
+<50: 50 mg OD (limited data)
+Saxagliptin 2.5-5 mg OD No dose adjustment >50: No dose adjustment
+≤50: 2.5 mg OD
+Linagliptin 2.5-5 mg OD No dose adjustment
+GLP1-RAs
+Exenatide IR 5 μg/20 μL; 
+10 μg/40 μL No dose adjustment
+>50: No dose 
+adjustment
+Avoid30-50: Caution in 
+initiating or escalating 
+dose from 5 to 10 mcg
+Exenatide ER 2 mg weekly No dose adjustment
+>50: No dose 
+adjustment Avoid
+30-50: Use with caution
+Liraglutide 6 mg/mL No dose adjustment No dose adjustment ≥15: No dose 
+adjustment
+<15: 
+Avoid
+3 mg No dose adjustment No dose adjustment Avoid
+Lixisenatide 50 μg/mL; 100 μg/mL No dose adjustment No dose adjustment Avoid
+Dulaglutide 0.75-1.5 mg weekly No dose adjustment No dose adjustment ≥15: No dose 
+adjustment
+<15: 
+Avoid
+Semaglutide 0.5-1.0 mg 
+weekly No dose adjustment No dose adjustment ≥15: No dose 
+adjustment
+<15: 
+Avoid
+SGLT2 Inhibitors¶
+Dapagliflozin 5-10 mg OD No dose adjustment
+45-60: No dose 
+adjustment Avoid
+<45: Not recommended
+Canagliflozin 100-300 mg OD No dose adjustment 45-60: 100 mg OD Avoid<45: Not recommended
+Empagliflozin 10-25 mg OD No dose adjustment No dose adjustment Avoid
+Ertugliflozin 5-15 mg OD No dose adjustment 45-60: No initiation Avoid< 45: Not recommended
+Luseogliflozin 2.5-5 mg OD No dose adjustment  <60: Not recommended Avoid
+Insulin
+Doses should be adjusted based on frequent monitoring to balance goals of glycaemic control with avoiding 
+hypoglycaemia. Long-acting tends to accumulate longer than short-acting insulin.
+Dose escalation will depend on tolerability and according to the PI.
+Note: refer to main CPG for important notations.

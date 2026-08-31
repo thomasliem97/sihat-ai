@@ -1,0 +1,824 @@
+MANAGEMENT OF
+(SECOND EDITION)
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+Ministry of Health
+Malaysia
+Academy of
+Medicine Malaysia
+Family Medicine
+Specialists
+Association of
+Malaysia 
+Malaysian Endocrine
+& Metabolic Society
+Malaysian Orthopaedic
+Association
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+2 7
+1. Diabetic foot can be defined as infection, ulceration or destruction of tissues of 
+the foot associated with neuropathy and/or peripheral arterial disease (PAD) of 
+people with diabetes mellitus (DM).
+2. Screening for diabetic peripheral neuropathy and PAD should be performed on all 
+DM patients at diagnosis and repeated at least annually.
+3. Patients with active diabetic foot problem should be referred urgently and seen 
+within 24 hours in secondary/tertiary care.
+4. University of Texas Classification is the preferred classification for diabetic foot.
+5. Patient education should be an integral part in the management of diabetic foot; 
+performed at least annually and more frequent in higher risk patients.
+6. Prevention of Diabetic Foot Ulcer (DFU) consists of metabolic control, preventive 
+footwear and preventive surgery.
+7. Appropriate analgesia and antibiotics (as an adjunct) are important 
+pharmacotherapy in DFU.
+8. Appropriate wound dressing is done to maintain adequate moisture in addition to 
+surgical debridement to remove dead tissue by trained healthcare providers in 
+DFU.
+9. Revascularisation should be offered in DM patients with PAD.
+10. All patients with diabetic foot who has amputation should be referred for 
+rehabilitation.
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Diabetic Foot (Second Edition). 
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia  : www.moh.gov.my
+Academy of Medicine Malaysia  : www.acadmed.org.my
+Malaysian Orthopaedics Association : http://www.moa-home.com 
+Malaysian Endocrine and Metabolic Society : http://www.mems.my 
+Family Medicine Specialists Association of Malaysia : http://fms-malaysia.org 
+Malaysian Association of Rehabilitation Physicians : https://marp.online 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+TYPES OF WOUND DRESSING IN DIABETIC FOOT
+No. Types of dressing Advantages Disadvantages Indications Contraindications Review 
+intervals 
+Basic wound contact dressings 
+1. Gauze/basic absorbent 
+with paraffin or similar 
+(antiseptics or 
+antibiotics) 
+• Reduces adherence of 
+dressing to the wound 
+• Widely available 
+• Minimal exudate absorption 
+• Requires secondary 
+dressing  
+All wounds Allergy Daily
+Advanced wound dressings 
+1. Hydrogel • Provides moist environment 
+• Acts as enzymatic 
+debridement 
+• Promotes granulation 
+• Requires secondary 
+dressing 
+ 
+• Sloughy wound
+• Dry wounds 
+• Highly exudative 
+wounds 
+• Allergy 
+1 - 2 days
+2. Alginate • Forms gel on wound and 
+maintain moisture 
+• Acts as cavity filler 
+• Absorbent in exudative 
+wounds 
+• Promotes haemostasis 
+• Low allergenic 
+• Requires secondary 
+dressing 
+• Gel can be confused with 
+slough or pus in wound 
+• Moderately or highly 
+exudative wounds 
+• Need for haemostasis 
+• Dry wounds 
+• Allergy 
+ 
+3. Hydrofibre • Maintains moisture 
+• Longer wear time 
+• Non-traumatic upon removal 
+• Reduces risk of maceration 
+• Can be used on infected 
+wounds 
+• Not helpful for dry wounds  
+• Requires secondary 
+dressings
+ 
+Moderately or highly 
+exudative wounds 
+ 
+Allergy  
+4. Foam • Maintains moisture 
+• Highly absorbent 
+• Cushioning property 
+Limited size Moderately or highly 
+exudative wounds 
+• Dry wounds 
+• Wounds that need 
+frequent review 
+ 
+ 
+5. Hydrocolloid • Maintains moisture 
+• Cleans and debrides by 
+autolysis 
+• Easy to use 
+• Waterproof 
+Induces peri-wound 
+maceration 
+Mildly to moderately 
+exudative wounds 
+• Dry wounds 
+• Infection 
+• Highly exudative 
+wounds 
+ 
+6. Silver • No known resistance 
+• Bactericidal 
+Some silver dressings 
+discolour the wound 
+Infective wounds Allergy 
+7. Others 
+2 - 3 days
+2 - 3 days
+2 - 3 days
+2 - 5 days
+3 - 5 days
+Not widely used - some may be used in specialised centres e.g. collagen, matrix and regenerative dressings (cultured epidermis, 
+growth factors, stem cells, etc.)
+Active foot problems 
+(presence of any of the 
+below):
+• ulceration 
+• spreading infection
+• critical limb ischaemia
+• gangrene
+• suspicion of an acute   
+ charcot neuroarthropathy 
+ or an unexplained hot, red,  
+ swollen foot with or without  
+ pain
+All patients with diabetes
+Foot assessment:
+• skin
+• neurological
+• vascular
+• musculoskeletal
+Active foot
+problem?
+Refer 
+Algorithm B
+Previous history
+of ulceration, amputation 
+or on renal replacement
+therapy?
+High risk* Early referral to Foot
+Protection Services
+NO YES
+YES
+NO Deformity/
+neuropathy/
+non-critical
+limb ischaemia
+Moderate
+risk*
+Low
+risk*
+Refer to Foot
+Protection Services
+Callus alone
+• Total contact insole
+• Foot care education
+• Yearly screening
+Normal
+findings
+• Foot care education
+• Yearly screening
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+ALGORITHM A. SCREENING OF DIABETIC FOOTFOOT PROTECTION TEAM
+Foot Assessment
+• Semmes-Weinstein monofilament examination should be combined with another modality 
+(pin prick or 128-Hz tuning fork) in the screening of peripheral neuropathy.
+• Palpation of foot pulses should be the initial screening method for PAD.
+• Foot protection team is led by a Family Medicine Specialist or physician with 
+special training in diabetic foot problems and supported by podiatrists, diabetic 
+team (including diabetic educators), wound care team and rehabilitation services.
+• It provides services in prevention of diabetic foot problems for low, moderate and 
+high risk feet and management of simple active diabetic foot problems in the 
+community that do not require admission.
+MULTIDISCIPLINARY FOOT CARE TEAM
+• The multidisciplinary foot care team in the hospital is led by the orthopaedic 
+surgeon and/or physician and consists of other specialists in diabetes 
+management e.g. vascular surgeons, rehabilitation physicians, occupational 
+therapists, podiatrists, diabetes educators and wound care team. 
+• It manages active or complex diabetic foot problems.
+DIABETIC FOOT EDUCATION
+Personal foot care should be emphasised which includes:
+• checking that feet are in good order 
+• keeping feet clean
+• providing skin care
+• keeping toenails at a good length 
+• choosing and wearing good fitting footwear
+• getting help if a problem is noticed
+FOOTWEAR ADVICE
+Risk status Actions 
+All foot at-risk
+All foot at-risk
+ 
+Moderate or 
+high-risk  
+• Advise on using footwear that fits, protects and accommodates 
+the shape of the feet (with socks). 
+• Prescribe appropriate off-loading devices for ulcer healing
+• Prescribe footwear with:
+ custom-made in-shoe orthoses or insoles for people with 
+foot deformity or pre-ulcerative lesions
+ off-loading orthoses or insoles for people with healed 
+plantar foot ulcer
+• Review prescribed footwear periodically to ensure it still fits, 
+protects, and supports the foot 
+• Advise on wearing footwear at all times, both indoors and 
+outdoors
+Foot ulceration
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+ALGORITHM B. ACTIVE FOOT PROBLEMS (WITH RISK STRATIFICATION)DIABETIC FOOT RISK STRATIFICATION
+*Refer urgently for admission if patients present with general illness (e.g. sepsis or 
+diabetic emergencies) irrespective of foot problems.RECOMMENDED REFERRAL SCHEDULE
+Diabetic foot risk    
+Risk Referral 
+  
+ 
+  
+Findings
+No abnormalitiesNormal
+Callus aloneLow Risk
+Any of the following: 
+• deformity
+• neuropathy
+• non-critical limb ischaemia
+Any of the following:
+• ulceration 
+• infection
+• critical limb ischaemia
+• gangrene
+• suspicion of an acute Charcot neuroarthropathy, or an 
+unexplained hot, red, swollen foot with or without pain
+Moderate Risk
+One of the following:
+• previous ulceration
+• previous amputation
+• on renal replacement therapy
+• neuropathy and non-critical limb ischaemia
+• neuropathy with callus and/or deformity
+• non-critical limb ischaemia with callus and/or deformity
+High Risk
+Active Diabetic 
+Foot Problem
+No referral needed. Yearly review at primary care
+Referral within three months to foot protection services
+Early referral within two weeks to foot protection services
+Urgent referral within 24 hours to multidisciplinary foot 
+care team
+Normal/Low risk
+Moderate risk
+High risk
+Active diabetic foot 
+problem
+Active foot problems*
+Without ulcer
+(UT 0) With ulcer
+Superficial
+(UT IA) Infection
+Ischaemia
+(pulses not
+palpable)
+(UT IC/IIC/IIIC)
+Infection
+and
+ischaemia
+(UT ID/IID/IIID)
+Superficial
+ulcer not
+requiring
+surgical
+intervention
+(UT IB)
+Deep ulcer
+requiring
+surgical
+intervention
+(UT IIB/IIIB)
+Manage as
+outpatient by
+Foot
+Protection
+Services
+Oral
+antibiotics
+Refer
+Multidisciplinary 
+Foot Care Team
+University of Texas Classification of Diabetic Foot
+UT: University of Texas
+ GRADE 0 GRADE I GRADE II GRADE III 
+ 
+  
+ 
+   
+ With ischaemia   
+ With infection and 
+ischaemia
+STAGE A
+STAGE B
+STAGE C
+STAGE D
+Pre- or post-ulcerative
+lesion completely
+epithelialised
+Superficial wound, 
+not involving tendon,
+capsule or bone
+Wound penetrating
+to tendon or capsule
+With infection With infection
+With ischaemia
+With infection and 
+ischaemia
+With infection
+With ischaemia
+With infection and 
+ischaemia
+Wound penetrating
+to bone or joint
+With infection
+With ischaemia
+With infection and 
+ischaemia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+ALGORITHM B. ACTIVE FOOT PROBLEMS (WITH RISK STRATIFICATION)DIABETIC FOOT RISK STRATIFICATION
+*Refer urgently for admission if patients present with general illness (e.g. sepsis or 
+diabetic emergencies) irrespective of foot problems.RECOMMENDED REFERRAL SCHEDULE
+Diabetic foot risk    
+Risk Referral 
+  
+ 
+  
+Findings
+No abnormalitiesNormal
+Callus aloneLow Risk
+Any of the following: 
+• deformity
+• neuropathy
+• non-critical limb ischaemia
+Any of the following:
+• ulceration 
+• infection
+• critical limb ischaemia
+• gangrene
+• suspicion of an acute Charcot neuroarthropathy, or an 
+unexplained hot, red, swollen foot with or without pain
+Moderate Risk
+One of the following:
+• previous ulceration
+• previous amputation
+• on renal replacement therapy
+• neuropathy and non-critical limb ischaemia
+• neuropathy with callus and/or deformity
+• non-critical limb ischaemia with callus and/or deformity
+High Risk
+Active Diabetic 
+Foot Problem
+No referral needed. Yearly review at primary care
+Referral within three months to foot protection services
+Early referral within two weeks to foot protection services
+Urgent referral within 24 hours to multidisciplinary foot 
+care team
+Normal/Low risk
+Moderate risk
+High risk
+Active diabetic foot 
+problem
+Active foot problems*
+Without ulcer
+(UT 0) With ulcer
+Superficial
+(UT IA) Infection
+Ischaemia
+(pulses not
+palpable)
+(UT IC/IIC/IIIC)
+Infection
+and
+ischaemia
+(UT ID/IID/IIID)
+Superficial
+ulcer not
+requiring
+surgical
+intervention
+(UT IB)
+Deep ulcer
+requiring
+surgical
+intervention
+(UT IIB/IIIB)
+Manage as
+outpatient by
+Foot
+Protection
+Services
+Oral
+antibiotics
+Refer
+Multidisciplinary 
+Foot Care Team
+University of Texas Classification of Diabetic Foot
+UT: University of Texas
+ GRADE 0 GRADE I GRADE II GRADE III 
+ 
+  
+ 
+   
+ With ischaemia   
+ With infection and 
+ischaemia
+STAGE A
+STAGE B
+STAGE C
+STAGE D
+Pre- or post-ulcerative
+lesion completely
+epithelialised
+Superficial wound, 
+not involving tendon,
+capsule or bone
+Wound penetrating
+to tendon or capsule
+With infection With infection
+With ischaemia
+With infection and 
+ischaemia
+With infection
+With ischaemia
+With infection and 
+ischaemia
+Wound penetrating
+to bone or joint
+With infection
+With ischaemia
+With infection and 
+ischaemia
+Active foot problems 
+(presence of any of the 
+below):
+• ulceration 
+• spreading infection
+• critical limb ischaemia
+• gangrene
+• suspicion of an acute   
+ charcot neuroarthropathy 
+ or an unexplained hot, red,  
+ swollen foot with or without  
+ pain
+All patients with diabetes
+Foot assessment:
+• skin
+• neurological
+• vascular
+• musculoskeletal
+Active foot
+problem?
+Refer 
+Algorithm B
+Previous history
+of ulceration, amputation 
+or on renal replacement
+therapy?
+High risk* Early referral to Foot
+Protection Services
+NO YES
+YES
+NO Deformity/
+neuropathy/
+non-critical
+limb ischaemia
+Moderate
+risk*
+Low
+risk*
+Refer to Foot
+Protection Services
+Callus alone
+• Total contact insole
+• Foot care education
+• Yearly screening
+Normal
+findings
+• Foot care education
+• Yearly screening
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+ALGORITHM A. SCREENING OF DIABETIC FOOTFOOT PROTECTION TEAM
+Foot Assessment
+• Semmes-Weinstein monofilament examination should be combined with another modality 
+(pin prick or 128-Hz tuning fork) in the screening of peripheral neuropathy.
+• Palpation of foot pulses should be the initial screening method for PAD.
+• Foot protection team is led by a Family Medicine Specialist or physician with 
+special training in diabetic foot problems and supported by podiatrists, diabetic 
+team (including diabetic educators), wound care team and rehabilitation services.
+• It provides services in prevention of diabetic foot problems for low, moderate and 
+high risk feet and management of simple active diabetic foot problems in the 
+community that do not require admission.
+MULTIDISCIPLINARY FOOT CARE TEAM
+• The multidisciplinary foot care team in the hospital is led by the orthopaedic 
+surgeon and/or physician and consists of other specialists in diabetes 
+management e.g. vascular surgeons, rehabilitation physicians, occupational 
+therapists, podiatrists, diabetes educators and wound care team. 
+• It manages active or complex diabetic foot problems.
+DIABETIC FOOT EDUCATION
+Personal foot care should be emphasised which includes:
+• checking that feet are in good order 
+• keeping feet clean
+• providing skin care
+• keeping toenails at a good length 
+• choosing and wearing good fitting footwear
+• getting help if a problem is noticed
+FOOTWEAR ADVICE
+Risk status Actions 
+All foot at-risk
+All foot at-risk
+ 
+Moderate or 
+high-risk  
+• Advise on using footwear that fits, protects and accommodates 
+the shape of the feet (with socks). 
+• Prescribe appropriate off-loading devices for ulcer healing
+• Prescribe footwear with:
+ custom-made in-shoe orthoses or insoles for people with 
+foot deformity or pre-ulcerative lesions
+ off-loading orthoses or insoles for people with healed 
+plantar foot ulcer
+• Review prescribed footwear periodically to ensure it still fits, 
+protects, and supports the foot 
+• Advise on wearing footwear at all times, both indoors and 
+outdoors
+Foot ulceration
+2 7
+1. Diabetic foot can be defined as infection, ulceration or destruction of tissues of 
+the foot associated with neuropathy and/or peripheral arterial disease (PAD) of 
+people with diabetes mellitus (DM).
+2. Screening for diabetic peripheral neuropathy and PAD should be performed on all 
+DM patients at diagnosis and repeated at least annually.
+3. Patients with active diabetic foot problem should be referred urgently and seen 
+within 24 hours in secondary/tertiary care.
+4. University of Texas Classification is the preferred classification for diabetic foot.
+5. Patient education should be an integral part in the management of diabetic foot; 
+performed at least annually and more frequent in higher risk patients.
+6. Prevention of Diabetic Foot Ulcer (DFU) consists of metabolic control, preventive 
+footwear and preventive surgery.
+7. Appropriate analgesia and antibiotics (as an adjunct) are important 
+pharmacotherapy in DFU.
+8. Appropriate wound dressing is done to maintain adequate moisture in addition to 
+surgical debridement to remove dead tissue by trained healthcare providers in 
+DFU.
+9. Revascularisation should be offered in DM patients with PAD.
+10. All patients with diabetic foot who has amputation should be referred for 
+rehabilitation.
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Diabetic Foot (Second Edition). 
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia  : www.moh.gov.my
+Academy of Medicine Malaysia  : www.acadmed.org.my
+Malaysian Orthopaedics Association : http://www.moa-home.com 
+Malaysian Endocrine and Metabolic Society : http://www.mems.my 
+Family Medicine Specialists Association of Malaysia : http://fms-malaysia.org 
+Malaysian Association of Rehabilitation Physicians : https://marp.online 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+TYPES OF WOUND DRESSING IN DIABETIC FOOT
+No. Types of dressing Advantages Disadvantages Indications Contraindications Review 
+intervals 
+Basic wound contact dressings 
+1. Gauze/basic absorbent 
+with paraffin or similar 
+(antiseptics or 
+antibiotics) 
+• Reduces adherence of 
+dressing to the wound 
+• Widely available 
+• Minimal exudate absorption 
+• Requires secondary 
+dressing  
+All wounds Allergy Daily
+Advanced wound dressings 
+1. Hydrogel • Provides moist environment 
+• Acts as enzymatic 
+debridement 
+• Promotes granulation 
+• Requires secondary 
+dressing 
+ 
+• Sloughy wound
+• Dry wounds 
+• Highly exudative 
+wounds 
+• Allergy 
+1 - 2 days
+2. Alginate • Forms gel on wound and 
+maintain moisture 
+• Acts as cavity filler 
+• Absorbent in exudative 
+wounds 
+• Promotes haemostasis 
+• Low allergenic 
+• Requires secondary 
+dressing 
+• Gel can be confused with 
+slough or pus in wound 
+• Moderately or highly 
+exudative wounds 
+• Need for haemostasis 
+• Dry wounds 
+• Allergy 
+ 
+3. Hydrofibre • Maintains moisture 
+• Longer wear time 
+• Non-traumatic upon removal 
+• Reduces risk of maceration 
+• Can be used on infected 
+wounds 
+• Not helpful for dry wounds  
+• Requires secondary 
+dressings
+ 
+Moderately or highly 
+exudative wounds 
+ 
+Allergy  
+4. Foam • Maintains moisture 
+• Highly absorbent 
+• Cushioning property 
+Limited size Moderately or highly 
+exudative wounds 
+• Dry wounds 
+• Wounds that need 
+frequent review 
+ 
+ 
+5. Hydrocolloid • Maintains moisture 
+• Cleans and debrides by 
+autolysis 
+• Easy to use 
+• Waterproof 
+Induces peri-wound 
+maceration 
+Mildly to moderately 
+exudative wounds 
+• Dry wounds 
+• Infection 
+• Highly exudative 
+wounds 
+ 
+6. Silver • No known resistance 
+• Bactericidal 
+Some silver dressings 
+discolour the wound 
+Infective wounds Allergy 
+7. Others 
+2 - 3 days
+2 - 3 days
+2 - 3 days
+2 - 5 days
+3 - 5 days
+Not widely used - some may be used in specialised centres e.g. collagen, matrix and regenerative dressings (cultured epidermis, 
+growth factors, stem cells, etc.)
+Active foot problems 
+(presence of any of the 
+below):
+• ulceration 
+• spreading infection
+• critical limb ischaemia
+• gangrene
+• suspicion of an acute   
+ charcot neuroarthropathy 
+ or an unexplained hot, red,  
+ swollen foot with or without  
+ pain
+All patients with diabetes
+Foot assessment:
+• skin
+• neurological
+• vascular
+• musculoskeletal
+Active foot
+problem?
+Refer 
+Algorithm B
+Previous history
+of ulceration, amputation 
+or on renal replacement
+therapy?
+High risk* Early referral to Foot
+Protection Services
+NO YES
+YES
+NO Deformity/
+neuropathy/
+non-critical
+limb ischaemia
+Moderate
+risk*
+Low
+risk*
+Refer to Foot
+Protection Services
+Callus alone
+• Total contact insole
+• Foot care education
+• Yearly screening
+Normal
+findings
+• Foot care education
+• Yearly screening
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)
+ALGORITHM A. SCREENING OF DIABETIC FOOTFOOT PROTECTION TEAM
+Foot Assessment
+• Semmes-Weinstein monofilament examination should be combined with another modality 
+(pin prick or 128-Hz tuning fork) in the screening of peripheral neuropathy.
+• Palpation of foot pulses should be the initial screening method for PAD.
+• Foot protection team is led by a Family Medicine Specialist or physician with 
+special training in diabetic foot problems and supported by podiatrists, diabetic 
+team (including diabetic educators), wound care team and rehabilitation services.
+• It provides services in prevention of diabetic foot problems for low, moderate and 
+high risk feet and management of simple active diabetic foot problems in the 
+community that do not require admission.
+MULTIDISCIPLINARY FOOT CARE TEAM
+• The multidisciplinary foot care team in the hospital is led by the orthopaedic 
+surgeon and/or physician and consists of other specialists in diabetes 
+management e.g. vascular surgeons, rehabilitation physicians, occupational 
+therapists, podiatrists, diabetes educators and wound care team. 
+• It manages active or complex diabetic foot problems.
+DIABETIC FOOT EDUCATION
+Personal foot care should be emphasised which includes:
+• checking that feet are in good order 
+• keeping feet clean
+• providing skin care
+• keeping toenails at a good length 
+• choosing and wearing good fitting footwear
+• getting help if a problem is noticed
+FOOTWEAR ADVICE
+Risk status Actions 
+All foot at-risk
+All foot at-risk
+ 
+Moderate or 
+high-risk  
+• Advise on using footwear that fits, protects and accommodates 
+the shape of the feet (with socks). 
+• Prescribe appropriate off-loading devices for ulcer healing
+• Prescribe footwear with:
+ custom-made in-shoe orthoses or insoles for people with 
+foot deformity or pre-ulcerative lesions
+ off-loading orthoses or insoles for people with healed 
+plantar foot ulcer
+• Review prescribed footwear periodically to ensure it still fits, 
+protects, and supports the foot 
+• Advise on wearing footwear at all times, both indoors and 
+outdoors
+Foot ulceration
+MANAGEMENT OF
+(SECOND EDITION)
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+Ministry of Health
+Malaysia
+Academy of
+Medicine Malaysia
+Family Medicine
+Specialists
+Association of
+Malaysia 
+Malaysian Endocrine
+& Metabolic Society
+Malaysian Orthopaedic
+Association
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DIABETIC FOOT (SECOND EDITION)

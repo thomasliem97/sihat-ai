@@ -1,0 +1,723 @@
+{
+  "source": "https://www.moh.gov.my/penerbitan-dan-laporan/dasar-akta-polisi-garis-panduan/penerbitan-klinikal/senarai-penerbitan-klinikal/panduan-amalan-klinikal-cpg",
+  "scraped_at": "2026-08-31",
+  "note": "Official MOH CPG listing page hrefs. Prefer QR over full CPG. Skip TM/PIL/zip.",
+  "counts": {
+    "cpg": 79,
+    "qr": 44,
+    "skip": 18,
+    "tm": 1
+  },
+  "files": [
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Cancer_Pain_Second_Edition_8_8_24.pdf",
+      "file": "e-CPG_Management_of_Cancer_Pain_Second_Edition_8_8_24.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Cancer_Pain_Second_Edition_8_8_24_1.pdf",
+      "file": "QR_Management_of_Cancer_Pain_Second_Edition_8_8_24_1.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/PIL-Management_Of_Cancer_Pain_2nd%20Edition-Malay%20and%20Eng.zip",
+      "file": "PIL-Management_Of_Cancer_Pain_2nd%20Edition-Malay%20and%20Eng.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Breast_Cancer_Third_Edition_1.pdf",
+      "file": "CPG_Management_of_Breast_Cancer_Third_Edition_1.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Breast_Cancer_Third_Edition_130720_1.pdf",
+      "file": "QR_Management_of_Breast_Cancer_Third_Edition_130720_1.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM_CPG_Manegement_of_Breast_Cancer_3rd_Edition.zip",
+      "file": "TM_CPG_Manegement_of_Breast_Cancer_3rd_Edition.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Colorectal_Carcinoma_1.pdf",
+      "file": "CPG_Management_of_Colorectal_Carcinoma_1.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Colorectal_Carcinoma_1.pdf",
+      "file": "QR_Management_of_Colorectal_Carcinoma_1.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Training%20Module%20Colorectal%20Carcinoma.zip",
+      "file": "Training%20Module%20Colorectal%20Carcinoma.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG-Nasopharyngeal_Carcinoma_1_compressed.pdf",
+      "file": "CPG-Nasopharyngeal_Carcinoma_1_compressed.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Nasopharyngeal_Carcinoma.pdf",
+      "file": "QR_Nasopharyngeal_Carcinoma.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Cervical_Cancer_Second_Edition_1.pdf",
+      "file": "CPG_Management_of_Cervical_Cancer_Second_Edition_1.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Cervical_Cancer_Second_Edition.pdf",
+      "file": "QR_Management_of_Cervical_Cancer_Second_Edition.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM%20Management%20of%20Cervical%20Cancer%20Second%20Edition.zip",
+      "file": "TM%20Management%20of%20Cervical%20Cancer%20Second%20Edition.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_Of_Acute_Coronary_Syndrome_ACS_1st_Edition_2026_compressed.pdf",
+      "file": "CPG_Management_Of_Acute_Coronary_Syndrome_ACS_1st_Edition_2026_compressed.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_on_Dyslipidaemia_2023_6th_Ed.pdf",
+      "file": "e-CPG_on_Dyslipidaemia_2023_6th_Ed.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_on_Heart_Failure_2023_5th_Ed.pdf",
+      "file": "e-CPG_on_Heart_Failure_2023_5th_Ed.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_NSTE-ACS_3rd_Edition_2021.pdf",
+      "file": "CPG_Management_of_NSTE-ACS_3rd_Edition_2021.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Ischaemic_Stroke_3rd_Edition_2020_Version_03.04_.2023_softcopy_.pdf",
+      "file": "CPG_Management_of_Ischaemic_Stroke_3rd_Edition_2020_Version_03.04_.2023_softcopy_.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Ischaemic_Stroke_3rd_Edition_2020_28.02_.2021_.pdf",
+      "file": "QR_Management_of_Ischaemic_Stroke_3rd_Edition_2020_28.02_.2021_.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20STEMI%202019.pdf",
+      "file": "CPG%20STEMI%202019.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/MSH%20Hypertension%20CPG%202018%20V3.8%20FA.pdf",
+      "file": "MSH%20Hypertension%20CPG%202018%20V3.8%20FA.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20booklet%20cover_2.pdf",
+      "file": "CPG%20booklet%20cover_2.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/ABC_NHAM_CPG_PrevCVD_CvrBckPg_170707_Outline.pdf",
+      "file": "ABC_NHAM_CPG_PrevCVD_CvrBckPg_170707_Outline.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CLINICAL%20PRACTICE%20GUIDELINES%20FOR%20THE.pdf",
+      "file": "CLINICAL%20PRACTICE%20GUIDELINES%20FOR%20THE.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Prevention%20of%20Cardiovascular%20Disease.pdf",
+      "file": "Prevention%20of%20Cardiovascular%20Disease.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Heart%20Disease%20in%20Pregnancy.pdf",
+      "file": "Heart%20Disease%20in%20Pregnancy.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Atrial%20Fibrillation.pdf",
+      "file": "Management%20of%20Atrial%20Fibrillation.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Pulmonary%20Arterial%20Hypertension.pdf",
+      "file": "Management%20of%20Pulmonary%20Arterial%20Hypertension.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Percutaneous%20Coronary%20Intervention.pdf",
+      "file": "Percutaneous%20Coronary%20Intervention.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Obesity_Second_Edition_2023.pdf",
+      "file": "CPG_Management_of_Obesity_Second_Edition_2023.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_T2DM_6th_Edition_2020_13042021.pdf",
+      "file": "CPG_T2DM_6th_Edition_2020_13042021.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_T2DM_6th_Edition_QR_Guide_Digital.pdf",
+      "file": "QR_T2DM_6th_Edition_QR_Guide_Digital.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20Of%20Diabetes%20n%20Pregnancy.pdf",
+      "file": "Management%20Of%20Diabetes%20n%20Pregnancy.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20Of%20Diabetes%20n%20Pregnancy%201b.pdf",
+      "file": "Management%20Of%20Diabetes%20n%20Pregnancy%201b.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/1c.zip",
+      "file": "1c.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20Of%20Type%201%20Diabetes%20Mellitus%20In%20Children%20%20Adolescents.pdf",
+      "file": "Management%20Of%20Type%201%20Diabetes%20Mellitus%20In%20Children%20%20Adolescents.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20Of%20Type%201%20Diabetes%20Mellitus%20In%20Children%20%20Adolescents%202b.pdf",
+      "file": "Management%20Of%20Type%201%20Diabetes%20Mellitus%20In%20Children%20%20Adolescents%202b.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/2c.zip",
+      "file": "2c.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Growth%20Hormone%20In%20Children%20and%20Adults.pdf",
+      "file": "Growth%20Hormone%20In%20Children%20and%20Adults.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Growth%20Hormone%20In%20Children%20and%20Adults%202b.pdf",
+      "file": "Growth%20Hormone%20In%20Children%20and%20Adults%202b.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Chronic_Hepatitis_B_in_Adults_-12_6_23.pdf",
+      "file": "e-CPG_Management_of_Chronic_Hepatitis_B_in_Adults_-12_6_23.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Chronic_Hepatitis_B_in_Adults_-12_6_23.pdf",
+      "file": "QR_Management_of_Chronic_Hepatitis_B_in_Adults_-12_6_23.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_Of_Myeloproliferative_Neoplasms_Second_Edition_2025_compressed.pdf",
+      "file": "CPG_Management_Of_Myeloproliferative_Neoplasms_Second_Edition_2025_compressed.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_Of_Myeloproliferative_Neoplasms_Second_Edition_2025.pdf",
+      "file": "QR_Management_Of_Myeloproliferative_Neoplasms_Second_Edition_2025.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Thalas-16_8_25.pdf",
+      "file": "e-CPG_Thalas-16_8_25.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR-Thalassaemia_Second_Edition-11_4_25.pdf",
+      "file": "QR-Thalassaemia_Second_Edition-11_4_25.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20haemophilia%20201119.pdf",
+      "file": "CPG%20haemophilia%20201119.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Haemophilia%20241019.pdf",
+      "file": "QR%20Haemophilia%20241019.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM%20Haemophilia%20311219.zip",
+      "file": "TM%20Haemophilia%20311219.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/P-CPG-Dengue_in_Children_Second_Edition.pdf",
+      "file": "P-CPG-Dengue_in_Children_Second_Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Dengue_in_Children_06072021.pdf",
+      "file": "QR_Management_of_Dengue_in_Children_06072021.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM_CPG_Management_of_Dengue_in_Children_Second_Edition.zip",
+      "file": "TM_CPG_Management_of_Dengue_in_Children_Second_Edition.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Dengue%20Infection%20PDF%20Final.pdf",
+      "file": "CPG%20Dengue%20Infection%20PDF%20Final.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Dengue%20Infection%20PDF%20Final.pdf",
+      "file": "QR%20Dengue%20Infection%20PDF%20Final.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Bipolar_Disorder_Second_Edition_300824_1_1.pdf",
+      "file": "e-CPG_Management_of_Bipolar_Disorder_Second_Edition_300824_1_1.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Bipolar_Disorder_Second_Edition_2408241.pdf",
+      "file": "QR_Management_of_Bipolar_Disorder_Second_Edition_2408241.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Lectures_and_Case_Discussions-20250710T041851Z-1-001%201.zip",
+      "file": "Lectures_and_Case_Discussions-20250710T041851Z-1-001%201.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG-Schizophrenia_11012023.pdf",
+      "file": "CPG-Schizophrenia_11012023.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR-Schizophrenia_11012023.pdf",
+      "file": "QR-Schizophrenia_11012023.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Dementia_Third_Edition-10_11.pdf",
+      "file": "e-CPG_Management_of_Dementia_Third_Edition-10_11.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Dementia_Third_Edition.pdf",
+      "file": "QR_Management_of_Dementia_Third_Edition.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM_Dementia-20221107T085743Z-001.zip",
+      "file": "TM_Dementia-20221107T085743Z-001.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Attention-Deficit_Hyperactivity_Disorder_Second_Edition_06072021.pdf",
+      "file": "CPG_Management_of_Attention-Deficit_Hyperactivity_Disorder_Second_Edition_06072021.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Attention-Deficit_Hyperactivity_Disorder_Second_Edition_06072021.pdf",
+      "file": "QR_Management_of_Attention-Deficit_Hyperactivity_Disorder_Second_Edition_06072021.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM_-_Management_of_Attention-Deficit_Hyperactivity_Disorder_ADHD_in_Children_and_Adolescent_2nd_Edition.zip",
+      "file": "TM_-_Management_of_Attention-Deficit_Hyperactivity_Disorder_ADHD_in_Children_and_Adolescent_2nd_Edition.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_MDD_Second_Edition_04092020.pdf",
+      "file": "CPG_Management_of_MDD_Second_Edition_04092020.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Major%20Depressive%20%20Disorder%202nd%20Edition.pdf",
+      "file": "QR%20Management%20of%20Major%20Depressive%20%20Disorder%202nd%20Edition.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Training_Module_CPG_MDD_2nd_Ed.zip",
+      "file": "Training_Module_CPG_MDD_2nd_Ed.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Autism_Spectrum_Disorder_in_Children_and_Adolescents_1.pdf",
+      "file": "CPG_Management_of_Autism_Spectrum_Disorder_in_Children_and_Adolescents_1.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/20151019QR_Management_of_Austism_Spectrum_Disorder_in_Children_and_Adolescents.pdf",
+      "file": "20151019QR_Management_of_Austism_Spectrum_Disorder_in_Children_and_Adolescents.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Foreign_Body_Ingestion_in_Children_2025_compressed.pdf",
+      "file": "CPG_Foreign_Body_Ingestion_in_Children_2025_compressed.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Foreign_Body_Ingestion_in_Children_2025.pdf",
+      "file": "QR_Foreign_Body_Ingestion_in_Children_2025.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Conservative_Kidney_Management.pdf",
+      "file": "CPG_Conservative_Kidney_Management.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Conservative_Kidney_Management.pdf",
+      "file": "QR_Conservative_Kidney_Management.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Management%20of%20Chronic%20Kidney%20%20Disease%20Second%20Edition.pdf",
+      "file": "CPG%20Management%20of%20Chronic%20Kidney%20%20Disease%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Chronic%20Kidney%20%20Disease%20Second%20Edition.pdf",
+      "file": "QR%20Management%20of%20Chronic%20Kidney%20%20Disease%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM%20CKD%20for%20Doctors%202019%201.zip",
+      "file": "TM%20CKD%20for%20Doctors%202019%201.zip"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Paramedics%201.zip",
+      "file": "Paramedics%201.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Intracranial_Haemorrhage.pdf",
+      "file": "CPG_Intracranial_Haemorrhage.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Early%20Management%20of%20Head%20Injury%20in%20Adults.pdf",
+      "file": "CPG%20Early%20Management%20of%20Head%20Injury%20in%20Adults.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Management%20of%20Multiple%20Sclerosis.compressed.pdf",
+      "file": "CPG%20Management%20of%20Multiple%20Sclerosis.compressed.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/587ed8fbbe53a.zip",
+      "file": "587ed8fbbe53a.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Retinopathy_of_Prematurity_-4_10_23.pdf",
+      "file": "e-CPG_Management_of_Retinopathy_of_Prematurity_-4_10_23.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Retinopathy_of_Prematurity_15_9__23.pdf",
+      "file": "QR_Management_of_Retinopathy_of_Prematurity_15_9__23.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM_CPG_Retinopathy_of_Prematurity_2nd_Edition-20250110.zip",
+      "file": "TM_CPG_Retinopathy_of_Prematurity_2nd_Edition-20250110.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Management%20of%20Glaucoma%20Second%20Edition.pdf",
+      "file": "CPG%20Management%20of%20Glaucoma%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Glaucoma%20Second%20Edition.pdf",
+      "file": "QR%20Management%20of%20Glaucoma%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20Of%20Early%20Childhood%20Caries%203rd%20Edition.pdf",
+      "file": "Management%20Of%20Early%20Childhood%20Caries%203rd%20Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20Of%20Early%20Childhood%20Caries%203rd%20Edition.pdf",
+      "file": "QR%20Management%20Of%20Early%20Childhood%20Caries%203rd%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Antibiotic%20Prophylaxis%20Oral%20and%20Maxxillofacial%20Surgery.pdf",
+      "file": "Antibiotic%20Prophylaxis%20Oral%20and%20Maxxillofacial%20Surgery.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Antibiotic%20Prophylaxis%20Oral%20and%20Maxxillofacial%20Surgery.pdf",
+      "file": "QR%20Antibiotic%20Prophylaxis%20Oral%20and%20Maxxillofacial%20Surgery.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Anterior%20Crossbite%20in%20Mixed%20Dentition%20Third%20Edition.pdf",
+      "file": "Management%20of%20Anterior%20Crossbite%20in%20Mixed%20Dentition%20Third%20Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Anterior%20Crossbite%20in%20Mixed%20Dentition%20Third%20Edition.pdf",
+      "file": "QR%20Management%20of%20Anterior%20Crossbite%20in%20Mixed%20Dentition%20Third%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Hypodontia%20Second%20Edition.pdf",
+      "file": "Management%20of%20Hypodontia%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Hypodontia%20Second%20Edition.pdf",
+      "file": "QR%20Management%20of%20Hypodontia%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Unerupted%20and%20Impacted%20Third%20Molar%20Teeth%202nd%20Edition.pdf",
+      "file": "Management%20of%20Unerupted%20and%20Impacted%20Third%20Molar%20Teeth%202nd%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Avulsed%20Permanent%20Anterior%20Teeth%20in%20Children%203rd%20Edition.pdf",
+      "file": "Management%20of%20Avulsed%20Permanent%20Anterior%20Teeth%20in%20Children%203rd%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Mandibular%20Condyle%20Fractures.pdf",
+      "file": "Management%20of%20Mandibular%20Condyle%20Fractures.pdf"
+    },
+    {
+      "kind": "tm",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Treatment%20of%20Periodontal%20Abscess%202nd%20Edition.pdf",
+      "file": "Treatment%20of%20Periodontal%20Abscess%202nd%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Acute%20Orofacial%20Infection%20of%20Odontogenic%20Origin%20in%20Children.pdf",
+      "file": "Management%20of%20Acute%20Orofacial%20Infection%20of%20Odontogenic%20Origin%20in%20Children.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20the%20Palatally%20Ectopic%20Canine%20Second%20Edition.pdf",
+      "file": "Management%20of%20the%20Palatally%20Ectopic%20Canine%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Antibiotic_Prophylaxis_in_Oral_Surgery_Nov_2015.pdf",
+      "file": "CPG_Antibiotic_Prophylaxis_in_Oral_Surgery_Nov_2015.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20%20of%20Ameloblastoma.pdf",
+      "file": "Management%20%20of%20Ameloblastoma.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Unerupted%20Maxillary%20Incisor%202nd%20edition.pdf",
+      "file": "Management%20of%20Unerupted%20Maxillary%20Incisor%202nd%20edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Geriatric_Hip_Fracture_1_8_24_final.pdf",
+      "file": "e-CPG_Management_of_Geriatric_Hip_Fracture_1_8_24_final.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR-Geriatric_Hip_Fracture-15_5_24.pdf",
+      "file": "QR-Geriatric_Hip_Fracture-15_5_24.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Management%20of%20Diabetic%20Foot%20%20Second%20Edition.pdf",
+      "file": "CPG%20Management%20of%20Diabetic%20Foot%20%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Diabetic%20Foot%20%20Second%20Edition.pdf",
+      "file": "QR%20Management%20of%20Diabetic%20Foot%20%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Rhinosinusitis_in_Adolescents_and_Adults.pdf",
+      "file": "CPG_Management_of_Rhinosinusitis_in_Adolescents_and_Adults.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Rhinosinusitis_in_Adolescents_and_Adults.pdf",
+      "file": "QR_Management_of_Rhinosinusitis_in_Adolescents_and_Adults.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM_Rhinosinusitis.zip",
+      "file": "TM_Rhinosinusitis.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Management%20of%20Neonatal%20Jaundice%20Second%20Edition.pdf",
+      "file": "CPG%20Management%20of%20Neonatal%20Jaundice%20Second%20Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Neonatal%20Jaundice%20Second%20Editionnew.pdf",
+      "file": "QR%20Management%20of%20Neonatal%20Jaundice%20Second%20Editionnew.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Full_Guidelines_-Management_of_Asthma_in_Adults_Second_Edition_2024_-_Updated_Oct_2025.pdf",
+      "file": "Full_Guidelines_-Management_of_Asthma_in_Adults_Second_Edition_2024_-_Updated_Oct_2025.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR-_Management_of_Asthma_in_Adults_Second_Edition_2024-_Updated_Oct_2025.pdf",
+      "file": "QR-_Management_of_Asthma_in_Adults_Second_Edition_2024-_Updated_Oct_2025.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Obstructive_Sleep_Apnoea_-13_6_23.pdf",
+      "file": "QR_Management_of_Obstructive_Sleep_Apnoea_-13_6_23.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG-_Management_of_Tuberculosis_4th_Edition.pdf",
+      "file": "CPG-_Management_of_Tuberculosis_4th_Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_-_Management_of_Tuberculosis_4th_Edition.pdf",
+      "file": "QR_-_Management_of_Tuberculosis_4th_Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_EVALI_for_Online_Publication.pdf",
+      "file": "e-CPG_Management_of_EVALI_for_Online_Publication.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_EVALI_for_Online_Publication.pdf",
+      "file": "QR_Management_of_EVALI_for_Online_Publication.pdf"
+    },
+    {
+      "kind": "skip",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/TM_CPG_EVALI.zip",
+      "file": "TM_CPG_EVALI.zip"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Management%20of%20Drug%20Resistant%20TB.pdf",
+      "file": "CPG%20Management%20of%20Drug%20Resistant%20TB.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_TobacoDisorder.pdf",
+      "file": "CPG_TobacoDisorder.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_CPG_TobacoDisorder.pdf",
+      "file": "QR_CPG_TobacoDisorder.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG-SLE-compressed.pdf",
+      "file": "e-CPG-SLE-compressed.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR-SLE-compressed.pdf",
+      "file": "QR-SLE-compressed.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/221115_MOS_CPG-Management_of_Osteoporosis-ed3_PREVIEW.pdf",
+      "file": "221115_MOS_CPG-Management_of_Osteoporosis-ed3_PREVIEW.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Gout_Second_Edition.pdf",
+      "file": "e-CPG_Management_of_Gout_Second_Edition.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Gout_Second_Edition.pdf",
+      "file": "QR_Management_of_Gout_Second_Edition.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Rheumatoid_Arthritis-17052021.pdf",
+      "file": "CPG_Rheumatoid_Arthritis-17052021.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/Management%20of%20Osteoarthritis%20TM.pdf",
+      "file": "Management%20of%20Osteoarthritis%20TM.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Psoriasis2024_Merge-1_8_25.pdf",
+      "file": "e-CPG_Psoriasis2024_Merge-1_8_25.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-QR_Psoriasis2024-1_8_25.pdf",
+      "file": "e-QR_Psoriasis2024-1_8_25.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR-Acne-10_4_23.pdf",
+      "file": "QR-Acne-10_4_23.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG%20Management%20of%20Atopic%20Eczema.pdf",
+      "file": "CPG%20Management%20of%20Atopic%20Eczema.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Management%20of%20Atopic%20Eczema.pdf",
+      "file": "QR%20Management%20of%20Atopic%20Eczema.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/e-CPG_Management_of_Erectile_Dysfunction_-_28042025.pdf",
+      "file": "e-CPG_Management_of_Erectile_Dysfunction_-_28042025.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR_Management_of_Erectile_Dysfunction_-_28042025.pdf",
+      "file": "QR_Management_of_Erectile_Dysfunction_-_28042025.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Menopause_2022_e-version-1.pdf",
+      "file": "CPG_Management_of_Menopause_2022_e-version-1.pdf"
+    },
+    {
+      "kind": "cpg",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/CPG_Management_of_Abdominal_Trauma_in_Adults_2025-v2.pdf",
+      "file": "CPG_Management_of_Abdominal_Trauma_in_Adults_2025-v2.pdf"
+    },
+    {
+      "kind": "qr",
+      "url": "https://www.moh.gov.my/images/04-penerbitan/penerbitan-klinikal/panduan-amalan-klinikal/QR%20Abdominal%20Trauma-Final.pdf",
+      "file": "QR%20Abdominal%20Trauma-Final.pdf"
+    }
+  ]
+}

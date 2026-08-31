@@ -1,0 +1,1117 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+7
+COMMON SIDE EFFECTS OF ANTIPSYCHOTICS & THEIR MANAGEMENT STRATEGIES
+Side effects Management strategies Comments First choice Second choice Third choice 
+Constipation 
+• Ensure adequate fibre, 
+fluid & exercise 
+ 
+Osmotic laxatives (e.g. 
+lactulose)/ stimulant 
+laxatives (e.g. senna)
+ 
+Change to AP with lower risk  - •  Clozapine-induced gastrointestinal hypomotility is a 
+    common AE, 3 times that seen with other APs
+•  Avoid bulk-forming laxatives
+•  Stop other medicines that may contribute to 
+ constipation if possible  
+EPS: Dystonia 
+Anticholinergic medication 
+(e.g. trihexyphenidyl, 
+procyclidine) 
+Antihistaminic medication 
+(e.g. diphenhydramine) 
+Benzodiazepine (e.g. 
+clonazepam, diazepam)
+Where symptoms do not respond to simpler measures, 
+including switching to an AP with low propensity for EPS, 
+botulinum toxin may be effective 
+EPS: Pseudo-
+parkinsonism (tremor, 
+rigidity, bradykinesia) 
+Reduce dose of AP Change to AP with lower risk  
+Anticholinergic 
+medication (e.g. 
+trihexyphenidyl, 
+benztropine) 
+Majority of patients do not require long-term anticholinergic
+medication (its use should be reviewed at least every 3 
+months & not to be not to be taken at night)
+Akathisia  Reduce dose of AP Change to AP with lower risk  Beta-blockers (e.g. 
+propranolol)
+• 5-HT2 antagonists e.g. cyproheptadine, mirtazapine, 
+trazodone & mianserin may help
+• Antimuscarinic or benzodiazepine may also be useful 
+• Anticholinergics are generally unhelpful 
+Tardive dyskinesia  
+• Reduce dose of AP 
+• Stop anticholinergic if 
+prescribed 
+Change to AP with lower risk 
+Valbenazine, 
+tetrabenazine or 
+deutetrabenazine 
+Change to AP with lower propensity for TD e.g. clozapine 
+& quetiapine. 
+ 
+ 
+Sedation Dose at night before sleep Reduce dose  Change to less sedating 
+APs  Stimulants have unclear benefit 
+Diabetes mellitus  
+Change to AP with lower risk 
+(haloperidol, aripirazole, 
+amisulpride, ziprasidone) 
+Treat accordingly & refer to CPG Management of Type 2
+Diabetes Mellitus (6th Edition)
+ 
+- 
+Weight gain Behavioural modification 
+(diet, exercise) 
+Behavioural modification + 
+change AP 
+Add aripiprazole to 
+existing treatment 
+Medication e.g. metformin should be considered only where 
+behavioural methods or switching of AP have failed or where 
+obesity presents clear and immediate physical risk to the 
+patient
+Dyslipidaemia  Behavioural modification 
+(diet, exercise) + change AP 
+Treat accordingly & refer to CPG on Management of 
+Dyslipidaemia (5th Edition)
+ 
+  - 
+Hyperprolactinaemia 
+Change to ‘prolactin-sparing’ 
+APs (aripiprazole, 
+quetiapine, clozapine) 
+Add aripiprazole 
+Consider dopamine 
+agonists or referral to 
+endocrinologist 
+Metformin has been shown to improve prolactin-related 
+symptoms & levels 
+Orthostatic hypotension Adjust dose or slow dose 
+titration Adequate hydration Change to AP with lower 
+risk  
+Avoid APs that are potent α1-adrenergic receptor antagonist 
+(clozapine, quetiapine) and/or concomitant intake of 
+medications that can reduce BP
+ECG changes - QT
+prolongation 
+• >440 ms (men)/>470 ms (women) but <500 ms: reduce dose or switch AP with lower
+risk  
+• >500 ms: ○ repeat ECG ○ stop suspected causative drugs & switch to lower risk AP
+○ immediately refer to cardiologist
+  
+• Abnormal T-wave morphology: review treatment, consider reduce dose or switching 
+to lower risk AP
+ Risk is high with any intravenous AP or combination of
+APs with doses exceeding recommended maximum 
+/uni004D/uni0041/uni004E/uni0041/uni0047/uni0045/uni004D/uni0045/uni004E/uni0054/uni0020/uni004F/uni0046
+(SECOND EDITION)
+/uni0051/uni0055/uni0049/uni0043/uni004B/uni0020/uni0052/uni0045/uni0046/uni0045/uni0052/uni0045/uni004E/uni0043/uni0045/uni0020/uni0046/uni004F/uni0052/uni0020/uni0048/uni0045/uni0041/uni004C/uni0054/uni0048/uni0043/uni0041/uni0052/uni0045/uni0020/uni0050/uni0052/uni004F/uni0056/uni0049/uni0044/uni0045/uni0052/uni0053
+•
+1. Schizophrenia is a major psychiatric disorder that alters an individual’s perception, 
+thought, affect & behaviour which are manifested by positive symptoms, negative 
+symptoms, cognitive dysfunction, mood symptoms & motor symptoms.
+2. The clinical importance of duration of untreated psychosis is that it is a prognostic factor 
+which can be altered through changes in health service delivery. Thus, health education 
+or promotion, early referral and reducing stigma can address this issue.
+3. People with possible schizophrenia should be assessed thoroughly by history taking 
+(self-report & collateral), physical examination, mental state examination & relevant 
+investigations.
+4. Substance-induced psychoses associated with cannabis, hallucinogens & 
+amphetamines have an increased risk of transition to schizophrenia. Schizophrenia with 
+co-morbid substance use disorder should be managed by psychiatrist. 
+5. In acute & relapse prevention phases, the modalities of treatment in schizophrenia are 
+pharmacological, physical, psychosocial & service level interventions. 
+6. Antipsychotics (APs) should be offered in schizophrenia as it is the mainstay of the 
+treatment in acute & relapse prevention. Second-generation APs are the preferred 
+choice. Clozapine should be offered in treatment-resistant schizophrenia & persistent 
+suicidal risk. 
+7. Psychosocial interventions should be offered in schizophrenia particularly 
+psychoeducation (which includes early warning signs interventions) & supported 
+employment. 
+8. Service level interventions e.g. crisis intervention, assertive community treatment, 
+intensive case management & early intervention in psychosis services should be offered 
+for people with schizophrenia. 
+9. Pre-pregnancy care which includes counselling & multi-disciplinary care during 
+pregnancy should be offered to all women in reproductive age with schizophrenia. 
+10. Awareness towards patient’s rights in schizophrenia should be incorporated in the 
+training & service assessment to health care providers.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Schizophrenia (Second Edition)
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+Oral APs  Daily starting 
+dose (mg/day) 
+ 
+Titration (mg) Minimum effective 
+dose (mg/day) 
+Maximum daily 
+dose (mg/day) 
+Regimen 
+frequency 
+Pregnancy 
+safety 
+categorya 
+Lactation 
+riskb 
+Chlorpromazine 50 - 100 50 - 200/day 200 1000 TDS C L3 
+Haloperidol 2 - 5 2 - 5 every 1 - 7 days 2 20 OD/BD C L2 
+Perphenazine 4 - 8 4 - 8/day 16 24 (64 mg - 
+hospitalised patients) TDS C NA 
+Sulpiride 200 - 400 200 every 3 - 7 days 400 2400 BD NA NA 
+Amisulpride 50 50 - 100 every 2 - 3 days 300 1200 BD NA NA 
+Aripiprazole 10 - 15 10 - 15 after 2 weeks 10 30 OD C L3 
+Clozapine 12.5 Refer to CPG  300 - 900  900 OD/BD B L3 
+Olanzapine 5 - 10 5/day for every 1 week  5 20 OD C L2 
+Quetiapine IR: 50 
+ER: 300 Refer to CPG IR: 300 - 450 
+ER: 600 - 800 
+IR: 750 
+ER: 800 
+IR: BD 
+ER: OD C L4 
+Risperidone 1 - 2 1 every 2 - 3 days 2 - 4 16 OD/BD C L3 
+Depot APs  Starting dose 
+ 
+Titration (mg) Dose range  
+(per injection) Maximum dose 
+Interval 
+between 
+injections 
+Pregnancy 
+safety 
+categorya 
+Lactation 
+riskb 
+Flupenthixol 
+decanoate 
+20 mg  
+(elderly - quarter 
+to half adult dose) 
+Test dose 20 mg, then 20 - 40 mg 
+after at least 7 days,  
+then 20 - 40 mg every 2 - 4 weeks 
+50 mg every  
+4 weeks to  
+300 mg every  
+2 weeks 
+400 mg/week 2 - 4 weeks C NA 
+Fluphenazine 
+decanoate 
+12.5 mg (elderly - 
+6.25 mg) 
+Test dose 12.5 mg, then 12.5 - 
+100 mg after 4 - 7 days, then 12.5 
+- 100 mg every 14 - 35 days 
+12.5 - 100 mg 100 mg/2 weeks 14 - 35 days NA L3 
+Zuclopenthixol 
+decanoate 
+100 mg (elderly - 
+quarter to half 
+adult dose) 
+Test dose 100 mg, then 200 -  500 
+mg after at least 7 days, then 200 
+-  500 mg every 1 -  4 weeks 
+200 - 500 mg every 
+1 to 4 weeks 600 mg/week 1 - 4 weeks NA NA 
+DOSING REGIMEN FOR ANTIPSYCHOTICS
+IR: immediate release, ER: extended release, OD: once daily, BD: twice daily, TDS: thrice daily, NA: not available
+a
+United States Food & Drug Administration (US FDA) categorisation of risk of drug use in pregnancy: 
+A= Controlled studies fail to demonstrate a risk to the foetus in the first trimester & the possibility of foetal harm remains remote
+B= Either animal-reproduction studies have not demonstrated a foetal risk but there is no controlled in human
+C= Either study in animals have revealed adverse effects on the foetus (teratogenic or embryocidal or other) & there are no controlled studies in human
+D= There is positive evidence of human foetal risk
+X= Studies in animals or human beings have demonstrated foetal abnormalities
+bAmerican College of Obstetricians and Gynecologists lactation risk categories: L1= Safest; L2= Safer; L3= Moderately safe; L4= Possibly hazardous; L5= Contraindicated
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+ASSESSMENT
+25
+Reason for current visit
+Current symptom
+Precipitating factor
+Hospitalisation & emergency visit for psychiatry issues including 
+substances abuse
+Psychiatric treatment including type & duration, treatment setting, 
+dose of medication, & response & adherence to treatment
+Prior psychiatric diagnosis & symptom including hallucination, 
+delusion, negative symptom, aggressive idea or behaviour, 
+suicidal idea or attempt, impulsivity 
+Tobacco, alcohol or illicit substance
+Recent or current substance use
+Allergy or drug sensitivity
+All current medication use & side effect including non-prescribed 
+medication or supplement
+Current or past medical/surgical illness including related 
+hospitalisation
+Traditional & complementary medicine 
+History of mental illness including history of suicidal or aggressive 
+behaviour 
+Presence of psychosocial stressors e.g. financial, housing, legal, 
+school/occupation, interpersonal relationship, social support, 
+disfiguring or terminal illness
+Exposure to physical, sexual or emotional trauma or childhood 
+abuse
+Temperament, stress management, interest or hobby, 
+relationship, beliefs & personality traits. These include highest & 
+current level of functioning/education/vocation, interpersonal 
+relationship & independent living
+Full physical examination including height, weight & body mass 
+index, vital signs, cardiovascular & neurological examinations
+• Level of consciousness
+• General appearance - body build, posture, cleanliness,  
+ dressing, evidence of weight loss, self-harm
+• Face - eye contact, emotional expression
+• Posture & movement - posture of depressed or anxious person, 
+agitated, restless, biting nails, etc.
+• Motor - fast or slow movement, choreoathetosis, tardive 
+dyskinesia, dystonias, abnormal movement 
+• Attitude to examination & social behaviour - friendly, hostile, 
+suspicious
+ALGORITHM 2.  PHARMACOTHERAPY FOR SCHIZOPHRENIA 
+Initial Phase Follow-Up Phase
+Yes
+No
+Yes
+No
+Psychiatric Service
+No 
+Yes 
+No 
+No
+Yes
+Yes
+IR/SE 
+present?
+IR/SE 
+present? 
+IR/SE 
+present? 
+ 
+IR/SE
+present?
+ 
+Augment 
+clozapine with 
+another AP for 
+>8 - 10 weeks 
+or ECT
+Start different 
+AP for 6 
+weeks 
+Adequate 
+response
+Relapse prevention 
+management
+Start AP
+for 2 - 6
+weeks 
+Diagnosis of
+schizophrenia
+IR/SE: Inadequate
+response or
+intolerable side
+effect
+In inadequate
+response, review
+diagnosis & 
+consider
+co-morbidities 
+AP = antipsychotic
+ECT = electroconvulsive
+therapy
+Primary/Secondary Care Psychiatric Services
+Primary/Secondary Care
+Persistent  
+suicidal risk present?
+Start clozapine
+for >8 weeks 
+History Taking
+Mental State Examination
+History of 
+present illness
+Past psychiatric 
+history
+Substance use 
+history
+Medical history
+Family history
+Social history
+Pre-morbid 
+personality 
+Physical 
+examination
+Appearance & 
+behaviour 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+43
+REFERRAL
+• For people with schizophrenia treated in primary care, early referral to psychiatric 
+service should be considered in the following circumstances:
+ presence of prodromal or attenuated symptoms
+ unclear diagnosis
+ plan for psychosocial rehabilitation
+ treatment adherence issues
+ poor response to treatment
+ potential violent behaviour to self or others
+ intolerable side effects from medication
+ co-morbid substance use disorder 
+ special group e.g. pregnancy, paediatric & geriatric age
+DIAGNOSIS
+Schizophrenia should be diagnosed using either Diagnostic and Statistical Manual of 
+Mental Disorders, 5th Edition (DSM-5) or International Classification of Diseases and 
+Related Health Problem 10th Revision (ICD-10).
+ 
+ 
+ 
+No
+Yes 
+No 
+No
+Yes 
+Acute phase/exacerbation  Stable phase/relapse prevention  
+Adequate  
+response**  
+ 
+ 
+ 
+ 
+ 
+Adequate  
+response**  
+ 
+Follow-up at 
+health/psychiatric 
+clinic 
+ 
+AP = antipsychotic  
+SGA     = second-generation  
+                AP 
+ACT     = assertive community
+               treatment  
+EPS     = extrapyramidal side 
+effects 
+ 
+Yes
+ 
+ 
+ALGORITHM 1. MANAGEMENT OF SCHIZOPHRENIA
+• Production - spontaneity, speed, loudness, quantity, tone, 
+quality (dysarthria)
+• Forms - neologism, punning & clang associations, 
+expressive dysphasia
+• Content - obscene words, poor fluency, coherence, 
+relevance
+• Mood - euthymic, depressed, elevated
+• Affect - type, range, stability/lability, appropriateness/congruity 
+• Abnormal thought content - delusional, non-delusional
+a. Delusion
+b. Non-delusional - phobia, obsession, suicidal ideation
+• Abnormal thought form - fluency, flow, word 
+• Suicidal thought 
+• Homicidal thought
+• Hallucination - auditory, visual, olfactory, gustatory, tactile
+• Illusion
+• Pseudo-hallucination
+• Depersonalisation, derealisation
+Orientation/memory/attention & concentration/abstract 
+thinking/general knowledge 
+Patient’s recognition of consequences of action 
+Patient’s awareness & understanding of illness & need for 
+treatment
+Speech
+Mood & affect
+Thought 
+disturbances
+Perceptual
+disturbance
+Cognitive
+function
+Judgement 
+Insight
+• Offer AP, preferably SGA***
+• Psychoeducation 
+• Monitor clinical response,
+ side effect & treatment
+ adherence Refer to hospital with psychiatric services
+• Exclude substance use disorder, 
+ treatment non-adherence & co-
+ morbidities
+• Optimise AP usage (adequate dose & 
+ duration)
+• Optimise psychosocial interventions
+• Rule out treatment-resistant 
+ schizophrenia
+• Offer AP, preferably SGA***
+• Psychoeducation 
+• Monitor clinical response,
+ side effect & treatment 
+ adherence
+• Plan for recovery (psychoeducation, ACT, family intervention, social skill
+ training, cognitive remediation therapy and supported employment)
+• AP monotherapy; use depot when non-adherent
+• Monitor for clinical response, side effect & treatment adherence
+• Oral SGA if patient is 
+ cooperative*
+• Intramuscular haloperidol + 
+ parenteral benzodiazepine if 
+ patient is not cooperative*
+Need for rapid
+stabilisation
+Diagnosis of
+schizophrenia
+*Cases to be referred 
+urgently to psychiatric 
+services
+**Adequate response: A 
+reduction in symptoms 
+as a result of treatment 
+that is associated with 
+clinically significant 
+benefit in functioning 
+and/or quality of life
+ ***Prevention & 
+ management of side 
+ effect of AP at all phases
+• Monitor EPS/akathisia/
+ weight gain/diabetes/
+ cardiovascular disease/
+ sexual dysfunction
+• Follow schedule of
+ physical care
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+43
+REFERRAL
+• For people with schizophrenia treated in primary care, early referral to psychiatric 
+service should be considered in the following circumstances:
+ presence of prodromal or attenuated symptoms
+ unclear diagnosis
+ plan for psychosocial rehabilitation
+ treatment adherence issues
+ poor response to treatment
+ potential violent behaviour to self or others
+ intolerable side effects from medication
+ co-morbid substance use disorder 
+ special group e.g. pregnancy, paediatric & geriatric age
+DIAGNOSIS
+Schizophrenia should be diagnosed using either Diagnostic and Statistical Manual of 
+Mental Disorders, 5th Edition (DSM-5) or International Classification of Diseases and 
+Related Health Problem 10th Revision (ICD-10).
+ 
+ 
+ 
+No
+Yes 
+No 
+No
+Yes 
+Acute phase/exacerbation  Stable phase/relapse prevention  
+Adequate  
+response**  
+ 
+ 
+ 
+ 
+ 
+Adequate  
+response**  
+ 
+Follow-up at 
+health/psychiatric 
+clinic 
+ 
+AP = antipsychotic  
+SGA     = second-generation  
+                AP 
+ACT     = assertive community
+               treatment  
+EPS     = extrapyramidal side 
+effects 
+ 
+Yes
+ 
+ 
+ALGORITHM 1. MANAGEMENT OF SCHIZOPHRENIA
+• Production - spontaneity, speed, loudness, quantity, tone, 
+quality (dysarthria)
+• Forms - neologism, punning & clang associations, 
+expressive dysphasia
+• Content - obscene words, poor fluency, coherence, 
+relevance
+• Mood - euthymic, depressed, elevated
+• Affect - type, range, stability/lability, appropriateness/congruity 
+• Abnormal thought content - delusional, non-delusional
+a. Delusion
+b. Non-delusional - phobia, obsession, suicidal ideation
+• Abnormal thought form - fluency, flow, word 
+• Suicidal thought 
+• Homicidal thought
+• Hallucination - auditory, visual, olfactory, gustatory, tactile
+• Illusion
+• Pseudo-hallucination
+• Depersonalisation, derealisation
+Orientation/memory/attention & concentration/abstract 
+thinking/general knowledge 
+Patient’s recognition of consequences of action 
+Patient’s awareness & understanding of illness & need for 
+treatment
+Speech
+Mood & affect
+Thought 
+disturbances
+Perceptual
+disturbance
+Cognitive
+function
+Judgement 
+Insight
+• Offer AP, preferably SGA***
+• Psychoeducation 
+• Monitor clinical response,
+ side effect & treatment
+ adherence Refer to hospital with psychiatric services
+• Exclude substance use disorder, 
+ treatment non-adherence & co-
+ morbidities
+• Optimise AP usage (adequate dose & 
+ duration)
+• Optimise psychosocial interventions
+• Rule out treatment-resistant 
+ schizophrenia
+• Offer AP, preferably SGA***
+• Psychoeducation 
+• Monitor clinical response,
+ side effect & treatment 
+ adherence
+• Plan for recovery (psychoeducation, ACT, family intervention, social skill
+ training, cognitive remediation therapy and supported employment)
+• AP monotherapy; use depot when non-adherent
+• Monitor for clinical response, side effect & treatment adherence
+• Oral SGA if patient is 
+ cooperative*
+• Intramuscular haloperidol + 
+ parenteral benzodiazepine if 
+ patient is not cooperative*
+Need for rapid
+stabilisation
+Diagnosis of
+schizophrenia
+*Cases to be referred 
+urgently to psychiatric 
+services
+**Adequate response: A 
+reduction in symptoms 
+as a result of treatment 
+that is associated with 
+clinically significant 
+benefit in functioning 
+and/or quality of life
+ ***Prevention & 
+ management of side 
+ effect of AP at all phases
+• Monitor EPS/akathisia/
+ weight gain/diabetes/
+ cardiovascular disease/
+ sexual dysfunction
+• Follow schedule of
+ physical care
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+ASSESSMENT
+25
+Reason for current visit
+Current symptom
+Precipitating factor
+Hospitalisation & emergency visit for psychiatry issues including 
+substances abuse
+Psychiatric treatment including type & duration, treatment setting, 
+dose of medication, & response & adherence to treatment
+Prior psychiatric diagnosis & symptom including hallucination, 
+delusion, negative symptom, aggressive idea or behaviour, 
+suicidal idea or attempt, impulsivity 
+Tobacco, alcohol or illicit substance
+Recent or current substance use
+Allergy or drug sensitivity
+All current medication use & side effect including non-prescribed 
+medication or supplement
+Current or past medical/surgical illness including related 
+hospitalisation
+Traditional & complementary medicine 
+History of mental illness including history of suicidal or aggressive 
+behaviour 
+Presence of psychosocial stressors e.g. financial, housing, legal, 
+school/occupation, interpersonal relationship, social support, 
+disfiguring or terminal illness
+Exposure to physical, sexual or emotional trauma or childhood 
+abuse
+Temperament, stress management, interest or hobby, 
+relationship, beliefs & personality traits. These include highest & 
+current level of functioning/education/vocation, interpersonal 
+relationship & independent living
+Full physical examination including height, weight & body mass 
+index, vital signs, cardiovascular & neurological examinations
+• Level of consciousness
+• General appearance - body build, posture, cleanliness,  
+ dressing, evidence of weight loss, self-harm
+• Face - eye contact, emotional expression
+• Posture & movement - posture of depressed or anxious person, 
+agitated, restless, biting nails, etc.
+• Motor - fast or slow movement, choreoathetosis, tardive 
+dyskinesia, dystonias, abnormal movement 
+• Attitude to examination & social behaviour - friendly, hostile, 
+suspicious
+ALGORITHM 2.  PHARMACOTHERAPY FOR SCHIZOPHRENIA 
+Initial Phase Follow-Up Phase
+Yes
+No
+Yes
+No
+Psychiatric Service
+No 
+Yes 
+No 
+No
+Yes
+Yes
+IR/SE 
+present?
+IR/SE 
+present? 
+IR/SE 
+present? 
+ 
+IR/SE
+present?
+ 
+Augment 
+clozapine with 
+another AP for 
+>8 - 10 weeks 
+or ECT
+Start different 
+AP for 6 
+weeks 
+Adequate 
+response
+Relapse prevention 
+management
+Start AP
+for 2 - 6
+weeks 
+Diagnosis of
+schizophrenia
+IR/SE: Inadequate
+response or
+intolerable side
+effect
+In inadequate
+response, review
+diagnosis & 
+consider
+co-morbidities 
+AP = antipsychotic
+ECT = electroconvulsive
+therapy
+Primary/Secondary Care Psychiatric Services
+Primary/Secondary Care
+Persistent  
+suicidal risk present?
+Start clozapine
+for >8 weeks 
+History Taking
+Mental State Examination
+History of 
+present illness
+Past psychiatric 
+history
+Substance use 
+history
+Medical history
+Family history
+Social history
+Pre-morbid 
+personality 
+Physical 
+examination
+Appearance & 
+behaviour 
+1. Schizophrenia is a major psychiatric disorder that alters an individual’s perception, 
+thought, affect & behaviour which are manifested by positive symptoms, negative 
+symptoms, cognitive dysfunction, mood symptoms & motor symptoms.
+2. The clinical importance of duration of untreated psychosis is that it is a prognostic factor 
+which can be altered through changes in health service delivery. Thus, health education 
+or promotion, early referral and reducing stigma can address this issue.
+3. People with possible schizophrenia should be assessed thoroughly by history taking 
+(self-report & collateral), physical examination, mental state examination & relevant 
+investigations.
+4. Substance-induced psychoses associated with cannabis, hallucinogens & 
+amphetamines have an increased risk of transition to schizophrenia. Schizophrenia with 
+co-morbid substance use disorder should be managed by psychiatrist. 
+5. In acute & relapse prevention phases, the modalities of treatment in schizophrenia are 
+pharmacological, physical, psychosocial & service level interventions. 
+6. Antipsychotics (APs) should be offered in schizophrenia as it is the mainstay of the 
+treatment in acute & relapse prevention. Second-generation APs are the preferred 
+choice. Clozapine should be offered in treatment-resistant schizophrenia & persistent 
+suicidal risk. 
+7. Psychosocial interventions should be offered in schizophrenia particularly 
+psychoeducation (which includes early warning signs interventions) & supported 
+employment. 
+8. Service level interventions e.g. crisis intervention, assertive community treatment, 
+intensive case management & early intervention in psychosis services should be offered 
+for people with schizophrenia. 
+9. Pre-pregnancy care which includes counselling & multi-disciplinary care during 
+pregnancy should be offered to all women in reproductive age with schizophrenia. 
+10. Awareness towards patient’s rights in schizophrenia should be incorporated in the 
+training & service assessment to health care providers.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Schizophrenia (Second Edition)
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+Oral APs  Daily starting 
+dose (mg/day) 
+ 
+Titration (mg) Minimum effective 
+dose (mg/day) 
+Maximum daily 
+dose (mg/day) 
+Regimen 
+frequency 
+Pregnancy 
+safety 
+categorya 
+Lactation 
+riskb 
+Chlorpromazine 50 - 100 50 - 200/day 200 1000 TDS C L3 
+Haloperidol 2 - 5 2 - 5 every 1 - 7 days 2 20 OD/BD C L2 
+Perphenazine 4 - 8 4 - 8/day 16 24 (64 mg - 
+hospitalised patients) TDS C NA 
+Sulpiride 200 - 400 200 every 3 - 7 days 400 2400 BD NA NA 
+Amisulpride 50 50 - 100 every 2 - 3 days 300 1200 BD NA NA 
+Aripiprazole 10 - 15 10 - 15 after 2 weeks 10 30 OD C L3 
+Clozapine 12.5 Refer to CPG  300 - 900  900 OD/BD B L3 
+Olanzapine 5 - 10 5/day for every 1 week  5 20 OD C L2 
+Quetiapine IR: 50 
+ER: 300 Refer to CPG IR: 300 - 450 
+ER: 600 - 800 
+IR: 750 
+ER: 800 
+IR: BD 
+ER: OD C L4 
+Risperidone 1 - 2 1 every 2 - 3 days 2 - 4 16 OD/BD C L3 
+Depot APs  Starting dose 
+ 
+Titration (mg) Dose range  
+(per injection) Maximum dose 
+Interval 
+between 
+injections 
+Pregnancy 
+safety 
+categorya 
+Lactation 
+riskb 
+Flupenthixol 
+decanoate 
+20 mg  
+(elderly - quarter 
+to half adult dose) 
+Test dose 20 mg, then 20 - 40 mg 
+after at least 7 days,  
+then 20 - 40 mg every 2 - 4 weeks 
+50 mg every  
+4 weeks to  
+300 mg every  
+2 weeks 
+400 mg/week 2 - 4 weeks C NA 
+Fluphenazine 
+decanoate 
+12.5 mg (elderly - 
+6.25 mg) 
+Test dose 12.5 mg, then 12.5 - 
+100 mg after 4 - 7 days, then 12.5 
+- 100 mg every 14 - 35 days 
+12.5 - 100 mg 100 mg/2 weeks 14 - 35 days NA L3 
+Zuclopenthixol 
+decanoate 
+100 mg (elderly - 
+quarter to half 
+adult dose) 
+Test dose 100 mg, then 200 -  500 
+mg after at least 7 days, then 200 
+-  500 mg every 1 -  4 weeks 
+200 - 500 mg every 
+1 to 4 weeks 600 mg/week 1 - 4 weeks NA NA 
+DOSING REGIMEN FOR ANTIPSYCHOTICS
+IR: immediate release, ER: extended release, OD: once daily, BD: twice daily, TDS: thrice daily, NA: not available
+a
+United States Food & Drug Administration (US FDA) categorisation of risk of drug use in pregnancy: 
+A= Controlled studies fail to demonstrate a risk to the foetus in the first trimester & the possibility of foetal harm remains remote
+B= Either animal-reproduction studies have not demonstrated a foetal risk but there is no controlled in human
+C= Either study in animals have revealed adverse effects on the foetus (teratogenic or embryocidal or other) & there are no controlled studies in human
+D= There is positive evidence of human foetal risk
+X= Studies in animals or human beings have demonstrated foetal abnormalities
+bAmerican College of Obstetricians and Gynecologists lactation risk categories: L1= Safest; L2= Safer; L3= Moderately safe; L4= Possibly hazardous; L5= Contraindicated
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+ASSESSMENT
+25
+Reason for current visit
+Current symptom
+Precipitating factor
+Hospitalisation & emergency visit for psychiatry issues including 
+substances abuse
+Psychiatric treatment including type & duration, treatment setting, 
+dose of medication, & response & adherence to treatment
+Prior psychiatric diagnosis & symptom including hallucination, 
+delusion, negative symptom, aggressive idea or behaviour, 
+suicidal idea or attempt, impulsivity 
+Tobacco, alcohol or illicit substance
+Recent or current substance use
+Allergy or drug sensitivity
+All current medication use & side effect including non-prescribed 
+medication or supplement
+Current or past medical/surgical illness including related 
+hospitalisation
+Traditional & complementary medicine 
+History of mental illness including history of suicidal or aggressive 
+behaviour 
+Presence of psychosocial stressors e.g. financial, housing, legal, 
+school/occupation, interpersonal relationship, social support, 
+disfiguring or terminal illness
+Exposure to physical, sexual or emotional trauma or childhood 
+abuse
+Temperament, stress management, interest or hobby, 
+relationship, beliefs & personality traits. These include highest & 
+current level of functioning/education/vocation, interpersonal 
+relationship & independent living
+Full physical examination including height, weight & body mass 
+index, vital signs, cardiovascular & neurological examinations
+• Level of consciousness
+• General appearance - body build, posture, cleanliness,  
+ dressing, evidence of weight loss, self-harm
+• Face - eye contact, emotional expression
+• Posture & movement - posture of depressed or anxious person, 
+agitated, restless, biting nails, etc.
+• Motor - fast or slow movement, choreoathetosis, tardive 
+dyskinesia, dystonias, abnormal movement 
+• Attitude to examination & social behaviour - friendly, hostile, 
+suspicious
+ALGORITHM 2.  PHARMACOTHERAPY FOR SCHIZOPHRENIA 
+Initial Phase Follow-Up Phase
+Yes
+No
+Yes
+No
+Psychiatric Service
+No 
+Yes 
+No 
+No
+Yes
+Yes
+IR/SE 
+present?
+IR/SE 
+present? 
+IR/SE 
+present? 
+ 
+IR/SE
+present?
+ 
+Augment 
+clozapine with 
+another AP for 
+>8 - 10 weeks 
+or ECT
+Start different 
+AP for 6 
+weeks 
+Adequate 
+response
+Relapse prevention 
+management
+Start AP
+for 2 - 6
+weeks 
+Diagnosis of
+schizophrenia
+IR/SE: Inadequate
+response or
+intolerable side
+effect
+In inadequate
+response, review
+diagnosis & 
+consider
+co-morbidities 
+AP = antipsychotic
+ECT = electroconvulsive
+therapy
+Primary/Secondary Care Psychiatric Services
+Primary/Secondary Care
+Persistent  
+suicidal risk present?
+Start clozapine
+for >8 weeks 
+History Taking
+Mental State Examination
+History of 
+present illness
+Past psychiatric 
+history
+Substance use 
+history
+Medical history
+Family history
+Social history
+Pre-morbid 
+personality 
+Physical 
+examination
+Appearance & 
+behaviour 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SCHIZOPHRENIA (SECOND EDITION)
+7
+COMMON SIDE EFFECTS OF ANTIPSYCHOTICS & THEIR MANAGEMENT STRATEGIES
+Side effects Management strategies Comments First choice Second choice Third choice 
+Constipation 
+• Ensure adequate fibre, 
+fluid & exercise 
+ 
+Osmotic laxatives (e.g. 
+lactulose)/ stimulant 
+laxatives (e.g. senna)
+ 
+Change to AP with lower risk  - •  Clozapine-induced gastrointestinal hypomotility is a 
+    common AE, 3 times that seen with other APs
+•  Avoid bulk-forming laxatives
+•  Stop other medicines that may contribute to 
+ constipation if possible  
+EPS: Dystonia 
+Anticholinergic medication 
+(e.g. trihexyphenidyl, 
+procyclidine) 
+Antihistaminic medication 
+(e.g. diphenhydramine) 
+Benzodiazepine (e.g. 
+clonazepam, diazepam)
+Where symptoms do not respond to simpler measures, 
+including switching to an AP with low propensity for EPS, 
+botulinum toxin may be effective 
+EPS: Pseudo-
+parkinsonism (tremor, 
+rigidity, bradykinesia) 
+Reduce dose of AP Change to AP with lower risk  
+Anticholinergic 
+medication (e.g. 
+trihexyphenidyl, 
+benztropine) 
+Majority of patients do not require long-term anticholinergic
+medication (its use should be reviewed at least every 3 
+months & not to be not to be taken at night)
+Akathisia  Reduce dose of AP Change to AP with lower risk  Beta-blockers (e.g. 
+propranolol)
+• 5-HT2 antagonists e.g. cyproheptadine, mirtazapine, 
+trazodone & mianserin may help
+• Antimuscarinic or benzodiazepine may also be useful 
+• Anticholinergics are generally unhelpful 
+Tardive dyskinesia  
+• Reduce dose of AP 
+• Stop anticholinergic if 
+prescribed 
+Change to AP with lower risk 
+Valbenazine, 
+tetrabenazine or 
+deutetrabenazine 
+Change to AP with lower propensity for TD e.g. clozapine 
+& quetiapine. 
+ 
+ 
+Sedation Dose at night before sleep Reduce dose  Change to less sedating 
+APs  Stimulants have unclear benefit 
+Diabetes mellitus  
+Change to AP with lower risk 
+(haloperidol, aripirazole, 
+amisulpride, ziprasidone) 
+Treat accordingly & refer to CPG Management of Type 2
+Diabetes Mellitus (6th Edition)
+ 
+- 
+Weight gain Behavioural modification 
+(diet, exercise) 
+Behavioural modification + 
+change AP 
+Add aripiprazole to 
+existing treatment 
+Medication e.g. metformin should be considered only where 
+behavioural methods or switching of AP have failed or where 
+obesity presents clear and immediate physical risk to the 
+patient
+Dyslipidaemia  Behavioural modification 
+(diet, exercise) + change AP 
+Treat accordingly & refer to CPG on Management of 
+Dyslipidaemia (5th Edition)
+ 
+  - 
+Hyperprolactinaemia 
+Change to ‘prolactin-sparing’ 
+APs (aripiprazole, 
+quetiapine, clozapine) 
+Add aripiprazole 
+Consider dopamine 
+agonists or referral to 
+endocrinologist 
+Metformin has been shown to improve prolactin-related 
+symptoms & levels 
+Orthostatic hypotension Adjust dose or slow dose 
+titration Adequate hydration Change to AP with lower 
+risk  
+Avoid APs that are potent α1-adrenergic receptor antagonist 
+(clozapine, quetiapine) and/or concomitant intake of 
+medications that can reduce BP
+ECG changes - QT
+prolongation 
+• >440 ms (men)/>470 ms (women) but <500 ms: reduce dose or switch AP with lower
+risk  
+• >500 ms: ○ repeat ECG ○ stop suspected causative drugs & switch to lower risk AP
+○ immediately refer to cardiologist
+  
+• Abnormal T-wave morphology: review treatment, consider reduce dose or switching 
+to lower risk AP
+ Risk is high with any intravenous AP or combination of
+APs with doses exceeding recommended maximum 
+/uni004D/uni0041/uni004E/uni0041/uni0047/uni0045/uni004D/uni0045/uni004E/uni0054/uni0020/uni004F/uni0046
+(SECOND EDITION)
+/uni0051/uni0055/uni0049/uni0043/uni004B/uni0020/uni0052/uni0045/uni0046/uni0045/uni0052/uni0045/uni004E/uni0043/uni0045/uni0020/uni0046/uni004F/uni0052/uni0020/uni0048/uni0045/uni0041/uni004C/uni0054/uni0048/uni0043/uni0041/uni0052/uni0045/uni0020/uni0050/uni0052/uni004F/uni0056/uni0049/uni0044/uni0045/uni0052/uni0053
+•

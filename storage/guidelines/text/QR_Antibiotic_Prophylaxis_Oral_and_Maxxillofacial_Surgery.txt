@@ -1,0 +1,1013 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+8
+Algorithm 3: Antibiotic Prophylaxis in Special Population (Patients with specific medical conditions) for Prevention of Surgical Site Infection in 
+Oral and Maxillofacial Surgery
+ 
+ 
+ 
+Special Population (Patients with specific medical conditions)
+DM Transplant
+(renal/liver)
+Immuno-compromised
+patients
+Severity***Random
+Blood Sugar
+AP APNo AP
+Review & Follow-up
+No Yes
+***Severity:
+Discuss disease severity or 
+immunosuppression with the 
+physician managing comorbidities
+or immunosuppressive therapy 
+(e.g., oncologist, rheumatologist).
+> 10
+mmol/L
+> 10
+mmol/L
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Quick Reference For Healthcare Providers
+2 7
+KEY MESSAGES
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Algorithm 2: Antibiotic Prophylaxis in Special Population (Treatment Related Conditions) for Prevention of Surgical Site Infection in Oral and 
+Maxillofacial Surgery
+ 
+ 
+Special Population (Treatment Related Conditions)
+ORN MRONJ IE Prosthetic Joints Exposed to
+Radiotherapy/
+Chemotherapy
+IE Risksurgeries
+involving
+bone
+AP
+AP
+No AP
+Pre AP
+No AP IDP** Review & Follow-up
+Yes
+YesNo
+No
+High*
+Low/
+Moderate
+IDP: Invasive dental procedure
+IE: Infective endocarditis
+*High:
+• Prosthetic cardiac valve or 
+ repair material
+• Previous infective endocarditis
+ (IE)
+• Congenital heart disease (CHD):
+• Unrepaired cyanotic CHD
+• CHD repaired with prosthetic 
+ material/device (first 6 months 
+ post-procedure)
+• Repaired CHD with residual 
+ defects near prosthetic patches/
+ devices
+• Cardiac transplant recipients 
+ with valvulopathy
+**IDP: such as extractions, oral 
+surgery, scaling, and endodontic 
+treatments.
+• Antibiotic prophylaxis (AP) helps reduce post-operative infections in oral and maxillofacial 
+surgery and should be administered 30-60 minutes before surgical incision when necessary 
+to prevent surgical site infections (SSIs).
+• Procedures lasting more than 2-4 hours may require an additional intra-operative dose.
+• The need for prophylaxis can also depend on the surgeon's skill, experience and duration of 
+surgery.
+• SSIs may present with obvious clinical signs and symptoms such as inflammation associated 
+with pain, swelling, suppuration with or without pyrexia, integration failure of oral implants and 
+biomaterials.
+• In this CPG we have also extended SSIs to include distant site infection associated with oral 
+and maxillofacial surgical procedures.
+Broad-Spectrum AP: Amoxicillin-clavulanate and Ampicillin-sulbactam for broader coverage; 
+use only if narrow-spectrum options are insufficient.
+AP FOR PENICILLIN-ALLERGIC PATIENTS
+• Alternative Options: Cefazolin, Azithromycin, or Doxycycline.
+• Severe Allergy Cases: Avoid Cephalosporins if history of anaphylaxis/angioedema.
+• Clindamycin: Higher risks of infections and adverse effects (e.g., C. difficile); caution 
+advised.
+• European Society of Cardiology (ESC) Guidelines: Avoid Clindamycin for dental AP; 
+recommend Cefazolin, Azithromycin, or Doxycycline for those allergic to Penicillin.
+CHOICE OF ANTIBIOTIC PROPHYLAXIS
+Site of Surgery Common Pathogen Preferred Antibiotics
+Oral Streptococcus and anaerobes Amoxicillin, Ampicillin,
+Benzylpenicillin
+Skin Staphylococcus species Cloxacillin or Cefazolin
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Antibiotic Prophylaxis in Oral and Maxillofacial Surgery For Prevention of Surgical 
+Site Infection (Third Edition)
+Details of the evidence supporting these recommendations can be found in the above CPG, 
+available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Oral Health Technology Section
+Oral Health Programme
+Ministry of Health Malaysia
+Level 5, Block E10, Precinct 1
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Based on pathogen presence, site of surgery and local resistance as summarized below;
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+2 7
+KEY MESSAGES
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Algorithm 2: Antibiotic Prophylaxis in Special Population (Treatment Related Conditions) for Prevention of Surgical Site Infection in Oral and 
+Maxillofacial Surgery
+ 
+ 
+Special Population (Treatment Related Conditions)
+ORN MRONJ IE Prosthetic Joints Exposed to
+Radiotherapy/
+Chemotherapy
+IE Risksurgeries
+involving
+bone
+AP
+AP
+No AP
+Pre AP
+No AP IDP** Review & Follow-up
+Yes
+YesNo
+No
+High*
+Low/
+Moderate
+IDP: Invasive dental procedure
+IE: Infective endocarditis
+*High:
+• Prosthetic cardiac valve or 
+ repair material
+• Previous infective endocarditis
+ (IE)
+• Congenital heart disease (CHD):
+• Unrepaired cyanotic CHD
+• CHD repaired with prosthetic 
+ material/device (first 6 months 
+ post-procedure)
+• Repaired CHD with residual 
+ defects near prosthetic patches/
+ devices
+• Cardiac transplant recipients 
+ with valvulopathy
+**IDP: such as extractions, oral 
+surgery, scaling, and endodontic 
+treatments.
+• Antibiotic prophylaxis (AP) helps reduce post-operative infections in oral and maxillofacial 
+surgery and should be administered 30-60 minutes before surgical incision when necessary 
+to prevent surgical site infections (SSIs).
+• Procedures lasting more than 2-4 hours may require an additional intra-operative dose.
+• The need for prophylaxis can also depend on the surgeon's skill, experience and duration of 
+surgery.
+• SSIs may present with obvious clinical signs and symptoms such as inflammation associated 
+with pain, swelling, suppuration with or without pyrexia, integration failure of oral implants and 
+biomaterials.
+• In this CPG we have also extended SSIs to include distant site infection associated with oral 
+and maxillofacial surgical procedures.
+Broad-Spectrum AP: Amoxicillin-clavulanate and Ampicillin-sulbactam for broader coverage; 
+use only if narrow-spectrum options are insufficient.
+AP FOR PENICILLIN-ALLERGIC PATIENTS
+• Alternative Options: Cefazolin, Azithromycin, or Doxycycline.
+• Severe Allergy Cases: Avoid Cephalosporins if history of anaphylaxis/angioedema.
+• Clindamycin: Higher risks of infections and adverse effects (e.g., C. difficile); caution 
+advised.
+• European Society of Cardiology (ESC) Guidelines: Avoid Clindamycin for dental AP; 
+recommend Cefazolin, Azithromycin, or Doxycycline for those allergic to Penicillin.
+CHOICE OF ANTIBIOTIC PROPHYLAXIS
+Site of Surgery Common Pathogen Preferred Antibiotics
+Oral Streptococcus and anaerobes Amoxicillin, Ampicillin,
+Benzylpenicillin
+Skin Staphylococcus species Cloxacillin or Cefazolin
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Antibiotic Prophylaxis in Oral and Maxillofacial Surgery For Prevention of Surgical 
+Site Infection (Third Edition)
+Details of the evidence supporting these recommendations can be found in the above CPG, 
+available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Oral Health Technology Section
+Oral Health Programme
+Ministry of Health Malaysia
+Level 5, Block E10, Precinct 1
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Based on pathogen presence, site of surgery and local resistance as summarized below;
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+6 3
+TIMING GUIDELINES
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Algorithm 1: Antibiotic Prophylaxis (AP) in Oral and Maxillofacial Surgery for Prevention of Surgical Site Infection 
+Type of Antibiotic
+Ampicillin
+Amoxicillin-clavulanate
+Ampicillin-sulbactam
+Cefazolin/Cefuroxime
+Clindamycin
+Redosing Interval
+2 hours
+3 hours
+2 hours
+4 hours
+6 hours
+• AP should be administered 30-60 minutes before the incision and up to 120 minutes prior for 
+Fluoroquinolones and Vancomycin.
+DOSING GUIDELINES
+• Single Dose: Generally sufficient; limit duration to 24 hours unless specified.
+• Redosing: Required if surgery duration exceeds antibiotic two half-lives, or if blood loss 1.5L 
+or other factors that may shorten the half-life of the prophylactic agent (e.g extensive burns
+COMMONLY USED ANTIBIOTICS AND DOSAGES
+Antibiotic
+Antibiotic
+Amoxicillin-
+clavulanate
+Ampicillin-
+sulbactam
+Ampicillin
+Azithromycin
+CLINDAMYCIN
+Doxycycline
+Cefazolin
+Dosage* Common Side
+EffectsAdult Paediatric Serious Side Effects
+GI discomfort
+GI discomfort
+GI discomfort
+Nausea, dizziness
+50 mg/kg PO
+*Renal Adjustment: Dosage adjustments needed in renal impairment if treatment extends 
+beyond 24 hours.
+** Cephalosporin should not be used in an individual with a history of anaphylaxis, angioedema, 
+or urticarial with Penicillin/Ampicillin
+1-2g PO
+15 mg/kg PO500mg PO
+30 mg/kg IV
+1.2g IV
+OR
+1.25 g PO
+Severe hypersensitivity
+reactions
+GI discomfort50 mg/kg IV2g PO
+50 mg/kg IV3g PO
+Nephropathy, Stevens-
+Johnson syndrome
+Severe hypersensitivity 
+reactions
+GI discomfort,
+photosensitivity
+<45 kg, 2.2
+mg/kg PO
+>45 kg,
+100 mg PO
+100mg PO Exacerbation of SLE, 
+severe skin reactions
+C. Difficile infections, 
+severe skin reactions
+Severe skin reactions,
+convulsions
+Diarrhoea,
+GI discomfort30 mg/kg IV
+1-2g IV
+3 g if body
+weight ≥120 kg
+Anaphylaxis, Stevens-
+Johnson syndrome
+GI DISCOMFORT,
+HEADACHE10 MG/KG IV600mg-900mg
+PO/IV
+Liver failure, QT prolongation
+Oral Maxillofacial Surgery 
+Clean-
+contaminatedClean Onco head &
+neck surgery
+Pre & Post-op
+AP
+Oral & Maxillofacial
+trauma
+Pre & Post-op
+AP ≤24 hours
+Orthognathic
+surgery
+Cleft lip &
+palate
+Periodontal
+surgeryDental implant
+and Intraoral
+bone grafting
+Impacted
+teeth
+No AP
+No AP
+AP
+AP
+No AP
+AP
+Complexity *
+Biomaterial 
+Pre & post AP
+Review and Follow-up
+*Complexity:
+• significant bone removal
+• duration of surgery ≥1hour
+AP: Antibiotic prophylaxis
+No
+Yes
+No
+Yes
+4 5
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Category Scenario Antibiotic Prophylaxis (AP) Recommendation
+Surgery that does not involve oral 
+cavity
+Not recommended
+May be given when indicated
+Clean Surgery
+Clean-Contaminated Surgery
+Impacted Tooth Surgery
+May be considered based on patient and procedural factorsPeriodontal Surgery
+Oral and Maxillofacial Trauma Peri-operative antibiotics should be given but not more than 
+24 hours post-operativelyTrauma Surgery
+Oncological Head and Neck Surgery Cancer Surgery
+May be given when indicatedDental Implant Surgery
+Intraoral Bone Grafting
+Cleft Lip & Palate Surgery
+Orthognathic Surgery
+Recommended pre-operatively and may be considered post-
+operatively for up to 5 days
+Contaminated Wounds in Oral 
+and Maxillofacial Surgery
+Contaminated or Bite 
+Wounds
+Recommended
+Recommended
+Diabetes Mellitus Recommended for patients with uncontrolled diabetes (BGL >10 mmol/L 
+and HbA1c >7.5%) prior to any oral surgery
+Prosthetic Joint Replacement Recommended for patients with high-risk factors (e.g., 
+immunosuppression) undergoing invasive procedures
+Infective Endocarditis Risk Recommended for high-risk patients undergoing invasive procedures
+Medication-Related Osteonecrosis 
+of the Jaw (MRONJ)
+Recommended for high-risk patients before invasive procedures
+Radiotherapy/Chemotherapy
+Recommended for patients exposed to radiation or chemotherapy 
+before oral/maxillofacial surgery
+Special Population
+Recommended when absolute neutrophil counts are between 
+1000-2000/mm³
+KEY RECOMMENDATIONS
+Indications of AP to Prevent SSIs
+The CPG DG suggested that the indication for AP in all Oral and Maxillofacial Surgery are:
+• Patient related factors
+○ Immunocompromised 
+○ Smoking status
+○ Diabetes mellitus (BGL >10 mmol/L and HbA1c >7.5%)
+○ Obesity
+• Surgery related factors
+○ Prolonged surgical time
+○ Complexity of the surgery
+○ Use of implants
+○ Use of bone and tissue grafts.
+In Oral and Maxillofacial trauma surgery, AP is only indicated up to 24 hours post 
+ORIF. However, the AP can be prolonged up to 5 days or more to prevent SSI in the 
+following indications:
+• Patient related factors
+○ Immunocompromised 
+○ Smoking status
+○ Polytrauma 
+• Surgery related factors
+○ Complex fracture and bone loss
+○ Soft tissue loss at the surgical site/ insufficient soft tissue closure
+○ Wound breakdown
+○ Presence of contaminants.
+○ Presence of foreign bodies
+• Antibiotic prophylaxis administration for routine dental extractions should not be 
+prescribed for patients with well controlled diabetes mellitus.
+• Clinicians should consider patients’ blood glucose level, Hemoglobin A1c or 
+glycated hemoglobin (HbA1c) and extent of surgery prior to AP prescription.
+For immunocompromised patients who undergo surgical procedure, there are factors 
+to consider prior to AP such as glucose level, HbA1c, neutrophils counts and CD4 
+level.
+• Most AP used in preventing MRONJ is Penicillin-based.
+• The duration of the AP should be given pre and post-operatively based on:
+○ the medication for cancer related treatment
+○ treatment for > 4 years
+○ other risks factors (eg poor oral hygiene, smoking, on corticosteroids or 
+angiogenesis inhibitors or medical comorbids such as anemia and diabetes mellitus)
+• Patients at risk of MRONJ should be referred to OMFS prior to any invasive dental 
+procedures.
+The choice of AP for patients who are undergoing oral and maxillofacial surgical 
+procedures will be determined by
+• surgical site involved/ microorganism presence
+• local antibiotic resistance pattern
+• patient’s medical condition
+1.
+2.
+3.
+4.
+5.
+6.
+4 5
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Category Scenario Antibiotic Prophylaxis (AP) Recommendation
+Surgery that does not involve oral 
+cavity
+Not recommended
+May be given when indicated
+Clean Surgery
+Clean-Contaminated Surgery
+Impacted Tooth Surgery
+May be considered based on patient and procedural factorsPeriodontal Surgery
+Oral and Maxillofacial Trauma Peri-operative antibiotics should be given but not more than 
+24 hours post-operativelyTrauma Surgery
+Oncological Head and Neck Surgery Cancer Surgery
+May be given when indicatedDental Implant Surgery
+Intraoral Bone Grafting
+Cleft Lip & Palate Surgery
+Orthognathic Surgery
+Recommended pre-operatively and may be considered post-
+operatively for up to 5 days
+Contaminated Wounds in Oral 
+and Maxillofacial Surgery
+Contaminated or Bite 
+Wounds
+Recommended
+Recommended
+Diabetes Mellitus Recommended for patients with uncontrolled diabetes (BGL >10 mmol/L 
+and HbA1c >7.5%) prior to any oral surgery
+Prosthetic Joint Replacement Recommended for patients with high-risk factors (e.g., 
+immunosuppression) undergoing invasive procedures
+Infective Endocarditis Risk Recommended for high-risk patients undergoing invasive procedures
+Medication-Related Osteonecrosis 
+of the Jaw (MRONJ)
+Recommended for high-risk patients before invasive procedures
+Radiotherapy/Chemotherapy
+Recommended for patients exposed to radiation or chemotherapy 
+before oral/maxillofacial surgery
+Special Population
+Recommended when absolute neutrophil counts are between 
+1000-2000/mm³
+KEY RECOMMENDATIONS
+Indications of AP to Prevent SSIs
+The CPG DG suggested that the indication for AP in all Oral and Maxillofacial Surgery are:
+• Patient related factors
+○ Immunocompromised 
+○ Smoking status
+○ Diabetes mellitus (BGL >10 mmol/L and HbA1c >7.5%)
+○ Obesity
+• Surgery related factors
+○ Prolonged surgical time
+○ Complexity of the surgery
+○ Use of implants
+○ Use of bone and tissue grafts.
+In Oral and Maxillofacial trauma surgery, AP is only indicated up to 24 hours post 
+ORIF. However, the AP can be prolonged up to 5 days or more to prevent SSI in the 
+following indications:
+• Patient related factors
+○ Immunocompromised 
+○ Smoking status
+○ Polytrauma 
+• Surgery related factors
+○ Complex fracture and bone loss
+○ Soft tissue loss at the surgical site/ insufficient soft tissue closure
+○ Wound breakdown
+○ Presence of contaminants.
+○ Presence of foreign bodies
+• Antibiotic prophylaxis administration for routine dental extractions should not be 
+prescribed for patients with well controlled diabetes mellitus.
+• Clinicians should consider patients’ blood glucose level, Hemoglobin A1c or 
+glycated hemoglobin (HbA1c) and extent of surgery prior to AP prescription.
+For immunocompromised patients who undergo surgical procedure, there are factors 
+to consider prior to AP such as glucose level, HbA1c, neutrophils counts and CD4 
+level.
+• Most AP used in preventing MRONJ is Penicillin-based.
+• The duration of the AP should be given pre and post-operatively based on:
+○ the medication for cancer related treatment
+○ treatment for > 4 years
+○ other risks factors (eg poor oral hygiene, smoking, on corticosteroids or 
+angiogenesis inhibitors or medical comorbids such as anemia and diabetes mellitus)
+• Patients at risk of MRONJ should be referred to OMFS prior to any invasive dental 
+procedures.
+The choice of AP for patients who are undergoing oral and maxillofacial surgical 
+procedures will be determined by
+• surgical site involved/ microorganism presence
+• local antibiotic resistance pattern
+• patient’s medical condition
+1.
+2.
+3.
+4.
+5.
+6.
+4 5
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Category Scenario Antibiotic Prophylaxis (AP) Recommendation
+Surgery that does not involve oral 
+cavity
+Not recommended
+May be given when indicated
+Clean Surgery
+Clean-Contaminated Surgery
+Impacted Tooth Surgery
+May be considered based on patient and procedural factorsPeriodontal Surgery
+Oral and Maxillofacial Trauma Peri-operative antibiotics should be given but not more than 
+24 hours post-operativelyTrauma Surgery
+Oncological Head and Neck Surgery Cancer Surgery
+May be given when indicatedDental Implant Surgery
+Intraoral Bone Grafting
+Cleft Lip & Palate Surgery
+Orthognathic Surgery
+Recommended pre-operatively and may be considered post-
+operatively for up to 5 days
+Contaminated Wounds in Oral 
+and Maxillofacial Surgery
+Contaminated or Bite 
+Wounds
+Recommended
+Recommended
+Diabetes Mellitus Recommended for patients with uncontrolled diabetes (BGL >10 mmol/L 
+and HbA1c >7.5%) prior to any oral surgery
+Prosthetic Joint Replacement Recommended for patients with high-risk factors (e.g., 
+immunosuppression) undergoing invasive procedures
+Infective Endocarditis Risk Recommended for high-risk patients undergoing invasive procedures
+Medication-Related Osteonecrosis 
+of the Jaw (MRONJ)
+Recommended for high-risk patients before invasive procedures
+Radiotherapy/Chemotherapy
+Recommended for patients exposed to radiation or chemotherapy 
+before oral/maxillofacial surgery
+Special Population
+Recommended when absolute neutrophil counts are between 
+1000-2000/mm³
+KEY RECOMMENDATIONS
+Indications of AP to Prevent SSIs
+The CPG DG suggested that the indication for AP in all Oral and Maxillofacial Surgery are:
+• Patient related factors
+○ Immunocompromised 
+○ Smoking status
+○ Diabetes mellitus (BGL >10 mmol/L and HbA1c >7.5%)
+○ Obesity
+• Surgery related factors
+○ Prolonged surgical time
+○ Complexity of the surgery
+○ Use of implants
+○ Use of bone and tissue grafts.
+In Oral and Maxillofacial trauma surgery, AP is only indicated up to 24 hours post 
+ORIF. However, the AP can be prolonged up to 5 days or more to prevent SSI in the 
+following indications:
+• Patient related factors
+○ Immunocompromised 
+○ Smoking status
+○ Polytrauma 
+• Surgery related factors
+○ Complex fracture and bone loss
+○ Soft tissue loss at the surgical site/ insufficient soft tissue closure
+○ Wound breakdown
+○ Presence of contaminants.
+○ Presence of foreign bodies
+• Antibiotic prophylaxis administration for routine dental extractions should not be 
+prescribed for patients with well controlled diabetes mellitus.
+• Clinicians should consider patients’ blood glucose level, Hemoglobin A1c or 
+glycated hemoglobin (HbA1c) and extent of surgery prior to AP prescription.
+For immunocompromised patients who undergo surgical procedure, there are factors 
+to consider prior to AP such as glucose level, HbA1c, neutrophils counts and CD4 
+level.
+• Most AP used in preventing MRONJ is Penicillin-based.
+• The duration of the AP should be given pre and post-operatively based on:
+○ the medication for cancer related treatment
+○ treatment for > 4 years
+○ other risks factors (eg poor oral hygiene, smoking, on corticosteroids or 
+angiogenesis inhibitors or medical comorbids such as anemia and diabetes mellitus)
+• Patients at risk of MRONJ should be referred to OMFS prior to any invasive dental 
+procedures.
+The choice of AP for patients who are undergoing oral and maxillofacial surgical 
+procedures will be determined by
+• surgical site involved/ microorganism presence
+• local antibiotic resistance pattern
+• patient’s medical condition
+1.
+2.
+3.
+4.
+5.
+6.
+6 3
+TIMING GUIDELINES
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Algorithm 1: Antibiotic Prophylaxis (AP) in Oral and Maxillofacial Surgery for Prevention of Surgical Site Infection 
+Type of Antibiotic
+Ampicillin
+Amoxicillin-clavulanate
+Ampicillin-sulbactam
+Cefazolin/Cefuroxime
+Clindamycin
+Redosing Interval
+2 hours
+3 hours
+2 hours
+4 hours
+6 hours
+• AP should be administered 30-60 minutes before the incision and up to 120 minutes prior for 
+Fluoroquinolones and Vancomycin.
+DOSING GUIDELINES
+• Single Dose: Generally sufficient; limit duration to 24 hours unless specified.
+• Redosing: Required if surgery duration exceeds antibiotic two half-lives, or if blood loss 1.5L 
+or other factors that may shorten the half-life of the prophylactic agent (e.g extensive burns
+COMMONLY USED ANTIBIOTICS AND DOSAGES
+Antibiotic
+Antibiotic
+Amoxicillin-
+clavulanate
+Ampicillin-
+sulbactam
+Ampicillin
+Azithromycin
+CLINDAMYCIN
+Doxycycline
+Cefazolin
+Dosage* Common Side
+EffectsAdult Paediatric Serious Side Effects
+GI discomfort
+GI discomfort
+GI discomfort
+Nausea, dizziness
+50 mg/kg PO
+*Renal Adjustment: Dosage adjustments needed in renal impairment if treatment extends 
+beyond 24 hours.
+** Cephalosporin should not be used in an individual with a history of anaphylaxis, angioedema, 
+or urticarial with Penicillin/Ampicillin
+1-2g PO
+15 mg/kg PO500mg PO
+30 mg/kg IV
+1.2g IV
+OR
+1.25 g PO
+Severe hypersensitivity
+reactions
+GI discomfort50 mg/kg IV2g PO
+50 mg/kg IV3g PO
+Nephropathy, Stevens-
+Johnson syndrome
+Severe hypersensitivity 
+reactions
+GI discomfort,
+photosensitivity
+<45 kg, 2.2
+mg/kg PO
+>45 kg,
+100 mg PO
+100mg PO Exacerbation of SLE, 
+severe skin reactions
+C. Difficile infections, 
+severe skin reactions
+Severe skin reactions,
+convulsions
+Diarrhoea,
+GI discomfort30 mg/kg IV
+1-2g IV
+3 g if body
+weight ≥120 kg
+Anaphylaxis, Stevens-
+Johnson syndrome
+GI DISCOMFORT,
+HEADACHE10 MG/KG IV600mg-900mg
+PO/IV
+Liver failure, QT prolongation
+Oral Maxillofacial Surgery 
+Clean-
+contaminatedClean Onco head &
+neck surgery
+Pre & Post-op
+AP
+Oral & Maxillofacial
+trauma
+Pre & Post-op
+AP ≤24 hours
+Orthognathic
+surgery
+Cleft lip &
+palate
+Periodontal
+surgeryDental implant
+and Intraoral
+bone grafting
+Impacted
+teeth
+No AP
+No AP
+AP
+AP
+No AP
+AP
+Complexity *
+Biomaterial 
+Pre & post AP
+Review and Follow-up
+*Complexity:
+• significant bone removal
+• duration of surgery ≥1hour
+AP: Antibiotic prophylaxis
+No
+Yes
+No
+Yes
+6 3
+TIMING GUIDELINES
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Algorithm 1: Antibiotic Prophylaxis (AP) in Oral and Maxillofacial Surgery for Prevention of Surgical Site Infection 
+Type of Antibiotic
+Ampicillin
+Amoxicillin-clavulanate
+Ampicillin-sulbactam
+Cefazolin/Cefuroxime
+Clindamycin
+Redosing Interval
+2 hours
+3 hours
+2 hours
+4 hours
+6 hours
+• AP should be administered 30-60 minutes before the incision and up to 120 minutes prior for 
+Fluoroquinolones and Vancomycin.
+DOSING GUIDELINES
+• Single Dose: Generally sufficient; limit duration to 24 hours unless specified.
+• Redosing: Required if surgery duration exceeds antibiotic two half-lives, or if blood loss 1.5L 
+or other factors that may shorten the half-life of the prophylactic agent (e.g extensive burns
+COMMONLY USED ANTIBIOTICS AND DOSAGES
+Antibiotic
+Antibiotic
+Amoxicillin-
+clavulanate
+Ampicillin-
+sulbactam
+Ampicillin
+Azithromycin
+CLINDAMYCIN
+Doxycycline
+Cefazolin
+Dosage* Common Side
+EffectsAdult Paediatric Serious Side Effects
+GI discomfort
+GI discomfort
+GI discomfort
+Nausea, dizziness
+50 mg/kg PO
+*Renal Adjustment: Dosage adjustments needed in renal impairment if treatment extends 
+beyond 24 hours.
+** Cephalosporin should not be used in an individual with a history of anaphylaxis, angioedema, 
+or urticarial with Penicillin/Ampicillin
+1-2g PO
+15 mg/kg PO500mg PO
+30 mg/kg IV
+1.2g IV
+OR
+1.25 g PO
+Severe hypersensitivity
+reactions
+GI discomfort50 mg/kg IV2g PO
+50 mg/kg IV3g PO
+Nephropathy, Stevens-
+Johnson syndrome
+Severe hypersensitivity 
+reactions
+GI discomfort,
+photosensitivity
+<45 kg, 2.2
+mg/kg PO
+>45 kg,
+100 mg PO
+100mg PO Exacerbation of SLE, 
+severe skin reactions
+C. Difficile infections, 
+severe skin reactions
+Severe skin reactions,
+convulsions
+Diarrhoea,
+GI discomfort30 mg/kg IV
+1-2g IV
+3 g if body
+weight ≥120 kg
+Anaphylaxis, Stevens-
+Johnson syndrome
+GI DISCOMFORT,
+HEADACHE10 MG/KG IV600mg-900mg
+PO/IV
+Liver failure, QT prolongation
+Oral Maxillofacial Surgery 
+Clean-
+contaminatedClean Onco head &
+neck surgery
+Pre & Post-op
+AP
+Oral & Maxillofacial
+trauma
+Pre & Post-op
+AP ≤24 hours
+Orthognathic
+surgery
+Cleft lip &
+palate
+Periodontal
+surgeryDental implant
+and Intraoral
+bone grafting
+Impacted
+teeth
+No AP
+No AP
+AP
+AP
+No AP
+AP
+Complexity *
+Biomaterial 
+Pre & post AP
+Review and Follow-up
+*Complexity:
+• significant bone removal
+• duration of surgery ≥1hour
+AP: Antibiotic prophylaxis
+No
+Yes
+No
+Yes
+2 7
+KEY MESSAGES
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Algorithm 2: Antibiotic Prophylaxis in Special Population (Treatment Related Conditions) for Prevention of Surgical Site Infection in Oral and 
+Maxillofacial Surgery
+ 
+ 
+Special Population (Treatment Related Conditions)
+ORN MRONJ IE Prosthetic Joints Exposed to
+Radiotherapy/
+Chemotherapy
+IE Risksurgeries
+involving
+bone
+AP
+AP
+No AP
+Pre AP
+No AP IDP** Review & Follow-up
+Yes
+YesNo
+No
+High*
+Low/
+Moderate
+IDP: Invasive dental procedure
+IE: Infective endocarditis
+*High:
+• Prosthetic cardiac valve or 
+ repair material
+• Previous infective endocarditis
+ (IE)
+• Congenital heart disease (CHD):
+• Unrepaired cyanotic CHD
+• CHD repaired with prosthetic 
+ material/device (first 6 months 
+ post-procedure)
+• Repaired CHD with residual 
+ defects near prosthetic patches/
+ devices
+• Cardiac transplant recipients 
+ with valvulopathy
+**IDP: such as extractions, oral 
+surgery, scaling, and endodontic 
+treatments.
+• Antibiotic prophylaxis (AP) helps reduce post-operative infections in oral and maxillofacial 
+surgery and should be administered 30-60 minutes before surgical incision when necessary 
+to prevent surgical site infections (SSIs).
+• Procedures lasting more than 2-4 hours may require an additional intra-operative dose.
+• The need for prophylaxis can also depend on the surgeon's skill, experience and duration of 
+surgery.
+• SSIs may present with obvious clinical signs and symptoms such as inflammation associated 
+with pain, swelling, suppuration with or without pyrexia, integration failure of oral implants and 
+biomaterials.
+• In this CPG we have also extended SSIs to include distant site infection associated with oral 
+and maxillofacial surgical procedures.
+Broad-Spectrum AP: Amoxicillin-clavulanate and Ampicillin-sulbactam for broader coverage; 
+use only if narrow-spectrum options are insufficient.
+AP FOR PENICILLIN-ALLERGIC PATIENTS
+• Alternative Options: Cefazolin, Azithromycin, or Doxycycline.
+• Severe Allergy Cases: Avoid Cephalosporins if history of anaphylaxis/angioedema.
+• Clindamycin: Higher risks of infections and adverse effects (e.g., C. difficile); caution 
+advised.
+• European Society of Cardiology (ESC) Guidelines: Avoid Clindamycin for dental AP; 
+recommend Cefazolin, Azithromycin, or Doxycycline for those allergic to Penicillin.
+CHOICE OF ANTIBIOTIC PROPHYLAXIS
+Site of Surgery Common Pathogen Preferred Antibiotics
+Oral Streptococcus and anaerobes Amoxicillin, Ampicillin,
+Benzylpenicillin
+Skin Staphylococcus species Cloxacillin or Cefazolin
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Antibiotic Prophylaxis in Oral and Maxillofacial Surgery For Prevention of Surgical 
+Site Infection (Third Edition)
+Details of the evidence supporting these recommendations can be found in the above CPG, 
+available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Oral Health Technology Section
+Oral Health Programme
+Ministry of Health Malaysia
+Level 5, Block E10, Precinct 1
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Based on pathogen presence, site of surgery and local resistance as summarized below;
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+QUICK REFERENCE FOR 
+HEALTHCARE PROVIDERS
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+8
+Algorithm 3: Antibiotic Prophylaxis in Special Population (Patients with specific medical conditions) for Prevention of Surgical Site Infection in 
+Oral and Maxillofacial Surgery
+ 
+ 
+ 
+Special Population (Patients with specific medical conditions)
+DM Transplant
+(renal/liver)
+Immuno-compromised
+patients
+Severity***Random
+Blood Sugar
+AP
+ AP
+No AP
+Review & Follow-up
+No Yes
+***Severity:
+Discuss disease severity or 
+immunosuppression with the 
+physician managing comorbidities
+or immunosuppressive therapy 
+(e.g., oncologist, rheumatologist).
+> 10
+mmol/L
+> 10
+mmol/L
+ANTIBIOTIC PROPHYLAXIS IN ORAL AND MAXILLOFACIAL SURGERY
+FOR PREVENTION OF SURGICAL SITE INFECTION (3RD EDITION)
+Quick Reference For Healthcare Providers

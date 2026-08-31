@@ -1,0 +1,924 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+7
+MEDICATION
+BD = bis in die (twice a day); CrCl = creatinine clearance; g = gram; GI = gastrointes-
+tinal; kg = kilogram; mg = milligram; NIH = National Institutes of Health; PO = 
+per os (by oral); QID = quarter in die (four times a day);  TDM = therapeutic drug 
+monitoring; TDS = ter die sumendum (three times a day) Ministry of Health
+Malaysia
+Malaysian Society of
+Rheumatology
+Academy of Medicine
+Malaysia
+Pregnancy
+Can be continued
+at lowest effective 
+dose 
+Lactation 
+Compatible 
+• Elevated blood pressure
+• Infection
+• Acne
+• Hyperglycaemia
+• Dyslipidaemia
+• Osteoporosis
+• Muscle weakness
+• Fluid retention
+• Weight gain
+Low dose: 
+<7.5 mg OD PO
+Intermediate dose: 
+7.5 - 30 mg OD PO
+High dose:
+>30 mg OD PO
+Prednisolone
+200 - 400 mg OD PO
+(5 mg/kg/day actual 
+body weight)
+Requires renal adjustment 
+based on CrCl
+• Skin hyperpigmentation
+• Prolonged QT interval
+• Abnormal FBC
+• Abnormal liver enzymes
+• Retinal toxicity
+Pregnancy 
+Compatible 
+Hydroxychloroquine
+50 - 250 mg as a single 
+dose or divided into 
+2 doses PO
+(1 - 2.5 mg/kg/day)
+• GI intolerance
+• Abnormal FBC
+• Abnormal liver enzyme
+Pregnancy 
+Compatible 
+Pregnancy 
+Compatible 
+Azathioprine
+Pregnancy 
+• Contraindicated
+• Stop at least 
+ 3 months prior to 
+ conception
+Lactation 
+Pregnancy 
+Compatible 
+Pregnancy 
+Contraindicated
+Lactation 
+Contraindicated
+Contraindicated
+• Abnormal liver enzyme
+• Abnormal FBC
+• GI intolerance
+• A
+lopecia
+• Mucositis
+• Photosensitivity, rash
+• Interstitial pneumonia
+7.5 - 25 mg weekly PO
+Requires renal adjustment
+based on CrCl
+Methotrexate
+• Elevated blood pressure
+• Tremor
+• Hirsutism/hypertrichosis
+• Renal impairment
+• Gum hypertrophy
+• Abnormal liver enzymes
+• GI symptoms
+2.5 - 4 mg/kg/day in 
+2 divided doses PO
+Ciclosporin
+• GI intolerance
+• Peripheral oedema
+• Alopecia
+• Abnormal FBC
+• Renal impairment
+1 - 3 mg/day in 2 
+divided doses PO
+(0.1 - 0.15 mg/kg/day)
+*need to assess 
+drug levels (TDM)
+Tacrolimus
+• GI intolerance
+• Alopecia
+• Abnormal FBC
+50 - 100 mg OD PO
+IV infusion follows NIH
+or Euro-Lupus regimen
+Cyclophosphamide
+• GI intolerance
+• Abnormal FBC
+1 - 1.5 g BD POMycophenolate
+mofetil
+Pregnancy Pregnancy 
+• Contraindicated
+• Stop at least 
+ 6 weeks prior to
+ conception
+Lactation 
+Contraindicated
+Drugs Recommended Dosages Pregnancy &
+Lactation
+Common Adverse Events
+Methylprednisolone
+Hydrocortisone IV 50 - 100 mg TDS/QID
+IV infusion ≥250 mg/day for 
+1 - 3 days (pulse)
+Corticosteroids
+Antimalarial
+Immunosuppressants
+Lactation 
+Compatible 
+Lactation 
+Compatible 
+Lactation 
+Compatible 
+Lactation 
+Compatible 
+1 6
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+1. Systemic lupus erythematosus (SLE) is a chronic autoimmune 
+multisystem disorder with diverse & complex clinical manifestations 
+characterised by inflammation in a variety of organs. It has a 
+relapsing-remitting course with a very unpredictable prognosis & 
+considerable morbidity.
+2. Diagnosis of SLE should be based on clinical manifestations 
+supported by laboratory findings following exclusion of alternative 
+diagnoses.
+3. All patients with SLE should have clinical assessments of disease 
+activity using validated assessment tools.
+4. Patients with SLE should practise sun avoidance &, use protective 
+clothing & broad-spectrum sunscreen with at least sun protection 
+factor (SPF) 50.
+5. Corticosteroids should be used for acute flare in SLE; the dose should 
+be minimised accordingly & discontinued whenever possible.
+6. All patients with SLE should be on hydroxychloroquine (HCQ) unless 
+intolerant or contraindicated.
+7. Immunosuppressants should be considered as add-on therapy to 
+patients with SLE not responding to HCQ alone or in combination with 
+corticosteroids, or when corticosteroids doses cannot be tapered.
+8. Infection in patients with SLE should be identified early & treated 
+accordingly.
+9. All women with SLE in the reproductive age group should receive 
+pre-pregnancy counselling.
+10. In SLE with pregnancy, HCQ, azathioprine, calcineurin inhibitors & low 
+dose corticosteroids should be continued.
+PRE-PREGNANCY & PREGNANCY
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & summarises the main
+recommendations in the Clinical Practice Guidelines (CPG) Management of Systemic
+Lupus Erythematosus.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Society of Rheumatology: msr.my
+Indications for referral to rheumatologist includes to confirm diagnosis, 
+assess disease activity & severity, provide general disease management, 
+manage organ involvement or life-threatening disease & manage/prevent 
+treatment toxicities. Other specific circumstances that require referral 
+include APS, pregnancy & perioperative management.
+For moderate to severe organ involvement, patients with SLE will require 
+multidisciplinary care involving various subspecialties. 
+Indications for urgent referral are as listed below:
+• for patients not diagnosed with SLE yet -
+ clinical suspicion of SLE with major or multisystem organ involvement 
+• for patients diagnosed with SLE -
+ disease flare of major organ or multisystem organ involvement
+ pregnancy (at booking)
+ severe infection
+• It is important to ensure that patients with SLE who plan to get 
+pregnant achieve the following: 
+ remission or low disease activity for ≥6 months 
+ well-controlled blood pressure
+ estimated glomerular filtration rate (eGFR) >60 mL/min/1.73 m 2
+ proteinuria <1 g/day (proteinuria 2+)
+• All pregnant SLE patients:
+ especially those with positive aPL should be referred to the 
+rheumatologist at antenatal booking
+ should be under combined care of rheumatologist/physician, 
+feto-maternal specialist/obstetrician & family medicine specialist
+• All cases with clinical suspicion of SLE should be promptly referred 
+to rheumatologists for confirmation of the diagnosis & further 
+management.
+REFERRAL
+1 6
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+1. Systemic lupus erythematosus (SLE) is a chronic autoimmune 
+multisystem disorder with diverse & complex clinical manifestations 
+characterised by inflammation in a variety of organs. It has a 
+relapsing-remitting course with a very unpredictable prognosis & 
+considerable morbidity.
+2. Diagnosis of SLE should be based on clinical manifestations 
+supported by laboratory findings following exclusion of alternative 
+diagnoses.
+3. All patients with SLE should have clinical assessments of disease 
+activity using validated assessment tools.
+4. Patients with SLE should practise sun avoidance &, use protective 
+clothing & broad-spectrum sunscreen with at least sun protection 
+factor (SPF) 50.
+5. Corticosteroids should be used for acute flare in SLE; the dose should 
+be minimised accordingly & discontinued whenever possible.
+6. All patients with SLE should be on hydroxychloroquine (HCQ) unless 
+intolerant or contraindicated.
+7. Immunosuppressants should be considered as add-on therapy to 
+patients with SLE not responding to HCQ alone or in combination with 
+corticosteroids, or when corticosteroids doses cannot be tapered.
+8. Infection in patients with SLE should be identified early & treated 
+accordingly.
+9. All women with SLE in the reproductive age group should receive 
+pre-pregnancy counselling.
+10. In SLE with pregnancy, HCQ, azathioprine, calcineurin inhibitors & low 
+dose corticosteroids should be continued.
+PRE-PREGNANCY & PREGNANCY
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & summarises the main
+recommendations in the Clinical Practice Guidelines (CPG) Management of Systemic
+Lupus Erythematosus.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Society of Rheumatology: msr.my
+Indications for referral to rheumatologist includes to confirm diagnosis, 
+assess disease activity & severity, provide general disease management, 
+manage organ involvement or life-threatening disease & manage/prevent 
+treatment toxicities. Other specific circumstances that require referral 
+include APS, pregnancy & perioperative management.
+For moderate to severe organ involvement, patients with SLE will require 
+multidisciplinary care involving various subspecialties. 
+Indications for urgent referral are as listed below:
+• for patients not diagnosed with SLE yet -
+ clinical suspicion of SLE with major or multisystem organ involvement 
+• for patients diagnosed with SLE -
+ disease flare of major organ or multisystem organ involvement
+ pregnancy (at booking)
+ severe infection
+• It is important to ensure that patients with SLE who plan to get 
+pregnant achieve the following: 
+ remission or low disease activity for ≥6 months 
+ well-controlled blood pressure
+ estimated glomerular filtration rate (eGFR) >60 mL/min/1.73 m 2
+ proteinuria <1 g/day (proteinuria 2+)
+• All pregnant SLE patients:
+ especially those with positive aPL should be referred to the 
+rheumatologist at antenatal booking
+ should be under combined care of rheumatologist/physician, 
+feto-maternal specialist/obstetrician & family medicine specialist
+• All cases with clinical suspicion of SLE should be promptly referred 
+to rheumatologists for confirmation of the diagnosis & further 
+management.
+REFERRALAssessments At first
+visit
+Patients with
+active disease
+should be reviewed
+at least every
+1 - 3 months
+Patients with stable/
+low disease activity
+should be reviewed
+every 6 - 12 months
+Clinical 
+History
+Vital signs
+Clinical examination 
+Drug review
+Blood tests
+FBC
+RP 
+LFT 
+CRP
+ESR
+Bone profile 
+Vitamin D3
+Immunology/serology 
+ANA
+Anti-dsDNA
+C3/C4 levels
+aPL 
+ENA 
+Immunoglobulin A, G, M
+Direct Coombs’ test
+Urine 
+UFEME 
+Urine random protein:
+creatinine ratio OR 
+24-hour urine protein
+a
+a
+a
+a
+a
+a
+a
+-
+a
+a
+a,p
+a,p
+a
+a
+a
+a
+a
+-
+-
+a
+a
+a
+a
+a
+a
+a
+5 2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+CLINICAL MANIFESTATIONS
+• Principles of SLE treatment are to achieve:
+ disease remission
+ disease flare prevention
+ organ damage prevention
+ quality of life improvement
+ minimisation of drug side-effects
+• If complete remission cannot be achieved, the lowest possible 
+disease activity in all organs involved should be targeted.
+AIHA = autoimmune haemolytic anaemia; APS = antiphospholipid syndrome; ILD = 
+interstitial lung disease; PAH = pulmonary arterial hypertension
+FREQUENCY & PARAMETERS FOR MONITORING 
+TREATMENT
+ = indicated;  a = when indicated;  a,p = when indicated during pregnancy; - = not 
+indicated; anti-dsDNA = anti-double stranded deoxyribonucleic acid; ENA = extractable 
+nuclear antigen
+Mucocutaneous 
+• Malar rash 
+• Oral ulcers 
+• Photosensitivity 
+• Discoid rash 
+• Alopecia
+Cardio-respiratory 
+• ILD
+• Pericarditis 
+• PAH
+• Pleurisy 
+• Serositis 
+• Myocarditis
+• Libman-Sacks 
+ endocarditis
+Renal 
+• Proteinuria
+• Microscopic 
+ haematuria
+Vasculitis
+Constitutional 
+symptoms
+• Fever
+• Fatigue
+• Weight loss
+Musculoskeletal
+• Arthritis/Arthralgia 
+• Myositis
+• Raynaud’s 
+ phenomenon
+Gastrointestinal 
+• Pancreatitis 
+• Enteritis
+• Lupoid hepatitis
+Haematology 
+• Leukopenia 
+• Thrombocytopenia 
+• AIHA
+• Lymphopenia
+• APS
+Eye
+• Dry eyes
+• Retinal vasculitis 
+• Optic neuritis 
+• Polyneuropathy 
+• Cerebrovascular 
+ disease/Stroke 
+• Seizure
+• Psychosis 
+• Acute confusion state 
+• Headache/Migraine
+• Transverse myelitis
+• Cognitive impairment 
+Neuropsychiatry
+3 4
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+ALGORITHM 1: DIAGNOSIS OF SLE
+&
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+ALGORITHM 1: DIAGNOSIS OF SLE
+ALGORITHM 2: TREATMENT OF NON-RENAL SLE
+3 4
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+ALGORITHM 1: DIAGNOSIS OF SLE
+&
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+ALGORITHM 1: DIAGNOSIS OF SLE
+ALGORITHM 2: TREATMENT OF NON-RENAL SLE
+Assessments At first
+visit
+Patients with
+active disease
+should be reviewed
+at least every
+1 - 3 months
+Patients with stable/
+low disease activity
+should be reviewed
+every 6 - 12 months
+Clinical 
+History
+Vital signs
+Clinical examination 
+Drug review
+Blood tests
+FBC
+RP 
+LFT 
+CRP
+ESR
+Bone profile 
+Vitamin D3
+Immunology/serology 
+ANA
+Anti-dsDNA
+C3/C4 levels
+aPL 
+ENA 
+Immunoglobulin A, G, M
+Direct Coombs’ test
+Urine 
+UFEME 
+Urine random protein:
+creatinine ratio OR 
+24-hour urine protein
+a
+a
+a
+a
+a
+a
+a
+-
+a
+a
+a,p
+a,p
+a
+a
+a
+a
+a
+-
+-
+a
+a
+a
+a
+a
+a
+a
+5 2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+CLINICAL MANIFESTATIONS
+• Principles of SLE treatment are to achieve:
+ disease remission
+ disease flare prevention
+ organ damage prevention
+ quality of life improvement
+ minimisation of drug side-effects
+• If complete remission cannot be achieved, the lowest possible 
+disease activity in all organs involved should be targeted.
+AIHA = autoimmune haemolytic anaemia; APS = antiphospholipid syndrome; ILD = 
+interstitial lung disease; PAH = pulmonary arterial hypertension
+FREQUENCY & PARAMETERS FOR MONITORING 
+TREATMENT
+ = indicated;  a = when indicated;  a,p = when indicated during pregnancy; - = not 
+indicated; anti-dsDNA = anti-double stranded deoxyribonucleic acid; ENA = extractable 
+nuclear antigen
+Mucocutaneous 
+• Malar rash 
+• Oral ulcers 
+• Photosensitivity 
+• Discoid rash 
+• Alopecia
+Cardio-respiratory 
+• ILD
+• Pericarditis 
+• PAH
+• Pleurisy 
+• Serositis 
+• Myocarditis
+• Libman-Sacks 
+ endocarditis
+Renal 
+• Proteinuria
+• Microscopic 
+ haematuria
+Vasculitis
+Constitutional 
+symptoms
+• Fever
+• Fatigue
+• Weight loss
+Musculoskeletal
+• Arthritis/Arthralgia 
+• Myositis
+• Raynaud’s 
+ phenomenon
+Gastrointestinal 
+• Pancreatitis 
+• Enteritis
+• Lupoid hepatitis
+Haematology 
+• Leukopenia 
+• Thrombocytopenia 
+• AIHA
+• Lymphopenia
+• APS
+Eye
+• Dry eyes
+• Retinal vasculitis 
+• Optic neuritis 
+• Polyneuropathy 
+• Cerebrovascular 
+ disease/Stroke 
+• Seizure
+• Psychosis 
+• Acute confusion state 
+• Headache/Migraine
+• Transverse myelitis
+• Cognitive impairment 
+Neuropsychiatry
+Assessments At first
+visit
+Patients with
+active disease
+should be reviewed
+at least every
+1 - 3 months
+Patients with stable/
+low disease activity
+should be reviewed
+every 6 - 12 months
+Clinical 
+History
+Vital signs
+Clinical examination 
+Drug review
+Blood tests
+FBC
+RP 
+LFT 
+CRP
+ESR
+Bone profile 
+Vitamin D3
+Immunology/serology 
+ANA
+Anti-dsDNA
+C3/C4 levels
+aPL 
+ENA 
+Immunoglobulin A, G, M
+Direct Coombs’ test
+Urine 
+UFEME 
+Urine random protein:
+creatinine ratio OR 
+24-hour urine protein
+a
+a
+a
+a
+a
+a
+a
+-
+a
+a
+a,p
+a,p
+a
+a
+a
+a
+a
+-
+-
+a
+a
+a
+a
+a
+a
+a
+5 2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+CLINICAL MANIFESTATIONS
+• Principles of SLE treatment are to achieve:
+ disease remission
+ disease flare prevention
+ organ damage prevention
+ quality of life improvement
+ minimisation of drug side-effects
+• If complete remission cannot be achieved, the lowest possible 
+disease activity in all organs involved should be targeted.
+AIHA = autoimmune haemolytic anaemia; APS = antiphospholipid syndrome; ILD = 
+interstitial lung disease; PAH = pulmonary arterial hypertension
+FREQUENCY & PARAMETERS FOR MONITORING 
+TREATMENT
+ = indicated;  a = when indicated;  a,p = when indicated during pregnancy; - = not 
+indicated; anti-dsDNA = anti-double stranded deoxyribonucleic acid; ENA = extractable 
+nuclear antigen
+Mucocutaneous 
+• Malar rash 
+• Oral ulcers 
+• Photosensitivity 
+• Discoid rash 
+• Alopecia
+Cardio-respiratory 
+• ILD
+• Pericarditis 
+• PAH
+• Pleurisy 
+• Serositis 
+• Myocarditis
+• Libman-Sacks 
+ endocarditis
+Renal 
+• Proteinuria
+• Microscopic 
+ haematuria
+Vasculitis
+Constitutional 
+symptoms
+• Fever
+• Fatigue
+• Weight loss
+Musculoskeletal
+• Arthritis/Arthralgia 
+• Myositis
+• Raynaud’s 
+ phenomenon
+Gastrointestinal 
+• Pancreatitis 
+• Enteritis
+• Lupoid hepatitis
+Haematology 
+• Leukopenia 
+• Thrombocytopenia 
+• AIHA
+• Lymphopenia
+• APS
+Eye
+• Dry eyes
+• Retinal vasculitis 
+• Optic neuritis 
+• Polyneuropathy 
+• Cerebrovascular 
+ disease/Stroke 
+• Seizure
+• Psychosis 
+• Acute confusion state 
+• Headache/Migraine
+• Transverse myelitis
+• Cognitive impairment 
+Neuropsychiatry
+1 6
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+1. Systemic lupus erythematosus (SLE) is a chronic autoimmune 
+multisystem disorder with diverse & complex clinical manifestations 
+characterised by inflammation in a variety of organs. It has a 
+relapsing-remitting course with a very unpredictable prognosis & 
+considerable morbidity.
+2. Diagnosis of SLE should be based on clinical manifestations 
+supported by laboratory findings following exclusion of alternative 
+diagnoses.
+3. All patients with SLE should have clinical assessments of disease 
+activity using validated assessment tools.
+4. Patients with SLE should practise sun avoidance &, use protective 
+clothing & broad-spectrum sunscreen with at least sun protection 
+factor (SPF) 50.
+5. Corticosteroids should be used for acute flare in SLE; the dose should 
+be minimised accordingly & discontinued whenever possible.
+6. All patients with SLE should be on hydroxychloroquine (HCQ) unless 
+intolerant or contraindicated.
+7. Immunosuppressants should be considered as add-on therapy to 
+patients with SLE not responding to HCQ alone or in combination with 
+corticosteroids, or when corticosteroids doses cannot be tapered.
+8. Infection in patients with SLE should be identified early & treated 
+accordingly.
+9. All women with SLE in the reproductive age group should receive 
+pre-pregnancy counselling.
+10. In SLE with pregnancy, HCQ, azathioprine, calcineurin inhibitors & low 
+dose corticosteroids should be continued.
+PRE-PREGNANCY & PREGNANCY
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & summarises the main
+recommendations in the Clinical Practice Guidelines (CPG) Management of Systemic
+Lupus Erythematosus.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Society of Rheumatology: msr.my
+Indications for referral to rheumatologist includes to confirm diagnosis, 
+assess disease activity & severity, provide general disease management, 
+manage organ involvement or life-threatening disease & manage/prevent 
+treatment toxicities. Other specific circumstances that require referral 
+include APS, pregnancy & perioperative management.
+For moderate to severe organ involvement, patients with SLE will require 
+multidisciplinary care involving various subspecialties. 
+Indications for urgent referral are as listed below:
+• for patients not diagnosed with SLE yet -
+ clinical suspicion of SLE with major or multisystem organ involvement 
+• for patients diagnosed with SLE -
+ disease flare of major organ or multisystem organ involvement
+ pregnancy (at booking)
+ severe infection
+• It is important to ensure that patients with SLE who plan to get 
+pregnant achieve the following: 
+ remission or low disease activity for ≥6 months 
+ well-controlled blood pressure
+ estimated glomerular filtration rate (eGFR) >60 mL/min/1.73 m 2
+ proteinuria <1 g/day (proteinuria 2+)
+• All pregnant SLE patients:
+ especially those with positive aPL should be referred to the 
+rheumatologist at antenatal booking
+ should be under combined care of rheumatologist/physician, 
+feto-maternal specialist/obstetrician & family medicine specialist
+• All cases with clinical suspicion of SLE should be promptly referred 
+to rheumatologists for confirmation of the diagnosis & further 
+management.
+REFERRAL
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF SYSTEMIC LUPUS ERYTHEMATOSUS
+7
+MEDICATION
+BD = bis in die (twice a day); CrCl = creatinine clearance; g = gram; GI = gastrointes-
+tinal; kg = kilogram; mg = milligram; NIH = National Institutes of Health; PO = 
+per os (by oral); QID = quarter in die (four times a day);  TDM = therapeutic drug 
+monitoring; TDS = ter die sumendum (three times a day) Ministry of Health
+Malaysia
+Malaysian Society of
+Rheumatology
+Academy of Medicine
+Malaysia
+Pregnancy
+Can be continued
+at lowest effective 
+dose 
+Lactation 
+Compatible 
+• Elevated blood pressure
+• Infection
+• Acne
+• Hyperglycaemia
+• Dyslipidaemia
+• Osteoporosis
+• Muscle weakness
+• Fluid retention
+• Weight gain
+Low dose: 
+<7.5 mg OD PO
+Intermediate dose: 
+7.5 - 30 mg OD PO
+High dose:
+>30 mg OD PO
+Prednisolone
+200 - 400 mg OD PO
+(5 mg/kg/day actual 
+body weight)
+Requires renal adjustment 
+based on CrCl
+• Skin hyperpigmentation
+• Prolonged QT interval
+• Abnormal FBC
+• Abnormal liver enzymes
+• Retinal toxicity
+Pregnancy 
+Compatible 
+Hydroxychloroquine
+50 - 250 mg as a single 
+dose or divided into 
+2 doses PO
+(1 - 2.5 mg/kg/day)
+• GI intolerance
+• Abnormal FBC
+• Abnormal liver enzyme
+Pregnancy 
+Compatible 
+Pregnancy 
+Compatible 
+Azathioprine
+Pregnancy 
+• Contraindicated
+• Stop at least 
+ 3 months prior to 
+ conception
+Lactation 
+Pregnancy 
+Compatible 
+Pregnancy 
+Contraindicated
+Lactation 
+Contraindicated
+Contraindicated
+• Abnormal liver enzyme
+• Abnormal FBC
+• GI intolerance
+• Alopecia
+• Mucositis
+• Photosensitivity, rash
+• Interstitial pneumonia
+7.5 - 25 mg weekly PO
+Requires renal adjustment
+based on CrCl
+Methotrexate
+• Elevated blood pressure
+• Tremor
+• Hirsutism/hypertrichosis
+• Renal impairment
+• Gum hypertrophy
+• Abnormal liver enzymes
+• GI symptoms
+2.5 - 4 mg/kg/day in 
+2 divided doses PO
+Ciclosporin
+• GI intolerance
+• Peripheral oedema
+• Alopecia
+• Abnormal FBC
+• Renal impairment
+1 - 3 mg/day in 2 
+divided doses PO
+(0.1 - 0.15 mg/kg/day)
+*need to assess 
+drug levels (TDM)
+Tacrolimus
+• GI intolerance
+• Alopecia
+• Abnormal FBC
+50 - 100 mg OD PO
+IV infusion follows NIH
+or Euro-Lupus regimen
+Cyclophosphamide
+• GI intolerance
+• Abnormal FBC
+1 - 1.5 g BD POMycophenolate
+mofetil
+Pregnancy Pregnancy 
+• Contraindicated
+• Stop at least 
+ 6 weeks prior to
+ conception
+Lactation 
+Contraindicated
+Drugs Recommended Dosages Pregnancy &
+Lactation
+Common Adverse Events
+Methylprednisolone
+Hydrocortisone IV 50 - 100 mg TDS/QID
+IV infusion ≥250 mg/day for 
+1 - 3 days (pulse)
+Corticosteroids
+Antimalarial
+Immunosuppressants
+Lactation 
+Compatible 
+Lactation 
+Compatible 
+Lactation 
+Compatible 
+Lactation 
+Compatible 

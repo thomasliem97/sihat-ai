@@ -1,0 +1,777 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+Follow-up schedule for patients with glaucoma based on the target IOP and 
+disease progression (refer to table below). However, it should be individualised 
+according to the severity of disease and risk factors.
+MONITORING
+• Patients with glaucoma require life-long treatment and monitoring. 
+• 
+Adjustment of treatment and target IOP depends on the evaluation of glaucoma  
+progression. 
+• It is important to assess both optic nerve structure and function in detecting 
+progression.
+REFERRAL
+• Indications for referral are as follows: 
+○ acute angle closure (immediate referral)
+○ confirmation of diagnosis 
+○ progression of disease 
+○ issues related to medical treatment:
+- side effects
+- requirement of ≥2 medications
+- poor compliance or adherence
+○ uncontrolled IOP despite maximum medical treatment requiring laser or 
+surgical intervention
+FOLLOW-UP
+Diagnosis Follow-up schedule 
+Ocular Hypertension Refer to Subchapter 10.1 in CPG 
+POAG suspect Refer to Subchapter 10.2 in CPG 
+POAG and PACG Target IOP achieved:                                                  
+No   : 1 - 2 months        
+Yes : 6 - 12 months 
+       
+Disease progression (structural and functional):            
+Yes : 3 - 6 months      
+No   : 6 - 12 months     
+Printing of this Quick Reference was funded by an unrestricted grant from the 
+Malaysian Society of Ophthalmology.
+2 7
+1. Glaucoma is a chronic eye disease that damages the optic nerve, & can result in 
+serious vision loss and irreversible blindness.
+2. Glaucoma diagnosis should be made based on combination of history, ocular 
+examination & investigation.
+3. Risk factors should be identified in the management of glaucoma.
+4. Medical treatment in glaucoma should be individualised based on patient’s 
+characteristics & drug factors, & adjusted according to target intraocular pressure 
+(IOP).
+5. Prostaglandin analogues should be used as first-line treatment in glaucoma.
+6. Patient education should be given to patients with glaucoma. This includes benefits 
+& side effects of treatment, proper instillation technique of eye drop & compliance 
+to treatment.
+7. Laser iridotomy should be performed in primary angle closure disease when 
+indicated.
+8. Peripheral iridoplasty may be considered for initial treatment in acute angle closure.
+9. Intraoperative Mitomycin C during trabeculectomy should be used in glaucoma 
+patients at risk of surgical failure.
+10. Glaucoma patients with blindness or low vision should be referred for vision 
+rehabilitation which includes vocational, occupational & independent living.
+KEY MESSAGES
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Glaucoma (Second Edition). 
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia  : www.moh.gov.my
+Academy of Medicine Malaysia  : www.acadmed.org.my
+Malaysian Society of Ophthalmology : www.mso.org.my
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-8883 1229
+E-mail: htamalaysia@moh.gov.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+● Medical treatment is the initial treatment of choice in glaucoma. It includes the 
+use of topical and systemic anti-glaucoma medications that lowers the IOP.
+● Choose medication(s) that:
+○ provides greatest IOP lowering effects to achieve target IOP
+○ has the best safety profiles e.g. least side effects, good tolerability, etc.
+○ enhances compliance e.g. simple dosing regimen, minimal disruption to 
+quality of life, etc.
+○ is available and affordable 
+● Laser treatment is indicated when medical therapy fails, as an adjunct or as a 
+primary treatment where appropriate. 
+● Surgery is indicated in glaucoma when the target IOP cannot be reached 
+despite maximal medical therapy or when there is intolerance or 
+non-compliance to medical therapy.
+• Treatment is considered effective  when the individual target IOP is achieved and 
+there is no evidence of progression.
+TREATMENT
+SAFETY PROFILES OF TOPICAL ANTI-GLAUCOMA MEDICATIONS
+Relative 
+contra-
+indications:
+• Uveitis
+• Herpes 
+Simplex Viral 
+keratitis
+• Cystoid 
+macular 
+oedema
+Caution:
+• Complicated 
+intraocular 
+surgery (e.g. 
+posterior 
+capsule 
+rupture)
+• Conjunctival 
+hyperaemia 
+(usually 
+transient and 
+noninfectious)
+• Hyper-
+ trichosis
+• Eyelid skin 
+darkening
+Prostaglandin
+Analogues/
+Prostamides
+Cholinergic
+agents
+(direct-acting)
+• Bronchial 
+asthma, 
+chronic 
+obstructive 
+pulmonary 
+disease
+• Bradycardia, 
+heart block, 
+cardiac failure
+Relative  contra-
+indication for β1 
+selective
+• Brady-
+ arrhythmias
+• Hypotension
+• 
+Bronchospasm
+• On monoamine 
+oxidase 
+inhibitor 
+therapy
+• Children <2 
+years old due 
+to possibility 
+central nervous 
+system 
+suppression
+• Allergy 
+ (conjunctivitis, 
+eyelid 
+erythema)
+• Conjunctival 
+hyperaemia
+• Drowsiness
+β-blockers
+Contra-
+indications
+Adverse 
+effects
+Safety
+Profiles
+α2 Adrenergic
+agonists
+• Compromised 
+corneal 
+endothelium
+• Sulfonamide 
+allergy
+• Severe renal 
+impairment
+• Hepatic 
+impairment 
+(caution)
+• Ocular 
+discomfort
+ (stinging, 
+burning, foreign 
+body 
+sensation)
+• Allergy 
+ (conjunctivitis, 
+eyelid 
+erythema)
+• Blurred vision
+• Uveitic, 
+neo-vascular 
+and lens 
+induced 
+glaucoma
+• Aqueous 
+misdirection 
+syndrome
+• Brow ache
+• Dimness of 
+vision
+• Headache
+Topical CAIs
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+CLASSIFICATION OF GLAUCOMA BASED ON ANGLE CONFIGURATIONMANAGEMENT ACUTE ANGLE CLOSURE
+Important risk factors in glaucoma are:
+• age >40 years
+• family history of glaucoma
+• increased IOP
+• refractive error – myopia in POAG & hyperopia in Primary
+ Angle Closure Disease
+• diabetes mellitus
+• POAG = primary open angle glaucoma
+• OHT    = ocular hypertension
+• NTG    = normal tension glaucoma
+• PAC    = primary angle closure
+• PACG = primary angle closure glaucoma
+Open 
+Primary 
+OHT 
+Secondary 
+Close/Narrow 
+Primary 
+PAC suspect 
+PAC 
+PACG 
+Secondary 
+Angle
+Configuration
+POAG
+suspect
+POAG
+NTG
+Medical therapy to break attack
+and prepare patient for LPI
+Prompt LPI  ALPI
+NO 
+YES
+ 
+Patent iridotomy
+ 
+IOP controlled
+View 
+clear 
+Patient with AAC
+Compression
+or ALPI
+to clear the view
+Evidence for
+secondary cause
+of AAC crisis
+Definite evidence
+for PAC mechanism
+of AAC
+Treat pathology of
+secondary AAC and
+lower IOP medically
+or surgically
+Unsuccessful
+or not possible
+Unsuccessful
+or not possible Schedule
+iridotomy in
+fellow eye if
+chamber angle
+is anatomically
+similar
+Surgical iridectomy
+or cataract surgery
+± goniosynechialysis
+or trabeculectomy
+Follow-up with dark room
+gonioscopy to assess adequacy
+of angle opening
+• Dark room gonioscopy to assess 
+ other mechanism of angle closure
+• Ascertain continued patency of 
+ the iridotomy
+• Further medical and surgical 
+ treatment to lower IOP
+IOP uncontrolled
+AAC  = acute angle closure
+LPI    = laser peripheral iridotomy
+ALPI  = argon laser peripheral 
+  iridoplasty
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+CLASSIFICATION OF PRIMARY ANGLE CLOSURE SUSPECT/
+PRIMARY ANGLE CLOSURE/
+ PRIMARY ANGLE CLOSURE GLAUCOMA
+CLASSIFICATION OF PRIMARY OPEN ANGLE GLAUCOMA/
+OCULAR HYPERTENSION/
+PRIMARY OPEN ANGLE GLAUCOMA SUSPECT 
+ITC      = iridotrabecular contact
+PAS     = peripheral anterior synechiae
+PACS  = primary angle closure suspect
+PAC     = primary angle closure
+ 
+ 
+Any 
+ 
+High IOP Normal IOP 
+  
+Normal/suspicious*
+Suspicious
+IOP
+ONH/RNFL
+VF
+Assessment
+POAG suspect POAG
+POAG
+OHT
+POAG
+suspectOHT
+Any>21 mmHg
+Normal
+Normal
+Damage
+Defects
+ITC
+IOP
+ONH
+VF
+Assessment
+PACGPACPACS
+Yes
+(appositional)
+Normal
+Normal
+Normal
+Yes
+(PAS)
+>21 mmHg
+Normal/
+suspicious*
+Normal
+Yes
+(PAS)
+>21 mmHg
+Damage
+Defects
+*ONH and/or peripapillary RNFL appearance and VF changes are suggestive of, but 
+not definitive for glaucoma
+ONH    = optic nerve head
+RNFL   = retinal nerve fiber layer
+VF        = visual field
+*ONH and/or peripapillary RNFL appearance is suggestive of, but not definitive for 
+glaucoma
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+CLASSIFICATION OF PRIMARY ANGLE CLOSURE SUSPECT/
+PRIMARY ANGLE CLOSURE/
+ PRIMARY ANGLE CLOSURE GLAUCOMA
+CLASSIFICATION OF PRIMARY OPEN ANGLE GLAUCOMA/
+OCULAR HYPERTENSION/
+PRIMARY OPEN ANGLE GLAUCOMA SUSPECT 
+ITC      = iridotrabecular contact
+PAS     = peripheral anterior synechiae
+PACS  = primary angle closure suspect
+PAC     = primary angle closure
+ 
+ 
+Any 
+ 
+High IOP Normal IOP 
+  
+Normal/suspicious*
+Suspicious
+IOP
+ONH/RNFL
+VF
+Assessment
+POAG suspect POAG
+POAG
+OHT
+POAG
+suspectOHT
+Any>21 mmHg
+Normal
+Normal
+Damage
+Defects
+ITC
+IOP
+ONH
+VF
+Assessment
+PACGPACPACS
+Yes
+(appositional)
+Normal
+Normal
+Normal
+Yes
+(PAS)
+>21 mmHg
+Normal/
+suspicious*
+Normal
+Yes
+(PAS)
+>21 mmHg
+Damage
+Defects
+*ONH and/or peripapillary RNFL appearance and VF changes are suggestive of, but 
+not definitive for glaucoma
+ONH    = optic nerve head
+RNFL   = retinal nerve fiber layer
+VF        = visual field
+*ONH and/or peripapillary RNFL appearance is suggestive of, but not definitive for 
+glaucoma
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+CLASSIFICATION OF GLAUCOMA BASED ON ANGLE CONFIGURATIONMANAGEMENT ACUTE ANGLE CLOSURE
+Important risk factors in glaucoma are:
+• age >40 years
+• family history of glaucoma
+• increased IOP
+• refractive error – myopia in POAG & hyperopia in Primary
+ Angle Closure Disease
+• diabetes mellitus
+• POAG = primary open angle glaucoma
+• OHT    = ocular hypertension
+• NTG    = normal tension glaucoma
+• PAC    = primary angle closure
+• PACG = primary angle closure glaucoma
+Open 
+Primary 
+OHT 
+Secondary 
+Close/Narrow 
+Primary 
+PAC suspect 
+PAC 
+PACG 
+Secondary 
+Angle
+Configuration
+POAG
+suspect
+POAG
+NTG
+Medical therapy to break attack
+and prepare patient for LPI
+Prompt LPI  ALPI
+NO 
+YES
+ 
+Patent iridotomy
+ 
+IOP controlled
+View 
+clear 
+Patient with AAC
+Compression
+or ALPI
+to clear the view
+Evidence for
+secondary cause
+of AAC crisis
+Definite evidence
+for PAC mechanism
+of AAC
+Treat pathology of
+secondary AAC and
+lower IOP medically
+or surgically
+Unsuccessful
+or not possible
+Unsuccessful
+or not possible Schedule
+iridotomy in
+fellow eye if
+chamber angle
+is anatomically
+similar
+Surgical iridectomy
+or cataract surgery
+± goniosynechialysis
+or trabeculectomy
+Follow-up with dark room
+gonioscopy to assess adequacy
+of angle opening
+• Dark room gonioscopy to assess 
+ other mechanism of angle closure
+• Ascertain continued patency of 
+ the iridotomy
+• Further medical and surgical 
+ treatment to lower IOP
+IOP uncontrolled
+AAC  = acute angle closure
+LPI    = laser peripheral iridotomy
+ALPI  = argon laser peripheral 
+  iridoplasty
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+CLASSIFICATION OF GLAUCOMA BASED ON ANGLE CONFIGURATIONMANAGEMENT ACUTE ANGLE CLOSURE
+Important risk factors in glaucoma are:
+• age >40 years
+• family history of glaucoma
+• increased IOP
+• refractive error – myopia in POAG & hyperopia in Primary
+ Angle Closure Disease
+• diabetes mellitus
+• POAG = primary open angle glaucoma
+• OHT    = ocular hypertension
+• NTG    = normal tension glaucoma
+• PAC    = primary angle closure
+• PACG = primary angle closure glaucoma
+Open 
+Primary 
+OHT 
+Secondary 
+Close/Narrow 
+Primary 
+PAC suspect 
+PAC 
+PACG 
+Secondary 
+Angle
+Configuration
+POAG
+suspect
+POAG
+NTG
+Medical therapy to break attack
+and prepare patient for LPI
+Prompt LPI  ALPI
+NO 
+YES
+ 
+Patent iridotomy
+ 
+IOP controlled
+View 
+clear 
+Patient with AAC
+Compression
+or ALPI
+to clear the view
+Evidence for
+secondary cause
+of AAC crisis
+Definite evidence
+for PAC mechanism
+of AAC
+Treat pathology of
+secondary AAC and
+lower IOP medically
+or surgically
+Unsuccessful
+or not possible
+Unsuccessful
+or not possible Schedule
+iridotomy in
+fellow eye if
+chamber angle
+is anatomically
+similar
+Surgical iridectomy
+or cataract surgery
+± goniosynechialysis
+or trabeculectomy
+Follow-up with dark room
+gonioscopy to assess adequacy
+of angle opening
+• Dark room gonioscopy to assess 
+ other mechanism of angle closure
+• Ascertain continued patency of 
+ the iridotomy
+• Further medical and surgical 
+ treatment to lower IOP
+IOP uncontrolled
+AAC  = acute angle closure
+LPI    = laser peripheral iridotomy
+ALPI  = argon laser peripheral 
+  iridoplasty
+2 7
+1. Glaucoma is a chronic eye disease that damages the optic nerve, & can result in 
+serious vision loss and irreversible blindness.
+2. Glaucoma diagnosis should be made based on combination of history, ocular 
+examination & investigation.
+3. Risk factors should be identified in the management of glaucoma.
+4. Medical treatment in glaucoma should be individualised based on patient’s 
+characteristics & drug factors, & adjusted according to target intraocular pressure 
+(IOP).
+5. Prostaglandin analogues should be used as first-line treatment in glaucoma.
+6. Patient education should be given to patients with glaucoma. This includes benefits 
+& side effects of treatment, proper instillation technique of eye drop & compliance 
+to treatment.
+7. Laser iridotomy should be performed in primary angle closure disease when 
+indicated.
+8. Peripheral iridoplasty may be considered for initial treatment in acute angle closure.
+9. Intraoperative Mitomycin C during trabeculectomy should be used in glaucoma 
+patients at risk of surgical failure.
+10. Glaucoma patients with blindness or low vision should be referred for vision 
+rehabilitation which includes vocational, occupational & independent living.
+KEY MESSAGES
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Glaucoma (Second Edition). 
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia  : www.moh.gov.my
+Academy of Medicine Malaysia  : www.acadmed.org.my
+Malaysian Society of Ophthalmology : www.mso.org.my
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-8883 1229
+E-mail: htamalaysia@moh.gov.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+● Medical treatment is the initial treatment of choice in glaucoma. It includes the 
+use of topical and systemic anti-glaucoma medications that lowers the IOP.
+● Choose medication(s) that:
+○ provides greatest IOP lowering effects to achieve target IOP
+○ has the best safety profiles e.g. least side effects, good tolerability, etc.
+○ enhances compliance e.g. simple dosing regimen, minimal disruption to 
+quality of life, etc.
+○ is available and affordable 
+● Laser treatment is indicated when medical therapy fails, as an adjunct or as a 
+primary treatment where appropriate. 
+● Surgery is indicated in glaucoma when the target IOP cannot be reached 
+despite maximal medical therapy or when there is intolerance or 
+non-compliance to medical therapy.
+• Treatment is considered effective
+ when the individual target IOP is achieved and 
+there is no evidence of progression.
+TREATMENT
+SAFETY PROFILES OF TOPICAL ANTI-GLAUCOMA MEDICATIONS
+Relative 
+contra-
+indications:
+• Uveitis
+• Herpes 
+Simplex Viral 
+keratitis
+• Cystoid 
+macular 
+oedema
+Caution:
+• Complicated 
+intraocular 
+surgery (e.g. 
+posterior 
+capsule 
+rupture)
+• Conjunctival 
+hyperaemia 
+(usually 
+transient and 
+noninfectious)
+• Hyper-
+ trichosis
+• Eyelid skin 
+darkening
+Prostaglandin
+Analogues/
+Prostamides
+Cholinergic
+agents
+(direct-acting)
+• Bronchial 
+asthma, 
+chronic 
+obstructive 
+pulmonary 
+disease
+• Bradycardia, 
+heart block, 
+cardiac failure
+Relative  contra-
+indication for β1 
+selective
+• Brady-
+ arrhythmias
+• Hypotension
+• 
+Bronchospasm
+• On monoamine 
+oxidase 
+inhibitor 
+therapy
+• Children <2 
+years old due 
+to possibility 
+central nervous 
+system 
+suppression
+• Allergy 
+ (conjunctivitis, 
+eyelid 
+erythema)
+• Conjunctival 
+hyperaemia
+• Drowsiness
+β-blockers
+Contra-
+indications
+Adverse 
+effects
+Safety
+Profiles
+α2 Adrenergic
+agonists
+• Compromised 
+corneal 
+endothelium
+• Sulfonamide 
+allergy
+• Severe renal 
+impairment
+• Hepatic 
+impairment 
+(caution)
+• Ocular 
+discomfort
+ (stinging, 
+burning, foreign 
+body 
+sensation)
+• Allergy 
+ (conjunctivitis, 
+eyelid 
+erythema)
+• Blurred vision
+• Uveitic, 
+neo-vascular 
+and lens 
+induced 
+glaucoma
+• Aqueous 
+misdirection 
+syndrome
+• Brow ache
+• Dimness of 
+vision
+• Headache
+Topical CAIs
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GLAUCOMA (SECOND EDITION)
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+Follow-up schedule for patients with glaucoma based on the target IOP and 
+disease progression (refer to table below). However, it should be individualised 
+according to the severity of disease and risk factors.
+MONITORING
+• Patients with glaucoma require life-long treatment and monitoring. 
+• Adjustment of treatment and target IOP depends on the evaluation of glaucoma  
+progression. 
+• It is important to assess both optic nerve structure and function in detecting 
+progression.
+REFERRAL
+• Indications for referral are as follows: 
+○ acute angle closure (immediate referral)
+○ confirmation of diagnosis 
+○ progression of disease 
+○ issues related to medical treatment:
+- side effects
+- requirement of ≥2 medications
+- poor compliance or adherence
+○ uncontrolled IOP despite maximum medical treatment requiring laser or 
+surgical intervention
+FOLLOW-UP
+Diagnosis Follow-up schedule 
+Ocular Hypertension Refer to Subchapter 10.1 in CPG 
+POAG suspect Refer to Subchapter 10.2 in CPG 
+POAG and PACG Target IOP achieved:                                                  
+No   : 1 - 2 months        
+Yes : 6 - 12 months 
+       
+Disease progression (structural and functional):            
+Yes : 3 - 6 months      
+No   : 6 - 12 months     
+Printing of this Quick Reference was funded by an unrestricted grant from the 
+Malaysian Society of Ophthalmology.

@@ -1,0 +1,785 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+REFERRAL CRITERIA
+MONITORING IN PRIMARY CARE SETTINGS
+Type of referral Polycythaemia Thrombocytosis Anaemia
+• Extreme raised Hct >60%
+• Persistently raised Hct  
+ >49% in association with  
+ recent arterial or venous  
+ thrombosis, neurological  
+ symptoms, visual loss or  
+ abnormal bleeding
+• Elevated Hct (male >49%,  
+ female >48%) in   
+ association with past   
+ history of arterial or   
+ venous thrombosis,   
+ splenomegaly, pruritus,  
+ elevated white blood cell  
+ (WBC) or platelet counts
+• Persistent (>3 months)  
+ unexplained elevated Hct  
+ (male >49%, female >48%)
+Urgent
+Non-urgent
+• Platelet count >1,000  
+ x 109/L
+• Platelet count 600 -  
+ 1,000 x 109/L in  
+ association with  
+ recent arterial or  
+ venous thrombosis,  
+ neurological  
+ symptoms or new  
+ abnormal bleeding
+• Persistent (i.e. lasting  
+ >6 months),  
+ unexplained  
+ thrombocytosis 
+ >450 x 109/L
+• Unexplained  
+ progressive  
+ symptomatic  
+ anaemia
+• Anaemia in  
+ association with  
+ splenomegaly,  
+ lymphadenopathy  
+ or other   
+ cytopaenias
+• Persistent  
+ unexplained  
+ anaemia
+Polycythaemia Thrombocytosis Anaemia
+• Serial full blood counts  
+ (FBC) (non-fasting blood  
+ samples with patient   
+ in well-hydrated state)
+• FBP - indicated for   
+ Hct >52% (males) or   
+ >49% (females) on   
+ second presentation
+• Modify known   
+ associated lifestyle   
+ factors: smoking,   
+ alcohol, diuretics and   
+ SGLT2 inhibitors
+• Screen for diabetes   
+ mellitus
+• FBP - indicated for   
+ persistently elevated   
+ platelet count >450 x   
+ 109/L (for ≥6 months)
+• Investigate and treat   
+ secondary causes:
+ ○ Ferritin and iron   
+  studies - iron   
+  deficiency
+ ○ Elevated CRP/ESR  
+  - reactive thrombocytosis
+ ○ Rule out infection,   
+  inflammation or   
+  neoplasia
+• Detailed history - focus on  
+ duration, symptoms,   
+ bleeding, diet, drug and  
+ family history
+• FBP and reticulocyte count
+• FBP - indicated for:
+ ○ first Hb <8.5 g/dL   
+ OR
+ ○ Hb <10g/dL if RDW  
+  >17% in the presence  
+  of reticulocytosis
+• Ferritin, B12 and folate,  
+ serum iron, TIBC,   
+ transferrin saturation (this  
+ will be more informative  
+ than ferritin if there is an  
+ inflammatory component)
+• Serum immunoglobulins  
+ and protein electrophoresis
+• Renal and liver biochemistry
+• Monitor FBC for evidence  
+ of progression over time
+2025
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+M A N A G EM EN T  O F
+M Y ELO P R O LIFER A TIV E
+N EO P LA S M S
+(S EC O N D  ED ITIO N )
+Malaysian Society of Haematology
+Ministry of Health Malaysia
+Academy of Medicine of Malaysia
+2025
+2 7
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+TREATMENT FOR PREGNANT WOMEN WITH MPNs
+1. Myeloproliferative neoplasms (MPNs) are characterised by clonal 
+expansion of haematopoietic  stem cells leading to increased production of 
+one or more blood cells lineages; BCR::ABL1-negative MPNs includes 
+essential thrombocythaemia (ET), polycythaemia vera (PV) and primary 
+myelofibrosis (PMF).
+2. Diagnostic criteria for MPNs should fulfil the requirement of the World 
+Health Organization (WHO) 2022 classification.
+3. Molecular test for JAK2 V617F should be performed at diagnosis on all 
+patients suspected with MPNs.
+4. Risk stratification should be performed upon diagnosis of MPNs subtypes 
+prior to initiation of treatment.
+5. Phlebotomy should be considered in patients with PV.
+6. In terms of pharmacological treatment in MPNs:
+• Aspirin should be given to all ET and PV patients unless contraindicated.
+• Hydroxyurea (HU) should be used as the first-line treatment; alternatives 
+may include Janus kinase (JAK) inhibitors and interferons (IFNs) in the 
+event of HU intolerance or resistance.
+• Ruxolitinib should be considered in treating intermediate- and high-risk 
+myelofibrosis (MF).
+7. Allogeneic haematopoietic stem cell transplant may be considered for 
+intermediate and high-risk MF patients.
+8. A multidisciplinary approach should be implemented throughout antenatal 
+care of women with MPNs. 
+9. Timely referral to haematologists is crucial for optimal management and 
+outcomes for patients with MPN.
+10. Monitoring is crucial in managing disease progression, evaluating 
+treatment effectiveness and enhancing outcomes of MPN patients; this is 
+done through a combination of clinical, haematological, molecular and 
+radiological assessments.
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management 
+of Myeloproliferative Neoplasms (Second Edition).
+Details of the evidence supporting these recommendations can be found 
+in the above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+• Previous history of 
+ arterial thrombosis
+ due to PV
+• Commence IFN
+• Prophylactic dose
+ low molecular weight
+ heparin (LMWH) twice
+ daily
+• Aspirin
+• Reduce LMWH to 
+ once daily prophylactic
+ dose for 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Previous history of 
+ venous thrombosis due
+ to PV, previous
+ pregnancy complications
+ (>3 first trimester loss,
+ >1 third trimester loss,
+ birth weight <5th centile
+ of gestation, intrauterine
+ death or stillbirth, pre-
+ eclampsia
+• Commence IFN
+• Prophylactic dose 
+ LMWH once daily, then
+ consider to increase
+ the dose twice daily
+ from 16 weeks onwards
+ until delivery
+• Aspirin from confirmation
+ of pregnancy
+• Commence IFN
+• Addition or continuation
+ of aspirin to be decided
+ on patient-specific basis
+• Continue once daily
+ prophylactic dose
+ LMWH until 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Continue aspirin
+• Once daily prophylactic
+ dose LMWH for 6
+ weeks
+• Decision to continue
+ IFN based on individual
+ patient discussion
+Risk factor Antenatal Post-natal
+High risk pregnancy
+• Previous history of
+ haemorrhage due to
+ PV or significant
+ antepartum or
+ postpartum
+ haemorrhage requiring
+ transfusion
+• Thrombocytosis, platelet
+ count >1500 x 10 9/L
+ before or during
+ pregnancy and/or
+ diabetes mellitus or
+ hypertension requiring
+ pharmacological
+ treatment
+• Commence IFN
+• Continue aspirin
+• Commence aspirin
+• Continue once daily
+ prophylactic dose LMWH
+ until 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Commence once daily
+ prophylactic dose
+ LMWH for 6 weeks
+• Aspirin
+All other pregnancies
+Standard risk pregnancy
+•  All women with MPNs should be given pre-pregnancy counselling prior to 
+conception.
+• All pregnant women with MPNs should be prescribed with aspirin unless 
+contraindicated; its combination  with low molecular weight heparin and/or 
+interferon is preferred in high-risk patients.
+2 7
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+TREATMENT FOR PREGNANT WOMEN WITH MPNs
+1. Myeloproliferative neoplasms (MPNs) are characterised by clonal 
+expansion of haematopoietic  stem cells leading to increased production of 
+one or more blood cells lineages; BCR::ABL1-negative MPNs includes 
+essential thrombocythaemia (ET), polycythaemia vera (PV) and primary 
+myelofibrosis (PMF).
+2. Diagnostic criteria for MPNs should fulfil the requirement of the World 
+Health Organization (WHO) 2022 classification.
+3. Molecular test for JAK2 V617F should be performed at diagnosis on all 
+patients suspected with MPNs.
+4. Risk stratification should be performed upon diagnosis of MPNs subtypes 
+prior to initiation of treatment.
+5. Phlebotomy should be considered in patients with PV.
+6. In terms of pharmacological treatment in MPNs:
+• Aspirin should be given to all ET and PV patients unless contraindicated.
+• Hydroxyurea (HU) should be used as the first-line treatment; alternatives 
+may include Janus kinase (JAK) inhibitors and interferons (IFNs) in the 
+event of HU intolerance or resistance.
+• Ruxolitinib should be considered in treating intermediate- and high-risk 
+myelofibrosis (MF).
+7. Allogeneic haematopoietic stem cell transplant may be considered for 
+intermediate and high-risk MF patients.
+8. A multidisciplinary approach should be implemented throughout antenatal 
+care of women with MPNs. 
+9. Timely referral to haematologists is crucial for optimal management and 
+outcomes for patients with MPN.
+10. Monitoring is crucial in managing disease progression, evaluating 
+treatment effectiveness and enhancing outcomes of MPN patients; this is 
+done through a combination of clinical, haematological, molecular and 
+radiological assessments.
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management 
+of Myeloproliferative Neoplasms (Second Edition).
+Details of the evidence supporting these recommendations can be found 
+in the above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+• Previous history of 
+ arterial thrombosis
+ due to PV
+• Commence IFN
+• Prophylactic dose
+ low molecular weight
+ heparin (LMWH) twice
+ daily
+• Aspirin
+• Reduce LMWH to 
+ once daily prophylactic
+ dose for 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Previous history of 
+ venous thrombosis due
+ to PV, previous
+ pregnancy complications
+ (>3 first trimester loss,
+ >1 third trimester loss,
+ birth weight <5th centile
+ of gestation, intrauterine
+ death or stillbirth, pre-
+ eclampsia
+• Commence IFN
+• Prophylactic dose 
+ LMWH once daily, then
+ consider to increase
+ the dose twice daily
+ from 16 weeks onwards
+ until delivery
+• Aspirin from confirmation
+ of pregnancy
+• Commence IFN
+• Addition or continuation
+ of aspirin to be decided
+ on patient-specific basis
+• Continue once daily
+ prophylactic dose
+ LMWH until 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Continue aspirin
+• Once daily prophylactic
+ dose LMWH for 6
+ weeks
+• Decision to continue
+ IFN based on individual
+ patient discussion
+Risk factor Antenatal Post-natal
+High risk pregnancy
+• Previous history of
+ haemorrhage due to
+ PV or significant
+ antepartum or
+ postpartum
+ haemorrhage requiring
+ transfusion
+• Thrombocytosis, platelet
+ count >1500 x 10 9/L
+ before or during
+ pregnancy and/or
+ diabetes mellitus or
+ hypertension requiring
+ pharmacological
+ treatment
+• Commence IFN
+• Continue aspirin
+• Commence aspirin
+• Continue once daily
+ prophylactic dose LMWH
+ until 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Commence once daily
+ prophylactic dose
+ LMWH for 6 weeks
+• Aspirin
+All other pregnancies
+Standard risk pregnancy
+•  All women with MPNs should be given pre-pregnancy counselling prior to 
+conception.
+• All pregnant women with MPNs should be prescribed with aspirin unless 
+contraindicated; its combination  with low molecular weight heparin and/or 
+interferon is preferred in high-risk patients.
+6 3
+ALGORITHM: DIAGNOSTIC ALGORITHM FOR POLYCYTHAEMIAMEDICATION TABLE
+Abbreviation:
+CML = chronic myeloid leukaemia; CT = computed tomography; g/dL = gram per desilitre; FBP = full 
+blood picture; Hb = haemoglobin; Hct = haematocrit; PB = peripheral blood; USG = ultrasonography
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+Abbreviation: BD = bis in die/ twice daily; mcg = microgram; mg = milligram; OD = omne in die/ once 
+daily; PO = per os/ orally; QID = quarter in die/ four times a day; SC = subcutaneous
+Serum erythropoietin level
+4 5
+LTHCARE PROVIDERS
+ALGORITHM: DIAGNOSTIC ALGORITHM FOR THROMBOCYTOSIS
+RISK STRATIFICATION ALGORITHM: POLYCYTHAEMIA VENESECTION
+Presence of
+symptoms?
+aNeed to exclude patients
+with cyanotic heart disease 
+Presence of
+warning signs?
+Venesectionb
+- daily till
+Hct <45%
+Venesectionb
+- weekly or 2-weekly 
+till Hct <45%
+Consider erythrocytapheresis
+-if not available, for venesectionb
+daily till Hct <45%
+cExample of warning signs:
+• thrombosis
+• priapism
+• pulmonary congestion
+KEY POINTS: 
+ All patients should be on aspirin, caution for patients with acquired von 
+Willebrand syndrome 
+ bTarget of venesection: Hct of 45% (equates to Hb of 15 g/dL) in PV
+ bBlood should be venesected over ≥15 minutes to a maximum of 7 
+mL/kg, i.e. ≈ 400 mL in <60 kg, ≈ 500 mL in 70 kg, ≈ 650mL in 90 kg 
+using likely lean body weight.
+No
+No
+Yes
+Yes
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+Patient diagnosed with
+polycythaemiaa
+4 5
+LTHCARE PROVIDERS
+ALGORITHM: DIAGNOSTIC ALGORITHM FOR THROMBOCYTOSIS
+RISK STRATIFICATION ALGORITHM: POLYCYTHAEMIA VENESECTION
+Presence of
+symptoms?
+aNeed to exclude patients
+with cyanotic heart disease 
+Presence of
+warning signs?
+Venesectionb
+- daily till
+Hct <45%
+Venesectionb
+- weekly or 2-weekly 
+till Hct <45%
+Consider erythrocytapheresis
+-if not available, for venesectionb
+daily till Hct <45%
+cExample of warning signs:
+• thrombosis
+• priapism
+• pulmonary congestion
+KEY POINTS: 
+ All patients should be on aspirin, caution for patients with acquired von 
+Willebrand syndrome 
+ bTarget of venesection: Hct of 45% (equates to Hb of 15 g/dL) in PV
+ bBlood should be venesected over ≥15 minutes to a maximum of 7 
+mL/kg, i.e. ≈ 400 mL in <60 kg, ≈ 500 mL in 70 kg, ≈ 650mL in 90 kg 
+using likely lean body weight.
+No
+No
+Yes
+Yes
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+Patient diagnosed with
+polycythaemiaa
+4 5
+LTHCARE PROVIDERS
+ALGORITHM: DIAGNOSTIC ALGORITHM FOR THROMBOCYTOSIS
+RISK STRATIFICATION ALGORITHM: POLYCYTHAEMIA VENESECTION
+Presence of
+symptoms?
+aNeed to exclude patients
+with cyanotic heart disease 
+Presence of
+warning signs?
+Venesectionb
+- daily till
+Hct <45%
+Venesectionb
+- weekly or 2-weekly 
+till Hct <45%
+Consider erythrocytapheresis
+-if not available, for venesectionb
+daily till Hct <45%
+cExample of warning signs:
+• thrombosis
+• priapism
+• pulmonary congestion
+KEY POINTS: 
+ All patients should be on aspirin, caution for patients with acquired von 
+Willebrand syndrome 
+ bTarget of venesection: Hct of 45% (equates to Hb of 15 g/dL) in PV
+ bBlood should be venesected over ≥15 minutes to a maximum of 7 
+mL/kg, i.e. ≈ 400 mL in <60 kg, ≈ 500 mL in 70 kg, ≈ 650mL in 90 kg 
+using likely lean body weight.
+No
+No
+Yes
+Yes
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+Patient diagnosed with
+polycythaemiaa
+6 3
+ALGORITHM: DIAGNOSTIC ALGORITHM FOR POLYCYTHAEMIAMEDICATION TABLE
+Abbreviation:
+CML = chronic myeloid leukaemia; CT = computed tomography; g/dL = gram per desilitre; FBP = full 
+blood picture; Hb = haemoglobin; Hct = haematocrit; PB = peripheral blood; USG = ultrasonography
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+Abbreviation: BD = bis in die/ twice daily; mcg = microgram; mg = milligram; OD = omne in die/ once 
+daily; PO = per os/ orally; QID = quarter in die/ four times a day; SC = subcutaneous
+Serum erythropoietin level
+6 3
+ALGORITHM: DIAGNOSTIC ALGORITHM FOR POLYCYTHAEMIAMEDICATION TABLE
+Abbreviation:
+CML = chronic myeloid leukaemia; CT = computed tomography; g/dL = gram per desilitre; FBP = full 
+blood picture; Hb = haemoglobin; Hct = haematocrit; PB = peripheral blood; USG = ultrasonography
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+Abbreviation: BD = bis in die/ twice daily; mcg = microgram; mg = milligram; OD = omne in die/ once 
+daily; PO = per os/ orally; QID = quarter in die/ four times a day; SC = subcutaneous
+Serum erythropoietin level
+2 7
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+TREATMENT FOR PREGNANT WOMEN WITH MPNs
+1. Myeloproliferative neoplasms (MPNs) are characterised by clonal 
+expansion of haematopoietic  stem cells leading to increased production of 
+one or more blood cells lineages; BCR::ABL1-negative MPNs includes 
+essential thrombocythaemia (ET), polycythaemia vera (PV) and primary 
+myelofibrosis (PMF).
+2. Diagnostic criteria for MPNs should fulfil the requirement of the World 
+Health Organization (WHO) 2022 classification.
+3. Molecular test for JAK2 V617F should be performed at diagnosis on all 
+patients suspected with MPNs.
+4. Risk stratification should be performed upon diagnosis of MPNs subtypes 
+prior to initiation of treatment.
+5. Phlebotomy should be considered in patients with PV.
+6. In terms of pharmacological treatment in MPNs:
+• Aspirin should be given to all ET and PV patients unless contraindicated.
+• Hydroxyurea (HU) should be used as the first-line treatment; alternatives 
+may include Janus kinase (JAK) inhibitors and interferons (IFNs) in the 
+event of HU intolerance or resistance.
+• Ruxolitinib should be considered in treating intermediate- and high-risk 
+myelofibrosis (MF).
+7. Allogeneic haematopoietic stem cell transplant may be considered for 
+intermediate and high-risk MF patients.
+8. A multidisciplinary approach should be implemented throughout antenatal 
+care of women with MPNs. 
+9. Timely referral to haematologists is crucial for optimal management and 
+outcomes for patients with MPN.
+10. Monitoring is crucial in managing disease progression, evaluating 
+treatment effectiveness and enhancing outcomes of MPN patients; this is 
+done through a combination of clinical, haematological, molecular and 
+radiological assessments.
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management 
+of Myeloproliferative Neoplasms (Second Edition).
+Details of the evidence supporting these recommendations can be found 
+in the above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+• Previous history of 
+ arterial thrombosis
+ due to PV
+• Commence IFN
+• Prophylactic dose
+ low molecular weight
+ heparin (LMWH) twice
+ daily
+• Aspirin
+• Reduce LMWH to 
+ once daily prophylactic
+ dose for 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Previous history of 
+ venous thrombosis due
+ to PV, previous
+ pregnancy complications
+ (>3 first trimester loss,
+ >1 third trimester loss,
+ birth weight <5th centile
+ of gestation, intrauterine
+ death or stillbirth, pre-
+ eclampsia
+• Commence IFN
+• Prophylactic dose 
+ LMWH once daily, then
+ consider to increase
+ the dose twice daily
+ from 16 weeks onwards
+ until delivery
+• Aspirin from confirmation
+ of pregnancy
+• Commence IFN
+• Addition or continuation
+ of aspirin to be decided
+ on patient-specific basis
+• Continue once daily
+ prophylactic dose
+ LMWH until 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Continue aspirin
+• Once daily prophylactic
+ dose LMWH for 6
+ weeks
+• Decision to continue
+ IFN based on individual
+ patient discussion
+Risk factor Antenatal Post-natal
+High risk pregnancy
+• Previous history of
+ haemorrhage due to
+ PV or significant
+ antepartum or
+ postpartum
+ haemorrhage requiring
+ transfusion
+• Thrombocytosis, platelet
+ count >1500 x 10 9/L
+ before or during
+ pregnancy and/or
+ diabetes mellitus or
+ hypertension requiring
+ pharmacological
+ treatment
+• Commence IFN
+• Continue aspirin
+• Commence aspirin
+• Continue once daily
+ prophylactic dose LMWH
+ until 6 weeks
+• Aspirin
+• Decision to continue
+ IFN based on individual
+ patient discussion
+• Commence once daily
+ prophylactic dose
+ LMWH for 6 weeks
+• Aspirin
+All other pregnancies
+Standard risk pregnancy
+•  All women with MPNs should be given pre-pregnancy counselling prior to 
+conception.
+• All pregnant women with MPNs should be prescribed with aspirin unless 
+contraindicated; its combination  with low molecular weight heparin and/or 
+interferon is preferred in high-risk patients.
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MYELOPROLIFERATIVE NEOPLASMS (SECOND EDITION)
+REFERRAL CRITERIA
+MONITORING IN PRIMARY CARE SETTINGS
+Type of referral Polycythaemia Thrombocytosis Anaemia
+• Extreme raised Hct >60%
+• Persistently raised Hct  
+ >49% in association with  
+ recent arterial or venous  
+ thrombosis, neurological  
+ symptoms, visual loss or  
+ abnormal bleeding
+• Elevated Hct (male >49%,  
+ female >48%) in   
+ association with past   
+ history of arterial or   
+ venous thrombosis,   
+ splenomegaly, pruritus,  
+ elevated white blood cell  
+ (WBC) or platelet counts
+• Persistent (>3 months)  
+ unexplained elevated Hct  
+ (male >49%, female >48%)
+Urgent
+Non-urgent
+• Platelet count >1,000  
+ x 109/L
+• Platelet count 600 -  
+ 1,000 x 109/L in  
+ association with  
+ recent arterial or  
+ venous thrombosis,  
+ neurological  
+ symptoms or new  
+ abnormal bleeding
+• Persistent (i.e. lasting  
+ >6 months),  
+ unexplained  
+ thrombocytosis 
+ >450 x 109/L
+• Unexplained  
+ progressive  
+ symptomatic  
+ anaemia
+• Anaemia in  
+ association with  
+ splenomegaly,  
+ lymphadenopathy  
+ or other   
+ cytopaenias
+• Persistent  
+ unexplained  
+ anaemia
+Polycythaemia Thrombocytosis Anaemia
+• Serial full blood counts  
+ (FBC) (non-fasting blood  
+ samples with patient   
+ in well-hydrated state)
+• FBP - indicated for   
+ Hct >52% (males) or   
+ >49% (females) on   
+ second presentation
+• Modify known   
+ associated lifestyle   
+ factors: smoking,   
+ alcohol, diuretics and   
+ SGLT2 inhibitors
+• Screen for diabetes   
+ mellitus
+• FBP - indicated for   
+ persistently elevated   
+ platelet count >450 x   
+ 109/L (for ≥6 months)
+• Investigate and treat   
+ secondary causes:
+ ○ Ferritin and iron   
+  studies - iron   
+  deficiency
+ ○ Elevated CRP/ESR  
+  - reactive thrombocytosis
+ ○ Rule out infection,   
+  inflammation or   
+  neoplasia
+• Detailed history - focus on  
+ duration, symptoms,   
+ bleeding, diet, drug and  
+ family history
+• FBP and reticulocyte count
+• FBP - indicated for:
+ ○ first Hb <8.5 g/dL   
+ OR
+ ○ Hb <10g/dL if RDW  
+  >17% in the presence  
+  of reticulocytosis
+• Ferritin, B12 and folate,  
+ serum iron, TIBC,   
+ transferrin saturation (this  
+ will be more informative  
+ than ferritin if there is an  
+ inflammatory component)
+• Serum immunoglobulins  
+ and protein electrophoresis
+• Renal and liver biochemistry
+• Monitor FBC for evidence  
+ of progression over time
+2025
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+M A N A G EM EN T  O F
+M Y ELO P R O LIFER A TIV E
+N EO P LA S M S
+(S EC O N D  ED ITIO N )
+Malaysian Society of Haematology
+Ministry of Health Malaysia
+Academy of Medicine of Malaysia
+2025

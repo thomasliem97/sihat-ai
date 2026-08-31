@@ -1,0 +1,746 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MANAGEMENT OF
+TYPE 1 DIABETES MELLITUS IN
+CHILDREN & ADOLESCENTS
+Academy of
+Medicine Malaysia
+Malaysian Paediatric
+Association
+Malaysian Endocrine &
+Metabolic Society
+Ministry of Health
+Malaysia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+ 
+Cisplatin
+Carboplatin
+Fluorouracil
+Docetaxel
+• Nausea and vomiting
+• Myelosuppression
+• Renal toxicity
+• Electrolyte imbalance (hypomagnesaemia,        
+ hypocalcaemia, hypokalaemia)
+• Auditory (tinnitus; with or without hearing loss)
+• Myelosuppression
+• Nausea and vomiting
+• Hypersensitivity reaction
+• Alopecia
+• Diarrhoea and stomatitis
+• Myelosuppression
+• Angina, myocardial infarction, arrhythmia, acute    
+ pulmonary oedema (special precaution)
+• Alopecia
+• Myelosuppression
+• Fluid retention
+• Alopecia, cutaneous reaction, nails changes
+• Stomatitis, diarrhoea, nausea and vomiting
+• Hypersensitivity reaction
+CHEMOTHERAPY
+DRUGS
+COMMON SIDE EFFECTS
+CHEMOTHERAPY DRUGS AND COMMON SIDE EFFECTS
+Ministry of Health
+Malaysia
+Malaysian Society of Otorhinolaryngologist
+- Head & Neck Surgeons (MSO-HNS)
+Academy of
+Medicine Malaysia
+MANAGEMENT OF
+NASOPHARYNGEAL
+CARCINOMA
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+2 7
+ALGORITHM B : MANAGEMENT OF PERSISTENT DISEASE
+OR RECURRENT NASOPHARYNGEAL CARCINOMA1. In Malaysia, nasopharyngeal carcinoma (NPC) is the fourth most common cancer. 
+NPC is predominant among Chinese, followed by natives of Sabah and Sarawak 
+(especially Bidayuh) and Malay. 
+2. Tobacco smoking is one of the important risk factors for NPC.
+3. NPC is usually diagnosed late due to trivial presentation which leads to poor 
+survival outcome.
+4. In patients presenting with cervical lymphadenopathy, full head and neck 
+assessment and fine needle aspiration cytological examination of the nodes should 
+be done.
+5. NPC should be diagnosed by histopathological examination of the nasopharynx. 
+6. Staging of NPC is by using the tumour node metastasis (TNM) system American 
+Joint Committee on Cancer or AJCC Cancer Staging Manual 2010 (7th Edition).
+7. Primary treatment for NPC is radiotherapy. Intensity modulated radiotherapy is the 
+preferred radiation technique. 
+8. Concurrent chemoradiotherapy should be offered in Stage II, III, IVA and IVB.
+9. In recurrent NPC, nasopharyngectomy or re-irradiation may be offered.
+10. Multimodality treatment including dental, supportive and palliative care should be 
+considered in the management of NPC.
+KEY MESSAGES
+This Quick Reference provides key messages and a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Nasopharyngeal Carcinoma.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia : www.moh.gov.my
+Academy of Medicine Malaysia : www.acadmed.org.my
+Malaysian Society of Otorhinolaryngologists :www.msohns.com 
+Head & Neck Surgeons
+Also available as a mobile app for Android & IOS platform: MyMaHTAS
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Health Technology Assessment Section
+Medical Development Division, Ministry of Health Malaysia
+4th Floor, Block E1, Parcel E, 62590 Putrajaya
+Tel: 603-8883 1229 E-mail: htamalaysia@moh.gov.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016 QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+Options include:
+•  Nasopharyngectomy
+ OR
+•  Re-irradiation with external 
+beam RT or brachytherapy
+•  Consider clinical trial if 
+available
+•  Palliative chemotherapy to 
+be considered in patients 
+with good ECOG 
+performance status (0-2)
+•  RT to palliate symptoms
+•  Referral to palliative
+ care/ palliative home care
+Options include:
+• Neck dissection 
+• Re-irradiation
+• Chemotherapy
+Follow-up and Surveillance
+•  Multidisciplinary team involvement (ENT specialist, oncologist, speech therapist, audiologist, etc)
+•  Head & neck and systemic examination (including nasopharyngoscopy):
+•  Cross-sectional imaging in the initial 5 years
+•  Speech/swallowing assessment as clinically indicated
+•  Hearing evaluation & rehabilitation as clinically indicated
+•  Post-treatment dental management every 3 to 4 months by trained and experienced dental 
+specialist
+•  Weight assessment on follow-up
+•  Annual thyroid function test (TFT) screening
+Local disease Distant disease Regional disease  
+• Restage to assess recurrent or persistent disease – MRI or CT scan and PET/CT 
+scan
+•  Biopsy of recurrent lesion(s), as clinically indicated
+•  Treatment should be individualised based on patient performance status and extent  
+ of disease
+Year Intervals 
+First year Every 1 to 2 months 
+Second year Every 2 to 3 months 
+Third year Every 3 to 5 months 
+Fourth to fifth year Every 6 months 
+After fifth year Every 6 to 12 months 
+6 3
+CLINICAL PRESENTATIONS AND REFERRALALGORITHM A : MANAGEMENT OF NASOPHARYNGEAL CARCINOMA
+• Patients presenting with any of the following symptoms should be referred to 
+Otorhinolaryngologists as soon as possible to rule out NPC :
+○ painless neck lump (unilateral/bilateral)
+○ blood-stained nasal discharge/saliva 
+○ unilateral ear block or hearing loss
+○ headache
+○ facial numbness 
+○ diplopia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016 QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+NPC with ophthalmoplegia
+RISK FACTORS OF NASOPHARYNGEAL CARCINOMA
+• Ethnicity (especially Chinese and natives of Sabah & Sarawak)
+• Gender (male to female ratio is 3:1)
+• Family history of NPC
+• Lifestyle and environment
+○ Tobacco smoking
+○ Consumption of salted fish
+○ Exposure to domestic wood cooking fires 
+○ Exposure to occupational solvents 
+○ Occupational exposure to wood dust
+   
+• History taking 
+• Complete physical examination 
+• Nasopharyngeal examination & biopsy 
+• +/- FNAC of regional lymph nodes
+• Baseline investigations (FBC, renal profile, random blood sugar, liver   
+function test, chest X-ray and electrocardiogram)
+• MRI of nasopharynx & neck (from base of skull to thoracic inlet) or CT   
+with contrast
+• PET-CT or CT thorax/abdomen or ultrasound and bone scan, as indicated
+• Pre-treatment dental assessment
+• Nutritional evaluation
+Determine disease stage
+Stage I (T1N0M0)
+Treatment with definitive 
+radiotherapy (RT) to nasopharynx 
+& elective RT to neck
+•  Definitive RT:-
+  Primary site: total of 66-70 Gy 
+for 33-35 fractions, treated 
+one fraction/day for 6-7 
+weeks (1.8-2.0 Gy/fraction)
+  Prophylactic neck: 54-60 Gy 
+for 30 fractions, treated one 
+fraction/day for 6 weeks 
+(1.8- 2.0 Gy/fraction)
+•  IMRT recommended to 
+minimise dose to critical 
+structure
+Stage IVC (distant 
+metastasis)
+Palliative treatment
+•  Consider clinical trial if 
+available
+•  Palliative chemotherapy to 
+be considered in patients 
+with good ECOG 
+performance status (0-2)
+•  RT to palliate symptoms
+•  Referral to palliative care/ 
+palliative home care
+Stage II, III, IVA and IVB
+Concurrent chemoradiotherapy
+•  Cisplatin + RT
+•  Conventional fractionation:
+  Primary site: total of 66-70 Gy 
+for 33-35 fractions, treated 
+one fraction/day for 6-7 weeks 
+(1.8-2.0 Gy/fraction)
+  Neck: 54-70 Gy for 30-35 
+fractions, treated one 
+fraction/day for 6-7 weeks 
+(1.8-2.0 Gy/fraction)
+•  IMRT recommended to 
+minimise dose to critical 
+structures
+Follow-up and Surveillance
+•  Multidisciplinary team involvement (ENT specialist, oncologist, speech therapist, audiologist, etc)
+•  Head & neck and systemic examination (including nasopharyngoscopy):
+•  Cross-sectional imaging in the initial 5 years
+•  Speech/swallowing assessment as clinically indicated
+•  Hearing evaluation & rehabilitation as clinically indicated
+•  Post-treatment dental management every 3 to 4 months by trained and experienced dental 
+specialist
+•  Weight assessment on follow-up
+•  Annual thyroid function test (TFT) screening
+Year Intervals 
+First year Every 1 to 2 months 
+Second year Every 2 to 3 months 
+Third year Every 3 to 5 months 
+Fourth to fifth year Every 6 months 
+After fifth year Every 6 to 12 months 
+Painless neck lump
+
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016 QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+Nasopharynx  
+T1
+T2
+T3
+T4
+ 
+N1
+N2
+N3
+N3a
+N3b
+Distant Metastasis (M) 
+M0 No distant metastasis M1 Distant metastasis
+Stage 0   N0  M0 
+Stage I                               T1 N0 M0 
+Stage II                              T1 N1 M0 
+T2 N0 M0 
+T2 N1 M0 
+Stage III  T1 N2 M0 
+T2 N2 M0 
+T3 N0 M0 
+T3 N1 M0 
+T3 N2 M0 
+Stage IVA  T4 N0 M0 
+T4 N1 M0 
+T4 N2 M0 
+Stage IVB                     Any T N3 M0 
+Stage IVC   Any T Any N M1 
+PROGNOSIS OF DIFFERENT NPC STAGES
+FOLLOW-UP SCHEDULE OF NPC WITHOUT RECURRENCE
+TOXICITIES OF RADIOTHERAPY ON HEAD AND NECK
+Stage Prognosis 
+T1-2 N0-1 Relatively good treatment outcome  
+T3-4 N0-1 Mainly local failure 
+T1-2 N2-3 Mainly regional and distant failure  
+T3-4 N2-3 Local, regional and distant failure  
+Year after completion of treatment Frequency of follow-up 
+First year Every 1 to 2 months 
+Second year Every 2 to 3 months 
+Third year Every 3 to 5 months 
+Fourth to fifth year Every 6 months 
+After fifth year Every 6 to 12 months 
+ 
+ ACUTE TOXICITIES 
+ 
+ 
+      
+ 
+ 
+ 
+ 
+ 
+Tumour conﬁned to the nasopharynx, or tumor extends to oropharynx and/or nasal 
+cavity without parapharyngeal extension*
+Tumour with intracranial extension and/or involvement of cranial nerves, 
+hypopharynx, orbit, or with extension to the infratemporal fossa/masticator space 
+Tumour with parapharyngeal extension*
+Tumour involves bony structures of skull base and/or paranasal sinuses
+*Note: Parapharyngeal extension denotes posterolateral inﬁltration of tumour.
+*Note: Midline nodes are considered ipsilateral nodes.
+Unilateral metastasis in cervical lymph node(s), ≤6 cm in greatest dimension, above 
+the supraclavicular fossa, and/or unilateral or bilateral, retropharyngeal lymph 
+nodes, 6 cm or less, in greatest dimension*
+Bilateral metastasis in cervical lymph node(s), ≤6 cm in greatest dimension, above 
+the supraclavicular fossa*
+Metastasis in a lymph node(s)* >6 cm and/or to supraclavicular fossa*
+>6 cm in dimension
+Extension to the supraclavicular fossa**
+AJCC CANCER STAGING MANUAL 2010 (7TH EDITION)
+**Note: Supraclavicular zone or fossa is deﬁned by three points: 
+(1) the superior margin of the sternal end of the clavicle, 
+(2) the superior margin of the lateral end of the clavicle, 
+(3) the point where the neck meets the shoulder. 
+All cases with lymph nodes (whole or part) in the fossa are considered N3b.
+*interval of follow-up may be adjusted based on clinical judgement
+LATE TOXICITIES
+• Lethargy
+• Radiation dermatitis
+• Mucositis
+• Dysphagia
+• Taste changes
+• Nausea and vomiting
+• Haematological toxicities (neutropaenia)
+Non-neurological Complications
+Neurological Complications
+• Temporal lobe injuries • Cranial nerve palsies • Lhermitte’s syndrome
+Tinnitus
+Hearing loss 
+Otorrhea
+Trismus
+Dysphagia 
+Subcutaneous fibrosis 
+Endocrinopathy
+- primary hypothyroidism
+- hypopituitarism
+Xerostomia
+Second cancer within radiotherapy fields
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016 QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+Nasopharynx  
+T1
+T2
+T3
+T4
+ 
+N1
+N2
+N3
+N3a
+N3b
+Distant Metastasis (M) 
+M0 No distant metastasis M1 Distant metastasis
+Stage 0   N0  M0 
+Stage I                               T1 N0 M0 
+Stage II                              T1 N1 M0 
+T2 N0 M0 
+T2 N1 M0 
+Stage III  T1 N2 M0 
+T2 N2 M0 
+T3 N0 M0 
+T3 N1 M0 
+T3 N2 M0 
+Stage IVA  T4 N0 M0 
+T4 N1 M0 
+T4 N2 M0 
+Stage IVB                     Any T N3 M0 
+Stage IVC   Any T Any N M1 
+PROGNOSIS OF DIFFERENT NPC STAGES
+FOLLOW-UP SCHEDULE OF NPC WITHOUT RECURRENCE
+TOXICITIES OF RADIOTHERAPY ON HEAD AND NECK
+Stage Prognosis 
+T1-2 N0-1 Relatively good treatment outcome  
+T3-4 N0-1 Mainly local failure 
+T1-2 N2-3 Mainly regional and distant failure  
+T3-4 N2-3 Local, regional and distant failure  
+Year after completion of treatment Frequency of follow-up 
+First year Every 1 to 2 months 
+Second year Every 2 to 3 months 
+Third year Every 3 to 5 months 
+Fourth to fifth year Every 6 months 
+After fifth year Every 6 to 12 months 
+ 
+ ACUTE TOXICITIES 
+ 
+ 
+      
+ 
+ 
+ 
+ 
+ 
+Tumour conﬁned to the nasopharynx, or tumor extends to oropharynx and/or nasal 
+cavity without parapharyngeal extension*
+Tumour with intracranial extension and/or involvement of cranial nerves, 
+hypopharynx, orbit, or with extension to the infratemporal fossa/masticator space 
+Tumour with parapharyngeal extension*
+Tumour involves bony structures of skull base and/or paranasal sinuses
+*Note: Parapharyngeal extension denotes posterolateral inﬁltration of tumour.
+*Note: Midline nodes are considered ipsilateral nodes.
+Unilateral metastasis in cervical lymph node(s), ≤6 cm in greatest dimension, above 
+the supraclavicular fossa, and/or unilateral or bilateral, retropharyngeal lymph 
+nodes, 6 cm or less, in greatest dimension*
+Bilateral metastasis in cervical lymph node(s), ≤6 cm in greatest dimension, above 
+the supraclavicular fossa*
+Metastasis in a lymph node(s)* >6 cm and/or to supraclavicular fossa*
+>6 cm in dimension
+Extension to the supraclavicular fossa**
+AJCC CANCER STAGING MANUAL 2010 (7TH EDITION)
+**Note: Supraclavicular zone or fossa is deﬁned by three points: 
+(1) the superior margin of the sternal end of the clavicle, 
+(2) the superior margin of the lateral end of the clavicle, 
+(3) the point where the neck meets the shoulder. 
+All cases with lymph nodes (whole or part) in the fossa are considered N3b.
+*interval of follow-up may be adjusted based on clinical judgement
+LATE TOXICITIES
+• Lethargy
+• Radiation dermatitis
+• Mucositis
+• Dysphagia
+• Taste changes
+• Nausea and vomiting
+• Haematological toxicities (neutropaenia)
+Non-neurological Complications
+Neurological Complications
+• Temporal lobe injuries • Cranial nerve palsies • Lhermitte’s syndrome
+Tinnitus
+Hearing loss 
+Otorrhea
+Trismus
+Dysphagia 
+Subcutaneous fibrosis 
+Endocrinopathy
+- primary hypothyroidism
+- hypopituitarism
+Xerostomia
+Second cancer within radiotherapy fields
+6 3
+CLINICAL PRESENTATIONS AND REFERRALALGORITHM A : MANAGEMENT OF NASOPHARYNGEAL CARCINOMA
+• Patients presenting with any of the following symptoms should be referred to 
+Otorhinolaryngologists as soon as possible to rule out NPC :
+○ painless neck lump (unilateral/bilateral)
+○ blood-stained nasal discharge/saliva 
+○ unilateral ear block or hearing loss
+○ headache
+○ facial numbness 
+○ diplopia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016 QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+NPC with ophthalmoplegia
+RISK FACTORS OF NASOPHARYNGEAL CARCINOMA
+• Ethnicity (especially Chinese and natives of Sabah & Sarawak)
+• Gender (male to female ratio is 3:1)
+• Family history of NPC
+• Lifestyle and environment
+○ Tobacco smoking
+○ Consumption of salted fish
+○ Exposure to domestic wood cooking fires 
+○ Exposure to occupational solvents 
+○ Occupational exposure to wood dust
+   
+• History taking 
+• Complete physical examination 
+• Nasopharyngeal examination & biopsy 
+• +/- FNAC of regional lymph nodes
+• Baseline investigations (FBC, renal profile, random blood sugar, liver   
+function test, chest X-ray and electrocardiogram)
+• MRI of nasopharynx & neck (from base of skull to thoracic inlet) or CT   
+with contrast
+• PET-CT or CT thorax/abdomen or ultrasound and bone scan, as indicated
+• Pre-treatment dental assessment
+• Nutritional evaluation
+Determine disease stage
+Stage I (T1N0M0)
+Treatment with definitive 
+radiotherapy (RT) to nasopharynx 
+& elective RT to neck
+•  Definitive RT:-
+  Primary site: total of 66-70 Gy 
+for 33-35 fractions, treated 
+one fraction/day for 6-7 
+weeks (1.8-2.0 Gy/fraction)
+  Prophylactic neck: 54-60 Gy 
+for 30 fractions, treated one 
+fraction/day for 6 weeks 
+(1.8- 2.0 Gy/fraction)
+•  IMRT recommended to 
+minimise dose to critical 
+structure
+Stage IVC (distant 
+metastasis)
+Palliative treatment
+•  Consider clinical trial if 
+available
+•  Palliative chemotherapy to 
+be considered in patients 
+with good ECOG 
+performance status (0-2)
+•  RT to palliate symptoms
+•  Referral to palliative care/ 
+palliative home care
+Stage II, III, IVA and IVB
+Concurrent chemoradiotherapy
+•  Cisplatin + RT
+•  Conventional fractionation:
+  Primary site: total of 66-70 Gy 
+for 33-35 fractions, treated 
+one fraction/day for 6-7 weeks 
+(1.8-2.0 Gy/fraction)
+  Neck: 54-70 Gy for 30-35 
+fractions, treated one 
+fraction/day for 6-7 weeks 
+(1.8-2.0 Gy/fraction)
+•  IMRT recommended to 
+minimise dose to critical 
+structures
+Follow-up and Surveillance
+•  Multidisciplinary team involvement (ENT specialist, oncologist, speech therapist, audiologist, etc)
+•  Head & neck and systemic examination (including nasopharyngoscopy):
+•  Cross-sectional imaging in the initial 5 years
+•  Speech/swallowing assessment as clinically indicated
+•  Hearing evaluation & rehabilitation as clinically indicated
+•  Post-treatment dental management every 3 to 4 months by trained and experienced dental 
+specialist
+•  Weight assessment on follow-up
+•  Annual thyroid function test (TFT) screening
+Year Intervals 
+First year Every 1 to 2 months 
+Second year Every 2 to 3 months 
+Third year Every 3 to 5 months 
+Fourth to fifth year Every 6 months 
+After fifth year Every 6 to 12 months 
+Painless neck lump
+2 7
+ALGORITHM B : MANAGEMENT OF PERSISTENT DISEASE
+OR RECURRENT NASOPHARYNGEAL CARCINOMA1. In Malaysia, nasopharyngeal carcinoma (NPC) is the fourth most common cancer. 
+NPC is predominant among Chinese, followed by natives of Sabah and Sarawak 
+(especially Bidayuh) and Malay. 
+2. Tobacco smoking is one of the important risk factors for NPC.
+3. NPC is usually diagnosed late due to trivial presentation which leads to poor 
+survival outcome.
+4. In patients presenting with cervical lymphadenopathy, full head and neck 
+assessment and fine needle aspiration cytological examination of the nodes should 
+be done.
+5. NPC should be diagnosed by histopathological examination of the nasopharynx. 
+6. Staging of NPC is by using the tumour node metastasis (TNM) system American 
+Joint Committee on Cancer or AJCC Cancer Staging Manual 2010 (7th Edition).
+7. Primary treatment for NPC is radiotherapy. Intensity modulated radiotherapy is the 
+preferred radiation technique. 
+8. Concurrent chemoradiotherapy should be offered in Stage II, III, IVA and IVB.
+9. In recurrent NPC, nasopharyngectomy or re-irradiation may be offered.
+10. Multimodality treatment including dental, supportive and palliative care should be 
+considered in the management of NPC.
+KEY MESSAGES
+This Quick Reference provides key messages and a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Nasopharyngeal Carcinoma.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia : www.moh.gov.my
+Academy of Medicine Malaysia : www.acadmed.org.my
+Malaysian Society of Otorhinolaryngologists :www.msohns.com 
+Head & Neck Surgeons
+Also available as a mobile app for Android & IOS platform: MyMaHTAS
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Health Technology Assessment Section
+Medical Development Division, Ministry of Health Malaysia
+4th Floor, Block E1, Parcel E, 62590 Putrajaya
+Tel: 603-8883 1229 E-mail: htamalaysia@moh.gov.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016 QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+Options include:
+•  Nasopharyngectomy
+ OR
+•  Re-irradiation with external 
+beam RT or brachytherapy
+•  Consider clinical trial if 
+available
+•  Palliative chemotherapy to 
+be considered in patients 
+with good ECOG 
+performance status (0-2)
+•  RT to palliate symptoms
+•  Referral to palliative
+ care/ palliative home care
+Options include:
+• Neck dissection 
+• Re-irradiation
+• Chemotherapy
+Follow-up and Surveillance
+•  Multidisciplinary team involvement (ENT specialist, oncologist, speech therapist, audiologist, etc)
+•  Head & neck and systemic examination (including nasopharyngoscopy):
+•  Cross-sectional imaging in the initial 5 years
+•  Speech/swallowing assessment as clinically indicated
+•  Hearing evaluation & rehabilitation as clinically indicated
+•  Post-treatment dental management every 3 to 4 months by trained and experienced dental 
+specialist
+•  Weight assessment on follow-up
+•  Annual thyroid function test (TFT) screening
+Local disease 
+ Distant disease 
+Regional disease  
+• Restage to assess recurrent or persistent disease – MRI or CT scan and PET/CT 
+scan
+•  Biopsy of recurrent lesion(s), as clinically indicated
+•  Treatment should be individualised based on patient performance status and extent  
+ of disease
+Year Intervals 
+First year Every 1 to 2 months 
+Second year Every 2 to 3 months 
+Third year Every 3 to 5 months 
+Fourth to fifth year Every 6 months 
+After fifth year Every 6 to 12 months 
+6 3
+CLINICAL PRESENTATIONS AND REFERRALALGORITHM A : MANAGEMENT OF NASOPHARYNGEAL CARCINOMA
+• Patients presenting with any of the following symptoms should be referred to 
+Otorhinolaryngologists as soon as possible to rule out NPC :
+○ painless neck lump (unilateral/bilateral)
+○ blood-stained nasal discharge/saliva 
+○ unilateral ear block or hearing loss
+○ headache
+○ facial numbness 
+○ diplopia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016 QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+NPC with ophthalmoplegia
+RISK FACTORS OF NASOPHARYNGEAL CARCINOMA
+• Ethnicity (especially Chinese and natives of Sabah & Sarawak)
+• Gender (male to female ratio is 3:1)
+• Family history of NPC
+• Lifestyle and environment
+○ Tobacco smoking
+○ Consumption of salted fish
+○ Exposure to domestic wood cooking fires 
+○ Exposure to occupational solvents 
+○ Occupational exposure to wood dust
+   
+• History taking 
+• Complete physical examination 
+• Nasopharyngeal examination & biopsy 
+• +/- FNAC of regional lymph nodes
+• Baseline investigations (FBC, renal profile, random blood sugar, liver   
+function test, chest X-ray and electrocardiogram)
+• MRI of nasopharynx & neck (from base of skull to thoracic inlet) or CT   
+with contrast
+• PET-CT or CT thorax/abdomen or ultrasound and bone scan, as indicated
+• Pre-treatment dental assessment
+• Nutritional evaluation
+Determine disease stage
+Stage I (T1N0M0)
+Treatment with definitive 
+radiotherapy (RT) to nasopharynx 
+& elective RT to neck
+•  Definitive RT:-
+  Primary site: total of 66-70 Gy 
+for 33-35 fractions, treated 
+one fraction/day for 6-7 
+weeks (1.8-2.0 Gy/fraction)
+  Prophylactic neck: 54-60 Gy 
+for 30 fractions, treated one 
+fraction/day for 6 weeks 
+(1.8- 2.0 Gy/fraction)
+•  IMRT recommended to 
+minimise dose to critical 
+structure
+Stage IVC (distant 
+metastasis)
+Palliative treatment
+•  Consider clinical trial if 
+available
+•  Palliative chemotherapy to 
+be considered in patients 
+with good ECOG 
+performance status (0-2)
+•  RT to palliate symptoms
+•  Referral to palliative care/ 
+palliative home care
+Stage II, III, IVA and IVB
+Concurrent chemoradiotherapy
+•  Cisplatin + RT
+•  Conventional fractionation:
+  Primary site: total of 66-70 Gy 
+for 33-35 fractions, treated 
+one fraction/day for 6-7 weeks 
+(1.8-2.0 Gy/fraction)
+  Neck: 54-70 Gy for 30-35 
+fractions, treated one 
+fraction/day for 6-7 weeks 
+(1.8-2.0 Gy/fraction)
+•  IMRT recommended to 
+minimise dose to critical 
+structures
+Follow-up and Surveillance
+•  Multidisciplinary team involvement (ENT specialist, oncologist, speech therapist, audiologist, etc)
+•  Head & neck and systemic examination (including nasopharyngoscopy):
+•  Cross-sectional imaging in the initial 5 years
+•  Speech/swallowing assessment as clinically indicated
+•  Hearing evaluation & rehabilitation as clinically indicated
+•  Post-treatment dental management every 3 to 4 months by trained and experienced dental 
+specialist
+•  Weight assessment on follow-up
+•  Annual thyroid function test (TFT) screening
+Year Intervals 
+First year Every 1 to 2 months 
+Second year Every 2 to 3 months 
+Third year Every 3 to 5 months 
+Fourth to fifth year Every 6 months 
+After fifth year Every 6 to 12 months 
+Painless neck lump
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MANAGEMENT OF
+TYPE 1 DIABETES MELLITUS IN
+CHILDREN & ADOLESCENTS
+Academy of
+Medicine Malaysia
+Malaysian Paediatric
+Association
+Malaysian Endocrine &
+Metabolic Society
+Ministry of Health
+Malaysia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NASOPHARYNGEAL CARCINOMA 2016
+ 
+Cisplatin
+Carboplatin
+Fluorouracil
+Docetaxel
+• Nausea and vomiting
+• Myelosuppression
+• Renal toxicity
+• Electrolyte imbalance (hypomagnesaemia,        
+ hypocalcaemia, hypokalaemia)
+• Auditory (tinnitus; with or without hearing loss)
+• Myelosuppression
+• Nausea and vomiting
+• Hypersensitivity reaction
+• Alopecia
+• Diarrhoea and stomatitis
+• Myelosuppression
+• Angina, myocardial infarction, arrhythmia, acute    
+ pulmonary oedema (special precaution)
+• Alopecia
+• Myelosuppression
+• Fluid retention
+• Alopecia, cutaneous reaction, nails changes
+• Stomatitis, diarrhoea, nausea and vomiting
+• Hypersensitivity reaction
+CHEMOTHERAPY
+DRUGS
+COMMON SIDE EFFECTS
+CHEMOTHERAPY DRUGS AND COMMON SIDE EFFECTS
+Ministry of Health
+Malaysia
+Malaysian Society of Otorhinolaryngologist
+- Head & Neck Surgeons (MSO-HNS)
+Academy of
+Medicine Malaysia
+MANAGEMENT OF
+NASOPHARYNGEAL
+CARCINOMA
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS

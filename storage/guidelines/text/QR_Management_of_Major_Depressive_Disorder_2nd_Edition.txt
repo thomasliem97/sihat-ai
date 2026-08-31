@@ -1,0 +1,876 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+8
+FOLLOW-UP & MONITORING
+TABLE 2. ONGOING MONITORING DURING TREATMENT OF MDD
+*previous history of antidepressant-induced hyponatremia, advanced age, low body weight, thiazide & 
+carbamazepine use
+**based on Fracture Risk Assessment Tool Score 
+ 
+NASSAs 
+MAOIs 
+TCAs
+Body Mass Index
+& waist
+circumference 
+At baseline & at 
+6-monthly 
+Blood pressure Venlafaxine
+TCAs
+MAOIs 
+At baseline, with 
+significant dose 
+increase & 3 to 
+6-monthly after 
+stabilisation 
+Closer monitoring of 
+MAOIs in first weeks until 
+tolerance occurs
+Electro-
+cardiogramme for
+QT prolongation
+TCAs At baseline, after initial 
+dose titration & at 
+change of dose 
+In individuals over 45 years 
+of age or with cardiovascular
+(CV) disorders
+SNRIs
+SSRIs
+At baseline In individuals with CV risk
+Liver function test Agomelatine
+Mirtazapine 
+Mianserin
+If clinically indicated 
+At baseline, 3, 6, 12 & 
+24 weeks after initiation 
+dosage, after dosage 
+increment or when 
+clinically indicated
+Treatment should be 
+discontinued if 
+transaminases exceed three
+times upper limit of normal 
+At baseline & at 1 month
+after treatment initiation 
+or clinically indicated in 
+high risk groups*
+• More frequent monitoring
+ in elderly or those with 
+ existing hyponatraemia
+• Need to monitor together 
+ with urine & serum 
+ osmolality since SSRI
+s 
+ can induce hypovolemic 
+ hyponatremia via 
+ 
+Syndrome of Inappropriate
+ Antidiuretic Hormone
+ Secretion
+Electrolytes SSRIs
+Mirtazapine
+SNRIs 
+TCAs
+Full blood count To detect blood dyscrasia
+(e.g. neutropenia & 
+thrombocytopaenia)
+SSRIs As clinically indicated in
+high risk groups for
+osteoporosis**
+Refer to Fracture Risk 
+Assessment Tool Score in 
+Ministry of Health CPG 
+Management of 
+Osteoporosis, 2012  
+Bone mineral
+density
+Parameter Agent Frequency of the
+monitoring parameter Comments
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Malaysian Psychiatric
+Association
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+1. Major Depressive Disorder (MDD) is characterised by persistent low mood, loss of 
+interest, difficulty in concentrating, sleep disturbances, fatigue & in more severe form, 
+functional impairment & suicidal ideations.
+2. Screening for depression using Whooley Questions in primary care may be 
+considered in people at risk (refer to Screening & Assessment).
+3. Screening for perinatal depression may be done in two-stage approach. Use brief 
+screening tools e.g. Patient Health Questionnaire-2 or Whooley Questions in the first 
+stage & followed by Edinburgh Postnatal Depression Scale.
+4. Psychoeducation should be offered early & continuously throughout the management 
+of MDD.
+5. Psychosocial interventions & psychotherapy should be offered throughout all severity, 
+while combination of pharmacological intervention & psychotherapy should be offered 
+in moderate to severe MDD. 
+6. Second-generation antidepressants may be considered as the initial treatment 
+medication, while the older antidepressants e.g. tricyclic antidepressants (TCAs) & 
+monoamine oxidase inhibitors (MAOIs) are considered for subsequent choice
+ (refer to Table 1).
+7. Short-term benzodiazepines (not more than 2 - 4 weeks) may be used in MDD with 
+anxiety, agitation or insomnia. 
+8. Antidepressants should be continued for at least 6 - 9 months after remission & at 
+least 2 years if there is high risk of relapse or recurrence. 
+9. Women in their reproductive age with MDD should receive pre-pregnancy care. 
+Benefits & risks of treatment to mother & baby in both short- & long-term; & possible 
+consequences of no treatment or if treatment is changed or stopped abruptly should 
+be considered throughout perinatal period (refer to Algorithm 2).
+10. Monitoring requirements for some drugs are needed (refer to Table 2).
+2 7
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Major 
+Depressive Disorder (Second Edition).  
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org/ 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+ALGORITHM 2. TREATMENT OF PRE-EXISTING
+MAJOR DEPRESSIVE DISORDER IN
+PRE-PREGNANCY, PREGNANCY & POSTPARTUM PERIOD
+Pre-existing Major Depressive Disorder (MDD)
+in Pre-Pregnancy, Pregnancy &
+Postpartum Period
+Mild MDD 
+not on antidepressant
+Moderate - Severe MDD 
+Expedite psychosocial
+intervention &
+psychotherapy with
+close monitoring of
+symptoms
+On antidepressant Not on antidepressant
+Assess risk & benefit
+of starting antidepressant
+treatment &
+consequences of
+no treatment
+Assess risk & benefit of
+continuing antidepressant
+treatment &
+consequences of
+stopping abruptly or
+changing treatment
+Continue
+antidepressant
+Switch
+antidepressant
+Stop
+antidepressant
+Start
+antidepressant
+No
+antidepressant
+Consider
+combination
+with
+psychotherapy
+Consider
+antidepressant
+with lower risk
+to pregnancy
+&
+breastfeeding
+with close
+monitoring of
+symptoms
+Consider
+combination
+with
+psychotherapy
+with monitoring
+of symptoms
+Expedite
+psychotherapy
+with close
+monitoring of
+symptoms
+Expedite
+psychotherapy
+with close
+monitoring of
+symptoms
+SCREENING & ASSESSMENT
+Screening for MDD should be done in high risk individuals* using the following tool:
+• Whooley Questions on depression:
+1. "During the past month, have you often been bothered by feeling down, depressed 
+or hopeless?"
+2. "During the past month, have you often been bothered by having little interest or 
+pleasure in doing things?"
+*High risk individuals are:
+The diagnosis of MDD is made using internationally accepted diagnostic criteria i.e. either 
+the American Psychiatric Association’s Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition (DSM-5) or the ICD-10 Classification of Mental and Behavioural 
+Disorder: Clinical Description & Diagnostic Guidelines.
+• The severity of MDD should be assessed to determine the mode of treatment.
+REFERRAL CRITERIA
+• In local setting, referral to the psychiatric services may be done through the emergency 
+& trauma department or directly to the psychiatric clinic. Indications for referral to 
+psychiatric services include: 
+ unsure of diagnosis
+ attempted suicide 
+ active suicidal ideas 
+ failure of treatment
+ advice on further treatment
+ clinical deterioration
+ recurrent episode within 1 year
+ psychotic symptoms
+ severe agitation
+ self-neglect
+• first-degree relative with 
+history of depression
+• chronic pain (e.g. 
+backache, headache)
+• experiencing major life 
+changes 
+• multiple vague symptoms  
+• loss of interest in sexual 
+activity
+• chronic diseases 
+• impoverished home 
+environment
+• pregnant or 
+postpartum period
+• sleep disturbance
+• old age
+• obesity
+• financial constrain 
+• socially-isolated
+• substance abuse e.g. 
+alcohol, illicit drugs
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+TABLE 1. COMMONLY USED ANTIDEPRESSANTS, DOSAGES & ADVERSE EFFECTS
+Name Starting 
+Usual dose 
+(mg/day)  
+Usual dose range (mg/day) Common adverse effects Pregnancy 
+Category 
+Selective serotonin reuptake inhibitors (SSRIs)  
+Escitalopram 10 10 - 20 Nausea, diarrhoea, headache, constipation, dry mouth, insomnia, somnolence 
+ 
+C 
+Fluoxetine 20 20 - 60 C 
+Fluvoxamine 50 - 100 50 - 300 C 
+Sertraline 50 50 - 200 C 
+Serotonin & noradrenaline reuptake inhibitors (SNRIs)  
+Duloxetine 20 - 60 60 - 120 Hypertension, dizziness, constipation, dry mouth, insomnia, somnolence, nausea, 
+anorexia, sexual dysfunction  
+C 
+Venlafaxine 37.5 - 75 75 - 225 
+ (up to 375 mg for in-patients) 
+C 
+Noradrenergic & specific serotonergic antidepressant (NaSSA)  
+Mirtazapine 15 15 - 45 Constipation, weight gain, dry mouth, oedema, dizziness, increased liver enzyme levels, 
+jaundice, somnolence, hyponatraemia 
+C 
+Melatonergic agonist & serotonergic antagonist  
+Agomelatine 25 25 - 50 Increased liver enzymes, constipation, nausea, diarrhoea, vomiting, abdominal pain, dry 
+mouth, headache, dizziness, insomnia, somnolence, fatigue, jaundice, tremor, agitation, 
+blurred vision 
+B 
+Multimodal serotonin modulator  
+Vortioxetine 10 10 - 20 Constipation, nausea, diarrhoea, vomiting, dry mouth, night sweating, dizziness, sexual 
+dysfunction 
+B 
+Tricyclics & tetracylic antidepressants (TCAs)  
+Amitriptyline 50 - 75 75 - 150 
+(up to 300 mg for in-patients) 
+Constipation, hypotension, tachycardia, arrhythmias, dizziness, drowsiness, tremor, dry 
+mouth, blurred vision, urinary retention  
+ 
+C 
+Dothiepin 50 - 75 75 - 225 C 
+Imipramine 25 - 50 50 - 200  
+(up to 300 mg for in-patients) 
+C 
+Monoamine oxidase inhibitors (MAOIs)  
+Moclobemide 150 150 - 600 Hypertensive crisis, tachycardia, dizziness, headache, abdominal pain, nausea, diarrhoea, 
+vomiting, sleep disturbances, constipation, somnolence, agitation, anxiety, increased 
+appetite, blurred vision 
+B 
+ALGORITHM 1. TREATMENT OF MAJOR DEPRESSIVE DISORDER
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+TREATMENT
+ACUTE PHASE
+• Mild To Moderate
+• In mild to moderate MDD, psychosocial intervention & psychotherapy should be offered, 
+based on resource availability, but not restricted to the following:
+ cognitive behavioural therapy
+ interpersonal therapy
+ problem-solving therapy
+ behavioural therapy 
+ internet-based cognitive behavioural therapy
+• Moderate To Severe
+• In moderate to severe MDD, a combination of pharmacotherapy & psychotherapy 
+should be offered.
+• In moderate to severe MDD, exercise may be offered as an adjunct treatment.
+• In moderate to severe MDD, one of the second-generation antidepressants should be 
+prescribed:
+ selective serotonin reuptake inhibitors 
+ serotonin noradrenaline reuptake inhibitors
+ noradrenergic and specific serotonergic antidepressants
+ melatonergic agonist and serotonergic antagonist
+ multimodal serotonin modulator  
+ noradrenaline/dopamine-reuptake inhibitor
+MAINTENANCE & CONTINUATION PHASE
+• Antidepressants should be continued for at least 6 - 9 months after remission, & at least 
+2 years if there is high risk of relapse or recurrence. 
+FIGURE 1. PHASES OF TREATMENT OF MAJOR DEPRESSION
+Continuation and maintenance Acute
+(<12 weeks) 
+ 
+Symptoms 
+“Normalcy”
+Treatment Phases 
+Syndrome
+Response 
+Remission 
+Relapse 
+Recovery Recurrence
+Progression to Disorder
+X
+X
+X
+ECT = electroconvulsive therapy
+TREATMENT 
+To achieve 
+remission 
+ACUTE
+Mild to
+moderate
+Psychosocial
+intervention
+Psychosocial
+intervention
+Psychotherapy
+Psychotherapy
+Pharmacotherapy
+Pharmacotherapy ECTModerate
+to severe
+Psychotic
+features Pharmacotherapy Psychosocial
+intervention ECT
+CONTINUATION
+AND
+MAINTENANCE
+Pharmacotherapy
++
+Psychosocial
+intervention
+Psychotherapy
++
+Psychosocial
+intervention
+To prevent
+relapse,
+recurrence
+and
+development
+of chronicity
+Phases of
+treatmentDIAGNOSIS
+±+
+±+
+±+ +
+AND/OR
+ALGORITHM 1. TREATMENT OF MAJOR DEPRESSIVE DISORDER
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+TREATMENT
+ACUTE PHASE
+• Mild To Moderate
+• In mild to moderate MDD, psychosocial intervention & psychotherapy should be offered, 
+based on resource availability, but not restricted to the following:
+ cognitive behavioural therapy
+ interpersonal therapy
+ problem-solving therapy
+ behavioural therapy 
+ internet-based cognitive behavioural therapy
+• Moderate To Severe
+• In moderate to severe MDD, a combination of pharmacotherapy & psychotherapy 
+should be offered.
+• In moderate to severe MDD, exercise may be offered as an adjunct treatment.
+• In moderate to severe MDD, one of the second-generation antidepressants should be 
+prescribed:
+ selective serotonin reuptake inhibitors 
+ serotonin noradrenaline reuptake inhibitors
+ noradrenergic and specific serotonergic antidepressants
+ melatonergic agonist and serotonergic antagonist
+ multimodal serotonin modulator  
+ noradrenaline/dopamine-reuptake inhibitor
+MAINTENANCE & CONTINUATION PHASE
+• Antidepressants should be continued for at least 6 - 9 months after remission, & at least 
+2 years if there is high risk of relapse or recurrence. 
+FIGURE 1. PHASES OF TREATMENT OF MAJOR DEPRESSION
+Continuation and maintenance Acute
+(<12 weeks) 
+ 
+Symptoms 
+“Normalcy”
+Treatment Phases 
+Syndrome
+Response 
+Remission 
+Relapse 
+Recovery Recurrence
+Progression to Disorder
+X
+X
+X
+ECT = electroconvulsive therapy
+TREATMENT 
+To achieve 
+remission 
+ACUTE
+Mild to
+moderate
+Psychosocial
+intervention
+Psychosocial
+intervention
+Psychotherapy
+Psychotherapy
+Pharmacotherapy
+Pharmacotherapy ECTModerate
+to severe
+Psychotic
+features Pharmacotherapy Psychosocial
+intervention ECT
+CONTINUATION
+AND
+MAINTENANCE
+Pharmacotherapy
++
+Psychosocial
+intervention
+Psychotherapy
++
+Psychosocial
+intervention
+To prevent
+relapse,
+recurrence
+and
+development
+of chronicity
+Phases of
+treatmentDIAGNOSIS
+±+
+±+
+±+ +
+AND/OR
+SCREENING & ASSESSMENT
+Screening for MDD should be done in high risk individuals* using the following tool:
+• Whooley Questions on depression:
+1. "During the past month, have you often been bothered by feeling down, depressed 
+or hopeless?"
+2. "During the past month, have you often been bothered by having little interest or 
+pleasure in doing things?"
+*High risk individuals are:
+The diagnosis of MDD is made using internationally accepted diagnostic criteria i.e. either 
+the American Psychiatric Association’s Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition (DSM-5) or the ICD-10 Classification of Mental and Behavioural 
+Disorder: Clinical Description & Diagnostic Guidelines.
+• The severity of MDD should be assessed to determine the mode of treatment.
+REFERRAL CRITERIA
+• In local setting, referral to the psychiatric services may be done through the emergency 
+& trauma department or directly to the psychiatric clinic. Indications for referral to 
+psychiatric services include: 
+ unsure of diagnosis
+ attempted suicide 
+ active suicidal ideas 
+ failure of treatment
+ advice on further treatment
+ clinical deterioration
+ recurrent episode within 1 year
+ psychotic symptoms
+ severe agitation
+ self-neglect
+• first-degree relative with 
+history of depression
+• chronic pain (e.g. 
+backache, headache)
+• experiencing major life 
+changes 
+• multiple vague symptoms  
+• loss of interest in sexual 
+activity
+• chronic diseases 
+• impoverished home 
+environment
+• pregnant or 
+postpartum period
+• sleep disturbance
+• old age
+• obesity
+• financial constrain 
+• socially-isolated
+• substance abuse e.g. 
+alcohol, illicit drugs
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+TABLE 1. COMMONLY USED ANTIDEPRESSANTS, DOSAGES & ADVERSE EFFECTS
+Name Starting 
+Usual dose 
+(mg/day)  
+Usual dose range (mg/day) Common adverse effects Pregnancy 
+Category 
+Selective serotonin reuptake inhibitors (SSRIs)  
+Escitalopram 10 10 - 20 Nausea, diarrhoea, headache, constipation, dry mouth, insomnia, somnolence 
+ 
+C 
+Fluoxetine 20 20 - 60 C 
+Fluvoxamine 50 - 100 50 - 300 C 
+Sertraline 50 50 - 200 C 
+Serotonin & noradrenaline reuptake inhibitors (SNRIs)  
+Duloxetine 20 - 60 60 - 120 Hypertension, dizziness, constipation, dry mouth, insomnia, somnolence, nausea, 
+anorexia, sexual dysfunction  
+C 
+Venlafaxine 37.5 - 75 75 - 225 
+ (up to 375 mg for in-patients) 
+C 
+Noradrenergic & specific serotonergic antidepressant (NaSSA)  
+Mirtazapine 15 15 - 45 Constipation, weight gain, dry mouth, oedema, dizziness, increased liver enzyme levels, 
+jaundice, somnolence, hyponatraemia 
+C 
+Melatonergic agonist & serotonergic antagonist  
+Agomelatine 25 25 - 50 Increased liver enzymes, constipation, nausea, diarrhoea, vomiting, abdominal pain, dry 
+mouth, headache, dizziness, insomnia, somnolence, fatigue, jaundice, tremor, agitation, 
+blurred vision 
+B 
+Multimodal serotonin modulator  
+Vortioxetine 10 10 - 20 Constipation, nausea, diarrhoea, vomiting, dry mouth, night sweating, dizziness, sexual 
+dysfunction 
+B 
+Tricyclics & tetracylic antidepressants (TCAs)  
+Amitriptyline 50 - 75 75 - 150 
+(up to 300 mg for in-patients) 
+Constipation, hypotension, tachycardia, arrhythmias, dizziness, drowsiness, tremor, dry 
+mouth, blurred vision, urinary retention  
+ 
+C 
+Dothiepin 50 - 75 75 - 225 C 
+Imipramine 25 - 50 50 - 200  
+(up to 300 mg for in-patients) 
+C 
+Monoamine oxidase inhibitors (MAOIs)  
+Moclobemide 150 150 - 600 Hypertensive crisis, tachycardia, dizziness, headache, abdominal pain, nausea, diarrhoea, 
+vomiting, sleep disturbances, constipation, somnolence, agitation, anxiety, increased 
+appetite, blurred vision 
+B 
+1. Major Depressive Disorder (MDD) is characterised by persistent low mood, loss of 
+interest, difficulty in concentrating, sleep disturbances, fatigue & in more severe form, 
+functional impairment & suicidal ideations.
+2. Screening for depression using Whooley Questions in primary care may be 
+considered in people at risk (refer to Screening & Assessment).
+3. Screening for perinatal depression may be done in two-stage approach. Use brief 
+screening tools e.g. Patient Health Questionnaire-2 or Whooley Questions in the first 
+stage & followed by Edinburgh Postnatal Depression Scale.
+4. Psychoeducation should be offered early & continuously throughout the management 
+of MDD.
+5. Psychosocial interventions & psychotherapy should be offered throughout all severity, 
+while combination of pharmacological intervention & psychotherapy should be offered 
+in moderate to severe MDD. 
+6. Second-generation antidepressants may be considered as the initial treatment 
+medication, while the older antidepressants e.g. tricyclic antidepressants (TCAs) & 
+monoamine oxidase inhibitors (MAOIs) are considered for subsequent choice
+ (refer to Table 1).
+7. Short-term benzodiazepines (not more than 2 - 4 weeks) may be used in MDD with 
+anxiety, agitation or insomnia. 
+8. Antidepressants should be continued for at least 6 - 9 months after remission & at 
+least 2 years if there is high risk of relapse or recurrence. 
+9. Women in their reproductive age with MDD should receive pre-pregnancy care. 
+Benefits & risks of treatment to mother & baby in both short- & long-term; & possible 
+consequences of no treatment or if treatment is changed or stopped abruptly should 
+be considered throughout perinatal period (refer to Algorithm 2).
+10. Monitoring requirements for some drugs are needed (refer to Table 2).
+2 7
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Major 
+Depressive Disorder (Second Edition).  
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org/ 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+ALGORITHM 2. TREATMENT OF PRE-EXISTING
+MAJOR DEPRESSIVE DISORDER IN
+PRE-PREGNANCY, PREGNANCY & POSTPARTUM PERIOD
+Pre-existing Major Depressive Disorder (MDD)
+in Pre-Pregnancy, Pregnancy &
+Postpartum Period
+Mild MDD 
+not on antidepressant
+Moderate - Severe MDD 
+Expedite psychosocial
+intervention &
+psychotherapy with
+close monitoring of
+symptoms
+On antidepressant Not on antidepressant
+Assess risk & benefit
+of starting antidepressant
+treatment &
+consequences of
+no treatment
+Assess risk & benefit of
+continuing antidepressant
+treatment &
+consequences of
+stopping abruptly or
+changing treatment
+Continue
+antidepressant
+Switch
+antidepressant
+Stop
+antidepressant
+Start
+antidepressant
+No
+antidepressant
+Consider
+combination
+with
+psychotherapy
+Consider
+antidepressant
+with lower risk
+to pregnancy
+&
+breastfeeding
+with close
+monitoring of
+symptoms
+Consider
+combination
+with
+psychotherapy
+with monitoring
+of symptoms
+Expedite
+psychotherapy
+with close
+monitoring of
+symptoms
+Expedite
+psychotherapy
+with close
+monitoring of
+symptoms
+SCREENING & ASSESSMENT
+Screening for MDD should be done in high risk individuals* using the following tool:
+• Whooley Questions on depression:
+1. "During the past month, have you often been bothered by feeling down, depressed 
+or hopeless?"
+2. "During the past month, have you often been bothered by having little interest or 
+pleasure in doing things?"
+*High risk individuals are:
+The diagnosis of MDD is made using internationally accepted diagnostic criteria i.e. either 
+the American Psychiatric Association’s Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition (DSM-5) or the ICD-10 Classification of Mental and Behavioural 
+Disorder: Clinical Description & Diagnostic Guidelines.
+• The severity of MDD should be assessed to determine the mode of treatment.
+REFERRAL CRITERIA
+• In local setting, referral to the psychiatric services may be done through the emergency 
+& trauma department or directly to the psychiatric clinic. Indications for referral to 
+psychiatric services include: 
+ unsure of diagnosis
+ attempted suicide 
+ active suicidal ideas 
+ failure of treatment
+ advice on further treatment
+ clinical deterioration
+ recurrent episode within 1 year
+ psychotic symptoms
+ severe agitation
+ self-neglect
+• first-degree relative with 
+history of depression
+• chronic pain (e.g. 
+backache, headache)
+• experiencing major life 
+changes 
+• multiple vague symptoms  
+• loss of interest in sexual 
+activity
+• chronic diseases 
+• impoverished home 
+environment
+• pregnant or 
+postpartum period
+• sleep disturbance
+• old age
+• obesity
+• financial constrain 
+• socially-isolated
+• substance abuse e.g. 
+alcohol, illicit drugs
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+TABLE 1. COMMONLY USED ANTIDEPRESSANTS, DOSAGES & ADVERSE EFFECTS
+Name Starting 
+Usual dose 
+(mg/day)  
+Usual dose range (mg/day) Common adverse effects Pregnancy 
+Category 
+Selective serotonin reuptake inhibitors (SSRIs)  
+Escitalopram 10 10 - 20 Nausea, diarrhoea, headache, constipation, dry mouth, insomnia, somnolence 
+ 
+C 
+Fluoxetine 20 20 - 60 C 
+Fluvoxamine 50 - 100 50 - 300 C 
+Sertraline 50 50 - 200 C 
+Serotonin & noradrenaline reuptake inhibitors (SNRIs)  
+Duloxetine 20 - 60 60 - 120 Hypertension, dizziness, constipation, dry mouth, insomnia, somnolence, nausea, 
+anorexia, sexual dysfunction  
+C 
+Venlafaxine 37.5 - 75 75 - 225 
+ (up to 375 mg for in-patients) 
+C 
+Noradrenergic & specific serotonergic antidepressant (NaSSA)  
+Mirtazapine 15 15 - 45 Constipation, weight gain, dry mouth, oedema, dizziness, increased liver enzyme levels, 
+jaundice, somnolence, hyponatraemia 
+C 
+Melatonergic agonist & serotonergic antagonist  
+Agomelatine 25 25 - 50 Increased liver enzymes, constipation, nausea, diarrhoea, vomiting, abdominal pain, dry 
+mouth, headache, dizziness, insomnia, somnolence, fatigue, jaundice, tremor, agitation, 
+blurred vision 
+B 
+Multimodal serotonin modulator  
+Vortioxetine 10 10 - 20 Constipation, nausea, diarrhoea, vomiting, dry mouth, night sweating, dizziness, sexual 
+dysfunction 
+B 
+Tricyclics & tetracylic antidepressants (TCAs)  
+Amitriptyline 50 - 75 75 - 150 
+(up to 300 mg for in-patients) 
+Constipation, hypotension, tachycardia, arrhythmias, dizziness, drowsiness, tremor, dry 
+mouth, blurred vision, urinary retention  
+ 
+C 
+Dothiepin 50 - 75 75 - 225 C 
+Imipramine 25 - 50 50 - 200  
+(up to 300 mg for in-patients) 
+C 
+Monoamine oxidase inhibitors (MAOIs)  
+Moclobemide 150 150 - 600 Hypertensive crisis, tachycardia, dizziness, headache, abdominal pain, nausea, diarrhoea, 
+vomiting, sleep disturbances, constipation, somnolence, agitation, anxiety, increased 
+appetite, blurred vision 
+B 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF MAJOR DEPRESSIVE DISORDER (SECOND EDITION)
+8
+FOLLOW-UP & MONITORING
+TABLE 2. ONGOING MONITORING DURING TREATMENT OF MDD
+*previous history of antidepressant-induced hyponatremia, advanced age, low body weight, thiazide & 
+carbamazepine use
+**based on Fracture Risk Assessment Tool Score 
+ 
+NASSAs 
+MAOIs 
+TCAs
+Body Mass Index
+& waist
+circumference 
+At baseline & at 
+6-monthly 
+Blood pressure Venlafaxine
+TCAs
+MAOIs 
+At baseline, with 
+significant dose 
+increase & 3 to 
+6-monthly after 
+stabilisation 
+Closer monitoring of 
+MAOIs in first weeks until 
+tolerance occurs
+Electro-
+cardiogramme for
+QT prolongation
+TCAs At baseline, after initial 
+dose titration & at 
+change of dose 
+In individuals over 45 years 
+of age or with cardiovascular
+(CV) disorders
+SNRIs
+SSRIs
+At baseline In individuals with CV risk
+Liver function test Agomelatine
+Mirtazapine 
+Mianserin
+If clinically indicated 
+At baseline, 3, 6, 12 & 
+24 weeks after initiation 
+dosage, after dosage 
+increment or when 
+clinically indicated
+Treatment should be 
+discontinued if 
+transaminases exceed three
+times upper limit of normal 
+At baseline & at 1 month
+after treatment initiation 
+or clinically indicated in 
+high risk groups*
+• More frequent monitoring
+ in elderly or those with 
+ existing hyponatraemia
+• Need to monitor together 
+ with urine & serum 
+ osmolality since SSRI
+s 
+ can induce hypovolemic 
+ hyponatremia via 
+ 
+Syndrome of Inappropriate
+ Antidiuretic Hormone
+ Secretion
+Electrolytes SSRIs
+Mirtazapine
+SNRIs 
+TCAs
+Full blood count To detect blood dyscrasia
+(e.g. neutropenia & 
+thrombocytopaenia)
+SSRIs As clinically indicated in
+high risk groups for
+osteoporosis**
+Refer to Fracture Risk 
+Assessment Tool Score in 
+Ministry of Health CPG 
+Management of 
+Osteoporosis, 2012  
+Bone mineral
+density
+Parameter Agent Frequency of the
+monitoring parameter Comments
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Malaysian Psychiatric
+Association
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS

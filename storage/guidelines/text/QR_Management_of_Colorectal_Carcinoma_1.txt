@@ -1,0 +1,795 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+ALGORITHM D: TREATMENT FOR RECTAL CARCINOMA
+ 
+  
+Determine disease stage
+SurgeryAdjuvant CCRT
+Options include:
+• Surgery
+• Palliative 
+ radiotherapy
+• Palliative 
+ chemotherapy
+• Best supportive
+ care
+SURVEILLANCE
+T1-T2 N0 M0 T1-T4 Any N M1
+Surgery Surgery Neoadjuvant CCRT
+*High risk features for stage II rectal carcinoma are presence of any of 
+the following:
+• obstruction
+• perforation
+• T4 disease
+• positive CRM
+• poorly differentiated tumour
+• lymphovascular invasion
+• perineural invasion
+• inadequate lymph node sampling (<12)
+• incomplete mesorectum
+CCRT = Concurrent chemoradiotherapy
+COLORECTAL
+CARCINOMA
+MANAGEMENT OF
+Ministry of Health
+Malaysia
+Academy of
+Medicine Malaysia
+Malaysian Society
+of Colorectal
+Surgeons
+Malaysian Society
+of Gastroenterology
+& Hepatology
+Malaysian
+Oncological Society
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+T3-T4 N0 M0 OR T1-T4 N1-N2 M0
+Preferred option
+2 7
+1. Colorectal carcinoma (CRC) is the second most common cancer in Malaysia.
+2. Screening of CRC should be offered at the age of 50 years & continues until 75 
+years old for average risk population. Immunochemical faecal occult blood test 
+(IFOBT) is the preferred method.
+3. Colonoscopy is the screening method for moderate & high risk groups.
+4. All individuals with family history suggestive of a hereditary colorectal cancer 
+syndrome should be referred to a clinical genetics service for genetic risk 
+assessment, where accessible.
+5. The use of carcinoembryonic antigen (CEA) is exclusively confined for monitoring 
+& follow-up. It is performed pre-operatively for baseline investigation & 
+surveillance. CEA should not be used as a screening method.
+6. Computed tomography (CT) scan should be used for staging & surveillance of 
+CRC. Magnetic resonance imaging (MRI) is the modality of choice in diagnosing 
+& staging of rectal carcinoma.
+7. Standardised histopathology reporting proforma incorporating 
+tumour-node-metastasis (TNM) staging system should be used.
+8. The mainstay of treatment for CRC is surgical resection, which offers the best 
+curative outcome. 
+9. Chemotherapy & radiotherapy are used to downstage, as adjuvant therapy & for 
+palliative purposes.
+10. In advanced CRC, multidisciplinary team approach in patient management 
+should be practised.
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysia Health Technology Assessment Section (MaHTAS)
+Medical Development Division
+Ministry of Health Malaysia
+4th Floor, Block E1, Parcel E, 62590 Putrajaya
+Tel: +603-88831229      E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) 
+Management of Colorectal Carcinoma.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+ALGORITHM C: TREATMENT FOR COLON CARCINOMA
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+www.moh.gov.my 
+www.acadmed.org.my 
+www.colorectalmy.org 
+www.msgh.org.my
+www.malaysiaoncology.org
+Ministry of Health Malaysia:
+Academy of Medicine Malaysia:
+Malaysian Society of Colorectal Surgeons:
+Malaysian Society of Gastroenterology & Hepatology:
+Malaysian Oncological Society:
+*High risk features for stage II colon carcinoma are presence of any of 
+the following:
+• obstruction
+• perforation
+• T4 disease
+• poorly differentiated tumour
+• lymphovascular invasion
+• perineural invasion
+• inadequate lymph node sampling (<12)
+Yes 
+ 
+No  
+ 
+ 
+ 
+Determine disease stage
+T1-T2 N0 M0
+ T3-T4 N0 M0
+ T1-T4 N1-N2 M0
+ T1-T4 Any N M1
+Surgery Surgery Surgery
+High risk
+features*
+Adjuvant
+chemotherapy
+Options include:
+• Curative or 
+ palliative 
+ surgery
+• Palliative 
+ chemotherapy
+• Best supportive 
+ care
+SURVEILLANCE
+ 
+Adjuvant
+chemotherapy
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+6 3
+ALGORITHM B: PRIMARY CARE REFERRAL FOR
+SYMPTOMS OF COLORECTAL CARCINOMA
+RISK CATEGORIES FOR FAMILY HISTORY WITH CRC
+INDICATIONS TO REFER FOR GENETIC RISK EVALUATION/ASSESSMENT
+• Personal history of CRC:
+o before age 50
+o and endometrial cancer at any age  
+o and ovarian cancer at any age 
+o and stomach, small bowel, biliary or urinary tract cancer at any age 
+o and two FDRs with history of colorectal, endometrial or ovarian cancer at any age  
+• Family history of inherited syndromes such as Lynch, FAP or familial diffuse gastric 
+cancer 
+• Personal history of 10 or more adenomatous polyps 
+• Personal history of multiple primary colon cancers at any age 
+• Cumulative >5 proximal serrated polyps, at least two >10 mm  
+• Cumulative >20 serrated polyps
+• ≥2 juvenile or Peutz-Jeghers polyps
+Category Description Screening recommendation 
+ 
+ 
+No family history & age 
+>50 years
+• Perform IFOBT (refer to Algorithm A).
+• Stop screening at age 75.
+Family history of CRC either:
+• ≥1 first-degree relatives 
+(FDR) 
+• 1 FDR & >1 second-degree 
+relatives 
+• >3 & one of them must be 
+FDR 
+Category 1
+Average risk
+Family history of:
+• CRC at age <50 years
+• Familial adenomatous 
+polyposis (FAP)
+• Hereditary non-polyposis 
+colorectal cancer (Lynch 
+Syndrome)
+• Peutz-Jegher Syndrome
+• Juvenile Polyposis
+• MUTYH-associated 
+polyposis
+• For family history of CRC diagnosed at age 
+<50 years, colonoscopy should be performed 
+at age 40 or 10 years younger than affected 
+relative (whichever is younger).  If normal, 
+repeat every 3-5 years. Stop screening at 
+age 75.
+• 
+For hereditary colorectal cancer syndromes, 
+refer to Table 5 in CPG.
+Category 3
+High risk
+Category 2
+Moderate risk
+• FDR with CRC diagnosed at age <60 years, 
+colonoscopy should be performed at age 
+40 or 10 years younger than affected 
+relative (whichever is younger). If normal, 
+repeat every 3-5 years. 
+• FDR with CRC diagnosed at age ≥60 
+years, colonoscopy should be performed at 
+age 40 years. If normal, repeat every 10 
+years. 
+• Stop screening at age 75.
+Presence of any of the following signs or symptoms:
+• per rectal bleeding
+• mucoid stool
+• loss of weight or appetite
+• abdominal discomfort
+• altered bowel habits
+• perianal symptoms
+• tenesmus
+• constipation
+• anaemia
+• palpable abdominal mass
+• palpable anorectal mass
+• Age and sex
+• Rectal bleeding (colour)
+• 
+Altered bowel habit (alternating constipation  
+ and diarrhoea)
+• Perianal symptoms (lump, pruritus, pain,   
+ discharge)
+• Symptoms of anaemia (look for causes)
+• Personal history of colorectal polyps or    
+ inflammatory bowel disease, or family    
+ history of CRC
+Focused history
+• Weight 
+• Look for signs of anaemia
+• Abdominal examination 
+• Digital rectal examination and proctoscopy
+• Full blood count
+Focused physical examination and tests
+Unexplained rectal bleeding with 
+≥1 of the following:
+• fresh blood
+• blood mixed with stool
+• with altered bowel habits
+• with significant weight loss
+AND/OR
+Unexplained iron deficiency 
+anaemia
+AND/OR
+Palpable abdominal or rectal mass
+All other unexplained signs and symptoms
+that do not meet criteria for urgent referral
+Treat signs or symptoms accordingly
+REFER FOR ELECTIVE
+COLONOSCOPY 
+URGENT REFERRAL FOR
+COLONOSCOPY WITHIN TWO WEEKS 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMAQUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+Signs & symptoms not
+resolved in 4-6 weeks
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+•  CT accuracy in identifying CRC & nodal metastases depends on the stage of the tumour. 
+It is not the best modality for the assessment of early CRC.
+•  Radiological staging for CRC must include contrasted CT thorax.
+•  Radiological report must include pertinent findings for patient's optimal management e.g. 
+TNM classification.
+•  MRI staging provides an accurate assessment of rectal carcinoma local spread 
+pre-operatively.
+•  MRI is the best modality in assessing the relation of the rectal carcinoma with the 
+potential circumferential resection margins (CRM). It predicts whether the surgical 
+resection margin is clear or affected by the carcinoma.
+•  Contrast-enhanced 
+18F-fluorodeoxyglucose Positron Emission Tomography CT (FDG 
+PET-CT) is preferred in the detection of extrahepatic metastases & local recurrence of 
+CRC.
+•  FDG PET-CT has a role in the evaluation of recurrent CRC with elevated CEA & often 
+with equivocal/negative CT.
+•  A thorough surgical exploration should be performed at the time of resection in CRC. 
+•  Low rectal surgery should be performed by surgeons credentialed in the management of 
+rectal carcinoma.
+•  Total mesorectal excision (TME) should be performed for middle & low rectal carcinoma.
+•  If abdominoperineal resection (APR) is required, it should be performed as cylindrical 
+APR.
+•  Treatment for metastatic CRC should be individualised & guided by a multidisciplinary 
+approach.
+RADIOLOGICAL INVESTIGATIONS
+SURGICAL MANAGEMENT
+CORE HISTOPATHOLOGICAL DATA REPORTING
+Macroscopic core items
+o  Nature of specimen & type of operation
+o  Site of tumour
+o  Maximum tumour diameter
+o  Distance to nearer longitudinal resection  
+margin
+o  Relation of tumour to the peritoneal 
+reflection (rectal tumours only)
+o  Grade of plane(s) of surgical excision 
+(TME for anterior resection & APR 
+specimens)
+Microscopic core items
+o  Histological tumour type
+o  Histological differentiation
+o  Maximum extent of local invasion (pT 
+stage) & maximum distance of extramural 
+spread
+o  Grade of tumour regression following 
+pre-operative (neoadjuvant) therapy
+o  Resection margins (longitudinal & 
+circumferential margins)
+o  Lymph nodes status (number present, 
+number involved, highest lymph node 
+status) - minimum of 12 nodes
+o  Venous invasion
+o  Perineural invasion
+ 
+ASSESS PATIENT FOR SYMPTOMS OF CRC*
+PRESENCE
+OF
+SYMPTOM(S)
+STRATIFY RISK FOR FAMILY HISTORY REFER ALGORITHM B
+CATEGORY 1 - 
+AVERAGE RISK**
+CATEGORY 2 - 
+MODERATE RISK**
+CATEGORY 3 - 
+HIGH RISK**
+IMMUNOFAECAL
+OCCULT BLOOD
+TESTING (IFOBT) REFER FOR COLONOSCOPY
+POSITIVE
+NEGATIVE
+REPEAT IFOBT
+YEARLY
+NO YES
+ALGORITHM A: SCREENING FOR COLORECTAL CARCINOMA
+*Symptoms as outlined in Algorithm B.
+**Refer to Table 4 on Risk Categories for Family History with Colorectal 
+Carcinoma.
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+•  CT accuracy in identifying CRC & nodal metastases depends on the stage of the tumour. 
+It is not the best modality for the assessment of early CRC.
+•  Radiological staging for CRC must include contrasted CT thorax.
+•  Radiological report must include pertinent findings for patient's optimal management e.g. 
+TNM classification.
+•  MRI staging provides an accurate assessment of rectal carcinoma local spread 
+pre-operatively.
+•  MRI is the best modality in assessing the relation of the rectal carcinoma with the 
+potential circumferential resection margins (CRM). It predicts whether the surgical 
+resection margin is clear or affected by the carcinoma.
+•  Contrast-enhanced 
+18F-fluorodeoxyglucose Positron Emission Tomography CT (FDG 
+PET-CT) is preferred in the detection of extrahepatic metastases & local recurrence of 
+CRC.
+•  FDG PET-CT has a role in the evaluation of recurrent CRC with elevated CEA & often 
+with equivocal/negative CT.
+•  A thorough surgical exploration should be performed at the time of resection in CRC. 
+•  Low rectal surgery should be performed by surgeons credentialed in the management of 
+rectal carcinoma.
+•  Total mesorectal excision (TME) should be performed for middle & low rectal carcinoma.
+•  If abdominoperineal resection (APR) is required, it should be performed as cylindrical 
+APR.
+•  Treatment for metastatic CRC should be individualised & guided by a multidisciplinary 
+approach.
+RADIOLOGICAL INVESTIGATIONS
+SURGICAL MANAGEMENT
+CORE HISTOPATHOLOGICAL DATA REPORTING
+Macroscopic core items
+o  Nature of specimen & type of operation
+o  Site of tumour
+o  Maximum tumour diameter
+o  Distance to nearer longitudinal resection  
+margin
+o  Relation of tumour to the peritoneal 
+reflection (rectal tumours only)
+o  Grade of plane(s) of surgical excision 
+(TME for anterior resection & APR 
+specimens)
+Microscopic core items
+o  Histological tumour type
+o  Histological differentiation
+o  Maximum extent of local invasion (pT 
+stage) & maximum distance of extramural 
+spread
+o  Grade of tumour regression following 
+pre-operative (neoadjuvant) therapy
+o  Resection margins (longitudinal & 
+circumferential margins)
+o  Lymph nodes status (number present, 
+number involved, highest lymph node 
+status) - minimum of 12 nodes
+o  Venous invasion
+o  Perineural invasion
+ 
+ASSESS PATIENT FOR SYMPTOMS OF CRC*
+PRESENCE
+OF
+SYMPTOM(S)
+STRATIFY RISK FOR FAMILY HISTORY REFER ALGORITHM B
+CATEGORY 1 - 
+AVERAGE RISK**
+CATEGORY 2 - 
+MODERATE RISK**
+CATEGORY 3 - 
+HIGH RISK**
+IMMUNOFAECAL
+OCCULT BLOOD
+TESTING (IFOBT) REFER FOR COLONOSCOPY
+POSITIVE
+NEGATIVE
+REPEAT IFOBT
+YEARLY
+NO YES
+ALGORITHM A: SCREENING FOR COLORECTAL CARCINOMA
+*Symptoms as outlined in Algorithm B.
+**Refer to Table 4 on Risk Categories for Family History with Colorectal 
+Carcinoma.
+6 3
+ALGORITHM B: PRIMARY CARE REFERRAL FOR
+SYMPTOMS OF COLORECTAL CARCINOMA
+RISK CATEGORIES FOR FAMILY HISTORY WITH CRC
+INDICATIONS TO REFER FOR GENETIC RISK EVALUATION/ASSESSMENT
+• Personal history of CRC:
+o before age 50
+o and endometrial cancer at any age  
+o and ovarian cancer at any age 
+o and stomach, small bowel, biliary or urinary tract cancer at any age 
+o and two FDRs with history of colorectal, endometrial or ovarian cancer at any age  
+• Family history of inherited syndromes such as Lynch, FAP or familial diffuse gastric 
+cancer 
+• Personal history of 10 or more adenomatous polyps 
+• Personal history of multiple primary colon cancers at any age 
+• Cumulative >5 proximal serrated polyps, at least two >10 mm  
+• Cumulative >20 serrated polyps
+• ≥2 juvenile or Peutz-Jeghers polyps
+Category Description Screening recommendation 
+ 
+ 
+No family history & age 
+>50 years
+• Perform IFOBT (refer to Algorithm A).
+• Stop screening at age 75.
+Family history of CRC either:
+• ≥1 first-degree relatives 
+(FDR) 
+• 1 FDR & >1 second-degree 
+relatives 
+• >3 & one of them must be 
+FDR 
+Category 1
+Average risk
+Family history of:
+• CRC at age <50 years
+• Familial adenomatous 
+polyposis (FAP)
+• Hereditary non-polyposis 
+colorectal cancer (Lynch 
+Syndrome)
+• Peutz-Jegher Syndrome
+• Juvenile Polyposis
+• MUTYH-associated 
+polyposis
+• For family history of CRC diagnosed at age 
+<50 years, colonoscopy should be performed 
+at age 40 or 10 years younger than affected 
+relative (whichever is younger).  If normal, 
+repeat every 3-5 years. Stop screening at 
+age 75.
+• 
+For hereditary colorectal cancer syndromes, 
+refer to Table 5 in CPG.
+Category 3
+High risk
+Category 2
+Moderate risk
+• FDR with CRC diagnosed at age <60 years, 
+colonoscopy should be performed at age 
+40 or 10 years younger than affected 
+relative (whichever is younger). If normal, 
+repeat every 3-5 years. 
+• FDR with CRC diagnosed at age ≥60 
+years, colonoscopy should be performed at 
+age 40 years. If normal, repeat every 10 
+years. 
+• Stop screening at age 75.
+Presence of any of the following signs or symptoms:
+• per rectal bleeding
+• mucoid stool
+• loss of weight or appetite
+• abdominal discomfort
+• altered bowel habits
+• perianal symptoms
+• tenesmus
+• constipation
+• anaemia
+• palpable abdominal mass
+• palpable anorectal mass
+• Age and sex
+• Rectal bleeding (colour)
+• 
+Altered bowel habit (alternating constipation  
+ and diarrhoea)
+• Perianal symptoms (lump, pruritus, pain,   
+ discharge)
+• Symptoms of anaemia (look for causes)
+• Personal history of colorectal polyps or    
+ inflammatory bowel disease, or family    
+ history of CRC
+Focused history
+• Weight 
+• Look for signs of anaemia
+• Abdominal examination 
+• Digital rectal examination and proctoscopy
+• Full blood count
+Focused physical examination and tests
+Unexplained rectal bleeding with 
+≥1 of the following:
+• fresh blood
+• blood mixed with stool
+• with altered bowel habits
+• with significant weight loss
+AND/OR
+Unexplained iron deficiency 
+anaemia
+AND/OR
+Palpable abdominal or rectal mass
+All other unexplained signs and symptoms
+that do not meet criteria for urgent referral
+Treat signs or symptoms accordingly
+REFER FOR ELECTIVE
+COLONOSCOPY 
+URGENT REFERRAL FOR
+COLONOSCOPY WITHIN TWO WEEKS 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMAQUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+Signs & symptoms not
+resolved in 4-6 weeks
+2 7
+1. Colorectal carcinoma (CRC) is the second most common cancer in Malaysia.
+2. Screening of CRC should be offered at the age of 50 years & continues until 75 
+years old for average risk population. Immunochemical faecal occult blood test 
+(IFOBT) is the preferred method.
+3. Colonoscopy is the screening method for moderate & high risk groups.
+4. All individuals with family history suggestive of a hereditary colorectal cancer 
+syndrome should be referred to a clinical genetics service for genetic risk 
+assessment, where accessible.
+5. The use of carcinoembryonic antigen (CEA) is exclusively confined for monitoring 
+& follow-up. It is performed pre-operatively for baseline investigation & 
+surveillance. CEA should not be used as a screening method.
+6. Computed tomography (CT) scan should be used for staging & surveillance of 
+CRC. Magnetic resonance imaging (MRI) is the modality of choice in diagnosing 
+& staging of rectal carcinoma.
+7. Standardised histopathology reporting proforma incorporating 
+tumour-node-metastasis (TNM) staging system should be used.
+8. The mainstay of treatment for CRC is surgical resection, which offers the best 
+curative outcome. 
+9. Chemotherapy & radiotherapy are used to downstage, as adjuvant therapy & for 
+palliative purposes.
+10. In advanced CRC, multidisciplinary team approach in patient management 
+should be practised.
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysia Health Technology Assessment Section (MaHTAS)
+Medical Development Division
+Ministry of Health Malaysia
+4th Floor, Block E1, Parcel E, 62590 Putrajaya
+Tel: +603-88831229      E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) 
+Management of Colorectal Carcinoma.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+ALGORITHM C: TREATMENT FOR COLON CARCINOMA
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+www.moh.gov.my 
+www.acadmed.org.my 
+www.colorectalmy.org 
+www.msgh.org.my
+www.malaysiaoncology.org
+Ministry of Health Malaysia:
+Academy of Medicine Malaysia:
+Malaysian Society of Colorectal Surgeons:
+Malaysian Society of Gastroenterology & Hepatology:
+Malaysian Oncological Society:
+*High risk features for stage II colon carcinoma are presence of any of 
+the following:
+• obstruction
+• perforation
+• T4 disease
+• poorly differentiated tumour
+• lymphovascular invasion
+• perineural invasion
+• inadequate lymph node sampling (<12)
+Yes 
+ 
+No  
+ 
+ 
+ 
+Determine disease stage
+T1-T2 N0 M0
+ T3-T4 N0 M0
+ T1-T4 N1-N2 M0
+ T1-T4 Any N M1
+Surgery Surgery Surgery
+High risk
+features*
+Adjuvant
+chemotherapy
+Options include:
+• Curative or 
+ palliative 
+ surgery
+• Palliative 
+ chemotherapy
+• Best supportive 
+ care
+SURVEILLANCE
+ 
+Adjuvant
+chemotherapy
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+6 3
+ALGORITHM B: PRIMARY CARE REFERRAL FOR
+SYMPTOMS OF COLORECTAL CARCINOMA
+RISK CATEGORIES FOR FAMILY HISTORY WITH CRC
+INDICATIONS TO REFER FOR GENETIC RISK EVALUATION/ASSESSMENT
+• Personal history of CRC:
+o before age 50
+o and endometrial cancer at any age  
+o and ovarian cancer at any age 
+o and stomach, small bowel, biliary or urinary tract cancer at any age 
+o and two FDRs with history of colorectal, endometrial or ovarian cancer at any age  
+• Family history of inherited syndromes such as Lynch, FAP or familial diffuse gastric 
+cancer 
+• Personal history of 10 or more adenomatous polyps 
+• Personal history of multiple primary colon cancers at any age 
+• Cumulative >5 proximal serrated polyps, at least two >10 mm  
+• Cumulative >20 serrated polyps
+• ≥2 juvenile or Peutz-Jeghers polyps
+Category Description Screening recommendation 
+ 
+ 
+No family history & age 
+>50 years
+• Perform IFOBT (refer to Algorithm A).
+• Stop screening at age 75.
+Family history of CRC either:
+• ≥1 first-degree relatives 
+(FDR) 
+• 1 FDR & >1 second-degree 
+relatives 
+• >3 & one of them must be 
+FDR 
+Category 1
+Average risk
+Family history of:
+• CRC at age <50 years
+• Familial adenomatous 
+polyposis (FAP)
+• Hereditary non-polyposis 
+colorectal cancer (Lynch 
+Syndrome)
+• Peutz-Jegher Syndrome
+• Juvenile Polyposis
+• MUTYH-associated 
+polyposis
+• For family history of CRC diagnosed at age 
+<50 years, colonoscopy should be performed 
+at age 40 or 10 years younger than affected 
+relative (whichever is younger).  If normal, 
+repeat every 3-5 years. Stop screening at 
+age 75.
+• 
+For hereditary colorectal cancer syndromes, 
+refer to Table 5 in CPG.
+Category 3
+High risk
+Category 2
+Moderate risk
+• FDR with CRC diagnosed at age <60 years, 
+colonoscopy should be performed at age 
+40 or 10 years younger than affected 
+relative (whichever is younger). If normal, 
+repeat every 3-5 years. 
+• FDR with CRC diagnosed at age ≥60 
+years, colonoscopy should be performed at 
+age 40 years. If normal, repeat every 10 
+years. 
+• Stop screening at age 75.
+Presence of any of the following signs or symptoms:
+• per rectal bleeding
+• mucoid stool
+• loss of weight or appetite
+• abdominal discomfort
+• altered bowel habits
+• perianal symptoms
+• tenesmus
+• constipation
+• anaemia
+• palpable abdominal mass
+• palpable anorectal mass
+• Age and sex
+• Rectal bleeding (colour)
+• 
+Altered bowel habit (alternating constipation  
+ and diarrhoea)
+• Perianal symptoms (lump, pruritus, pain,   
+ discharge)
+• Symptoms of anaemia (look for causes)
+• Personal history of colorectal polyps or    
+ inflammatory bowel disease, or family    
+ history of CRC
+Focused history
+• Weight 
+• Look for signs of anaemia
+• Abdominal examination 
+• Digital rectal examination and proctoscopy
+• Full blood count
+Focused physical examination and tests
+Unexplained rectal bleeding with 
+≥1 of the following:
+• fresh blood
+• blood mixed with stool
+• with altered bowel habits
+• with significant weight loss
+AND/OR
+Unexplained iron deficiency 
+anaemia
+AND/OR
+Palpable abdominal or rectal mass
+All other unexplained signs and symptoms
+that do not meet criteria for urgent referral
+Treat signs or symptoms accordingly
+REFER FOR ELECTIVE
+COLONOSCOPY 
+URGENT REFERRAL FOR
+COLONOSCOPY WITHIN TWO WEEKS 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMAQUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+Signs & symptoms not
+resolved in 4-6 weeks
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF COLORECTAL CARCINOMA
+ALGORITHM D: TREATMENT FOR RECTAL CARCINOMA
+ 
+  
+Determine disease stage
+SurgeryAdjuvant CCRT
+Options include:
+• Surgery
+• Palliative 
+ radiotherapy
+• Palliative 
+ chemotherapy
+• Best supportive
+ care
+SURVEILLANCE
+T1-T2 N0 M0 T1-T4 Any N M1
+Surgery Surgery Neoadjuvant CCRT
+*High risk features for stage II rectal carcinoma are presence of any of 
+the following:
+• obstruction
+• perforation
+• T4 disease
+• positive CRM
+• poorly differentiated tumour
+• lymphovascular invasion
+• perineural invasion
+• inadequate lymph node sampling (<12)
+• incomplete mesorectum
+CCRT = Concurrent chemoradiotherapy
+COLORECTAL
+CARCINOMA
+MANAGEMENT OF
+Ministry of Health
+Malaysia
+Academy of
+Medicine Malaysia
+Malaysian Society
+of Colorectal
+Surgeons
+Malaysian Society
+of Gastroenterology
+& Hepatology
+Malaysian
+Oncological Society
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+T3-T4 N0 M0 OR T1-T4 N1-N2 M0
+Preferred option

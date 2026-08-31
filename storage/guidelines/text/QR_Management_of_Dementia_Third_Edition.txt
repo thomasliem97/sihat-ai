@@ -1,0 +1,1051 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+7
+MEDICATIONS USED FOR THE TREATMENT OF DEMENTIA
+#Antipsychotics may require dosage adjustments in renal or hepatic impairment
+MANAGEMENT OF DEMENTIA (THIRD EDITION)
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+Gastrointestinal (GI): diarrhoea, nausea, vomiting, decreased appetite, 
+abdominal pain, dyspepsia
+Central nervous system (CNS): insomnia, fatigue, drowsiness, falls
+Cardiovascular system (CVS): chest pain, hypertension, syncope, bradycardia
+Endocrine & metabolic: weight loss
+Local: application site erythema (transdermal)
+Neuromuscular & skeletal: tremor
+CVS: hypertension
+CNS: dizziness, headache, fatigue, confusion
+GI: diarrhoea, constipation, vomiting
+Genitourinary: urinary incontinence
+Neuromuscular & skeletal: back pain
+Respiratory: cough, dyspnoea
+CNS: agitation, akathisia, drowsiness, extrapyramidal reaction, headache, 
+sedation, insomnia, tremor, fatigue 
+CVS: tachycardia, orthostatic hypotension
+Endocrine: increased serum low-density lipoprotein, triglyceride & cholesterol, 
+increased serum glucose, increased serum prolactin
+GI: constipation, dyspepsia, increased appetite, nausea, vomiting 
+Miscellaneous: weight gain, xerostomia
+Acetylcholinesterase Inhibitors
+NOTE: All these medications are currently OFF-LABEL based on Ministry of Health National Formulary & National Pharmaceutical Regulatory Agency
+Antipsychotics
+N-methyl-D-aspartate (NMDA) receptor antagonist
+Donepezil 5 mg once daily 10 mg once daily
+Memantine 5 mg once daily 20 mg/day
+Olanzapine
+Quetiapine
+Risperidone
+2.5 mg once daily
+25 mg at bedtime
+Initial: 0.5 mg/day in 
+two divided doses
+10 mg/day
+75 mg twice daily
+1 mg/day
+Drug   Starting Dose                 Maximum Dose    Adverse Effects
+Rivastigmine Oral:
+1.5 mg twice daily
+Transdermal patch:
+4.6 mg/24 hours
+4 mg twice daily
+*If treatment interrupted >3 days,
+to restart at lowest dose
+Oral:
+6 mg twice daily
+Transdermal patch:
+13.3 mg/24 hours
+12 mg twice daily
+Aripiprazole 2 - 5 mg once daily 15 mg once daily
+For Lewy Body Disease: 
+5 mg/day
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Malaysian Psychiatric
+Association
+Malaysian Society
+of Geriatric Medicine
+1. Dementia is a syndrome that affects memory, thinking, orientation, calculation, 
+learning, language, judgement, emotion, social behaviour or motivation. It is not 
+a part of normal ageing process.
+2. Dementia is caused by a combination of genetic & environmental factors & has 
+modifiable & non-modifiable risk. 
+3. Risk reduction strategies should be advocated to reduce the risk of developing 
+cognitive decline &/or dementia.
+4. Diagnosis of dementia should be made using criteria from Diagnostic and 
+Statistical Manual of Mental Disorders, Fifth Edition (DSM-5) or the International 
+Classification of Diseases, Tenth Revision (ICD-10). The process should consist 
+of detailed history & physical examination, & supported by cognitive, functional & 
+behavioural evaluation.
+5. Non-pharmacological interventions should be the mainstay of treatment in people 
+with dementia (PWD) throughout all stages of the condition.
+6. Pharmacological interventions may be offered according to different aetiology & 
+severity of dementia. 
+7. The use of various medications in dementia should be done cautiously with 
+regular review of its indication & potential adverse effects, & deprescribed when 
+necessary.
+8. Behaviour & psychological symptoms are common among PWD & should be 
+addressed accordingly.
+9. Caregivers should be actively involved & supported in the management of dementia.
+10. The issues of palliative care & advance care planning should be addressed early 
+while PWD still possess adequate decision-making capacity.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Dementia 
+(Third Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Psychiatric Association: https://www.psychiatry-malaysia.org 
+Malaysian Society of Geriatric Medicine: https://msgm.com.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF DEMENTIA (THIRD EDITION) MANAGEMENT OF DEMENTIA (THIRD EDITION)
+ALGORITHM 3: TREATMENT OF DEMENTIA
+ 
+Non-pharmacological intervention
+Psychosocial Intervention 
+(tailored to individual’s needs)
+Multidisciplinary team Involvement
+(multicomponent intervention for
+patients and care givers)
+Maintenance of cognitive function and
+encouragement of independence
+Improvement of quality of life
+AChEI = acetylcholinesterase inhibitors
+DEMENTIA
+Pharmacological Intervention
+Alzheimer’s disease Vascular dementia Dementia with Lewy 
+Body/Parkinson’s 
+Disease Dementia
+Frontotemporal
+Dementia
+Consider
+rivastigmine
+or donepezil
+Treat vascular risk factors
+Consider AChEI
+or memantine
+Moderate
+to severeMild
+AChEI Donepezil 
+and/or memantine
+Behavioural and Psychological Symptoms of Dementia
+Co-morbid emotional disorders
+• Depression
+• Anxiety
+• Agitation      
+• Aggression      
+• Psychosis
+• Assess and address clinical or environmental causes
+• Offer psychosocial and environmental intervention
+• Consider antipsychotics or antidepressants 
+• Assess and address clinical or environmental causes
+• Offer psychosocial and environmental intervention
+• Consider antidepressant in pre-existing condition
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DEMENTIA (THIRD EDITION)
+RISK FACTORS
+RISK REDUCTION STRATEGIES
+25
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DEMENTIA (THIRD EDITION)
+Non-Modifiable Risks Modifiable Risks
+• Advancing age:
+ Age ≥65 years is a risk factor for 
+ any dementia
+• Gender: 
+ Female has higher risk of dementia
+ especially in Alzheimer’s Disease (AD)
+• Genetic
+• Cardiovascular disease
+ - hypertension
+ - diabetes mellitus 
+ - high serum cholesterol 
+ - obesity
+• Psychiatric illness
+ - depression 
+• Lifestyle 
+ - smoking 
+ - alcohol consumption 
+ - physical inactivity
+ - poor social engagement
+• Environment 
+• Others
+ - low early life education level 
+ - hearing impairment 
+ - traumatic brain injury 
+• Risk reduction strategies recommended for cognitive decline &/or dementia are:
+ physical activity
+ tobacco cessation
+ interventions for alcohol use disorders
+ management of hypertension
+ management of diabetes
+Other interventions that may be considered are:
+• weight management
+• management of dyslipidaemia
+• nutritional interventions
+• social activities
+The evaluation of dementia should be targeted at patients who present with memory 
+complaints (by patients themselves &/or carer), have clinical suspicion of cognitive 
+impairment or are at increased risk for dementia as well as elderly patients who have 
+questionable mental capacity.
+When the initial evaluation is suggestive of dementia, patients need to be referred to 
+specialist services for further assessment & confirmation of diagnosis.
+ASSESSMENT & DIAGNOSIS
+• cognitive interventions
+• management of depression
+• management of hearing loss
+Referral on possible diagnosis of dementia
+Perform clinical assessment:
+• history from patients and/or caregivers 
+• examination 
+   physical  function (e.g. IADL/ADL) 
+   cognition (e.g. MMSE, MoCA)  others - caregivers burden (e.g. ZBI)
+    mental state (e.g. GDS, CSDD, NPI)
+Reassess after 6 months
+Consider other diagnosisPatient is cognitively
+impaired
+Dementia or mild
+cognitive impairment
+YES
+YES
+YES
+NO
+NO
+NO
+• Laboratory tests for dementia screening to exclude potentially reversible 
+ causes (full blood count, biochemistry tests, thyroid function test, serum 
+ vitamin B12 and folate levels, VDRL and HIV tests)
+• Perform MRI/CT brain
+• EEG if indicated
+DEMENTIA
+Determine type of dementia
+MCI
+Alzheimer’s
+disease
+Vascular
+Dementia
+Dementia with Lewy
+Body/Parkinson’s
+Disease Dementia
+Fronto-
+temporal
+Dementia
+Other types of dementia
+• Mixed dementia
+• Related to medical conditions 
+• HIV/TBI/alcohol-related
+ dementiaMMSE =  Mini Mental State Examination
+MoCA  =  Montreal Cognitive Assessment
+CSDD =  Cornell Scale for Depression 
+  in Dementia
+GDS  = Geriatric Depression Scale
+NPI  = Neuropsychiatric Inventory
+IADL  = Instrumental Activity of Daily Living
+ZBI  = Zarit Burden Interview
+VDRL =  Venereal Disease Research
+  Laboratory test
+HIV  =  Human Immunodeficiency Virus
+MRI  =  Magnetic Resonance Imaging
+CT  =  Computed Tomography
+EEG  =  Electroencephalogram
+TBI  =  Traumatic Brain Injury
+ALGORITHM 2: DIAGNOSIS OF DEMENTIA
+NO
+NO
+YES
+YES
+YESYES
+YES
+NO
+NO
+ 
+NO
+Perform clinical assessment:
+• History from patients and/or caregivers
+• Examination
+  Physical including cardiovascular and neurological systems
+  Mental state and cognition (e.g. mini-Cog/AMTS/MMSE)
+Abnormalities
+detected on clinical
+assessment
+Patient is
+cognitively impaired
+but criteria for dementia
+not fulfilled
+Any abnormalities
+present
+Findings
+meet criteria for dementiaRefer to specialist 
+services/memory clinic
+Provide reassurance or
+referral as appropriate
+Consider referral to 
+a specialist and or
+reassess in six months
+Symptoms 
+remain
+Provide
+reassurance
+AMTS = Abbreviated Mental Test Score
+MMSE = Mini Mental State Examination
+Perform laboratory tests*
+Provide reassurance
+Treat and reassess
+Presence of symptoms suggestive of dementia (including subjective memory complaint,
+changes in activity of daily living and/or caregivers concerns), clinician suspicion
+and patients at increased risk of dementia
+ALGORITHM 1: EARLY DETECTION OF DEMENTIA
+*Refer to Chapter 3 on Diagnosis and Assessment in CPG
+43
+Clinical assessment should include cognitive & non-cognitive domains. 
+Recommended assessment tools are as shown below:
+The severity of dementia can be staged according to functional status according to 
+DSM-5 as shown below.
+DIAGNOSTIC AND STATISTICAL MANUAL OFMENTAL DISORDER 
+FIFTH EDITION (DSM-5)
+Diagnostic criteria for major neurocognitive disorder (or dementia)
+A. Evidence of significant cognitive decline from a previous level of performance in one or 
+more cognitive domains (complex attention, executive function, learning & memory, 
+language, perceptual-motor or social cognition) based on:
+1. Concern of the individual, a knowledgeable informant or the clinician that there has 
+been a significant decline in cognitive function; &
+2. A substantial impairment in cognitive performance, preferably documented by 
+standardised neuropsychological testing or in its absence, another quantified clinical 
+assessment.
+B. The cognitive deficits interfere with independence in everyday activities (that is, at a 
+minimum, requiring assistance with complex instrumental activities of daily living such as 
+paying bills or managing medications).
+C. The cognitive deficits do not occur exclusively in the context of a delirium.
+D. The cognitive deficits are not better explained by another mental disorder. Specify:
+• Without behavioural disturbance: if the cognitive disturbance is not accompanied by 
+any clinically significant behavioural disturbance.
+• With behavioural disturbance (specify disturbance): if the cognitive disturbance is 
+accompanied by a clinically significant behavioural disturbance (for example, 
+psychotic symptoms, mood disturbance, agitation, apathy or other behavioural 
+symptoms). For example, major depressive disorder or schizophrenia.
+ETHICAL & LEGAL ISSUES
+PALLIATIVE & END-OF-LIFE CARE
+REFERRAL
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF DEMENTIA (THIRD EDITION) MANAGEMENT OF DEMENTIA (THIRD EDITION)
+Cognitive Non-Cognitive
+• AD8 Dementia Screening Interview
+• Informant Questionnaire on Cognitive 
+ Decline in the Elderly (IQCODE)
+• Mini-Cog 
+• Abbreviated Mental Test Score (AMTS)
+• Mini-Mental State Examination (MMSE)
+• Montreal Cognitive Assessment (MoCA)
+• Addenbrooke's Cognitive 
+ Examination-III (ACE-III)
+• Visual Cognitive Assessment 
+ Test (VCAT)
+• Saint Louis University Mental Status 
+ (SLUMS)
+• Neuropsychiatric Inventory (NPI)
+• Behavioral Pathology in Alzheimer’s 
+ Disease Rating Scale (BEHAVE-AD) 
+• Cornell Scale for Depression in 
+ Dementia (CSDD) 
+• Montgomery-Asberg Depression 
+ Rating Scale (MADRS) 
+• Geriatric Depression Scale (GDS)
+• Disability Assessment for Dementia 
+ (DAD)
+• Bristol Activities of Daily Living Scale 
+ (Bristol ADL) 
+• Zarit Burden Interview (ZBI, 22-item 
+ version)
+Non-Pharmacological
+Treatment
+Pharmacological Treatment
+Cognitive BPSD
+Caregiver Support
+Cognition & Quality of life
+(QoL)
+• Cognitive stimulation
+ therapy
+• Physical activity
+Behaviour & Psychological 
+Symptoms of Dementia
+(BPSD)
+• Address causes & 
+ triggering factors
+• Psychological intervention
+• Personalised & tailored 
+ activity
+AD 
+All severity: 
+• Donepezil
+Mild – moderate: 
+• Rivastigmine
+Moderate – severe: 
+• Memantine ± 
+ acetylcholinesterase 
+ Inhibitors (AChEI)
+Vascular Dementia
+• AChEI or memantine
+Lewy Body Disease 
+• Rivastigmine or 
+ donepezil
+Assess for caregiver 
+burden
+Multicomponent 
+intervention:
+• Respite care
+• Carer training
+- Psychoeducation
+- Communication skills
+• Spirituality & religious 
+ support
+Antipsychotics
+• Use at lowest effective
+ dose
+• Shortest possible
+ duration
+• Reassessed regularly 
+• Wean off if not needed
+Antidepressants
+• Agitation
+• Pre-existing severe 
+ depression & anxiety
+Difficulties with instrumental activities of daily living (e.g. housework, managing 
+money)
+Difficulties with basic activities of daily living (e.g. feeding, dressing)
+Fully dependent
+Mild
+Moderate
+Severe
+Potentially Inappropriate Prescriptions (PIP)
+• Examples of PIP/psychotropics are: first-generation antihistamines (e.g. chlorpheniramine, hydroxyzine), 
+antipsychotics, benzodiazepines (e.g. alprazolam, diazepam, midazolam), hypnotics (e.g. zolpidem, 
+zopiclone)
+• Use cautiously with regular review of indication & deprescribed whenever possible.
+As dementia is a progressive & irreversible illness which can affect the QoL for PWD 
+& their caregivers, palliative care should be initiated at the time of diagnosis 
+throughout different stages of illness. The best supportive care should be offered to 
+them based on their preference & the principles of basic medical ethics. The 
+components on palliative care include:
+a. choice of artificial nutrition & hydration         c. avoidance of restraints
+b. management of pain                                     d. advance care planning
+• For PWD who require regular medication, the ‘3T’ approach is a good practice:
+ treatment should have a specific target symptom
+ starting dose should be low & then titrated upwards
+ treatment should be time limited
+• If there is any doubt regarding PWD’s decision-making capacity, a formal 
+assessment should be carried out.  
+• A doctor should comply with a PWD’s unequivocal written directive to refuse a 
+particular treatment if that decision was made while the PWD had mental capacity.
+• All patients with suspected dementia should be referred to a geriatric 
+psychiatrist/psychiatrist, geriatrician or neurologist for assessment, diagnosis & 
+management
+Severity                                            Functional Status
+43
+Clinical assessment should include cognitive & non-cognitive domains. 
+Recommended assessment tools are as shown below:
+The severity of dementia can be staged according to functional status according to 
+DSM-5 as shown below.
+DIAGNOSTIC AND STATISTICAL MANUAL OFMENTAL DISORDER 
+FIFTH EDITION (DSM-5)
+Diagnostic criteria for major neurocognitive disorder (or dementia)
+A. Evidence of significant cognitive decline from a previous level of performance in one or 
+more cognitive domains (complex attention, executive function, learning & memory, 
+language, perceptual-motor or social cognition) based on:
+1. Concern of the individual, a knowledgeable informant or the clinician that there has 
+been a significant decline in cognitive function; &
+2. A substantial impairment in cognitive performance, preferably documented by 
+standardised neuropsychological testing or in its absence, another quantified clinical 
+assessment.
+B. The cognitive deficits interfere with independence in everyday activities (that is, at a 
+minimum, requiring assistance with complex instrumental activities of daily living such as 
+paying bills or managing medications).
+C. The cognitive deficits do not occur exclusively in the context of a delirium.
+D. The cognitive deficits are not better explained by another mental disorder. Specify:
+• Without behavioural disturbance: if the cognitive disturbance is not accompanied by 
+any clinically significant behavioural disturbance.
+• With behavioural disturbance (specify disturbance): if the cognitive disturbance is 
+accompanied by a clinically significant behavioural disturbance (for example, 
+psychotic symptoms, mood disturbance, agitation, apathy or other behavioural 
+symptoms). For example, major depressive disorder or schizophrenia.
+ETHICAL & LEGAL ISSUES
+PALLIATIVE & END-OF-LIFE CARE
+REFERRAL
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF DEMENTIA (THIRD EDITION) MANAGEMENT OF DEMENTIA (THIRD EDITION)
+Cognitive Non-Cognitive
+• AD8 Dementia Screening Interview
+• Informant Questionnaire on Cognitive 
+ Decline in the Elderly (IQCODE)
+• Mini-Cog 
+• Abbreviated Mental Test Score (AMTS)
+• Mini-Mental State Examination (MMSE)
+• Montreal Cognitive Assessment (MoCA)
+• Addenbrooke's Cognitive 
+ Examination-III (ACE-III)
+• Visual Cognitive Assessment 
+ Test (VCAT)
+• Saint Louis University Mental Status 
+ (SLUMS)
+• Neuropsychiatric Inventory (NPI)
+• Behavioral Pathology in Alzheimer’s 
+ Disease Rating Scale (BEHAVE-AD) 
+• Cornell Scale for Depression in 
+ Dementia (CSDD) 
+• Montgomery-Asberg Depression 
+ Rating Scale (MADRS) 
+• Geriatric Depression Scale (GDS)
+• Disability Assessment for Dementia 
+ (DAD)
+• Bristol Activities of Daily Living Scale 
+ (Bristol ADL) 
+• Zarit Burden Interview (ZBI, 22-item 
+ version)
+Non-Pharmacological
+Treatment
+Pharmacological Treatment
+Cognitive BPSD
+Caregiver Support
+Cognition & Quality of life
+(QoL)
+• Cognitive stimulation
+ therapy
+• Physical activity
+Behaviour & Psychological 
+Symptoms of Dementia
+(BPSD)
+• Address causes & 
+ triggering factors
+• Psychological intervention
+• Personalised & tailored 
+ activity
+AD 
+All severity: 
+• Donepezil
+Mild – moderate: 
+• Rivastigmine
+Moderate – severe: 
+• Memantine ± 
+ acetylcholinesterase 
+ Inhibitors (AChEI)
+Vascular Dementia
+• AChEI or memantine
+Lewy Body Disease 
+• Rivastigmine or 
+ donepezil
+Assess for caregiver 
+burden
+Multicomponent 
+intervention:
+• Respite care
+• Carer training
+- Psychoeducation
+- Communication skills
+• Spirituality & religious 
+ support
+Antipsychotics
+• Use at lowest effective
+ dose
+• Shortest possible
+ duration
+• Reassessed regularly 
+• Wean off if not needed
+Antidepressants
+• Agitation
+• Pre-existing severe 
+ depression & anxiety
+Difficulties with instrumental activities of daily living (e.g. housework, managing 
+money)
+Difficulties with basic activities of daily living (e.g. feeding, dressing)
+Fully dependent
+Mild
+Moderate
+Severe
+Potentially Inappropriate Prescriptions (PIP)
+• Examples of PIP/psychotropics are: first-generation antihistamines (e.g. chlorpheniramine, hydroxyzine), 
+antipsychotics, benzodiazepines (e.g. alprazolam, diazepam, midazolam), hypnotics (e.g. zolpidem, 
+zopiclone)
+• Use cautiously with regular review of indication & deprescribed whenever possible.
+As dementia is a progressive & irreversible illness which can affect the QoL for PWD 
+& their caregivers, palliative care should be initiated at the time of diagnosis 
+throughout different stages of illness. The best supportive care should be offered to 
+them based on their preference & the principles of basic medical ethics. The 
+components on palliative care include:
+a. choice of artificial nutrition & hydration         c. avoidance of restraints
+b. management of pain                                     d. advance care planning
+• For PWD who require regular medication, the ‘3T’ approach is a good practice:
+ treatment should have a specific target symptom
+ starting dose should be low & then titrated upwards
+ treatment should be time limited
+• If there is any doubt regarding PWD’s decision-making capacity, a formal 
+assessment should be carried out.  
+• A doctor should comply with a PWD’s unequivocal written directive to refuse a 
+particular treatment if that decision was made while the PWD had mental capacity.
+• All patients with suspected dementia should be referred to a geriatric 
+psychiatrist/psychiatrist, geriatrician or neurologist for assessment, diagnosis & 
+management
+Severity                                            Functional Status
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DEMENTIA (THIRD EDITION)
+RISK FACTORS
+RISK REDUCTION STRATEGIES
+25
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DEMENTIA (THIRD EDITION)
+Non-Modifiable Risks Modifiable Risks
+• Advancing age:
+ Age ≥65 years is a risk factor for 
+ any dementia
+• Gender: 
+ Female has higher risk of dementia
+ especially in Alzheimer’s Disease (AD)
+• Genetic
+• Cardiovascular disease
+ - hypertension
+ - diabetes mellitus 
+ - high serum cholesterol 
+ - obesity
+• Psychiatric illness
+ - depression 
+• Lifestyle 
+ - smoking 
+ - alcohol consumption 
+ - physical inactivity
+ - poor social engagement
+• Environment 
+• Others
+ - low early life education level 
+ - hearing impairment 
+ - traumatic brain injury 
+• Risk reduction strategies recommended for cognitive decline &/or dementia are:
+ physical activity
+ tobacco cessation
+ interventions for alcohol use disorders
+ management of hypertension
+ management of diabetes
+Other interventions that may be considered are:
+• weight management
+• management of dyslipidaemia
+• nutritional interventions
+• social activities
+The evaluation of dementia should be targeted at patients who present with memory 
+complaints (by patients themselves &/or carer), have clinical suspicion of cognitive 
+impairment or are at increased risk for dementia as well as elderly patients who have 
+questionable mental capacity.
+When the initial evaluation is suggestive of dementia, patients need to be referred to 
+specialist services for further assessment & confirmation of diagnosis.
+ASSESSMENT & DIAGNOSIS
+• cognitive interventions
+• management of depression
+• management of hearing loss
+Referral on possible diagnosis of dementia
+Perform clinical assessment:
+• history from patients and/or caregivers 
+• examination 
+   physical  function (e.g. IADL/ADL) 
+   cognition (e.g. MMSE, MoCA)  others - caregivers burden (e.g. ZBI)
+    mental state (e.g. GDS, CSDD, NPI)
+Reassess after 6 months
+Consider other diagnosisPatient is cognitively
+impaired
+Dementia or mild
+cognitive impairment
+YES
+YES
+YES
+NO
+NO
+NO
+• Laboratory tests for dementia screening to exclude potentially reversible 
+ causes (full blood count, biochemistry tests, thyroid function test, serum 
+ vitamin B12 and folate levels, VDRL and HIV tests)
+• Perform MRI/CT brain
+• EEG if indicated
+DEMENTIA
+Determine type of dementia
+MCI
+Alzheimer’s
+disease
+Vascular
+Dementia
+Dementia with Lewy
+Body/Parkinson’s
+Disease Dementia
+Fronto-
+temporal
+Dementia
+Other types of dementia
+• Mixed dementia
+• Related to medical conditions 
+• HIV/TBI/alcohol-related
+ dementiaMMSE =  Mini Mental State Examination
+MoCA  =  Montreal Cognitive Assessment
+CSDD =  Cornell Scale for Depression 
+  in Dementia
+GDS  = Geriatric Depression Scale
+NPI  = Neuropsychiatric Inventory
+IADL  = Instrumental Activity of Daily Living
+ZBI  = Zarit Burden Interview
+VDRL =  Venereal Disease Research
+  Laboratory test
+HIV  =  Human Immunodeficiency Virus
+MRI  =  Magnetic Resonance Imaging
+CT  =  Computed Tomography
+EEG  =  Electroencephalogram
+TBI  =  Traumatic Brain Injury
+ALGORITHM 2: DIAGNOSIS OF DEMENTIA
+NO
+NO
+YES
+YES
+YESYES
+YES
+NO
+NO
+ 
+NO
+Perform clinical assessment:
+• History from patients and/or caregivers
+• Examination
+  Physical including cardiovascular and neurological systems
+  Mental state and cognition (e.g. mini-Cog/AMTS/MMSE)
+Abnormalities
+detected on clinical
+assessment
+Patient is
+cognitively impaired
+but criteria for dementia
+not fulfilled
+Any abnormalities
+present
+Findings
+meet criteria for dementiaRefer to specialist 
+services/memory clinic
+Provide reassurance or
+referral as appropriate
+Consider referral to 
+a specialist and or
+reassess in six months
+Symptoms 
+remain
+Provide
+reassurance
+AMTS = Abbreviated Mental Test Score
+MMSE = Mini Mental State Examination
+Perform laboratory tests*
+Provide reassurance
+Treat and reassess
+Presence of symptoms suggestive of dementia (including subjective memory complaint,
+changes in activity of daily living and/or caregivers concerns), clinician suspicion
+and patients at increased risk of dementia
+ALGORITHM 1: EARLY DETECTION OF DEMENTIA
+*Refer to Chapter 3 on Diagnosis and Assessment in CPG
+1. Dementia is a syndrome that affects memory, thinking, orientation, calculation, 
+learning, language, judgement, emotion, social behaviour or motivation. It is not 
+a part of normal ageing process.
+2. Dementia is caused by a combination of genetic & environmental factors & has 
+modifiable & non-modifiable risk. 
+3. Risk reduction strategies should be advocated to reduce the risk of developing 
+cognitive decline &/or dementia.
+4. Diagnosis of dementia should be made using criteria from Diagnostic and 
+Statistical Manual of Mental Disorders, Fifth Edition (DSM-5) or the International 
+Classification of Diseases, Tenth Revision (ICD-10). The process should consist 
+of detailed history & physical examination, & supported by cognitive, functional & 
+behavioural evaluation.
+5. Non-pharmacological interventions should be the mainstay of treatment in people 
+with dementia (PWD) throughout all stages of the condition.
+6. Pharmacological interventions may be offered according to different aetiology & 
+severity of dementia. 
+7. The use of various medications in dementia should be done cautiously with 
+regular review of its indication & potential adverse effects, & deprescribed when 
+necessary.
+8. Behaviour & psychological symptoms are common among PWD & should be 
+addressed accordingly.
+9. Caregivers should be actively involved & supported in the management of dementia.
+10. The issues of palliative care & advance care planning should be addressed early 
+while PWD still possess adequate decision-making capacity.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Dementia 
+(Third Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Psychiatric Association: https://www.psychiatry-malaysia.org 
+Malaysian Society of Geriatric Medicine: https://msgm.com.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF DEMENTIA (THIRD EDITION) MANAGEMENT OF DEMENTIA (THIRD EDITION)
+ALGORITHM 3: TREATMENT OF DEMENTIA
+ 
+Non-pharmacological intervention
+Psychosocial Intervention 
+(tailored to individual’s needs)
+Multidisciplinary team Involvement
+(multicomponent intervention for
+patients and care givers)
+Maintenance of cognitive function and
+encouragement of independence
+Improvement of quality of life
+AChEI = acetylcholinesterase inhibitors
+DEMENTIA
+Pharmacological Intervention
+Alzheimer’s disease Vascular dementia Dementia with Lewy 
+Body/Parkinson’s 
+Disease Dementia
+Frontotemporal
+Dementia
+Consider
+rivastigmine
+or donepezil
+Treat vascular risk factors
+Consider AChEI
+or memantine
+Moderate
+to severeMild
+AChEI Donepezil 
+and/or memantine
+Behavioural and Psychological Symptoms of Dementia
+Co-morbid emotional disorders
+• Depression
+• Anxiety
+• Agitation      
+• Aggression      
+• Psychosis
+• Assess and address clinical or environmental causes
+• Offer psychosocial and environmental intervention
+• Consider antipsychotics or antidepressants 
+• Assess and address clinical or environmental causes
+• Offer psychosocial and environmental intervention
+• Consider antidepressant in pre-existing condition
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DEMENTIA (THIRD EDITION)
+RISK FACTORS
+RISK REDUCTION STRATEGIES
+25
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF DEMENTIA (THIRD EDITION)
+Non-Modifiable Risks Modifiable Risks
+• Advancing age:
+ Age ≥65 years is a risk factor for 
+ any dementia
+• Gender: 
+ Female has higher risk of dementia
+ especially in Alzheimer’s Disease (AD)
+• Genetic
+• Cardiovascular disease
+ - hypertension
+ - diabetes mellitus 
+ - high serum cholesterol 
+ - obesity
+• Psychiatric illness
+ - depression 
+• Lifestyle 
+ - smoking 
+ - alcohol consumption 
+ - physical inactivity
+ - poor social engagement
+• Environment 
+• Others
+ - low early life education level 
+ - hearing impairment 
+ - traumatic brain injury 
+• Risk reduction strategies recommended for cognitive decline &/or dementia are:
+ physical activity
+ tobacco cessation
+ interventions for alcohol use disorders
+ management of hypertension
+ management of diabetes
+Other interventions that may be considered are:
+• weight management
+• management of dyslipidaemia
+• nutritional interventions
+• social activities
+The evaluation of dementia should be targeted at patients who present with memory 
+complaints (by patients themselves &/or carer), have clinical suspicion of cognitive 
+impairment or are at increased risk for dementia as well as elderly patients who have 
+questionable mental capacity.
+When the initial evaluation is suggestive of dementia, patients need to be referred to 
+specialist services for further assessment & confirmation of diagnosis.
+ASSESSMENT & DIAGNOSIS
+• cognitive interventions
+• management of depression
+• management of hearing loss
+Referral on possible diagnosis of dementia
+Perform clinical assessment:
+• history from patients and/or caregivers 
+• examination 
+   physical  function (e.g. IADL/ADL) 
+   cognition (e.g. MMSE, MoCA)  others - caregivers burden (e.g. ZBI)
+    mental state (e.g. GDS, CSDD, NPI)
+Reassess after 6 months
+Consider other diagnosisPatient is cognitively
+impaired
+Dementia or mild
+cognitive impairment
+YES
+YES
+YES
+NO
+NO
+NO
+• Laboratory tests for dementia screening to exclude potentially reversible 
+ causes (full blood count, biochemistry tests, thyroid function test, serum 
+ vitamin B12 and folate levels, VDRL and HIV tests)
+• Perform MRI/CT brain
+• EEG if indicated
+DEMENTIA
+Determine type of dementia
+MCI
+Alzheimer’s
+disease
+Vascular
+Dementia
+Dementia with Lewy
+Body/Parkinson’s
+Disease Dementia
+Fronto-
+temporal
+Dementia
+Other types of dementia
+• Mixed dementia
+• Related to medical conditions 
+• HIV/TBI/alcohol-related
+ dementiaMMSE =  Mini Mental State Examination
+MoCA  =  Montreal Cognitive Assessment
+CSDD =  Cornell Scale for Depression 
+  in Dementia
+GDS  = Geriatric Depression Scale
+NPI  = Neuropsychiatric Inventory
+IADL  = Instrumental Activity of Daily Living
+ZBI  = Zarit Burden Interview
+VDRL =  Venereal Disease Research
+  Laboratory test
+HIV  =  Human Immunodeficiency Virus
+MRI  =  Magnetic Resonance Imaging
+CT  =  Computed Tomography
+EEG  =  Electroencephalogram
+TBI  =  Traumatic Brain Injury
+ALGORITHM 2: DIAGNOSIS OF DEMENTIA
+NO
+NO
+YES
+YES
+YESYES
+YES
+NO
+NO
+ 
+NO
+Perform clinical assessment:
+• History from patients and/or caregivers
+• Examination
+  Physical including cardiovascular and neurological systems
+  Mental state and cognition (e.g. mini-Cog/AMTS/MMSE)
+Abnormalities
+detected on clinical
+assessment
+Patient is
+cognitively impaired
+but criteria for dementia
+not fulfilled
+Any abnormalities
+present
+Findings
+meet criteria for dementiaRefer to specialist 
+services/memory clinic
+Provide reassurance or
+referral as appropriate
+Consider referral to 
+a specialist and or
+reassess in six months
+Symptoms 
+remain
+Provide
+reassurance
+AMTS = Abbreviated Mental Test Score
+MMSE = Mini Mental State Examination
+Perform laboratory tests*
+Provide reassurance
+Treat and reassess
+Presence of symptoms suggestive of dementia (including subjective memory complaint,
+changes in activity of daily living and/or caregivers concerns), clinician suspicion
+and patients at increased risk of dementia
+ALGORITHM 1: EARLY DETECTION OF DEMENTIA
+*Refer to Chapter 3 on Diagnosis and Assessment in CPG
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+7
+MEDICATIONS USED FOR THE TREATMENT OF DEMENTIA
+#Antipsychotics may require dosage adjustments in renal or hepatic impairment
+MANAGEMENT OF DEMENTIA (THIRD EDITION)
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+Gastrointestinal (GI): diarrhoea, nausea, vomiting, decreased appetite, 
+abdominal pain, dyspepsia
+Central nervous system (CNS): insomnia, fatigue, drowsiness, falls
+Cardiovascular system (CVS): chest pain, hypertension, syncope, bradycardia
+Endocrine & metabolic: weight loss
+Local: application site erythema (transdermal)
+Neuromuscular & skeletal: tremor
+CVS: hypertension
+CNS: dizziness, headache, fatigue, confusion
+GI: diarrhoea, constipation, vomiting
+Genitourinary: urinary incontinence
+Neuromuscular & skeletal: back pain
+Respiratory: cough, dyspnoea
+CNS: agitation, akathisia, drowsiness, extrapyramidal reaction, headache, 
+sedation, insomnia, tremor, fatigue 
+CVS: tachycardia, orthostatic hypotension
+Endocrine: increased serum low-density lipoprotein, triglyceride & cholesterol, 
+increased serum glucose, increased serum prolactin
+GI: constipation, dyspepsia, increased appetite, nausea, vomiting 
+Miscellaneous: weight gain, xerostomia
+Acetylcholinesterase Inhibitors
+NOTE: All these medications are currently OFF-LABEL based on Ministry of Health National Formulary & National Pharmaceutical Regulatory Agency
+Antipsychotics
+N-methyl-D-aspartate (NMDA) receptor antagonist
+Donepezil 5 mg once daily 10 mg once daily
+Memantine 5 mg once daily 20 mg/day
+Olanzapine
+Quetiapine
+Risperidone
+2.5 mg once daily
+25 mg at bedtime
+Initial: 0.5 mg/day in 
+two divided doses
+10 mg/day
+75 mg twice daily
+1 mg/day
+Drug   Starting Dose                 Maximum Dose    Adverse Effects
+Rivastigmine Oral:
+1.5 mg twice daily
+Transdermal patch:
+4.6 mg/24 hours
+4 mg twice daily
+*If treatment interrupted >3 days,
+to restart at lowest dose
+Oral:
+6 mg twice daily
+Transdermal patch:
+13.3 mg/24 hours
+12 mg twice daily
+Aripiprazole 2 - 5 mg once daily 15 mg once daily
+For Lewy Body Disease: 
+5 mg/day
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Malaysian Psychiatric
+Association
+Malaysian Society
+of Geriatric Medicine

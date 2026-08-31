@@ -1,0 +1,1365 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION
+8
+TABLE 1: CARDIAC RISK STRATIFICATION FOR PATIENTS WITH ED
+BASED ON 2ND & 3RD PRINCETON CONSENSUS
+ 
+ 
+ 
+ 
+    
+Cardiac risk Low-risk category Intermediate-risk category 
+Characteristics   
+≥3 risk factors* for CAD (excluding
+sex) 
+High-risk arrhythmias
+Unstable or refractory anginaModerate, stable angina  
+ 
+Uncomplicated previous MI  Recent MI (>2, <6 weeks)  Recent MI (<2 weeks)  
+  
+ 
+ 
+ 
+ 
+Management  
+ 
+CHF = congestive heart failure; LVD = left ventricular dysfunction; MI = myocardial infarction; 
+NYHA = New York Heart Association
+*Risk factors for CAD include high blood pressure, high low-density lipoprotein cholesterol, 
+diabetes mellitus, smoking &/or second-hand smoke exposure, obesity, unhealthy diet & 
+physical inactivity.
+SPECIAL GROUPS
+1. Patients with cardiac disease:
+• Certain drugs used for the management of cardiac conditions may need to be assessed 
+in patients with ED.
+• The appropriateness of using PDE5i is based on patient’s cardiac status & medication 
+regimen.
+• A multidisciplinary team consisting of cardiologist, urologist, family medicine specialist, 
+psychiatrist &/or rehabilitative physician are important in managing patients with ED & 
+cardiac disease.
+2. Patients with pelvic surgery or prostate cancer treatment:
+• Multimodal penile rehabilitation with nerve sparing approach may help to improve 
+erectile function post-radical prostatectomy.
+ 
+3. Spinal cord injury survivors:
+• Treatments of ED may trigger autonomic dysreflexia* which can potentially be life- 
+threatening in spinal cord injury patients.
+*Autonomic dysreflexia is a dangerous syndrome involving an overreaction of autonomic 
+nervous system. It causes a sudden & severe rise of blood pressure in addition to other 
+symptoms (unopposed sympathetic responses e.g. shortness of breath, chest tightness, 
+flushing, throbbing headache & goosebumps).
+High-risk category 
+Mild, stable angina (evaluated &/
+or being treated)
+Asymptomatic, <3 risk factors* for
+CAD (excluding sex)  
+LVD/CHF (NYHA class I or II) LVD/CHF (NYHA class III) LVD/CHF (NYHA class IV)
+Post-successful  coronary
+revascularisation
+Non-cardiac  sequelae   of 
+atherosclerotic disease (e.g.  stroke,
+peripheral vascular disease)Controlled hypertension
+Mild vascular disease
+Hypertrophic obstructive & other
+cardiomyopathies
+Uncontrolled hypertension
+Moderate-to-severe valvular disease
+Manage within primary care setting
+Review treatment options with
+patient & their partner (where
+possible)
+Specialised evaluation recommended
+(e.g. exercise stress test for angina,
+echocardiogram for a murmur)
+Patient to be placed in high or low
+risk category depending upon
+outcome of testing
+Refer for specialised cardiac
+evaluation & management
+Treatment for ED to be deferred until
+cardiac condition stabilised &/or
+specialist evaluation completed
+
+2 7
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION 
+ALGORITHM 2: CLASSIFICATION FOR ED
+PATIENTS WITH CARDIOVASCULAR DISEASE
+KEY MESSAGES
+1. Erectile dysfunction (ED) is a prevalent & multifaceted medical condition 
+characterised by the persistent inability to achieve or maintain an erection sufficient 
+for satisfactory sexual performance. It substantially impacts the quality of life of 
+affected couples, leading to emotional distress & strained relationships.
+2. There are various risk factors associated with ED e.g. age, lifestyle behaviours, 
+cardiovascular, metabolic, neurological, psychological & hormonal risks.
+3. A comprehensive medical, psychosocial & sexual history should be taken in every 
+patient presenting with ED.
+4. A validated questionnaire related to ED should be used to assess all sexual function 
+domains (e.g. International Index of Erectile Function [IIEF]).
+5. Patients with ED should have cardiac risk assessment & vice versa as ED could be 
+the initial manifestation of coronary artery disease (CAD) & peripheral vascular 
+disease.
+6. All patients with ED should be advised on lifestyle & risk factor modifications.
+7. Phosphodiesterase-5-inhibitor (PDE5i) should be offered to all patients with ED 
+unless contraindicated.
+8. Mechanical devices (e.g. vacuum erection device or shockwave therapy) may be 
+offered in ED while penile prosthesis may be considered for those who have failed 
+other interventions.
+9. An integrated & collaborative approach with psychological interventions should be 
+considered in the treatment of psychogenic ED.
+10. Prompt referrals need to be made to relevant specialties based on the patient’s 
+conditions e.g. urology, cardiology, endocrinology &/or mental health.
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Erectile Dysfunction.
+Details of the evidence supporting these recommendations can be found in 
+the above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+If vasculogenic ED, 
+for ASCVD risk 
+score assessment
+Patients with 
+conﬁrmed ED 
+Exercise abilitya
+*Refer to Table 1 for 
+Cardiac risk stratiﬁcation 
+for patients with ED 
+based on 2nd and 3rd 
+Princeton Consensus
+Cardiac risk 
+stratiﬁcation
+(according to 
+Princeton Consensus)*
+Low risk Intermediate risk High risk
+Stress testb
+Results? High risk
+For further 
+cardiac 
+assessment
+For advice and 
+treatment by 
+primary team
+Low risk
+Is nitrate 
+necessary? Non-PDE5i treatment 
+Consider stopping 
+nitrate, then for PDE5iPDE5i
+YesYes
+NoNo
+Pass Fail
+Elective risk 
+assessment
+ASCVD = atherosclerotic cardiovascular disease
+a  Exercise ability is used to guide physician estimating cardiovascular risk associated with 
+sexual activity & should be established before the initiation of ED treatment. Sexual activity is 
+equivalent to walking 1.6 kilometre (1 mile) on the flat in 20 minutes or briskly climbing two 
+flights of stairs in 10 seconds.
+b  Sexual activity is equivalent to 4 minutes of the Bruce treadmill protocol. Pass is defined as
+ completion of the test without symptoms, arrhythmias or a fall in systolic blood pressure.
+Patients
+prescribed
+with nitrate/
+riociguat?
+2 7
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION 
+ALGORITHM 2: CLASSIFICATION FOR ED
+PATIENTS WITH CARDIOVASCULAR DISEASE
+KEY MESSAGES
+1. Erectile dysfunction (ED) is a prevalent & multifaceted medical condition 
+characterised by the persistent inability to achieve or maintain an erection sufficient 
+for satisfactory sexual performance. It substantially impacts the quality of life of 
+affected couples, leading to emotional distress & strained relationships.
+2. There are various risk factors associated with ED e.g. age, lifestyle behaviours, 
+cardiovascular, metabolic, neurological, psychological & hormonal risks.
+3. A comprehensive medical, psychosocial & sexual history should be taken in every 
+patient presenting with ED.
+4. A validated questionnaire related to ED should be used to assess all sexual function 
+domains (e.g. International Index of Erectile Function [IIEF]).
+5. Patients with ED should have cardiac risk assessment & vice versa as ED could be 
+the initial manifestation of coronary artery disease (CAD) & peripheral vascular 
+disease.
+6. All patients with ED should be advised on lifestyle & risk factor modifications.
+7. Phosphodiesterase-5-inhibitor (PDE5i) should be offered to all patients with ED 
+unless contraindicated.
+8. Mechanical devices (e.g. vacuum erection device or shockwave therapy) may be 
+offered in ED while penile prosthesis may be considered for those who have failed 
+other interventions.
+9. An integrated & collaborative approach with psychological interventions should be 
+considered in the treatment of psychogenic ED.
+10. Prompt referrals need to be made to relevant specialties based on the patient’s 
+conditions e.g. urology, cardiology, endocrinology &/or mental health.
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Erectile Dysfunction.
+Details of the evidence supporting these recommendations can be found in 
+the above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+If vasculogenic ED, 
+for ASCVD risk 
+score assessment
+Patients with 
+conﬁrmed ED 
+Exercise abilitya
+*Refer to Table 1 for 
+Cardiac risk stratiﬁcation 
+for patients with ED 
+based on 2nd and 3rd 
+Princeton Consensus
+Cardiac risk 
+stratiﬁcation
+(according to 
+Princeton Consensus)*
+Low risk Intermediate risk High risk
+Stress testb
+Results? High risk
+For further 
+cardiac 
+assessment
+For advice and 
+treatment by 
+primary team
+Low risk
+Is nitrate 
+necessary? Non-PDE5i treatment 
+Consider stopping 
+nitrate, then for PDE5iPDE5i
+YesYes
+NoNo
+Pass Fail
+Elective risk 
+assessment
+ASCVD = atherosclerotic cardiovascular disease
+a  Exercise ability is used to guide physician estimating cardiovascular risk associated with 
+sexual activity & should be established before the initiation of ED treatment. Sexual activity is 
+equivalent to walking 1.6 kilometre (1 mile) on the flat in 20 minutes or briskly climbing two 
+flights of stairs in 10 seconds.
+b  Sexual activity is equivalent to 4 minutes of the Bruce treadmill protocol. Pass is defined as
+ completion of the test without symptoms, arrhythmias or a fall in systolic blood pressure.
+Patients
+prescribed
+with nitrate/
+riociguat?
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION MANAGEMENT OF ERECTILE DYSFUNCTIONQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+DIAGNOSIS & ASSESSMENTALGORITHM 1: DIAGNOSIS & TREATMENT OF ED
+A) Relevant history taking in patients with symptoms of ED
+B) Physical examinations & investigations
+• A focused physical examination in the initial assessment of men with ED should be 
+done to identify underlying medical conditions & co-morbid genital disorders that may 
+be associated with ED.
+• Routine laboratory tests should be performed to identify modifiable risk factors of ED.
+• Specific diagnostic tests may be performed when it is indicated.
+History of presenting 
+complaint
+Patients with suspected ED will primarily complain of difﬁculties
+initiating or sustaining an erection. 
+Further details surrounding these issues should be 
+explored:
+• Onset of sexual dysfunction (i.e. acute, gradual)
+• Duration of sexual dysfunction 
+• Lack of libido
+• Rigidity of erection
+• Duration of sexual stimulation
+• Difﬁculties with ejaculation/orgasm
+• Absence of morning erection
+Past medical/  
+surgical history
+Previous sexual dysfunction, cardiovascular disease, metabolic
+syndrome (i.e. diabetes mellitus, hypertension, obesity & 
+dyslipidaemia) & pelvic surgery   
+Medication history
+Psychiatric history Current or previous psychological problems (e.g. depression, 
+anxiety), stress, coping abilities, cognitive factors & previous 
+trauma  
+Social history Smoking, alcohol consumption, illicit drug use, diet, exercise, 
+cultural & religious aspects 
+Sexual history Current sexual partner(s), relationship status, partner’s perception
+to ED, gender dysphoria or sexual orientation, sexual exposure 
+& experience (e.g. masturbation, pornography usage), plan for
+children    
+History components Questions
+History taking (medical, psychological and sexual), preferably with partner
+Assessment using IIEF-5
+Focused physical examination
+± Laboratory investigation
+± Imaging
+Patients with 
+symptoms of ED
+Diagnosis of ED 
+Organic ED Psychogenic EDType of ED*
+Severity of ED
+(based on 
+IIEF-5)**
+Severe
+(Score 5 - 7)
+Mild/moderate
+(Score 8 - 21)
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+Refer urologist for 
+mechanical devices/
+surgical intervention
+Refer to urologist:
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+± Mechanical devices
+± Surgical intervention
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+Refer to mental health 
+professionals for 
+psychological intervention
+*Some cases may present with mixed 
+ED. It is best to categorise the severity 
+of mixed ED according to IIEF-5. 
+Management of mixed ED may follow 
+organic or psychogenic ED.
+**IIEF-5 scoring:
+22 - 25 = Normal
+17 - 21 = Mild
+12 - 16 = Mild-moderate
+8 - 11   = Moderate
+5 - 7     = Severe
+***Co-morbidities should be considered
+No improvement
+May consider
+Antihypertensives, antidepressants, antipsychotics, 
+anticonvulsants, nitrates & PDE5i
+4 5
+MANAGEMENT OF ERECTILE DYSFUNCTIONQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MEDICATION TABLE IN ED
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION
+C) Assessment
+ERECTION HARDNESS SCORE (EHS)
+ Erection Hardness Score*
+*“How would you rate the hardness of your erection?”
+ 
+3 
+Tofu Peeled 
+banana 
+Unpeeled 
+banana 
+Cucumber 
+ 
+ 
+Over the past 6 months:  
+0 : Penis does not enlarge.
+1 : Penis is larger but not hard.
+2 : Penis is hard but not hard enough for penetration.
+3 : Penis is hard enough for penetration but not completely hard.
+4 : Penis is completely hard & fully rigid.
+IIEF-5 scoring:
+The IIEF-5 score is the sum of the ordinal responses to the 5 items.
+22 - 25: No erectile dysfunction
+17 - 21: Mild erectile dysfunction
+12 - 16: Mild to moderate erectile dysfunction
+8 - 11 : Moderate erectile dysfunction
+5 - 7   : Severe erectile dysfunction
+1.  How do you rate your
+ confidence that you could get
+ & keep an erection?
+2.  When you had erections with 
+ sexual stimulation, how often 
+ were your erections hard 
+ enough for penetration?
+4.  During sexual intercourse, 
+ how difficult was it to maintain
+ your erection to completion of
+ intercourse?
+5.  When you attempted sexual 
+ intercourse, how often was it
+ satisfactory for you?
+3. During sexual intercourse, how
+ often were you able to maintain
+ your erection after you had 
+ penetrated (entered) your
+ partner?
+1
+Very Low
+2
+Low
+3
+Moderate
+4
+High
+5
+Very high
+1
+Extremely
+difficult
+2
+Very difficult
+3
+Difficult
+4
+Slightly
+difficult
+5
+Not difficult
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+5-ITEM VERSION OF INTERNATIONAL INDEX OF ERECTILE FUNCTION (IIEF-5)
+Initial dose: Common:
+Serious:
+Rare: NAION
+Dose range:
+Initial dose:
+As needed:
+Once daily use:
+Dose range:
+As needed:
+Once daily use:
+2.5 - 5 mg
+Initial dose:
+Dose range:
+Drug Recommended dose Adverse events Contraindications/
+Precautions
+Sildenafil
+Tadalafil
+Avanafil
+Vardenafil
+50 mg to be taken 
+approximately 1 hour 
+before sexual activity, 
+effective 30 minutes to 4 
+hours after administration
+(Half-life: 4 hours)
+Headache, flushing, 
+dyspepsia, nasal congestion, 
+nasopharyngitis, back 
+pain, myalgia, visual 
+abnormalities
+Avanafil
+Vardenafil
+Known hypersensitivity 
+to PDE5i or any 
+component of tablet 
+Precaution on concurrent 
+use of PDE5i with NO 
+donors, organic nitrates 
+or organic nitrites (e.g. 
+glyceryl trinitrate) due to 
+risk of hypotension
+Time required from last 
+dose to administration 
+of a nitrate (e.g. glyceryl 
+trinitrate):
+•  sildenafil - 24 hours
+•  tadalafil - 48 hours
+•  avanafil - 12 hours
+•  vardenafil - 24 hours
+Strong CYP3A4 inhibitors
+are contraindicated
+(e.g. ketoconazole , 
+ritonavir, itraconazole, 
+clarithromycin)
+Patients with congenital 
+QT syndrome or taking 
+class IA (e.g. quinidine, 
+procainamide) or class 
+III (e.g. amiodarone, 
+sotalol), antiarrhythmics
+Patients should seek 
+emergency treatment if 
+an erection lasts >4 
+hours. Use PDE5i with 
+caution in patients 
+predisposed to priapism.
+Patients to stop taking 
+PDE5i & seek prompt 
+medical attention in the 
+event of sudden decrease 
+or loss of hearing.
+25 - 100 mg of maximum 
+once a day
+5 - 20 mg of maximum once 
+a day
+50 - 200 mg of maximum 
+once a day
+10 mg to be taken at least 
+30 minutes before sexual 
+activity, effective for up to 
+36 hours after administration
+2.5 mg once daily without 
+regard to timing of sexual 
+activity
+(Half-life: 17.5 hours)
+100 mg to be taken 
+approximately 30 minutes 
+before sexual activity
+(Half-life: 5 hours)
+Initial dose
+Dose range
+Initial dose
+Dose range
+50 - 200 mg of maximum 
+once a day
+10 mg to be taken 
+approximately 60 minutes 
+before sexual activity
+(Half-life: 4 - 5 hours)
+QT prolongation (reported 
+in vardenafil)
+mg = milligram; NAION = non-arteritic anterior ischaemic optic neuropathy; NO = nitric oxide
+4 5
+MANAGEMENT OF ERECTILE DYSFUNCTIONQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MEDICATION TABLE IN ED
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION
+C) Assessment
+ERECTION HARDNESS SCORE (EHS)
+ Erection Hardness Score*
+*“How would you rate the hardness of your erection?”
+ 
+3 Tofu Peeled 
+banana 
+Unpeeled 
+banana 
+Cucumber 
+ 
+ 
+Over the past 6 months:  
+0 : Penis does not enlarge.
+1 : Penis is larger but not hard.
+2 : Penis is hard but not hard enough for penetration.
+3 : Penis is hard enough for penetration but not completely hard.
+4 : Penis is completely hard & fully rigid.
+IIEF-5 scoring:
+The IIEF-5 score is the sum of the ordinal responses to the 5 items.
+22 - 25: No erectile dysfunction
+17 - 21: Mild erectile dysfunction
+12 - 16: Mild to moderate erectile dysfunction
+8 - 11 : Moderate erectile dysfunction
+5 - 7   : Severe erectile dysfunction
+1.  How do you rate your
+ confidence that you could get
+ & keep an erection?
+2.  When you had erections with 
+ sexual stimulation, how often 
+ were your erections hard 
+ enough for penetration?
+4.  During sexual intercourse, 
+ how difficult was it to maintain
+ your erection to completion of
+ intercourse?
+5.  When you attempted sexual 
+ intercourse, how often was it
+ satisfactory for you?
+3. During sexual intercourse, how
+ often were you able to maintain
+ your erection after you had 
+ penetrated (entered) your
+ partner?
+1
+Very Low
+2
+Low
+3
+Moderate
+4
+High
+5
+Very high
+1
+Extremely
+difficult
+2
+Very difficult
+3
+Difficult
+4
+Slightly
+difficult
+5
+Not difficult
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+5-ITEM VERSION OF INTERNATIONAL INDEX OF ERECTILE FUNCTION (IIEF-5)
+Initial dose: Common:
+Serious:
+Rare: NAION
+Dose range:
+Initial dose:
+As needed:
+Once daily use:
+Dose range:
+As needed:
+Once daily use:
+2.5 - 5 mg
+Initial dose:
+Dose range:
+Drug Recommended dose Adverse events Contraindications/
+Precautions
+Sildenafil
+Tadalafil
+Avanafil
+Vardenafil
+50 mg to be taken 
+approximately 1 hour 
+before sexual activity, 
+effective 30 minutes to 4 
+hours after administration
+(Half-life: 4 hours)
+Headache, flushing, 
+dyspepsia, nasal congestion, 
+nasopharyngitis, back 
+pain, myalgia, visual 
+abnormalities
+Avanafil
+Vardenafil
+Known hypersensitivity 
+to PDE5i or any 
+component of tablet 
+Precaution on concurrent 
+use of PDE5i with NO 
+donors, organic nitrates 
+or organic nitrites (e.g. 
+glyceryl trinitrate) due to 
+risk of hypotension
+Time required from last 
+dose to administration 
+of a nitrate (e.g. glyceryl 
+trinitrate):
+•  sildenafil - 24 hours
+•  tadalafil - 48 hours
+•  avanafil - 12 hours
+•  vardenafil - 24 hours
+Strong CYP3A4 inhibitors
+are contraindicated
+(e.g. ketoconazole , 
+ritonavir, itraconazole, 
+clarithromycin)
+Patients with congenital 
+QT syndrome or taking 
+class IA (e.g. quinidine, 
+procainamide) or class 
+III (e.g. amiodarone, 
+sotalol), antiarrhythmics
+Patients should seek 
+emergency treatment if 
+an erection lasts >4 
+hours. Use PDE5i with 
+caution in patients 
+predisposed to priapism.
+Patients to stop taking 
+PDE5i & seek prompt 
+medical attention in the 
+event of sudden decrease 
+or loss of hearing.
+25 - 100 mg of maximum 
+once a day
+5 - 20 mg of maximum once 
+a day
+50 - 200 mg of maximum 
+once a day
+10 mg to be taken at least 
+30 minutes before sexual 
+activity, effective for up to 
+36 hours after administration
+2.5 mg once daily without 
+regard to timing of sexual 
+activity
+(Half-life: 17.5 hours)
+100 mg to be taken 
+approximately 30 minutes 
+before sexual activity
+(Half-life: 5 hours)
+Initial dose
+Dose range
+Initial dose
+Dose range
+50 - 200 mg of maximum 
+once a day
+10 mg to be taken 
+approximately 60 minutes 
+before sexual activity
+(Half-life: 4 - 5 hours)
+QT prolongation (reported 
+in vardenafil)
+mg = milligram; NAION = non-arteritic anterior ischaemic optic neuropathy; NO = nitric oxide
+4 5
+MANAGEMENT OF ERECTILE DYSFUNCTIONQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MEDICATION TABLE IN ED
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION
+C) Assessment
+ERECTION HARDNESS SCORE (EHS)
+ Erection Hardness Score*
+*“How would you rate the hardness of your erection?”
+ 
+3 Tofu Peeled 
+banana 
+Unpeeled 
+banana 
+Cucumber 
+ 
+ 
+Over the past 6 months:  
+0 : Penis does not enlarge.
+1 : Penis is larger but not hard.
+2 : Penis is hard but not hard enough for penetration.
+3 : Penis is hard enough for penetration but not completely hard.
+4 : Penis is completely hard & fully rigid.
+IIEF-5 scoring:
+The IIEF-5 score is the sum of the ordinal responses to the 5 items.
+22 - 25: No erectile dysfunction
+17 - 21: Mild erectile dysfunction
+12 - 16: Mild to moderate erectile dysfunction
+8 - 11 : Moderate erectile dysfunction
+5 - 7   : Severe erectile dysfunction
+1.  How do you rate your
+ confidence that you could get
+ & keep an erection?
+2.  When you had erections with 
+ sexual stimulation, how often 
+ were your erections hard 
+ enough for penetration?
+4.  During sexual intercourse, 
+ how difficult was it to maintain
+ your erection to completion of
+ intercourse?
+5.  When you attempted sexual 
+ intercourse, how often was it
+ satisfactory for you?
+3. During sexual intercourse, how
+ often were you able to maintain
+ your erection after you had 
+ penetrated (entered) your
+ partner?
+1
+Very Low
+2
+Low
+3
+Moderate
+4
+High
+5
+Very high
+1
+Extremely
+difficult
+2
+Very difficult
+3
+Difficult
+4
+Slightly
+difficult
+5
+Not difficult
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+1
+Almost never/
+Never
+2
+A few times
+(much less than
+half the time)
+3
+Sometimes
+(about half
+the time)
+4
+Most times
+(much more than
+half the time)
+5
+Almost always/
+Always
+5-ITEM VERSION OF INTERNATIONAL INDEX OF ERECTILE FUNCTION (IIEF-5)
+Initial dose: Common:
+Serious:
+Rare: NAION
+Dose range:
+Initial dose:
+As needed:
+Once daily use:
+Dose range:
+As needed:
+Once daily use:
+2.5 - 5 mg
+Initial dose:
+Dose range:
+Drug Recommended dose Adverse events Contraindications/
+Precautions
+Sildenafil
+Tadalafil
+Avanafil
+Vardenafil
+50 mg to be taken 
+approximately 1 hour 
+before sexual activity, 
+effective 30 minutes to 4 
+hours after administration
+(Half-life: 4 hours)
+Headache, flushing, 
+dyspepsia, nasal congestion, 
+nasopharyngitis, back 
+pain, myalgia, visual 
+abnormalities
+Avanafil
+Vardenafil
+Known hypersensitivity 
+to PDE5i or any 
+component of tablet 
+Precaution on concurrent 
+use of PDE5i with NO 
+donors, organic nitrates 
+or organic nitrites (e.g. 
+glyceryl trinitrate) due to 
+risk of hypotension
+Time required from last 
+dose to administration 
+of a nitrate (e.g. glyceryl 
+trinitrate):
+•  sildenafil - 24 hours
+•  tadalafil - 48 hours
+•  avanafil - 12 hours
+•  vardenafil - 24 hours
+Strong CYP3A4 inhibitors
+are contraindicated
+(e.g. ketoconazole , 
+ritonavir, itraconazole, 
+clarithromycin)
+Patients with congenital 
+QT syndrome or taking 
+class IA (e.g. quinidine, 
+procainamide) or class 
+III (e.g. amiodarone, 
+sotalol), antiarrhythmics
+Patients should seek 
+emergency treatment if 
+an erection lasts >4 
+hours. Use PDE5i with 
+caution in patients 
+predisposed to priapism.
+Patients to stop taking 
+PDE5i & seek prompt 
+medical attention in the 
+event of sudden decrease 
+or loss of hearing.
+25 - 100 mg of maximum 
+once a day
+5 - 20 mg of maximum once 
+a day
+50 - 200 mg of maximum 
+once a day
+10 mg to be taken at least 
+30 minutes before sexual 
+activity, effective for up to 
+36 hours after administration
+2.5 mg once daily without 
+regard to timing of sexual 
+activity
+(Half-life: 17.5 hours)
+100 mg to be taken 
+approximately 30 minutes 
+before sexual activity
+(Half-life: 5 hours)
+Initial dose
+Dose range
+Initial dose
+Dose range
+50 - 200 mg of maximum 
+once a day
+10 mg to be taken 
+approximately 60 minutes 
+before sexual activity
+(Half-life: 4 - 5 hours)
+QT prolongation (reported 
+in vardenafil)
+mg = milligram; NAION = non-arteritic anterior ischaemic optic neuropathy; NO = nitric oxide
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION MANAGEMENT OF ERECTILE DYSFUNCTIONQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+DIAGNOSIS & ASSESSMENTALGORITHM 1: DIAGNOSIS & TREATMENT OF ED
+A) Relevant history taking in patients with symptoms of ED
+B) Physical examinations & investigations
+• A focused physical examination in the initial assessment of men with ED should be 
+done to identify underlying medical conditions & co-morbid genital disorders that may 
+be associated with ED.
+• Routine laboratory tests should be performed to identify modifiable risk factors of ED.
+• Specific diagnostic tests may be performed when it is indicated.
+History of presenting 
+complaint
+Patients with suspected ED will primarily complain of difﬁculties
+initiating or sustaining an erection. 
+Further details surrounding these issues should be 
+explored:
+• Onset of sexual dysfunction (i.e. acute, gradual)
+• Duration of sexual dysfunction 
+• Lack of libido
+• Rigidity of erection
+• Duration of sexual stimulation
+• Difﬁculties with ejaculation/orgasm
+• Absence of morning erection
+Past medical/  
+surgical history
+Previous sexual dysfunction, cardiovascular disease, metabolic
+syndrome (i.e. diabetes mellitus, hypertension, obesity & 
+dyslipidaemia) & pelvic surgery   
+Medication history
+Psychiatric history Current or previous psychological problems (e.g. depression, 
+anxiety), stress, coping abilities, cognitive factors & previous 
+trauma  
+Social history Smoking, alcohol consumption, illicit drug use, diet, exercise, 
+cultural & religious aspects 
+Sexual history Current sexual partner(s), relationship status, partner’s perception
+to ED, gender dysphoria or sexual orientation, sexual exposure 
+& experience (e.g. masturbation, pornography usage), plan for
+children    
+History components Questions
+History taking (medical, psychological and sexual), preferably with partner
+Assessment using IIEF-5
+Focused physical examination
+± Laboratory investigation
+± Imaging
+Patients with 
+symptoms of ED
+Diagnosis of ED 
+Organic ED Psychogenic EDType of ED*
+Severity of ED
+(based on 
+IIEF-5)**
+Severe
+(Score 5 - 7)
+Mild/moderate
+(Score 8 - 21)
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+Refer urologist for 
+mechanical devices/
+surgical intervention
+Refer to urologist:
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+± Mechanical devices
+± Surgical intervention
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+Refer to mental health 
+professionals for 
+psychological intervention
+*Some cases may present with mixed 
+ED. It is best to categorise the severity 
+of mixed ED according to IIEF-5. 
+Management of mixed ED may follow 
+organic or psychogenic ED.
+**IIEF-5 scoring:
+22 - 25 = Normal
+17 - 21 = Mild
+12 - 16 = Mild-moderate
+8 - 11   = Moderate
+5 - 7     = Severe
+***Co-morbidities should be considered
+No improvement
+May consider
+Antihypertensives, antidepressants, antipsychotics, 
+anticonvulsants, nitrates & PDE5i
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION MANAGEMENT OF ERECTILE DYSFUNCTIONQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+DIAGNOSIS & ASSESSMENTALGORITHM 1: DIAGNOSIS & TREATMENT OF ED
+A) Relevant history taking in patients with symptoms of ED
+B) Physical examinations & investigations
+• A focused physical examination in the initial assessment of men with ED should be 
+done to identify underlying medical conditions & co-morbid genital disorders that may 
+be associated with ED.
+• Routine laboratory tests should be performed to identify modifiable risk factors of ED.
+• Specific diagnostic tests may be performed when it is indicated.
+History of presenting 
+complaint
+Patients with suspected ED will primarily complain of difﬁculties
+initiating or sustaining an erection. 
+Further details surrounding these issues should be 
+explored:
+• Onset of sexual dysfunction (i.e. acute, gradual)
+• Duration of sexual dysfunction 
+• Lack of libido
+• Rigidity of erection
+• Duration of sexual stimulation
+• Difﬁculties with ejaculation/orgasm
+• Absence of morning erection
+Past medical/  
+surgical history
+Previous sexual dysfunction, cardiovascular disease, metabolic
+syndrome (i.e. diabetes mellitus, hypertension, obesity & 
+dyslipidaemia) & pelvic surgery   
+Medication history
+Psychiatric history Current or previous psychological problems (e.g. depression, 
+anxiety), stress, coping abilities, cognitive factors & previous 
+trauma  
+Social history Smoking, alcohol consumption, illicit drug use, diet, exercise, 
+cultural & religious aspects 
+Sexual history Current sexual partner(s), relationship status, partner’s perception
+to ED, gender dysphoria or sexual orientation, sexual exposure 
+& experience (e.g. masturbation, pornography usage), plan for
+children    
+History components Questions
+History taking (medical, psychological and sexual), preferably with partner
+Assessment using IIEF-5
+Focused physical examination
+± Laboratory investigation
+± Imaging
+Patients with 
+symptoms of ED
+Diagnosis of ED 
+Organic ED Psychogenic EDType of ED*
+Severity of ED
+(based on 
+IIEF-5)**
+Severe
+(Score 5 - 7)
+Mild/moderate
+(Score 8 - 21)
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+Refer urologist for 
+mechanical devices/
+surgical intervention
+Refer to urologist:
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+± Mechanical devices
+± Surgical intervention
+• Lifestyle modiﬁcation
+± Pharmacotherapy***
+Refer to mental health 
+professionals for 
+psychological intervention
+*Some cases may present with mixed 
+ED. It is best to categorise the severity 
+of mixed ED according to IIEF-5. 
+Management of mixed ED may follow 
+organic or psychogenic ED.
+**IIEF-5 scoring:
+22 - 25 = Normal
+17 - 21 = Mild
+12 - 16 = Mild-moderate
+8 - 11   = Moderate
+5 - 7     = Severe
+***Co-morbidities should be considered
+No improvement
+May consider
+Antihypertensives, antidepressants, antipsychotics, 
+anticonvulsants, nitrates & PDE5i
+2 7
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION 
+ALGORITHM 2: CLASSIFICATION FOR ED
+PATIENTS WITH CARDIOVASCULAR DISEASE
+KEY MESSAGES
+1. Erectile dysfunction (ED) is a prevalent & multifaceted medical condition 
+characterised by the persistent inability to achieve or maintain an erection sufficient 
+for satisfactory sexual performance. It substantially impacts the quality of life of 
+affected couples, leading to emotional distress & strained relationships.
+2. There are various risk factors associated with ED e.g. age, lifestyle behaviours, 
+cardiovascular, metabolic, neurological, psychological & hormonal risks.
+3. A comprehensive medical, psychosocial & sexual history should be taken in every 
+patient presenting with ED.
+4. A validated questionnaire related to ED should be used to assess all sexual function 
+domains (e.g. International Index of Erectile Function [IIEF]).
+5. Patients with ED should have cardiac risk assessment & vice versa as ED could be 
+the initial manifestation of coronary artery disease (CAD) & peripheral vascular 
+disease.
+6. All patients with ED should be advised on lifestyle & risk factor modifications.
+7. Phosphodiesterase-5-inhibitor (PDE5i) should be offered to all patients with ED 
+unless contraindicated.
+8. Mechanical devices (e.g. vacuum erection device or shockwave therapy) may be 
+offered in ED while penile prosthesis may be considered for those who have failed 
+other interventions.
+9. An integrated & collaborative approach with psychological interventions should be 
+considered in the treatment of psychogenic ED.
+10. Prompt referrals need to be made to relevant specialties based on the patient’s 
+conditions e.g. urology, cardiology, endocrinology &/or mental health.
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Erectile Dysfunction.
+Details of the evidence supporting these recommendations can be found in 
+the above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+If vasculogenic ED, 
+for ASCVD risk 
+score assessment
+Patients with 
+conﬁrmed ED 
+Exercise abilitya
+*Refer to Table 1 for 
+Cardiac risk stratiﬁcation 
+for patients with ED 
+based on 2nd and 3rd 
+Princeton Consensus
+Cardiac risk 
+stratiﬁcation
+(according to 
+Princeton Consensus)*
+Low risk Intermediate risk High risk
+Stress testb
+Results? High risk
+For further 
+cardiac 
+assessment
+For advice and 
+treatment by 
+primary team
+Low risk
+Is nitrate 
+necessary? Non-PDE5i treatment 
+Consider stopping 
+nitrate, then for PDE5iPDE5i
+YesYes
+NoNo
+Pass Fail
+Elective risk 
+assessment
+ASCVD = atherosclerotic cardiovascular disease
+a  Exercise ability is used to guide physician estimating cardiovascular risk associated with 
+sexual activity & should be established before the initiation of ED treatment. Sexual activity is 
+equivalent to walking 1.6 kilometre (1 mile) on the flat in 20 minutes or briskly climbing two 
+flights of stairs in 10 seconds.
+b  Sexual activity is equivalent to 4 minutes of the Bruce treadmill protocol. Pass is defined as
+ completion of the test without symptoms, arrhythmias or a fall in systolic blood pressure.
+Patients
+prescribed
+with nitrate/
+riociguat?
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ERECTILE DYSFUNCTION
+8
+TABLE 1: CARDIAC RISK STRATIFICATION FOR PATIENTS WITH ED
+BASED ON 2ND & 3RD PRINCETON CONSENSUS
+ 
+ 
+ 
+ 
+    
+Cardiac risk Low-risk category Intermediate-risk category 
+Characteristics   
+≥3 risk factors* for CAD (excluding
+sex) 
+High-risk arrhythmias
+Unstable or refractory anginaModerate, stable angina  
+ 
+Uncomplicated previous MI  Recent MI (>2, <6 weeks)  Recent MI (<2 weeks)  
+  
+ 
+ 
+ 
+ 
+Management  
+ 
+CHF = congestive heart failure; LVD = left ventricular dysfunction; MI = myocardial infarction; 
+NYHA = New York Heart Association
+*Risk factors for CAD include high blood pressure, high low-density lipoprotein cholesterol, 
+diabetes mellitus, smoking &/or second-hand smoke exposure, obesity, unhealthy diet & 
+physical inactivity.
+SPECIAL GROUPS
+1. Patients with cardiac disease:
+• Certain drugs used for the management of cardiac conditions may need to be assessed 
+in patients with ED.
+• The appropriateness of using PDE5i is based on patient’s cardiac status & medication 
+regimen.
+• A multidisciplinary team consisting of cardiologist, urologist, family medicine specialist, 
+psychiatrist &/or rehabilitative physician are important in managing patients with ED & 
+cardiac disease.
+2. Patients with pelvic surgery or prostate cancer treatment:
+• Multimodal penile rehabilitation with nerve sparing approach may help to improve 
+erectile function post-radical prostatectomy.
+ 
+3. Spinal cord injury survivors:
+• Treatments of ED may trigger autonomic dysreflexia* which can potentially be life- 
+threatening in spinal cord injury patients.
+*Autonomic dysreflexia is a dangerous syndrome involving an overreaction of autonomic 
+nervous system. It causes a sudden & severe rise of blood pressure in addition to other 
+symptoms (unopposed sympathetic responses e.g. shortness of breath, chest tightness, 
+flushing, throbbing headache & goosebumps).
+High-risk category 
+Mild, stable angina (evaluated &/
+or being treated)
+Asymptomatic, <3 risk factors* for
+CAD (excluding sex)  
+LVD/CHF (NYHA class I or II) LVD/CHF (NYHA class III) LVD/CHF (NYHA class IV)
+Post-successful  coronary
+revascularisation
+Non-cardiac  sequelae   of 
+atherosclerotic disease (e.g.  stroke,
+peripheral vascular disease)Controlled hypertension
+Mild vascular disease
+Hypertrophic obstructive & other
+cardiomyopathies
+Uncontrolled hypertension
+Moderate-to-severe valvular disease
+Manage within primary care setting
+Review treatment options with
+patient & their partner (where
+possible)
+Specialised evaluation recommended
+(e.g. exercise stress test for angina,
+echocardiogram for a murmur)
+Patient to be placed in high or low
+risk category depending upon
+outcome of testing
+Refer for specialised cardiac
+evaluation & management
+Treatment for ED to be deferred until
+cardiac condition stabilised &/or
+specialist evaluation completed

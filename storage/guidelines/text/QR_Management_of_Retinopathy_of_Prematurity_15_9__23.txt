@@ -1,0 +1,389 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+7
+ALGORITHM 2. FOLLOW-UP OF RETINOPATHY OF PREMATURITY
+*
+NO ROP ROP
+FULLY VASCULARISED RETINA SPONTANEOUS
+REGRESSION
+TREATMENT
+REQUIRED 
+COMPLETE EYE
+EXAMINATION AT 6 MONTHS
+THEN VISUAL ACUITY AT 
+4 YEARS OF AGE
+LASER PHOTOCOAGULATION/
+ANTI-VEGF
+REGRESSION WITH
+COMPLETE
+VASCULARISATION
+PAR PROGRESSION
+RESCUE TREATMENT*
+REGULAR
+FOLLOW-UP 
+± FFA/LASER
+PHOTOCOAGULATION
+WITH
+COMPREHENSIVE EYE
+EXAMINATION
+COMPREHENSIVE
+EYE EXAMINATION
+AT 6 MONTHS THEN
+YEARLY UNTIL
+5 YEARS OF AGE
+MANAGEMENT OF
+RETINOPATHY OF PREMATURITY
+(Second Edition)
+Academy of
+Medicine Malaysia
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Ministry of Health
+Malaysia
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS
+FFA   :  Fundus fluorescein angiography 
+PAR   : Persistent avascular retina
+PNA   : Post-natal age
+ROP  :  Retinopathy of prematurity 
+VEGF : Vascular endothelial growth factor 
+*refer to Algorithm 1 on Screening and  
+ Treatment of ROP
+1. Retinopathy of prematurity (ROP) is a vasoproliferative disease in the 
+developing retinal vessels of premature infants.
+2. Significant risk factors for ROP include:
+• prematurity •  small for gestational age
+• low birth weight •  supplemental oxygen
+3. Screening for ROP should be done for infants with either one of the 
+following criteria:
+• birth weight <1750 g         •  gestational age <34 weeks
+• infants with an unstable clinical course who are at high risk (as 
+determined by the neonatologist or paediatrician)
+4. First examination to detect ROP should be done based on post-menstrual 
+age (PMA) and post-natal age (PNA).
+5. Preparation for ROP screening include:
+• infants are usually fasted •  adequate pain relief
+• full eye dilatation
+6. Type 1 prethreshold ROP should be treated within 48 hours of diagnosis.
+7. Laser photocoagulation should be considered in the treatment of zone II 
+(except posterior zone II) ROP.
+8. Intravitreal anti-vascular endothelial growth (anti-VEGF) factor should be 
+considered in zone I ROP and aggressive ROP (AROP) and given 
+urgently.
+9. Follow-up of infants with or without ROP should be done accordingly with 
+complete eye examination, based on staging and treatment given.
+10. Visual rehabilitation should be provided to all visually-impaired children 
+following ROP complication.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Retinopathy of Prematurity (Second Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+Total retinal detachment
+d) Stage 5
+e) AROP
+Posterior pole
+Peripheral retina
+ 
+25
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+ALGORITHM 1. SCREENING AND TREATMENT OF RETINOPATHY OF PREMATURITY
+FIRST OPHTHALMIC
+EXAMINATION
+•GA ≤27 weeks to perform at 31 weeks PMA
+•GA 28 to 32 weeks to perform at 4 weeks after birth
+•GA ≥32 weeks to perform at 36 weeks PMA
+IMMATURE RETINA, 
+NO ROP OR ZONE 3 ROP
+TYPE 2
+PRETHRESHOLD ROP
+TYPE 1
+PRETHRESHOLD ROP THRESHOLD ROP AGGRESSIVE ROP
+SCREEN 2-WEEKLY SCREEN WEEKLY TREAT WITHIN 48 HOURS TREAT URGENTLY
+LASER PHOTOCOAGULATION/
+ANTI-VEGF
+ANTI-VASCULAR ENDOTHELIAL
+GROWTH FACTOR (VEGF)
+SCREEN WEEKLY TILL SIGNS OF REGRESSION
+DISEASE NOT REGRESSED/PROGRESSIVE
+RESCUE
+TREATMENT
+No responseResponse
+PROGRESSIONREGRESSION
+FULLY VASCULARISED PERSISTENT
+AVASCULAR RETINA
+STAGE 4 OR 5
+MONITOR/FFA ± LASER
+PHOTOCOAGULATION VR SURGERY
+REGRESSION OF ROP AND
+ FULLY VASCULARISED RETINA
+FFA   : Fundus fluorescein angiography 
+GA    : Gestational age
+PMA : Post-menstrual age
+ROP : Retinopathy of prematurity 
+VR    : Vitreoretinal
+FEATURES OF ROP INDICATED FOR TREATMENT
+Thick extra-retinal
+fibrovascular proliferation
+a) Stage 3
+                         
+b) Stage 4a
+Partial retinal detachment 
+without fovea involvement
+ 
+c) Stage 4b
+Partial retinal detachment 
+with fovea involvement
+43
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+OPTIMUM TIMING FOR FIRST ROP SCREENING
+GA: gestational age, PMA: postmenstrual age, PNA: postnatal age, BW: 
+birth weight, g: gram
+22 31 9 
+23 31 8 
+24 31 7 
+25 31 6 
+26 31 5 
+27 31 4 
+28 32 4 
+29 33 4 
+30 34 4 
+31 35 4 
+> 32 36 - 
+GA (weeks) PMA (weeks) PNA (weeks)
+• The counselling on screening for ROP can be given by paediatric 
+doctors and Neonatal Intensive Care Unit nurses while counselling 
+on treatment is only to be delivered by the treating 
+ophthalmologists.
+DESCRIPTION OF ZONES FOR CLASSIFICATION OF ROP
+PRETRESHOLD ROP
+Type 1 (High Risk) Type 2 (Low Risk)AROP
+Severe, rapidly
+progressive form of
+ROP
+Zone I
+• Any stage with plus
+• Stage 3 without plus
+Zone II
+• Stage 2 or 3 with 
+ plus
+Zone I
+• Stage 1 or 2 without 
+ plus
+Zone II
+• Stage 3 without plus
+Treat within 48 hours*Urgent Treatment Weekly observation
+RECOMMENDED INDICATIONS FOR ROP TREATMENT
+High Risk PreThreshold ROP
+Defined into Type 1 and Type 2 to guide the treatment of infants before the 
+development of threshold ROP. 
+*Subject to stability of the infant  
+43
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+OPTIMUM TIMING FOR FIRST ROP SCREENING
+GA: gestational age, PMA: postmenstrual age, PNA: postnatal age, BW: 
+birth weight, g: gram
+22 31 9 
+23 31 8 
+24 31 7 
+25 31 6 
+26 31 5 
+27 31 4 
+28 32 4 
+29 33 4 
+30 34 4 
+31 35 4 
+> 32 36 - 
+GA (weeks) PMA (weeks) PNA (weeks)
+• The counselling on screening for ROP can be given by paediatric 
+doctors and Neonatal Intensive Care Unit nurses while counselling 
+on treatment is only to be delivered by the treating 
+ophthalmologists.
+DESCRIPTION OF ZONES FOR CLASSIFICATION OF ROP
+PRETRESHOLD ROP
+Type 1 (High Risk) Type 2 (Low Risk)AROP
+Severe, rapidly
+progressive form of
+ROP
+Zone I
+• Any stage with plus
+• Stage 3 without plus
+Zone II
+• Stage 2 or 3 with 
+ plus
+Zone I
+• Stage 1 or 2 without 
+ plus
+Zone II
+• Stage 3 without plus
+Treat within 48 hours*Urgent Treatment Weekly observation
+RECOMMENDED INDICATIONS FOR ROP TREATMENT
+High Risk PreThreshold ROP
+Defined into Type 1 and Type 2 to guide the treatment of infants before the 
+development of threshold ROP. 
+*Subject to stability of the infant  
+
+25
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+ALGORITHM 1. SCREENING AND TREATMENT OF RETINOPATHY OF PREMATURITY
+FIRST OPHTHALMIC
+EXAMINATION
+•GA ≤27 weeks to perform at 31 weeks PMA
+•GA 28 to 32 weeks to perform at 4 weeks after birth
+•GA ≥32 weeks to perform at 36 weeks PMA
+IMMATURE RETINA, 
+NO ROP OR ZONE 3 ROP
+TYPE 2
+PRETHRESHOLD ROP
+TYPE 1
+PRETHRESHOLD ROP THRESHOLD ROP AGGRESSIVE ROP
+SCREEN 2-WEEKLY SCREEN WEEKLY TREAT WITHIN 48 HOURS TREAT URGENTLY
+LASER PHOTOCOAGULATION/
+ANTI-VEGF
+ANTI-VASCULAR ENDOTHELIAL
+GROWTH FACTOR (VEGF)
+SCREEN WEEKLY TILL SIGNS OF REGRESSION
+DISEASE NOT REGRESSED/PROGRESSIVE
+RESCUE
+TREATMENT
+No responseResponse
+PROGRESSIONREGRESSION
+FULLY VASCULARISED PERSISTENT
+AVASCULAR RETINA
+STAGE 4 OR 5
+MONITOR/FFA ± LASER
+PHOTOCOAGULATION VR SURGERY
+REGRESSION OF ROP AND
+ FULLY VASCULARISED RETINA
+FFA   : Fundus fluorescein angiography 
+GA    : Gestational age
+PMA : Post-menstrual age
+ROP : Retinopathy of prematurity 
+VR    : Vitreoretinal
+FEATURES OF ROP INDICATED FOR TREATMENT
+Thick extra-retinal
+fibrovascular proliferation
+a) Stage 3
+                         
+b) Stage 4a
+Partial retinal detachment 
+without fovea involvement
+ 
+c) Stage 4b
+Partial retinal detachment 
+with fovea involvement
+1. Retinopathy of prematurity (ROP) is a vasoproliferative disease in the 
+developing retinal vessels of premature infants.
+2. Significant risk factors for ROP include:
+• prematurity •  small for gestational age
+• low birth weight •  supplemental oxygen
+3. Screening for ROP should be done for infants with either one of the 
+following criteria:
+• birth weight <1750 g         •  gestational age <34 weeks
+• infants with an unstable clinical course who are at high risk (as 
+determined by the neonatologist or paediatrician)
+4. First examination to detect ROP should be done based on post-menstrual 
+age (PMA) and post-natal age (PNA).
+5. Preparation for ROP screening include:
+• infants are usually fasted •  adequate pain relief
+• full eye dilatation
+6. Type 1 prethreshold ROP should be treated within 48 hours of diagnosis.
+7. Laser photocoagulation should be considered in the treatment of zone II 
+(except posterior zone II) ROP.
+8. Intravitreal anti-vascular endothelial growth (anti-VEGF) factor should be 
+considered in zone I ROP and aggressive ROP (AROP) and given 
+urgently.
+9. Follow-up of infants with or without ROP should be done accordingly with 
+complete eye examination, based on staging and treatment given.
+10. Visual rehabilitation should be provided to all visually-impaired children 
+following ROP complication.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Retinopathy of Prematurity (Second Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+Total retinal detachment
+d) Stage 5
+e) AROP
+Posterior pole
+Peripheral retina
+ 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RETINOPATHY OF PREMATURITY (SECOND EDITION)
+7
+ALGORITHM 2. FOLLOW-UP OF RETINOPATHY OF PREMATURITY
+*
+NO ROP ROP
+FULLY VASCULARISED RETINA SPONTANEOUS
+REGRESSION
+TREATMENT
+REQUIRED 
+COMPLETE EYE
+EXAMINATION AT 6 MONTHS
+THEN VISUAL ACUITY AT 
+4 YEARS OF AGE
+LASER PHOTOCOAGULATION/
+ANTI-VEGF
+REGRESSION WITH
+COMPLETE
+VASCULARISATION
+PAR PROGRESSION
+RESCUE TREATMENT*
+REGULAR
+FOLLOW-UP 
+± FFA/LASER
+PHOTOCOAGULATION
+WITH
+COMPREHENSIVE EYE
+EXAMINATION
+COMPREHENSIVE
+EYE EXAMINATION
+AT 6 MONTHS THEN
+YEARLY UNTIL
+5 YEARS OF AGE
+MANAGEMENT OF
+RETINOPATHY OF PREMATURITY
+(Second Edition)
+Academy of
+Medicine Malaysia
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Ministry of Health
+Malaysia
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS
+FFA   :  Fundus fluorescein angiography 
+PAR   : Persistent avascular retina
+PNA   : Post-natal age
+ROP  :  Retinopathy of prematurity 
+VEGF : Vascular endothelial growth factor 
+*refer to Algorithm 1 on Screening and  
+ Treatment of ROP

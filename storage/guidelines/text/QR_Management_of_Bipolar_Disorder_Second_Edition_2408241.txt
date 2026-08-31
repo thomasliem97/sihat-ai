@@ -1,0 +1,2379 @@
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS
+2024
+(SECOND EDITION)
+MANAGEMENT OF
+BIPOLAR DISORDER
+QR - BIPOLAR DISORDER 2ND ED.indd   1 8/24/2024   8:44:58 AM
+2
+QUICK REFERENCE                                         MANAGEMENT OF BIPOLAR DISORDER (2ND EDITION)
+3 
+ 
+RISK FACTORS 
+ 
+Identifying risk factors may assist in the early detection of BD: 
+ family history of BD 
+ offspring of maternal age group ≥40 years old 
+ young age (<25 years old) 
+ presence of major depression with attention-deficit hyperactivity disorder (ADHD) 
+ low educational level  
+ low employment level 
+  
+DIFFERENTIAL DIAGNOSIS 
+ 
+Common differential diagnoses to be considered: 
+a) during depressive episode - 
+ major depressive disorder 
+ major depressive disorder with mixed episode 
+ adjustment disorder with depressed mood 
+ anxiety disorder 
+ depressive disorder due to another medical condition 
+ substance-induced depressive disorder 
+ schizophrenia or schizoaffective disorder 
+ 
+b) during mania or hypomania episode -  
+ substance-induced bipolar disorder 
+ bipolar & related disorder due to another medical condition 
+ schizophrenia or schizoaffective disorder 
+ borderline personality disorder 
+ ADHD  
+ 
+CO-MORBIDITIES 
+ 
+Psychiatric co-morbidities include: 
+ drug abuse  
+ anxiety disorder  
+ borderline personality disorder  
+ ADHD  
+ anti-social personality disorder 
+ eating disorder 
+ 
+REFERRAL CRITERIA 
+ 
+ BD can be managed in primary care EXCEPT in the following conditions: 
+ unsure of diagnosis  
+ complex presentation of mood episodes 
+ intolerable or medically important adverse events of 
+medication  
+ acute exacerbation of symptoms  psychiatric co-morbidities   
+ increased risk of harm to self or others  psychotherapeutic needs 
+ marked impairment in social or 
+occupational functioning 
+ poor or partial response to treatment 
+ ambivalent or wanting to stop any medication after a 
+period of relatively stable mood  
+ special population - 
+ poor treatment adherence 
+ 
+ 
+o pregnant or planning a pregnancy 
+o children & adolescents 
+o co-morbidity with alcohol or substance misuse 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+QR - BIPOLAR DISORDER 2ND ED.indd   2 8/24/2024   8:44:59 AM
+2 3
+QUICK REFERENCE                                         MANAGEMENT OF BIPOLAR DISORDER (2ND EDITION)
+3 
+ 
+RISK FACTORS 
+ 
+Identifying risk factors may assist in the early detection of BD: 
+ family history of BD 
+ offspring of maternal age group ≥40 years old 
+ young age (<25 years old) 
+ presence of major depression with attention-deficit hyperactivity disorder (ADHD) 
+ low educational level  
+ low employment level 
+  
+DIFFERENTIAL DIAGNOSIS 
+ 
+Common differential diagnoses to be considered: 
+a) during depressive episode - 
+ major depressive disorder 
+ major depressive disorder with mixed episode 
+ adjustment disorder with depressed mood 
+ anxiety disorder 
+ depressive disorder due to another medical condition 
+ substance-induced depressive disorder 
+ schizophrenia or schizoaffective disorder 
+ 
+b) during mania or hypomania episode -  
+ substance-induced bipolar disorder 
+ bipolar & related disorder due to another medical condition 
+ schizophrenia or schizoaffective disorder 
+ borderline personality disorder 
+ ADHD  
+ 
+CO-MORBIDITIES 
+ 
+Psychiatric co-morbidities include: 
+ drug abuse  
+ anxiety disorder  
+ borderline personality disorder  
+ ADHD  
+ anti-social personality disorder 
+ eating disorder 
+ 
+REFERRAL CRITERIA 
+ 
+ BD can be managed in primary care EXCEPT in the following conditions: 
+ unsure of diagnosis  
+ complex presentation of mood episodes 
+ intolerable or medically important adverse events of 
+medication  
+ acute exacerbation of symptoms  psychiatric co-morbidities   
+ increased risk of harm to self or others  psychotherapeutic needs 
+ marked impairment in social or 
+occupational functioning 
+ poor or partial response to treatment 
+ ambivalent or wanting to stop any medication after a 
+period of relatively stable mood  
+ special population - 
+ poor treatment adherence 
+ 
+ 
+o pregnant or planning a pregnancy 
+o children & adolescents 
+o co-morbidity with alcohol or substance misuse 
+3 
+ 
+RISK FACTORS 
+ 
+Identifying risk factors may assist in the early detection of BD: 
+ family history of BD 
+ offspring of maternal age group ≥40 years old 
+ young age (<25 years old) 
+ presence of major depression with attention-deficit hyperactivity disorder (ADHD) 
+ low educational level  
+ low employment level 
+  
+DIFFERENTIAL DIAGNOSIS 
+ 
+Common differential diagnoses to be considered: 
+a) during depressive episode - 
+ major depressive disorder 
+ major depressive disorder with mixed episode 
+ adjustment disorder with depressed mood 
+ anxiety disorder 
+ depressive disorder due to another medical condition 
+ substance-induced depressive disorder 
+ schizophrenia or schizoaffective disorder 
+ 
+b) during mania or hypomania episode -  
+ substance-induced bipolar disorder 
+ bipolar & related disorder due to another medical condition 
+ schizophrenia or schizoaffective disorder 
+ borderline personality disorder 
+ ADHD  
+ 
+CO-MORBIDITIES 
+ 
+Psychiatric co-morbidities include: 
+ drug abuse  
+ anxiety disorder  
+ borderline personality disorder  
+ ADHD  
+ anti-social personality disorder 
+ eating disorder 
+ 
+REFERRAL CRITERIA 
+ 
+ BD can be managed in primary care EXCEPT in the following conditions: 
+ unsure of diagnosis  
+ complex presentation of mood episodes 
+ intolerable or medically important adverse events of 
+medication  
+ acute exacerbation of symptoms  psychiatric co-morbidities   
+ increased risk of harm to self or others  psychotherapeutic needs 
+ marked impairment in social or 
+occupational functioning 
+ poor or partial response to treatment 
+ ambivalent or wanting to stop any medication after a 
+period of relatively stable mood  
+ special population - 
+ poor treatment adherence 
+ 
+ 
+o pregnant or planning a pregnancy 
+o children & adolescents 
+o co-morbidity with alcohol or substance misuse 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+2 
+ 
+KEY MESSAGES 
+ 
+1. Bipolar Disorder (BD) is a potentially life -long condition presenting commonly as 
+either bipolar I disorder (BD I) or bipolar II disorder (BD  II). BD I is characterised 
+by episodes of mania, whilst BD II is characterised by episodes of hypomania and 
+depressive episodes.  
+2. BD should be diagnosed based on the Diagnostic and Statistical Manual of Mental 
+Disorders Fifth Edition, Text Revision (DSM-5-TR) or International Classification 
+of Diseases Eleventh Revision (ICD-11). 
+3. Antipsychotics (APs) or mood stabilisers, either as monotherapy or combination, 
+should be used to treat acute mood episodes (mania, depressive and mixed 
+episodes) & as maintenance therapy in BD. 
+4. For BD with anxious distress, AAPs may be used.  
+5. For BD with rapid cycling, a combination of mood stabilisers with AAPs or another 
+mood stabiliser is the preferred treatment of choice. 
+6. Antidepressants (AD) may be used as short-term adjunctive treatment but not as 
+monotherapy in BD. It should be avoided in mixed episodes & used with caution 
+in rapid cycling BD. 
+7. Long-acting AAP injectables may be considered in BD patients who have poor 
+adherence to oral medications. 
+8. Electroconvulsive therapy should be considered in both bipolar manic & 
+depressive episodes in indicated situations (refer to Algorithm 1 & 2).  
+9. Psychosocial interventions & psychotherapies should be offered as an adjunctive 
+treatment for BD especially in relapse prevention. 
+10. Shared decision -making in weighing risks vs benefits of pharmacological 
+treatment should be done in pregnant & lactating women with BD. 
+ 
+ 
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Bipolar Disorder (Second Edition).  
+ 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites: 
+ 
+Ministry of Health Malaysia: www.moh.gov.my 
+Academy of Medicine Malaysia: www.acadmed.org.my 
+Malaysian Psychiatric Association: www.psychiatry-malaysia.org 
+ 
+ 
+CLINICAL PRACTICE GUIDELINES SECRETARIAT 
+Malaysian Health Technology Assessment Section (MaHTAS) 
+Medical Development Division, Ministry of Health Malaysia 
+Level 4, Block E1, Precinct 1 
+Federal Government Administrative Centre 62590 
+Putrajaya, Malaysia 
+Tel: 603-88831229 
+E-mail: htamalaysia@moh.gov.my 
+QR - BIPOLAR DISORDER 2ND ED.indd   3 8/24/2024   8:45:00 AM
+4
+QUICK REFERENCE                                         MANAGEMENT OF BIPOLAR DISORDER (2ND EDITION) 
+1 
+ 
+ALGORITHM 1. TREATMENT OF ACUTE MANIA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Monotherapy MS: 
+ Lithium 
+ Valproate† 
+ Carbamazepine  
+No response in 2 weeks or intolerable AEs 
+ACUTE MANIA 
+STEP 1*  
+ 
+ 
+ 
+ 
+ 
+ 
+± ECT** 
+ 
+Monotherapy AP: 
+ Haloperidol 
+ AAP 
+ 
+Combination MS & AP: 
+ MS: Lithium, valproate†, 
+carbamazepine 
+ AP: Haloperidol, AAP 
+ 
+ 
+No response in 2 weeks or intolerable AEs 
+Add on: 
+ Haloperidol  
+ AAP 
+ MS 
+ 
+Switch: 
+ MS 
+ Haloperidol  
+ AAP 
+Replace one or both 
+agents with other agents 
+in STEP 1 
+AP = antipsychotic 
+AAP = atypical antipsychotic  
+ECT = electroconvulsive therapy 
+MS = mood stabiliser 
+ 
+ 
+ *If the patient is already on treatment: 
+ consider optimising 
+ antidepressants should be discontinued  
+**ECT should be considered in the following conditions: 
+ rapid definitive response is required 
+ risk of other alternatives outweighs risk of ECT  
+ previous good response to ECT  
+ patient’s preference 
+ treatment-resistant cases 
+†Valproate - Safety concerns present, refer to Appendix 5 and 9 in CPG 
+ 
+ 
+STEP 3 
+STEP 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Psychosocial 
+Intervention ±  
+Psychotherapy   
+OR OR 
+OR 
+ 
+1 
+ 
+ 
+ALGORITHM 2. TREATMENT OF ACUTE DEPRESSIVE EPISODE 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+No response in 2 weeks or intolerable AEs 
+Monotherapy MS: 
+ Lamotrigine 
+ Valproate† 
+ Lithium 
+ACUTE DEPRESSIVE EPISODE 
+STEP 1*  
+ 
+ 
+ 
+ 
+ 
+ 
+± ECT**/rTMS 
+ 
+Monotherapy AAP: 
+ Olanzapine 
+ Quetiapine  
+ Lurasidone 
+ Cariprazine 
+ OFC 
+ Lumateperone 
+ 
+Combination MS & AAP: 
+ MS: Lamotrigine, 
+valproate†, lithium 
+ AAP: Olanzapine, 
+quetiapine, lurasidone, 
+cariprazine, OFC, 
+lumateperone 
+ 
+ 
+No response in 2 weeks or intolerable AEs 
+Add on 
+ MS + AAP 
+ MS + MS 
+ MS or AAP + antidepressant (short-term) 
+ 
+Switch: 
+ MS to AAP or other MS 
+ AAP to MS or other AAP  
+ 
+Replace one or both 
+agents with other agents 
+in STEP 2 
+ 
+STEP 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Psychosocial 
+Intervention ± 
+Psychotherapy  
+ 
+STEP 3 
+AAP = atypical antipsychotic 
+AP = antipsychotic 
+ECT = electroconvulsive therapy 
+MS = mood stabiliser 
+OFC = olanzapine/fluoxetine combination 
+rTMS = repetitive transcranial magnetic stimulation 
+ 
+ *Consider optimisation & assessment of compliance if on treatment 
+**ECT should be considered in the following conditions: 
+ rapid definitive response is required 
+ risk of other alternatives outweighs risk of ECT  
+ previous good response to ECT  
+ patient’s preference 
+ treatment-resistant cases 
+†Valproate - Safety concerns present, refer to Appendix 5 and 9 in CPG 
+QR - BIPOLAR DISORDER 2ND ED.indd   4 8/24/2024   8:45:00 AM
+4 5
+QUICK REFERENCE                                         MANAGEMENT OF BIPOLAR DISORDER (2ND EDITION)
+ 
+1 
+ 
+ALGORITHM 1. TREATMENT OF ACUTE MANIA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Monotherapy MS: 
+ Lithium 
+ Valproate† 
+ Carbamazepine  
+No response in 2 weeks or intolerable AEs 
+ACUTE MANIA 
+STEP 1*  
+ 
+ 
+ 
+ 
+ 
+ 
+± ECT** 
+ 
+Monotherapy AP: 
+ Haloperidol 
+ AAP 
+ 
+Combination MS & AP: 
+ MS: Lithium, valproate†, 
+carbamazepine 
+ AP: Haloperidol, AAP 
+ 
+ 
+No response in 2 weeks or intolerable AEs 
+Add on: 
+ Haloperidol  
+ AAP 
+ MS 
+ 
+Switch: 
+ MS 
+ Haloperidol  
+ AAP 
+Replace one or both 
+agents with other agents 
+in STEP 1 
+AP = antipsychotic 
+AAP = atypical antipsychotic  
+ECT = electroconvulsive therapy 
+MS = mood stabiliser 
+ 
+ 
+ *If the patient is already on treatment: 
+ consider optimising 
+ antidepressants should be discontinued  
+**ECT should be considered in the following conditions: 
+ rapid definitive response is required 
+ risk of other alternatives outweighs risk of ECT  
+ previous good response to ECT  
+ patient’s preference 
+ treatment-resistant cases 
+†Valproate - Safety concerns present, refer to Appendix 5 and 9 in CPG 
+ 
+ 
+STEP 3 
+STEP 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Psychosocial 
+Intervention ±  
+Psychotherapy   
+OR OR 
+OR 
+ 
+1 
+ 
+ 
+ALGORITHM 2. TREATMENT OF ACUTE DEPRESSIVE EPISODE 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+No response in 2 weeks or intolerable AEs 
+Monotherapy MS: 
+ Lamotrigine 
+ Valproate† 
+ Lithium 
+ACUTE DEPRESSIVE EPISODE 
+STEP 1*  
+ 
+ 
+ 
+ 
+ 
+ 
+± ECT**/rTMS 
+ 
+Monotherapy AAP: 
+ Olanzapine 
+ Quetiapine  
+ Lurasidone 
+ Cariprazine 
+ OFC 
+ Lumateperone 
+ 
+Combination MS & AAP: 
+ MS: Lamotrigine, 
+valproate†, lithium 
+ AAP: Olanzapine, 
+quetiapine, lurasidone, 
+cariprazine, OFC, 
+lumateperone 
+ 
+ 
+No response in 2 weeks or intolerable AEs 
+Add on 
+ MS + AAP 
+ MS + MS 
+ MS or AAP + antidepressant (short-term) 
+ 
+Switch: 
+ MS to AAP or other MS 
+ AAP to MS or other AAP  
+ 
+Replace one or both 
+agents with other agents 
+in STEP 2 
+ 
+STEP 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Psychosocial 
+Intervention ± 
+Psychotherapy  
+ 
+STEP 3 
+AAP = atypical antipsychotic 
+AP = antipsychotic 
+ECT = electroconvulsive therapy 
+MS = mood stabiliser 
+OFC = olanzapine/fluoxetine combination 
+rTMS = repetitive transcranial magnetic stimulation 
+ 
+ *Consider optimisation & assessment of compliance if on treatment 
+**ECT should be considered in the following conditions: 
+ rapid definitive response is required 
+ risk of other alternatives outweighs risk of ECT  
+ previous good response to ECT  
+ patient’s preference 
+ treatment-resistant cases 
+†Valproate - Safety concerns present, refer to Appendix 5 and 9 in CPG 
+QR - BIPOLAR DISORDER 2ND ED.indd   5 8/24/2024   8:45:01 AM
+6
+QUICK REFERENCE                                         MANAGEMENT OF BIPOLAR DISORDER (2ND EDITION) 
+1 
+ 
+ 
+RECOMMENDED ADULT MEDICATION DOSAGES FOR BIPOLAR DISORDER 
+ 
+CrCl = creatinine clearance, PO = orally, LAI = long acting injectables 
+*Note: Refer to the main CPG for important notations & dose for specific bipolar episodes.  
+MEDICATION USUAL DOSE RANGE RENAL IMPAIRMENT DOSE HEPATIC IMPAIRMENT DOSE 
+CrCl 
+60 - 89 ml/min 
+CrCl 
+30 - 59 ml/min 
+CrCl 
+<30 ml/min 
+Mild Moderate Severe 
+MOOD STABILISERS 
+Lithium  
+ 
+PO: 900 - 1800 mg/day in divided doses. 
+(Max dose: 1.8 g/day in 1 to 3 divided doses) 
+No dose 
+adjustment 
+Initiate at lower 
+dose 
+Avoid No dose adjustment 
+Valproate PO: 1000 to 2000 mg/day (i.e. 20 - 30 
+mg/kg/day) 
+(Max dose: 2500 mg/day or 60 mg/kg/day) 
+ 
+No dose adjustment 
+<10: 
+Caution* 
+No dose adjustment  
+Avoid 
+Lamotrigine PO: 100 - 400 mg/day in divided doses No dose adjustment 
+ 
+Caution use No dose 
+adjustment 
+WITHOUT ascites:  dose by ~25% 
+WITH ascites:   dose by ~50% 
+Carbamazepine PO: 400 - 1600 mg/day in 2 to 3 divided doses 
+(Max dose: 1.6 g/day) 
+No dose adjustment Use with caution & consider dose reduction  
+as it is metabolised primarily in the liver 
+ANTIPSYCHOTICS 
+Aripiprazole PO: 10 - 15 mg once daily (Max: 30 mg/day) 
+LAI: 400 mg once monthly 
+No dose adjustment No dose adjustment 
+Asenapine PO: 5 - 10 mg twice daily 
+(Max dose: 10 mg twice daily) 
+No dose adjustment No dose adjustment Avoid 
+Cariprazine  PO: 3 - 6 mg once daily (Max: 6 mg/day) No dose adjustment Avoid No dose adjustment Avoid 
+Haloperidol PO: 3 - 15 mg/day (Max: 30 mg/day) No dose adjustment Caution use 
+Lumateperone PO: 42 mg once daily (Max: 42mg/day) No dose adjustment No dose 
+adjustment 
+Max: 21 mg once daily 
+Lurasidone PO: 20 - 60 mg once daily (Max: 120 mg/day) No dose adjustment <50: Max: 80 mg/day No dose 
+adjustment 
+Max: 80 mg/day Max: 40 mg/day 
+Olanzapine PO: 5 - 20 mg once daily (Max: 20 mg/day) No dose adjustment necessary Caution use 
+Paliperidone PO: 6 mg once daily (Max: 12 mg/day) 
+ 
+ 
+50 - <80: 
+Initial: 3 mg OD 
+Max: 6 mg OD 
+10 - <50: 
+Initial: 1.5 mg OD 
+Max: 3 mg OD 
+<10: 
+Avoid 
+No dose adjustment Not information 
+Quetiapine PO: 50 - 400 mg once daily (Max: 800 mg/day) No dose adjustment necessary Initial: 25 mg once daily Avoid 
+Risperidone PO: 2- 3 mg/day (Max: 8 mg/day) 
+LAI: 25 mg every 2 weeks (Max: 50 mg every 2 
+weeks) 
+No 
+adjust-
+ment 
+30 - 60: 
+50 - 75% of 
+usual dose 
+10 - 30: 
+50% of usual 
+dose 
+<10: 
+Avoid 
+No dose adjustment 0.5 mg twice daily 
+Ziprasidone PO: 40 - 80 mg twice daily (Max: 80 mg BD) No dosage adjustment necessary Caution use 
+ANTIDEPRESSANT 
+Fluoxetine (to be 
+used in 
+combination) 
+PO: 20 - 50 mg/day (Max: 75 mg/day) No dosage adjustment necessary Use lower dose (up to 50% reduction) & less frequent 
+interval in patients with cirrhosis & chronic liver disease 
+QR - BIPOLAR DISORDER 2ND ED.indd   6 8/24/2024   8:45:01 AM
+6 7
+QUICK REFERENCE                                         MANAGEMENT OF BIPOLAR DISORDER (2ND EDITION)
+ 
+1 
+ 
+ADVERSE EFFECTS & USE OF MEDICATIONS IN PREGNANCY & L A C T AT I O N 
+RID <10% is considered compatible with breastfeeding. However, worth noting that some sources recommend that for psychotropic  agents, breastfeeding is considered 
+acceptable if RID is <5%   *Note: Refer to main CPG for important notation 
+MEDICATION COMMON/SIGNIFICANT ADVERSE EFFECTS PREGNANCY LACTATION 
+Mood stabilisers 
+Lithium  Polyuria, polydipsia, weight gain, hyperparathyroidism, hypothyroidism, fatigue, acne, 
+dysgeusia, diabetes insipidus, fine tremor, gastrointestinal (GI) upset Human data suggest risk  Relative infant dose (RID): 12.2% 
+ Possible to use cautiously  
+Valproate Raised liver enzymes, GI upset, fatigue, drowsiness, weight gain, thrombocytopaenia, skin 
+reaction (Stevens-Johnson Syndrome/SJS, Toxic Epidermal Necrolysis Syndrome/ TENS, 
+Drug Reaction with Eosinophilia & Systemic Symptoms Syndrome) 
+Contraindicated  
+ Possible to use in lactation 
+Lamotrigine Serious skin rashes (SJS, TENS), blood dyscrasias, aseptic meningitis, GI upset, dizziness, 
+blurred vision, diplopia, headache Compatible  RID: 5 - 31% 
+ Possible to use in lactation 
+Carbamazepine Serious skin rashes (SJS, TENS), blood dyscrasias, hepatoxicity, hyponatraemia, dizziness, 
+drowsiness, GI upset, nystagmus, tinnitus Not recommended for BD  Possible & compatible 
+Antipsychotics 
+Aripiprazole Weight gain, dyslipidaemia, hyperglycaemia, drowsiness, extrapyramidal symptoms (EPS), 
+headache, insomnia, neutropaenia 
+Human data suggest low risk  RID: 0.7 - 8.3% 
+ Not recommended during lactation 
+Asenapine Drowsiness, insomnia, akathisia, EPS, headache, dizziness, weight gain, 
+hypertriglyceridaemia, hypercholesterolaemia, hyperglycaemia, oral hypoesthesia 
+No human data - animal data 
+suggest moderate risk 
+ Not recommended during lactation 
+Cariprazine  GI upset, akathisia, dizziness, EPS, insomnia, somnolence, headache, hyperglycaemia, 
+weight gain 
+No human data - animal data 
+suggest moderate risk 
+ No information available 
+Haloperidol Hypotension, constipation, xerostomia, akathisia, EPS, somnolence, blurred vision Limited human data - animal 
+data suggest moderate risk 
+ Possible to use cautiously 
+Lumateperone Nausea, xerostomia, dizziness, somnolence, EPS Limited human data  No information available 
+Lurasidone Dyslipidaemia, hyperglycaemia, weight gain, GI upset, akathisia, EPS, parkinsonism, 
+somnolence 
+Limited human data - risk in 
+third trimester 
+ No information available 
+Olanzapine Orthostatic hypotension, hypercholesterolaemia, hyperglycaemia, hyperprolactinaemia, 
+weight gain, akathisia, EPS, anticholinergic effects 
+Compatible  RID: 0.3 - 4% 
+ Acceptable during lactation 
+ First-line of AAPs for lactation 
+Paliperidone Tachycardia, weight gain, hyperprolactinaemia, akathisia, dyskinesia, dystonia, EPS, 
+somnolence, tremor 
+Limited human data - animal 
+data suggest low risk 
+ Possible to use cautiously 
+Quetiapine Orthostatic hypotension, dyslipidaemia, weight gain, anticholinergic effects, asthenia, EPS, 
+somnolence 
+Compatible  RID: 0.02 - 0.1% 
+ Possible to use during lactation 
+ First/second choice for lactation 
+Risperidone Weight gain, hyperprolactinaemia, dyslipidaemia, EPS, excessive salivation, GI upset, 
+akathisia, dizziness, sedation, blurred vision, anxiety 
+Compatible  RID: 2.3% - 4.7% 
+ Possible to use cautiously 
+ Second-line of AAPs for lactation 
+Ziprasidone Weight gain, GI upset, akathisia, dizziness, EPS, headache, somnolence, tremor, prolonged 
+QTc interval 
+Limited human data - animal 
+data suggest risk 
+ Possible to use cautiously  
+Selective Serotonin Reuptake Inhibitor 
+Fluoxetine GI upset, xerostomia, dizziness, insomnia, somnolence, tremor, anxiety Human data suggest risk in third 
+trimester  
+ RID: 3% - 12% 
+ Possible to use during lactation 
+QR - BIPOLAR DISORDER 2ND ED.indd   7 8/24/2024   8:45:01 AM
+8
+QUICK REFERENCE                                         MANAGEMENT OF BIPOLAR DISORDER (2ND EDITION)
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+ 
+1 
+ 
+ 
+ 
+ 
+SUICIDE PREVENTION 
+ 
+Identifying risk factors for suicide in BD is important. 
+Risk factors: 
+ sociodemographic 
+o younger age  
+o male 
+o unemployed  
+o disabled 
+ symptomatology 
+o suicidal ideation 
+o rapid cycling 
+o psychotic symptoms 
+o depressive phase  
+o hopelessness 
+o mixed state 
+ clinical characteristics 
+o early onset of mood disorder 
+o previous suicide attempts  
+o multiple hospitalisations 
+o early sexual abuse 
+o stressful life events 
+o lack of confidant 
+o family history of suicide 
+ co-morbidity 
+o anxiety disorder 
+o Cluster B personality (antisocial/borderline/histrionic/narcissistic personality disorder) 
+o substance misuse 
+ treatment 
+o duration of treatment (<5 years) 
+ 
+Personalised, collaborative management of suicidal behaviour in BD including emerging 
+treatment options e.g. safety planning is advocated. 
+ 
+Components of Safety Planning 
+ 
+ 
+ recognising warning signs of impending suicidal crisis 
+ identifying & employing internal coping strategies without needing to contact 
+another person 
+ utilising contacts with people as a means of distraction from suicidal thoughts & 
+urges 
+ contacting family members or friends who may help to resolve a crisis & with 
+whom suicidality can be discussed 
+ contacting mental health professionals or agencies 
+ reducing the potential use of lethal means 
+QR - BIPOLAR DISORDER 2ND ED.indd   8 8/24/2024   8:45:02 AM
