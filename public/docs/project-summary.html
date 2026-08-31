@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>SihatAI Project Summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --field: #f3fbfd;
+  --paper: #ffffff;
+  --paper-blue: #e4f5fa;
+  --ink: #102f4a;
+  --ink-soft: #48697d;
+  --ink-faint: #7795a6;
+  --cobalt: #176ca5;
+  --cobalt-deep: #0c527f;
+  --teal: #0b8994;
+  --coral: #f26b5e;
+  --line: #bddce6;
+  --font: "Bricolage Grotesque", system-ui, sans-serif;
+  --mono: "Azeret Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(23,108,165,.12), transparent 55%),
+    linear-gradient(180deg, #e8f6fb 0%, var(--field) 28%, #eef8fb 100%);
+  background-attachment: fixed;
+  font: 400 15px/1.55 var(--font);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image:
+    linear-gradient(rgba(189,220,230,.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(189,220,230,.55) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,.55), transparent 70%);
+}
+.wrap { position: relative; max-width: 820px; margin: 0 auto; padding: 28px 18px 64px; }
+.masthead {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px 28px 24px;
+  box-shadow: 8px 10px 0 rgba(23,108,165,.08);
+  margin-bottom: 22px;
+}
+.kicker {
+  font: 700 11px/1 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin: 0 0 12px;
+}
+h1 {
+  margin: 0 0 10px;
+  font: 800 1.85rem/1.15 var(--font);
+  letter-spacing: -.02em;
+}
+.lede { margin: 0; color: var(--ink-soft); font-size: .98rem; max-width: 62ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--line); background: var(--paper-blue);
+  color: var(--cobalt-deep); border-radius: 999px; padding: 6px 11px;
+  font: 600 11px/1 var(--mono);
+}
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+nav.toc {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 18px; padding: 18px 20px; margin-bottom: 22px;
+}
+nav.toc h2 {
+  margin: 0 0 10px; font: 700 12px/1 var(--mono);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--teal);
+}
+nav.toc ol { margin: 0; padding-left: 1.2rem; }
+@media (min-width: 720px) { nav.toc ol { columns: 2; gap: 24px; } }
+nav.toc a { color: var(--ink); text-decoration: none; font-size: .92rem; }
+nav.toc a:hover { color: var(--cobalt); text-decoration: underline; }
+nav.toc li { margin: 0 0 7px; break-inside: avoid; }
+.paper {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 18px; padding: 22px 24px; margin: 0 0 16px;
+}
+.section-tag {
+  display: inline-block; margin: 0 0 8px;
+  font: 700 11px/1 var(--mono); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--coral);
+}
+h2 { margin: 0 0 12px; font: 700 1.28rem/1.2 var(--font); letter-spacing: -.015em; }
+h3 { margin: 18px 0 8px; font: 700 1.02rem/1.3 var(--font); color: var(--cobalt-deep); }
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+ul, ol { margin: 0 0 12px; padding-left: 1.2rem; }
+li { margin: 0 0 6px; }
+li::marker { color: var(--cobalt); }
+hr.rule { border: 0; border-top: 2px solid var(--coral); width: 48px; margin: 0 0 14px; }
+.callout {
+  border-left: 3px solid var(--teal); background: var(--paper-blue);
+  border-radius: 0 12px 12px 0; padding: 12px 14px; margin: 14px 0 0;
+  color: var(--ink-soft); font-size: .94rem;
+}
+.footer {
+  margin-top: 28px; text-align: center; color: var(--ink-faint);
+  font: 500 11px/1.4 var(--mono);
+}
+@media print {
+  body { background: white; }
+  body::before { display: none; }
+  .wrap { max-width: none; padding: 0; }
+  .paper, .masthead, nav.toc { break-inside: avoid; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <p class="kicker">Clinical decision support · Product brief</p>
+    <h1>SihatAI Project Summary</h1>
+    <p class="lede">An end-to-end multimodal clinical intelligence platform for Malaysia: one findings object, two reports, physician sign-off, Ask the scan, and voice triage.</p>
+    <div class="meta"><span class="pill">31 August 2026</span><span class="pill">MAIC Nexus Challenge T2</span></div>
+  </header>
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#purpose">Purpose and setting</a></li>
+      <li><a href="#intelligence">Intelligence layer</a></li>
+      <li><a href="#pipeline">Pipeline, grounding, and safety</a></li>
+      <li><a href="#audiences">Dual audiences, Ask the scan, and voice</a></li>
+      <li><a href="#stack">Architecture and quality</a></li>
+    </ol>
+  </nav>
+  <section class="paper" id="purpose">
+    <div class="section-tag">01</div>
+    <h2>Purpose and setting</h2>
+    <hr class="rule">
+    <p>SihatAI is an end-to-end multimodal clinical intelligence platform for Malaysia’s healthcare ecosystem. It addresses rising diagnostic demand, specialist shortages, fragmented records, delayed interpretation, language barriers, and patients’ difficulty understanding complex medical information. Two roles, physician and patient, share three product pillars: multimodal record analysis, Ask the scan, and voice triage.</p>
+    <p>The platform turns medical images, laboratory and clinical documents, historical records, and spoken symptoms into structured, evidence-grounded insights in English, Bahasa Melayu, Mandarin, and Tamil. One findings object drives two reports: a technical draft the physician edits and signs, and a plain-language explanation released only after that sign-off.</p>
+  </section>
+  <section class="paper" id="intelligence">
+    <div class="section-tag">02</div>
+    <h2>Intelligence layer</h2>
+    <hr class="rule">
+    <p>Live inference uses MedGemma 1.5 4B-IT on Modal through FastAPI. A Malaysia-focused MY-LoRA adapter, trained with QLoRA and loaded at serve time through PEFT, captures Malaysian clinical terminology, reporting conventions, and dual-audience phrasing without retraining the foundation model. Analysis runs with the adapter off. Patient Ask the scan may load it for CPG and Bahasa phrasing.</p>
+    <p>Laravel writes a de-identified sibling file, then routes by filename, MIME, and DICOM tags. MedGemma reads X-rays, dermatology, ophthalmology, and clinical documents; CT and MRI as up to eight separate mid-volume slices, with the overlay showing slice 0; and histopathology as 3×3 center patches presented as separate images. Digital laboratory PDFs are read with pdftotext; scanned pages use RapidOCR.</p>
+  </section>
+  <section class="paper" id="pipeline">
+    <div class="section-tag">03</div>
+    <h2>Pipeline, grounding, and safety</h2>
+    <hr class="rule">
+    <p>Every submission follows a seven-stage pipeline: upload, sibling PII de-identification, modality routing, MedGemma analysis with imaging and document specialist hops, guideline retrieval, ALLOW/WARN clinical guardrails, and report composition. The orchestrator extracts structured findings and biomarkers, flags abnormal or critical values, localizes visual findings with prompted bounding boxes, applies heuristic confidence gating, analyses biomarker trends, and compares the current study with prior records. Critical cases write durable audit events and notify the clinician.</p>
+    <p>To reduce unsupported claims, SihatAI retrieves over Malaysian Ministry of Health Quick Reference chunks. Lexical BM25 always runs. Dense ranking is added only when query and chunk embeddings share the same OpenAI model. Results may be reranked with maximal marginal relevance. Findings and recommendations carry source, section, excerpt, and relevance when retrieval is strong. Weak retrieval returns empty citations rather than static stubs.</p>
+    <p>The safety layer applies low-confidence abstention, WARN veto of patient prose, critical-value escalation, medical disclaimers, physician sign-gated patient release, and human-review routing. Role-based authorization, policies, HMAC-signed webhooks, and controlled record access protect sensitive health data.</p>
+  </section>
+  <section class="paper" id="audiences">
+    <div class="section-tag">04</div>
+    <h2>Dual audiences, Ask the scan, and voice</h2>
+    <hr class="rule">
+    <p>Physicians receive technical summaries, confidence-scored differential diagnoses, visual annotations, longitudinal comparisons, recommendations, and citations, then edit and sign the draft. Patients receive plain-language explanations, warning signs, practical next steps, and questions for their doctor in their preferred language, only when policy allows and the physician has signed.</p>
+    <p>Ask the scan is visual question answering on the study already on the page. A physician, or a patient after sign-off when the report is not withheld, clicks a finding or overlay box and asks a question. Laravel abstains without calling the GPU when the question names anatomy outside this study’s field of view. Replies stream as hops and tokens.</p>
+    <p>Voice triage uses MedASR with Whisper fallback to convert spoken or typed symptoms into structured complaints, clarifying prompt cards, and routine, urgent, or emergency classifications. A server <code>audio/mpeg</code> speak endpoint provides a cached reply for playback. Browser server-sent events stream hops and tokens while the answer is written. This path is clinician-supervised intake support, not emergency dispatch.</p>
+  </section>
+  <section class="paper" id="stack">
+    <div class="section-tag">05</div>
+    <h2>Architecture and quality</h2>
+    <hr class="rule">
+    <p>The stack is decoupled. Python, FastAPI, Pydantic, Uvicorn, and HTTPX power the inference microservice. PHP 8.4 and Laravel 13 manage medical records, MySQL state, database queues, background jobs, webhook callbacks, authorization policies, and Fortify authentication. Vue 3, TypeScript, Inertia.js 3, Laravel Wayfinder, Tailwind CSS 4, shadcn-vue, Reka UI, and Vite deliver the physician and patient applications.</p>
+    <p>Engineering quality is supported by Pest 4, Larastan, TypeScript, ESLint, Prettier, database factories, and reproducible seed data. Those checks verify workflow contracts: authentication, retrieval ranking, ALLOW/WARN policy, sign-gated release, Ask the scan, and voice triage. They are not a clinical accuracy benchmark.</p>
+    <div class="callout">SihatAI is a localized, explainable, safety-engineered clinical workflow. It helps clinicians review information faster, keeps AI outputs auditable, and gives Malaysians clearer access to their health information without replacing professional medical judgment.</div>
+  </section>
+  <p class="footer">SihatAI · Clinical Field Atlas</p>
+</div>
+</body>
+</html>

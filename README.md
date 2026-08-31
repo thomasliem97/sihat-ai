@@ -9,7 +9,10 @@
     <a href="https://sihat-ai.vxms.dev/">
       <img src="https://img.shields.io/badge/LAUNCH_LIVE_DEMO-176CA5?style=for-the-badge" alt="Launch live demo">
     </a>
-    <a href="docs/pitch-deck/SihatAI-Pitch-Deck.html">
+    <a href="https://sihat-ai.vxms.dev/docs/demo.mp4">
+      <img src="https://img.shields.io/badge/WATCH_DEMO-0C527F?style=for-the-badge" alt="Watch demo">
+    </a>
+    <a href="https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.html">
       <img src="https://img.shields.io/badge/VIEW_PITCH_DECK-0B8994?style=for-the-badge" alt="View pitch deck">
     </a>
   </p>
@@ -199,10 +202,11 @@ tests/                    Pest feature and unit tests
 
 ## Project documents
 
-- **[Interactive pitch deck](docs/pitch-deck/SihatAI-Pitch-Deck.html)**: 12-slide product story ([PDF](docs/pitch-deck/SihatAI-Pitch-Deck.pdf)).
-- **[Project summary](docs/project-summary.html)**: written brief ([plain text](docs/project-summary.txt)).
-- **[AI disclosure](docs/ai-disclosure.html)**: product and development AI use ([plain text](docs/ai-disclosure.txt)).
-- **[Technical architecture](docs/technical-architecture/SihatAI-Technical-Architecture.html)**: system architecture, algorithms, and claim boundary ([PDF](docs/technical-architecture/SihatAI-Technical-Architecture.pdf)).
+- **[Demo video](https://sihat-ai.vxms.dev/docs/demo.mp4)**: product walkthrough.
+- **[Interactive pitch deck](https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.html)**: 12-slide product story ([PDF](https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.pdf)).
+- **[Project summary](https://sihat-ai.vxms.dev/docs/project-summary.html)**: written brief ([plain text](https://sihat-ai.vxms.dev/docs/project-summary.txt)).
+- **[AI disclosure](https://sihat-ai.vxms.dev/docs/ai-disclosure.html)**: product and development AI use ([plain text](https://sihat-ai.vxms.dev/docs/ai-disclosure.txt)).
+- **[Technical architecture](https://sihat-ai.vxms.dev/docs/technical-architecture/SihatAI-Technical-Architecture.html)**: system architecture, algorithms, and claim boundary ([PDF](https://sihat-ai.vxms.dev/docs/technical-architecture/SihatAI-Technical-Architecture.pdf)).
 
 ---
 
