@@ -26,6 +26,7 @@ class TriageMessageFactory extends Factory
             'content' => fake()->sentence(),
             'input_modality' => TriageInputModality::Text,
             'stt_engine' => null,
+            'prompts' => null,
         ];
     }
 }

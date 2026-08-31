@@ -273,6 +273,47 @@ test('explain stream persists assembled tokens', function () {
         ->and($messages[1]->content)->toBe('The opacity sits in the right lower lobe.');
 });
 
+test('explain stream persists the structured answer not the medgemma tokens', function () {
+    $sse = implode("\n\n", [
+        'data: '.json_encode(['hop' => 'Looking at the study']),
+        'data: '.json_encode(['token' => 'Opacity.']),
+        'data: '.json_encode([
+            'done' => true,
+            'answer' => 'The right lower lobe opacity is patchy airspace change. It does not by itself prove infection; correlate with fever and white cell count.',
+        ]),
+    ])."\n\n";
+
+    Http::fake([
+        '*/api/v1/explain/stream' => Http::response($sse, 200, [
+            'Content-Type' => 'text/event-stream',
+        ]),
+    ]);
+
+    $physician = User::factory()->physician()->create();
+    $patient = User::factory()->patient()->create();
+    $record = explainerRecord($patient, $physician, ['signed_at' => null]);
+
+    $response = $this->actingAs($physician)
+        ->json('POST', route('records.explain', $record), [
+            'question' => 'Where is the opacity?',
+            'finding_index' => 0,
+        ], [
+            'Accept' => 'text/event-stream',
+        ]);
+
+    $response->assertSuccessful();
+
+    $body = $response->streamedContent();
+    $assistant = RecordExplainerMessage::query()
+        ->where('medical_record_id', $record->id)
+        ->where('role', 'assistant')
+        ->first();
+
+    expect($body)->not->toContain('"token":"Opacity."')
+        ->and($assistant?->content)->toContain('patchy airspace change')
+        ->and($assistant?->content)->not->toBe('Opacity.');
+});
+
 test('follow-up chips rotate after each answer', function () {
     $explainer = app(RecordExplainerService::class);
     $findings = [

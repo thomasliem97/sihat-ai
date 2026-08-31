@@ -108,7 +108,7 @@ class RecordExplainerService
                     $actor->isPhysician(),
                     $userMessage->content,
                     $answer,
-                    is_array($record->findings) ? $record->findings : [],
+                    $record->findings ?? [],
                     $record,
                 );
 
@@ -147,7 +147,7 @@ class RecordExplainerService
      */
     public function suggestions(bool $physician, ?MedicalRecord $record = null): array
     {
-        $findings = is_array($record?->findings) ? $record->findings : [];
+        $findings = $record === null ? [] : ($record->findings ?? []);
 
         return $this->chooseChips($physician, $record, $findings, '', '');
     }
@@ -160,7 +160,7 @@ class RecordExplainerService
      */
     public function nextSuggestions(bool $physician, string $question, string $answer, array $findings = [], ?MedicalRecord $record = null): array
     {
-        if ($findings === [] && is_array($record?->findings)) {
+        if ($findings === [] && $record?->findings) {
             $findings = $record->findings;
         }
 
@@ -248,9 +248,6 @@ class RecordExplainerService
     {
         $chips = [];
         foreach (array_slice($findings, 0, 4) as $finding) {
-            if (! is_array($finding)) {
-                continue;
-            }
             $label = trim((string) ($finding['label'] ?? ''));
             if ($label === '') {
                 continue;
@@ -275,9 +272,6 @@ class RecordExplainerService
 
         $text = '';
         foreach ($findings as $finding) {
-            if (! is_array($finding)) {
-                continue;
-            }
             $text .= ' '.(string) ($finding['label'] ?? '');
             $text .= ' '.(string) ($finding['description'] ?? '');
         }
@@ -445,7 +439,7 @@ class RecordExplainerService
         $final = null;
         $failed = false;
 
-        $handleBlock = function (string $block) use (&$assembled, &$final, &$failed, $onToken, $onHop): void {
+        $handleBlock = function (string $block) use (&$assembled, &$final, &$failed, $onHop): void {
             foreach (preg_split("/\r\n|\n|\r/", $block) ?: [] as $line) {
                 if (! str_starts_with($line, 'data: ')) {
                     continue;
@@ -479,7 +473,6 @@ class RecordExplainerService
 
                 if (isset($decoded['token']) && is_string($decoded['token']) && $decoded['token'] !== '') {
                     $assembled .= $decoded['token'];
-                    $onToken($decoded['token']);
                 }
 
                 if (! empty($decoded['done']) && isset($decoded['answer']) && is_string($decoded['answer'])) {
@@ -507,7 +500,12 @@ class RecordExplainerService
             return '';
         }
 
-        return $final ?? trim($assembled);
+        $visible = $final ?? trim($assembled);
+        if ($visible !== '') {
+            $onToken($visible);
+        }
+
+        return $visible;
     }
 
     /**
@@ -721,10 +719,7 @@ class RecordExplainerService
     {
         $parts = [];
 
-        foreach (is_array($record->findings) ? $record->findings : [] as $finding) {
-            if (! is_array($finding)) {
-                continue;
-            }
+        foreach ($record->findings ?? [] as $finding) {
             $parts[] = (string) ($finding['label'] ?? '');
             $parts[] = (string) ($finding['description'] ?? '');
         }

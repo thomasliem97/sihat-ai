@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\Modality;
 use App\Models\GuidelineChunk;
 use App\Models\MedicalRecord;
 use Illuminate\Support\Collection;
@@ -14,7 +15,7 @@ class RagService
 
     private const MMR_LAMBDA = 0.7;
 
-    private const TOP_K = 3;
+    private const TOP_K = 5;
 
     private const CANDIDATE_K = 8;
 
@@ -22,27 +23,57 @@ class RagService
      * Hybrid dense + BM25 retrieval with MMR rerank.
      *
      * @param  array<int, array<string, mixed>>  $findings
+     * @param  array<int, string>  $extraTerms
      * @return array<int, array<string, mixed>>
      */
-    public function retrieveCitations(MedicalRecord $record, array $findings): array
+    public function retrieveCitations(MedicalRecord $record, array $findings, array $extraTerms = []): array
     {
         $this->lastRetrievalWeak = false;
 
-        $queryParts = collect($findings)->pluck('label')->filter()->all();
-        $prior = MedicalRecord::query()
-            ->where('user_id', $record->user_id)
-            ->where('id', '!=', $record->id)
-            ->whereNotNull('findings')
-            ->latest()
-            ->limit(3)
-            ->get()
-            ->flatMap(fn (MedicalRecord $prior) => collect($prior->findings ?? [])->pluck('label'))
+        $modality = $record->detected_modality ?? $record->modality;
+        $isLab = $modality === Modality::LabPdf;
+
+        $queryParts = $isLab
+            ? []
+            : collect($findings)
+                ->filter(fn (array $finding): bool => self::isRagFinding($finding))
+                ->flatMap(fn (array $finding): array => [
+                    $finding['label'] ?? null,
+                    $finding['description'] ?? null,
+                ])
+                ->filter()
+                ->all();
+        $report = $record->physician_report ?? [];
+        $ddx = $report['differential_diagnosis'] ?? [];
+        $fromReport = collect(is_array($ddx) ? $ddx : [])
+            ->map(fn (mixed $row): string => is_array($row) ? (string) ($row['condition'] ?? '') : '')
             ->filter()
             ->all();
 
-        $query = implode(' ', array_merge($queryParts, $prior, [
-            $record->detected_modality?->label() ?? $record->modality->label(),
-        ]));
+        $extraTerms = array_values(array_filter(
+            $extraTerms,
+            fn (mixed $term): bool => self::hasEnoughTokens($term),
+        ));
+        $fromReport = array_values(array_filter(
+            $fromReport,
+            fn (string $term): bool => self::hasEnoughTokens($term),
+        ));
+
+        $query = collect(array_merge(
+            $queryParts,
+            $extraTerms,
+            $fromReport,
+        ))
+            ->flatMap(fn (mixed $part): array => preg_split('/\W+/u', mb_strtolower((string) $part), -1, PREG_SPLIT_NO_EMPTY) ?: [])
+            ->unique()
+            ->reject(fn (string $token): bool => self::isWeakQueryToken($token))
+            ->implode(' ');
+
+        if (trim($query) === '') {
+            $this->lastRetrievalWeak = true;
+
+            return [];
+        }
 
         $chunks = GuidelineChunk::query()->get();
 
@@ -52,13 +83,20 @@ class RagService
             return [];
         }
 
-        $queryEmbedding = $this->embed($query);
-        $this->ensureChunkEmbeddings($chunks);
+        $openAiEmbedding = $this->embed($query);
+        if ($openAiEmbedding !== null) {
+            $this->ensureChunkEmbeddings($chunks, $openAiEmbedding);
+        }
 
-        $dense = $this->denseCandidates($chunks, $queryEmbedding, $query);
+        $dense = $openAiEmbedding === null
+            ? []
+            : $this->denseCandidates($chunks, $openAiEmbedding, $query);
         $bm25 = $this->bm25Candidates($chunks, $query);
-        $fused = $this->fuseCandidates($dense, $bm25);
-        $reranked = $this->mmrRerank($fused, $queryEmbedding, self::TOP_K);
+        $fused = array_values(array_filter(
+            $this->fuseCandidates($dense, $bm25),
+            fn (array $row): bool => (float) ($row['relevance'] ?? 0) >= 0.2,
+        ));
+        $reranked = $this->mmrRerank($fused, $openAiEmbedding, self::TOP_K);
 
         $top = (float) ($reranked[0]['relevance'] ?? 0);
         $this->lastRetrievalWeak = $reranked === [] || $top < 0.2;
@@ -79,38 +117,110 @@ class RagService
     }
 
     /**
+     * @param  array<string, mixed>  $finding
+     */
+    private static function isRagFinding(array $finding): bool
+    {
+        $severity = strtolower((string) ($finding['severity'] ?? $finding['status'] ?? ''));
+        if ($severity === 'normal') {
+            return false;
+        }
+
+        $label = strtolower((string) ($finding['label'] ?? ''));
+
+        return ! str_contains($label, 'technical quality');
+    }
+
+    private static function hasEnoughTokens(mixed $term): bool
+    {
+        $words = preg_split('/\W+/u', (string) $term, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+
+        return count($words) >= 2;
+    }
+
+    private static function isWeakQueryToken(string $token): bool
+    {
+        if (mb_strlen($token) < 3) {
+            return true;
+        }
+
+        return in_array($token, [
+            'and', 'are', 'for', 'the', 'this', 'that', 'with', 'from',
+            'there', 'then', 'than', 'into', 'over', 'under', 'upon',
+        ], true);
+    }
+
+    /**
      * @return array<int, float>|null
      */
     public function embed(string $text): ?array
     {
-        $apiKey = config('services.openai.api_key');
+        return $this->embedMany([$text])[0] ?? null;
+    }
 
-        if (! $apiKey) {
-            return $this->localHashEmbed($text);
+    /**
+     * @param  array<int, string>  $texts
+     * @return array<int, array<int, float>|null>
+     */
+    public function embedMany(array $texts): array
+    {
+        if ($texts === []) {
+            return [];
         }
 
+        $apiKey = config('services.openai.api_key');
+        if (! $apiKey) {
+            return array_fill(0, count($texts), null);
+        }
+
+        $out = [];
+        foreach (array_chunk(array_values($texts), 64) as $batch) {
+            array_push($out, ...$this->embedBatch($batch, (string) $apiKey));
+        }
+
+        return $out;
+    }
+
+    /**
+     * @param  array<int, string>  $batch
+     * @return array<int, array<int, float>|null>
+     */
+    private function embedBatch(array $batch, string $apiKey): array
+    {
         try {
             $response = Http::withToken($apiKey)
                 ->timeout(30)
                 ->post('https://api.openai.com/v1/embeddings', [
                     'model' => config('services.openai.embedding_model', 'text-embedding-3-small'),
-                    'input' => mb_substr($text, 0, 8000),
+                    'input' => array_map(fn (string $text): string => mb_substr($text, 0, 8000), $batch),
                 ]);
 
             if (! $response->successful()) {
                 Log::warning('OpenAI embedding failed', ['status' => $response->status()]);
 
-                return $this->localHashEmbed($text);
+                return array_fill(0, count($batch), null);
             }
 
-            /** @var array<int, float> $embedding */
-            $embedding = $response->json('data.0.embedding') ?? [];
+            $byIndex = [];
+            foreach ($response->json('data') ?? [] as $row) {
+                if (! is_array($row)) {
+                    continue;
+                }
+                $index = (int) ($row['index'] ?? count($byIndex));
+                $embedding = $row['embedding'] ?? [];
+                $byIndex[$index] = is_array($embedding) && $embedding !== [] ? array_values($embedding) : null;
+            }
 
-            return $embedding !== [] ? $embedding : $this->localHashEmbed($text);
+            $out = [];
+            foreach (array_keys($batch) as $i) {
+                $out[] = $byIndex[$i] ?? null;
+            }
+
+            return $out;
         } catch (\Throwable $e) {
             Log::warning('OpenAI embedding error', ['error' => $e->getMessage()]);
 
-            return $this->localHashEmbed($text);
+            return array_fill(0, count($batch), null);
         }
     }
 
@@ -135,19 +245,39 @@ class RagService
 
     /**
      * @param  Collection<int, GuidelineChunk>  $chunks
+     * @param  array<int, float>  $queryEmbedding
      */
-    private function ensureChunkEmbeddings($chunks): void
+    private function ensureChunkEmbeddings($chunks, array $queryEmbedding): void
     {
-        foreach ($chunks as $chunk) {
-            if (is_array($chunk->embedding) && $chunk->embedding !== []) {
+        $stale = $chunks->filter(
+            fn (GuidelineChunk $chunk): bool => ! $this->sameDimension($chunk->embedding, $queryEmbedding)
+        );
+        if ($stale->isEmpty()) {
+            return;
+        }
+
+        $texts = $stale
+            ->map(fn (GuidelineChunk $chunk): string => $chunk->source.' '.$chunk->section.' '.$chunk->content)
+            ->values()
+            ->all();
+        $vectors = $this->embedMany($texts);
+
+        foreach ($stale->values() as $i => $chunk) {
+            $vector = $vectors[$i] ?? null;
+            if (! is_array($vector) || $vector === []) {
                 continue;
             }
-
-            $embedding = $this->embed($chunk->source.' '.$chunk->section.' '.$chunk->content);
-            if ($embedding !== null) {
-                $chunk->update(['embedding' => $embedding]);
-            }
+            $chunk->update(['embedding' => $vector]);
+            $chunk->embedding = $vector;
         }
+    }
+
+    /**
+     * @param  array<int, float>  $queryEmbedding
+     */
+    private function sameDimension(mixed $embedding, array $queryEmbedding): bool
+    {
+        return is_array($embedding) && $embedding !== [] && count($embedding) === count($queryEmbedding);
     }
 
     /**
@@ -163,7 +293,7 @@ class RagService
 
         return $chunks->map(function (GuidelineChunk $chunk) use ($queryEmbedding, $query) {
             $embedding = $chunk->embedding;
-            $score = is_array($embedding) && $embedding !== []
+            $score = $this->sameDimension($embedding, $queryEmbedding)
                 ? $this->cosineSimilarity($queryEmbedding, $embedding)
                 : 0.0;
 
@@ -234,7 +364,7 @@ class RagService
     {
         $byKey = [];
         foreach (array_merge($dense, $bm25) as $row) {
-            $key = ($row['source'] ?? '').'|'.($row['section'] ?? '');
+            $key = (string) ($row['id'] ?? (($row['source'] ?? '').'|'.($row['section'] ?? '').'|'.($row['excerpt'] ?? '')));
             if (! isset($byKey[$key]) || ($row['relevance'] ?? 0) > ($byKey[$key]['relevance'] ?? 0)) {
                 $byKey[$key] = $row;
             } else {
@@ -298,6 +428,7 @@ class RagService
     private function citationRow(GuidelineChunk $chunk, float $score, string $query, ?array $embedding): array
     {
         return [
+            'id' => $chunk->id,
             'source' => $chunk->source,
             'section' => $chunk->section,
             'excerpt' => mb_substr($chunk->content, 0, 200).'…',
@@ -336,15 +467,14 @@ class RagService
      */
     public function cosineSimilarity(array $a, array $b): float
     {
-        $n = min(count($a), count($b));
-        if ($n === 0) {
+        if (count($a) !== count($b) || count($a) === 0) {
             return 0.0;
         }
 
         $dot = 0.0;
         $na = 0.0;
         $nb = 0.0;
-        for ($i = 0; $i < $n; $i++) {
+        for ($i = 0; $i < count($a); $i++) {
             $dot += $a[$i] * $b[$i];
             $na += $a[$i] * $a[$i];
             $nb += $b[$i] * $b[$i];

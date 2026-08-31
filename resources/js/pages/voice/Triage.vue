@@ -16,7 +16,8 @@ import {
     Volume2,
     VolumeX,
 } from '@lucide/vue';
-import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { toast } from 'vue-sonner';
 import {
     archive as archiveSessionRoute,
@@ -26,6 +27,10 @@ import {
     speak as speakMessageRoute,
     store as storeSessionRoute,
 } from '@/actions/App/Http/Controllers/VoiceTriageController';
+import ChatMarkdown from '@/components/medical/ChatMarkdown.vue';
+import FeatureIntroDialog from '@/components/medical/FeatureIntroDialog.vue';
+import TriagePromptCard from '@/components/medical/TriagePromptCard.vue';
+import type { TriagePrompt } from '@/components/medical/TriagePromptCard.vue';
 import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
@@ -58,6 +63,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
 import { beginColdStartWatch, endColdStartWatch } from '@/lib/coldStartNotice';
 import { readSse } from '@/lib/sse';
+import { typewriterAdvance } from '@/lib/typewriter';
 import { triage } from '@/routes/voice';
 
 type TriageMessage = {
@@ -66,6 +72,7 @@ type TriageMessage = {
     content: string;
     input_modality?: string;
     stt_engine?: string | null;
+    prompts?: TriagePrompt[];
     created_at?: string | null;
 };
 
@@ -121,11 +128,13 @@ const waveLevels = ref<number[]>(
     Array.from({ length: WAVE_BAR_COUNT }, () => 0.12),
 );
 const autoplay = ref(false);
+const hydrated = ref(false);
 const summaryOpen = ref(false);
 const audioByMessageId = ref<Record<number, string>>({});
 const loadingSpeechMessageId = ref<number | null>(null);
 const playingMessageId = ref<number | null>(null);
 const openMessageActionsId = ref<number | null>(null);
+const threadScroller = ref<HTMLElement | null>(null);
 const threadEnd = ref<HTMLElement | null>(null);
 
 /** null = blank new-session draft */
@@ -134,6 +143,9 @@ const sessionCache = ref<Record<number, TriageSession>>({});
 const phaseBySessionId = ref<Record<number, TurnPhase>>({});
 const turnHops = ref<TurnHop[]>([]);
 const inFlightAssistantId = ref<number | null>(null);
+const typingMessageId = ref<number | null>(null);
+const typedVisible = ref('');
+const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 const draftByKey = ref<Record<string, string>>({});
 
 let mediaRecorder: MediaRecorder | null = null;
@@ -147,12 +159,17 @@ let waveAudioContext: AudioContext | null = null;
 let waveAnalyser: AnalyserNode | null = null;
 let waveFrame = 0;
 let waveSamples: Uint8Array<ArrayBuffer> | null = null;
+let typewriterRaf = 0;
+let typewriterLastTs = 0;
+let threadPinned = true;
 let stoppingRecording = false;
 let recordingStartedAt = 0;
 /** Peak |sample-128| from the live waveform (0–128). Silence stays near 0. */
 let recordingPeak = 0;
 let micDownClientX = 0;
 const cancelArmed = ref(false);
+let streamAbort: AbortController | null = null;
+let pageUnmounted = false;
 
 /** Whisper hallucinates on near-empty / silent clips; require a real hold + energy. */
 const MIN_RECORDING_MS = 1000;
@@ -163,13 +180,144 @@ const CANCEL_SLIDE_PX = 72;
 
 const AUTOPLAY_KEY = 'sihat.triage.autoplay';
 
-if (typeof window !== 'undefined') {
-    autoplay.value = window.localStorage.getItem(AUTOPLAY_KEY) === '1';
+watch(autoplay, (value) => {
+    if (hydrated.value) {
+        window.localStorage.setItem(AUTOPLAY_KEY, value ? '1' : '0');
+    }
+});
+
+const typewriterTarget = computed(() => {
+    const id = typingMessageId.value;
+
+    if (id == null || !active.value) {
+        return '';
+    }
+
+    const content =
+        active.value.messages?.find((message) => message.id === id)?.content ??
+        '';
+
+    return content === '…' ? '' : content;
+});
+
+function stopTypewriterLoop(): void {
+    if (typewriterRaf) {
+        cancelAnimationFrame(typewriterRaf);
+        typewriterRaf = 0;
+    }
+
+    typewriterLastTs = 0;
 }
 
-watch(autoplay, (value) => {
-    if (typeof window !== 'undefined') {
-        window.localStorage.setItem(AUTOPLAY_KEY, value ? '1' : '0');
+function resetTypewriter(): void {
+    stopTypewriterLoop();
+    typingMessageId.value = null;
+    typedVisible.value = '';
+}
+
+function finishTypewriterIfIdle(): void {
+    if (
+        inFlightAssistantId.value == null &&
+        typedVisible.value === typewriterTarget.value
+    ) {
+        typingMessageId.value = null;
+    }
+}
+
+function stepTypewriter(ts: number): void {
+    const elapsed = typewriterLastTs === 0 ? 16 : ts - typewriterLastTs;
+    typewriterLastTs = ts;
+
+    const next = typewriterAdvance(
+        typedVisible.value,
+        typewriterTarget.value,
+        elapsed,
+        prefersReducedMotion.value,
+    );
+
+    if (next !== typedVisible.value) {
+        typedVisible.value = next;
+        void nextTick(pinThreadToEnd);
+    }
+
+    if (next !== typewriterTarget.value) {
+        typewriterRaf = requestAnimationFrame(stepTypewriter);
+
+        return;
+    }
+
+    typewriterRaf = 0;
+    typewriterLastTs = 0;
+    finishTypewriterIfIdle();
+}
+
+function ensureTypewriter(): void {
+    if (typewriterRaf !== 0 || typeof window === 'undefined') {
+        return;
+    }
+
+    if (typingMessageId.value == null) {
+        return;
+    }
+
+    if (typedVisible.value === typewriterTarget.value) {
+        finishTypewriterIfIdle();
+
+        return;
+    }
+
+    typewriterRaf = requestAnimationFrame(stepTypewriter);
+}
+
+function isLiveAssistant(message: TriageMessage): boolean {
+    return (
+        message.role === 'assistant' &&
+        (inFlightAssistantId.value === message.id ||
+            typingMessageId.value === message.id)
+    );
+}
+
+function visibleMessageContent(message: TriageMessage): string {
+    if (typingMessageId.value === message.id) {
+        if (typedVisible.value === '' && message.content === '') {
+            return '…';
+        }
+
+        return typedVisible.value;
+    }
+
+    if (
+        message.role === 'assistant' &&
+        inFlightAssistantId.value === message.id &&
+        message.content === ''
+    ) {
+        return '…';
+    }
+
+    return message.content;
+}
+
+watch(typewriterTarget, (target) => {
+    if (typingMessageId.value == null) {
+        return;
+    }
+
+    if (prefersReducedMotion.value) {
+        stopTypewriterLoop();
+        typedVisible.value = target;
+        finishTypewriterIfIdle();
+        void nextTick(pinThreadToEnd);
+
+        return;
+    }
+
+    ensureTypewriter();
+});
+
+watch(inFlightAssistantId, (id) => {
+    if (id == null) {
+        ensureTypewriter();
+        finishTypewriterIfIdle();
     }
 });
 
@@ -231,6 +379,7 @@ const hopLog = computed(() => [...turnHops.value].reverse());
 
 const phaseLabel = computed(() => {
     const current = hopLog.value[0]?.hop;
+
     if (current) {
         return current;
     }
@@ -263,6 +412,34 @@ const canCompose = computed(
         !isActivePending.value,
 );
 
+function isPromptCardMessage(message: TriageMessage): boolean {
+    if (
+        message.role !== 'assistant' ||
+        !canCompose.value ||
+        isLiveAssistant(message) ||
+        (message.prompts?.length ?? 0) === 0
+    ) {
+        return false;
+    }
+
+    const last = (active.value?.messages ?? []).at(-1);
+
+    return last?.id === message.id;
+}
+
+watch(
+    () => {
+        const last = (active.value?.messages ?? []).at(-1);
+
+        return last != null && isPromptCardMessage(last);
+    },
+    (show) => {
+        if (show) {
+            void nextTick(pinThreadToEnd);
+        }
+    },
+);
+
 const showUrgencyBanner = computed(() => {
     const urgency = active.value?.urgency;
 
@@ -270,7 +447,7 @@ const showUrgencyBanner = computed(() => {
 });
 
 function formatRelativeTime(iso: string | null | undefined): string {
-    if (!iso) {
+    if (!iso || !hydrated.value) {
         return '-';
     }
 
@@ -462,8 +639,29 @@ function revokeAudioMap() {
 }
 
 async function scrollThreadToEnd() {
+    threadPinned = true;
     await nextTick();
-    threadEnd.value?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    pinThreadToEnd();
+}
+
+function pinThreadToEnd(): void {
+    const el = threadScroller.value;
+
+    if (!el || !threadPinned) {
+        return;
+    }
+
+    el.scrollTop = el.scrollHeight;
+}
+
+function onThreadScroll(): void {
+    const el = threadScroller.value;
+
+    if (!el) {
+        return;
+    }
+
+    threadPinned = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
 }
 
 function stopMessageAudio() {
@@ -492,6 +690,7 @@ function attachAudioLifecycle(messageId: number) {
         if (playingMessageId.value === messageId) {
             playingMessageId.value = null;
         }
+
         toast.error('Could not play voice');
     };
 }
@@ -592,6 +791,7 @@ async function cacheSpeakAudio(
     }
 
     const type = response.headers.get('content-type') ?? '';
+
     if (!type.includes('audio')) {
         return null;
     }
@@ -668,6 +868,7 @@ function startNewTriage() {
     }
 
     stopMessageAudio();
+    resetTypewriter();
     turnHops.value = [];
     inFlightAssistantId.value = null;
     viewingSessionId.value = null;
@@ -764,6 +965,7 @@ async function openSession(id: number) {
     }
 
     stopMessageAudio();
+    resetTypewriter();
 
     viewingSessionId.value = id;
     draft.value = draftByKey.value[String(id)] ?? '';
@@ -934,7 +1136,24 @@ async function startRecording() {
     stopMessageAudio();
     loadingSpeechMessageId.value = null;
 
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    let stream: MediaStream;
+
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch {
+        toast.error(
+            'Microphone permission is required. Allow the mic, or type instead.',
+        );
+
+        return;
+    }
+
+    if (micPointerId === null || !canCompose.value || recording.value) {
+        stream.getTracks().forEach((track) => track.stop());
+
+        return;
+    }
+
     mediaStream = stream;
     chunks.length = 0;
 
@@ -1152,6 +1371,8 @@ function rollbackOptimisticMessage(
             : (sessionCache.value[sessionId] ?? null);
 
     if (!current) {
+        resetTypewriter();
+
         return;
     }
 
@@ -1169,6 +1390,8 @@ function rollbackOptimisticMessage(
             draft.value = restoreText;
         }
     }
+
+    resetTypewriter();
 }
 
 const pollingSessionIds = new Set<number>();
@@ -1181,6 +1404,9 @@ async function pollVoiceTurn(
     let nextSeed = seed ?? null;
 
     while (Date.now() < deadline) {
+        if (pageUnmounted) {
+            throw new DOMException('Aborted', 'AbortError');
+        }
         let session: TriageSession;
 
         if (nextSeed) {
@@ -1301,6 +1527,7 @@ function asTriageMessage(value: unknown): TriageMessage | null {
     }
 
     const row = value as Record<string, unknown>;
+
     if (
         typeof row.id !== 'number' ||
         typeof row.role !== 'string' ||
@@ -1314,10 +1541,65 @@ function asTriageMessage(value: unknown): TriageMessage | null {
         role: row.role,
         content: row.content,
         input_modality:
-            typeof row.input_modality === 'string' ? row.input_modality : 'text',
+            typeof row.input_modality === 'string'
+                ? row.input_modality
+                : 'text',
         stt_engine: typeof row.stt_engine === 'string' ? row.stt_engine : null,
+        prompts: asTriagePrompts(row.prompts),
         created_at: typeof row.created_at === 'string' ? row.created_at : null,
     };
+}
+
+function asTriagePrompts(value: unknown): TriagePrompt[] {
+    if (!Array.isArray(value)) {
+        return [];
+    }
+
+    return value.flatMap((row) => {
+        if (!row || typeof row !== 'object') {
+            return [];
+        }
+
+        const item = row as Record<string, unknown>;
+
+        if (typeof item.id !== 'string' || typeof item.question !== 'string') {
+            return [];
+        }
+
+        if (!Array.isArray(item.options)) {
+            return [];
+        }
+
+        const options = item.options.flatMap((option) => {
+            if (!option || typeof option !== 'object') {
+                return [];
+            }
+
+            const choice = option as Record<string, unknown>;
+
+            if (
+                typeof choice.id !== 'string' ||
+                typeof choice.label !== 'string'
+            ) {
+                return [];
+            }
+
+            return [{ id: choice.id, label: choice.label }];
+        });
+
+        if (options.length < 2) {
+            return [];
+        }
+
+        return [
+            {
+                id: item.id,
+                question: item.question,
+                allow_multiple: item.allow_multiple === true,
+                options,
+            },
+        ];
+    });
 }
 
 function patchActiveMessage(fromId: number, incoming: TriageMessage): void {
@@ -1362,6 +1644,7 @@ function appendActiveToken(messageId: number, token: string): void {
 
 function pushHop(hop: string, detail?: string): void {
     const last = turnHops.value.at(-1);
+
     if (last?.hop === hop) {
         turnHops.value = [
             ...turnHops.value.slice(0, -1),
@@ -1406,6 +1689,10 @@ async function applyCompletedTurn(
             .find((m) => m.role === 'assistant')?.id;
 
     if (viewingSessionId.value === requestSessionId) {
+        if (assistantId && typingMessageId.value != null) {
+            typingMessageId.value = assistantId;
+        }
+
         active.value = session;
         await scrollThreadToEnd();
 
@@ -1498,6 +1785,8 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
 
         optimisticAttached = true;
         inFlightAssistantId.value = pendingAssistantId;
+        resetTypewriter();
+        typingMessageId.value = pendingAssistantId;
         pushHop(
             audio ? 'Transcribing speech' : 'Reading your message',
             text || 'voice note',
@@ -1519,6 +1808,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         if (!ensured?.id) {
             setPhase(provisionalKey, 'idle');
             resetTurnUi();
+            resetTypewriter();
 
             if (optimisticAttached) {
                 if (viewingSessionId.value === null) {
@@ -1575,6 +1865,9 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
             form.append('audio', audio, 'triage.webm');
         }
 
+        streamAbort?.abort();
+        streamAbort = new AbortController();
+
         const response = await fetch(
             messageSessionRoute.url(requestSessionId),
             {
@@ -1584,6 +1877,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                     'X-CSRF-TOKEN': csrf.value,
                 },
                 body: form,
+                signal: streamAbort.signal,
             },
         );
 
@@ -1645,7 +1939,11 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                 return;
             }
 
-            if (data.event === 'hop' && typeof data.hop === 'string' && data.hop) {
+            if (
+                data.event === 'hop' &&
+                typeof data.hop === 'string' &&
+                data.hop
+            ) {
                 pushHop(
                     data.hop,
                     typeof data.detail === 'string' && data.detail
@@ -1653,13 +1951,14 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                         : undefined,
                 );
                 setPhase(requestSessionId, phaseFromHop(data.hop));
-                void scrollThreadToEnd();
+                void nextTick(pinThreadToEnd);
 
                 return;
             }
 
             if (data.event === 'user') {
                 const incoming = asTriageMessage(data.message);
+
                 if (incoming) {
                     persistedUser = true;
                     patchActiveMessage(pendingId, incoming);
@@ -1671,14 +1970,18 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
             if (data.event === 'token' && typeof data.token === 'string') {
                 setPhase(requestSessionId, 'thinking');
                 appendActiveToken(streamingId, data.token);
-                void scrollThreadToEnd();
 
                 return;
             }
 
             if (data.event === 'assistant') {
                 const incoming = asTriageMessage(data.message);
+
                 if (incoming) {
+                    if (typingMessageId.value === streamingId) {
+                        typingMessageId.value = incoming.id;
+                    }
+
                     patchActiveMessage(streamingId, incoming);
                     streamingId = incoming.id;
                     inFlightAssistantId.value = incoming.id;
@@ -1690,6 +1993,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
 
             if (data.event === 'session') {
                 const session = data.session as TriageSession | undefined;
+
                 if (session?.id) {
                     completedSession = session;
                 }
@@ -1716,13 +2020,17 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         resetTurnUi();
 
         if (completedSession) {
-            await applyCompletedTurn(
-                completedSession,
-                requestSessionId,
-                { assistantId },
-            );
+            await applyCompletedTurn(completedSession, requestSessionId, {
+                assistantId,
+            });
         }
     } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+            resetTurnUi();
+
+            return;
+        }
+
         const message =
             error instanceof Error ? error.message : 'Could not send message';
         toast.error(message);
@@ -1735,6 +2043,7 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         );
     } finally {
         resetTurnUi();
+
         if (requestSessionId > 0) {
             setPhase(requestSessionId, 'idle');
         } else {
@@ -1762,22 +2071,26 @@ async function archiveSession() {
             'X-CSRF-TOKEN': csrf.value,
         },
     });
-    const data = await response.json();
+    const data = await response.json().catch(() => ({}));
 
-    if (response.ok) {
-        const archivedId = data.session.id as number;
-        ownSessions.value = ownSessions.value.filter(
-            (s) => s.id !== archivedId,
+    if (!response.ok) {
+        toast.error(
+            (data as { message?: string }).message || 'Could not archive triage',
         );
-        sessionCache.value = Object.fromEntries(
-            Object.entries(sessionCache.value).filter(
-                ([id]) => Number(id) !== archivedId,
-            ),
-        );
-        setPhase(archivedId, 'idle');
-        startNewTriage();
-        toast.success('Triage archived');
+
+        return;
     }
+
+    const archivedId = data.session.id as number;
+    ownSessions.value = ownSessions.value.filter((s) => s.id !== archivedId);
+    sessionCache.value = Object.fromEntries(
+        Object.entries(sessionCache.value).filter(
+            ([id]) => Number(id) !== archivedId,
+        ),
+    );
+    setPhase(archivedId, 'idle');
+    startNewTriage();
+    toast.success('Triage archived');
 }
 
 async function shareSession() {
@@ -1792,28 +2105,43 @@ async function shareSession() {
             'X-CSRF-TOKEN': csrf.value,
         },
     });
-    const data = await response.json();
+    const data = await response.json().catch(() => ({}));
 
-    if (response.ok) {
-        putSessionCache(data.session);
-
-        if (viewingSessionId.value === data.session.id) {
-            active.value = data.session;
-        }
-
-        ownSessions.value = ownSessions.value.map((s) =>
-            s.id === data.session.id
-                ? { ...data.session, messages: undefined }
-                : s,
+    if (!response.ok) {
+        toast.error(
+            (data as { message?: string }).message || 'Could not share triage',
         );
-        toast.success('Shared with doctors');
+
+        return;
     }
+
+    putSessionCache(data.session);
+
+    if (viewingSessionId.value === data.session.id) {
+        active.value = data.session;
+    }
+
+    ownSessions.value = ownSessions.value.map((s) =>
+        s.id === data.session.id
+            ? { ...data.session, messages: undefined }
+            : s,
+    );
+    toast.success('Shared with doctors');
 }
 
+onMounted(() => {
+    hydrated.value = true;
+    autoplay.value = window.localStorage.getItem(AUTOPLAY_KEY) === '1';
+});
+
 onUnmounted(() => {
+    pageUnmounted = true;
+    streamAbort?.abort();
+    streamAbort = null;
     endColdStartWatch();
     window.removeEventListener('keydown', onRecordingKeydown);
     micPointerId = null;
+    stopTypewriterLoop();
 
     if (recording.value) {
         mediaRecorder?.stop();
@@ -1837,6 +2165,7 @@ if (props.activeSessionId) {
 }
 
 defineOptions({
+    inheritAttrs: false,
     layout: {
         breadcrumbs: [{ title: 'Voice Triage', href: triage() }],
     },
@@ -1844,9 +2173,11 @@ defineOptions({
 </script>
 
 <template>
-    <Head title="Voice Triage" />
-
     <div class="space-y-6">
+        <Head title="Voice Triage" />
+
+        <FeatureIntroDialog feature="triage" />
+
         <PageHeader
             tag="Voice triage"
             title="Voice Triage"
@@ -2062,7 +2393,10 @@ defineOptions({
                                 "
                                 @click="toggleAutoplay"
                             >
-                                <Volume2 v-if="autoplay" class="size-4" />
+                                <Volume2
+                                    v-if="hydrated && autoplay"
+                                    class="size-4"
+                                />
                                 <VolumeX v-else class="size-4" />
                             </Button>
 
@@ -2148,7 +2482,9 @@ defineOptions({
                         class="flex min-h-0 flex-1 flex-col gap-0 overflow-hidden p-0"
                     >
                         <div
+                            ref="threadScroller"
                             class="min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-4 md:px-6"
+                            @scroll.passive="onThreadScroll"
                         >
                             <p
                                 v-if="
@@ -2213,8 +2549,7 @@ defineOptions({
                                     </p>
                                     <ol
                                         v-if="
-                                            item.message.role ===
-                                                'assistant' &&
+                                            item.message.role === 'assistant' &&
                                             inFlightAssistantId ===
                                                 item.message.id &&
                                             hopLog.length
@@ -2269,37 +2604,51 @@ defineOptions({
                                     <div
                                         v-if="
                                             item.message.role === 'user' ||
-                                            item.message.content ||
+                                            (typingMessageId === item.message.id
+                                                ? typedVisible.length > 0
+                                                : item.message.content) ||
                                             !(
-                                                inFlightAssistantId ===
-                                                    item.message.id &&
+                                                isLiveAssistant(item.message) &&
                                                 hopLog.length
                                             )
                                         "
-                                        class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap"
+                                        class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed"
                                         :class="
                                             item.message.role === 'user'
-                                                ? 'ml-auto bg-primary text-primary-foreground'
+                                                ? 'ml-auto whitespace-pre-wrap bg-primary text-primary-foreground'
                                                 : 'border border-border bg-card text-card-foreground'
                                         "
                                     >
-                                        {{
-                                            item.message.role ===
-                                                'assistant' &&
-                                            inFlightAssistantId ===
-                                                item.message.id &&
-                                            item.message.content === ''
-                                                ? '…'
-                                                : item.message.content
-                                        }}
+                                        <ChatMarkdown
+                                            v-if="
+                                                item.message.role ===
+                                                'assistant'
+                                            "
+                                            :source="
+                                                visibleMessageContent(
+                                                    item.message,
+                                                )
+                                            "
+                                        />
+                                        <template v-else>{{
+                                            visibleMessageContent(item.message)
+                                        }}</template
+                                        ><span
+                                            v-if="
+                                                !prefersReducedMotion &&
+                                                typingMessageId ===
+                                                    item.message.id &&
+                                                typedVisible.length > 0
+                                            "
+                                            class="triage-teletype-caret"
+                                            aria-hidden="true"
+                                        />
                                     </div>
                                     <div
                                         v-if="
-                                            item.message.role ===
-                                                'assistant' &&
+                                            item.message.role === 'assistant' &&
                                             item.message.content &&
-                                            inFlightAssistantId !==
-                                                item.message.id
+                                            !isLiveAssistant(item.message)
                                         "
                                         class="flex items-center gap-0.5 pt-0.5"
                                     >
@@ -2397,6 +2746,13 @@ defineOptions({
                                             </DropdownMenuContent>
                                         </DropdownMenu>
                                     </div>
+                                    <TriagePromptCard
+                                        v-if="isPromptCardMessage(item.message)"
+                                        class="mt-2"
+                                        :prompts="item.message.prompts ?? []"
+                                        :disabled="!canCompose"
+                                        @submit="sendMessage({ text: $event })"
+                                    />
                                 </div>
                             </template>
 

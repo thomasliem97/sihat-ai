@@ -9,6 +9,7 @@ Keep in sync with medgemma_box_2d_to_xywh / parse_medgemma_localization in modal
 from __future__ import annotations
 
 import json
+import re
 from typing import Any
 
 
@@ -31,30 +32,51 @@ def medgemma_box_2d_to_xywh(box_2d: Any) -> tuple[float, float, float, float] | 
     return (x, y, width, height)
 
 
-def parse_medgemma_localization(text: str) -> list[dict[str, Any]]:
+def _localization_json_blob(text: str) -> str:
     blob = text or ""
     start = blob.find("```json")
     if start != -1:
         start += len("```json")
         end = blob.find("```", start)
-        blob = blob[start:end] if end != -1 else blob[start:]
-    else:
-        start = blob.find("[")
-        end = blob.rfind("]")
-        if start == -1 or end == -1 or end <= start:
-            return []
-        blob = blob[start : end + 1]
+        return (blob[start:end] if end != -1 else blob[start:]).strip()
+    matches = list(re.finditer(r"\[\s*\{.*\}\s*\]", blob, flags=re.S))
+    if matches:
+        return matches[-1].group(0)
+    return ""
+
+
+def _xywh_from_item(item: dict[str, Any]) -> tuple[float, float, float, float] | None:
+    xywh = medgemma_box_2d_to_xywh(item.get("box_2d") or item.get("bbox"))
+    if xywh is not None:
+        return xywh
     try:
-        parsed = json.loads(blob.strip())
+        x = float(item["x"])
+        y = float(item["y"])
+        w = float(item["width"])
+        h = float(item["height"])
+    except (KeyError, TypeError, ValueError):
+        return None
+    scale = 1000.0 if max(abs(x), abs(y), abs(w), abs(h)) > 1.5 else 1.0
+    return (x / scale, y / scale, w / scale, h / scale)
+
+
+def parse_medgemma_localization(text: str) -> list[dict[str, Any]]:
+    blob = _localization_json_blob(text)
+    if not blob:
+        return []
+    try:
+        parsed = json.loads(blob)
     except json.JSONDecodeError:
         return []
+    if isinstance(parsed, dict):
+        parsed = parsed.get("boxes") or parsed.get("bounding_boxes") or []
     if not isinstance(parsed, list):
         return []
     out: list[dict[str, Any]] = []
     for item in parsed:
         if not isinstance(item, dict):
             continue
-        xywh = medgemma_box_2d_to_xywh(item.get("box_2d") or item.get("bbox"))
+        xywh = _xywh_from_item(item)
         if xywh is None:
             continue
         x, y, w, h = xywh
@@ -74,6 +96,30 @@ def parse_medgemma_localization(text: str) -> list[dict[str, Any]]:
         if item.get("image_index") is not None:
             box["image_index"] = int(item["image_index"])
         out.append(box)
+    return out
+
+
+def unmap_boxes_from_square(boxes: list[dict[str, Any]], pils: list[Any]) -> list[dict[str, Any]]:
+    if not boxes or not pils:
+        return boxes
+    out: list[dict[str, Any]] = []
+    for box in boxes:
+        idx = int(box.get("image_index") or 0)
+        if idx < 0 or idx >= len(pils):
+            idx = 0
+        orig_w, orig_h = pils[idx].size
+        side = max(orig_w, orig_h)
+        if orig_w <= 0 or orig_h <= 0 or orig_w == orig_h:
+            out.append(box)
+            continue
+        pad_x = (side - orig_w) / 2.0
+        pad_y = (side - orig_h) / 2.0
+        mapped = dict(box)
+        mapped["x"] = (float(box["x"]) * side - pad_x) / orig_w
+        mapped["y"] = (float(box["y"]) * side - pad_y) / orig_h
+        mapped["width"] = float(box["width"]) * side / orig_w
+        mapped["height"] = float(box["height"]) * side / orig_h
+        out.append(mapped)
     return out
 
 
@@ -142,6 +188,29 @@ def main() -> None:
     assert boxes[0]["kind"] == "finding" and boxes[0]["finding_index"] == 0
     assert boxes[0]["image_index"] == 0
     assert boxes[1]["kind"] == "anatomy"
+
+    after_brackets = parse_medgemma_localization(
+        'Finding [0] is likely infection.\nFinal Answer: ```json[{"box_2d": [140, 110, 340, 470], "label": "right clavicle"}]```'
+    )
+    assert len(after_brackets) == 1, after_brackets
+    assert after_brackets[0]["label"] == "right clavicle"
+
+    xywh_item = parse_medgemma_localization(
+        '[{"label": "Opacity", "x": 0.1, "y": 0.2, "width": 0.3, "height": 0.4}]'
+    )
+    assert len(xywh_item) == 1
+    assert abs(xywh_item[0]["x"] - 0.1) < 1e-6
+    assert abs(xywh_item[0]["width"] - 0.3) < 1e-6
+
+    portrait = [_FakePil("cxr", (100, 200))]
+    unmapped = unmap_boxes_from_square(
+        [{"x": 0.25, "y": 0.1, "width": 0.5, "height": 0.4, "image_index": 0}],
+        portrait,
+    )
+    assert abs(unmapped[0]["x"] - 0.0) < 1e-6, unmapped
+    assert abs(unmapped[0]["y"] - 0.1) < 1e-6, unmapped
+    assert abs(unmapped[0]["width"] - 1.0) < 1e-6, unmapped
+    assert abs(unmapped[0]["height"] - 0.4) < 1e-6, unmapped
 
     slices = [_FakePil(str(i)) for i in range(8)]
     focused, cropped = focus_explain_pils(

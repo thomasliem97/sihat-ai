@@ -19,6 +19,7 @@ use Illuminate\Support\Carbon;
  * @property int|null $uploaded_by_user_id
  * @property int|null $subject_user_id
  * @property string $title
+ * @property bool $title_generated
  * @property Modality $modality
  * @property Modality|null $detected_modality
  * @property float|null $route_confidence
@@ -29,7 +30,7 @@ use Illuminate\Support\Carbon;
  * @property string $mime_type
  * @property ReportLanguage $language
  * @property float|null $overall_confidence
- * @property array<string, mixed>|null $findings
+ * @property list<array<string, mixed>>|null $findings
  * @property array<string, mixed>|null $partial_findings
  * @property array<string, mixed>|null $physician_report
  * @property array<string, mixed>|null $patient_report
@@ -61,6 +62,7 @@ class MedicalRecord extends Model
         'uploaded_by_user_id',
         'subject_user_id',
         'title',
+        'title_generated',
         'modality',
         'detected_modality',
         'route_confidence',
@@ -99,6 +101,7 @@ class MedicalRecord extends Model
             'detected_modality' => Modality::class,
             'status' => RecordStatus::class,
             'language' => ReportLanguage::class,
+            'title_generated' => 'boolean',
             'overall_confidence' => 'float',
             'route_confidence' => 'float',
             'findings' => 'array',
@@ -163,8 +166,7 @@ class MedicalRecord extends Model
     {
         $flags = $this->guardrailFlagList();
 
-        return $this->guardrailCode() === 'WARN'
-            || in_array('critical_value_escalation', $flags, true)
+        return in_array('critical_value_escalation', $flags, true)
             || in_array('low_confidence_abstention', $flags, true);
     }
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3';
-import { LayoutDashboard, Mic, ScanLine } from '@lucide/vue';
+import { House, LayoutDashboard, LifeBuoy, Mic, ScanLine } from '@lucide/vue';
 import { computed } from 'vue';
 import AppLogo from '@/components/AppLogo.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -13,8 +13,10 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { useCurrentUrl } from '@/composables/useCurrentUrl';
+import { home } from '@/routes';
 import { dashboard as patientDashboard } from '@/routes/patient';
 import { dashboard as physicianDashboard } from '@/routes/physician';
 import { index as recordsIndex } from '@/routes/records';
@@ -83,6 +85,33 @@ const mainNavItems = computed<NavItem[]>(() => {
         </SidebarContent>
 
         <SidebarFooter>
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <SidebarMenuButton
+                        as-child
+                        tooltip="Contact support"
+                        class="text-muted-foreground hover:text-foreground"
+                    >
+                        <a href="mailto:thomasliem@veximus.com.my">
+                            <LifeBuoy />
+                            <span>Contact support</span>
+                        </a>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                    <SidebarMenuButton
+                        as-child
+                        tooltip="Back to home"
+                        class="text-muted-foreground hover:text-foreground"
+                    >
+                        <Link :href="home()">
+                            <House />
+                            <span>Back to home</span>
+                        </Link>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </SidebarMenu>
+            <SidebarSeparator class="mx-0" />
             <NavUser />
         </SidebarFooter>
     </Sidebar>

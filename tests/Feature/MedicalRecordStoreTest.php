@@ -125,3 +125,42 @@ test('patient must choose subject self or other', function () {
 
     expect(MedicalRecord::query()->count())->toBe(0);
 });
+
+test('upload without a title stores a filename fallback and marks it generated', function () {
+    Storage::fake('local');
+    Queue::fake();
+
+    $physician = User::factory()->physician()->create();
+
+    $this->actingAs($physician)
+        ->post(route('records.store'), [
+            'file' => UploadedFile::fake()->image('cbc_panel.jpg'),
+        ])
+        ->assertRedirect();
+
+    $record = MedicalRecord::query()->first();
+
+    expect($record)->not->toBeNull()
+        ->and($record->title)->toBe('cbc panel')
+        ->and($record->title_generated)->toBeTrue();
+});
+
+test('upload with a title keeps the physician wording', function () {
+    Storage::fake('local');
+    Queue::fake();
+
+    $physician = User::factory()->physician()->create();
+
+    $this->actingAs($physician)
+        ->post(route('records.store'), [
+            'title' => 'Chest X-ray, cough 2 weeks',
+            'file' => UploadedFile::fake()->image('scan.jpg'),
+        ])
+        ->assertRedirect();
+
+    $record = MedicalRecord::query()->first();
+
+    expect($record)->not->toBeNull()
+        ->and($record->title)->toBe('Chest X-ray, cough 2 weeks')
+        ->and($record->title_generated)->toBeFalse();
+});

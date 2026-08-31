@@ -171,11 +171,14 @@ test('partial findings include imaging specialist for xray', function () {
     Notification::fake();
     config(['services.modal.webhook_secret' => 'test-secret']);
 
+    $vector = app(RagService::class)->localHashEmbed('pneumonia consolidation chest');
+    fakeOpenAiEmbedding($vector);
+
     GuidelineChunk::create([
-        'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
-        'section' => '4.2 Diagnosis',
-        'content' => 'Chest radiograph may show lobar or patchy consolidation.',
-        'embedding' => app(RagService::class)->localHashEmbed('pneumonia consolidation chest'),
+        'source' => 'MOH QR - Management of Tuberculosis 4th Edition',
+        'section' => 'Key messages',
+        'content' => 'Chest radiograph should be done in people with suspected pulmonary TB.',
+        'embedding' => $vector,
     ]);
 
     $user = User::factory()->physician()->create();

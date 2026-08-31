@@ -259,6 +259,7 @@ class VoiceTriageController extends Controller
                 'content' => $m->content,
                 'input_modality' => $m->input_modality->value,
                 'stt_engine' => $m->stt_engine,
+                'prompts' => is_array($m->prompts) ? $m->prompts : [],
                 'created_at' => $m->created_at?->toIso8601String(),
             ])->values();
         }

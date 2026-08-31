@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Database\Seeders\MedicalDemoSeeder;
 use Illuminate\Support\Facades\RateLimiter;
 use Laravel\Fortify\Features;
 
@@ -13,7 +14,23 @@ test('login screen can be rendered', function () {
 test('login screen offers seeded demo accounts', function () {
     $this->get(route('login'))
         ->assertOk()
-        ->assertInertia(fn ($page) => $page->component('auth/Login'));
+        ->assertInertia(fn ($page) => $page
+            ->component('auth/Login')
+            ->where('demoPassword', MedicalDemoSeeder::DEMO_PASSWORD));
+});
+
+test('seeded demo physician can authenticate with the presentation password', function () {
+    $user = User::factory()->physician()->create([
+        'email' => 'physician@sihat-ai.vxms.dev',
+        'password' => MedicalDemoSeeder::DEMO_PASSWORD,
+    ]);
+
+    $this->post(route('login.store'), [
+        'email' => $user->email,
+        'password' => MedicalDemoSeeder::DEMO_PASSWORD,
+    ])->assertRedirect(route('dashboard', absolute: false));
+
+    $this->assertAuthenticated();
 });
 
 test('users can authenticate using the login screen', function () {

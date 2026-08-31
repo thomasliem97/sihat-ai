@@ -43,7 +43,8 @@ const visibleBoxes = computed(() => {
 
     return props.boxes.filter(
         (box) =>
-            boxKind(box) === (layer.value === 'findings' ? 'finding' : 'anatomy'),
+            boxKind(box) ===
+            (layer.value === 'findings' ? 'finding' : 'anatomy'),
     );
 });
 
@@ -59,28 +60,52 @@ function boxKind(box: OverlayBox): 'finding' | 'anatomy' {
 }
 
 function isSelected(box: OverlayBox): boolean {
+    const index = findingIndexOf(box);
     return (
         boxKind(box) === 'finding' &&
-        box.finding_index != null &&
-        props.selectedFindingIndex === box.finding_index
+        index != null &&
+        props.selectedFindingIndex === index
     );
 }
 
 function onFindingClick(box: OverlayBox): void {
-    if (boxKind(box) !== 'finding' || box.finding_index == null) {
+    const index = findingIndexOf(box);
+    if (boxKind(box) !== 'finding' || index == null) {
         return;
     }
 
     emit(
         'select',
-        props.selectedFindingIndex === box.finding_index
-            ? null
-            : box.finding_index,
+        props.selectedFindingIndex === index ? null : index,
     );
+}
+
+function findingIndexOf(box: OverlayBox): number | null {
+    if (boxKind(box) !== 'finding') {
+        return null;
+    }
+    if (box.finding_index != null) {
+        return box.finding_index;
+    }
+    const findings = props.boxes.filter((item) => boxKind(item) === 'finding');
+    const index = findings.indexOf(box);
+    return index >= 0 ? index : null;
 }
 
 function setLayer(next: OverlayLayer): void {
     layer.value = next;
+}
+
+const layerOptions: { id: OverlayLayer; label: string }[] = [
+    { id: 'findings', label: 'Findings' },
+    { id: 'anatomy', label: 'Anatomy' },
+    { id: 'both', label: 'Both' },
+];
+
+function layerButtonClass(id: OverlayLayer): string {
+    return layer.value === id
+        ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground'
+        : 'text-white/70 hover:bg-white/10 hover:text-white';
 }
 </script>
 
@@ -95,37 +120,22 @@ function setLayer(next: OverlayLayer): void {
             <div class="flex flex-wrap items-center gap-2">
                 <div
                     v-if="anatomyToggle"
-                    class="flex items-center gap-1 normal-case"
+                    class="flex items-center gap-1"
+                    role="group"
+                    aria-label="Overlay layers"
                 >
                     <Button
+                        v-for="option in layerOptions"
+                        :key="option.id"
                         type="button"
                         size="sm"
-                        :variant="layer === 'findings' ? 'default' : 'outline'"
-                        class="h-7 px-2 font-mono text-[0.65rem] tracking-wide uppercase"
-                        :aria-pressed="layer === 'findings'"
-                        @click="setLayer('findings')"
+                        variant="ghost"
+                        class="h-7 px-2 font-mono text-xs tracking-wide uppercase"
+                        :class="layerButtonClass(option.id)"
+                        :aria-pressed="layer === option.id"
+                        @click="setLayer(option.id)"
                     >
-                        Findings
-                    </Button>
-                    <Button
-                        type="button"
-                        size="sm"
-                        :variant="layer === 'anatomy' ? 'default' : 'outline'"
-                        class="h-7 px-2 font-mono text-[0.65rem] tracking-wide uppercase"
-                        :aria-pressed="layer === 'anatomy'"
-                        @click="setLayer('anatomy')"
-                    >
-                        Anatomy
-                    </Button>
-                    <Button
-                        type="button"
-                        size="sm"
-                        :variant="layer === 'both' ? 'default' : 'outline'"
-                        class="h-7 px-2 font-mono text-[0.65rem] tracking-wide uppercase"
-                        :aria-pressed="layer === 'both'"
-                        @click="setLayer('both')"
-                    >
-                        Both
+                        {{ option.label }}
                     </Button>
                 </div>
                 <span class="text-ink-faint">
@@ -151,9 +161,7 @@ function setLayer(next: OverlayLayer): void {
                         type="button"
                         class="absolute border-2 border-coral"
                         :class="
-                            isSelected(box)
-                                ? 'z-10 ring-2 ring-coral/80'
-                                : ''
+                            isSelected(box) ? 'z-10 ring-2 ring-coral/80' : ''
                         "
                         :style="{
                             left: `${box.x * 100}%`,
@@ -166,7 +174,7 @@ function setLayer(next: OverlayLayer): void {
                         @click="onFindingClick(box)"
                     >
                         <span
-                            class="absolute -top-7 left-0 rounded bg-coral px-2 py-1 font-mono text-[0.65rem] font-bold tracking-wide whitespace-nowrap text-white uppercase"
+                            class="absolute top-0 left-0 max-w-full truncate rounded-br bg-coral px-2 py-1 font-mono text-[0.65rem] font-bold tracking-wide text-white uppercase"
                         >
                             {{ box.label }}
                         </span>
@@ -182,7 +190,7 @@ function setLayer(next: OverlayLayer): void {
                         }"
                     >
                         <span
-                            class="absolute -top-7 left-0 rounded border border-line-strong bg-paper px-2 py-1 font-mono text-[0.65rem] font-bold tracking-wide whitespace-nowrap text-ink-soft uppercase"
+                            class="absolute top-0 left-0 max-w-full truncate rounded-br border border-line-strong bg-paper px-2 py-1 font-mono text-[0.65rem] font-bold tracking-wide text-ink-soft uppercase"
                         >
                             {{ box.label }}
                         </span>

@@ -73,14 +73,16 @@ defineOptions({
             />
 
             <div class="space-y-2">
-                <FieldLabel html-for="title" required>Record title</FieldLabel>
+                <FieldLabel html-for="title">Record title</FieldLabel>
                 <Input
                     id="title"
                     name="title"
-                    required
                     placeholder="e.g. Chest X-ray, cough 2 weeks"
                 />
                 <InputError :message="errors.title" />
+                <p class="text-sm text-muted-foreground">
+                    Leave blank to name it from the report after analysis.
+                </p>
             </div>
 
             <div v-if="isPhysician" class="space-y-2">

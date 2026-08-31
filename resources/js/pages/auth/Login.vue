@@ -39,6 +39,7 @@ defineOptions({
 defineProps<{
     status?: string;
     canResetPassword: boolean;
+    demoPassword: string;
 }>();
 </script>
 
@@ -55,6 +56,7 @@ defineProps<{
     <Form
         v-bind="store.form()"
         :reset-on-success="['password']"
+        autocomplete="off"
         v-slot="{ errors, processing }"
         class="flex flex-col gap-6"
     >
@@ -81,7 +83,12 @@ defineProps<{
                         </SelectItem>
                     </SelectContent>
                 </Select>
-                <input type="hidden" name="email" :value="selectedEmail" />
+                <input
+                    type="hidden"
+                    name="email"
+                    :value="selectedEmail"
+                    autocomplete="username"
+                />
                 <InputError :message="errors.email" />
             </div>
 
@@ -92,9 +99,9 @@ defineProps<{
                     name="password"
                     required
                     :tabindex="2"
-                    autocomplete="current-password"
-                    placeholder="Enter your password"
-                    default-value="password"
+                    autocomplete="new-password"
+                    :placeholder="demoPassword"
+                    :default-value="demoPassword"
                 />
                 <InputError :message="errors.password" />
             </div>

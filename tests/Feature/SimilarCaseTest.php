@@ -81,6 +81,26 @@ test('similar case retrieval drops neighbors below the score threshold', functio
         ->and(collect($results)->pluck('id'))->not->toContain($distant->id);
 });
 
+test('similar case retrieval is empty without stored embeddings', function () {
+    $anchor = MedicalRecord::factory()->completed()->create([
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'findings' => [['label' => 'Opacity']],
+        'findings_embedding' => null,
+    ]);
+
+    MedicalRecord::factory()->completed()->create([
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'findings' => [['label' => 'Opacity']],
+        'findings_embedding' => null,
+    ]);
+
+    config(['services.openai.api_key' => '']);
+
+    expect(app(SimilarCaseService::class)->retrieve($anchor, 5))->toBeEmpty();
+});
+
 test('physician show includes similar cases for completed records', function () {
     $physician = User::factory()->physician()->create();
     $rag = app(RagService::class);

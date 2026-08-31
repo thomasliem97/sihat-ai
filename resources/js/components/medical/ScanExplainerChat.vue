@@ -3,6 +3,7 @@ import { usePage } from '@inertiajs/vue3';
 import { Check, LoaderCircle, Send } from '@lucide/vue';
 import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
 import { toast } from 'vue-sonner';
+import ChatMarkdown from '@/components/medical/ChatMarkdown.vue';
 import type { OverlayBox } from '@/components/medical/ImageOverlay.vue';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
@@ -47,6 +48,7 @@ const inFlightAssistantId = ref<number | null>(null);
 const threadEl = ref<HTMLElement | null>(null);
 const busy = computed(() => sending.value);
 const hopLog = computed(() => [...hops.value].reverse());
+let inflightAbort: AbortController | null = null;
 
 watch(
     () => props.messages,
@@ -91,7 +93,11 @@ function asMessage(value: unknown): ExplainerMessage | null {
     }
 
     const row = value as Record<string, unknown>;
-    if (typeof row.id !== 'number' || (row.role !== 'user' && row.role !== 'assistant')) {
+
+    if (
+        typeof row.id !== 'number' ||
+        (row.role !== 'user' && row.role !== 'assistant')
+    ) {
         return null;
     }
 
@@ -114,6 +120,7 @@ async function ask(
     },
 ): Promise<void> {
     const trimmed = question.trim();
+
     if (!trimmed || sending.value) {
         return;
     }
@@ -131,6 +138,7 @@ async function ask(
     sending.value = true;
     hops.value = [];
     beginColdStartWatch();
+
     if (restoreDraft) {
         draft.value = '';
     }
@@ -172,11 +180,15 @@ async function ask(
     };
 
     let gotAssistant = false;
+    const abort = new AbortController();
+    inflightAbort?.abort();
+    inflightAbort = abort;
 
     try {
         const response = await fetch(explainRecord.url(props.recordId), {
             method: 'POST',
             headers: jsonHeaders('text/event-stream'),
+            signal: abort.signal,
             body: JSON.stringify({
                 question: trimmed,
                 finding_index: findingIndex,
@@ -189,9 +201,11 @@ async function ask(
                 (message) =>
                     message.id !== tempUserId && message.id !== tempAssistantId,
             );
+
             if (restoreDraft) {
                 draft.value = trimmed;
             }
+
             toast.error('Could not ask the scan');
 
             return;
@@ -206,6 +220,7 @@ async function ask(
 
             if (data.event === 'user') {
                 const incoming = asMessage(data.message);
+
                 if (incoming) {
                     replaceTemp(tempUserId, incoming);
                 }
@@ -213,7 +228,11 @@ async function ask(
                 return;
             }
 
-            if (data.event === 'hop' && typeof data.hop === 'string' && data.hop) {
+            if (
+                data.event === 'hop' &&
+                typeof data.hop === 'string' &&
+                data.hop
+            ) {
                 hops.value = [
                     ...hops.value,
                     {
@@ -236,11 +255,15 @@ async function ask(
                 return;
             }
 
-            if (data.event === 'suggestions' && Array.isArray(data.suggestions)) {
+            if (
+                data.event === 'suggestions' &&
+                Array.isArray(data.suggestions)
+            ) {
                 const next = data.suggestions.filter(
                     (item): item is string =>
                         typeof item === 'string' && item.trim() !== '',
                 );
+
                 if (next.length) {
                     chips.value = next;
                 }
@@ -250,20 +273,25 @@ async function ask(
 
             if (data.event === 'assistant') {
                 gotAssistant = true;
+
                 if (Array.isArray(data.suggestions)) {
                     const next = data.suggestions.filter(
                         (item): item is string =>
                             typeof item === 'string' && item.trim() !== '',
                     );
+
                     if (next.length) {
                         chips.value = next;
                     }
                 }
+
                 const incoming = asMessage(data.message);
+
                 if (incoming) {
                     replaceTemp(tempAssistantId, incoming);
                     inFlightAssistantId.value = incoming.id;
                 }
+
                 void scrollThreadToEnd();
             }
         });
@@ -273,21 +301,32 @@ async function ask(
                 (message) =>
                     message.id !== tempUserId && message.id !== tempAssistantId,
             );
+
             if (restoreDraft) {
                 draft.value = trimmed;
             }
+
             toast.error('Could not ask the scan');
         }
-    } catch {
+    } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+            return;
+        }
+
         thread.value = thread.value.filter(
             (message) =>
                 message.id !== tempUserId && message.id !== tempAssistantId,
         );
+
         if (restoreDraft) {
             draft.value = trimmed;
         }
+
         toast.error('Could not ask the scan');
     } finally {
+        if (inflightAbort === abort) {
+            inflightAbort = null;
+        }
         endColdStartWatch();
         hops.value = [];
         inFlightAssistantId.value = null;
@@ -311,6 +350,8 @@ function onComposerKeydown(event: KeyboardEvent) {
 }
 
 onUnmounted(() => {
+    inflightAbort?.abort();
+    inflightAbort = null;
     endColdStartWatch();
 });
 
@@ -336,9 +377,7 @@ defineExpose({ ask, busy });
             <div v-for="message in thread" :key="message.id">
                 <div
                     class="w-fit max-w-[min(100%,36rem)] space-y-2"
-                    :class="
-                        message.role === 'user' ? 'ml-auto' : 'max-w-prose'
-                    "
+                    :class="message.role === 'user' ? 'ml-auto' : 'max-w-prose'"
                 >
                     <p
                         class="font-mono text-xs tracking-wide text-muted-foreground uppercase"
@@ -384,9 +423,7 @@ defineExpose({ ask, busy });
                                 <span
                                     class="block text-sm font-semibold"
                                     :class="
-                                        i === 0
-                                            ? 'text-primary'
-                                            : 'text-ink'
+                                        i === 0 ? 'text-primary' : 'text-ink'
                                     "
                                 >
                                     {{ step.hop }}
@@ -410,35 +447,41 @@ defineExpose({ ask, busy });
                                 hopLog.length
                             )
                         "
-                        class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap"
+                        class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed"
                         :class="
                             message.role === 'user'
-                                ? 'ml-auto bg-primary text-primary-foreground'
+                                ? 'ml-auto bg-primary text-primary-foreground whitespace-pre-wrap'
                                 : 'border border-border bg-card text-card-foreground'
                         "
                     >
-                        {{
-                            message.role === 'assistant' &&
-                            sending &&
-                            message.content === ''
-                                ? '…'
-                                : message.content
-                        }}
+                        <template
+                            v-if="
+                                message.role === 'assistant' &&
+                                sending &&
+                                message.content === ''
+                            "
+                        >
+                            …
+                        </template>
+                        <ChatMarkdown
+                            v-else-if="
+                                message.role === 'assistant' && message.content
+                            "
+                            :source="message.content"
+                        />
+                        <template v-else>{{ message.content }}</template>
                     </div>
                 </div>
             </div>
         </div>
-        <div
-            v-if="chips.length"
-            class="mt-4 flex flex-wrap gap-2"
-        >
+        <div v-if="chips.length" class="mt-4 flex flex-wrap gap-2">
             <Button
                 v-for="(suggestion, i) in chips"
                 :key="`${i}-${suggestion}`"
                 type="button"
                 variant="outline"
                 size="sm"
-                class="h-auto max-w-full whitespace-normal px-3 py-1.5 text-left text-xs"
+                class="h-auto max-w-full px-3 py-1.5 text-left text-xs whitespace-normal"
                 :disabled="sending"
                 @click="sendSuggestion(suggestion)"
             >

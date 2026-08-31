@@ -42,6 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('{record}', [MedicalRecordController::class, 'show'])->name('show');
         Route::patch('{record}/report', [MedicalRecordController::class, 'updateReport'])->name('report.update');
         Route::post('{record}/sign', [MedicalRecordController::class, 'sign'])->name('sign');
+        Route::post('{record}/retry', [MedicalRecordController::class, 'retry'])->name('retry');
         Route::post('{record}/explain', [MedicalRecordController::class, 'explain'])->name('explain');
         Route::get('{record}/file', [MedicalRecordController::class, 'file'])->name('file');
     });

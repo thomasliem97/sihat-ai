@@ -13,7 +13,9 @@ use App\Models\RecordExplainerMessage;
 use App\Models\User;
 use App\Services\AiPipelineService;
 use App\Services\RecordExplainerService;
+use App\Services\RecordTitleGenerator;
 use App\Services\SimilarCaseService;
+use App\Support\MedgemmaDraft;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -101,11 +103,17 @@ class MedicalRecordController extends Controller
                 : null;
         }
 
+        $title = trim($request->string('title')->toString());
+        $titleGenerated = $title === '';
+
         $record = MedicalRecord::create([
             'user_id' => $chartOwnerId,
             'uploaded_by_user_id' => $uploader->id,
             'subject_user_id' => $subjectUserId,
-            'title' => $request->string('title')->toString(),
+            'title' => $titleGenerated
+                ? RecordTitleGenerator::fromFilename($file->getClientOriginalName())
+                : $title,
+            'title_generated' => $titleGenerated,
             'modality' => $request->enum('modality', Modality::class) ?? Modality::Unknown,
             'status' => RecordStatus::Pending,
             'file_path' => $path,
@@ -165,7 +173,7 @@ class MedicalRecordController extends Controller
                 'overall_confidence' => $record->overall_confidence,
                 'findings' => $viewMode === 'patient' && ($withholdPatient || $awaitingSign) ? null : $record->findings,
                 'partial_findings' => $viewMode === 'physician' ? $record->partial_findings : null,
-                'physician_report' => $physicianReport,
+                'physician_report' => MedgemmaDraft::scrubReport($physicianReport),
                 'patient_report' => $patientReport,
                 'patient_report_withheld' => $viewMode === 'patient' && $withholdPatient,
                 'patient_awaiting_sign' => $awaitingSign,
@@ -183,6 +191,7 @@ class MedicalRecordController extends Controller
                 'signed_at' => $record->signed_at?->toIso8601String(),
                 'signed_by_name' => $record->signedByUser?->name,
                 'can_edit_report' => $viewMode === 'physician' && $record->status === RecordStatus::Completed && ! $record->isSigned(),
+                'can_retry' => $record->status === RecordStatus::Failed,
                 'error_message' => $record->error_message,
                 'patient_name' => $record->patientDisplayName(),
                 'file_url' => $record->status === RecordStatus::Completed
@@ -232,6 +241,12 @@ class MedicalRecordController extends Controller
 
         $report = $record->physician_report ?? [];
         $report['summary'] = $validated['summary'];
+        if (array_key_exists('findings_narrative', $validated)) {
+            $report['findings_narrative'] = $validated['findings_narrative'];
+        }
+        if (array_key_exists('impression', $validated)) {
+            $report['impression'] = $validated['impression'];
+        }
         if (array_key_exists('recommendations', $validated)) {
             $report['recommendations'] = $validated['recommendations'] ?? [];
         }
@@ -259,6 +274,16 @@ class MedicalRecordController extends Controller
         ]);
 
         return back()->with('success', 'Physician report signed.');
+    }
+
+    public function retry(MedicalRecord $record, AiPipelineService $pipeline): RedirectResponse
+    {
+        $this->authorize('retry', $record);
+
+        $pipeline->retry($record);
+
+        return redirect()->route('records.show', $record)
+            ->with('success', 'Analysis restarted.');
     }
 
     public function file(Request $request, MedicalRecord $record): mixed
@@ -320,7 +345,7 @@ class MedicalRecordController extends Controller
                 $request->user()->isPhysician(),
                 $validated['question'],
                 $pair['assistant']->content,
-                is_array($record->findings) ? $record->findings : [],
+                $record->findings ?? [],
                 $record,
             ),
         ]);

@@ -4,6 +4,34 @@ use App\Enums\RecordStatus;
 use App\Models\MedicalRecord;
 use App\Models\User;
 
+test('physician can update findings and impression on an unsigned draft', function () {
+    $physician = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->completed()->create([
+        'status' => RecordStatus::Completed,
+        'physician_report' => [
+            'summary' => 'Old impression',
+            'findings_narrative' => 'Old findings',
+            'impression' => 'Old impression',
+            'recommendations' => ['Correlate clinically'],
+        ],
+    ]);
+
+    $this->actingAs($physician)
+        ->patch(route('records.report.update', $record), [
+            'summary' => 'No acute process',
+            'findings_narrative' => 'Lungs clear. No pneumothorax.',
+            'impression' => 'No acute process',
+            'recommendations' => ['Follow up clinically'],
+        ])
+        ->assertRedirect();
+
+    $record->refresh();
+
+    expect($record->physician_report['findings_narrative'])->toBe('Lungs clear. No pneumothorax.')
+        ->and($record->physician_report['impression'])->toBe('No acute process')
+        ->and($record->physician_report['summary'])->toBe('No acute process');
+});
+
 test('physician can update unsigned draft report', function () {
     $physician = User::factory()->physician()->create();
     $record = MedicalRecord::factory()->completed()->create([

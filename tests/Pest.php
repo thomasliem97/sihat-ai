@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 /*
@@ -17,6 +18,9 @@ use Tests\TestCase;
 pest()->extend(TestCase::class)
     ->use(RefreshDatabase::class)
     ->in('Feature');
+
+pest()->extend(TestCase::class)
+    ->in('Unit');
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +48,15 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+/**
+ * @param  array<int, float>  $vector
+ */
+function fakeOpenAiEmbedding(array $vector): void
 {
-    // ..
+    config(['services.openai.api_key' => 'test-key']);
+    Http::fake([
+        'https://api.openai.com/v1/embeddings' => Http::response([
+            'data' => [['embedding' => array_values($vector)]],
+        ], 200),
+    ]);
 }

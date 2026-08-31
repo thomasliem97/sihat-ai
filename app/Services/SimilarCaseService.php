@@ -26,6 +26,10 @@ class SimilarCaseService
             $queryEmbedding = $this->rag->embed($queryText) ?? [];
         }
 
+        if ($queryEmbedding === []) {
+            return [];
+        }
+
         $candidates = MedicalRecord::query()
             ->where('status', RecordStatus::Completed)
             ->where('id', '!=', $record->id)
@@ -40,14 +44,14 @@ class SimilarCaseService
 
         $modality = ($record->detected_modality ?? $record->modality)->value;
 
-        $scored = $candidates->map(function (MedicalRecord $candidate) use ($queryEmbedding, $queryText, $modality) {
-            $score = $this->score($queryEmbedding, $queryText, $candidate);
+        $scored = $candidates->map(function (MedicalRecord $candidate) use ($queryEmbedding, $modality) {
+            $score = $this->score($queryEmbedding, $candidate);
             $candModality = ($candidate->detected_modality ?? $candidate->modality)->value;
             if ($candModality === $modality) {
                 $score = min(1.0, $score + 0.05);
             }
 
-            $candidateFindings = is_array($candidate->findings) ? array_values($candidate->findings) : [];
+            $candidateFindings = $candidate->findings ?? [];
             $preview = collect($candidateFindings)
                 ->pluck('label')
                 ->filter()
@@ -90,7 +94,7 @@ class SimilarCaseService
 
     public function embeddingText(MedicalRecord $record): string
     {
-        $findings = is_array($record->findings) ? array_values($record->findings) : [];
+        $findings = $record->findings ?? [];
         $labels = collect($findings)->pluck('label')->filter()->all();
         $modality = ($record->detected_modality ?? $record->modality)->value;
 
@@ -100,25 +104,13 @@ class SimilarCaseService
     /**
      * @param  array<int, float>  $queryEmbedding
      */
-    private function score(array $queryEmbedding, string $queryText, MedicalRecord $candidate): float
+    private function score(array $queryEmbedding, MedicalRecord $candidate): float
     {
         $candidateEmbedding = $candidate->findings_embedding;
-        if (is_array($candidateEmbedding) && $candidateEmbedding !== [] && $queryEmbedding !== []) {
-            return $this->rag->cosineSimilarity($queryEmbedding, $candidateEmbedding);
-        }
-
-        $hay = mb_strtolower($this->embeddingText($candidate));
-        $terms = preg_split('/\W+/u', mb_strtolower($queryText), -1, PREG_SPLIT_NO_EMPTY) ?: [];
-        if ($terms === []) {
+        if (! is_array($candidateEmbedding) || $candidateEmbedding === [] || $queryEmbedding === []) {
             return 0.0;
         }
-        $hits = 0;
-        foreach ($terms as $term) {
-            if (str_contains($hay, $term)) {
-                $hits++;
-            }
-        }
 
-        return min(1.0, $hits / count($terms));
+        return $this->rag->cosineSimilarity($queryEmbedding, $candidateEmbedding);
     }
 }

@@ -42,6 +42,12 @@ class MedicalRecordPolicy
         return $user->isPhysician();
     }
 
+    public function retry(User $user, MedicalRecord $medicalRecord): bool
+    {
+        return $this->view($user, $medicalRecord)
+            && $medicalRecord->status === RecordStatus::Failed;
+    }
+
     public function explain(User $user, MedicalRecord $medicalRecord): bool
     {
         if (! $this->view($user, $medicalRecord)) {

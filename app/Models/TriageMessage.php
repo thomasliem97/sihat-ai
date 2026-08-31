@@ -17,6 +17,7 @@ use Illuminate\Support\Carbon;
  * @property string $content
  * @property TriageInputModality $input_modality
  * @property string|null $stt_engine
+ * @property array<int, array{id: string, question: string, allow_multiple: bool, options: list<array{id: string, label: string}>}>|null $prompts
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
@@ -31,6 +32,7 @@ class TriageMessage extends Model
         'content',
         'input_modality',
         'stt_engine',
+        'prompts',
     ];
 
     protected function casts(): array
@@ -38,6 +40,7 @@ class TriageMessage extends Model
         return [
             'role' => TriageMessageRole::class,
             'input_modality' => TriageInputModality::class,
+            'prompts' => 'array',
         ];
     }
 

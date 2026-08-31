@@ -57,6 +57,7 @@ class AnalyzeRequest(BaseModel):
     file_path: str = ""
     file_url: str | None = None
     file_b64: str | None = None
+    lab_text: str | None = None
     language: str = "en"
     webhook_url: str | None = None
     mime_type: str = "application/octet-stream"
@@ -80,7 +81,7 @@ def health() -> dict[str, str]:
         "status": "ok",
         "service": "sihat-ai",
         "inference": "modal",
-        "build": _env("SIHAT_AI_BUILD") or "imaging-v1-20260831",
+        "build": _env("SIHAT_AI_BUILD") or "imaging-v6-20260831",
         "webhook_secret": "set" if secret else "missing",
         "adapter": f"configured:{lora}" if lora else "gpu-volume",
         "structurer": _env("OPENAI_STRUCTURE_MODEL") or "gpt-5.6-terra",
@@ -197,23 +198,29 @@ def explain_scan_stream(payload: dict[str, Any]) -> StreamingResponse:
         import modal
 
         parts: list[str] = []
+        final: dict[str, Any] | None = None
         try:
             model = modal.Cls.from_name("sihat-medgemma", "MedGemmaModel")()
             for chunk in model.explain_image_stream.remote_gen(prepared):
                 kind = _modal_stream_event(chunk)
                 if not kind:
                     continue
-                event, payload = kind
+                event, data = kind
                 if event == "hop":
-                    yield f"data: {json.dumps(payload)}\n\n"
+                    yield f"data: {json.dumps(data)}\n\n"
                     continue
-                if event == "token":
-                    text = str(payload or "")
-                    if not text:
-                        continue
-                    parts.append(text)
-                    yield f"data: {json.dumps({'token': text})}\n\n"
-            yield f"data: {json.dumps({'done': True, 'answer': ''.join(parts).strip()})}\n\n"
+                if event == "done" and isinstance(data, dict):
+                    final = data
+                    continue
+                text = str(data or "")
+                if not text:
+                    continue
+                parts.append(text)
+                yield f"data: {json.dumps({'token': text})}\n\n"
+            done = final or {}
+            done.setdefault("done", True)
+            done.setdefault("answer", "".join(parts).strip())
+            yield f"data: {json.dumps(done)}\n\n"
         except Exception as exc:  # noqa: BLE001
             logger.warning("Explain stream failed: %s", exc)
             yield f"data: {json.dumps({'error': str(exc)})}\n\n"
@@ -302,20 +309,26 @@ _CLASSIFY_MODALITIES = {
 }
 
 
+def _filename_tokens(name: str) -> set[str]:
+    stem = name.rsplit(".", 1)[0].lower() if "." in name else name.lower()
+    return {part for part in re.split(r"[^a-z0-9]+", stem) if part}
+
+
 def _filename_modality_hints(name: str) -> dict[str, Any] | None:
     """Specific-first keyword routing; kept in sync with Laravel detectModality."""
     name = name.lower()
-    if any(k in name for k in ("fundus", "retina", "ophthal", "cataract", "glaucoma", "eyepacs", "oct")):
+    tokens = _filename_tokens(name)
+    if any(k in name for k in ("fundus", "retina", "ophthal", "cataract", "glaucoma", "eyepacs")) or "oct" in tokens:
         return {"modality": "ophthalmology", "confidence": 0.85}
     if any(k in name for k in ("derm", "skin", "lesion", "melanoma", "nevus", "isic", "dermos")):
         return {"modality": "dermatology", "confidence": 0.85}
     if any(k in name for k in ("histo", "pathology", "pathmnist", "wsi", "slide", "biopsy", "seminoma", "pcam")):
         return {"modality": "histopath", "confidence": 0.85}
-    if any(k in name for k in ("hrct", "computed tomography", "computed_tomography")) or "ct" in name:
+    if any(k in name for k in ("hrct", "computed tomography", "computed_tomography")) or "ct" in tokens:
         return {"modality": "ct", "confidence": 0.85}
     if "mri" in name or "mr_" in name:
         return {"modality": "mri", "confidence": 0.85}
-    if name.endswith(".zip") and ("ct" in name or "mri" in name):
+    if name.endswith(".zip") and ("ct" in tokens or "mri" in name):
         return {"modality": "mri" if "mri" in name else "ct", "confidence": 0.8}
     if any(k in name for k in ("xray", "x-ray", "cxr", "chest", "radiograph")):
         return {"modality": "xray", "confidence": 0.85}
@@ -665,20 +678,25 @@ def _analyze_vision(request: AnalyzeRequest, kind: str) -> dict[str, Any]:
 
 
 def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
-    data = _download_bytes(request)
-    text, ocr_meta = ("", {})
-    if data:
-        try:
-            from app.lab_ocr import extract_lab_text
-
-            text, ocr_meta = extract_lab_text(data)
-        except Exception as exc:  # noqa: BLE001
-            logger.warning("Lab text/OCR extract failed: %s", exc)
-            text = _extract_pdf_text(request)
+    text = (request.lab_text or "").strip()
+    ocr_meta: dict[str, Any] = {}
+    data = b""
+    if text:
+        ocr_meta = {"source": "laravel"}
+        text = _scrub_phi(text)
     else:
-        text = _extract_pdf_text(request)
+        data = _download_bytes(request)
+        if data:
+            try:
+                from app.lab_ocr import extract_lab_text
 
-    text = _scrub_phi(text)
+                text, ocr_meta = extract_lab_text(data)
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("Lab text/OCR extract failed: %s", exc)
+                text = _extract_pdf_text(request)
+        else:
+            text = _extract_pdf_text(request)
+        text = _scrub_phi(text)
 
     # Scanned PDF / photo with no OCR engines (or empty OCR): MedGemma vision.
     if not text.strip() and data:
@@ -699,7 +717,7 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
         result = _invoke(
             "/analyze_lab",
             {
-                "text": text[:12000],
+                "text": _compact_lab_for_draft(text)[:12000],
                 "language": request.language,
                 "job_id": request.job_id,
                 "record_id": request.record_id,
@@ -707,6 +725,7 @@ def _analyze_lab(request: AnalyzeRequest) -> dict[str, Any]:
         )
         if ocr_meta:
             result["lab_text_meta"] = ocr_meta
+        result["biomarkers"] = _coerce_biomarkers(result.get("biomarkers"))
         return result
     except Exception as exc:  # noqa: BLE001
         modal_err = str(exc)
@@ -755,7 +774,8 @@ def _analyze_lab_vision(
             meta["source"] = "vision"
             meta["vision_page"] = i
             result["lab_text_meta"] = meta
-            if result.get("biomarkers") or result.get("findings"):
+            result["biomarkers"] = _coerce_biomarkers(result.get("biomarkers"))
+            if result.get("biomarkers") or result.get("findings") or result.get("medgemma_draft"):
                 return result
         except Exception as exc:  # noqa: BLE001
             last_err = exc
@@ -892,37 +912,171 @@ def _scrub_phi(text: str) -> str:
     return scrubbed
 
 
+def _coerce_lab_decimal(value: Any) -> float | None:
+    """Turn lab strings like '>60' or '<0.1' into a number the DB can store."""
+    if value is None or isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        number = float(value)
+        return number if number == number and abs(number) != float("inf") else None
+    text = str(value).replace(",", "").replace(" ", "").strip()
+    if not text:
+        return None
+    match = re.match(r"[<>]=?(-?\d+(?:\.\d+)?)", text)
+    if match:
+        return float(match.group(1))
+    match = re.search(r"-?\d+(?:\.\d+)?", text)
+    if match:
+        return float(match.group(0))
+    return None
+
+
+def _coerce_biomarkers(rows: Any) -> list[dict[str, Any]]:
+    if not isinstance(rows, list):
+        return []
+    out: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict) or not row.get("name"):
+            continue
+        value = _coerce_lab_decimal(row.get("value"))
+        if value is None:
+            continue
+        item = dict(row)
+        item["value"] = value
+        item["reference_low"] = _coerce_lab_decimal(row.get("reference_low"))
+        item["reference_high"] = _coerce_lab_decimal(row.get("reference_high"))
+        out.append(item)
+    return out
+
+
+_LAB_SCI = re.compile(r"(?i)(?:[x×]\s*)?10\s*(?:\^|\*\*)\s*-?\d+")
+_LAB_RANGE = re.compile(r"(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)")
+_LAB_FLAG = re.compile(r"(?i)(?:^|[\s(])(?:H|L|HI|LO|HIGH|LOW|ABN|\*)\)?\s*$")
+_LAB_OUTSIDE = re.compile(
+    r"(?i)\b(outside|above|below)\s+(?:the\s+)?(?:reference\s+)?(?:range|interval)\b"
+)
+_LAB_WITHIN = re.compile(
+    r"(?i)\b(within|inside|in)\s+(?:the\s+)?(?:reference\s+)?(?:range|interval)\b"
+)
+
+
+def _compact_lab_for_draft(text: str) -> str:
+    """Keep flagged / out-of-interval rows so MedGemma interprets instead of copying the table."""
+    sections: list[str] = []
+    flagged: list[str] = []
+    for raw in (text or "").splitlines():
+        line = " ".join(raw.split())
+        if not line:
+            continue
+        stripped = _LAB_SCI.sub(" ", line)
+        if _lab_section_header(line, stripped):
+            if line not in sections and len(sections) < 24:
+                sections.append(line)
+            continue
+        if _lab_line_flagged(stripped, line):
+            flagged.append(line)
+
+    parts: list[str] = []
+    if sections:
+        parts.append("Panels/sections on the printout:\n- " + "\n- ".join(sections))
+    if flagged:
+        parts.append(
+            "Printed flags or out-of-interval results (quote only these numbers):\n- "
+            + "\n- ".join(flagged[:40])
+        )
+    else:
+        parts.append("No printed flags or out-of-interval rows were detected in the extract.")
+    parts.append(
+        "All other printed rows are in interval. Do not list them. "
+        "Do not invent analytes, units, or numbers. Never write 'assume within normal limits'."
+    )
+    return "\n\n".join(parts)
+
+
+def _lab_section_header(line: str, stripped: str) -> bool:
+    if _LAB_FLAG.search(line) or _LAB_RANGE.search(stripped):
+        return False
+    letters = sum(ch.isalpha() for ch in line)
+    digits = sum(ch.isdigit() for ch in stripped)
+    return 4 <= letters and len(line) <= 52 and digits <= 1
+
+
+def _lab_line_flagged(stripped: str, original: str) -> bool:
+    if _LAB_FLAG.search(original):
+        return True
+    if _LAB_OUTSIDE.search(original) and not _LAB_WITHIN.search(original):
+        return True
+    if _LAB_WITHIN.search(original):
+        return False
+    return _value_outside_printed_range(stripped)
+
+
+def _value_outside_printed_range(stripped: str) -> bool:
+    ranges = list(_LAB_RANGE.finditer(stripped))
+    if len(ranges) != 1:
+        return False
+    match = ranges[0]
+    low, high = float(match.group(1)), float(match.group(2))
+    if low > high:
+        return False
+    rest = f"{stripped[: match.start()]} {stripped[match.end() :]}"
+    nums = [float(token) for token in re.findall(r"\d+(?:\.\d+)?", rest)]
+    if len(nums) != 1:
+        return False
+    value = nums[0]
+    return value < low or value > high
+
+
+def _lab_numeric_result(after: str) -> float | None:
+    """Take the result, not the first number in a trailing/leading reference range."""
+    window = after[:160]
+    censored = re.search(r"(?is)^\s*[<>]=?\s*(\d+(?:\.\d+)?)", window)
+    if censored:
+        return float(censored.group(1))
+    ranged = re.search(
+        r"(?is)^\s*(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)\s*(?:[^\d]{0,24})(\d+(?:\.\d+)?)",
+        window,
+    )
+    if ranged:
+        return float(ranged.group(3))
+    first = re.search(r"(?is)^\D{0,80}(\d+(?:\.\d+)?)", window)
+    if first:
+        return float(first.group(1))
+    return None
+
+
 def _regex_parse_lab(text: str) -> dict[str, Any]:
     """Extract biomarkers with regex; allow label/value on nearby lines."""
     biomarkers: list[dict[str, Any]] = []
     findings: list[dict[str, Any]] = []
+    recs: list[str] = []
 
     patterns = [
         (r"Haemoglobin|Hemoglobin|Hb\b|Hgb\b", "Hemoglobin", "g/dL", 12.0, 16.0),
         (r"Platelets?|PLT", "Platelet count", "×10³/µL", 150.0, 400.0),
-        (r"WBC|White\s*blood", "WBC", "×10³/µL", 4.0, 11.0),
+        (r"WBC|White\s*blood|Leuco(?:cyte|cytes)\s+count", "WBC", "×10³/µL", 4.0, 11.0),
         (r"RBC|Red\s*blood", "RBC", "×10¹²/L", 4.0, 5.2),
         (r"Creatinine", "Creatinine", "µmol/L", 44.0, 90.0),
         (r"Glucose|FBS|RBS", "Glucose", "mmol/L", 3.9, 5.6),
         (r"HbA1c|A1c", "HbA1c", "%", 0.0, 5.7),
-        (r"\bALT\b|Alanine", "ALT", "U/L", 0.0, 41.0),
-        (r"\bAST\b|Aspartate", "AST", "U/L", 0.0, 40.0),
-        (r"\bALP\b|Alkaline", "ALP", "U/L", 40.0, 129.0),
+        (r"\bALT\b|SGPT|Alanine", "ALT", "U/L", 0.0, 41.0),
+        (r"\bAST\b|SGOT|Aspartate", "AST", "U/L", 0.0, 40.0),
+        (r"\bALP\b|Alkaline\s+phos", "ALP", "U/L", 40.0, 129.0),
         (r"\bGGT\b", "GGT", "U/L", 0.0, 60.0),
-        (r"Sodium|\bNa\b", "Sodium", "mmol/L", 135.0, 145.0),
-        (r"Potassium|\bK\b", "Potassium", "mmol/L", 3.5, 5.1),
+        (r"Sodium|Na\+", "Sodium", "mmol/L", 135.0, 145.0),
+        (r"Potassium|K\+", "Potassium", "mmol/L", 3.5, 5.1),
+        (r"eGFR|EGFR|estimated\s+GFR", "eGFR", "mL/min", 60.0, 200.0),
     ]
 
     seen: set[str] = set()
     for pattern, name, unit, low, high in patterns:
-        match = re.search(
-            rf"(?is)({pattern})[^\d]{{0,80}}(\d+(?:\.\d+)?)",
-            text,
-        )
+        match = re.search(rf"(?is)({pattern})", text)
         if not match or name in seen:
             continue
+        value = _lab_numeric_result(text[match.end() :])
+        if value is None:
+            continue
         seen.add(name)
-        value = float(match.group(2))
         status = "normal"
         if value < low or value > high:
             status = "critical" if (value < low * 0.7 or value > high * 1.4) else "abnormal"
@@ -936,19 +1090,35 @@ def _regex_parse_lab(text: str) -> dict[str, Any]:
                 "status": status,
             }
         )
+        if status == "normal":
+            continue
+        side = "below" if value < low else "above"
+        caution = (
+            f"{name} {value} {unit} is {side} the reference interval {low}-{high}."
+            + (
+                " Flag for same-day clinical review."
+                if status == "critical"
+                else " Correlate with symptoms and consider repeat or further workup."
+            )
+        )
         findings.append(
             {
                 "label": name,
-                "description": f"{name} {value} {unit} (ref {low}-{high})",
+                "description": caution,
                 "confidence": 0.75,
-                "severity": status if status != "normal" else "normal",
+                "severity": status,
             }
         )
+        recs.append(caution)
+
+    if biomarkers and not findings:
+        recs.append("Panel is within the printed reference intervals; no lab-based caution is indicated.")
 
     return {
         "modality": Modality.lab_pdf.value,
         "findings": findings,
         "biomarkers": biomarkers,
+        "recommendations": recs,
         "differential_diagnosis": [],
         "overall_confidence": 0.72 if biomarkers else 0.4,
         "abstain": len(biomarkers) == 0,
@@ -1128,7 +1298,7 @@ def _post_webhook(
         ).hexdigest()
 
     last_error: str | None = None
-    with httpx.Client(timeout=60.0) as client:
+    with httpx.Client(timeout=180.0) as client:
         for attempt in range(3):
             try:
                 resp = client.post(request.webhook_url, content=raw, headers=headers)

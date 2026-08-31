@@ -12,6 +12,8 @@ use App\Models\MedicalRecord;
 use App\Models\TriageMessage;
 use App\Models\TriageSession;
 use App\Models\User;
+use App\Support\TriageDraft;
+use App\Support\TriagePrompts;
 use Illuminate\Http\Client\Response as HttpResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
@@ -139,7 +141,7 @@ class VoiceTriageService
 
             $onHop = function (string $hop, ?string $detail = null): void {
                 $payload = ['event' => 'hop', 'hop' => $hop];
-                if (is_string($detail) && $detail !== '') {
+                if (is_string($detail) && $detail !== '' && ! TriageDraft::isPromptEcho($detail)) {
                     $payload['detail'] = $detail;
                 }
                 $this->emitSse($payload);
@@ -224,6 +226,7 @@ class VoiceTriageService
                 }
 
                 $onHop('Asking MedGemma');
+                $streamed = '';
                 $triage = $this->streamTriageTurn(
                     $session,
                     $actor,
@@ -232,7 +235,11 @@ class VoiceTriageService
                     $detected['code'],
                     $detected['name'],
                     $onHop,
-                    function (string $token): void {
+                    function (string $token) use (&$streamed): void {
+                        $streamed .= $token;
+                        if (TriageDraft::isPromptEcho($streamed) || TriageDraft::isPromptEcho($token)) {
+                            return;
+                        }
                         $this->emitSse([
                             'event' => 'token',
                             'token' => $token,
@@ -571,15 +578,8 @@ class VoiceTriageService
             ? (bool) $structured['in_scope']
             : true;
 
-        $draft = trim((string) ($triage['draft'] ?? ''));
-        $assistantMessageText = trim((string) ($structured['assistant_message'] ?? ''));
-        if ($inScope && $draft !== '') {
-            $assistantMessageText = $draft;
-        } elseif ($assistantMessageText === '') {
-            $assistantMessageText = $draft;
-        }
-
         if (! $inScope) {
+            $assistantMessageText = trim((string) ($structured['assistant_message'] ?? ''));
             if ($assistantMessageText === '') {
                 $assistantMessageText = $this->scopeRedirectMessage(
                     self::INTENT_OFF_TOPIC,
@@ -605,6 +605,12 @@ class VoiceTriageService
             ];
         }
 
+        $assistantMessageText = TriageDraft::pickReply(
+            (string) ($triage['draft'] ?? ''),
+            (string) ($structured['assistant_message'] ?? ''),
+            $userMessage->content,
+        );
+
         if ($assistantMessageText === '') {
             $assistantMessageText = 'I heard you. Can you tell me a bit more about your main symptom?';
         }
@@ -619,11 +625,16 @@ class VoiceTriageService
         ]);
         $session->save();
 
+        $prompts = TriagePrompts::looksLikeAnswers($userMessage->content)
+            ? []
+            : TriagePrompts::normalize($structured['prompts'] ?? null);
+
         $assistantMessage = $session->messages()->create([
             'role' => TriageMessageRole::Assistant,
             'content' => $assistantMessageText,
             'input_modality' => TriageInputModality::Text,
             'stt_engine' => null,
+            'prompts' => $prompts === [] ? null : $prompts,
         ]);
         $phases['speaking'] = true;
 
@@ -788,6 +799,7 @@ class VoiceTriageService
             'content' => $message->content,
             'input_modality' => $message->input_modality->value,
             'stt_engine' => $message->stt_engine,
+            'prompts' => is_array($message->prompts) ? $message->prompts : [],
             'created_at' => $message->created_at?->toIso8601String(),
         ];
     }
@@ -849,6 +861,11 @@ class VoiceTriageService
             ->reverse()
             ->values();
 
+        $prior = $prior->reject(function (TriageMessage $message): bool {
+            return $message->role === TriageMessageRole::Assistant
+                && TriageDraft::isPromptEcho($message->content);
+        })->values();
+
         if ($prior->isEmpty()) {
             return '';
         }
@@ -874,7 +891,10 @@ class VoiceTriageService
         ];
 
         try {
-            $response = Http::timeout(120)->post("{$baseUrl}/api/v1/transcribe", $payload);
+            $response = Http::connectTimeout(15)
+                ->timeout(120)
+                ->retry(2, 100)
+                ->post("{$baseUrl}/api/v1/transcribe", $payload);
 
             if ($response->successful()) {
                 return [
@@ -886,7 +906,9 @@ class VoiceTriageService
             Log::warning('Triage STT failed', ['error' => $e->getMessage()]);
         }
 
-        return ['transcript' => '', 'engine' => 'unavailable'];
+        throw new \InvalidArgumentException(
+            'Speech service is warming up. Type your message or try again in a moment.',
+        );
     }
 
     /**

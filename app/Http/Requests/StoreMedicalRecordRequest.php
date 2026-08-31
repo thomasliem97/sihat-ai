@@ -21,7 +21,7 @@ class StoreMedicalRecordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['nullable', 'string', 'max:255'],
             'modality' => ['nullable', Rule::enum(Modality::class)],
             'language' => ['nullable', Rule::enum(ReportLanguage::class)],
             'patient_id' => [
