@@ -127,13 +127,59 @@ hr.rule { border: 0; border-top: 2px solid var(--coral); width: 48px; margin: 0 
 <body>
 <div class="wrap">
   <header class="masthead">
-    <p class="kicker">Clinical decision-support · Product brief</p>
+    <p class="kicker">Clinical decision support · Product brief</p>
     <h1>SihatAI Project Summary</h1>
-    <p class="lede">A concise overview of SihatAI as a production multimodal clinical workflow for Malaysia: live MedGemma with MY-LoRA, hybrid grounding, dual-audience reporting, and clinician oversight.</p>
-    <div class="meta"><span class="pill">14 July 2026</span></div>
+    <p class="lede">An end-to-end multimodal clinical intelligence platform for Malaysia: one findings object, two reports, physician sign-off, Ask the scan, and voice triage.</p>
+    <div class="meta"><span class="pill">31 August 2026</span><span class="pill">MAIC Nexus Challenge T2</span></div>
   </header>
-  <nav class="toc" aria-label="Contents"><h2>Contents</h2><ol><li><a href="#overview">Platform overview</a></li><li><a href="#pipeline">Pipeline and grounding</a></li><li><a href="#audiences">Dual audiences and voice</a></li><li><a href="#stack">Architecture and quality</a></li></ol></nav>
-  <section class="paper" id="overview"><div class="section-tag">01</div><h2>Platform overview</h2><hr class="rule"><p>SihatAI is an end-to-end multimodal clinical intelligence platform built for Malaysia&#x27;s healthcare ecosystem. It addresses rising diagnostic demand, specialist shortages, fragmented records, delayed interpretation, language barriers, and patients&#x27; difficulty understanding complex medical information. The platform transforms medical images, laboratory and clinical documents, historical records, and spoken symptoms into structured, evidence-grounded insights for physicians and patients in English, Bahasa Melayu, Mandarin, and Tamil.</p><p>Its AI engine is powered by MedGemma 1.5 with MY-LoRA, a shipped Malaysia-focused QLoRA adapter loaded at serve time through PEFT. The adapter incorporates Malaysian clinical terminology, reporting conventions, and dual-audience communication style without retraining the complete foundation model. Production inference runs live by default through FastAPI and Modal. The multimodal architecture supports X-rays, CT and MRI montages, dermatology and ophthalmology images, histopathology patch montages, laboratory PDFs, and clinical documents through one unified interface.</p></section><section class="paper" id="pipeline"><div class="section-tag">02</div><h2>Pipeline and grounding</h2><hr class="rule"><p>Every submission enters a seven-stage agentic pipeline: upload, sibling PII de-identification (safe file path), modality detection and routing, MedGemma with MY-LoRA analysis including imaging and document specialist hops, hybrid evidence retrieval, ALLOW/WARN clinical guardrails, and report composition. The orchestrator extracts structured findings and biomarkers, identifies abnormal or critical values, localizes visual findings with prompted bounding boxes, applies heuristic confidence gating, analyses biomarker trends, and compares current results with previous studies. Critical cases write durable audit events and notify the clinician. Machine-readable outputs support dashboards, trend visualization, reproducible evaluation, and future hospital-system interoperability.</p><p>To reduce hallucination, SihatAI uses hybrid Retrieval-Augmented Generation over Malaysian Ministry of Health Clinical Practice Guidelines: dense retrieval fused with BM25, then maximal marginal relevance. Findings and recommendations include traceable sources, guideline sections, excerpts, and relevance scores. Weak retrieval returns empty citations rather than static stubs. The safety layer applies low-confidence abstention, WARN veto of patient prose, critical-value escalation, medical disclaimers, physician sign-gated patient release, and human-review routing. Role-based authorization, policies, HMAC-signed webhooks, and controlled record access protect sensitive health data.</p></section><section class="paper" id="audiences"><div class="section-tag">03</div><h2>Dual audiences and voice</h2><hr class="rule"><p>One findings object generates two audience-specific reports. Physicians receive technical summaries, confidence-scored differential diagnoses, visual annotations, longitudinal comparisons, recommendations, and supporting citations, then edit and sign the draft. Patients receive plain-language explanations, warning signs, practical action plans, and questions for their doctor in their preferred language, only when policy allows and the physician has signed. Voice triage uses MedASR with Whisper fallback, plus minimal browser text-to-speech interview prompts, to convert spoken symptoms into structured complaints, follow-up questions, and routine, urgent, or emergency classifications.</p></section><section class="paper" id="stack"><div class="section-tag">04</div><h2>Architecture and quality</h2><hr class="rule"><p>SihatAI uses a decoupled, scalable architecture. Python, FastAPI, Pydantic, Uvicorn, and HTTPX power the AI inference microservice. PHP 8.4 and Laravel 13 manage medical records, relational data, database queues, background jobs, webhook callbacks, authorization policies, and Fortify authentication. Vue 3, TypeScript, Inertia.js 3, Laravel Wayfinder, Tailwind CSS 4, shadcn-vue, Reka UI, and Vite deliver responsive physician and patient applications with typed navigation and reusable clinical components.</p><p>Engineering quality is supported by Pest 4 automated tests, Larastan static analysis, TypeScript validation, ESLint, Prettier, database factories, reproducible seed data, and an eval regression gate. A dedicated evaluation dashboard tracks medical reasoning, report accuracy, citation grounding, confidence presentation, report quality, and safety compliance, with demo_seed runs clearly watermarked apart from live suites.</p><div class="callout">SihatAI is a complete, localized, explainable, and safety-engineered clinical workflow. It helps clinicians review information faster, makes AI outputs auditable, and gives Malaysians clearer access to their health information without attempting to replace professional medical judgment.</div></section>
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#purpose">Purpose and setting</a></li>
+      <li><a href="#intelligence">Intelligence layer</a></li>
+      <li><a href="#pipeline">Pipeline, grounding, and safety</a></li>
+      <li><a href="#audiences">Dual audiences, Ask the scan, and voice</a></li>
+      <li><a href="#stack">Architecture and quality</a></li>
+    </ol>
+  </nav>
+  <section class="paper" id="purpose">
+    <div class="section-tag">01</div>
+    <h2>Purpose and setting</h2>
+    <hr class="rule">
+    <p>SihatAI is an end-to-end multimodal clinical intelligence platform for Malaysia’s healthcare ecosystem. It addresses rising diagnostic demand, specialist shortages, fragmented records, delayed interpretation, language barriers, and patients’ difficulty understanding complex medical information. Two roles, physician and patient, share three product pillars: multimodal record analysis, Ask the scan, and voice triage.</p>
+    <p>The platform turns medical images, laboratory and clinical documents, historical records, and spoken symptoms into structured, evidence-grounded insights in English, Bahasa Melayu, Mandarin, and Tamil. One findings object drives two reports: a technical draft the physician edits and signs, and a plain-language explanation released only after that sign-off.</p>
+  </section>
+  <section class="paper" id="intelligence">
+    <div class="section-tag">02</div>
+    <h2>Intelligence layer</h2>
+    <hr class="rule">
+    <p>Live inference uses MedGemma 1.5 4B-IT on Modal through FastAPI. A Malaysia-focused MY-LoRA adapter, trained with QLoRA and loaded at serve time through PEFT, captures Malaysian clinical terminology, reporting conventions, and dual-audience phrasing without retraining the foundation model. Analysis runs with the adapter off. Patient Ask the scan may load it for CPG and Bahasa phrasing.</p>
+    <p>Laravel writes a de-identified sibling file, then routes by filename, MIME, and DICOM tags. MedGemma reads X-rays, dermatology, ophthalmology, and clinical documents; CT and MRI as up to eight separate mid-volume slices, with the overlay showing slice 0; and histopathology as 3×3 center patches presented as separate images. Digital laboratory PDFs are read with pdftotext; scanned pages use RapidOCR.</p>
+  </section>
+  <section class="paper" id="pipeline">
+    <div class="section-tag">03</div>
+    <h2>Pipeline, grounding, and safety</h2>
+    <hr class="rule">
+    <p>Every submission follows a seven-stage pipeline: upload, sibling PII de-identification, modality routing, MedGemma analysis with imaging and document specialist hops, guideline retrieval, ALLOW/WARN clinical guardrails, and report composition. The orchestrator extracts structured findings and biomarkers, flags abnormal or critical values, localizes visual findings with prompted bounding boxes, applies heuristic confidence gating, analyses biomarker trends, and compares the current study with prior records. Critical cases write durable audit events and notify the clinician.</p>
+    <p>To reduce unsupported claims, SihatAI retrieves over Malaysian Ministry of Health Quick Reference chunks. Lexical BM25 always runs. Dense ranking is added only when query and chunk embeddings share the same OpenAI model. Results may be reranked with maximal marginal relevance. Findings and recommendations carry source, section, excerpt, and relevance when retrieval is strong. Weak retrieval returns empty citations rather than static stubs.</p>
+    <p>The safety layer applies low-confidence abstention, WARN veto of patient prose, critical-value escalation, medical disclaimers, physician sign-gated patient release, and human-review routing. Role-based authorization, policies, HMAC-signed webhooks, and controlled record access protect sensitive health data.</p>
+  </section>
+  <section class="paper" id="audiences">
+    <div class="section-tag">04</div>
+    <h2>Dual audiences, Ask the scan, and voice</h2>
+    <hr class="rule">
+    <p>Physicians receive technical summaries, confidence-scored differential diagnoses, visual annotations, longitudinal comparisons, recommendations, and citations, then edit and sign the draft. Patients receive plain-language explanations, warning signs, practical next steps, and questions for their doctor in their preferred language, only when policy allows and the physician has signed.</p>
+    <p>Ask the scan is visual question answering on the study already on the page. A physician, or a patient after sign-off when the report is not withheld, clicks a finding or overlay box and asks a question. Laravel abstains without calling the GPU when the question names anatomy outside this study’s field of view. Replies stream as hops and tokens.</p>
+    <p>Voice triage uses MedASR with Whisper fallback to convert spoken or typed symptoms into structured complaints, clarifying prompt cards, and routine, urgent, or emergency classifications. A server <code>audio/mpeg</code> speak endpoint provides a cached reply for playback. Browser server-sent events stream hops and tokens while the answer is written. This path is clinician-supervised intake support, not emergency dispatch.</p>
+  </section>
+  <section class="paper" id="stack">
+    <div class="section-tag">05</div>
+    <h2>Architecture and quality</h2>
+    <hr class="rule">
+    <p>The stack is decoupled. Python, FastAPI, Pydantic, Uvicorn, and HTTPX power the inference microservice. PHP 8.4 and Laravel 13 manage medical records, MySQL state, database queues, background jobs, webhook callbacks, authorization policies, and Fortify authentication. Vue 3, TypeScript, Inertia.js 3, Laravel Wayfinder, Tailwind CSS 4, shadcn-vue, Reka UI, and Vite deliver the physician and patient applications.</p>
+    <p>Engineering quality is supported by Pest 4, Larastan, TypeScript, ESLint, Prettier, database factories, and reproducible seed data. Those checks verify workflow contracts: authentication, retrieval ranking, ALLOW/WARN policy, sign-gated release, Ask the scan, and voice triage. They are not a clinical accuracy benchmark.</p>
+    <div class="callout">SihatAI is a localized, explainable, safety-engineered clinical workflow. It helps clinicians review information faster, keeps AI outputs auditable, and gives Malaysians clearer access to their health information without replacing professional medical judgment.</div>
+  </section>
   <p class="footer">SihatAI · Clinical Field Atlas</p>
 </div>
 </body>

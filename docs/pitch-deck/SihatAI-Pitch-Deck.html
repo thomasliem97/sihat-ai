@@ -1607,11 +1607,11 @@
           <div class="hero-copy">
             <div class="hero-kicker reveal-left"><i></i> Multimodal medical intelligence</div>
             <h1 class="reveal d1">From any medical<br>artifact to actual<br><span class="display-accent">clinical report.</span></h1>
-            <p class="subtitle reveal d2">One agentic engine understands imaging, labs, documents and voice, then composes grounded outputs for physicians and patients.</p>
+            <p class="subtitle reveal d2">Three inspectable flows: multimodal analysis with MOH-grounded reports, Ask the scan on this study, and voice triage.</p>
             <div class="pill-row reveal d3">
-              <span class="pill">Multimodal reasoning</span>
-              <span class="pill teal">Agentic orchestration</span>
-              <span class="pill coral">Malaysia-localized</span>
+              <span class="pill">Medical intelligence</span>
+              <span class="pill teal">Ask the scan</span>
+              <span class="pill coral">Voice triage</span>
             </div>
           </div>
 
@@ -1628,7 +1628,7 @@
             </div>
             <div class="atlas-card atlas-voice">
               <span class="icon-disc"><i data-lucide="mic"></i></span>
-              <div><b>Voice intake</b><small>triage structuring</small></div>
+              <div><b>Voice triage</b><small>spoken or typed urgency</small></div>
             </div>
             <div class="atlas-card atlas-doc">
               <span class="icon-disc"><i data-lucide="clipboard-list"></i></span>
@@ -1773,7 +1773,7 @@
             </div>
             <div class="app-body">
               <div class="viewer">
-                <div class="viewer-toolbar"><span>PA CHEST · 2048 × 2048</span><span>100% · OVERLAY ON</span></div>
+                <div class="viewer-toolbar"><span>PA CHEST · 2048 × 2048</span><span>ASK THE SCAN</span></div>
                 <div class="xray-stage">
                   <img class="scan-image" src="images/chest-xray.png" alt="PA chest radiograph">
                   <div class="finding-box"><span>RLL opacity · 91%</span></div>
@@ -1790,7 +1790,7 @@
         </div>
 
         <div class="feature-ribbon reveal d4">
-          <span>Bounding-box localization</span><span>Confidence calibration</span><span>Inline citations</span><span>Longitudinal comparison</span>
+          <span>Bounding-box localization</span><span>Ask the scan</span><span>Inline citations</span><span>Physician sign-off</span>
         </div>
       </section>
 
@@ -1827,14 +1827,14 @@
             <span class="lane-name">AI intelligence<br>line</span>
             <div class="lane-track ai"></div>
             <div class="station"><b>FastAPI</b><small>Pydantic contract</small></div>
-            <div class="station"><b>Agent Graph</b><small>typed state machine</small></div>
+            <div class="station"><b>Inspectable hops</b><small>sequential pipeline</small></div>
             <div class="station"><b>MedGemma 1.5</b><small>4B multimodal</small></div>
           </div>
           <div class="storage-stops">
             <div class="storage-stop"><b>Clinical records</b><small>MySQL · findings · trends</small></div>
             <div class="storage-stop"><b>Artifacts</b><small>DICOM · images · PDFs</small></div>
             <div class="storage-stop"><b>Grounding index</b><small>MOH CPG · patient history</small></div>
-            <div class="storage-stop"><b>Eval traces</b><small>agent hops · model versions</small></div>
+            <div class="storage-stop"><b>Agent traces</b><small>hops · model versions</small></div>
           </div>
         </div>
       </section>
@@ -1842,7 +1842,7 @@
 
       <section class="slide" data-slide="6">
         <div class="topline">
-          <span class="section-tag">05 · Agentic orchestration</span>
+          <span class="section-tag">05 · Inspectable pipeline</span>
           <span class="page-no">06 / 12</span>
         </div>
         <div class="title-row">
@@ -1865,7 +1865,7 @@
           <div class="relay-agent reveal-scale d1"><div class="agent-token"><i data-lucide="eye-off"></i></div><b>De-ID</b><small>scrub PII / PHI</small><code>safe_uri</code></div>
           <div class="relay-agent reveal-scale d2"><div class="agent-token"><i data-lucide="route"></i></div><b>Router</b><small>detect modality</small><code>route_confidence</code></div>
           <div class="relay-agent reveal-scale d3"><div class="agent-token"><i data-lucide="brain-circuit"></i></div><b>Imaging / Doc</b><small>parallel specialists</small><code>partial_findings</code></div>
-          <div class="relay-agent reveal-scale d4"><div class="agent-token"><i data-lucide="library-big"></i></div><b>Retriever</b><small>hybrid RAG</small><code>citations[]</code></div>
+          <div class="relay-agent reveal-scale d4"><div class="agent-token"><i data-lucide="library-big"></i></div><b>Retriever</b><small>BM25 + optional dense</small><code>citations[]</code></div>
           <div class="relay-agent guard reveal-scale d5"><div class="agent-token"><i data-lucide="shield-alert"></i></div><b>Guardrail</b><small>veto + escalate</small><code>ALLOW | WARN</code></div>
           <div class="relay-agent reveal-scale d6"><div class="agent-token"><i data-lucide="scroll-text"></i></div><b>Composer</b><small>audience adapt</small><code>reports{}</code></div>
         </div>
@@ -1955,7 +1955,7 @@
           <div class="retrieval-desk reveal-scale d2">
             <div class="query-slip"><small>RETRIEVAL QUERY</small><b>“RLL opacity + fever + cough”</b></div>
             <div class="retrieval-path">
-              <div class="retrieve-step"><span>01</span><b>Hybrid search</b><small>dense vectors + lexical BM25</small></div>
+              <div class="retrieve-step"><span>01</span><b>BM25 search</b><small>dense rank when embeddings match</small></div>
               <div class="retrieve-step"><span>02</span><b>MMR rerank</b><small>relevance × diversity</small></div>
               <div class="retrieve-step"><span>03</span><b>Confidence gate</b><small>abstain below threshold</small></div>
             </div>
@@ -1973,7 +1973,7 @@
             <h3>Terdapat perubahan pada bahagian bawah paru-paru kanan.</h3>
             <p>Imej menunjukkan kawasan legap yang mungkin berkaitan dengan jangkitan. Dapatan ini perlu dinilai bersama gejala dan pemeriksaan doktor.</p>
             <div class="citation-stamp"><span>[MOH-CPG-01]</span><b>Garis Panduan Pneumonia</b><i>89% relevance</i></div>
-            <div class="lora-tag"><span>MY-LoRA</span><div><b>QLoRA adapter</b><small>BM medical register · local disease priors</small></div></div>
+            <div class="lora-tag"><span>MY-LoRA</span><div><b>QLoRA adapter</b><small>Patient Ask the scan phrasing · Bahasa CPG style</small></div></div>
           </article>
         </div>
       </section>
@@ -2001,7 +2001,7 @@
           </div>
           <div class="safety-principles">
             <article class="principle reveal-scale d2"><span>01</span><h3>De-identify first</h3><p>DICOM tags, document PII and metadata are scrubbed before inference.</p></article>
-            <article class="principle reveal-scale d3"><span>02</span><h3>Calibrate uncertainty</h3><p>Publish ≥ .80 · hedge .50-.80 · abstain below .50.</p></article>
+            <article class="principle reveal-scale d3"><span>02</span><h3>Heuristic confidence</h3><p>Publish, hedge, or abstain from model-reported scores. Not calibrated probability.</p></article>
             <article class="principle reveal-scale d4"><span>03</span><h3>Constrain claims</h3><p>Structured DDx with confidence, never unsupported certainty.</p></article>
             <article class="principle reveal-scale d5"><span>04</span><h3>Preserve oversight</h3><p>Physicians inspect evidence, boxes and citations before sign-off.</p></article>
           </div>
@@ -2016,31 +2016,31 @@
         </div>
         <div class="title-row">
           <div>
-            <h2 class="reveal-left">We measure the system.<br><span class="display-soft">Not just the interface.</span></h2>
+            <h2 class="reveal-left">Three pillars you can open.<br><span class="display-soft">One demo, three inspectable flows.</span></h2>
           </div>
-          <span class="ink-note reveal-scale d2">Benchmarked pipeline</span>
+          <span class="ink-note reveal-scale d2">Shipped product</span>
         </div>
 
         <div class="eval-lab">
           <div class="gauges">
-            <article class="gauge reveal-scale d1"><small>MEDICAL<br>REASONING</small><div class="gauge-ring" style="--score:68.4"><strong>68.4<sup>%</sup></strong></div><b>MedQA subset</b><p>reasoning accuracy</p></article>
-            <article class="gauge reveal-scale d2"><small>REPORT<br>QUALITY</small><div class="gauge-ring" style="--score:84"><strong>4.2<sup>/5</sup></strong></div><b>Judge rubric</b><p>coherence + utility</p></article>
-            <article class="gauge reveal-scale d3"><small>SAFETY<br>COMPLIANCE</small><div class="gauge-ring" style="--score:96.5"><strong>96.5<sup>%</sup></strong></div><b>Red-team set</b><p>policy compliance</p></article>
+            <article class="gauge reveal-scale d1"><small>01<br>INVESTIGATE</small><div class="gauge-ring" style="--score:100"><strong>CXR</strong></div><b>Medical intelligence</b><p>overlay · citations · sign-off</p></article>
+            <article class="gauge reveal-scale d2"><small>02<br>ASK</small><div class="gauge-ring" style="--score:100"><strong>Q&amp;A</strong></div><b>Ask the scan</b><p>click the finding on this study</p></article>
+            <article class="gauge reveal-scale d3"><small>03<br>INTAKE</small><div class="gauge-ring" style="--score:100"><strong>MIC</strong></div><b>Voice triage</b><p>typed fallback · structured urgency</p></article>
           </div>
 
           <div class="harness reveal-scale d3">
-            <div class="harness-head"><span>EVAL HARNESS</span><b>Model / adapter regression loop</b></div>
+            <div class="harness-head"><span>ENGINEERING PROOF</span><b>Inspectable workflow</b></div>
             <div class="harness-flow">
-              <div class="harness-step"><span>01</span><b>Dataset</b><small>MedQA · PDFs · red-team</small></div>
-              <div class="harness-step"><span>02</span><b>Candidate</b><small>base model + adapter</small></div>
-              <div class="harness-step"><span>03</span><b>Judges</b><small>rules + LLM rubric</small></div>
-              <div class="harness-step"><span>04</span><b>Gate</b><small>block regression</small></div>
+              <div class="harness-step"><span>01</span><b>Pest tests</b><small>auth · RAG · guardrails · triage</small></div>
+              <div class="harness-step"><span>02</span><b>Agent hops</b><small>de-ID · analyze · ground · guard</small></div>
+              <div class="harness-step"><span>03</span><b>Citations</b><small>MOH QR · abstain if weak</small></div>
+              <div class="harness-step"><span>04</span><b>Sign-off</b><small>physician releases the patient copy</small></div>
             </div>
             <div class="stack-swatch">
               <small>PRODUCTION-ORIENTED STACK</small>
-              <div class="stack-line"><b>PRODUCT</b><span>Laravel 13</span><span>Inertia v3</span><span>Vue 3</span><span>MySQL</span><span>Redis</span></div>
+              <div class="stack-line"><b>PRODUCT</b><span>Laravel 13</span><span>Inertia v3</span><span>Vue 3</span><span>MySQL</span><span>Queues</span></div>
               <div class="stack-line"><b>AI</b><span>FastAPI</span><span>Pydantic</span><span>MedGemma</span><span>QLoRA</span><span>RAG</span></div>
-              <div class="stack-line"><b>MLOPS</b><span>GPU serving</span><span>adapters</span><span>trace logs</span><span>eval runs</span><span>webhooks</span></div>
+              <div class="stack-line"><b>MLOPS</b><span>GPU serving</span><span>adapters</span><span>trace logs</span><span>webhooks</span><span>Modal</span></div>
             </div>
           </div>
         </div>
@@ -2056,7 +2056,7 @@
           <div>
             <h2 class="reveal-left">Our advantage is not one model.<br><span class="display-accent">It is the system around it.</span></h2>
           </div>
-          <span class="ink-note reveal-scale d2">17 integrated capabilities</span>
+          <span class="ink-note reveal-scale d2">Three pillars</span>
         </div>
 
         <div class="advantage-board">
@@ -2071,7 +2071,7 @@
               <ul class="advantage-tags">
                 <li>X-ray · CT · MRI</li>
                 <li>Lab PDFs</li>
-                <li>Voice intake</li>
+                <li>Voice triage</li>
               </ul>
             </article>
             <article class="advantage-card reveal-scale d2">
@@ -2142,10 +2142,10 @@
 
           <span class="section-tag reveal">The next interface is not a chatbox</span>
           <h2 class="reveal d1">It is a safe, grounded<br><span class="display-accent">clinical intelligence layer.</span></h2>
-          <p class="reveal d2">SihatAI combines multimodal perception, agentic reasoning, local evidence and audience-adaptive generation in one inspectable pipeline.</p>
+          <p class="reveal d2">SihatAI combines multimodal analysis, Ask the scan, and voice triage in one inspectable pipeline.</p>
           <div class="close-pillars reveal d3">
             <div class="close-pillar"><span>01</span><b>Understands</b><small>imaging · labs · documents · voice</small></div>
-            <div class="close-pillar"><span>02</span><b>Reasons</b><small>agents · RAG · longitudinal context</small></div>
+            <div class="close-pillar"><span>02</span><b>Reasons</b><small>hops · RAG · longitudinal context</small></div>
             <div class="close-pillar"><span>03</span><b>Protects</b><small>de-ID · abstention · escalation</small></div>
             <div class="close-pillar"><span>04</span><b>Adapts</b><small>physician · patient · multilingual</small></div>
           </div>

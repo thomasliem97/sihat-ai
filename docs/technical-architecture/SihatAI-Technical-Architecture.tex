@@ -33,7 +33,7 @@ Selangor, Malaysia\\
 \maketitle
 
 \begin{abstract}
-Clinical information arrives as heterogeneous artifacts, including radiographs, volumetric studies, laboratory reports, longitudinal records, and spoken symptom descriptions. Converting these artifacts into usable decision support requires more than a single generative model: the surrounding system must validate inputs, protect identity, route modalities, structure outputs, ground claims, expose uncertainty, preserve human oversight, and communicate differently to clinicians and patients. This paper presents SihatAI, an inspectable multimodal clinical decision-support system designed for the Malaysian healthcare context. The production path combines a Laravel and Vue clinical application with a FastAPI inference service and Modal-hosted MedGemma 1.5 4B inference with Malaysia-oriented MY-LoRA adaptation loaded at serve time through PEFT. A canonical findings object separates evidence extraction from audience-specific communication. The implemented workflow includes heuristic and vision-model-assisted routing, imaging and document specialist hops with partial-findings merge, DICOM and PDF preprocessing, optical character recognition, prompted structured generation, hybrid BM25 and dense retrieval with maximal marginal relevance, sibling safe-URI de-identification, ALLOW/WARN safety policies with audit events and clinician notification, physician sign-gated patient release, longitudinal comparison, similar-case retrieval, MedASR with Whisper fallback, multilingual templates, and an evaluation regression gate. We describe the algorithms and software contracts of the live system. We also distinguish model-reported confidence from calibrated probability, prompted boxes from validated detection, slice montages from volumetric reasoning, and software verification from clinical validation. Current evidence establishes production workflow completeness, not diagnostic efficacy. The paper contributes a reproducible architecture, an explicit claim boundary, and an evaluation roadmap for clinical, multilingual, calibration, privacy, and human-factors studies.
+Clinical information arrives as heterogeneous artifacts, including radiographs, volumetric studies, laboratory reports, longitudinal records, and spoken symptom descriptions. Converting these artifacts into usable decision support requires more than a single generative model: the surrounding system must validate inputs, protect identity, route modalities, structure outputs, ground claims, expose uncertainty, preserve human oversight, and communicate differently to clinicians and patients. This paper presents SihatAI, an inspectable multimodal clinical decision-support system designed for the Malaysian healthcare context. The production path combines a Laravel and Vue clinical application with a FastAPI inference service and Modal-hosted MedGemma 1.5 4B inference with Malaysia-oriented MY-LoRA adaptation loaded at serve time through PEFT. A canonical findings object separates evidence extraction from audience-specific communication. The implemented workflow includes Laravel filename and DICOM routing, imaging and document specialist hops with partial-findings merge, DICOM and PDF preprocessing, optical character recognition, prompted structured generation, BM25 retrieval over Ministry of Health Quick Reference chunks with dense ranking only when query and chunk embeddings share the same OpenAI model, sibling safe-URI de-identification, ALLOW/WARN safety policies with audit events and clinician notification, physician sign-gated patient release, Ask the scan visual question answering, longitudinal comparison, similar-case retrieval, MedASR with Whisper fallback, and multilingual reports. We describe the algorithms and software contracts of the live system. We also distinguish model-reported confidence from calibrated probability, prompted boxes from validated detection, separate mid-volume slices from volumetric reasoning, and software verification from clinical validation. Current evidence establishes production workflow completeness, not diagnostic efficacy. The paper contributes a reproducible architecture, an explicit claim boundary, and an evaluation roadmap for clinical, multilingual, calibration, privacy, and human-factors studies.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -48,15 +48,15 @@ The Malaysian setting makes this problem particularly relevant. The Ministry of 
 
 Large multimodal models can accept images and text and produce flexible textual outputs. MedGemma 1.5 is a medically adapted 4-billion-parameter multimodal model based on Gemma 3 \cite{sellergren2026medgemma,gemmateam2025gemma3}. Its supported capabilities create a useful foundation for prototyping medical image understanding, document extraction, localization, and longitudinal reasoning. However, a foundation model is not a complete clinical product. Model outputs may be unsupported, incorrectly localized, overconfident, or difficult to audit. World Health Organization guidance therefore places autonomy, safety, transparency, accountability, inclusiveness, and sustainability at the center of health AI governance \cite{who2021ethics}; its guidance for large multimodal models adds specific concern about inaccurate content, automation bias, cybersecurity, and post-release auditing \cite{who2024lmm}.
 
-SihatAI was developed around the proposition that the clinical workflow surrounding the model is as important as the model itself. It is a production decision-support system, not an autonomous diagnostic device. The system accepts supported medical artifacts, converts them into a canonical findings object, applies hybrid retrieval and ALLOW/WARN policy checks, and derives two reports: a technical physician-facing draft and a patient-facing explanation released only after physician sign-off when policy allows. It retains the original and scrubbed artifacts for review and exposes pipeline stages, engine and adapter labels, citations, confidence labels, visual overlays, audit events, and sign-off state.
+SihatAI was developed around the proposition that the clinical workflow surrounding the model is as important as the model itself. It is a production decision-support system, not an autonomous diagnostic device. The system accepts supported medical artifacts, converts them into a canonical findings object, applies BM25 retrieval and ALLOW/WARN policy checks, and derives two reports: a technical physician-facing draft and a patient-facing explanation released only after physician sign-off when policy allows. It retains the original and scrubbed artifacts for review and exposes pipeline stages, engine and adapter labels, citations, confidence labels, visual overlays, audit events, and sign-off state.
 
 This paper makes four contributions:
 
 \begin{enumerate}
     \item It specifies an end-to-end, live-first clinical workflow that separates the web application, asynchronous orchestration, Modal-hosted model inference, and post-inference safety processing through a signed contract.
     \item It introduces a canonical findings object as the shared evidence layer for physician and patient reports, preventing audience adaptation from silently changing the underlying findings.
-    \item It documents an inspectable policy layer for hybrid retrieval strength, confidence bands, critical-value escalation with audit and notify, WARN veto of patient prose, longitudinal comparison, and sign-gated patient release.
-    \item It provides an explicit claim boundary. Production software completeness, including hybrid RAG, specialist hops, MedASR, and implemented MY-LoRA adaptation, is separated from clinical accuracy so that engineering maturity is not presented as diagnostic efficacy.
+    \item It documents an inspectable policy layer for retrieval strength, confidence bands, critical-value escalation with audit and notify, WARN veto of patient prose, longitudinal comparison, and sign-gated patient release.
+    \item It provides an explicit claim boundary. Production software completeness, including BM25 retrieval, specialist hops, MedASR, Ask the scan, and MY-LoRA for patient Ask the scan phrasing, is separated from clinical accuracy so that engineering maturity is not presented as diagnostic efficacy.
 \end{enumerate}
 
 The remainder of the paper reviews the technical foundations, presents the system and algorithms, describes implementation and verification, and develops a rigorous evaluation and deployment roadmap.
@@ -67,17 +67,17 @@ The remainder of the paper reviews the technical foundations, presents the syste
 
 Vision-language models (VLMs) combine visual encoders with language models to answer questions or generate text conditioned on images. Radiology-focused systems such as MAIRA-1 demonstrate that domain-specific visual and language adaptation can improve report generation, while also exposing errors that conventional lexical metrics may not capture \cite{bannur2024maira1}. MAIRA-2 extends the task toward grounded reporting with current and prior views, prior reports, and explicit localization \cite{bannur2024maira2}. These studies reinforce two design lessons relevant to SihatAI. First, context and prior evidence matter. Second, generated localization and narrative require task-specific evaluation against expert references. Public chest radiograph corpora such as MIMIC-CXR support standardized imaging evaluation with paired reports \cite{johnson2019mimiccxr}, but SihatAI does not yet report results on that or any external clinical benchmark.
 
-MedGemma 1.5 provides a unified open model for medical text and image comprehension, including high-dimensional imaging, histopathology, localization, longitudinal imaging, and document understanding \cite{sellergren2026medgemma,googlemedgemmacard}. SihatAI uses the instruction-tuned 4B checkpoint through prompted structured generation. It does not train a dedicated detector, segmenter, or modality-specific classification head. Consequently, its bounding boxes are generative coordinates requested in a JSON prompt, and its CT, magnetic resonance imaging (MRI), and histopathology inputs are reduced to two-dimensional montages. These distinctions are central to the paper's claim boundary.
+MedGemma 1.5 provides a unified open model for medical text and image comprehension, including high-dimensional imaging, histopathology, localization, longitudinal imaging, and document understanding \cite{sellergren2026medgemma,googlemedgemmacard}. SihatAI uses the instruction-tuned 4B checkpoint through prompted structured generation. It does not train a dedicated detector, segmenter, or modality-specific classification head. Consequently, its bounding boxes are generative coordinates requested in a JSON prompt, and its CT, magnetic resonance imaging (MRI), and histopathology inputs are reduced to a small set of separate two-dimensional images rather than a collage or a three-dimensional viewer. These distinctions are central to the paper's claim boundary.
 
 \subsection{Retrieval and Grounded Generation}
 
 Retrieval-augmented generation (RAG) combines parametric generation with a non-parametric corpus, enabling outputs to be conditioned on retrieved evidence and permitting knowledge to be updated without full model retraining \cite{lewis2020rag}. Retrieval can use dense vector similarity, sparse lexical methods, or both. BM25 is a probabilistic sparse retrieval framework that performs well when query and document terms overlap \cite{robertson2009bm25}. Maximal marginal relevance (MMR) can rerank results by balancing query relevance against redundancy \cite{carbonell1998mmr}.
 
-SihatAI implements a hybrid RAG stack over Ministry of Health guideline chunks. Dense cosine retrieval over external embeddings or a deterministic 64-dimensional hashed bag-of-tokens representation is fused with an in-process BM25 candidate set, then reranked with maximal marginal relevance (MMR; \(\lambda=0.7\)) to return the top three citations. When the corpus is empty or the top fused score is weak, the live path returns empty citations and records weak grounding rather than inserting static stubs. Source-version governance and claim-to-citation entailment remain future work; unsupported recommendations must still abstain rather than invent support.
+SihatAI retrieves over Ministry of Health Quick Reference chunks. Lexical BM25 always runs. Dense cosine ranking is added only when query and chunk embeddings are produced by the same OpenAI model; a 64-dimensional hashed bag-of-tokens representation is used in tests only. Results may be fused and reranked with maximal marginal relevance (MMR; \(\lambda=0.7\)). When the corpus is empty or the top fused score is weak, the live path returns empty citations and records weak grounding rather than inserting static stubs. Source-version governance and claim-to-citation entailment remain future work; unsupported recommendations must still abstain rather than invent support.
 
 \subsection{Parameter-Efficient Adaptation}
 
-Low-Rank Adaptation (LoRA) freezes the base model and introduces trainable low-rank matrices, reducing trainable parameter count and deployment storage \cite{hu2022lora}. QLoRA extends this approach by back-propagating through a frozen 4-bit quantized model into LoRA adapters \cite{dettmers2023qlora}. SihatAI implements MY-LoRA end to end: curated JSONL splits (approximately 4842 train and 538 validation chat examples from Malaysian guideline and communication material), Modal QLoRA training, shipped adapter weights, and inference-time PEFT load via \texttt{SIHAT\_AI\_LORA\_PATH}. Served responses label the loaded adapter. The adaptation targets Malaysian clinical guideline language and dual-audience reporting style on MedGemma, while live multimodal inference remains image-to-text with the adapted model. This paper reports the implemented adaptation path as part of the production system; separate clinical outcome trials are outside the present software contribution.
+Low-Rank Adaptation (LoRA) freezes the base model and introduces trainable low-rank matrices, reducing trainable parameter count and deployment storage \cite{hu2022lora}. QLoRA extends this approach by back-propagating through a frozen 4-bit quantized model into LoRA adapters \cite{dettmers2023qlora}. SihatAI implements MY-LoRA end to end: curated JSONL splits (approximately 4842 train and 538 validation chat examples from Malaysian guideline and communication material), Modal QLoRA training, shipped adapter weights, and inference-time PEFT load via \texttt{SIHAT\_AI\_LORA\_PATH}. Served responses label the loaded adapter. The adaptation targets Malaysian clinical guideline language and dual-audience reporting style. Analysis, classification, and physician Ask the scan run with the adapter off; patient Ask the scan may load it for phrasing. This paper reports the implemented adaptation path as part of the production system; separate clinical outcome trials are outside the present software contribution.
 
 \subsection{Uncertainty, Abstention, and Oversight}
 
@@ -91,7 +91,7 @@ Human review is similarly more than a disclaimer. Automation bias can lead users
 
 SihatAI is intended for clinician-supervised decision support in production-configured deployments. Supported tasks include artifact ingestion, preliminary structured findings, biomarker extraction, guideline-oriented hybrid retrieval, longitudinal summaries, patient-friendly communication, and workflow review. Prohibited reliance includes autonomous diagnosis, autonomous treatment or prescribing, emergency dispatch, final clinical reporting without authorized review, and processing identifiable health information outside an approved environment.
 
-The system has two authenticated roles. Physicians can review records, upload on behalf of a patient, edit unsigned draft reports, sign a snapshot that gates patient release, inspect similar cases, and run evaluation suites. Patients can view only their own records and patient-facing reports, subject to WARN withholding and unsigned drafts. Registration is disabled in the current deployment configuration; authentication, password reset, email verification, role middleware, policies, and rate limiting are provided by Laravel Fortify.
+The system has two authenticated roles. Physicians can review records, upload on behalf of a patient, edit unsigned draft reports, sign a snapshot that gates patient release, and inspect similar cases. Ask the scan is available on completed imaging. Patients can view only their own records and patient-facing reports, subject to WARN withholding and unsigned drafts. Registration is disabled in the current deployment configuration; authentication, password reset, email verification, role middleware, policies, and rate limiting are provided by Laravel Fortify.
 
 \subsection{Design Principles}
 
@@ -206,13 +206,13 @@ The resulting values are linearly scaled to 8-bit intensity:
   I_8 = 255\frac{I_c-\min(I_c)}{\max(I_c)-\min(I_c)}.
 \end{equation}
 
-\texttt{MONOCHROME1} images are inverted, and grayscale values are replicated into three RGB channels. If a study contains multiple frames, the implementation chooses at most eight consecutive indices centered approximately on the midpoint. ZIP archives are sorted by name and sampled using the same midpoint strategy. Selected images are resized to the smallest tile dimensions and placed in a grid. The montage is encoded as JPEG and supplied to the VLM.
+\texttt{MONOCHROME1} images are inverted, and grayscale values are replicated into three RGB channels. If a study contains multiple frames, the implementation chooses at most eight consecutive indices centered approximately on the midpoint. ZIP archives are sorted by name and sampled using the same midpoint strategy. Selected images are encoded as separate JPEGs and supplied to the VLM as multiple images, not as a single collage.
 
-This process is computationally simple and enables multi-slice input summarization. It discards full spatial geometry, slice spacing, orientation, acquisition phase, and potentially informative peripheral slices. It is therefore described as \emph{mid-slice montage summarization}, not three-dimensional analysis or reconstruction.
+This process is computationally simple and enables multi-slice input summarization. It discards full spatial geometry, slice spacing, orientation, acquisition phase, and potentially informative peripheral slices. Overlay preview shows slice 0. It is therefore mid-volume slice sampling, not three-dimensional analysis or reconstruction.
 
 \subsection{Histopathology Preparation}
 
-For a conventional image representing a histopathology specimen, the system crops the central 60\% of width and height, divides the crop into a \(3\times3\) grid, and composes the nine patches into a montage. Each patch receives a row-column identifier. The same MedGemma image method processes this montage.
+For a conventional image representing a histopathology specimen, the system crops the central 60\% of width and height, divides the crop into a \(3\times3\) grid, and sends the nine patches as separate images. Each patch receives a row-column identifier.
 
 The method does not use OpenSlide, magnification-aware sampling, tissue masking, stain normalization, a whole-slide pyramid, multiple-instance learning, or slide-level aggregation. It supports patch-referenced output but cannot support a whole-slide diagnostic claim.
 
@@ -230,9 +230,9 @@ The method does not use OpenSlide, magnification-aware sampling, tissue masking,
 \node[box, right=12mm of pdf] (pprep) {text layer\\or render + OCR};
 \node[box, right=12mm of histo] (hprep) {center 60\%\\$3\times3$ patches};
 
-\node[box, right=12mm of dprep] (dm) {2-D montage};
+\node[box, right=12mm of dprep] (dm) {separate slices};
 \node[box, right=12mm of pprep] (pt) {de-identified text};
-\node[box, right=12mm of hprep] (hm) {patch montage};
+\node[box, right=12mm of hprep] (hm) {separate patches};
 
 \node[box, right=12mm of pt] (model) {MedGemma structured\\generation, optional};
 \node[box, below=4mm of model] (rules) {regex extraction\\fallback};
@@ -248,13 +248,13 @@ The method does not use OpenSlide, magnification-aware sampling, tissue masking,
 \draw[arrow] (hm) -- (model);
 \draw[arrow] (pt) |- (rules);
 \end{tikzpicture}
-\caption{Modality-specific preprocessing. Volume and pathology branches produce two-dimensional montages; document processing prefers a native text layer before OCR.}
+\caption{Modality-specific preprocessing. Volume and pathology branches send separate two-dimensional images; document processing prefers a native text layer before OCR.}
 \label{fig:preprocessing}
 \end{figure*}
 
 \subsection{Laboratory PDF Extraction}
 
-The laboratory path first attempts embedded text extraction using pypdf and PyMuPDF. If the resulting layer contains fewer than 40 non-whitespace characters, each of at most four pages is rendered at scale 2.0 and passed to RapidOCR, an ONNX Runtime-based OCR library \cite{rapidocr}. Tesseract can act as an optional fallback when installed. Extracted text is scrubbed for common identity patterns before analysis.
+The laboratory path first attempts embedded text extraction in Laravel using \texttt{pdftotext} (minimum 40 characters). Digital PDFs therefore never leave the application as pixels. If no usable text layer exists, the file is sent to Modal RapidOCR, an ONNX Runtime-based OCR library \cite{rapidocr}. Extracted text is scrubbed for common identity patterns. MedGemma drafts the lab narrative; Laravel fills structured JSON through OpenAI structured outputs.
 
 When live MedGemma is available, a constrained text prompt requests arrays of findings and biomarkers. Otherwise, a rule-based parser searches for 13 configured analytes, including hemoglobin, platelets, white and red blood cells, creatinine, glucose, glycated hemoglobin, liver enzymes, sodium, and potassium. For analyte \(a\) with extracted value \(v_a\) and configured interval \([l_a,h_a]\), the fallback assigns
 
@@ -285,7 +285,7 @@ This approach is \emph{prompted structured generation}. It does not guarantee sc
 
 \subsection{Retrieval over Guideline Chunks}
 
-The query concatenates current finding labels, up to three prior-record labels for the same patient, and the modality label. Guideline chunks are stored in MySQL with source, section, content, and an optional embedding. With an external embedding service configured, SihatAI requests \texttt{text-embedding-3-small}. Otherwise it uses a deterministic local hash representation. For lowercase tokens \(t\), a 64-dimensional vector is formed as
+The query concatenates current finding labels, up to three prior-record labels for the same patient, and the modality label. Guideline chunks are stored in MySQL with source, section, content, and an optional embedding. With an external embedding service configured, SihatAI requests \texttt{text-embedding-3-small}. A deterministic local hash representation exists for tests only and is not used on the live retrieve path. For lowercase tokens \(t\), a 64-dimensional vector is formed as
 
 \begin{equation}
   z_j = \sum_{t:\,\mathrm{crc32}(t)\bmod64=j} 1,\qquad
@@ -306,7 +306,7 @@ In parallel, an in-process BM25 scorer ranks the same corpus with \(k_1=1.2\) an
 \lambda\,\mathrm{rel}(d)-(1-\lambda)\max_{d'\in S}\mathrm{sim}(d,d'),
 \end{equation}
 
-with \(\lambda=0.7\). Retrieval is flagged weak when the top fused score is below 0.20 or no candidates remain. In that case the live path returns empty citations and records weak grounding; static stubs are not injected into production reports. The offline hash embedding is inexpensive and reproducible but has collisions and limited semantics; BM25 therefore carries much of the offline signal. Source-version governance and claim-to-citation entailment remain future work.
+with \(\lambda=0.7\). Retrieval is flagged weak when the top fused score is below 0.20 or no candidates remain. In that case the live path returns empty citations and records weak grounding; static stubs are not injected into production reports. When OpenAI embeddings are unavailable, retrieval is BM25-only. Source-version governance and claim-to-citation entailment remain future work.
 
 \subsection{Similar Cases and Longitudinal Comparison}
 
@@ -374,7 +374,7 @@ The canonical object contains finding label, description, severity, confidence, 
 \draw[arrow] (object) -- (phys);
 \draw[arrow] (object) -- (pat);
 \end{tikzpicture}
-\caption{Audience adaptation changes presentation, not the evidence object. Current reports are template-based rather than separately generated by MedGemma.}
+\caption{Audience adaptation changes presentation, not the evidence object. The physician report keeps MedGemma findings and impression and quotes retrieved Quick Reference excerpts.}
 \label{fig:dualreport}
 \end{figure}
 
@@ -382,15 +382,19 @@ This separation limits one class of inconsistency because the two outputs do not
 
 \subsection{Voice Triage}
 
-The voice path sends base64-encoded audio to FastAPI, which prefers Google MedASR on a Modal T4 GPU and falls back to Whisper base when MedASR cannot be loaded \cite{radford2023whisper}. The response labels the active \texttt{engine}. If speech recognition is unavailable, the service returns an empty fallback and asks for text. Browser \texttt{speechSynthesis} provides minimal text-to-speech interview prompts. The Laravel controller structures urgency using keyword rules and can optionally ask a general language model for JSON. The result is routine, urgent, or emergency guidance with follow-up prompts.
+The voice path sends base64-encoded audio to FastAPI, which prefers Google MedASR on a Modal T4 GPU and falls back to Whisper base when MedASR cannot be loaded \cite{radford2023whisper}. The response labels the active \texttt{engine}. If speech recognition is unavailable, the service returns an empty fallback and asks for text. Browser server-sent events stream hops and tokens while the reply is written. Speak is a server \texttt{audio/mpeg} endpoint with cached replay. An intent classifier blocks off-topic input; urgency is \texttt{routine}, \texttt{urgent}, or \texttt{emergency}; clarifying prompt cards can follow a reply.
 
 This path is an accessibility-oriented intake aid. It is not a clinically validated triage model and not emergency dispatch. Word error rate, language-specific performance, code-switching, accent robustness, urgency sensitivity, and false-reassurance risk remain unevaluated.
+
+\subsection{Ask the Scan}
+
+Ask the scan is visual question answering on a completed imaging study already on the record page. It is not a second analysis pipeline. A physician, or a patient after sign-off when the report is not withheld, submits a question with an optional finding index and selected box. Laravel abstains without calling the GPU when the question names anatomy outside this study's field of view. Responses stream as hops and tokens. Patient Ask the scan may load MY-LoRA for phrasing; analysis and physician explainer run with the adapter off.
 
 \section{Implementation}
 
 \subsection{Application Tier}
 
-The application uses PHP 8.4 and Laravel 13 \cite{laravel13}. Laravel manages sessions, Fortify authentication, email verification, authorization policies, validation, storage, relational state, jobs, signed URLs, and webhook handling. MySQL stores users, medical records, analysis jobs, biomarkers, guideline chunks, and evaluation runs. The development queue uses the database driver, and artifacts use private local storage.
+The application uses PHP 8.4 and Laravel 13 \cite{laravel13}. Laravel manages sessions, Fortify authentication, email verification, authorization policies, validation, storage, relational state, jobs, signed URLs, and webhook handling. MySQL stores users, medical records, analysis jobs, biomarkers, guideline chunks, explainer messages, and triage sessions. The development queue uses the database driver, and artifacts use private local storage.
 
 The interface uses Vue 3, TypeScript, Inertia 3, Laravel Wayfinder, Tailwind CSS 4, shadcn-vue primitives, Reka UI, and Vite. Physician screens prioritize scan overlays, compact findings, citations, traces, and report controls. Patient screens emphasize plain-language summaries, trends, and large action targets. Normalized box coordinates are rendered over the displayed image; they remain visual aids and do not alter source pixels.
 
@@ -429,28 +433,22 @@ The system stores a job identifier, record identifier, detected modality, route 
 
 \subsection{Software Verification}
 
-The repository contains Pest feature tests covering authentication, authorization, uploads, the live pipeline contract, HMAC webhook completion and failure, hybrid RAG ranking, ALLOW/WARN guardrails, patient withholding and sign-gated release, longitudinal differences, similar cases, multilingual templates, file access including scrubbed siblings, specialist hop traces, volume and patch metadata, evaluation jobs, eval regression gate, and voice triage. The continuous integration command runs formatting checks, PHP static analysis, JavaScript linting, TypeScript checking, the Pest suite, and \texttt{sihat:eval-gate}.
+The repository contains Pest feature tests covering authentication, authorization, uploads, the live pipeline contract, HMAC webhook completion and failure, RAG ranking, ALLOW/WARN guardrails, patient withholding and sign-gated release, longitudinal differences, similar cases, multilingual reports, file access including scrubbed siblings, specialist hop traces, volume and patch metadata, Ask the scan, and voice triage. The continuous integration command runs formatting checks, PHP static analysis, JavaScript linting, TypeScript checking, and the Pest suite.
 
-Python self-checks exercise DICOM decode-to-JPEG and montage behavior and laboratory PDF OCR-to-biomarker extraction. These checks are important engineering evidence: they verify that expected data shapes and workflow transitions are preserved. They do not estimate sensitivity, specificity, calibration, localization accuracy, or clinical utility.
+Python self-checks exercise DICOM decode-to-JPEG and laboratory PDF OCR-to-biomarker extraction. These checks are important engineering evidence: they verify that expected data shapes and workflow transitions are preserved. They do not estimate sensitivity, specificity, calibration, localization accuracy, or clinical utility.
 
 \subsection{Test Artifacts and Provenance}
 
 The fixture set contains openly licensed or synthetic samples for chest radiography, CT, MRI, histopathology, dermatology, ophthalmology, clinical documents, and laboratory PDFs. Sources include Wikimedia Commons, open research repositories, DICOM viewer test files, ISIC, PatchCamelyon, and locally generated synthetic laboratory reports. Per-file source and license tags are recorded. The files are suitable for pipeline and interface tests, not for diagnostic publication claims or unrestricted redistribution.
-
-Seeded evaluation runs are marked \texttt{demo\_seed} and watermarked in the UI. Live suite runs are preferred in the evaluation dashboard. Three prominently displayed values in earlier pitch materials, 68.4\% medical reasoning, 4.2/5 report quality, and 96.5\% safety compliance, remain seeded demonstration values and are excluded from this paper's results.
-
-\subsection{Evaluation Harness}
-
-The runnable harness has three suites. The medical question-answering suite contains multiple-choice items and can use keyword heuristics or an optional general language model. The report-quality suite scores completed reports and returns a fixed heuristic value when no external judge is configured. The safety suite contains rule-oriented prompts. An Artisan regression gate and CI workflow enforce configurable floors. These suites verify job execution, dashboard plumbing, and deploy blockers. Their sample sizes and fallback behavior make them engineering smoke tests, not clinical model benchmarks.
 
 \subsection{Current Results}
 
 The current evidence supports the following production-workflow findings:
 
 \begin{itemize}
-    \item A medical artifact can move through validation, persistent job state, sibling scrubbing, routing, specialist analysis, hybrid retrieval, ALLOW/WARN guardrail evaluation, composition, review, and sign-gated release on the live default path.
+    \item A medical artifact can move through validation, persistent job state, sibling scrubbing, routing, specialist analysis, BM25 retrieval, ALLOW/WARN guardrail evaluation, composition, review, and sign-gated release on the live default path.
     \item The remote contract can accept a job, access a scrubbed file through a signed URL, and return a result through an authenticated webhook with honest engine and adapter labels.
-    \item DICOM, PDF, ordinary image, volume-montage, patch-montage, laboratory, clinical document, ophthalmology, and voice branches have concrete code paths and self-check or feature-test coverage.
+    \item DICOM, PDF, ordinary image, mid-volume slices, histopathology patches, laboratory, clinical document, ophthalmology, Ask the scan, and voice branches have concrete code paths and self-check or feature-test coverage.
     \item The same structured finding set can drive role-specific and language-specific interface outputs.
     \item Critical or WARN records create audit events, notify clinicians, and suppress patient-facing content while preserving physician review context.
 \end{itemize}
@@ -523,13 +521,13 @@ Cursor AI, including GPT-5.6 Sol, assisted with ideation, implementation, debugg
 The present work has the following limitations:
 
 \begin{enumerate}
-    \item \textbf{No clinical validation.} The repository contains software tests, smoke suites, and an eval gate, not a powered diagnostic or clinical utility study.
+    \item \textbf{No clinical validation.} The repository contains software tests, not a powered diagnostic or clinical utility study.
     \item \textbf{Uncalibrated scores.} Confidence values are model-reported. Thresholds are policy choices, not validated risk estimates.
     \item \textbf{Generative localization.} Bounding boxes are prompted text outputs, not predictions from a dedicated detector and not evaluated against annotations.
-    \item \textbf{Reduced high-dimensional input.} CT/MRI and histopathology are represented by simple two-dimensional montages rather than full series or whole-slide viewers.
+    \item \textbf{Reduced high-dimensional input.} CT/MRI and histopathology are represented by a small set of separate two-dimensional images rather than full series or whole-slide viewers.
     \item \textbf{Heuristic extraction and routing.} Filename rules, OCR, regex parsing, and fixed laboratory ranges can fail on real-world variation.
-    \item \textbf{Grounding depth.} Hybrid BM25, dense, and MMR retrieval is production-wired, but the corpus is still small and claim-passage entailment is not verified.
-    \item \textbf{Adapter clinical effect.} MY-LoRA is trained, loaded, and served in production. Controlled clinical outcome trials of adapter versus base model are outside this software system paper.
+    \item \textbf{Grounding depth.} BM25 retrieval with optional dense ranking is production-wired, but the corpus is still small and claim-passage entailment is not verified.
+    \item \textbf{Adapter clinical effect.} MY-LoRA can load at serve time. Analysis runs with the adapter off. Controlled clinical outcome trials of adapter versus base model are outside this software system paper.
     \item \textbf{Specialist parallelism.} Imaging and document specialist hops expose a parallel contract with \texttt{partial\_findings}, while current execution is sequential.
     \item \textbf{Infrastructure ceiling.} Artifacts use local disk and the queue uses the database driver; Redis and object storage remain deferred.
     \item \textbf{Limited organizational authorization.} Physician access is broad. Production institutions require organization, care-team, and least-privilege scopes.
@@ -571,9 +569,9 @@ The data fixtures record source and license metadata, and synthetic laboratory r
 
 \section{Conclusion}
 
-SihatAI places a medical VLM inside an inspectable, live clinical workflow rather than exposing an unconstrained chatbot. Its principal architectural choices are a canonical findings object, a signed asynchronous boundary between product and inference tiers, hybrid BM25 and dense retrieval with MMR, ALLOW/WARN safety with audit and notify, dual-audience multilingual templates, MedASR voice intake, implemented MY-LoRA adaptation, and persistent human review with sign-gated patient release. The production system covers imaging, DICOM, laboratory and clinical PDFs, ophthalmology, longitudinal data, voice intake, citations, overlays, and evaluation gating.
+SihatAI places a medical VLM inside an inspectable, live clinical workflow rather than exposing an unconstrained chatbot. Its principal architectural choices are a canonical findings object, a signed asynchronous boundary between product and inference tiers, BM25 retrieval with optional dense ranking, ALLOW/WARN safety with audit and notify, dual-audience multilingual reports, Ask the scan, MedASR voice intake, MY-LoRA for patient Ask the scan phrasing, and persistent human review with sign-gated patient release. The production system covers imaging, DICOM, laboratory and clinical PDFs, ophthalmology, longitudinal data, voice intake, citations, and overlays.
 
-The same breadth creates a responsibility to state limits precisely. Model outputs remain clinically unvalidated; confidence is uncalibrated; localization is generative; volume and slide handling use montages; de-identification is heuristic rather than PS3.15-conformant; and current evaluation does not support diagnostic claims. Presenting these constraints is not a weakness of the system paper. It defines the research program needed to move from a production-integrated workflow toward trustworthy clinical evidence.
+The same breadth creates a responsibility to state limits precisely. Model outputs remain clinically unvalidated; confidence is uncalibrated; localization is generative; volume and slide handling use sampled two-dimensional images rather than 3D or whole-slide viewers; de-identification is heuristic rather than PS3.15-conformant; and current tests do not support diagnostic claims. Presenting these constraints is not a weakness of the system paper. It defines the research program needed to move from a production-integrated workflow toward trustworthy clinical evidence.
 
 \appendices
 
@@ -592,7 +590,7 @@ Field & Example type & Interpretation \\
 \texttt{bounding\_boxes[]} & label, \(x,y,w,h\), confidence & Normalized prompted coordinates for display; not validated detection \\
 \texttt{biomarkers[]} & name, value, unit, range, status & Extracted laboratory values persisted for trends \\
 \texttt{differential\_diagnosis[]} & condition, confidence & Decision-support suggestions, not final diagnosis \\
-\texttt{citations[]} & source, section, excerpt, relevance & Hybrid BM25/dense/MMR retrieval metadata; empty when weak \\
+\texttt{citations[]} & source, section, excerpt, relevance & BM25 retrieval metadata, with dense rank when embeddings match; empty when weak \\
 \texttt{guardrail\_flags[]} & ALLOW/WARN, publish, hedge, abstain, critical, weak RAG & Deterministic policy state \\
 \texttt{partial\_findings} & imaging/doc specialist payloads & Merged specialist hop outputs \\
 \texttt{longitudinal\_diff} & new, stable, resolved, numeric deltas & Rule-based comparison with a prior record \\
@@ -615,23 +613,24 @@ Field & Example type & Interpretation \\
 \toprule
 Capability & Implemented mechanism & Maturity & Defensible statement \\
 \midrule
-Modality routing & Filename/MIME/DICOM rules; VLM classify & Production & Heuristic and VLM-assisted routing \\
-Multimodal interpretation & Live MedGemma with MY-LoRA on Modal & Production & Live adapted model path; clinically unvalidated \\
+Modality routing & Filename/MIME/DICOM rules in Laravel & Production & Local routing; GPU classify unused \\
+Multimodal interpretation & Live MedGemma; LoRA off for analyze & Production & Live model path; clinically unvalidated \\
 Localization & Prompted coordinates and clamping & Production & Overlay visualization without validated IoU \\
 Laboratory extraction & Text layer, OCR, regex or VLM & Production & Structured extraction with rule-based fallback \\
 Clinical documents & Dedicated modality and analyze path & Production & Discharge/clinic notes supported \\
 Ophthalmology & Dedicated vision analyze path & Production & Live ophthalmology branch \\
-Retrieval & Dense + BM25 fuse + MMR top-3 & Production & Hybrid guideline retrieval; empty when weak \\
-MY-LoRA & Trained QLoRA adapter + PEFT serve & Production & Malaysia-oriented adaptation loaded at inference \\
+Retrieval & BM25, optional dense, MMR & Production & Guideline retrieval; empty when weak \\
+MY-LoRA & Trained QLoRA adapter + PEFT serve & Production & Off for analysis; on for patient Ask the scan \\
 Orchestration & Specialist hops + partial\_findings & Production & Parallel contract, sequential execution \\
 Guardrails & ALLOW/WARN, audit, notify, sign gate & Production & Policy gating on model-reported scores \\
 De-identification & Sibling scrub + safe\_file\_path & Production & Pattern-based scrubbing, not PS3.15 \\
-Dual reports & Four-locale templates from one object & Production & Shared evidence with audience-specific presentation \\
-Similar cases & Text-label embedding or overlap & Production & Case retrieval, not image similarity \\
-Voice & MedASR primary, Whisper fallback, TTS prompts & Production & Speech-assisted intake, not emergency dispatch \\
-Evaluation & Feature tests, smoke suites, eval gate & Engineering & Workflow verification, not clinical validation \\
-CT/MRI & At most eight mid slices in a montage & Production & Two-dimensional montage summarization \\
-Histopathology & Central \(3\times3\) patch montage & Production & Patch montage description, not WSI diagnosis \\
+Dual reports & Four-locale reports from one object & Production & Shared evidence with audience-specific presentation \\
+Similar cases & Text-label embedding or overlap & Production & Case retrieval, not image similarity; empty on seed \\
+Ask the scan & Same-study visual Q\&A + FOV guard & Production & Not a second analysis pipeline \\
+Voice & MedASR primary, Whisper fallback, MPEG TTS & Production & Speech-assisted intake, not emergency dispatch \\
+Evaluation & Pest, Larastan, ESLint, TypeScript & Engineering & Workflow verification, not clinical validation \\
+CT/MRI & At most eight mid slices as separate images & Production & Slice sampling, not 3D and not a collage \\
+Histopathology & Central \(3\times3\) patches as separate images & Production & Patch sampling, not WSI diagnosis \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -653,6 +652,6 @@ Histopathology & Central \(3\times3\) patch montage & Production & Patch montage
 \textbf{Generative AI disclosure:} Generative AI assisted software development and manuscript drafting. The authors remain responsible for verification, citations, claims, and publication decisions.
 
 \bibliographystyle{IEEEtran}
-\bibliography{SihatAI-Academic-Paper}
+\bibliography{SihatAI-Technical-Architecture}
 
 \end{document}

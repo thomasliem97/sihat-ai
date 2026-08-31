@@ -19,7 +19,8 @@ ai-service/
 | Python deps | `pip_install(...)` in `app/modal_app.py` / `lora/modal_train.py` |
 
 All MedGemma paths (imaging, classify, clinical text, lab text/image) are free-form text.
-JSON is enforced only by the GPT structurer via OpenAI Structured Outputs (`json_schema`)
+JSON is enforced only by the GPT structurer via OpenAI Structured Outputs (`json_schema`).
+CT/MRI send up to 8 mid-volume slices as separate images, not a collage. LoRA is off for analyze.
 
 ```bash
 modal deploy ai-service/app/modal_app.py
