@@ -1,0 +1,824 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+/uni0051/uni0055/uni0049/uni0043/uni004B/uni0020/uni0052/uni0045/uni0046/uni0045/uni0052/uni0045/uni004E/uni0043/uni0045/uni0020/uni0046/uni004F/uni0052/uni0020/uni0048/uni0045/uni0041/uni004C/uni0054/uni0048/uni0043/uni0041/uni0052/uni0045/uni0020/uni0050/uni0052/uni004F/uni0056/uni0049/uni0044/uni0045/uni0052/uni0053
+/uni004D/uni0041/uni004E/uni0041/uni0047/uni0045/uni004D/uni0045/uni004E/uni0054/uni0020/uni004F/uni0046
+/uni004F/uni0042/uni0053/uni0054/uni0052/uni0055/uni0043/uni0054/uni0049/uni0056/uni0045
+/uni0053/uni004C/uni0045/uni0045/uni0050/uni0020/uni0041/uni0050/uni004E/uni004F/uni0045/uni0041
+ALGORITHM 3. MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA IN CHILDREN
+Children with clinical
+suspicion/high risk* of OSA  
+Assessment by paediatrician &
+upper airway examination by ORL
+Refer to paediatrician &
+treat accordingly
+PSQ screening with
+score of ≥8
+High risk for OSA*
+Multidisciplinary
+assessment by
+paediatrician/respiratory
+paediatrician/ORL/OMFS/
+orthodontist 
+Adenotonsillar
+hypertrophy ± skeletal
+discrepancies
+Yes No
+No
+No
+Yes Yes
+PSG/overnight pulse oximetry PSG/overnight pulse oximetry PSG/overnight pulse oximetry
+Moderate/
+severe OSA
+Mild OSA
+AHI 1 – 5/hr
+Moderate OSA
+ AHI 5 – 10/hr 
+Severe OSA
+AHI >10/hr
+Refer respiratory
+paediatrician for
+further assessment
+Trial of medications Adenotonsillectomy Refer
+respiratory
+paediatrician
+for CPAP
+Follow-up by
+paediatrician/ORL
+Follow-up by paediatrician/
+respiratory paediatrician/ORL/
+OMFS/orthodontist
+Persistent symptoms & signs of OSA
+Refer to respiratory paediatrician & ORL for reassessment
+*obesity, craniofacial anomalies, Down syndrome etc. (refer to Subchapter 4.1 in the CPG) 
+2 7
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+1. Obstructive Sleep Apnoea (OSA) is a common sleep-related breathing disorder 
+caused by repetitive upper airway collapse resulting in partial or complete breathing 
+cessation. It affects both children & adults. It is associated with significant morbidity.  
+2. In general, the common risk factors for OSA include age, male gender, morbid 
+obesity, adenotonsillar hypertrophy, craniofacial anomalies, prematurity & 
+neuromuscular disorder.
+3. STOP-BANG Questionnaire should be used for screening adults with clinical 
+suspicion of OSA. Epworth Sleepiness Scale (ESS) may be used to assess daytime 
+sleepiness.
+4. In paediatric patients, Paediatric Sleep Questionnaire (PSQ) should be used as a 
+screening tool for OSA. 
+5. Upper airway assessment is important in OSA patients to identify the level & degree 
+of obstruction.
+6. Diagnosis of OSA should be confirmed with polysomnography (PSG). In children, 
+nocturnal oximetry may be used as an alternative diagnostic tool if PSG is not 
+available.
+7. The aim of treatment in OSA is to relieve upper airway obstruction, improve symptoms 
+& prevent complications. 
+8. Ideally, a multidisciplinary team approach, consisting of respiratory physicians and 
+paediatricians, otolaryngology-head and neck surgeons, oral maxillofacial surgeons, 
+orthodontists etc. should be involved in managing OSA.
+9. Follow-up of OSA patients following surgical or non-surgical interventions is important 
+to monitor response & adherence to therapy.
+10. Definitive management of OSA in children should be individualised based on the 
+clinical findings e.g. adenotonsillectomy (AT) is the treatment of choice in children with 
+OSA due to adenotonsillar hypertrophy (refer to Algorithm 2 & 3). 
+ALGORITHM 2. SURGICAL TREATMENT IN ADULTS OBSTRUCTIVE SLEEP APNOEA
+PAP intolerant or non-compliant
+Consider oral
+appliances
+No
+No
+No
+No
+No
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+BMI ≥35 kg/m2
+Refer for
+bariatric surgery
+Presence of
+dentofacial deformity
+Refer to OMFS Refer to ORL
+DISE/FNMM
+Consider oral
+appliances & MFT
+Maxillary expansion MMA
+PSG at 3 - 6 months post-surgery
+Significant concentric
+palatal collapse
+Surgery (uni- or multilevel) on
+nasal/palate/oropharyngeal/tongue
+PSG at 3 months post-surgery
+Surgical
+success
+PAP reconsideration 
+& follow-up
+Follow-up
+PAP therapy & follow-up
+PAP reconsideration
+BMI: body mass index; DISE: drug-induced sleep endoscopy
+FNMM: fiber-optic nasal endoscopy with Muller’s Manoeuvre
+MFT: myofunctional therapy; 
+MMA: maxillomandibular advancement
+OMFS: oral and maxillofacial surgery
+Yes
+Surgical
+success
+Follow-up
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Obstructive Sleep Apnoea.
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+ Ministry of Health Malaysia: www.moh.gov.my
+ Academy of Medicine Malaysia: www.acadmed.org.my
+ Sleep Disorder Society Malaysia: https://sleepsocietymalaysia.org 
+ Malaysian Thoracic Society: https://www1.mts.org.my/
+2 7
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+1. Obstructive Sleep Apnoea (OSA) is a common sleep-related breathing disorder 
+caused by repetitive upper airway collapse resulting in partial or complete breathing 
+cessation. It affects both children & adults. It is associated with significant morbidity.  
+2. In general, the common risk factors for OSA include age, male gender, morbid 
+obesity, adenotonsillar hypertrophy, craniofacial anomalies, prematurity & 
+neuromuscular disorder.
+3. STOP-BANG Questionnaire should be used for screening adults with clinical 
+suspicion of OSA. Epworth Sleepiness Scale (ESS) may be used to assess daytime 
+sleepiness.
+4. In paediatric patients, Paediatric Sleep Questionnaire (PSQ) should be used as a 
+screening tool for OSA. 
+5. Upper airway assessment is important in OSA patients to identify the level & degree 
+of obstruction.
+6. Diagnosis of OSA should be confirmed with polysomnography (PSG). In children, 
+nocturnal oximetry may be used as an alternative diagnostic tool if PSG is not 
+available.
+7. The aim of treatment in OSA is to relieve upper airway obstruction, improve symptoms 
+& prevent complications. 
+8. Ideally, a multidisciplinary team approach, consisting of respiratory physicians and 
+paediatricians, otolaryngology-head and neck surgeons, oral maxillofacial surgeons, 
+orthodontists etc. should be involved in managing OSA.
+9. Follow-up of OSA patients following surgical or non-surgical interventions is important 
+to monitor response & adherence to therapy.
+10. Definitive management of OSA in children should be individualised based on the 
+clinical findings e.g. adenotonsillectomy (AT) is the treatment of choice in children with 
+OSA due to adenotonsillar hypertrophy (refer to Algorithm 2 & 3). 
+ALGORITHM 2. SURGICAL TREATMENT IN ADULTS OBSTRUCTIVE SLEEP APNOEA
+PAP intolerant or non-compliant
+Consider oral
+appliances
+No
+No
+No
+No
+No
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+BMI ≥35 kg/m2
+Refer for
+bariatric surgery
+Presence of
+dentofacial deformity
+Refer to OMFS Refer to ORL
+DISE/FNMM
+Consider oral
+appliances & MFT
+Maxillary expansion MMA
+PSG at 3 - 6 months post-surgery
+Significant concentric
+palatal collapse
+Surgery (uni- or multilevel) on
+nasal/palate/oropharyngeal/tongue
+PSG at 3 months post-surgery
+Surgical
+success
+PAP reconsideration 
+& follow-up
+Follow-up
+PAP therapy & follow-up
+PAP reconsideration
+BMI: body mass index; DISE: drug-induced sleep endoscopy
+FNMM: fiber-optic nasal endoscopy with Muller’s Manoeuvre
+MFT: myofunctional therapy; 
+MMA: maxillomandibular advancement
+OMFS: oral and maxillofacial surgery
+Yes
+Surgical
+success
+Follow-up
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Obstructive Sleep Apnoea.
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+ Ministry of Health Malaysia: www.moh.gov.my
+ Academy of Medicine Malaysia: www.acadmed.org.my
+ Sleep Disorder Society Malaysia: https://sleepsocietymalaysia.org 
+ Malaysian Thoracic Society: https://www1.mts.org.my/
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+CLINICAL PRESENTATIONALGORITHM 1. MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA IN ADULTS
+OSA in Adults
+DIAGNOSIS
+OSA in Adults
+• Diagnostic criteria for adult OSA - (A & B) or C satisfy the criteria
+A. Presence of 1 or more of the following: 
+1. Patient complains of sleepiness, non-restorative sleep, fatigue or insomnia symptoms
+2. Patient wakes with breath-holding, gasping or choking 
+3. Bed partner or other observer reports habitual snoring, breathing interruptions or 
+both during the patient’s sleep
+4. Patient has been diagnosed with hypertension, a mood disorder, cognitive 
+dysfunction, coronary artery disease, stroke, congestive heart failure, atrial 
+fibrillation or type 2 diabetes mellitus
+B. PSG or out-of-centre sleep testing (OCST) demonstrates: 
+1. ≥5 predominantly obstructive respiratory events [obstructive & mixed apnoeas, 
+hypopnoeas or respiratory effort-related arousals (RERAs)] per hour of sleep during 
+a PSG or per hour of monitoring (OCST)
+OR
+C. PSG or OCST demonstrates: 
+1. ≥15 predominantly obstructive respiratory events (apnoeas, hypopnoeas or 
+RERAs) per hour of sleep during a PSG or per hour of monitoring (OCST)
+• The third edition of the International Classification of Sleep Disorders (ICSD)-3 defines 
+OSA as: 
+○ AHI ≥5/hour associated with the typical symptoms of OSA or associated 
+medical/psychiatric disorder 
+○ AHI ≥15/hour (even in the absence of symptoms or disorders)
+Daytime symptoms
+• Excessive daytime sleepiness
+• Unrefreshed sleep
+• Tiredness/fatigue
+• Early morning headache
+• Dry mouth
+• Poor attention/concentration span
+• Memory impairment
+• Mood disturbance or irritability
+• Decrease libido/erectile dysfunction
+Night-time symptoms
+• Snoring 
+• Witnessed apnoea (cessation of       
+ breathing)
+• Gasping/choking
+• Nocturia
+• Difficulty initiating and maintaining sleep
+• Fragmented sleep (frequent awakening)
+OSA in Children
+Symptoms of upper airway obstruction
+• Snoring 
+• Witnessed apnoea
+• Difficulty in breathing
+• Abnormal sleep posture
+• Mouth breathing
+• Excessive sweating
+Complications of OSA
+• Elevated blood pressure
+• Enuresis
+• Excessive daytime sleepiness
+• Inattention/hyperactivity
+• Cognitive deficits
+• Academic difficulties
+• Failure to thrive
+Clinical Suspicion of OSA 
+Screening with STOP-BANG score of ≥3
+Consider other
+diagnosis &
+treat accordingly 
+Still highly suspicious
+of OSA (e.g. presence
+of risk factors, maxillofacial
+abnormalities, etc.) 
+Assessment*/referral to
+ORL/respiratory clinic for PSG
+Yes
+No Yes
+AHI score ≥5**
+Re-assess for other
+diagnosis & treat
+accordingly Lifestyle modifications
+PAP therapy
+± Surgery*** 
+Tolerate & compliant 
+Continue periodic follow-up
+PAP intolerant or non-compliant
+Refer for surgical management
+or oral appliances 
+(refer to Algorithm 2)
+ORL: otorhinolaryngologist
+*May include endoscopic upper airway evaluation 
+**Preferably cases of OSA are managed by a multidisciplinary team (certain cases may receive 
+ upper airway surgery earlier)
+***Patient who opts for surgery should follow Algorithm 2
+No
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+PERIOPERATIVE MANAGEMENT
+• Patients who are at risk of OSA should be screened for OSA pre operatively. 
+○ The preferred screening tool is STOP-BANG.
+MONITORING & FOLLOW-UP
+• Monitoring & follow-up of OSA cases are important in ensuring treatment response, 
+adherence & optimisation of medical risk factors. 
+• OSA should be ideally managed by a multidisciplinary team consisting of respiratory 
+physicians, otolaryngology surgeons, oral maxillofacial surgeons, orthodontists, bariatric 
+surgeons and dietitians.
+SPECIAL GROUP
+• Pregnant women with suspected OSA based on symptoms & signs should be referred for 
+further management by a multidisciplinary specialist team. 
+• Patients with OSA & craniofacial anomalies should be assessed regarding the benefit & 
+risk of a surgical intervention before it can be offered to them.
+• Patients with Down syndrome should be screened for OSA & treated accordingly.
+• CPAP is the preferred initial treatment in stable ambulatory patients with obesity 
+hypoventilation syndrome & severe OSA.
+• Patients with or suspected high risk of OSA should be monitored closely post operatively.
+• Hospitals should have suitable PAP devices available for peri operative use or ensure 
+patients with OSA bring their own device to the hospital.
+• Surgery should not be cancelled or delayed in patients with high risk of OSA 
+pre-operatively unless there is evidence of uncontrolled systemic disease.
+OSA in Children
+UPPER AIRWAY ASSESSMENT
+• OSA in children is diagnosed in the presence of symptoms with:
+○ AHI ≥2 or obstructive apnoea index ≥1 
+ OR
+○ AHI ≥1 (including central events)
+• Upper airway assessment is important in OSA patients. 
+•  If Drug-induced sleep endoscopy (DISE) is unable to be performed prior to surgery, Fiber-optic 
+nasal endoscopy with Muller’s Manoeuver (FNMM) may still be offered as an alternative 
+procedure to identify the level & degree of obstruction.  
+TREATMENT
+• Lifestyle intervention for weight reduction should be advocated in OSA.
+• Positive airway pressure (PAP) therapy should be offered to patients with OSA upon diagnosis 
+especially in moderate to severe OSA. 
+• Upper airway surgery may be considered in selected OSA patients. 
+• Maxillomandibular advancement may be considered in certain patients with moderate to 
+severe OSA.
+• Mandibular advancement appliance may be considered for adult patients with OSA.
+• In obese OSA patients (body mass index ≥35 kg/m2), bariatric surgery may be considered.
+OSA in Adults
+• Oral montelukast &/or nasal corticosteroids may be considered in children with obstructive 
+sleep apnoea.
+• Adenotonsillectomy (AT) is the treatment of choice in children with OSA due to 
+adenotonsillar hypertrophy. 
+○ In those with post-AT residual disease, upper airway & multilevel obstruction should 
+be reassessed & ruled out. 
+• Continuous positive airway pressure (CPAP) should be offered in children with OSA if they 
+have persistent symptoms or signs after surgery or in whom surgery is contraindicated. 
+○ Nasal CPAP is the preferred option.
+○ CPAP should be managed by experienced & skilled multidisciplinary clinicians.
+OSA in Children
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+PERIOPERATIVE MANAGEMENT
+• Patients who are at risk of OSA should be screened for OSA pre operatively. 
+○ The preferred screening tool is STOP-BANG.
+MONITORING & FOLLOW-UP
+• Monitoring & follow-up of OSA cases are important in ensuring treatment response, 
+adherence & optimisation of medical risk factors. 
+• OSA should be ideally managed by a multidisciplinary team consisting of respiratory 
+physicians, otolaryngology surgeons, oral maxillofacial surgeons, orthodontists, bariatric 
+surgeons and dietitians.
+SPECIAL GROUP
+• Pregnant women with suspected OSA based on symptoms & signs should be referred for 
+further management by a multidisciplinary specialist team. 
+• Patients with OSA & craniofacial anomalies should be assessed regarding the benefit & 
+risk of a surgical intervention before it can be offered to them.
+• Patients with Down syndrome should be screened for OSA & treated accordingly.
+• CPAP is the preferred initial treatment in stable ambulatory patients with obesity 
+hypoventilation syndrome & severe OSA.
+• Patients with or suspected high risk of OSA should be monitored closely post operatively.
+• Hospitals should have suitable PAP devices available for peri operative use or ensure 
+patients with OSA bring their own device to the hospital.
+• Surgery should not be cancelled or delayed in patients with high risk of OSA 
+pre-operatively unless there is evidence of uncontrolled systemic disease.
+OSA in Children
+UPPER AIRWAY ASSESSMENT
+• OSA in children is diagnosed in the presence of symptoms with:
+○ AHI ≥2 or obstructive apnoea index ≥1 
+ OR
+○ AHI ≥1 (including central events)
+• Upper airway assessment is important in OSA patients. 
+•  If Drug-induced sleep endoscopy (DISE) is unable to be performed prior to surgery, Fiber-optic 
+nasal endoscopy with Muller’s Manoeuver (FNMM) may still be offered as an alternative 
+procedure to identify the level & degree of obstruction.  
+TREATMENT
+• Lifestyle intervention for weight reduction should be advocated in OSA.
+• Positive airway pressure (PAP) therapy should be offered to patients with OSA upon diagnosis 
+especially in moderate to severe OSA. 
+• Upper airway surgery may be considered in selected OSA patients. 
+• Maxillomandibular advancement may be considered in certain patients with moderate to 
+severe OSA.
+• Mandibular advancement appliance may be considered for adult patients with OSA.
+• In obese OSA patients (body mass index ≥35 kg/m2), bariatric surgery may be considered.
+OSA in Adults
+• Oral montelukast &/or nasal corticosteroids may be considered in children with obstructive 
+sleep apnoea.
+• Adenotonsillectomy (AT) is the treatment of choice in children with OSA due to 
+adenotonsillar hypertrophy. 
+○ In those with post-AT residual disease, upper airway & multilevel obstruction should 
+be reassessed & ruled out. 
+• Continuous positive airway pressure (CPAP) should be offered in children with OSA if they 
+have persistent symptoms or signs after surgery or in whom surgery is contraindicated. 
+○ Nasal CPAP is the preferred option.
+○ CPAP should be managed by experienced & skilled multidisciplinary clinicians.
+OSA in Children
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+PERIOPERATIVE MANAGEMENT
+• Patients who are at risk of OSA should be screened for OSA pre operatively. 
+○ The preferred screening tool is STOP-BANG.
+MONITORING & FOLLOW-UP
+• Monitoring & follow-up of OSA cases are important in ensuring treatment response, 
+adherence & optimisation of medical risk factors. 
+• OSA should be ideally managed by a multidisciplinary team consisting of respiratory 
+physicians, otolaryngology surgeons, oral maxillofacial surgeons, orthodontists, bariatric 
+surgeons and dietitians.
+SPECIAL GROUP
+• Pregnant women with suspected OSA based on symptoms & signs should be referred for 
+further management by a multidisciplinary specialist team. 
+• Patients with OSA & craniofacial anomalies should be assessed regarding the benefit & 
+risk of a surgical intervention before it can be offered to them.
+• Patients with Down syndrome should be screened for OSA & treated accordingly.
+• CPAP is the preferred initial treatment in stable ambulatory patients with obesity 
+hypoventilation syndrome & severe OSA.
+• Patients with or suspected high risk of OSA should be monitored closely post operatively.
+• Hospitals should have suitable PAP devices available for peri operative use or ensure 
+patients with OSA bring their own device to the hospital.
+• Surgery should not be cancelled or delayed in patients with high risk of OSA 
+pre-operatively unless there is evidence of uncontrolled systemic disease.
+OSA in Children
+UPPER AIRWAY ASSESSMENT
+• OSA in children is diagnosed in the presence of symptoms with:
+○ AHI ≥2 or obstructive apnoea index ≥1 
+ OR
+○ AHI ≥1 (including central events)
+• Upper airway assessment is important in OSA patients. 
+•  If Drug-induced sleep endoscopy (DISE) is unable to be performed prior to surgery, Fiber-optic 
+nasal endoscopy with Muller’s Manoeuver (FNMM) may still be offered as an alternative 
+procedure to identify the level & degree of obstruction.  
+TREATMENT
+• Lifestyle intervention for weight reduction should be advocated in OSA.
+• Positive airway pressure (PAP) therapy should be offered to patients with OSA upon diagnosis 
+especially in moderate to severe OSA. 
+• Upper airway surgery may be considered in selected OSA patients. 
+• Maxillomandibular advancement may be considered in certain patients with moderate to 
+severe OSA.
+• Mandibular advancement appliance may be considered for adult patients with OSA.
+• In obese OSA patients (body mass index ≥35 kg/m2), bariatric surgery may be considered.
+OSA in Adults
+• Oral montelukast &/or nasal corticosteroids may be considered in children with obstructive 
+sleep apnoea.
+• Adenotonsillectomy (AT) is the treatment of choice in children with OSA due to 
+adenotonsillar hypertrophy. 
+○ In those with post-AT residual disease, upper airway & multilevel obstruction should 
+be reassessed & ruled out. 
+• Continuous positive airway pressure (CPAP) should be offered in children with OSA if they 
+have persistent symptoms or signs after surgery or in whom surgery is contraindicated. 
+○ Nasal CPAP is the preferred option.
+○ CPAP should be managed by experienced & skilled multidisciplinary clinicians.
+OSA in Children
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+CLINICAL PRESENTATIONALGORITHM 1. MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA IN ADULTS
+OSA in Adults
+DIAGNOSIS
+OSA in Adults
+• Diagnostic criteria for adult OSA - (A & B) or C satisfy the criteria
+A. Presence of 1 or more of the following: 
+1. Patient complains of sleepiness, non-restorative sleep, fatigue or insomnia symptoms
+2. Patient wakes with breath-holding, gasping or choking 
+3. Bed partner or other observer reports habitual snoring, breathing interruptions or 
+both during the patient’s sleep
+4. Patient has been diagnosed with hypertension, a mood disorder, cognitive 
+dysfunction, coronary artery disease, stroke, congestive heart failure, atrial 
+fibrillation or type 2 diabetes mellitus
+B. PSG or out-of-centre sleep testing (OCST) demonstrates: 
+1. ≥5 predominantly obstructive respiratory events [obstructive & mixed apnoeas, 
+hypopnoeas or respiratory effort-related arousals (RERAs)] per hour of sleep during 
+a PSG or per hour of monitoring (OCST)
+OR
+C. PSG or OCST demonstrates: 
+1. ≥15 predominantly obstructive respiratory events (apnoeas, hypopnoeas or 
+RERAs) per hour of sleep during a PSG or per hour of monitoring (OCST)
+• The third edition of the International Classification of Sleep Disorders (ICSD)-3 defines 
+OSA as: 
+○ AHI ≥5/hour associated with the typical symptoms of OSA or associated 
+medical/psychiatric disorder 
+○ AHI ≥15/hour (even in the absence of symptoms or disorders)
+Daytime symptoms
+• Excessive daytime sleepiness
+• Unrefreshed sleep
+• Tiredness/fatigue
+• Early morning headache
+• Dry mouth
+• Poor attention/concentration span
+• Memory impairment
+• Mood disturbance or irritability
+• Decrease libido/erectile dysfunction
+Night-time symptoms
+• Snoring 
+• Witnessed apnoea (cessation of       
+ breathing)
+• Gasping/choking
+• Nocturia
+• Difficulty initiating and maintaining sleep
+• Fragmented sleep (frequent awakening)
+OSA in Children
+Symptoms of upper airway obstruction
+• Snoring 
+• Witnessed apnoea
+• Difficulty in breathing
+• Abnormal sleep posture
+• Mouth breathing
+• Excessive sweating
+Complications of OSA
+• Elevated blood pressure
+• Enuresis
+• Excessive daytime sleepiness
+• Inattention/hyperactivity
+• Cognitive deficits
+• Academic difficulties
+• Failure to thrive
+Clinical Suspicion of OSA 
+Screening with STOP-BANG score of ≥3
+Consider other
+diagnosis &
+treat accordingly 
+Still highly suspicious
+of OSA (e.g. presence
+of risk factors, maxillofacial
+abnormalities, etc.) 
+Assessment*/referral to
+ORL/respiratory clinic for PSG
+Yes
+No Yes
+AHI score ≥5**
+Re-assess for other
+diagnosis & treat
+accordingly Lifestyle modifications
+PAP therapy
+± Surgery*** 
+Tolerate & compliant 
+Continue periodic follow-up
+PAP intolerant or non-compliant
+Refer for surgical management
+or oral appliances 
+(refer to Algorithm 2)
+ORL: otorhinolaryngologist
+*May include endoscopic upper airway evaluation 
+**Preferably cases of OSA are managed by a multidisciplinary team (certain cases may receive 
+ upper airway surgery earlier)
+***Patient who opts for surgery should follow Algorithm 2
+No
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+CLINICAL PRESENTATIONALGORITHM 1. MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA IN ADULTS
+OSA in Adults
+DIAGNOSIS
+OSA in Adults
+• Diagnostic criteria for adult OSA - (A & B) or C satisfy the criteria
+A. Presence of 1 or more of the following: 
+1. Patient complains of sleepiness, non-restorative sleep, fatigue or insomnia symptoms
+2. Patient wakes with breath-holding, gasping or choking 
+3. Bed partner or other observer reports habitual snoring, breathing interruptions or 
+both during the patient’s sleep
+4. Patient has been diagnosed with hypertension, a mood disorder, cognitive 
+dysfunction, coronary artery disease, stroke, congestive heart failure, atrial 
+fibrillation or type 2 diabetes mellitus
+B. PSG or out-of-centre sleep testing (OCST) demonstrates: 
+1. ≥5 predominantly obstructive respiratory events [obstructive & mixed apnoeas, 
+hypopnoeas or respiratory effort-related arousals (RERAs)] per hour of sleep during 
+a PSG or per hour of monitoring (OCST)
+OR
+C. PSG or OCST demonstrates: 
+1. ≥15 predominantly obstructive respiratory events (apnoeas, hypopnoeas or 
+RERAs) per hour of sleep during a PSG or per hour of monitoring (OCST)
+• The third edition of the International Classification of Sleep Disorders (ICSD)-3 defines 
+OSA as: 
+○ AHI ≥5/hour associated with the typical symptoms of OSA or associated 
+medical/psychiatric disorder 
+○ AHI ≥15/hour (even in the absence of symptoms or disorders)
+Daytime symptoms
+• Excessive daytime sleepiness
+• Unrefreshed sleep
+• Tiredness/fatigue
+• Early morning headache
+• Dry mouth
+• Poor attention/concentration span
+• Memory impairment
+• Mood disturbance or irritability
+• Decrease libido/erectile dysfunction
+Night-time symptoms
+• Snoring 
+• Witnessed apnoea (cessation of       
+ breathing)
+• Gasping/choking
+• Nocturia
+• Difficulty initiating and maintaining sleep
+• Fragmented sleep (frequent awakening)
+OSA in Children
+Symptoms of upper airway obstruction
+• Snoring 
+• Witnessed apnoea
+• Difficulty in breathing
+• Abnormal sleep posture
+• Mouth breathing
+• Excessive sweating
+Complications of OSA
+• Elevated blood pressure
+• Enuresis
+• Excessive daytime sleepiness
+• Inattention/hyperactivity
+• Cognitive deficits
+• Academic difficulties
+• Failure to thrive
+Clinical Suspicion of OSA 
+Screening with STOP-BANG score of ≥3
+Consider other
+diagnosis &
+treat accordingly 
+Still highly suspicious
+of OSA (e.g. presence
+of risk factors, maxillofacial
+abnormalities, etc.) 
+Assessment*/referral to
+ORL/respiratory clinic for PSG
+Yes
+No Yes
+AHI score ≥5**
+Re-assess for other
+diagnosis & treat
+accordingly Lifestyle modifications
+PAP therapy
+± Surgery*** 
+Tolerate & compliant 
+Continue periodic follow-up
+PAP intolerant or non-compliant
+Refer for surgical management
+or oral appliances 
+(refer to Algorithm 2)
+ORL: otorhinolaryngologist
+*May include endoscopic upper airway evaluation 
+**Preferably cases of OSA are managed by a multidisciplinary team (certain cases may receive 
+ upper airway surgery earlier)
+***Patient who opts for surgery should follow Algorithm 2
+No
+2 7
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+1. Obstructive Sleep Apnoea (OSA) is a common sleep-related breathing disorder 
+caused by repetitive upper airway collapse resulting in partial or complete breathing 
+cessation. It affects both children & adults. It is associated with significant morbidity.  
+2. In general, the common risk factors for OSA include age, male gender, morbid 
+obesity, adenotonsillar hypertrophy, craniofacial anomalies, prematurity & 
+neuromuscular disorder.
+3. STOP-BANG Questionnaire should be used for screening adults with clinical 
+suspicion of OSA. Epworth Sleepiness Scale (ESS) may be used to assess daytime 
+sleepiness.
+4. In paediatric patients, Paediatric Sleep Questionnaire (PSQ) should be used as a 
+screening tool for OSA. 
+5. Upper airway assessment is important in OSA patients to identify the level & degree 
+of obstruction.
+6. Diagnosis of OSA should be confirmed with polysomnography (PSG). In children, 
+nocturnal oximetry may be used as an alternative diagnostic tool if PSG is not 
+available.
+7. The aim of treatment in OSA is to relieve upper airway obstruction, improve symptoms 
+& prevent complications. 
+8. Ideally, a multidisciplinary team approach, consisting of respiratory physicians and 
+paediatricians, otolaryngology-head and neck surgeons, oral maxillofacial surgeons, 
+orthodontists etc. should be involved in managing OSA.
+9. Follow-up of OSA patients following surgical or non-surgical interventions is important 
+to monitor response & adherence to therapy.
+10. Definitive management of OSA in children should be individualised based on the 
+clinical findings e.g. adenotonsillectomy (AT) is the treatment of choice in children with 
+OSA due to adenotonsillar hypertrophy (refer to Algorithm 2 & 3). 
+ALGORITHM 2. SURGICAL TREATMENT IN ADULTS OBSTRUCTIVE SLEEP APNOEA
+PAP intolerant or non-compliant
+Consider oral
+appliances
+No
+No
+No
+No
+No
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+BMI ≥35 kg/m2
+Refer for
+bariatric surgery
+Presence of
+dentofacial deformity
+Refer to OMFS Refer to ORL
+DISE/FNMM
+Consider oral
+appliances & MFT
+Maxillary expansion MMA
+PSG at 3 - 6 months post-surgery
+Significant concentric
+palatal collapse
+Surgery (uni- or multilevel) on
+nasal/palate/oropharyngeal/tongue
+PSG at 3 months post-surgery
+Surgical
+success
+PAP reconsideration 
+& follow-up
+Follow-up
+PAP therapy & follow-up
+PAP reconsideration
+BMI: body mass index; DISE: drug-induced sleep endoscopy
+FNMM: fiber-optic nasal endoscopy with Muller’s Manoeuvre
+MFT: myofunctional therapy; 
+MMA: maxillomandibular advancement
+OMFS: oral and maxillofacial surgery
+Yes
+Surgical
+success
+Follow-up
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Obstructive Sleep Apnoea.
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+ Ministry of Health Malaysia: www.moh.gov.my
+ Academy of Medicine Malaysia: www.acadmed.org.my
+ Sleep Disorder Society Malaysia: https://sleepsocietymalaysia.org 
+ Malaysian Thoracic Society: https://www1.mts.org.my/
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA
+/uni0051/uni0055/uni0049/uni0043/uni004B/uni0020/uni0052/uni0045/uni0046/uni0045/uni0052/uni0045/uni004E/uni0043/uni0045/uni0020/uni0046/uni004F/uni0052/uni0020/uni0048/uni0045/uni0041/uni004C/uni0054/uni0048/uni0043/uni0041/uni0052/uni0045/uni0020/uni0050/uni0052/uni004F/uni0056/uni0049/uni0044/uni0045/uni0052/uni0053
+/uni004D/uni0041/uni004E/uni0041/uni0047/uni0045/uni004D/uni0045/uni004E/uni0054/uni0020/uni004F/uni0046
+/uni004F/uni0042/uni0053/uni0054/uni0052/uni0055/uni0043/uni0054/uni0049/uni0056/uni0045
+/uni0053/uni004C/uni0045/uni0045/uni0050/uni0020/uni0041/uni0050/uni004E/uni004F/uni0045/uni0041
+ALGORITHM 3. MANAGEMENT OF OBSTRUCTIVE SLEEP APNOEA IN CHILDREN
+Children with clinical
+suspicion/high risk* of OSA  
+Assessment by paediatrician &
+upper airway examination by ORL
+Refer to paediatrician &
+treat accordingly
+PSQ screening with
+score of ≥8
+High risk for OSA*
+Multidisciplinary
+assessment by
+paediatrician/respiratory
+paediatrician/ORL/OMFS/
+orthodontist 
+Adenotonsillar
+hypertrophy ± skeletal
+discrepancies
+Yes No
+No
+No
+Yes Yes
+PSG/overnight pulse oximetry PSG/overnight pulse oximetry PSG/overnight pulse oximetry
+Moderate/
+severe OSA
+Mild OSA
+AHI 1 – 5/hr
+Moderate OSA
+ AHI 5 – 10/hr 
+Severe OSA
+AHI >10/hr
+Refer respiratory
+paediatrician for
+further assessment
+Trial of medications Adenotonsillectomy Refer
+respiratory
+paediatrician
+for CPAP
+Follow-up by
+paediatrician/ORL
+Follow-up by paediatrician/
+respiratory paediatrician/ORL/
+OMFS/orthodontist
+Persistent symptoms & signs of OSA
+Refer to respiratory paediatrician & ORL for reassessment
+*obesity, craniofacial anomalies, Down syndrome etc. (refer to Subchapter 4.1 in the CPG) 

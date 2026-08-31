@@ -1,0 +1,783 @@
+Ministry of Health
+Malaysia
+(Third Edition)
+Academy of
+Medicine Malaysia
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+7
+ALGORITHM 2. MANAGEMENT OF LOCALLY ADVANCED BREAST CANCER
+ALGORITHM 3. MANAGEMENT OF METASTATIC BREAST CANCER
+Operable Inoperable
+Mastectomy &
+axillary surgery 
+Neoadjuvant chemotherapy
+± anti-HER2 therapy
+Neoadjuvant chemotherapy
+± anti-HER2 therapy
+Chemotherapy
+± trastuzumab  
+Breast conserving
+surgery & axillary
+surgery  
+Mastectomy &
+axillary surgery 
+Operable Inoperable
+Surgery Individualised
+treatment 
+Radiotherapy 
+± hormone
+therapy
+Radiotherapy 
+± hormone therapy 
+± trastuzumab
+Radiotherapy 
+± hormone therapy 
+± trastuzumab
+Locally advanced breast cancer
+No visceral crisis
+Metastatic breast cancer
+ER/PR+ ER/PR- HER2-Negative
+HER2-Negative HER2-Positive HER2-Positive HER2-Negative HER2-Positive
+Pre-menopausal Post-menopausal
+Chemotherapy
+Chemotherapy
+± Anti-HER2
+Adjunct treatment:
+Bisphosphonates
+Consider local treatment
+(radiotherapy/surgery) if indicated
+Endocrine
+therapy ± 
+Ovarian
+ablation/
+suppression
+Endocrine therapy 
+Visceral crisis
+7
+1. Breast cancer is the most important cancer among women in Malaysia. 
+Regardless of gender, it contributed to 19.0% of all new cancer cases diagnosed 
+in 2012 - 2016.
+2. Nearly half of the breast cancer patients are diagnosed at stage III & IV (47.9%). 
+Thus, increasing awareness is important for early detection.  
+3. Screening mammography for breast cancer may be performed biennially in 
+women aged 50 - 74 years in the general population. For those with high risk, 
+offer screening from 30 years of age.
+4. Patients with symptoms & signs of breast cancer should be referred to breast 
+clinic within 2 weeks. 
+5. Triple assessment which consists of clinical assessment, imaging [ultrasound 
+(US) and/or mammography] & pathology (histology and/or cytology) is required in 
+breast cancer diagnosis.
+6. Multidisciplinary team approach should be considered in the management of 
+breast cancer to improve clinical outcomes.
+7. Surgery is the mainstay of treatment for early breast cancer, consists of breast 
+conserving surgery (BCS) or mastectomy with sentinel lymph node (LN) biopsy or 
+axillary dissection.
+8. Breast cancer is a systemic disease. Hence, systemic therapy and/or 
+radiotherapy have an established role in eradicating micro-metastasis to improve 
+survival.
+9. Fertility preservation should be discussed with all breast cancer patients in the 
+reproductive age group & suitable patients should be referred to the fertility 
+specialist.
+10. Individuals suspected of having hereditary breast and/or ovarian cancers should 
+have initial risk evaluation in order to determine if formal risk assessment in a 
+cancer genetics clinic should be undertaken.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Breast 
+Cancer (Third Edition). 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+ALGORITHM 1. MANAGEMENT OF EARLY BREAST CANCER
+Early breast cancer
+Surgery Neoadjuvant
+systemic therapy
+Breast Axilla
+Adjuvant therapy*
+Clinical lymph
+node positive
+Axillary
+clearance
+Sentinel lymph node
+biopsy positive
+Clinical lymph
+node negative
+Surveillance (if adjuvant
+therapy not indicated)
+Axillary
+clearance
+*Indication for adjuvant radiotherapy:
+i.  BCS with clear margin
+ii. Post-mastectomy
+    - ≥1 lymph node positive
+    - lymph node negative in T3 or T4
+    - positive margin not amenable for  
+      surgery
+No further
+axillary surgery
+but axillary
+radiotherapy
+may be
+considered
+Axillary
+radiotherapy/
+axillary
+clearance 
+>2
+Chemotherapy
+± anti-HER2
+therapy
+Radiotherapy Endocrine
+therapy
+If BCS If mastectomy
+Breast conserving
+surgery (BCS) + whole
+breast irradiation
+Mastectomy ±
+reconstruction
+Clinical breast
+examination ± imaging
+≤2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+Systemic therapy for metastatic disease
+• Endocrine therapy should be considered as first-line treatment in 
+hormone-receptor positive, HER2-negative metastatic breast cancer unless 
+there is evidence of visceral crisis or endocrine resistance.
+• Combination chemotherapy may be considered in fit metastatic breast cancer 
+patients with impending visceral crisis or when rapid resolution of symptoms is required.
+• Bisphosphonates may be offered in breast cancer patients with bone 
+metastases to reduce skeletal-related events.
+• Indication for adjuvant radiotherapy:
+i.  BCS with clear margin  
+ii. Post-mastectomy
+ ≥1 LN positive  positive margin not amenable for surgery  LN negative in T3 or T4
+• Individuals with pathogenic/likely pathogenic variants in BRCA1 & BRCA2 have 
+an increased risk of breast, ovarian & a number of related cancers. Hence these 
+individuals warrant consideration of earlier & more intensive screening plus 
+preventive strategies.
+RISK FACTORS
+RADIOTHERAPY
+• Regular follow-up visits are recommended every 3 - 4 months in the first 2 years, 
+every 6 - 8 months from subsequent years 3 - 5 & annually thereafter. The 
+interval of visits should be adapted to the risk of relapse & patients’ needs.
+FOLLOW-UP
+The following additional management is important & should be considered for 
+breast cancer patients when indicated:
+ psychosocial assessment & intervention    palliative care
+ breast care nurse                                        patient navigation programme
+ lifestyle modifications                                  breast cancer patient support groups
+SUPPORTIVE TREATMENT
+Comprehensive guidelines for genetic testing are contained in the CPG. However, 
+the simplified Mainstreaming Cancer Genetics Cancer-Based Criteria below may 
+be used as a guide to identify at-risk individuals for evaluation of genetic testing.
+1. Ovarian cancer (epithelial non-mucinous ovarian cancer)
+2. Breast cancer in patient diagnosed ≤45 years old
+3. Two primary breast cancers, both diagnosed ≤60 years old
+4. Triple-negative breast cancer, diagnosed ≤60 years old
+5. Male breast cancer
+6. Breast cancer plus parent, sibling or child with any of the above criteria
+FAMILIAL BREAST CANCER
+CRITERIA FOR EARLY REFERRAL
+ASSESSMENT AND DIAGNOSIS
+ The cause of the vast majority of breast cancers remains unknown.  However, 
+established risk factors include:
+• Patients with any of the following conditions should be referred early (within 2 
+weeks) to breast or surgical clinic for further evaluation:
+ women aged >35 years with signs and symptoms
+ high risk group with signs and symptoms
+ patients with clinical signs of malignancy
+i. Radiological Reporting
+• Breast Imaging Reporting and Data System (BI-RADS®) is the preferred reporting 
+method in the management of breast cancer.
+Standard Reporting
+25
+Non-modifiable
+• Increasing age
+• Female
+• Family history of breast cancer at a 
+young age
+• A carrier of pathogenic or likely 
+pathogenic variants in genes e.g. 
+BRCA1, BRCA2, PALB2, ATM & CHEK2
+• Early menarche (≤12 years old) or 
+late menopause (≥50 years old)
+• History of neoplastic disease of breast
+• Increased mammographic density 
+Modifiable
+• Nulliparity 
+• Lack of breastfeeding
+• Hormonal factors: oral 
+contraceptives, hormone 
+replacement therapy, unopposed 
+oestrogen use in hysterectomised 
+women, etc.
+• Lifestyle: overweight, lower level of 
+physical activity, etc.
+• Radiation exposure
+1. Indication
+2. 
+Breast composition
+3. Important findings
+4. Comparison to 
+ previous studies
+6. Give recommendations on management
+7. Communicate unsuspected findings with the referring clinician
+5. Final assessment category
+Composition: a-b-c-d
+Mass Asymmetry
+Architectural distortion Calcifications
+Associated features
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+SURGICAL MARGIN
+SYSTEMIC THERAPY
+• Estrogen receptor (ER) & progesterone receptor (PR) status should be assessed in all 
+cases of breast cancer.
+• Human Epidermal Growth Factor Receptor 2 (HER2) test using immunohistochemistry 
+should be performed on all invasive breast cancer specimens.
+• In-situ hybridisation test should be done only in equivocal HER2 
+(immunohistochemistry 2+) on invasive breast cancer specimens.
+• The staging of breast cancer is based on Tumor Nodes Metastasis (TNM) 
+Classification of The American Joint Committee on Cancer (AJCC) 
+• Early breast cancer includes cancer of stage I, stage IIA & stage IIB.
+• No tumour at ink margin on histopathological examination is adequate for BCS in 
+invasive breast carcinoma.
+• In women treated with BCS for ductal carcinoma in situ of <2 mm margin, the 
+benefits & risks of further treatment (surgery or radiotherapy) should be discussed to 
+reduce the risk of local recurrence.  
+Neoadjuvant Therapy
+• Inoperable breast cancer should be referred for neoadjuvant systemic therapy prior 
+to surgical intervention.   
+• Neoadjuvant chemotherapy may be offered to patients with triple negative or 
+HER2-positive early breast cancer to enable BCS but its benefits & risks need to be 
+discussed with the patients.
+Adjuvant Therapy
+• Adjuvant therapy should be offered based on assessment of risks & benefits (refer 
+table on risk categories).
+• Taxane-based adjuvant chemotherapy should be offered in patients requiring 
+adjuvant chemotherapy especially in node positive breast cancer.
+• Adjuvant extended endocrine therapy may be offered to hormone receptor-positive 
+breast cancer.
+• Trastuzumab should be given to women with HER2-positive breast cancer having 
+adjuvant chemotherapy.
+43
+Need additional
+imaging or prior 
+examinations
+Recall for additional 
+imaging and/or await 
+prior examinations
+Not applicable
+Final Assessment Categories
+Category Management Likelihood of Cancer
+0
+Negative Routine screening Essentially 0%1
+Benign Routine screening Essentially 0%2
+Probably benign Short interval follow-up
+(6 months) or continued
+surveillance
+>0% but ≤2%3
+Suspicious Tissue diagnosis4
+Tissue diagnosis5
+6
+4a. low suspicion of 
+malignancy
+(>2% to ≤10%)
+4b. moderate suspicion of 
+malignancy (>10% to ≤50%)
+4c. high suspicion of 
+malignancy (>50% to <95%)
+Highly suggestive 
+of malignancy
+≥95%
+Known biopsy-
+proven
+Surgical excision when
+clinical appropriate
+Not applicable
+ii. Tissue Sampling
+• Minimally invasive biopsy technique (MIBT) with core needle is the preferred 
+diagnostic technique for both palpable and non-palpable breast lesions.
+• Repeat image-guided MIBT or consider surgical excision when the initial core 
+biopsy results are non-diagnostic or discordant with the imaging findings.
+iii. Histopathological Examination
+Adequate surgical pathology reporting of breast cancer using standard proforma with 
+minimum dataset should have:
+• maximum diameter of invasive tumour
+• location (side & quadrant), multifocality/multicentricity 
+• tumour type (histology according to WHO classification) 
+• histological grade
+• LN involvement and total number of nodes examined
+• resection margins   
+• lymphovascular invasion   
+• non-neoplastic breast changes
+• hormone receptor status: ER/PR                         
+• HER2/c-erb B2 assessment
+Risk categories of breast cancer for adjuvant systemic therapy
+Low risk Intermediate risk High risk
+pN0 and all of the following criteria:
+• size of tumour maximum 2 cm
+• Grade 1
+• no vessel invasion 
+• ER/PR+
+• HER2-negative
+• age ≥35 years old
+pN0 and at least 1further criterion:
+• size of tumour >2 cm
+• Grade 2/3
+• vessel invasion
+• HER2 overexpression
+• age <35 years old 
+• pN+ (N1 - 3) and HER2-negative
+pN+ (N1 - 3)
+and HER2
+overexpression 
+or pN+(N≥4)
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+SURGICAL MARGIN
+SYSTEMIC THERAPY
+• Estrogen receptor (ER) & progesterone receptor (PR) status should be assessed in all 
+cases of breast cancer.
+• Human Epidermal Growth Factor Receptor 2 (HER2) test using immunohistochemistry 
+should be performed on all invasive breast cancer specimens.
+• In-situ hybridisation test should be done only in equivocal HER2 
+(immunohistochemistry 2+) on invasive breast cancer specimens.
+• The staging of breast cancer is based on Tumor Nodes Metastasis (TNM) 
+Classification of The American Joint Committee on Cancer (AJCC) 
+• Early breast cancer includes cancer of stage I, stage IIA & stage IIB.
+• No tumour at ink margin on histopathological examination is adequate for BCS in 
+invasive breast carcinoma.
+• In women treated with BCS for ductal carcinoma in situ of <2 mm margin, the 
+benefits & risks of further treatment (surgery or radiotherapy) should be discussed to 
+reduce the risk of local recurrence.  
+Neoadjuvant Therapy
+• Inoperable breast cancer should be referred for neoadjuvant systemic therapy prior 
+to surgical intervention.   
+• Neoadjuvant chemotherapy may be offered to patients with triple negative or 
+HER2-positive early breast cancer to enable BCS but its benefits & risks need to be 
+discussed with the patients.
+Adjuvant Therapy
+• Adjuvant therapy should be offered based on assessment of risks & benefits (refer 
+table on risk categories).
+• Taxane-based adjuvant chemotherapy should be offered in patients requiring 
+adjuvant chemotherapy especially in node positive breast cancer.
+• Adjuvant extended endocrine therapy may be offered to hormone receptor-positive 
+breast cancer.
+• Trastuzumab should be given to women with HER2-positive breast cancer having 
+adjuvant chemotherapy.
+43
+Need additional
+imaging or prior 
+examinations
+Recall for additional 
+imaging and/or await 
+prior examinations
+Not applicable
+Final Assessment Categories
+Category Management Likelihood of Cancer
+0
+Negative Routine screening Essentially 0%1
+Benign Routine screening Essentially 0%2
+Probably benign Short interval follow-up
+(6 months) or continued
+surveillance
+>0% but ≤2%3
+Suspicious Tissue diagnosis4
+Tissue diagnosis5
+6
+4a. low suspicion of 
+malignancy
+(>2% to ≤10%)
+4b. moderate suspicion of 
+malignancy (>10% to ≤50%)
+4c. high suspicion of 
+malignancy (>50% to <95%)
+Highly suggestive 
+of malignancy
+≥95%
+Known biopsy-
+proven
+Surgical excision when
+clinical appropriate
+Not applicable
+ii. Tissue Sampling
+• Minimally invasive biopsy technique (MIBT) with core needle is the preferred 
+diagnostic technique for both palpable and non-palpable breast lesions.
+• Repeat image-guided MIBT or consider surgical excision when the initial core 
+biopsy results are non-diagnostic or discordant with the imaging findings.
+iii. Histopathological Examination
+Adequate surgical pathology reporting of breast cancer using standard proforma with 
+minimum dataset should have:
+• maximum diameter of invasive tumour
+• location (side & quadrant), multifocality/multicentricity 
+• tumour type (histology according to WHO classification) 
+• histological grade
+• LN involvement and total number of nodes examined
+• resection margins   
+• lymphovascular invasion   
+• non-neoplastic breast changes
+• hormone receptor status: ER/PR                         
+• HER2/c-erb B2 assessment
+Risk categories of breast cancer for adjuvant systemic therapy
+Low risk Intermediate risk High risk
+pN0 and all of the following criteria:
+• size of tumour maximum 2 cm
+• Grade 1
+• no vessel invasion 
+• ER/PR+
+• HER2-negative
+• age ≥35 years old
+pN0 and at least 1further criterion:
+• size of tumour >2 cm
+• Grade 2/3
+• vessel invasion
+• HER2 overexpression
+• age <35 years old 
+• pN+ (N1 - 3) and HER2-negative
+pN+ (N1 - 3)
+and HER2
+overexpression 
+or pN+(N≥4)
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+Systemic therapy for metastatic disease
+• Endocrine therapy should be considered as first-line treatment in 
+hormone-receptor positive, HER2-negative metastatic breast cancer unless 
+there is evidence of visceral crisis or endocrine resistance.
+• Combination chemotherapy may be considered in fit metastatic breast cancer 
+patients with impending visceral crisis or when rapid resolution of symptoms is required.
+• Bisphosphonates may be offered in breast cancer patients with bone 
+metastases to reduce skeletal-related events.
+• Indication for adjuvant radiotherapy:
+i.  BCS with clear margin  
+ii. Post-mastectomy
+ ≥1 LN positive  positive margin not amenable for surgery  LN negative in T3 or T4
+• Individuals with pathogenic/likely pathogenic variants in BRCA1 & BRCA2 have 
+an increased risk of breast, ovarian & a number of related cancers. Hence these 
+individuals warrant consideration of earlier & more intensive screening plus 
+preventive strategies.
+RISK FACTORS
+RADIOTHERAPY
+• Regular follow-up visits are recommended every 3 - 4 months in the first 2 years, 
+every 6 - 8 months from subsequent years 3 - 5 & annually thereafter. The 
+interval of visits should be adapted to the risk of relapse & patients’ needs.
+FOLLOW-UP
+The following additional management is important & should be considered for 
+breast cancer patients when indicated:
+ psychosocial assessment & intervention    palliative care
+ breast care nurse                                        patient navigation programme
+ lifestyle modifications                                  breast cancer patient support groups
+SUPPORTIVE TREATMENT
+Comprehensive guidelines for genetic testing are contained in the CPG. However, 
+the simplified Mainstreaming Cancer Genetics Cancer-Based Criteria below may 
+be used as a guide to identify at-risk individuals for evaluation of genetic testing.
+1. Ovarian cancer (epithelial non-mucinous ovarian cancer)
+2. Breast cancer in patient diagnosed ≤45 years old
+3. Two primary breast cancers, both diagnosed ≤60 years old
+4. Triple-negative breast cancer, diagnosed ≤60 years old
+5. Male breast cancer
+6. Breast cancer plus parent, sibling or child with any of the above criteria
+FAMILIAL BREAST CANCER
+CRITERIA FOR EARLY REFERRAL
+ASSESSMENT AND DIAGNOSIS
+ The cause of the vast majority of breast cancers remains unknown.  However, 
+established risk factors include:
+• Patients with any of the following conditions should be referred early (within 2 
+weeks) to breast or surgical clinic for further evaluation:
+ women aged >35 years with signs and symptoms
+ high risk group with signs and symptoms
+ patients with clinical signs of malignancy
+i. Radiological Reporting
+• Breast Imaging Reporting and Data System (BI-RADS®) is the preferred reporting 
+method in the management of breast cancer.
+Standard Reporting
+25
+Non-modifiable
+• Increasing age
+• Female
+• Family history of breast cancer at a 
+young age
+• A carrier of pathogenic or likely 
+pathogenic variants in genes e.g. 
+BRCA1, BRCA2, PALB2, ATM & CHEK2
+• Early menarche (≤12 years old) or 
+late menopause (≥50 years old)
+• History of neoplastic disease of breast
+• Increased mammographic density 
+Modifiable
+• Nulliparity 
+• Lack of breastfeeding
+• Hormonal factors: oral 
+contraceptives, hormone 
+replacement therapy, unopposed 
+oestrogen use in hysterectomised 
+women, etc.
+• Lifestyle: overweight, lower level of 
+physical activity, etc.
+• Radiation exposure
+1. Indication
+2. 
+Breast composition
+3. Important findings
+4. Comparison to 
+ previous studies
+6. Give recommendations on management
+7. Communicate unsuspected findings with the referring clinician
+5. Final assessment category
+Composition: a-b-c-d
+Mass Asymmetry
+Architectural distortion Calcifications
+Associated features
+1. Breast cancer is the most important cancer among women in Malaysia. 
+Regardless of gender, it contributed to 19.0% of all new cancer cases diagnosed 
+in 2012 - 2016.
+2. Nearly half of the breast cancer patients are diagnosed at stage III & IV (47.9%). 
+Thus, increasing awareness is important for early detection.  
+3. Screening mammography for breast cancer may be performed biennially in 
+women aged 50 - 74 years in the general population. For those with high risk, 
+offer screening from 30 years of age.
+4. Patients with symptoms & signs of breast cancer should be referred to breast 
+clinic within 2 weeks. 
+5. Triple assessment which consists of clinical assessment, imaging [ultrasound 
+(US) and/or mammography] & pathology (histology and/or cytology) is required in 
+breast cancer diagnosis.
+6. Multidisciplinary team approach should be considered in the management of 
+breast cancer to improve clinical outcomes.
+7. Surgery is the mainstay of treatment for early breast cancer, consists of breast 
+conserving surgery (BCS) or mastectomy with sentinel lymph node (LN) biopsy or 
+axillary dissection.
+8. Breast cancer is a systemic disease. Hence, systemic therapy and/or 
+radiotherapy have an established role in eradicating micro-metastasis to improve 
+survival.
+9. Fertility preservation should be discussed with all breast cancer patients in the 
+reproductive age group & suitable patients should be referred to the fertility 
+specialist.
+10. Individuals suspected of having hereditary breast and/or ovarian cancers should 
+have initial risk evaluation in order to determine if formal risk assessment in a 
+cancer genetics clinic should be undertaken.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Breast 
+Cancer (Third Edition). 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+ALGORITHM 1. MANAGEMENT OF EARLY BREAST CANCER
+Early breast cancer
+Surgery Neoadjuvant
+systemic therapy
+Breast Axilla
+Adjuvant therapy*
+Clinical lymph
+node positive
+Axillary
+clearance
+Sentinel lymph node
+biopsy positive
+Clinical lymph
+node negative
+Surveillance (if adjuvant
+therapy not indicated)
+Axillary
+clearance
+*Indication for adjuvant radiotherapy:
+i.  BCS with clear margin
+ii. Post-mastectomy
+    - ≥1 lymph node positive
+    - lymph node negative in T3 or T4
+    - positive margin not amenable for  
+      surgery
+No further
+axillary surgery
+but axillary
+radiotherapy
+may be
+considered
+Axillary
+radiotherapy/
+axillary
+clearance 
+>2
+Chemotherapy
+± anti-HER2
+therapy
+Radiotherapy Endocrine
+therapy
+If BCS If mastectomy
+Breast conserving
+surgery (BCS) + whole
+breast irradiation
+Mastectomy ±
+reconstruction
+Clinical breast
+examination ± imaging
+≤2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+Systemic therapy for metastatic disease
+• Endocrine therapy should be considered as first-line treatment in 
+hormone-receptor positive, HER2-negative metastatic breast cancer unless 
+there is evidence of visceral crisis or endocrine resistance.
+• Combination chemotherapy may be considered in fit metastatic breast cancer 
+patients with impending visceral crisis or when rapid resolution of symptoms is required.
+• Bisphosphonates may be offered in breast cancer patients with bone 
+metastases to reduce skeletal-related events.
+• Indication for adjuvant radiotherapy:
+i.  BCS with clear margin  
+ii. Post-mastectomy
+ ≥1 LN positive  positive margin not amenable for surgery  LN negative in T3 or T4
+• Individuals with pathogenic/likely pathogenic variants in BRCA1 & BRCA2 have 
+an increased risk of breast, ovarian & a number of related cancers. Hence these 
+individuals warrant consideration of earlier & more intensive screening plus 
+preventive strategies.
+RISK FACTORS
+RADIOTHERAPY
+• Regular follow-up visits are recommended every 3 - 4 months in the first 2 years, 
+every 6 - 8 months from subsequent years 3 - 5 & annually thereafter. The 
+interval of visits should be adapted to the risk of relapse & patients’ needs.
+FOLLOW-UP
+The following additional management is important & should be considered for 
+breast cancer patients when indicated:
+ psychosocial assessment & intervention    palliative care
+ breast care nurse                                        patient navigation programme
+ lifestyle modifications                                  breast cancer patient support groups
+SUPPORTIVE TREATMENT
+Comprehensive guidelines for genetic testing are contained in the CPG. However, 
+the simplified Mainstreaming Cancer Genetics Cancer-Based Criteria below may 
+be used as a guide to identify at-risk individuals for evaluation of genetic testing.
+1. Ovarian cancer (epithelial non-mucinous ovarian cancer)
+2. Breast cancer in patient diagnosed ≤45 years old
+3. Two primary breast cancers, both diagnosed ≤60 years old
+4. Triple-negative breast cancer, diagnosed ≤60 years old
+5. Male breast cancer
+6. Breast cancer plus parent, sibling or child with any of the above criteria
+FAMILIAL BREAST CANCER
+CRITERIA FOR EARLY REFERRAL
+ASSESSMENT AND DIAGNOSIS
+ The cause of the vast majority of breast cancers remains unknown.  However, 
+established risk factors include:
+• Patients with any of the following conditions should be referred early (within 2 
+weeks) to breast or surgical clinic for further evaluation:
+ women aged >35 years with signs and symptoms
+ high risk group with signs and symptoms
+ patients with clinical signs of malignancy
+i. Radiological Reporting
+• Breast Imaging Reporting and Data System (BI-RADS®) is the preferred reporting 
+method in the management of breast cancer.
+Standard Reporting
+25
+Non-modifiable
+• Increasing age
+• Female
+• Family history of breast cancer at a 
+young age
+• A carrier of pathogenic or likely 
+pathogenic variants in genes e.g. 
+BRCA1, BRCA2, PALB2, ATM & CHEK2
+• Early menarche (≤12 years old) or 
+late menopause (≥50 years old)
+• History of neoplastic disease of breast
+• Increased mammographic density 
+Modifiable
+• Nulliparity 
+• Lack of breastfeeding
+• Hormonal factors: oral 
+contraceptives, hormone 
+replacement therapy, unopposed 
+oestrogen use in hysterectomised 
+women, etc.
+• Lifestyle: overweight, lower level of 
+physical activity, etc.
+• Radiation exposure
+1. Indication
+2. 
+Breast composition
+3. Important findings
+4. Comparison to 
+ previous studies
+6. Give recommendations on management
+7. Communicate unsuspected findings with the referring clinician
+5. Final assessment category
+Composition: a-b-c-d
+Mass Asymmetry
+Architectural distortion Calcifications
+Associated features
+Ministry of Health
+Malaysia
+(Third Edition)
+Academy of
+Medicine Malaysia
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF BREAST CANCER (THIRD EDITION)
+7
+ALGORITHM 2. MANAGEMENT OF LOCALLY ADVANCED BREAST CANCER
+ALGORITHM 3. MANAGEMENT OF METASTATIC BREAST CANCER
+Operable Inoperable
+Mastectomy &
+axillary surgery 
+Neoadjuvant chemotherapy
+± anti-HER2 therapy
+Neoadjuvant chemotherapy
+± anti-HER2 therapy
+Chemotherapy
+± trastuzumab  
+Breast conserving
+surgery & axillary
+surgery  
+Mastectomy &
+axillary surgery 
+Operable Inoperable
+Surgery Individualised
+treatment 
+Radiotherapy 
+± hormone
+therapy
+Radiotherapy 
+± hormone therapy 
+± trastuzumab
+Radiotherapy 
+± hormone therapy 
+± trastuzumab
+Locally advanced breast cancer
+No visceral crisis
+Metastatic breast cancer
+ER/PR+ ER/PR- HER2-Negative
+HER2-Negative HER2-Positive HER2-Positive HER2-Negative HER2-Positive
+Pre-menopausal Post-menopausal
+Chemotherapy
+Chemotherapy
+± Anti-HER2
+Adjunct treatment:
+Bisphosphonates
+Consider local treatment
+(radiotherapy/surgery) if indicated
+Endocrine
+therapy ± 
+Ovarian
+ablation/
+suppression
+Endocrine therapy 
+Visceral crisis
+7

@@ -1,0 +1,953 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+7
+QUICK REFERENCE FOR HEALTH CARE PROVIDERS
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Dermatological Society of
+Malaysia
+QUALITY OF LIFE
+REFERRAL
+Acne vulgaris may affect the quality of life of the patients. A simple assessment tool which can 
+be used is Cardiff Acne Disability Index (CADI).
+The Cardiff Acne Disability Index
+1. As a result of having acne, during the 
+last month have you been aggressive, 
+frustrated or embarrassed?
+2. Do you think that having acne during 
+the last month interfered with your daily 
+social life, social events or intimate 
+personal relationships?
+3. During the last month have you avoided 
+public changing facilities or wearing 
+swimming costumes because of your 
+acne?
+4. How would you describe your feelings 
+about the appearance of your skin over 
+the last month?
+5. Please indicate how bad you think your 
+acne is now:
+ (a) Very much indeed
+ (b) A lot
+ (c) A little
+ (d) Not at all
+ (a) Severely, affecting all activities
+ (b) Moderately, in most activities
+ (c) Occasionally or in only some activities
+ (d) Not at all
+ (a) All of the time
+ (b) Most of the time
+ (c) Occasionally
+ (d) Not at all
+ (a) Very depressed and miserable
+ (b) Usually concerned
+ (c) Occasionally concerned
+ (d) Not bothered
+ (a) The worst it could possibly be
+ (b) A major problem
+ (c) A minor problem
+ (d) Not a problem
+© Cardiff Acne Disability Index. R J Motley, A Y Finlay 1992 (2021 Updated Version)
+The urgency for referral of patients with acne vulgaris can be divided into urgent (within 24 hours), 
+seen early (within 2 weeks) & non-urgent (based on the availability of the appointment).
+Refer patients urgently:
+• to a dermatologist: patient suspected to have acne fulminans
+• to a psychiatrist: patient has major depression or exhibits suicidal behaviour
+Refer patients to be seen early by dermatologists in:
+• moderate to severe acne (e.g. nodulocystic acne)
+• severe social or psychological problems including a morbid fear of deformity 
+(dysmorphophobia)
+CADI score
+0 - 5
+6 - 10
+11 - 15
+Severity
+Mild
+Moderate
+Severe
+1. Acne vulgaris is a chronic inflammatory skin disease of the pilosebaceous units, 
+commonly affecting adolescents & young adults.
+2. Acne vulgaris affects the face & trunk. It is characterised by non-inflammatory lesions 
+(open & closed comedones) & inflammatory lesions (papules, pustules, nodules & 
+cysts).
+3. Four pathogenic factors in acne vulgaris are increased sebum production, altered 
+follicular keratinisation, Cutibacterium acnes colonisation & inflammation of the 
+pilosebaceous unit.
+4. Risk & aggravating factors for acne vulgaris include adolescence, positive family 
+history of acne vulgaris in first degree relatives, high glycaemic load diet, dairy 
+products, sweetened beverages & food, & unhealthy fat intake. 
+5. Acne vulgaris is diagnosed clinically but laboratory investigations may be indicated in 
+some cases.
+6. Comprehensive Acne Severity Scale (CASS) may be used for grading of acne severity 
+in clinical practice.
+7. Topical therapy is the mainstay of treatment in mild to moderate acne vulgaris.
+8. Oral antibiotics may be used in moderate to severe acne vulgaris but should not be 
+used for more than 4 months.
+9. Isotretinoin is indicated for severe nodulocystic acne & should only be prescribed by a 
+dermatologist.
+10. Patients with moderate to severe acne vulgaris (e.g. nodulocystic acne) should be 
+referred early to a dermatologist. Patients with acne vulgaris who exhibit suicidal 
+behaviour should be referred urgently to a psychiatrist.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & summarises the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Acne Vulgaris (Second Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Dermatological Society of Malaysia: www.dermatology.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+TREATMENT OPTIONS IN PREGNANT & LACTATING WOMEN
+• Topical BPO & topical retinoids (tretinoin & adapalene) may be used safely in adolescents 
+with acne vulgaris.
+• Oral tetracycline derivatives (e.g. tetracycline, doxycycline & minocycline) should not be used 
+in patients aged <8 years with acne vulgaris.
+• Oral isotretinoin can be used safely in patients aged ≥12 years with severe acne vulgaris.
+Acne vulgaris should be treated early to prevent complications. The complications that can arise 
+from acne vulgaris are shown below.
+COMPLICATIONS OF ACNE VULGARIS
+TREATMENT OPTIONS IN ADOLESCENTS
+Post-acne erythema Post-inflammatory
+hyperpigmentation
+Hypertrophic &
+keloid scars
+Icepick scar Rolling scar Boxcar scar
+Type of treatment Medication
+Benzoyl peroxide
+Topical antibiotics (clindamycin)
+Azelaic acid
+Salicylic acid
+Macrolides (erythromycin, azithromycin)
+Chemical peel (Glycolic acid, lactic acid)
+Light-based therapy (intense pulsed light, blue- or red-light 
+phototherapy)
+Topical treatment
+Physical treatment
+Systemic treatment
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+DIAGNOSIS & INVESTIGATIONS
+25
+Acne vulgaris is diagnosed clinically based on the presence of:
+• non-inflammatory lesions (NIL) – open (Figure 1) & closed comedones (Figure 2)
+• inflammatory lesions (IL) – papules, pustules (Figure 3), nodules & cysts (Figure 4)
+Investigations are only required to rule out other diseases which may be associated with acne 
+e.g. polycystic ovarian syndrome, Cushing’s syndrome or androgen-secreting tumour.
+• Microbiological & endocrinological investigations may be performed to rule out other 
+conditions that may mimic acne vulgaris. 
+ASSESSMENT OF SEVERITY
+COMPREHENSIVE ACNE SEVERITY SCALE (CASS)
+CASS is a simple & validated tool to assess acne severity in clinical practice. Assessment is done 
+at a distance of 2.5 metres away for acne on the face, chest & back.
+Figure 1: Open comedones Figure 2: Closed comedones
+Figure 3: Papules & pustules Figure 4: Pustules, nodules and cyst
+Clear
+Almost clear
+Mild
+Moderate
+Severe
+Very severe
+0
+1
+2
+3
+4
+5
+GRADE DESCRIPTION
+No lesions to barely noticeable ones. Very few scattered comedones & 
+papules.
+Hardly visible from 2.5 metres away. A few scattered comedones, few 
+small papules & very few pustules.
+Easily recognisable; less than half of the affected area is involved. 
+Many comedones, papules & pustules.
+More than half of the affected area is involved. Numerous comedones, 
+papules & pustules.
+Entire area is involved. Covered with comedones, numerous pustules & 
+papules, a few nodules & cyst.
+Highly inflammatory acne covering the affected area, with nodules & 
+cyst present.
+[Refer to CPG Management of Acne Vulgaris (Second Edition) for photo illustrations of different 
+CASS severity]
+MEDICATION TABLE
+Benzoyl
+peroxide
+(2.5 - 10%)
+Tretinoin
+(0.025 -
+0.05%)
+Adapalene
+(0.1%)
+Clindamycin
+(1%)
+Azelaic acid
+(20%)
+Sulphur & its 
+combinations
+(1 - 8%)
+Increased sensitivity to sunlight, 
+skin peeling, erythema, swelling, 
+dryness, mild burning sensation, 
+contact dermatitis
+Initial exacerbation of acne vulgaris, 
+skin irritation, stinging, oedema, 
+blistering, crusting, erythema, scaling, 
+photosensitivity, transient hypo/
+hyperpigmentation
+Mild skin irritation, scaling, erythema, 
+dryness, stinging, burning, pruritus
+Skin irritation, dryness, stinging, 
+erythema, contact dermatitis
+Skin irritation, mostly burning or 
+pruritus, occasionally erythema & 
+scaling, photosensitivity
+Skin irritation, contact dermatitis
+Hypersensitivity to BPO
+Hypersensitivity to tretinoin, eczema, 
+broken or sunburned skin, personal 
+or family history of cutaneous 
+epithelioma, pregnancy
+Hypersensitivity to adapalene, 
+pregnancy
+Hypersensitivity to clindamycin or 
+lincomycin, ulcerative colitis, 
+antibiotic-related colitis
+Hypersensitivity to propylene 
+glycol
+Hypersensitivity to sulphur, 
+infant <2 months
+Apply once to 
+twice daily
+Apply once at 
+night or before 
+bedtime
+Apply once at night 
+or before bedtime
+Apply twice daily
+Apply twice daily
+Apply once to
+twice daily
+Drug Recommended
+Dosage
+Common Adverse Events Contraindications
+Tetracycline
+Doxycycline
+Erythromycin
+Isotretinoin
+GI disturbances, discolouration of 
+teeth & nails, photosensitivity, 
+visual disturbances
+GI disturbances, photosensitivity, 
+hypersensitivity, permanent 
+staining of teeth, rash
+GI disturbances, rash, urticaria, 
+headache, dizziness
+Dryness of skin or mucosa, 
+exanthema, pruritus, facial 
+erythema/ dermatitis, hair thinning, 
+photosensitivity, muscle & joint pain, 
+headache, dyslipidaemia
+Potentially serious AEs - Stevens-
+Johnson syndrome, toxic epidermal 
+necrolysis, suicide ideation
+Hypersensitivity to tetracyclines, 
+children ≤8 years old, pregnancy, 
+lactation, severe renal impairment
+Hypersensitivity to
+tetracyclines, children ≤8 years old, 
+pregnancy, lactation
+Hypersensitivity to erythromycin, 
+prolonged QT interval, 
+uncorrected hypokalaemia or 
+hypomagnesaemia, clinically 
+significant bradycardia
+Hypersensitivity to isotretinoin or 
+any of its components, pregnancy 
+due to teratogenicity, lactation,
+hypervitaminosis A,
+hyperlipidaemia, co-administration 
+with tetracyclines & vitamin A 
+(including dietary supplements)
+500 - 1000 mg daily
+in 2 divided doses
+for 3 - 4 months
+100 - 200 mg daily 
+in 1 - 2 divided 
+doses for 3 - 4 
+months
+Erythromycin Ethyl 
+Succinate (EES): 
+400 - 800 mg twice 
+daily for 3 - 4 months
+Erythromycin Stearate: 
+250 - 500 mg twice 
+daily for 3 - 4 months
+0.1 - 1 mg/kg/day 
+Suggested starting 
+dose of 10 - 20 mg/day
+Treatment should be
+given until acne 
+clearance & continued 
+for another 4 - 8 weeks
+(estimated duration 
+up to 6 months)
+Drug Recommended
+Dosage & Duration
+Common Adverse Events Contraindications
+a. Topical treatments
+b. Systemic treatments
+
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+43
+TREATMENT
+Treatment of acne vulgaris is based on the grade & severity of acne. Its goals include resolution 
+of lesions, reduction of psychological morbidity & prevention of scars. The treatment can be 
+divided into pharmacological & physical therapies.
+a. Topical treatment
+• Topical benzoyl peroxide (BPO) monotherapy or in combination with other topical therapy 
+should be given in mild to moderate acne vulgaris. 
+• Topical retinoids (e.g. tretinoin & adapalene) monotherapy should be used in 
+non-inflammatory acne vulgaris or in combination with other therapies in inflammatory acne.
+• Topical antibiotics (e.g. clindamycin) should not be used as monotherapy in acne vulgaris to 
+prevent bacterial resistance.
+• Topical azelaic acid (AA) may be used in acne vulgaris, especially in patients with 
+post-inflammatory hyperpigmentation.
+• Combination topical therapy should be given in moderate acne vulgaris.
+b. Systemic treatment
+• Oral doxycycline, tetracycline or erythromycin should be used for moderate to severe acne 
+vulgaris.
+ Response to these antibiotics should be evaluated at 6 - 8 weeks.
+ Target duration of therapy should not exceed 3 - 4 months to reduce resistance.
+• Isotretinoin should be prescribed for nodulocystic or severe acne vulgaris & 
+treatment-resistant moderate acne vulgaris.
+ It should only be prescribed by dermatologists.
+c. Physical treatment  
+• Chemical peels may be used as an adjunct in the treatment of acne vulgaris. 
+ The preferred choices are salicylic acid (SA) & glycolic acid (GA) peels.
+Refer to the Medication Table & Algorithm on the Management of Acne Vulgaris for further 
+details.
+• Practical advice on topical BPO:
+ Start at a lower concentration of 2.5% & titrate gradually to 5 - 10% if no improvement
+ Apply once a day on the affected areas only
+ If skin irritation develops, withhold treatment & restart on alternate days once the adverse 
+event has subsided
+ Concomitant use of moisturiser may improve tolerability
+ Bleaching of clothes may occur & the patient should be advised accordingly
+• Practical advice on topical retinoids:
+ It can cause photosensitivity, thus should be applied at night
+ Apply a thin layer on the affected areas or the entire face
+ If skin irritation develops, withhold treatment & restart on alternate days once the adverse 
+event has subsided
+ Concomitant use of moisturiser may improve tolerability
+ Adequate sun protection (e.g. using broad-spectrum sunscreen, umbrella or hat) is 
+advisable
+DIAGNOSIS & SEVERITY ASSESSMENT OF ACNE 
+[BASED ON COMPREHENSIVE ACNE SEVERITY SCALE (CASS)*]
+MILD MODERATE SEVERE
+PREDOMINANTLY
+NON-INFLAMMATORY
+LESION
+PREDOMINANTLY
+INFLAMMATORY
+LESION
+TOPICAL BENZOYL PEROXIDETOPICAL RETINOIDS** COMBINATION OF ANY TWO TOPICAL AGENTS
+i. Benzoyl peroxide (preferred)
+ii. Retinoids
+iii. Topical antibiotics
+iv. Azelaic acid
+v. Salicylic acid
+COMBINATION OF TWO TOPICAL AGENTS AS ABOVE# + ONE ORAL ANTIBIOTIC
+i. Doxycycline
+ii. Tetracycliine
+iii. Erythromycin
+In female patients with evidence of hyperandrogenism, consider hormonal therapy.
+#except topical antibiotics
+No improvement after 3 months
+No improvement after 3 months
+*Severity assessment is based on CASS (mild 
+1 - 2, moderate 3, severe 4 - 5). Quality of life 
+assessment should be taken into 
+consideration. 
+**Topical retinoids are to be avoided in 
+pregnancy.
+REFER DERMATOLOGIST for oral isotretinoin ± physical therapy
+• Response to oral antibiotics should be 
+assessed at 6 - 8 weeks.
+• Recommended duration of oral 
+antibiotics is 3 - 4 months.
+)
+MAINTENANCE THERAPY
+ with topical retinoids or topical benzoyl 
+peroxide once acne under control
+No improvement after 3 months
+ALGORITHM ON THE MANAGEMENT OF ACNE VULGARIS
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+43
+TREATMENT
+Treatment of acne vulgaris is based on the grade & severity of acne. Its goals include resolution 
+of lesions, reduction of psychological morbidity & prevention of scars. The treatment can be 
+divided into pharmacological & physical therapies.
+a. Topical treatment
+• Topical benzoyl peroxide (BPO) monotherapy or in combination with other topical therapy 
+should be given in mild to moderate acne vulgaris. 
+• Topical retinoids (e.g. tretinoin & adapalene) monotherapy should be used in 
+non-inflammatory acne vulgaris or in combination with other therapies in inflammatory acne.
+• Topical antibiotics (e.g. clindamycin) should not be used as monotherapy in acne vulgaris to 
+prevent bacterial resistance.
+• Topical azelaic acid (AA) may be used in acne vulgaris, especially in patients with 
+post-inflammatory hyperpigmentation.
+• Combination topical therapy should be given in moderate acne vulgaris.
+b. Systemic treatment
+• Oral doxycycline, tetracycline or erythromycin should be used for moderate to severe acne 
+vulgaris.
+ Response to these antibiotics should be evaluated at 6 - 8 weeks.
+ Target duration of therapy should not exceed 3 - 4 months to reduce resistance.
+• Isotretinoin should be prescribed for nodulocystic or severe acne vulgaris & 
+treatment-resistant moderate acne vulgaris.
+ It should only be prescribed by dermatologists.
+c. Physical treatment  
+• Chemical peels may be used as an adjunct in the treatment of acne vulgaris. 
+ The preferred choices are salicylic acid (SA) & glycolic acid (GA) peels.
+Refer to the Medication Table & Algorithm on the Management of Acne Vulgaris for further 
+details.
+• Practical advice on topical BPO:
+ Start at a lower concentration of 2.5% & titrate gradually to 5 - 10% if no improvement
+ Apply once a day on the affected areas only
+ If skin irritation develops, withhold treatment & restart on alternate days once the adverse 
+event has subsided
+ Concomitant use of moisturiser may improve tolerability
+ Bleaching of clothes may occur & the patient should be advised accordingly
+• Practical advice on topical retinoids:
+ It can cause photosensitivity, thus should be applied at night
+ Apply a thin layer on the affected areas or the entire face
+ If skin irritation develops, withhold treatment & restart on alternate days once the adverse 
+event has subsided
+ Concomitant use of moisturiser may improve tolerability
+ Adequate sun protection (e.g. using broad-spectrum sunscreen, umbrella or hat) is 
+advisable
+DIAGNOSIS & SEVERITY ASSESSMENT OF ACNE 
+[BASED ON COMPREHENSIVE ACNE SEVERITY SCALE (CASS)*]
+MILD
+ MODERATE
+ SEVERE
+PREDOMINANTLY
+NON-INFLAMMATORY
+LESION
+PREDOMINANTLY
+INFLAMMATORY
+LESION
+TOPICAL BENZOYL PEROXIDETOPICAL RETINOIDS** COMBINATION OF ANY TWO TOPICAL AGENTS
+i. Benzoyl peroxide (preferred)
+ii. Retinoids
+iii. Topical antibiotics
+iv. Azelaic acid
+v. Salicylic acid
+COMBINATION OF TWO TOPICAL AGENTS AS ABOVE# + ONE ORAL ANTIBIOTIC
+i. Doxycycline
+ii. Tetracycliine
+iii. Erythromycin
+In female patients with evidence of hyperandrogenism, consider hormonal therapy.
+#except topical antibiotics
+No improvement after 3 months
+No improvement after 3 months
+*Severity assessment is based on CASS (mild 
+1 - 2, moderate 3, severe 4 - 5). Quality of life 
+assessment should be taken into 
+consideration. 
+**Topical retinoids are to be avoided in 
+pregnancy.
+REFER DERMATOLOGIST for oral isotretinoin ± physical therapy
+• Response to oral antibiotics should be 
+assessed at 6 - 8 weeks.
+• Recommended duration of oral 
+antibiotics is 3 - 4 months.
+)
+MAINTENANCE THERAPY
+ with topical retinoids or topical benzoyl 
+peroxide once acne under control
+No improvement after 3 months
+ALGORITHM ON THE MANAGEMENT OF ACNE VULGARIS
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+DIAGNOSIS & INVESTIGATIONS
+25
+Acne vulgaris is diagnosed clinically based on the presence of:
+• non-inflammatory lesions (NIL) – open (Figure 1) & closed comedones (Figure 2)
+• inflammatory lesions (IL) – papules, pustules (Figure 3), nodules & cysts (Figure 4)
+Investigations are only required to rule out other diseases which may be associated with acne 
+e.g. polycystic ovarian syndrome, Cushing’s syndrome or androgen-secreting tumour.
+• Microbiological & endocrinological investigations may be performed to rule out other 
+conditions that may mimic acne vulgaris. 
+ASSESSMENT OF SEVERITY
+COMPREHENSIVE ACNE SEVERITY SCALE (CASS)
+CASS is a simple & validated tool to assess acne severity in clinical practice. Assessment is done 
+at a distance of 2.5 metres away for acne on the face, chest & back.
+Figure 1: Open comedones Figure 2: Closed comedones
+Figure 3: Papules & pustules Figure 4: Pustules, nodules and cyst
+Clear
+Almost clear
+Mild
+Moderate
+Severe
+Very severe
+0
+1
+2
+3
+4
+5
+GRADE DESCRIPTION
+No lesions to barely noticeable ones. Very few scattered comedones & 
+papules.
+Hardly visible from 2.5 metres away. A few scattered comedones, few 
+small papules & very few pustules.
+Easily recognisable; less than half of the affected area is involved. 
+Many comedones, papules & pustules.
+More than half of the affected area is involved. Numerous comedones, 
+papules & pustules.
+Entire area is involved. Covered with comedones, numerous pustules & 
+papules, a few nodules & cyst.
+Highly inflammatory acne covering the affected area, with nodules & 
+cyst present.
+[Refer to CPG Management of Acne Vulgaris (Second Edition) for photo illustrations of different 
+CASS severity]
+MEDICATION TABLE
+Benzoyl
+peroxide
+(2.5 - 10%)
+Tretinoin
+(0.025 -
+0.05%)
+Adapalene
+(0.1%)
+Clindamycin
+(1%)
+Azelaic acid
+(20%)
+Sulphur & its 
+combinations
+(1 - 8%)
+Increased sensitivity to sunlight, 
+skin peeling, erythema, swelling, 
+dryness, mild burning sensation, 
+contact dermatitis
+Initial exacerbation of acne vulgaris, 
+skin irritation, stinging, oedema, 
+blistering, crusting, erythema, scaling, 
+photosensitivity, transient hypo/
+hyperpigmentation
+Mild skin irritation, scaling, erythema, 
+dryness, stinging, burning, pruritus
+Skin irritation, dryness, stinging, 
+erythema, contact dermatitis
+Skin irritation, mostly burning or 
+pruritus, occasionally erythema & 
+scaling, photosensitivity
+Skin irritation, contact dermatitis
+Hypersensitivity to BPO
+Hypersensitivity to tretinoin, eczema, 
+broken or sunburned skin, personal 
+or family history of cutaneous 
+epithelioma, pregnancy
+Hypersensitivity to adapalene, 
+pregnancy
+Hypersensitivity to clindamycin or 
+lincomycin, ulcerative colitis, 
+antibiotic-related colitis
+Hypersensitivity to propylene 
+glycol
+Hypersensitivity to sulphur, 
+infant <2 months
+Apply once to 
+twice daily
+Apply once at 
+night or before 
+bedtime
+Apply once at night 
+or before bedtime
+Apply twice daily
+Apply twice daily
+Apply once to
+twice daily
+Drug Recommended
+Dosage
+Common Adverse Events Contraindications
+Tetracycline
+Doxycycline
+Erythromycin
+Isotretinoin
+GI disturbances, discolouration of 
+teeth & nails, photosensitivity, 
+visual disturbances
+GI disturbances, photosensitivity, 
+hypersensitivity, permanent 
+staining of teeth, rash
+GI disturbances, rash, urticaria, 
+headache, dizziness
+Dryness of skin or mucosa, 
+exanthema, pruritus, facial 
+erythema/ dermatitis, hair thinning, 
+photosensitivity, muscle & joint pain, 
+headache, dyslipidaemia
+Potentially serious AEs - Stevens-
+Johnson syndrome, toxic epidermal 
+necrolysis, suicide ideation
+Hypersensitivity to tetracyclines, 
+children ≤8 years old, pregnancy, 
+lactation, severe renal impairment
+Hypersensitivity to
+tetracyclines, children ≤8 years old, 
+pregnancy, lactation
+Hypersensitivity to erythromycin, 
+prolonged QT interval, 
+uncorrected hypokalaemia or 
+hypomagnesaemia, clinically 
+significant bradycardia
+Hypersensitivity to isotretinoin or 
+any of its components, pregnancy 
+due to teratogenicity, lactation,
+hypervitaminosis A,
+hyperlipidaemia, co-administration 
+with tetracyclines & vitamin A 
+(including dietary supplements)
+500 - 1000 mg daily
+in 2 divided doses
+for 3 - 4 months
+100 - 200 mg daily 
+in 1 - 2 divided 
+doses for 3 - 4 
+months
+Erythromycin Ethyl 
+Succinate (EES): 
+400 - 800 mg twice 
+daily for 3 - 4 months
+Erythromycin Stearate: 
+250 - 500 mg twice 
+daily for 3 - 4 months
+0.1 - 1 mg/kg/day 
+Suggested starting 
+dose of 10 - 20 mg/day
+Treatment should be
+given until acne 
+clearance & continued 
+for another 4 - 8 weeks
+(estimated duration 
+up to 6 months)
+Drug Recommended
+Dosage & Duration
+Common Adverse Events Contraindications
+a. Topical treatments
+b. Systemic treatments
+1. Acne vulgaris is a chronic inflammatory skin disease of the pilosebaceous units, 
+commonly affecting adolescents & young adults.
+2. Acne vulgaris affects the face & trunk. It is characterised by non-inflammatory lesions 
+(open & closed comedones) & inflammatory lesions (papules, pustules, nodules & 
+cysts).
+3. Four pathogenic factors in acne vulgaris are increased sebum production, altered 
+follicular keratinisation, Cutibacterium acnes colonisation & inflammation of the 
+pilosebaceous unit.
+4. Risk & aggravating factors for acne vulgaris include adolescence, positive family 
+history of acne vulgaris in first degree relatives, high glycaemic load diet, dairy 
+products, sweetened beverages & food, & unhealthy fat intake. 
+5. Acne vulgaris is diagnosed clinically but laboratory investigations may be indicated in 
+some cases.
+6. Comprehensive Acne Severity Scale (CASS) may be used for grading of acne severity 
+in clinical practice.
+7. Topical therapy is the mainstay of treatment in mild to moderate acne vulgaris.
+8. Oral antibiotics may be used in moderate to severe acne vulgaris but should not be 
+used for more than 4 months.
+9. Isotretinoin is indicated for severe nodulocystic acne & should only be prescribed by a 
+dermatologist.
+10. Patients with moderate to severe acne vulgaris (e.g. nodulocystic acne) should be 
+referred early to a dermatologist. Patients with acne vulgaris who exhibit suicidal 
+behaviour should be referred urgently to a psychiatrist.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & summarises the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Acne Vulgaris (Second Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Dermatological Society of Malaysia: www.dermatology.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+TREATMENT OPTIONS IN PREGNANT & LACTATING WOMEN
+• Topical BPO & topical retinoids (tretinoin & adapalene) may be used safely in adolescents 
+with acne vulgaris.
+• Oral tetracycline derivatives (e.g. tetracycline, doxycycline & minocycline) should not be used 
+in patients aged <8 years with acne vulgaris.
+• Oral isotretinoin can be used safely in patients aged ≥12 years with severe acne vulgaris.
+Acne vulgaris should be treated early to prevent complications. The complications that can arise 
+from acne vulgaris are shown below.
+COMPLICATIONS OF ACNE VULGARIS
+TREATMENT OPTIONS IN ADOLESCENTS
+Post-acne erythema Post-inflammatory
+hyperpigmentation
+Hypertrophic &
+keloid scars
+Icepick scar Rolling scar Boxcar scar
+Type of treatment Medication
+Benzoyl peroxide
+Topical antibiotics (clindamycin)
+Azelaic acid
+Salicylic acid
+Macrolides (erythromycin, azithromycin)
+Chemical peel (Glycolic acid, lactic acid)
+Light-based therapy (intense pulsed light, blue- or red-light 
+phototherapy)
+Topical treatment
+Physical treatment
+Systemic treatment
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+DIAGNOSIS & INVESTIGATIONS
+25
+Acne vulgaris is diagnosed clinically based on the presence of:
+• non-inflammatory lesions (NIL) – open (Figure 1) & closed comedones (Figure 2)
+• inflammatory lesions (IL) – papules, pustules (Figure 3), nodules & cysts (Figure 4)
+Investigations are only required to rule out other diseases which may be associated with acne 
+e.g. polycystic ovarian syndrome, Cushing’s syndrome or androgen-secreting tumour.
+• Microbiological & endocrinological investigations may be performed to rule out other 
+conditions that may mimic acne vulgaris. 
+ASSESSMENT OF SEVERITY
+COMPREHENSIVE ACNE SEVERITY SCALE (CASS)
+CASS is a simple & validated tool to assess acne severity in clinical practice. Assessment is done 
+at a distance of 2.5 metres away for acne on the face, chest & back.
+Figure 1: Open comedones Figure 2: Closed comedones
+Figure 3: Papules & pustules Figure 4: Pustules, nodules and cyst
+Clear
+Almost clear
+Mild
+Moderate
+Severe
+Very severe
+0
+1
+2
+3
+4
+5
+GRADE DESCRIPTION
+No lesions to barely noticeable ones. Very few scattered comedones & 
+papules.
+Hardly visible from 2.5 metres away. A few scattered comedones, few 
+small papules & very few pustules.
+Easily recognisable; less than half of the affected area is involved. 
+Many comedones, papules & pustules.
+More than half of the affected area is involved. Numerous comedones, 
+papules & pustules.
+Entire area is involved. Covered with comedones, numerous pustules & 
+papules, a few nodules & cyst.
+Highly inflammatory acne covering the affected area, with nodules & 
+cyst present.
+[Refer to CPG Management of Acne Vulgaris (Second Edition) for photo illustrations of different 
+CASS severity]
+MEDICATION TABLE
+Benzoyl
+peroxide
+(2.5 - 10%)
+Tretinoin
+(0.025 -
+0.05%)
+Adapalene
+(0.1%)
+Clindamycin
+(1%)
+Azelaic acid
+(20%)
+Sulphur & its 
+combinations
+(1 - 8%)
+Increased sensitivity to sunlight, 
+skin peeling, erythema, swelling, 
+dryness, mild burning sensation, 
+contact dermatitis
+Initial exacerbation of acne vulgaris, 
+skin irritation, stinging, oedema, 
+blistering, crusting, erythema, scaling, 
+photosensitivity, transient hypo/
+hyperpigmentation
+Mild skin irritation, scaling, erythema, 
+dryness, stinging, burning, pruritus
+Skin irritation, dryness, stinging, 
+erythema, contact dermatitis
+Skin irritation, mostly burning or 
+pruritus, occasionally erythema & 
+scaling, photosensitivity
+Skin irritation, contact dermatitis
+Hypersensitivity to BPO
+Hypersensitivity to tretinoin, eczema, 
+broken or sunburned skin, personal 
+or family history of cutaneous 
+epithelioma, pregnancy
+Hypersensitivity to adapalene, 
+pregnancy
+Hypersensitivity to clindamycin or 
+lincomycin, ulcerative colitis, 
+antibiotic-related colitis
+Hypersensitivity to propylene 
+glycol
+Hypersensitivity to sulphur, 
+infant <2 months
+Apply once to 
+twice daily
+Apply once at 
+night or before 
+bedtime
+Apply once at night 
+or before bedtime
+Apply twice daily
+Apply twice daily
+Apply once to
+twice daily
+Drug Recommended
+Dosage
+Common Adverse Events Contraindications
+Tetracycline
+Doxycycline
+Erythromycin
+Isotretinoin
+GI disturbances, discolouration of 
+teeth & nails, photosensitivity, 
+visual disturbances
+GI disturbances, photosensitivity, 
+hypersensitivity, permanent 
+staining of teeth, rash
+GI disturbances, rash, urticaria, 
+headache, dizziness
+Dryness of skin or mucosa, 
+exanthema, pruritus, facial 
+erythema/ dermatitis, hair thinning, 
+photosensitivity, muscle & joint pain, 
+headache, dyslipidaemia
+Potentially serious AEs - Stevens-
+Johnson syndrome, toxic epidermal 
+necrolysis, suicide ideation
+Hypersensitivity to tetracyclines, 
+children ≤8 years old, pregnancy, 
+lactation, severe renal impairment
+Hypersensitivity to
+tetracyclines, children ≤8 years old, 
+pregnancy, lactation
+Hypersensitivity to erythromycin, 
+prolonged QT interval, 
+uncorrected hypokalaemia or 
+hypomagnesaemia, clinically 
+significant bradycardia
+Hypersensitivity to isotretinoin or 
+any of its components, pregnancy 
+due to teratogenicity, lactation,
+hypervitaminosis A,
+hyperlipidaemia, co-administration 
+with tetracyclines & vitamin A 
+(including dietary supplements)
+500 - 1000 mg daily
+in 2 divided doses
+for 3 - 4 months
+100 - 200 mg daily 
+in 1 - 2 divided 
+doses for 3 - 4 
+months
+Erythromycin Ethyl 
+Succinate (EES): 
+400 - 800 mg twice 
+daily for 3 - 4 months
+Erythromycin Stearate: 
+250 - 500 mg twice 
+daily for 3 - 4 months
+0.1 - 1 mg/kg/day 
+Suggested starting 
+dose of 10 - 20 mg/day
+Treatment should be
+given until acne 
+clearance & continued 
+for another 4 - 8 weeks
+(estimated duration 
+up to 6 months)
+Drug Recommended
+Dosage & Duration
+Common Adverse Events Contraindications
+a. Topical treatments
+b. Systemic treatments
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ACNE VULGARIS (SECOND EDITION)
+7
+QUICK REFERENCE FOR HEALTH CARE PROVIDERS
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Dermatological Society of
+Malaysia
+QUALITY OF LIFE
+REFERRAL
+Acne vulgaris may affect the quality of life of the patients. A simple assessment tool which can 
+be used is Cardiff Acne Disability Index (CADI).
+The Cardiff Acne Disability Index
+1. As a result of having acne, during the 
+last month have you been aggressive, 
+frustrated or embarrassed?
+2. Do you think that having acne during 
+the last month interfered with your daily 
+social life, social events or intimate 
+personal relationships?
+3. During the last month have you avoided 
+public changing facilities or wearing 
+swimming costumes because of your 
+acne?
+4. How would you describe your feelings 
+about the appearance of your skin over 
+the last month?
+5. Please indicate how bad you think your 
+acne is now:
+ (a) Very much indeed
+ (b) A lot
+ (c) A little
+ (d) Not at all
+ (a) Severely, affecting all activities
+ (b) Moderately, in most activities
+ (c) Occasionally or in only some activities
+ (d) Not at all
+ (a) All of the time
+ (b) Most of the time
+ (c) Occasionally
+ (d) Not at all
+ (a) Very depressed and miserable
+ (b) Usually concerned
+ (c) Occasionally concerned
+ (d) Not bothered
+ (a) The worst it could possibly be
+ (b) A major problem
+ (c) A minor problem
+ (d) Not a problem
+© Cardiff Acne Disability Index. R J Motley, A Y Finlay 1992 (2021 Updated Version)
+The urgency for referral of patients with acne vulgaris can be divided into urgent (within 24 hours), 
+seen early (within 2 weeks) & non-urgent (based on the availability of the appointment).
+Refer patients urgently:
+• to a dermatologist: patient suspected to have acne fulminans
+• to a psychiatrist: patient has major depression or exhibits suicidal behaviour
+Refer patients to be seen early by dermatologists in:
+• moderate to severe acne (e.g. nodulocystic acne)
+• severe social or psychological problems including a morbid fear of deformity 
+(dysmorphophobia)
+CADI score
+0 - 5
+6 - 10
+11 - 15
+Severity
+Mild
+Moderate
+Severe

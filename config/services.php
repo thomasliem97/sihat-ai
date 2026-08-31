@@ -46,6 +46,11 @@ return [
         'embedding_model' => env('OPENAI_EMBEDDING_MODEL', 'text-embedding-3-small'),
         'structure_model' => env('OPENAI_STRUCTURE_MODEL', 'gpt-5.6-terra'),
         'structure_effort' => env('OPENAI_STRUCTURE_EFFORT', 'high'),
+        'lab_structure_effort' => env('OPENAI_LAB_STRUCTURE_EFFORT', 'low'),
+    ],
+
+    'pdftotext' => [
+        'path' => env('PDFTOTEXT_PATH', 'pdftotext'),
     ],
 
     'triage' => [

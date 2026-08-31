@@ -24,6 +24,7 @@ class MedicalRecordFactory extends Factory
         return [
             'user_id' => User::factory(),
             'title' => fake()->sentence(3),
+            'title_generated' => false,
             'modality' => Modality::Xray,
             'status' => RecordStatus::Pending,
             'file_path' => 'medical-records/'.fake()->uuid().'.jpg',

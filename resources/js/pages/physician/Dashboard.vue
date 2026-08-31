@@ -146,7 +146,11 @@ defineOptions({
                         </div>
                         <AnnotationPill
                             :variant="
-                                record.status === 'completed' ? 'teal' : 'amber'
+                                record.status === 'completed'
+                                    ? 'teal'
+                                    : record.status === 'failed'
+                                      ? 'coral'
+                                      : 'amber'
                             "
                         >
                             {{ record.status }}

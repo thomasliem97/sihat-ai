@@ -8,6 +8,7 @@ use App\Models\GuidelineChunk;
 use App\Models\MedicalRecord;
 use App\Models\User;
 use App\Services\RagService;
+use Illuminate\Support\Facades\Http;
 
 beforeEach(function () {
     config(['services.modal.webhook_secret' => 'test-secret']);
@@ -25,11 +26,14 @@ test('webhook rejects invalid signature', function () {
 });
 
 test('webhook completes analysis with valid signature', function () {
+    $vector = app(RagService::class)->localHashEmbed('Right lower lobe opacity patchy consolidation pneumonia chest radiograph');
+    fakeOpenAiEmbedding($vector);
+
     GuidelineChunk::create([
-        'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
-        'section' => '4.2 Diagnosis',
-        'content' => 'Right lower lobe opacity with patchy consolidation on chest radiograph suggests community-acquired pneumonia.',
-        'embedding' => app(RagService::class)->localHashEmbed('Right lower lobe opacity patchy consolidation pneumonia chest radiograph'),
+        'source' => 'MOH QR - Management of Tuberculosis 4th Edition',
+        'section' => 'Key messages',
+        'content' => 'Adults with productive cough should be screened for pulmonary TB. Chest radiograph should be done in people with suspected EPTB to rule out concomitant PTB.',
+        'embedding' => $vector,
     ]);
 
     $user = User::factory()->physician()->create();
@@ -63,8 +67,16 @@ test('webhook completes analysis with valid signature', function () {
             'overall_confidence' => 0.88,
             'differential_diagnosis' => [
                 ['condition' => 'Community-acquired pneumonia', 'confidence' => 0.7],
+                ['condition' => 'Pulmonary tuberculosis', 'confidence' => 0.6],
             ],
             'bounding_boxes' => [],
+            'medgemma_draft' => "FINDINGS:\nPatchy right lower lobe opacity.\n\nIMPRESSION:\nPossible pneumonia.",
+            'patient_report' => [
+                'summary' => 'The scan shows a patchy area in the right lower lung.',
+                'what_this_means' => 'This can be infection; your doctor will decide.',
+                'questions_for_doctor' => ['Do I need antibiotics?'],
+                'action_plan' => ['See your doctor if fever continues.'],
+            ],
         ],
     ];
 
@@ -200,6 +212,19 @@ test('webhook accepts structured imaging findings from structurer', function () 
                     'width' => 0.4,
                     'height' => 0.35,
                     'confidence' => 0.7,
+                    'kind' => 'finding',
+                    'finding_index' => 0,
+                    'image_index' => 0,
+                ],
+                [
+                    'label' => 'Lungs',
+                    'x' => 0.08,
+                    'y' => 0.1,
+                    'width' => 0.82,
+                    'height' => 0.72,
+                    'confidence' => 0.88,
+                    'kind' => 'anatomy',
+                    'image_index' => 0,
                 ],
             ],
             'engine' => 'medgemma+gpt-5.6-terra',
@@ -229,7 +254,10 @@ test('webhook accepts structured imaging findings from structurer', function () 
         ->and($record->findings)->toHaveCount(1)
         ->and($record->findings[0]['label'])->toBe('Multiple bilateral pulmonary nodules')
         ->and($record->findings[0]['severity'])->toBe('abnormal')
-        ->and($record->bounding_boxes)->toHaveCount(1)
+        ->and($record->bounding_boxes)->toHaveCount(2)
+        ->and($record->bounding_boxes[0]['kind'] ?? null)->toBe('finding')
+        ->and($record->bounding_boxes[0]['finding_index'] ?? null)->toBe(0)
+        ->and($record->bounding_boxes[1]['kind'] ?? null)->toBe('anatomy')
         ->and($record->guardrailFlagList())->not->toContain('low_confidence_abstention');
 });
 
@@ -299,6 +327,85 @@ test('webhook redelivery does not duplicate biomarkers or escalations', function
             ->count())->toBe(1);
 });
 
+test('webhook stores censored lab values like eGFR >60 as decimals', function () {
+    $user = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'uploaded_by_user_id' => $user->id,
+        'status' => RecordStatus::Processing,
+        'modality' => Modality::LabPdf,
+        'detected_modality' => Modality::LabPdf,
+        'deidentified_at' => now(),
+    ]);
+    AnalysisJob::factory()->create([
+        'medical_record_id' => $record->id,
+        'status' => 'running',
+        'external_job_id' => 'job-lab-egfr',
+    ]);
+
+    $payload = [
+        'job_id' => 'job-lab-egfr',
+        'status' => 'completed',
+        'detected_modality' => 'lab_pdf',
+        'route_confidence' => 0.9,
+        'result' => [
+            'findings' => [
+                [
+                    'label' => 'eGFR',
+                    'description' => 'eGFR >60 mL/min',
+                    'confidence' => 0.9,
+                    'severity' => 'normal',
+                ],
+            ],
+            'overall_confidence' => 0.9,
+            'differential_diagnosis' => [],
+            'bounding_boxes' => [],
+            'biomarkers' => [
+                [
+                    'name' => 'eGFR',
+                    'value' => '>60',
+                    'unit' => 'ML/MIN',
+                    'reference_low' => '>60',
+                    'reference_high' => '',
+                    'status' => 'normal',
+                ],
+                [
+                    'name' => 'Not detected',
+                    'value' => 'ND',
+                    'unit' => '',
+                    'status' => 'normal',
+                ],
+            ],
+        ],
+    ];
+
+    $raw = json_encode($payload, JSON_THROW_ON_ERROR);
+    $signature = hash_hmac('sha256', $raw, 'test-secret');
+
+    $this->call(
+        'POST',
+        route('ai.webhook'),
+        [],
+        [],
+        [],
+        [
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_X_SIHAT_SIGNATURE' => $signature,
+        ],
+        $raw,
+    )->assertSuccessful();
+
+    $record->refresh();
+    $egfr = $record->biomarkers()->where('name', 'eGFR')->first();
+
+    expect($record->status)->toBe(RecordStatus::Completed)
+        ->and($record->biomarkers()->count())->toBe(1)
+        ->and($egfr)->not->toBeNull()
+        ->and($egfr->value)->toBe(60.0)
+        ->and($egfr->reference_low)->toBe(60.0)
+        ->and($egfr->unit)->toBe('ML/MIN');
+});
+
 test('webhook failure marks record failed', function () {
     $user = User::factory()->create();
     $record = MedicalRecord::factory()->create([
@@ -334,4 +441,178 @@ test('webhook failure marks record failed', function () {
 
     expect($record->fresh()->status)->toBe(RecordStatus::Failed)
         ->and($record->fresh()->error_message)->toBe('GPU timeout');
+});
+
+test('webhook structures a lab draft on laravel when gpu skipped json', function () {
+    config(['services.openai.api_key' => 'test-key']);
+    Http::fake([
+        'https://api.openai.com/v1/responses' => Http::response([
+            'output_text' => json_encode([
+                'findings' => [
+                    [
+                        'label' => 'Haemoglobin',
+                        'value' => '8.1',
+                        'unit' => 'g/dL',
+                        'reference' => '11.5-16.5',
+                        'severity' => 'abnormal',
+                        'confidence' => 0.9,
+                        'description' => 'Haemoglobin 8.1 g/dL is below the printed interval.',
+                    ],
+                ],
+                'biomarkers' => [
+                    [
+                        'name' => 'Haemoglobin',
+                        'value' => '8.1',
+                        'unit' => 'g/dL',
+                        'reference_low' => '11.5',
+                        'reference_high' => '16.5',
+                        'status' => 'abnormal',
+                    ],
+                ],
+                'differential_diagnosis' => [],
+                'overall_confidence' => 0.86,
+                'recommendations' => ['Correlate with MCV and ferritin.'],
+                'patient_report' => [
+                    'summary' => 'Haemoglobin is low.',
+                    'what_this_means' => 'This can be anaemia.',
+                    'questions_for_doctor' => ['Do I need iron studies?'],
+                    'action_plan' => ['Discuss this result with your doctor.'],
+                ],
+                'bounding_boxes' => [],
+            ], JSON_THROW_ON_ERROR),
+        ], 200),
+        'https://api.openai.com/v1/embeddings' => Http::response([
+            'data' => [['embedding' => [0.1, 0.2, 0.3]]],
+        ], 200),
+    ]);
+
+    $user = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'uploaded_by_user_id' => $user->id,
+        'status' => RecordStatus::Processing,
+        'modality' => Modality::LabPdf,
+        'detected_modality' => Modality::LabPdf,
+        'deidentified_at' => now(),
+    ]);
+    AnalysisJob::factory()->create([
+        'medical_record_id' => $record->id,
+        'status' => 'running',
+        'external_job_id' => 'job-lab-draft-only',
+    ]);
+
+    $payload = [
+        'job_id' => 'job-lab-draft-only',
+        'status' => 'completed',
+        'detected_modality' => 'lab_pdf',
+        'route_confidence' => 0.95,
+        'result' => [
+            'findings' => [],
+            'biomarkers' => [],
+            'overall_confidence' => 0.5,
+            'structured' => false,
+            'engine' => 'medgemma',
+            'medgemma_draft' => "FINDINGS:\nHaemoglobin 8.1 g/dL (11.5-16.5) L.\n\nIMPRESSION:\nAnaemia; correlate with MCV.",
+            'findings_narrative' => 'Haemoglobin 8.1 g/dL (11.5-16.5) L.',
+            'impression' => 'Anaemia; correlate with MCV.',
+        ],
+    ];
+
+    $raw = json_encode($payload, JSON_THROW_ON_ERROR);
+    $signature = hash_hmac('sha256', $raw, 'test-secret');
+
+    $this->call(
+        'POST',
+        route('ai.webhook'),
+        [],
+        [],
+        [],
+        [
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_X_SIHAT_SIGNATURE' => $signature,
+        ],
+        $raw,
+    )->assertSuccessful();
+
+    $record->refresh();
+
+    expect($record->status)->toBe(RecordStatus::Completed)
+        ->and($record->biomarkers()->count())->toBe(1)
+        ->and($record->biomarkers()->first()->name)->toBe('Haemoglobin')
+        ->and($record->physician_report['medgemma_draft'] ?? '')->toContain('Haemoglobin 8.1')
+        ->and($record->physician_report['engine'] ?? '')->toContain('medgemma');
+
+    Http::assertSent(fn ($request) => str_contains($request->url(), '/v1/responses'));
+});
+
+test('webhook names a blank title from openai after analysis', function () {
+    config(['services.openai.api_key' => 'test-key']);
+    Http::fake([
+        'https://api.openai.com/v1/responses' => Http::response([
+            'output_text' => json_encode(['title' => 'Chest X-ray, right lower zone opacity'], JSON_THROW_ON_ERROR),
+        ], 200),
+        'https://api.openai.com/v1/embeddings' => Http::response([
+            'data' => [['embedding' => [0.1, 0.2, 0.3]]],
+        ], 200),
+    ]);
+
+    $user = User::factory()->physician()->create();
+    $record = MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'status' => RecordStatus::Processing,
+        'modality' => Modality::Xray,
+        'detected_modality' => Modality::Xray,
+        'title' => 'scan',
+        'title_generated' => true,
+        'original_filename' => 'scan.jpg',
+        'deidentified_at' => now(),
+    ]);
+    AnalysisJob::factory()->create([
+        'medical_record_id' => $record->id,
+        'status' => 'running',
+        'external_job_id' => 'job-blank-title',
+    ]);
+
+    $payload = [
+        'job_id' => 'job-blank-title',
+        'status' => 'completed',
+        'detected_modality' => 'xray',
+        'route_confidence' => 0.9,
+        'result' => [
+            'findings' => [
+                [
+                    'label' => 'Right lower lobe opacity',
+                    'description' => 'Patchy opacity',
+                    'confidence' => 0.88,
+                    'severity' => 'abnormal',
+                ],
+            ],
+            'overall_confidence' => 0.88,
+            'differential_diagnosis' => [],
+            'bounding_boxes' => [],
+            'medgemma_draft' => "FINDINGS:\nPatchy right lower lobe opacity.\n\nIMPRESSION:\nCorrelate for infection.",
+            'impression' => 'Correlate for infection.',
+        ],
+    ];
+
+    $raw = json_encode($payload, JSON_THROW_ON_ERROR);
+    $signature = hash_hmac('sha256', $raw, 'test-secret');
+
+    $this->call(
+        'POST',
+        route('ai.webhook'),
+        [],
+        [],
+        [],
+        [
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_X_SIHAT_SIGNATURE' => $signature,
+        ],
+        $raw,
+    )->assertSuccessful();
+
+    expect($record->fresh()->title)->toBe('Chest X-ray, right lower zone opacity')
+        ->and($record->fresh()->title_generated)->toBeTrue();
+
+    Http::assertSent(fn ($request) => ($request->data()['text']['format']['name'] ?? null) === 'record_title');
 });

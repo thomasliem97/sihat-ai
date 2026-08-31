@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Head, router, useForm } from '@inertiajs/vue3';
+import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import { AlertTriangle, RefreshCw } from '@lucide/vue';
 import { computed, onUnmounted, ref, watch } from 'vue';
 import AnalysisStepper from '@/components/medical/AnalysisStepper.vue';
@@ -7,6 +7,9 @@ import CitationChip from '@/components/medical/CitationChip.vue';
 import ClinicalBadge from '@/components/medical/ClinicalBadge.vue';
 import ConfidenceBadge from '@/components/medical/ConfidenceBadge.vue';
 import ImageOverlay from '@/components/medical/ImageOverlay.vue';
+import type { OverlayBox } from '@/components/medical/ImageOverlay.vue';
+import ScanExplainerChat from '@/components/medical/ScanExplainerChat.vue';
+import type { ExplainerMessage } from '@/components/medical/ScanExplainerChat.vue';
 import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
@@ -28,6 +31,7 @@ import {
     index as recordsIndex,
     show as recordShow,
     sign as signReport,
+    retry as retryAnalysis,
 } from '@/routes/records';
 import { update as updateReport } from '@/routes/records/report';
 
@@ -71,6 +75,7 @@ const props = defineProps<{
         signed_at?: string | null;
         signed_by_name?: string | null;
         can_edit_report?: boolean;
+        can_retry?: boolean;
         error_message: string | null;
         patient_name: string;
         file_url: string | null;
@@ -96,6 +101,9 @@ const props = defineProps<{
         status: string;
     }>;
     viewMode: 'physician' | 'patient';
+    canExplain?: boolean;
+    explainerMessages?: ExplainerMessage[];
+    explainerSuggestions?: string[];
 }>();
 
 const showScanViewer = computed(() => {
@@ -107,6 +115,10 @@ const showScanViewer = computed(() => {
 
     return modality !== 'lab_pdf' && modality !== 'clinical_document';
 });
+
+const showDocumentLink = computed(
+    () => !!props.record.file_url && !showScanViewer.value,
+);
 
 const headerDescription = computed(() => {
     const parts: string[] = [];
@@ -143,6 +155,106 @@ const findingsView = computed(() =>
     })),
 );
 
+const selectedFindingIndex = ref<number | null>(null);
+const explainerChat = ref<{
+    ask: (
+        question: string,
+        options?: {
+            restoreDraft?: boolean;
+            findingIndex?: number | null;
+            selectedBox?: OverlayBox | null;
+        },
+    ) => Promise<void>;
+    busy: boolean;
+} | null>(null);
+
+const allBoxes = computed(
+    (): OverlayBox[] => (props.record.bounding_boxes ?? []) as OverlayBox[],
+);
+
+const viewerBoxes = computed((): OverlayBox[] =>
+    allBoxes.value.filter((box) => {
+        const index = box.image_index;
+
+        return index === undefined || index === null || index === 0;
+    }),
+);
+
+const explainerSelectedBox = computed((): OverlayBox | null => {
+    if (selectedFindingIndex.value === null) {
+        return null;
+    }
+
+    return boxForFinding(selectedFindingIndex.value);
+});
+
+const overlayCaption = computed((): string | null => {
+    if (!props.record.volume_meta) {
+        return null;
+    }
+
+    return 'This preview is the first extracted slice. Findings on later slices still open Ask the scan.';
+});
+
+const selectedFindingLabel = computed((): string | null => {
+    if (selectedFindingIndex.value === null) {
+        return null;
+    }
+
+    return findingLabel(selectedFindingIndex.value);
+});
+
+function selectFinding(index: number): void {
+    applyFindingSelection(selectedFindingIndex.value === index ? null : index);
+}
+
+function onOverlaySelect(index: number | null): void {
+    applyFindingSelection(index);
+}
+
+function findingLabel(index: number): string {
+    const label = findingsView.value[index]?.finding?.label;
+
+    return typeof label === 'string' && label.trim() !== ''
+        ? label
+        : 'this finding';
+}
+
+function boxForFinding(index: number): OverlayBox | null {
+    const boxes = allBoxes.value.filter(
+        (box) => (box.kind ?? 'finding') === 'finding',
+    );
+    return (
+        boxes.find((box) => box.finding_index === index) ??
+        boxes[index] ??
+        null
+    );
+}
+
+function applyFindingSelection(index: number | null): void {
+    const previous = selectedFindingIndex.value;
+    selectedFindingIndex.value = index;
+
+    if (index == null || index === previous || !props.canExplain) {
+        return;
+    }
+
+    if (explainerChat.value?.busy) {
+        return;
+    }
+
+    void explainerChat.value?.ask(
+        props.viewMode === 'physician'
+            ? `Explain this finding on the scan: ${findingLabel(index)}.`
+            : `What does this mean on my scan: ${findingLabel(index)}?`,
+        {
+            restoreDraft: false,
+            findingIndex: index,
+            selectedBox: boxForFinding(index),
+        },
+    );
+}
+
 const fallbackPipelineSteps = [
     { step: 'upload', label: 'Upload received', status: 'completed' },
     { step: 'deidentify', label: 'PII de-identified', status: 'running' },
@@ -159,6 +271,8 @@ const fallbackPipelineSteps = [
 
 const editing = ref(false);
 const draftSummary = ref('');
+const draftFindings = ref('');
+const draftImpression = ref('');
 const draftNotes = ref('');
 const draftRecommendations = ref('');
 
@@ -170,6 +284,8 @@ watch(
         }
 
         draftSummary.value = String(report.summary ?? '');
+        draftFindings.value = String(report.findings_narrative ?? '');
+        draftImpression.value = String(report.impression ?? '');
         draftNotes.value = String(report.technical_notes ?? '');
         draftRecommendations.value = Array.isArray(report.recommendations)
             ? (report.recommendations as string[]).join('\n')
@@ -180,12 +296,49 @@ watch(
 
 const reportForm = useForm({
     summary: '',
+    findings_narrative: '',
+    impression: '',
     technical_notes: '',
     recommendations: [] as string[],
 });
 
+const hasRadiologyProse = computed(() => {
+    const report = props.record.physician_report;
+
+    if (!report) {
+        return false;
+    }
+
+    return (
+        String(report.findings_narrative ?? '').trim() !== '' ||
+        String(report.impression ?? '').trim() !== ''
+    );
+});
+
+const guidelineGrounding = computed(() => {
+    const raw = props.record.physician_report?.guideline_grounding;
+
+    if (!Array.isArray(raw)) {
+        return [];
+    }
+
+    return raw.filter(
+        (row): row is { source: string; section?: string; excerpt: string } =>
+            typeof row === 'object' &&
+            row !== null &&
+            typeof (row as { excerpt?: unknown }).excerpt === 'string' &&
+            String((row as { excerpt: string }).excerpt).trim() !== '',
+    );
+});
+
 function saveDraft() {
-    reportForm.summary = draftSummary.value;
+    reportForm.findings_narrative = draftFindings.value;
+    reportForm.impression = draftImpression.value;
+    reportForm.summary = (
+        draftImpression.value.trim() ||
+        draftFindings.value.trim() ||
+        draftSummary.value
+    ).trim();
     reportForm.technical_notes = draftNotes.value;
     reportForm.recommendations = draftRecommendations.value
         .split('\n')
@@ -203,6 +356,26 @@ function signDraft() {
     router.post(signReport.url(props.record.id), {}, { preserveScroll: true });
 }
 
+const retrying = ref(false);
+
+function retryAnalysisNow() {
+    if (retrying.value) {
+        return;
+    }
+
+    retrying.value = true;
+    router.post(
+        retryAnalysis.url(props.record.id),
+        {},
+        {
+            preserveScroll: true,
+            onFinish: () => {
+                retrying.value = false;
+            },
+        },
+    );
+}
+
 const patchList = computed(() => {
     const patches = props.record.patch_meta?.patches;
 
@@ -210,6 +383,11 @@ const patchList = computed(() => {
 });
 
 let pollInterval: ReturnType<typeof setInterval> | null = null;
+let pollStartedAt = 0;
+let pollInFlight = false;
+
+const POLL_MS = 3000;
+const POLL_MAX_MS = 20 * 60 * 1000;
 
 const isAnalysisRunning = computed(
     () =>
@@ -222,17 +400,40 @@ function syncAnalysisPolling(running: boolean): void {
         beginColdStartWatch();
 
         if (!pollInterval) {
+            pollStartedAt = Date.now();
             pollInterval = setInterval(() => {
+                if (pollInFlight) {
+                    return;
+                }
+
+                if (Date.now() - pollStartedAt > POLL_MAX_MS) {
+                    syncAnalysisPolling(false);
+
+                    return;
+                }
+
+                pollInFlight = true;
                 router.reload({
-                    only: ['record', 'biomarkers', 'similarCases'],
+                    only: [
+                        'record',
+                        'biomarkers',
+                        'similarCases',
+                        'canExplain',
+                        'explainerMessages',
+                        'explainerSuggestions',
+                    ],
+                    onFinish: () => {
+                        pollInFlight = false;
+                    },
                 });
-            }, 3000);
+            }, POLL_MS);
         }
 
         return;
     }
 
     endColdStartWatch();
+    pollInFlight = false;
 
     if (pollInterval) {
         clearInterval(pollInterval);
@@ -295,6 +496,15 @@ defineOptions({
                         v-if="record.overall_confidence"
                         :confidence="record.overall_confidence"
                     />
+                    <Button
+                        v-if="
+                            viewMode === 'physician' && record.can_edit_report
+                        "
+                        type="button"
+                        @click="signDraft"
+                    >
+                        Sign report
+                    </Button>
                 </div>
             </div>
         </div>
@@ -394,8 +604,30 @@ defineOptions({
                 <ImageOverlay
                     v-if="showScanViewer"
                     :image-url="record.file_url"
-                    :boxes="(record.bounding_boxes as any) ?? []"
+                    :boxes="viewerBoxes"
+                    :selected-finding-index="selectedFindingIndex"
+                    :anatomy-toggle="viewMode === 'physician'"
+                    :caption="overlayCaption"
+                    @select="onOverlaySelect"
                 />
+
+                <Card v-else-if="showDocumentLink">
+                    <CardHeader class="space-y-2">
+                        <SectionTag>Specimen</SectionTag>
+                        <CardTitle class="text-lg">Source document</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <Button as-child variant="outline">
+                            <a
+                                :href="record.file_url"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Open {{ record.modality_label }}
+                            </a>
+                        </Button>
+                    </CardContent>
+                </Card>
 
                 <Card
                     :class="
@@ -428,9 +660,19 @@ defineOptions({
                         <div
                             v-for="(item, i) in findingsView"
                             :key="i"
-                            class="rounded-xl border border-border p-4"
+                            class="rounded-xl border p-4"
+                            :class="
+                                selectedFindingIndex === i
+                                    ? 'border-coral'
+                                    : 'border-border'
+                            "
                         >
-                            <div class="flex flex-col gap-2">
+                            <button
+                                type="button"
+                                class="flex w-full flex-col gap-2 text-left"
+                                :aria-pressed="selectedFindingIndex === i"
+                                @click="selectFinding(i)"
+                            >
                                 <span class="font-semibold">{{
                                     item.finding.label
                                 }}</span>
@@ -452,7 +694,7 @@ defineOptions({
                                         "
                                     />
                                 </div>
-                            </div>
+                            </button>
                             <p
                                 v-if="item.finding.description"
                                 class="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground"
@@ -553,6 +795,33 @@ defineOptions({
                     </CardContent>
                 </Card>
             </div>
+
+            <Card v-if="canExplain">
+                <CardHeader class="space-y-2">
+                    <SectionTag>Explainer</SectionTag>
+                    <CardTitle class="text-lg">Ask the scan</CardTitle>
+                    <p
+                        v-if="selectedFindingLabel"
+                        class="text-sm leading-relaxed text-muted-foreground"
+                    >
+                        Selected:
+                        <span class="font-semibold text-foreground">{{
+                            selectedFindingLabel
+                        }}</span>
+                    </p>
+                </CardHeader>
+                <CardContent>
+                    <ScanExplainerChat
+                        ref="explainerChat"
+                        :record-id="record.id"
+                        :messages="explainerMessages ?? []"
+                        :finding-index="selectedFindingIndex"
+                        :selected-box="explainerSelectedBox"
+                        :audience="viewMode"
+                        :suggestions="explainerSuggestions ?? []"
+                    />
+                </CardContent>
+            </Card>
 
             <Card v-if="biomarkers.length">
                 <CardHeader class="space-y-2">
@@ -731,10 +1000,10 @@ defineOptions({
                     <CardTitle class="text-lg">Nearby past cases</CardTitle>
                 </CardHeader>
                 <CardContent class="space-y-2">
-                    <a
+                    <Link
                         v-for="c in similarCases"
                         :key="c.id"
-                        :href="recordShow.url(c.id)"
+                        :href="recordShow(c.id)"
                         class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border p-4 text-sm transition-colors hover:bg-muted/40"
                     >
                         <div class="min-w-0">
@@ -757,14 +1026,14 @@ defineOptions({
                                 {{ c.modality_label || c.modality }}
                             </AnnotationPill>
                         </div>
-                    </a>
+                    </Link>
                 </CardContent>
             </Card>
 
             <Card v-if="viewMode === 'physician' && record.volume_meta">
                 <CardHeader class="space-y-2">
                     <SectionTag>Volume</SectionTag>
-                    <CardTitle class="text-lg">CT/MRI montage meta</CardTitle>
+                    <CardTitle class="text-lg">CT/MRI slice sequence</CardTitle>
                 </CardHeader>
                 <CardContent class="space-y-2 font-mono text-xs tracking-wide">
                     <p>
@@ -858,7 +1127,23 @@ defineOptions({
                             editing
                         "
                     >
-                        <div class="space-y-2">
+                        <div v-if="hasRadiologyProse" class="space-y-2">
+                            <FieldLabel>Findings</FieldLabel>
+                            <Textarea
+                                v-model="draftFindings"
+                                :rows="10"
+                                placeholder="Systematic findings from the scan, including what is not seen"
+                            />
+                        </div>
+                        <div v-if="hasRadiologyProse" class="space-y-2">
+                            <FieldLabel required>Impression</FieldLabel>
+                            <Textarea
+                                v-model="draftImpression"
+                                :rows="5"
+                                placeholder="Overall interpretation and next step"
+                            />
+                        </div>
+                        <div v-else class="space-y-2">
                             <FieldLabel required>Summary</FieldLabel>
                             <Textarea
                                 v-model="draftSummary"
@@ -904,7 +1189,78 @@ defineOptions({
                             viewMode === 'physician' && record.physician_report
                         "
                     >
-                        <p>{{ record.physician_report.summary }}</p>
+                        <template v-if="hasRadiologyProse">
+                            <div
+                                v-if="
+                                    String(
+                                        record.physician_report
+                                            .findings_narrative ?? '',
+                                    ).trim()
+                                "
+                            >
+                                <h3
+                                    class="mb-2 font-mono text-xs font-semibold tracking-wide uppercase"
+                                >
+                                    Findings
+                                </h3>
+                                <p class="whitespace-pre-wrap">
+                                    {{
+                                        record.physician_report
+                                            .findings_narrative
+                                    }}
+                                </p>
+                            </div>
+                            <div
+                                v-if="
+                                    String(
+                                        record.physician_report.impression ??
+                                            '',
+                                    ).trim()
+                                "
+                            >
+                                <h3
+                                    class="mb-2 font-mono text-xs font-semibold tracking-wide uppercase"
+                                >
+                                    Impression
+                                </h3>
+                                <p class="whitespace-pre-wrap">
+                                    {{ record.physician_report.impression }}
+                                </p>
+                            </div>
+                        </template>
+                        <p v-else>{{ record.physician_report.summary }}</p>
+                        <div v-if="guidelineGrounding.length">
+                            <h3
+                                class="mb-2 font-mono text-xs font-semibold tracking-wide uppercase"
+                            >
+                                Guideline basis
+                            </h3>
+                            <ul class="space-y-3">
+                                <li
+                                    v-for="(row, i) in guidelineGrounding"
+                                    :key="i"
+                                    class="max-w-prose"
+                                >
+                                    <p
+                                        class="font-mono text-xs font-semibold tracking-wide"
+                                    >
+                                        [{{ String(i + 1).padStart(2, '0') }}]
+                                        {{ row.source }}
+                                        <span
+                                            v-if="row.section"
+                                            class="text-muted-foreground"
+                                        >
+                                            §{{ row.section }}
+                                        </span>
+                                    </p>
+                                    <p
+                                        class="text-sm leading-relaxed text-muted-foreground"
+                                    >
+                                        {{ row.excerpt }}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
                         <div>
                             <h3
                                 class="mb-2 font-mono text-xs font-semibold tracking-wide uppercase"
@@ -1076,8 +1432,18 @@ defineOptions({
 
         <Alert v-else-if="record.status === 'failed'" variant="destructive">
             <AlertTitle>Analysis failed</AlertTitle>
-            <AlertDescription>
-                {{ record.error_message ?? 'Unknown error' }}
+            <AlertDescription class="space-y-3">
+                <p>{{ record.error_message ?? 'Unknown error' }}</p>
+                <Button
+                    v-if="record.can_retry"
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    :disabled="retrying"
+                    @click="retryAnalysisNow"
+                >
+                    {{ retrying ? 'Retrying...' : 'Retry analysis' }}
+                </Button>
             </AlertDescription>
         </Alert>
     </div>

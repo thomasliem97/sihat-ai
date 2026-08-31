@@ -1,0 +1,923 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+8
+EXPOSURE AT WORK PLACE
+Post-exposure prophylaxis (PEP) management of healthcare provider (HCP) with possible 
+exposure to HBV depends on the immune status of the HCP & HBsAg status of the source 
+patient. Serological markers, i.e. baseline anti-HBs & HBsAg, are important in deciding the 
+requirement for PEP.
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Chronic Hepatitis B in Adults. 
+Details of the evidence supporting these recommendations can be found in the above CPG, 
+available on the following websites: Ministry of Health Malaysia: www.moh.gov.my
+                   Academy of Medicine Malaysia: www.acadmed.org.my
+Exposure to Source HBsAg 
+Vaccine known
+responder
+anti-HBs level ≥10
+mIU/ml
+Vaccine known non-
+responder
+anti-HBs level <10
+mIU/ml
+Unknown vaccine
+response
+Incomplete vaccine
+/unvaccinated
+Test anti-HBs level
+≥10 mIU/ml <10 mIU/ml
+HBIG x 2 
+(0 & 1 month later) HBIG x 1 &
+complete
+revaccination
+HBIG x 1 &
+initiate
+revaccination
+No treatment Follow-up
+POST-EXPOSURE PROPHYLAXIS WORKFLOW
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS
+2 7
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+1. Targeted screening for hepatitis B virus (HBV) infection should be done in the 
+following groups of people:
+• family members of hepatitis B surface antigen (HBsAg) positive persons 
+• household contacts of HBsAg positive persons
+• blood donors
+• healthcare workers
+• people who inject drugs participating in harm reduction programmes
+• foreign workers
+• pregnant women
+2. Screening of HBV infection should be done using either a rapid diagnostic test (RDT) 
+or laboratory-based immunoassay. HBV deoxyribonucleic acid (DNA) should be 
+ideally done before initiation of treatment & for assessment of its response.
+3. Initial assessment of patients with chronic hepatitis B (CHB) should include:
+• phase of infection
+• degree of liver fibrosis or cirrhosis
+• presence of co-infection 
+4. Treatment should be initiated in CHB patients with:
+• non-cirrhotic liver
+- hepatitis B e antigen (HBeAg) positive with HBV DNA >20,000 IU/ml & alanine 
+transaminase (ALT) twice the upper limit of normal (ULN)
+- HBeAg negative with HBV DNA >2,000 IU/ml & ALT twice ULN
+• cirrhotic liver
+- any detectable level of HBV DNA regardless of ALT & HBeAg status
+5. Nucleos(t)ide analogues with high genetic barrier resistance should be used as 
+first-line therapy in CHB i.e. 
+• entecavir (ETV)*
+• tenofovir disoproxil fumarate (TDF)*
+• tenofovir alafenamide (TAF)
+*renal adjusted dose
+6. ETV or TAF is preferred in CHB patients with age >60 years, bone disease or impaired 
+renal function.
+7. Human Immunodeficiency virus (HIV)/HBV co-infected patients should be treated 
+simultaneously with dual active HBV treatment (tenofovir in combination with 
+lamivudine or emtricitabine) plus another third agent of antiretroviral therapy.
+8. Antiviral agents should be initiated in HBeAg-positive pregnant CHB women with high 
+viral load (>200,000 IU/ml) at 28 - 32 weeks of gestation & hepatitis B immunoglobulin 
+(HBIG) should be given to all newborns of CHB mothers within 12 hours of life.
+9. All candidates for chemotherapy & immunosuppressive treatment should be tested for 
+HBV markers prior to immunosuppression e.g. HBsAg. If HBsAg is negative, antibody 
+to hepatitis B core antigen (anti-HBc) should be tested.
+10. CHB patients who are not on treatment should be monitored for:
+• ALT
+• HBV DNA
+• liver fibrosis or cirrhosis 
+PREGNANCY
+A summary of prophylaxis & treatment in pregnant CHB patients is shown below.
+Prophylaxis & Treatment of Mother-to-Child Hepatitis B Virus Transmission
+*Based on recommended methods of assessment for fibrosis in CPG
+** NIP = National Immunisation Programme
+HBsAg screening on pregnant women
+(use rapid diagnostic test or laboratory-based Immunoassay)
+HBsAg positive HBsAg negative
+Presence
+of cirrhosis*
+HBV DNA load OR HBeAg (if HBV DNA is unavailable)
+HBV DNA 
+<200,000 IU/ml
+OR HBeAg negative 
+HBV DNA 
+>200,000 IU/ml
+OR HBeAg positive
+• No maternal
+ prophylaxis
+• Defer long-term
+ treatment with
+ monitoring &
+ reassessment
+• Start maternal prophylaxis
+ (from 28 weeks of pregnancy
+ until four weeks post-partum)
+• Reassess long-term
+ treatment after delivery &
+ monitor
+• Start long-term
+ treatment & monitor
+ (refer to management
+ algorithm in page ix)
+Give HBIG to newborn at birth (within 12 hours)
+Give hepatitis B vaccination to newborn at birth (within 24 hours) 
+followed by two or three doses of hepatitis B vaccination
+Follow
+NIP**
+Monitor maternal post-partum flare (ALT and/or HBV DNA) up to three
+months & infant’s HBV positivity (HBsAg) after six months of life
+Serology testingAssessment on maternal
+prophylaxis or long-term treatment
+Maternal
+Interventions
+Newborn 
+InterventionsFollow-up
+NO YES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+LABORATORY DIAGNOSIS
+36
+Laboratory Workflow for Diagnosis of Chronic Hepatitis B Infection
+Tests to Diagnose & Monitor Hepatitis B Virus Infection
+Anti-HBc = Antibody to hepatitis B core antigen; IgM anti-HBc = Immunoglobulin M antibody to 
+hepatitis B core antigen; Anti-HBs = Antibody to hepatitis B surface protein
++ implies positive; - implies negative; ± may be positive or negative 
+EIA: enzyme immunoassays; HBeAb: hepatitis B e antibody
+HBsAg screening
+Non-reactive
+Report as HBsAg
+non-reactiveRDT/EIA
+Reactive
+Report as HBsAg
+reactive
+HBeAg/
+HBeAb
+Reactive/Non-reactiveRefer to Table 1
+& Table 2 for
+interpretation of
+results
+If clinically indicated after consultation
+with Hepatologist/Gastroenterologist
+HBV DNA viral load
+DRUG DOSAGE, ADMINISTRATION & COMMON SIDE EFFECTS OF HEPATITIS B ANTIVIRAL IN MALAYSIA
+*Creatinine clearance (CrCl) calculated by Cockcroft-Gault formula 
+aEntecavir dose is 1 mg once daily if the patient has decompensated cirrhosis
+bProduct discontinued 
+cDeregistered in Malaysia in 2022
+Drug Standard 
+dosage Administration 
+Renal Adjustment  
+(based on Creatinine Clearance, CrCl)* (ml/min) Potential Side effects  
+30 -  10 - <30 <10/ 
+Hemodialysis (HD) 
+Preferred (high barrier to HBV resistance) 
+-  2a 
+180 mcg 
+once weekly  
+Subcutaneous 
+Injection 
+No dosage 
+adjustment  135 mcg once weekly 90 - 135 mcg once 
+weekly  
+Flu-like symptoms, fatigue, 
+mood disturbances, 
+cytopenia, autoimmune 
+disorders 
+0.5 mg once 
+daily  
+Oral tablet, take on 
+empty stomach, 2 
+hours apart from 
+food   
+50% of usual dose  
+OR  
+0.5 mg every 48 
+hours 
+30% of usual dose  
+OR  
+0.5 mg every 72 
+hours 
+10% of usual dose  
+OR  
+0.5 mg every 7 days 
+Lactic acidosis 
+ 
+300 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+300 mg every 48 
+hours  
+ 
+300 mg every 72 to 
+96 hours 
+Avoid use.  
+If no alternative, 300 
+mg every 7 days 
+Nephropathy, Fanconi 
+syndrome osteomalacia, 
+lactic acidosis 
+ 
+25 mg once 
+daily  
+Oral tablet, after 
+food 
+CrCl >15 ml/min: No dose adjustment 
+CrCl <15 ml/min: Use is not recommended Lactic acidosis 
+Non-Preferred (low barrier to HBV resistance) 
+ 100 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+CrCl 30 - 50 ml/min: 50 mg once daily  
+CrCl <5 - <15 ml/min: 15 mg once daily  
+CrCl <5 ml/min: 10 mg once daily 
+Pancreatitis, lactic 
+acidosis 
+ 
+10 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+10 mg every 48 
+hours 10 mg every 72 hours  
+Non-HD: No data  
+HD: 10 mg every 7 
+days  
+Acute renal failure, 
+Fanconi syndrome, lactic 
+acidosis  
+Telbivudinec  600 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+600 mg every 48 
+hours  
+600 mg every 72 
+hours 
+600 mg every 96 
+hours 
+Creatine kinase elevations 
+& myopathy, peripheral 
+neuropathy, lactic acidosis 
+IgM
+anti-
+HBc
+<50
+Pegylated 
+Interferon
+Entecavira
+Tenofovir 
+Disoproxil 
+Fumarate
+Tenofovir 
+Alafenamide  
+Lamivudine 
+Adefovirb 
+Dipivoxil
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+54
+PATHOPHYSIOLOGY
+The figure below represents a typical serology course of hepatitis B progression from acute to 
+chronic overtime.
+MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+HBsAg positive
+Non-cirrhotic
+HBeAg positive HBeAg negative Compensated Decompensated
+ALT >2x ULN ALT <2x ULN ALT >2x ULN ALT <2x ULN
+HBV DNA 
+>20,000*
+HBV DNA 
+<20,000* 
+HBV DNA 
+>2,000*
+HBV DNA 
+<2,000*
+HBV DNA 
+>2,000*
+HBV DNA 
+<2,000*
+Start
+treatment
+Investigate
+for other
+causes &
+treat
+accordingly
+Monitor 
+6-monthly
+Start
+treatment
+Investigate
+for other
+causes &
+treat
+accordingly
+Assess
+fibrosis non-
+invasively &
+to start
+treatment if
+indicated
+Monitor 
+6-monthly
+Start
+treatment
+Start
+treatment
+Cirrhotic
+HBV DNA
+HBeAg
+HBsAg
+anti-HBe
+Acute
+(6 months)
+Chronic
+(Years)
+Relative concentration
+Total anti-HBc
+lgM anti-HBc
+Years0 4 8 16 20 24 28 32 36 52
+Weeks after Exposure
+The natural course of HBV infection consists of four phases as shown in the table below.
+Natural History & Assessment of Patients with 
+Chronic Hepatitis B Virus Infection
+HBsAg
+HBeAg
+HBV DNA
+ALT
+Liver disease
+Old terminology
+High
+Positive
+>107 IU/ml
+Normal
+None/minimal
+Immune tolerant
+Low
+Negative
+<2,000 IU/ml
+Normal
+None
+Inactive carrier
+High/intermediate
+Positive
+104 - 107 IU/ml
+Elevated
+Moderate/severe
+Immune reactive 
+HBeAg positive
+Intermediate
+Negative
+>2,000 IU/ml
+Elevated
+Moderate/severe
+HBeAg negative
+chronic hepatitis
+Investigation/
+Terminology Chronic
+infection
+Chronic
+hepatitis
+Chronic
+infection
+Chronic
+hepatitis
+HBeAg positive HBeAg negative
+ *IU/ml
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+54
+PATHOPHYSIOLOGY
+The figure below represents a typical serology course of hepatitis B progression from acute to 
+chronic overtime.
+MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+HBsAg positive
+Non-cirrhotic
+HBeAg positive HBeAg negative Compensated Decompensated
+ALT >2x ULN ALT <2x ULN ALT >2x ULN ALT <2x ULN
+HBV DNA 
+>20,000*
+HBV DNA 
+<20,000* 
+HBV DNA 
+>2,000*
+HBV DNA 
+<2,000*
+HBV DNA 
+>2,000*
+HBV DNA 
+<2,000*
+Start
+treatment
+Investigate
+for other
+causes &
+treat
+accordingly
+Monitor 
+6-monthly
+Start
+treatment
+Investigate
+for other
+causes &
+treat
+accordingly
+Assess
+fibrosis non-
+invasively &
+to start
+treatment if
+indicated
+Monitor 
+6-monthly
+Start
+treatment
+Start
+treatment
+Cirrhotic
+HBV DNA
+HBeAg
+HBsAg
+anti-HBe
+Acute
+(6 months)
+Chronic
+(Years)
+Relative concentration
+Total anti-HBc
+lgM anti-HBc
+Years0 4 8 16 20 24 28 32 36 52
+Weeks after Exposure
+The natural course of HBV infection consists of four phases as shown in the table below.
+Natural History & Assessment of Patients with 
+Chronic Hepatitis B Virus Infection
+HBsAg
+HBeAg
+HBV DNA
+ALT
+Liver disease
+Old terminology
+High
+Positive
+>107 IU/ml
+Normal
+None/minimal
+Immune tolerant
+Low
+Negative
+<2,000 IU/ml
+Normal
+None
+Inactive carrier
+High/intermediate
+Positive
+104 - 107 IU/ml
+Elevated
+Moderate/severe
+Immune reactive 
+HBeAg positive
+Intermediate
+Negative
+>2,000 IU/ml
+Elevated
+Moderate/severe
+HBeAg negative
+chronic hepatitis
+Investigation/
+Terminology Chronic
+infection
+Chronic
+hepatitis
+Chronic
+infection
+Chronic
+hepatitis
+HBeAg positive HBeAg negative
+ *IU/ml
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+LABORATORY DIAGNOSIS
+36
+Laboratory Workflow for Diagnosis of Chronic Hepatitis B Infection
+Tests to Diagnose & Monitor Hepatitis B Virus Infection
+Anti-HBc = Antibody to hepatitis B core antigen; IgM anti-HBc = Immunoglobulin M antibody to 
+hepatitis B core antigen; Anti-HBs = Antibody to hepatitis B surface protein
++ implies positive; - implies negative; ± may be positive or negative 
+EIA: enzyme immunoassays; HBeAb: hepatitis B e antibody
+HBsAg screening
+Non-reactive
+Report as HBsAg
+non-reactiveRDT/EIA
+Reactive
+Report as HBsAg
+reactive
+HBeAg/
+HBeAb
+Reactive/Non-reactiveRefer to Table 1
+& Table 2 for
+interpretation of
+results
+If clinically indicated after consultation
+with Hepatologist/Gastroenterologist
+HBV DNA viral load
+DRUG DOSAGE, ADMINISTRATION & COMMON SIDE EFFECTS OF HEPATITIS B ANTIVIRAL IN MALAYSIA
+*Creatinine clearance (CrCl) calculated by Cockcroft-Gault formula 
+aEntecavir dose is 1 mg once daily if the patient has decompensated cirrhosis
+bProduct discontinued 
+cDeregistered in Malaysia in 2022
+Drug Standard 
+dosage Administration 
+Renal Adjustment  
+(based on Creatinine Clearance, CrCl)* (ml/min) Potential Side effects  
+30 -  10 - <30 <10/ 
+Hemodialysis (HD) 
+Preferred (high barrier to HBV resistance) 
+-  2a 
+180 mcg 
+once weekly  
+Subcutaneous 
+Injection 
+No dosage 
+adjustment  135 mcg once weekly 90 - 135 mcg once 
+weekly  
+Flu-like symptoms, fatigue, 
+mood disturbances, 
+cytopenia, autoimmune 
+disorders 
+0.5 mg once 
+daily  
+Oral tablet, take on 
+empty stomach, 2 
+hours apart from 
+food   
+50% of usual dose  
+OR  
+0.5 mg every 48 
+hours 
+30% of usual dose  
+OR  
+0.5 mg every 72 
+hours 
+10% of usual dose  
+OR  
+0.5 mg every 7 days 
+Lactic acidosis 
+ 
+300 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+300 mg every 48 
+hours  
+ 
+300 mg every 72 to 
+96 hours 
+Avoid use.  
+If no alternative, 300 
+mg every 7 days 
+Nephropathy, Fanconi 
+syndrome osteomalacia, 
+lactic acidosis 
+ 
+25 mg once 
+daily  
+Oral tablet, after 
+food 
+CrCl >15 ml/min: No dose adjustment 
+CrCl <15 ml/min: Use is not recommended Lactic acidosis 
+Non-Preferred (low barrier to HBV resistance) 
+ 100 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+CrCl 30 - 50 ml/min: 50 mg once daily  
+CrCl <5 - <15 ml/min: 15 mg once daily  
+CrCl <5 ml/min: 10 mg once daily 
+Pancreatitis, lactic 
+acidosis 
+ 
+10 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+10 mg every 48 
+hours 10 mg every 72 hours  
+Non-HD: No data  
+HD: 10 mg every 7 
+days  
+Acute renal failure, 
+Fanconi syndrome, lactic 
+acidosis  
+Telbivudinec  600 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+600 mg every 48 
+hours  
+600 mg every 72 
+hours 
+600 mg every 96 
+hours 
+Creatine kinase elevations 
+& myopathy, peripheral 
+neuropathy, lactic acidosis 
+IgM
+anti-
+HBc
+<50
+Pegylated 
+Interferon
+Entecavira
+Tenofovir 
+Disoproxil 
+Fumarate
+Tenofovir 
+Alafenamide  
+Lamivudine 
+Adefovirb 
+Dipivoxil
+2 7
+KEY MESSAGES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+1. Targeted screening for hepatitis B virus (HBV) infection should be done in the 
+following groups of people:
+• family members of hepatitis B surface antigen (HBsAg) positive persons 
+• household contacts of HBsAg positive persons
+• blood donors
+• healthcare workers
+• people who inject drugs participating in harm reduction programmes
+• foreign workers
+• pregnant women
+2. Screening of HBV infection should be done using either a rapid diagnostic test (RDT) 
+or laboratory-based immunoassay. HBV deoxyribonucleic acid (DNA) should be 
+ideally done before initiation of treatment & for assessment of its response.
+3. Initial assessment of patients with chronic hepatitis B (CHB) should include:
+• phase of infection
+• degree of liver fibrosis or cirrhosis
+• presence of co-infection 
+4. Treatment should be initiated in CHB patients with:
+• non-cirrhotic liver
+- hepatitis B e antigen (HBeAg) positive with HBV DNA >20,000 IU/ml & alanine 
+transaminase (ALT) twice the upper limit of normal (ULN)
+- HBeAg negative with HBV DNA >2,000 IU/ml & ALT twice ULN
+• cirrhotic liver
+- any detectable level of HBV DNA regardless of ALT & HBeAg status
+5. Nucleos(t)ide analogues with high genetic barrier resistance should be used as 
+first-line therapy in CHB i.e. 
+• entecavir (ETV)*
+• tenofovir disoproxil fumarate (TDF)*
+• tenofovir alafenamide (TAF)
+*renal adjusted dose
+6. ETV or TAF is preferred in CHB patients with age >60 years, bone disease or impaired 
+renal function.
+7. Human Immunodeficiency virus (HIV)/HBV co-infected patients should be treated 
+simultaneously with dual active HBV treatment (tenofovir in combination with 
+lamivudine or emtricitabine) plus another third agent of antiretroviral therapy.
+8. Antiviral agents should be initiated in HBeAg-positive pregnant CHB women with high 
+viral load (>200,000 IU/ml) at 28 - 32 weeks of gestation & hepatitis B immunoglobulin 
+(HBIG) should be given to all newborns of CHB mothers within 12 hours of life.
+9. All candidates for chemotherapy & immunosuppressive treatment should be tested for 
+HBV markers prior to immunosuppression e.g. HBsAg. If HBsAg is negative, antibody 
+to hepatitis B core antigen (anti-HBc) should be tested.
+10. CHB patients who are not on treatment should be monitored for:
+• ALT
+• HBV DNA
+• liver fibrosis or cirrhosis 
+PREGNANCY
+A summary of prophylaxis & treatment in pregnant CHB patients is shown below.
+Prophylaxis & Treatment of Mother-to-Child Hepatitis B Virus Transmission
+*Based on recommended methods of assessment for fibrosis in CPG
+** NIP = National Immunisation Programme
+HBsAg screening on pregnant women
+(use rapid diagnostic test or laboratory-based Immunoassay)
+HBsAg positive HBsAg negative
+Presence
+of cirrhosis*
+HBV DNA load OR HBeAg (if HBV DNA is unavailable)
+HBV DNA 
+<200,000 IU/ml
+OR HBeAg negative 
+HBV DNA 
+>200,000 IU/ml
+OR HBeAg positive
+• No maternal
+ prophylaxis
+• Defer long-term
+ treatment with
+ monitoring &
+ reassessment
+• Start maternal prophylaxis
+ (from 28 weeks of pregnancy
+ until four weeks post-partum)
+• Reassess long-term
+ treatment after delivery &
+ monitor
+• Start long-term
+ treatment & monitor
+ (refer to management
+ algorithm in page ix)
+Give HBIG to newborn at birth (within 12 hours)
+Give hepatitis B vaccination to newborn at birth (within 24 hours) 
+followed by two or three doses of hepatitis B vaccination
+Follow
+NIP**
+Monitor maternal post-partum flare (ALT and/or HBV DNA) up to three
+months & infant’s HBV positivity (HBsAg) after six months of life
+Serology testingAssessment on maternal
+prophylaxis or long-term treatment
+Maternal
+Interventions
+Newborn 
+InterventionsFollow-up
+NO YES
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+LABORATORY DIAGNOSIS
+36
+Laboratory Workflow for Diagnosis of Chronic Hepatitis B Infection
+Tests to Diagnose & Monitor Hepatitis B Virus Infection
+Anti-HBc = Antibody to hepatitis B core antigen; IgM anti-HBc = Immunoglobulin M antibody to 
+hepatitis B core antigen; Anti-HBs = Antibody to hepatitis B surface protein
++ implies positive; - implies negative; ± may be positive or negative 
+EIA: enzyme immunoassays; HBeAb: hepatitis B e antibody
+HBsAg screening
+Non-reactive
+Report as HBsAg
+non-reactiveRDT/EIA
+Reactive
+Report as HBsAg
+reactive
+HBeAg/
+HBeAb
+Reactive/Non-reactiveRefer to Table 1
+& Table 2 for
+interpretation of
+results
+If clinically indicated after consultation
+with Hepatologist/Gastroenterologist
+HBV DNA viral load
+DRUG DOSAGE, ADMINISTRATION & COMMON SIDE EFFECTS OF HEPATITIS B ANTIVIRAL IN MALAYSIA
+*Creatinine clearance (CrCl) calculated by Cockcroft-Gault formula 
+aEntecavir dose is 1 mg once daily if the patient has decompensated cirrhosis
+bProduct discontinued 
+cDeregistered in Malaysia in 2022
+Drug Standard 
+dosage Administration 
+Renal Adjustment  
+(based on Creatinine Clearance, CrCl)* (ml/min) Potential Side effects  
+30 -  10 - <30 <10/ 
+Hemodialysis (HD) 
+Preferred (high barrier to HBV resistance) 
+-  2a 
+180 mcg 
+once weekly  
+Subcutaneous 
+Injection 
+No dosage 
+adjustment  135 mcg once weekly 90 - 135 mcg once 
+weekly  
+Flu-like symptoms, fatigue, 
+mood disturbances, 
+cytopenia, autoimmune 
+disorders 
+0.5 mg once 
+daily  
+Oral tablet, take on 
+empty stomach, 2 
+hours apart from 
+food   
+50% of usual dose  
+OR  
+0.5 mg every 48 
+hours 
+30% of usual dose  
+OR  
+0.5 mg every 72 
+hours 
+10% of usual dose  
+OR  
+0.5 mg every 7 days 
+Lactic acidosis 
+ 
+300 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+300 mg every 48 
+hours  
+ 
+300 mg every 72 to 
+96 hours 
+Avoid use.  
+If no alternative, 300 
+mg every 7 days 
+Nephropathy, Fanconi 
+syndrome osteomalacia, 
+lactic acidosis 
+ 
+25 mg once 
+daily  
+Oral tablet, after 
+food 
+CrCl >15 ml/min: No dose adjustment 
+CrCl <15 ml/min: Use is not recommended Lactic acidosis 
+Non-Preferred (low barrier to HBV resistance) 
+ 100 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+CrCl 30 - 50 ml/min: 50 mg once daily  
+CrCl <5 - <15 ml/min: 15 mg once daily  
+CrCl <5 ml/min: 10 mg once daily 
+Pancreatitis, lactic 
+acidosis 
+ 
+10 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+10 mg every 48 
+hours 10 mg every 72 hours  
+Non-HD: No data  
+HD: 10 mg every 7 
+days  
+Acute renal failure, 
+Fanconi syndrome, lactic 
+acidosis  
+Telbivudinec  600 mg once 
+daily  
+Oral tablet, take with 
+or without food 
+600 mg every 48 
+hours  
+600 mg every 72 
+hours 
+600 mg every 96 
+hours 
+Creatine kinase elevations 
+& myopathy, peripheral 
+neuropathy, lactic acidosis 
+IgM
+anti-
+HBc
+<50
+Pegylated 
+Interferon
+Entecavira
+Tenofovir 
+Disoproxil 
+Fumarate
+Tenofovir 
+Alafenamide  
+Lamivudine 
+Adefovirb 
+Dipivoxil
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC HEPATITIS B IN ADULTS
+8
+EXPOSURE AT WORK PLACE
+Post-exposure prophylaxis (PEP) management of healthcare provider (HCP) with possible 
+exposure to HBV depends on the immune status of the HCP & HBsAg status of the source 
+patient. Serological markers, i.e. baseline anti-HBs & HBsAg, are important in deciding the 
+requirement for PEP.
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precinct 1,
+Federal Government Administrative Centre
+62590 Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Chronic Hepatitis B in Adults. 
+Details of the evidence supporting these recommendations can be found in the above CPG, 
+available on the following websites: Ministry of Health Malaysia: www.moh.gov.my
+                   Academy of Medicine Malaysia: www.acadmed.org.my
+Exposure to Source HBsAg 
+Vaccine known
+responder
+anti-HBs level ≥10
+mIU/ml
+Vaccine known non-
+responder
+anti-HBs level <10
+mIU/ml
+Unknown vaccine
+response
+Incomplete vaccine
+/unvaccinated
+Test anti-HBs level
+≥10 mIU/ml <10 mIU/ml
+HBIG x 2 
+(0 & 1 month later) HBIG x 1 &
+complete
+revaccination
+HBIG x 1 &
+initiate
+revaccination
+No treatment Follow-up
+POST-EXPOSURE PROPHYLAXIS WORKFLOW
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS

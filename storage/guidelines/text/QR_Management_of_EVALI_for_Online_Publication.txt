@@ -1,0 +1,525 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+7
+MANAGEMENT OF E-CIGARETTE OR 
+VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+EVALI suspected based on
+history + chest X-ray
+Consultation with
+physician
+Work-up to rule out other
+differential diagnosis*
+Negative work-up* Positive work-up*
+Clinician review
+Treat accordinglyProbable EVALIConfirmed EVALI
+Treatment** Notification
+Discharge and
+Follow-up
+*May require admission
+**Refer to Case Definitions in page 4
+MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+E-CIGARETTE OR
+VAPING PRODUCT
+USE-ASSOCIATED
+LUNG INJURY
+(EVALI)
+Management of
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS
+1. Electronic cigarette or e-cigarette (e-cig) is a handheld device equipped with aerosol 
+generator, battery & solution storage area. Its purpose is to deliver nicotine or other 
+chemicals via aerosolisation.
+2. Inhalation of e-cig aerosol could potentially cause physical (including organ) & 
+psychosocial damage (refer to page 3). 
+3. E-cigarette or Vaping Product Use-Associated Lung Injury (EVALI) is defined as 
+history of e-cig use within 90 days of the onset of symptoms with pulmonary infiltrate 
+on imaging & no other contributable cause of the illness. The diagnosis of EVALI 
+should be made based on case definitions as outlined by the United States Centers for 
+Disease Control and Prevention (refer to page 4).
+4. EVALI patients may present with respiratory (shortness of breath, cough & chest pain) 
+& gastrointestinal (nausea, vomiting, diarrhoea & abdominal pain) symptoms while 
+tachypnoea is commonly observed.
+5. A physician should be consulted for any case suspected of EVALI at the emergency 
+department or primary care facility.
+6. Relevant laboratory investigations should be done to rule out other probable 
+diagnoses before diagnosis of EVALI can be made.
+7. Chest imaging should be done in all suspected EVALI cases. 
+8. Bronchoscopy may be performed if clinically indicated to exclude alternative diagnosis 
+& not to confirm EVALI.
+9. For patients suspected or confirmed of EVALI diagnosis, supplemental oxygen, 
+antibiotics & systemic corticosteroids may be initiated if indicated.
+10. Patients with EVALI should only be discharged when they fulfil the discharge criteria 
+with hospital prescription & follow-up.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+E-cigarette or Vaping Product Use Associated-Lung Injury (EVALI)
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI) MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+• Criteria to determine readiness for hospital discharge include:
+ patient is clinically stable for 24 - 48 hours before discharge
+ initial outpatient follow-up within 48 hours of discharge 
+ instruction on discharge medication & counselling of patient is given
+ screening for mental health, substance use disorders & social support needs is 
+established before discharge
+ counselling & offering e-cig & tobacco use cessation intervention, including 
+behavioural intervention & medications have been discussed
+• Discharge from hospital prescription may include:
+ prescription of a short course oral corticosteroids with appropriate dosage, 
+duration & tapering
+ prescription of an oral antibiotic or antiviral if necessary
+ follow-up at outpatient clinic within 24 - 48 hours
+ education on strict return-to-ED warnings (development of new or worsening 
+respiratory symptoms, with or without fever)
+ provision of access to outpatient smoking & vaping cessation facility
+DISCHARGE FROM HOSPITAL
+DISCHARGE HOSPITAL PRESCRIPTION
+EVALI PATIENT FOLLOW-UP CHECKLIST
+The following should be done on EVALI patients on follow-up:
+Activity
+a. At 48 hours follow-up:
+• Continue education about EVALI 
+• Assess & encourage adherence with medication regimens 
+• Ask about side effects of treatment
+• Reinforce the importance of abstinence from e-cig product use
+• Facilitate referrals to other providers or services indicated by patients’ 
+ medical history or conditions
+• Provide relevant resources on social, mental health & substance use disorder
+b. At 1 - 2 months follow-up
+• Repeat all the steps at 48 hours follow-up
+• Do spirometry
+• Do CXR
+Comment
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+CASE DEFINITIONS
+25
+• 2019 Lung Injury Surveillance Primary Case Definitions by United States Centers 
+for Disease Control and Prevention:
+ Confirmed Case: 
+Using an e-cig (“vaping”) or dabbing* in 90 days prior to symptom onset 
+AND 
+Pulmonary infiltrate, e.g. opacities, on plain film chest radiograph or ground-
+glass opacities on chest CT
+AND
+Absence of pulmonary infection on initial work-up. Minimum criteria are: 
+1. A negative respiratory viral panel 
+AND
+2. A negative influenza polymerase chain reaction (PCR) or rapid test, if local 
+epidemiology supports influenza testing 
+AND
+All other clinically-indicated respiratory infectious disease testing (e.g. urine 
+antigen for Streptococcus pneumoniae & Legionella, sputum culture if productive 
+cough, bronchoalveolar lavage culture if done, blood culture, human 
+immunodeficiency virus-related opportunistic respiratory infections if appropriate) 
+are negative 
+AND
+No evidence in medical record of alternative plausible diagnoses (e.g. cardiac, 
+rheumatologic, or neoplastic process). 
+ Probable Case: 
+Using an e-cig (“vaping”) or dabbing* in 90 days prior to symptom onset 
+AND
+Pulmonary infiltrate, e.g. opacities, on plain film chest radiograph or ground-
+glass opacities on chest CT 
+AND
+Infection identified via culture or PCR, but clinical team** believes this infection is 
+not the sole cause of the underlying lung injury OR minimum criteria to rule out 
+pulmonary infection not met (testing not performed) & clinical team** believes 
+infection is not the sole cause of the underlying lung injury.
+AND
+No evidence in medical record of alternative plausible diagnoses (e.g., cardiac, 
+rheumatologic, or neoplastic process).
+Footnotes
+*Using an electronic device [e.g. electronic nicotine delivery system (ENDS), 
+electronic cigarette, e-cig, vaporiser, vape(s), vape pen, dab pen or other 
+device] or dabbing to inhale substances [e.g. nicotine, marijuana, THC, THC 
+concentrates, cannabidiol (CBD), synthetic cannabinoids, flavourings or other 
+substances]
+**Clinical team caring for the patient 
+Notes: These case definitions are meant for surveillance & not clinical 
+diagnosis. The case definitions are subject to change & will be updated as 
+additional information becomes available if needed.
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+• Testing or empirical treatment for usual infectious pneumonia based on the 
+probability of the illness is recommended. 
+• Probability of alternative diagnosis increases when either:
+ absence of typical demographic & clinical features of EVALI 
+ presence of atypical presentations
+ presence of predisposition for other illness
+• EVALI can be considered a leading or provisional diagnosis if none other illness is 
+probable based on the above evaluation.
+• Treatment with empiric antimicrobials, including antivirals, should be considered in 
+accordance with established local guidelines & microbiology pattern.
+• Documented corticosteroids treatment in EVALI are:                          
+ initial daily dose for:
+• intravenous methylprednisolone is 125 mg/day (interquartile range/IQR 120 - 240) 
+• oral prednisolone is 40 mg/day (IQR 40 - 60) 
+ duration before tapering dose or stopping: 2 days (IQR 1 - 4) 
+ total duration of therapy: 11 days (IQR 6 - 18) 
+*There is no evidence on the use of hydrocortisone, dexamethasone & inhaled     
+corticosteroids in EVALI.
+• Hospital admission is highly recommended for patients with:
+ decreased oxygen saturation (<95% on room air) 
+ concurrent illness especially if respiratory distress is present
+ co-morbidities that compromise pulmonary reserve
+ unreliable access to medical care especially ability for follow-up within 24 - 48 
+hours & promptly in the event of rapidly worsening respiratory symptoms 
+ poor social support
+• Criteria appropriate for outpatient management are:
+ normal oxygen saturation ≥95% with no respiratory distress on room air
+ absence of high-risk co-morbidities e.g. chronic obstructive pulmonary disease 
+or congestive cardiac failure 
+ availability of support system for outpatient follow-up
+ no significant diagnostic findings on initial emergency department (ED) workup
+DIFFERENTIAL DIAGNOSIS
+TREATMENT
+INDICATIONS FOR ADMISSION
+MANAGEMENT IN EMERGENCY DEPARTMENT/PRIMARY CARE FACILITY
+43
+Inhalation of aerosol from e-cig could potentially cause:
+• adverse effects due to acute administration of nicotine, flavourants, chemicals & 
+other particulates
+• accidental overdose of nicotine 
+• developmental effects on the brain from nicotine exposure 
+• uptake of subsequent illicit drug use
+• gateway to conventional cigarettes & dual use of both types of cigarettes
+• negative psychosocial health
+• battery explosion 
+• Questions on e-cig or vaping product use in patients with suspected EVALI:
+ e-cig use
+- time of last use 
+- duration 
+- method (aerosol, dabbing or dripping)
+- frequency 
+- concomitant smoking products use or substances abuse 
+ devices & e-liquids
+- product brand name
+- delivery system (open or closed)
+- types of substances use (tetrahydrocannabinol/THC, cannabis, nicotine, 
+modified products, additional substances)
+- product source
+• Laboratory investigations for EVALI work-up will include:
+ full blood count
+ erythrocyte sedimentation rate
+ C-reactive protein
+ culture & sensitivity study - blood, sputum, urine 
+ urinalysis 
+ respiratory panel for influenza & other possible infectious pathogens
+ autoimmune screening 
+• In local setting, tuberculosis & COVID-19 screening is part of EVALI work-up.
+ELECTRONIC CIGARETTE OR E-CIGARETTE (E-CIG)
+HISTORY OF E-CIG OR VAPING PRODUCT USE 
+FOR PATIENTS WITH SUSPECTED EVALI
+LABORATORY INVESTIGATION
+IMAGING
+• Abnormal chest imaging, either chest X-ray (CXR) or computed tomography (CT) 
+scan, is mandatory for the diagnosis of EVALI. 
+• While CXR is often abnormal in EVALI cases, a normal CXR does not exclude the 
+diagnosis. In the setting of a normal CXR in a high clinical suspicion of EVALI, a CT 
+scan should be performed to better assess for lung injury.
+Figure I. Imaging Features in EVALI
+a. Chest radiograph shows infiltrates with sparing of subpleural region (black arrows) 
+& interlobular septal thickening (white arrowhead).
+b. Corresponding CT image shows perihilar predominant ground-glass opacity with 
+prominent sparing of subpleural interstitium both peripherally & centrally (black 
+arrows) with intermixed areas of lobular sparing. In addition, there is sparing of 
+peribronchovascular interstitium (white arrows). Septal thickening (black 
+arrowhead) & scattered centrilobular nodules (white arrowhead) are present.
+• Potential toxicants in e-liquid include propylene glycol, vegetable glycerin, 
+flavouring agents, vitamin E acetate, CBD, THC & nicotine.
+• More strong evidence is warranted before proper chemical profiling can be 
+recommended in cases of EVALI.
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI) MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+CHEMICAL PROFILING
+43
+Inhalation of aerosol from e-cig could potentially cause:
+• adverse effects due to acute administration of nicotine, flavourants, chemicals & 
+other particulates
+• accidental overdose of nicotine 
+• developmental effects on the brain from nicotine exposure 
+• uptake of subsequent illicit drug use
+• gateway to conventional cigarettes & dual use of both types of cigarettes
+• negative psychosocial health
+• battery explosion 
+• Questions on e-cig or vaping product use in patients with suspected EVALI:
+ e-cig use
+- time of last use 
+- duration 
+- method (aerosol, dabbing or dripping)
+- frequency 
+- concomitant smoking products use or substances abuse 
+ devices & e-liquids
+- product brand name
+- delivery system (open or closed)
+- types of substances use (tetrahydrocannabinol/THC, cannabis, nicotine, 
+modified products, additional substances)
+- product source
+• Laboratory investigations for EVALI work-up will include:
+ full blood count
+ erythrocyte sedimentation rate
+ C-reactive protein
+ culture & sensitivity study - blood, sputum, urine 
+ urinalysis 
+ respiratory panel for influenza & other possible infectious pathogens
+ autoimmune screening 
+• In local setting, tuberculosis & COVID-19 screening is part of EVALI work-up.
+ELECTRONIC CIGARETTE OR E-CIGARETTE (E-CIG)
+HISTORY OF E-CIG OR VAPING PRODUCT USE 
+FOR PATIENTS WITH SUSPECTED EVALI
+LABORATORY INVESTIGATION
+IMAGING
+• Abnormal chest imaging, either chest X-ray (CXR) or computed tomography (CT) 
+scan, is mandatory for the diagnosis of EVALI. 
+• While CXR is often abnormal in EVALI cases, a normal CXR does not exclude the 
+diagnosis. In the setting of a normal CXR in a high clinical suspicion of EVALI, a CT 
+scan should be performed to better assess for lung injury.
+Figure I. Imaging Features in EVALI
+a. Chest radiograph shows infiltrates with sparing of subpleural region (black arrows) 
+& interlobular septal thickening (white arrowhead).
+b. Corresponding CT image shows perihilar predominant ground-glass opacity with 
+prominent sparing of subpleural interstitium both peripherally & centrally (black 
+arrows) with intermixed areas of lobular sparing. In addition, there is sparing of 
+peribronchovascular interstitium (white arrows). Septal thickening (black 
+arrowhead) & scattered centrilobular nodules (white arrowhead) are present.
+• Potential toxicants in e-liquid include propylene glycol, vegetable glycerin, 
+flavouring agents, vitamin E acetate, CBD, THC & nicotine.
+• More strong evidence is warranted before proper chemical profiling can be 
+recommended in cases of EVALI.
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI) MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+CHEMICAL PROFILING
+5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+• Testing or empirical treatment for usual infectious pneumonia based on the 
+probability of the illness is recommended. 
+• Probability of alternative diagnosis increases when either:
+ absence of typical demographic & clinical features of EVALI 
+ presence of atypical presentations
+ presence of predisposition for other illness
+• EVALI can be considered a leading or provisional diagnosis if none other illness is 
+probable based on the above evaluation.
+• Treatment with empiric antimicrobials, including antivirals, should be considered in 
+accordance with established local guidelines & microbiology pattern.
+• Documented corticosteroids treatment in EVALI are:                          
+ initial daily dose for:
+■ 
+■ 
+intravenous methylprednisolone is 125 mg/day (interquartile range/IQR 120 - 240) 
+ oral prednisolone is 40 mg/day (IQR 40 - 60) 
+ duration before tapering dose or stopping: 2 days (IQR 1 - 4) 
+ total duration of therapy: 11 days (IQR 6 - 18) 
+*There is no evidence on the use of hydrocortisone, dexamethasone & inhaled     
+corticosteroids in EVALI.
+• Hospital admission is highly recommended for patients with:
+ decreased oxygen saturation (<95% on room air) 
+ concurrent illness especially if respiratory distress is present
+ co-morbidities that compromise pulmonary reserve
+ unreliable access to medical care especially ability for follow-up within 24 - 48 
+hours & promptly in the event of rapidly worsening respiratory symptoms 
+ poor social support
+• Criteria appropriate for outpatient management are:
+ normal oxygen saturation ≥95% with no respiratory distress on room air
+ absence of high-risk co-morbidities e.g. chronic obstructive pulmonary disease 
+or congestive cardiac failure 
+ availability of support system for outpatient follow-up
+ no significant diagnostic findings on initial emergency department (ED) workup
+DIFFERENTIAL DIAGNOSIS
+TREATMENT
+INDICATIONS FOR ADMISSION
+MANAGEMENT IN EMERGENCY DEPARTMENT/PRIMARY CARE FACILITY
+1. Electronic cigarette or e-cigarette (e-cig) is a handheld device equipped with aerosol 
+generator, battery & solution storage area. Its purpose is to deliver nicotine or other 
+chemicals via aerosolisation.
+2. Inhalation of e-cig aerosol could potentially cause physical (including organ) & 
+psychosocial damage (refer to page 3). 
+3. E-cigarette or Vaping Product Use-Associated Lung Injury (EVALI) is defined as 
+history of e-cig use within 90 days of the onset of symptoms with pulmonary infiltrate 
+on imaging & no other contributable cause of the illness. The diagnosis of EVALI 
+should be made based on case definitions as outlined by the United States Centers for 
+Disease Control and Prevention (refer to page 4).
+4. EVALI patients may present with respiratory (shortness of breath, cough & chest pain) 
+& gastrointestinal (nausea, vomiting, diarrhoea & abdominal pain) symptoms while 
+tachypnoea is commonly observed.
+5. A physician should be consulted for any case suspected of EVALI at the emergency 
+department or primary care facility.
+6. Relevant laboratory investigations should be done to rule out other probable 
+diagnoses before diagnosis of EVALI can be made.
+7. Chest imaging should be done in all suspected EVALI cases. 
+8. Bronchoscopy may be performed if clinically indicated to exclude alternative diagnosis 
+& not to confirm EVALI.
+9. For patients suspected or confirmed of EVALI diagnosis, supplemental oxygen, 
+antibiotics & systemic corticosteroids may be initiated if indicated.
+10. Patients with EVALI should only be discharged when they fulfil the discharge criteria 
+with hospital prescription & follow-up.
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+E-cigarette or Vaping Product Use Associated-Lung Injury (EVALI)
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS QUICK REFERENCE FOR HEALTHCARE PROVIDERSMANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI) MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+• Criteria to determine readiness for hospital discharge include:
+ patient is clinically stable for 24 - 48 hours before discharge
+ initial outpatient follow-up within 48 hours of discharge 
+ instruction on discharge medication & counselling of patient is given
+ screening for mental health, substance use disorders & social support needs is 
+established before discharge
+ counselling & offering e-cig & tobacco use cessation intervention, including 
+behavioural intervention & medications have been discussed
+• Discharge from hospital prescription may include:
+ prescription of a short course oral corticosteroids with appropriate dosage, 
+duration & tapering
+ prescription of an oral antibiotic or antiviral if necessary
+ follow-up at outpatient clinic within 24 - 48 hours
+ education on strict return-to-ED warnings (development of new or worsening 
+respiratory symptoms, with or without fever)
+ provision of access to outpatient smoking & vaping cessation facility
+DISCHARGE FROM HOSPITAL
+DISCHARGE HOSPITAL PRESCRIPTION
+EVALI PATIENT FOLLOW-UP CHECKLIST
+The following should be done on EVALI patients on follow-up:
+Activity
+a. At 48 hours follow-up:
+• Continue education about EVALI 
+• Assess & encourage adherence with medication regimens 
+• Ask about side effects of treatment
+• Reinforce the importance of abstinence from e-cig product use
+• Facilitate referrals to other providers or services indicated by patients’ 
+ medical history or conditions
+• Provide relevant resources on social, mental health & substance use disorder
+b. At 1 - 2 months follow-up
+• Repeat all the steps at 48 hours follow-up
+• Do spirometry
+• Do CXR
+Comment
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+CASE DEFINITIONS
+25
+• 2019 Lung Injury Surveillance Primary Case Definitions by United States Centers 
+for Disease Control and Prevention:
+ Confirmed Case: 
+Using an e-cig (“vaping”) or dabbing* in 90 days prior to symptom onset 
+AND 
+Pulmonary infiltrate, e.g. opacities, on plain film chest radiograph or ground-
+glass opacities on chest CT
+AND
+Absence of pulmonary infection on initial work-up. Minimum criteria are: 
+1. A negative respiratory viral panel 
+AND
+2. A negative influenza polymerase chain reaction (PCR) or rapid test, if local 
+epidemiology supports influenza testing 
+AND
+All other clinically-indicated respiratory infectious disease testing (e.g. urine 
+antigen for Streptococcus pneumoniae & Legionella, sputum culture if productive 
+cough, bronchoalveolar lavage culture if done, blood culture, human 
+immunodeficiency virus-related opportunistic respiratory infections if appropriate) 
+are negative 
+AND
+No evidence in medical record of alternative plausible diagnoses (e.g. cardiac, 
+rheumatologic, or neoplastic process). 
+ Probable Case: 
+Using an e-cig (“vaping”) or dabbing* in 90 days prior to symptom onset 
+AND
+Pulmonary infiltrate, e.g. opacities, on plain film chest radiograph or ground-
+glass opacities on chest CT 
+AND
+Infection identified via culture or PCR, but clinical team** believes this infection is 
+not the sole cause of the underlying lung injury OR minimum criteria to rule out 
+pulmonary infection not met (testing not performed) & clinical team** believes 
+infection is not the sole cause of the underlying lung injury.
+AND
+No evidence in medical record of alternative plausible diagnoses (e.g., cardiac, 
+rheumatologic, or neoplastic process).
+Footnotes
+*Using an electronic device [e.g. electronic nicotine delivery system (ENDS), 
+electronic cigarette, e-cig, vaporiser, vape(s), vape pen, dab pen or other 
+device] or dabbing to inhale substances [e.g. nicotine, marijuana, THC, THC 
+concentrates, cannabidiol (CBD), synthetic cannabinoids, flavourings or other 
+substances]
+**Clinical team caring for the patient 
+Notes: These case definitions are meant for surveillance & not clinical 
+diagnosis. The case definitions are subject to change & will be updated as 
+additional information becomes available if needed.
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+• Testing or empirical treatment for usual infectious pneumonia based on the 
+probability of the illness is recommended. 
+• Probability of alternative diagnosis increases when either:
+ absence of typical demographic & clinical features of EVALI 
+ presence of atypical presentations
+ presence of predisposition for other illness
+• EVALI can be considered a leading or provisional diagnosis if none other illness is 
+probable based on the above evaluation.
+• Treatment with empiric antimicrobials, including antivirals, should be considered in 
+accordance with established local guidelines & microbiology pattern.
+• Documented corticosteroids treatment in EVALI are:                          
+ initial daily dose for:
+• intravenous methylprednisolone is 125 mg/day (interquartile range/IQR 120 - 240) 
+• oral prednisolone is 40 mg/day (IQR 40 - 60) 
+ duration before tapering dose or stopping: 2 days (IQR 1 - 4) 
+ total duration of therapy: 11 days (IQR 6 - 18) 
+*There is no evidence on the use of hydrocortisone, dexamethasone & inhaled     
+corticosteroids in EVALI.
+• Hospital admission is highly recommended for patients with:
+ decreased oxygen saturation (<95% on room air) 
+ concurrent illness especially if respiratory distress is present
+ co-morbidities that compromise pulmonary reserve
+ unreliable access to medical care especially ability for follow-up within 24 - 48 
+hours & promptly in the event of rapidly worsening respiratory symptoms 
+ poor social support
+• Criteria appropriate for outpatient management are:
+ normal oxygen saturation ≥95% with no respiratory distress on room air
+ absence of high-risk co-morbidities e.g. chronic obstructive pulmonary disease 
+or congestive cardiac failure 
+ availability of support system for outpatient follow-up
+ no significant diagnostic findings on initial emergency department (ED) workup
+DIFFERENTIAL DIAGNOSIS
+TREATMENT
+INDICATIONS FOR ADMISSION
+MANAGEMENT IN EMERGENCY DEPARTMENT/PRIMARY CARE FACILITY
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+7
+MANAGEMENT OF E-CIGARETTE OR 
+VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+EVALI suspected based on
+history + chest X-ray
+Consultation with
+physician
+Work-up to rule out other
+differential diagnosis*
+Negative work-up* Positive work-up*
+Clinician review
+Treat accordinglyProbable EVALIConfirmed EVALI
+Treatment** Notification
+Discharge and
+Follow-up
+*May require admission
+**Refer to Case Definitions in page 4
+MANAGEMENT OF E-CIGARETTE OR VAPING PRODUCT USE-ASSOCIATED LUNG INJURY (EVALI)
+E-CIGARETTE OR
+VAPING PRODUCT
+USE-ASSOCIATED
+LUNG INJURY
+(EVALI)
+Management of
+QUICK REFERENCE 
+FOR HEALTHCARE PROVIDERS

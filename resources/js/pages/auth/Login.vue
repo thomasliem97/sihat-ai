@@ -4,7 +4,6 @@ import { ref } from 'vue';
 import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import FieldLabel from '@/components/patterns/FieldLabel.vue';
-import TextLink from '@/components/TextLink.vue';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -16,7 +15,6 @@ import {
 } from '@/components/ui/select';
 import { Spinner } from '@/components/ui/spinner';
 import { store } from '@/routes/login';
-import { request } from '@/routes/password';
 
 const demoAccounts = [
     {
@@ -41,6 +39,7 @@ defineOptions({
 defineProps<{
     status?: string;
     canResetPassword: boolean;
+    demoPassword: string;
 }>();
 </script>
 
@@ -57,6 +56,7 @@ defineProps<{
     <Form
         v-bind="store.form()"
         :reset-on-success="['password']"
+        autocomplete="off"
         v-slot="{ errors, processing }"
         class="flex flex-col gap-6"
     >
@@ -83,32 +83,25 @@ defineProps<{
                         </SelectItem>
                     </SelectContent>
                 </Select>
-                <input type="hidden" name="email" :value="selectedEmail" />
+                <input
+                    type="hidden"
+                    name="email"
+                    :value="selectedEmail"
+                    autocomplete="username"
+                />
                 <InputError :message="errors.email" />
             </div>
 
             <div class="grid gap-2">
-                <div class="flex items-center justify-between">
-                    <FieldLabel html-for="password" required
-                        >Password</FieldLabel
-                    >
-                    <TextLink
-                        v-if="canResetPassword"
-                        :href="request()"
-                        class="text-sm"
-                        :tabindex="5"
-                    >
-                        Forgot your password?
-                    </TextLink>
-                </div>
+                <FieldLabel html-for="password" required>Password</FieldLabel>
                 <PasswordInput
                     id="password"
                     name="password"
                     required
                     :tabindex="2"
-                    autocomplete="current-password"
-                    placeholder="Enter your password"
-                    default-value="password"
+                    autocomplete="new-password"
+                    :placeholder="demoPassword"
+                    :default-value="demoPassword"
                 />
                 <InputError :message="errors.password" />
             </div>

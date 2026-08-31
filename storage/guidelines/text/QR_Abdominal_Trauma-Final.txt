@@ -1,0 +1,1379 @@
+• The principles of management in abdominal trauma are:
+ ○ systematic and timely assessment of injuries
+ ○ resuscitation and stabilisation of the patient
+ ○ control of haemorrhage and/or contamination
+ ○ prevention of secondary injuries
+• Unstable abdominal trauma can be caused by major intra-abdominal bleeding from solid 
+organs or abdominal vascular injury and peritonitis secondary to contamination following 
+hollow viscus perforation. This group of trauma patients requires immediate arrangement 
+for emergency laparotomy to arrest the bleeding or clear and clean the contamination. 
+ tneitap eht fi detacidni si ,)SCD( yregrus lortnoc egamad .g.e ,yregrus etaidemmI •
+remains unstable despite initial resuscitation.
+• DO NOT perform CT scan in persistently unstable patients as it may delay definitive 
+surgical intervention.
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS
+PRINCIPLES OF MANAGEMENT
+OPERATIVE MANAGEMENT
+NON-OPERATIVE MANAGEMENT
+The CPG DG opines the following guide should be referred when considering NOM.
+Non-Operative Management Guide in Abdominal Trauma
+Prerequisites
+1. Resources
+ a. 24-hour access to surgeon, operation theatre, ICU care, CT scan and continuous  
+  monitoring capability 
+ b. Care of patients undergoing NOM should be led by a surgeon
+2. Patient factor
+ a. haemodynamically stable
+ b. no peritonitis 
+3. Injury factor
+ a. Full extent and severity of injuries determined by CECT scan
+ b. In polytrauma patients, treatment plan should take into account the severity of    
+  extra-abdominal injuries such as TBI, chest and extremity injuries, rather than   
+  addressing abdominal injuries in isolation. 
+Monitoring
+1. Parameters to monitor
+ a. Vital signs (BP, PR, RR, SpO2, Temperature, pain score) and GCS
+ b. Fluid balance and urine output 
+ c. Clinical parameters e.g. presence of peritonitis
+ d. Blood results e.g. blood gases analysis, Hb level, coagulation profile, RP, LFT
+2. Complications – clinically or by re-imaging
+Deciding factors for termination of NOM
+1. Deterioration in patient’s haemodynamic status
+2. Onset of peritonitis
+3. Increased requirement of blood transfusion suggestive of active bleeding
+4. Radiological evidence of complications on reimaging (e.g. bleeding, hollow viscus   
+ perforation)
+Note: Special population- e.g. geriatric, obese, pregnancy, comorbidities, polypharmacy; will 
+have unique characteristics which may affect interpretation of findings 
+MANAGEMENT OF
+ABDOMINAL TRAUMA
+IN ADULTS
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS
+ACADEMY OF
+MEDICINE MALAYSIA
+MINISTRY OF HEALTH
+MALAYSIA
+TRAUMA SURGERY SOCIETY
+OF MALAYSIA
+
+2 7
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+KEY MESSAGES
+1. Intra-abdominal injury has been defined as injuries to the abdominal organs caused by 
+trauma, which may be associated with injuries to the ribs, vertebrae, pelvis and abdominal wall.
+2. All severely injured trauma patients should be transferred to the nearest appropriate 
+hospital within 60 minutes from time of injury (trauma bypass system).
+3. Resuscitation in abdominal trauma involves judicious fluid administration [initial fluid bolus 
+not exceeding 1L (15ml/kg)] combined with early blood transfusion and timely haemostasis. 
+Where available, massive transfusion protocol, should be activated early.
+4. Polytrauma patients should be managed by a specialist-led multidisciplinary trauma team 
+and it should be initiated promptly upon patient’s arrival at the hospital.
+5. In trauma, combination of clinical assessment, which includes mechanism of injury and 
+physical findings, with adjuncts such as e-FAST, chest x-ray and pelvic x-ray are paramount 
+to diagnose intra-abdominal injury and guide further management.
+6. Management is based on haemodynamic status:
+a. Haemodynamically stable patients warrant further diagnostic modalities such as CECT 
+scan or diagnostic laparoscopy
+b. Haemodynamically unstable bleeding patients unresponsive to resuscitation require 
+immediate haemostatic surgical intervention via damage control surgery.
+7. Non-operative management in abdominal trauma should only be considered in centres with 
+24-hours availability of surgical services, operating theatres, intensive care units and other 
+supporting resources. Patients should be closely monitored for clinical deterioration (e.g. 
+haemodynamic instability and peritonitis) which warrants urgent intervention.
+8. In abdominal trauma patients without active bleeding or other contraindications, venous 
+thromboembolism (VTE) prophylaxis should be initiated within 48 hours.
+9. All abdominal trauma patients at risk of developing abdominal compartment syndromes 
+should be identified early and monitored closely. Management strategies for intra-
+ abdominal hypertension (IAH) should be individualised based on cause and severity of IAH.
+10. If the initial health facility is unable to provide the patient the required trauma care,  a timely 
+referral to an appropriate facility should be made.
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Abdominal Trauma in Adults. 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+MaHTAS: https://mymahtas.moh.gov.my
+Trauma Surgery Society of Malaysia: https://www.traumasurgerymalaysia.org/
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+SIGNS AND SYMPTOMS OF HAEMORRHAGE BY CLASS
+IMAGING
+*a Base excess is the quantity of base (HCO3–, in mEq/L) that is above or below the normal range in 
+the body. A negative number is called a base deficit and indicates metabolic acidosis.
+Abbreviations: GCS=Glasgow Coma Scale; ↔=normal; ↑=increase, ↑↑=marked increase, ↓
+=decrease, ↓↓=marked decrease
+Patients who fulfill at least two criteria from any two of the three categories may be 
+considered for WBCT as shown below.
+• In intra-abdominal injury patients, e-FAST is only used for detection of free fluid.
+• A negative initial e-FAST does not completely exclude the possibility of intra-abdominal 
+injury, hence it should be repeated together with regular clinical assessment.
+• All abdominal trauma patients undergoing computed tomography scan should have at 
+least arterial and portovenous phases which can be obtained by either multiphasic or 
+split-bolus protocol.
+CRITERIA TO CONSIDER FOR WBCT
+Pulse rate
+Parameters
+Approximate
+blood loss
+Pulse pressure
+Respiratory rate 
+Urine output 
+GCS Score
+Base deficit*
+Blood 
+pressure
+Need for blood
+products
+Class I
+<15%
+Monitor
+↔
+↔
+↔
+↔
+0 to -2 mEq/L
+↔
+↔
+Class II
+15 to 30%
+Possible
+↔/↑
+↓
+↔
+↔
+-2 to -6 mEq/L
+↔
+↔
+Class III
+31 to 40%
+Yes
+↑
+↓
+↔/↑
+↓
+-6 to -10 mEq/L
+↓
+↔/↓
+Class IV
+>40%
+Massive
+Transfusion
+Protocol
+↑/↑↑
+↓
+↑
+↓↓
+≤ -10 mEq/L
+↓
+↓
+Physiological Anatomical Mechanism
+• GCS ≤13 or abnormal 
+pupillary reaction
+• SBP <100 mmHg
+• Pulse rate <50 or >120 
+beats per minute
+• Respiratory rate <10 or >29 
+breaths per minute
+• Oxygen saturation <90% 
+on air
+• Estimated exterior blood 
+loss ≥500 ml
+• Visible injury to >1 body 
+part involving head, neck, 
+chest, abdomen and pelvis 
+(exclude extremity)
+• Flail chest, open chest or 
+multiple rib fractures
+• Positive FAST scan
+• Suspected unstable pelvic 
+fracture
+• Vertebral fractures/spinal 
+cord compression
+• Fall from a height (>4 m)
+• Wedged or trapped 
+chest/abdomen
+• Ejection, rollover or death 
+of passenger in same 
+vehicle
+• Pedestrian, cyclist or 
+motorcyclist hit by moving 
+vehicle
+• Explosion 
+2 7
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+KEY MESSAGES
+1. Intra-abdominal injury has been defined as injuries to the abdominal organs caused by 
+trauma, which may be associated with injuries to the ribs, vertebrae, pelvis and abdominal wall.
+2. All severely injured trauma patients should be transferred to the nearest appropriate 
+hospital within 60 minutes from time of injury (trauma bypass system).
+3. Resuscitation in abdominal trauma involves judicious fluid administration [initial fluid bolus 
+not exceeding 1L (15ml/kg)] combined with early blood transfusion and timely haemostasis. 
+Where available, massive transfusion protocol, should be activated early.
+4. Polytrauma patients should be managed by a specialist-led multidisciplinary trauma team 
+and it should be initiated promptly upon patient’s arrival at the hospital.
+5. In trauma, combination of clinical assessment, which includes mechanism of injury and 
+physical findings, with adjuncts such as e-FAST, chest x-ray and pelvic x-ray are paramount 
+to diagnose intra-abdominal injury and guide further management.
+6. Management is based on haemodynamic status:
+a. Haemodynamically stable patients warrant further diagnostic modalities such as CECT 
+scan or diagnostic laparoscopy
+b. Haemodynamically unstable bleeding patients unresponsive to resuscitation require 
+immediate haemostatic surgical intervention via damage control surgery.
+7. Non-operative management in abdominal trauma should only be considered in centres with 
+24-hours availability of surgical services, operating theatres, intensive care units and other 
+supporting resources. Patients should be closely monitored for clinical deterioration (e.g. 
+haemodynamic instability and peritonitis) which warrants urgent intervention.
+8. In abdominal trauma patients without active bleeding or other contraindications, venous 
+thromboembolism (VTE) prophylaxis should be initiated within 48 hours.
+9. All abdominal trauma patients at risk of developing abdominal compartment syndromes 
+should be identified early and monitored closely. Management strategies for intra-
+ abdominal hypertension (IAH) should be individualised based on cause and severity of IAH.
+10. If the initial health facility is unable to provide the patient the required trauma care,  a timely 
+referral to an appropriate facility should be made.
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Abdominal Trauma in Adults. 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+MaHTAS: https://mymahtas.moh.gov.my
+Trauma Surgery Society of Malaysia: https://www.traumasurgerymalaysia.org/
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+SIGNS AND SYMPTOMS OF HAEMORRHAGE BY CLASS
+IMAGING
+*a Base excess is the quantity of base (HCO3–, in mEq/L) that is above or below the normal range in 
+the body. A negative number is called a base deficit and indicates metabolic acidosis.
+Abbreviations: GCS=Glasgow Coma Scale; ↔=normal; ↑=increase, ↑↑=marked increase, ↓
+=decrease, ↓↓=marked decrease
+Patients who fulfill at least two criteria from any two of the three categories may be 
+considered for WBCT as shown below.
+• In intra-abdominal injury patients, e-FAST is only used for detection of free fluid.
+• A negative initial e-FAST does not completely exclude the possibility of intra-abdominal 
+injury, hence it should be repeated together with regular clinical assessment.
+• All abdominal trauma patients undergoing computed tomography scan should have at 
+least arterial and portovenous phases which can be obtained by either multiphasic or 
+split-bolus protocol.
+CRITERIA TO CONSIDER FOR WBCT
+Pulse rate
+Parameters
+Approximate
+blood loss
+Pulse pressure
+Respiratory rate 
+Urine output 
+GCS Score
+Base deficit*
+Blood 
+pressure
+Need for blood
+products
+Class I
+<15%
+Monitor
+↔
+↔
+↔
+↔
+0 to -2 mEq/L
+↔
+↔
+Class II
+15 to 30%
+Possible
+↔/↑
+↓
+↔
+↔
+-2 to -6 mEq/L
+↔
+↔
+Class III
+31 to 40%
+Yes
+↑
+↓
+↔/↑
+↓
+-6 to -10 mEq/L
+↓
+↔/↓
+Class IV
+>40%
+Massive
+Transfusion
+Protocol
+↑/↑↑
+↓
+↑
+↓↓
+≤ -10 mEq/L
+↓
+↓
+Physiological Anatomical Mechanism
+• GCS ≤13 or abnormal 
+pupillary reaction
+• SBP <100 mmHg
+• Pulse rate <50 or >120 
+beats per minute
+• Respiratory rate <10 or >29 
+breaths per minute
+• Oxygen saturation <90% 
+on air
+• Estimated exterior blood 
+loss ≥500 ml
+• Visible injury to >1 body 
+part involving head, neck, 
+chest, abdomen and pelvis 
+(exclude extremity)
+• Flail chest, open chest or 
+multiple rib fractures
+• Positive FAST scan
+• Suspected unstable pelvic 
+fracture
+• Vertebral fractures/spinal 
+cord compression
+• Fall from a height (>4 m)
+• Wedged or trapped 
+chest/abdomen
+• Ejection, rollover or death 
+of passenger in same 
+vehicle
+• Pedestrian, cyclist or 
+motorcyclist hit by moving 
+vehicle
+• Explosion 
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+PRE-HOSPITAL CARE AND TRANSFER
+During the prehospital phase of trauma patient management, it is important to recognise 
+presence of severe injuries to ensure early initiation of life support interventions (e.g oxygen and 
+fluid therapy) and rapid transportation to the most appropriate center with pre-arrival notification. 
+In a patient with haemorrhage (or suspected haemorrhage) TXA should be administered en 
+route to hospital.
+During primary survey, cervical spine protection is maintained with the use of cervical collar and 
+pelvic binder is applied in patients where pelvic fracture is suspected.
+Based on the Malaysian Triage Scale (MTS) for Emergency and Trauma Departments the 
+following are levels of triaging which can be used as a guide in abdominal trauma patients.
+A focused history provides valuable information, especially in cases of blunt abdominal trauma 
+(BAT). Evaluating the mechanism of injury is crucial as certain scenarios, e.g. high-speed motor 
+vehicle collisions, falls from height, direct abdominal trauma and penetrating injuries (e.g. 
+gunshots or stab wounds), are highly associated with intra-abdominal injury.
+Physical examination findings to look for are abdominal tenderness, guarding, rigidity, distension or 
+external signs of trauma (e.g. bruising or abrasions including the “seatbelt sign”). The absence of 
+abdominal pain or tenderness does not rule out serious injury, as symptoms may develop 
+several hours after the initial trauma. Therefore, repeated assessment and timely imaging are 
+essential.
+MANAGEMENT OF HAEMODYNAMICALLY STABLE ABDOMINAL
+TRAUMA PATIENTS 
+EARLY ASSESSMENT AND RESUSCITATION
+• Seatbelt signs is associated with intra-abdominal injury and has become an important 
+clinical factor in assessing blunt abdominal trauma related to road traffic accidents.
+CLINICAL DIAGNOSIS 
+Level of Triage Parameters associated with Chest/ Abdominal Trauma
+•  Agonal breathing
+•  Pulseless
+Level 1: Resuscitation
+•  Penetrating injury
+•  High velocity 
+ mechanism of injury
+Level 2: Emergency
+Level 3: Urgency •  Likely rib fractures
+•  Possibility of pelvic 
+ injury
+Level 4: Early Care •  Elderly
+•  Anticoagulant use
+Level 5: Routine •  Mild symptoms
+•  Unrecordable BP
+•  Shock index ≥1.4
+•  Respiratory distress
+•  SpO2 <95%
+•  Shock index ≥1.0 to <1.4
+•  Significant external bruising
+•  Shock index ≥0.6 to <1.0
+•  Pregnancy
+•  Shock index <0.6
+Note: Complete assessment should be repeated regularly when managing a patient with suspected 
+intra-abdominal injury especially when there is a change in haemodynamic status. 
+Haemodynamically stable
+trauma patients suspected
+of intra-abdominal injury 
+Abbreviations: SBP=systolic 
+blood pressure; HR=heart rate; 
+FAST=focused assessment 
+sonography in trauma; 
+e-FAST=extended FAST; 
+CT=computed tomography; 
+CECT=contrast enhanced CT
+Haemodynamically stable
+after initial resuscitation:
+SBP >90 mmHg
+HR <120/min
+Patient’s condition:
+- alert
+- not intoxicated
+- no distracting injuries
+Generalised
+peritonitis?
+e-FAST
+Presence of
+intraperitoneal fluid?
+CT scan
+available
+Active 
+bleeding
+Serial abdominal
+examination and
+observation
+Consider repeat
+FAST/CECT scan if
+equivocal signs and
+treat accordingly
+Consider formal ultrasound
+abdomen/ diagnostic
+laparoscopy/ refer for
+CECT scan and treat
+accordingly
+Proceed with CECT scan 
+Suggestive of hollow
+viscus injury
+Suggestive of solid
+organ injury
+Non-suggestive of
+intra-abdominal injuryExploratory
+laparotomy
+Exploratory laparotomy
+or
+laparoscopic surgery
+Consider exploratory
+laparotomy/
+angioembolisation
+Consider non-operative
+management/treat
+accordingly based on
+clinical judgement
+Yes
+Yes
+Yes
+No
+Yes
+Yes
+No
+No
+No
+No
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MANAGEMENT OF HAEMODYNAMICALLY UNSTABLE ABDOMINAL
+TRAUMA PATIENTS
+MANAGEMENT OF PENETRATING ABDOMINAL TRAUMA
+Note: Impaled/embedded object to be removed with precaution in operation theatre/controlled 
+environment
+#Diagnosis of pelvic fracture should be based on primary survey imaging
+^extra-abdominal injury e.g. extremities/thoracic/spine injuries
+Note: Complete assessment should be repeated regularly when managing a patient with suspected 
+intra-abdominal injury especially when there is a change in haemodynamic status. 
+Abbreviations:
+ATLS = Advanced Trauma Life 
+Support
+SBP = systolic blood pressure; 
+HR =   heart rate; 
+e-FAST= extended focused 
+assessment sonography in 
+trauma;
+CT= computed tomography; 
+CECT= contrast enhanced CT; 
+DPL= diagnostic peritoneal 
+lavage
+Suspected blunt intra-
+abdominal injury
+*Haemodynamically
+unstable despite
+initial resuscitation:
+SBP <90 mmHg
+HR >120/min
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+No
+No
+*Haemodynamically
+unstable despite initial
+resuscitation
+Presence of
+intraperitoneal fluid
+Pelvic fracture#Continue resuscitation
+Keep pelvic binder
+Haemodynamically
+stable after
+resuscitation
+Haemodynamically
+stable after 
+resuscitation
+Clinical examination and initial
+resuscitation as per ATLS protocol
+Refer to Algorithm 1 e-FAST
+Exploratory laparotomy
+Continue resuscitation. Identify
+other causes of hypotension
+(extra-abdominal injury^)
+and treat accordingly
+Refer for management
+of pelvic fracture
+CECT scan 
+Consider
+exploratory
+laparotomy to
+look for
+retroperitoneal
+injury
+Positive abdominal
+findings
+Negative abdominal
+findings
+CT scan not available
+Consider formal ultrasound
+abdomen/diagnostic laparoscopy/
+DPL/refer for CECT scan and
+treat accordingly
+Refer for
+management
+of pelvic fracture/
+treat accordingly
+Treatment based
+on clinical
+assessment and
+CECT scan findings
+Yes
+Yes No
+Yes
+No
+No
+No
+Indication for surgery present?
+• Haemodynamically unstable#
+• Peritonitis
+• Evisceration
+*Haemodynamically
+unstable despite
+initial resuscitation:
+SBP <90 mmHg
+HR >120/min
+Active 
+bleeding?
+Anterior
+abdominal fascia
+breach?
+Peritoneal
+violation?
+Patient with penetrating
+abdominal trauma
+Abbreviations: 
+SBP=systolic blood pressure;
+HR=heart rate; 
+CT= computed tomography;
+CECT=contrast enhanced CT;
+GI=gastrointestinal
+Exploratory
+laparotomy
+Posterior abdomenAnterior abdomen
+Diagnostic procedure
+according to clinical judgement
+by attending surgeon
+Diagnostic laparoscopy
+(DL)
+Local wound exploration
+(LWE)
+CECT scan abdomen ±
+GI contrast (± CT
+thoracic if suspected
+bi-cavitary injury)
+Exploratory
+laparotomy OR
+laparoscopy
+Wound
+debridement 
+(± suture)
+Suggestive of peritoneal
+violation/hollow viscus/
+major vessel injury
+Suggestive of solid
+organ injury
+Non-suggestive of
+intra-abdominal injury
+Consider exploratory
+laparotomy/
+angioembolisation
+Consider non-operative
+management/ treat accordingly
+based on clinical judgement
+Yes
+No
+No
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MANAGEMENT OF HAEMODYNAMICALLY UNSTABLE ABDOMINAL
+TRAUMA PATIENTS
+MANAGEMENT OF PENETRATING ABDOMINAL TRAUMA
+Note: Impaled/embedded object to be removed with precaution in operation theatre/controlled 
+environment
+#Diagnosis of pelvic fracture should be based on primary survey imaging
+^extra-abdominal injury e.g. extremities/thoracic/spine injuries
+Note: Complete assessment should be repeated regularly when managing a patient with suspected 
+intra-abdominal injury especially when there is a change in haemodynamic status. 
+Abbreviations:
+ATLS = Advanced Trauma Life 
+Support
+SBP = systolic blood pressure; 
+HR =   heart rate; 
+e-FAST= extended focused 
+assessment sonography in 
+trauma;
+CT= computed tomography; 
+CECT= contrast enhanced CT; 
+DPL= diagnostic peritoneal 
+lavage
+Suspected blunt intra-
+abdominal injury
+*Haemodynamically
+unstable despite
+initial resuscitation:
+SBP <90 mmHg
+HR >120/min
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+No
+No
+*Haemodynamically
+unstable despite initial
+resuscitation
+Presence of
+intraperitoneal fluid
+Pelvic fracture#Continue resuscitation
+Keep pelvic binder
+Haemodynamically
+stable after
+resuscitation
+Haemodynamically
+stable after 
+resuscitation
+Clinical examination and initial
+resuscitation as per ATLS protocol
+Refer to Algorithm 1 e-FAST
+Exploratory laparotomy
+Continue resuscitation. Identify
+other causes of hypotension
+(extra-abdominal injury^)
+and treat accordingly
+Refer for management
+of pelvic fracture
+CECT scan 
+Consider
+exploratory
+laparotomy to
+look for
+retroperitoneal
+injury
+Positive abdominal
+findings
+Negative abdominal
+findings
+CT scan not available
+Consider formal ultrasound
+abdomen/diagnostic laparoscopy/
+DPL/refer for CECT scan and
+treat accordingly
+Refer for
+management
+of pelvic fracture/
+treat accordingly
+Treatment based
+on clinical
+assessment and
+CECT scan findings
+Yes
+Yes No
+Yes
+No
+No
+No
+Indication for surgery present?
+• Haemodynamically unstable#
+• Peritonitis
+• Evisceration
+*Haemodynamically
+unstable despite
+initial resuscitation:
+SBP <90 mmHg
+HR >120/min
+Active 
+bleeding?
+Anterior
+abdominal fascia
+breach?
+Peritoneal
+violation?
+Patient with penetrating
+abdominal trauma
+Abbreviations: 
+SBP=systolic blood pressure;
+HR=heart rate; 
+CT= computed tomography;
+CECT=contrast enhanced CT;
+GI=gastrointestinal
+Exploratory
+laparotomy
+Posterior abdomenAnterior abdomen
+Diagnostic procedure
+according to clinical judgement
+by attending surgeon
+Diagnostic laparoscopy
+(DL)
+Local wound exploration
+(LWE)
+CECT scan abdomen ±
+GI contrast (± CT
+thoracic if suspected
+bi-cavitary injury)
+Exploratory
+laparotomy OR
+laparoscopy
+Wound
+debridement 
+(± suture)
+Suggestive of peritoneal
+violation/hollow viscus/
+major vessel injury
+Suggestive of solid
+organ injury
+Non-suggestive of
+intra-abdominal injury
+Consider exploratory
+laparotomy/
+angioembolisation
+Consider non-operative
+management/ treat accordingly
+based on clinical judgement
+Yes
+No
+No
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MANAGEMENT OF HAEMODYNAMICALLY UNSTABLE ABDOMINAL
+TRAUMA PATIENTS
+MANAGEMENT OF PENETRATING ABDOMINAL TRAUMA
+Note: Impaled/embedded object to be removed with precaution in operation theatre/controlled 
+environment
+#Diagnosis of pelvic fracture should be based on primary survey imaging
+^extra-abdominal injury e.g. extremities/thoracic/spine injuries
+Note: Complete assessment should be repeated regularly when managing a patient with suspected 
+intra-abdominal injury especially when there is a change in haemodynamic status. 
+Abbreviations:
+ATLS = Advanced Trauma Life 
+Support
+SBP = systolic blood pressure; 
+HR =   heart rate; 
+e-FAST= extended focused 
+assessment sonography in 
+trauma;
+CT= computed tomography; 
+CECT= contrast enhanced CT; 
+DPL= diagnostic peritoneal 
+lavage
+Suspected blunt intra-
+abdominal injury
+*Haemodynamically
+unstable despite
+initial resuscitation:
+SBP <90 mmHg
+HR >120/min
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+No
+No
+*Haemodynamically
+unstable despite initial
+resuscitation
+Presence of
+intraperitoneal fluid
+Pelvic fracture#Continue resuscitation
+Keep pelvic binder
+Haemodynamically
+stable after
+resuscitation
+Haemodynamically
+stable after 
+resuscitation
+Clinical examination and initial
+resuscitation as per ATLS protocol
+Refer to Algorithm 1 e-FAST
+Exploratory laparotomy
+Continue resuscitation. Identify
+other causes of hypotension
+(extra-abdominal injury^)
+and treat accordingly
+Refer for management
+of pelvic fracture
+CECT scan 
+Consider
+exploratory
+laparotomy to
+look for
+retroperitoneal
+injury
+Positive abdominal
+findings
+Negative abdominal
+findings
+CT scan not available
+Consider formal ultrasound
+abdomen/diagnostic laparoscopy/
+DPL/refer for CECT scan and
+treat accordingly
+Refer for
+management
+of pelvic fracture/
+treat accordingly
+Treatment based
+on clinical
+assessment and
+CECT scan findings
+Yes
+Yes No
+Yes
+No
+No
+No
+Indication for surgery present?
+• Haemodynamically unstable#
+• Peritonitis
+• Evisceration
+*Haemodynamically
+unstable despite
+initial resuscitation:
+SBP <90 mmHg
+HR >120/min
+Active 
+bleeding?
+Anterior
+abdominal fascia
+breach?
+Peritoneal
+violation?
+Patient with penetrating
+abdominal trauma
+Abbreviations: 
+SBP=systolic blood pressure;
+HR=heart rate; 
+CT= computed tomography;
+CECT=contrast enhanced CT;
+GI=gastrointestinal
+Exploratory
+laparotomy
+Posterior abdomenAnterior abdomen
+Diagnostic procedure
+according to clinical judgement
+by attending surgeon
+Diagnostic laparoscopy
+(DL)
+Local wound exploration
+(LWE)
+CECT scan abdomen ±
+GI contrast (± CT
+thoracic if suspected
+bi-cavitary injury)
+Exploratory
+laparotomy OR
+laparoscopy
+Wound
+debridement 
+(± suture)
+Suggestive of peritoneal
+violation/hollow viscus/
+major vessel injury
+Suggestive of solid
+organ injury
+Non-suggestive of
+intra-abdominal injury
+Consider exploratory
+laparotomy/
+angioembolisation
+Consider non-operative
+management/ treat accordingly
+based on clinical judgement
+Yes
+No
+No
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+PRE-HOSPITAL CARE AND TRANSFER
+During the prehospital phase of trauma patient management, it is important to recognise 
+presence of severe injuries to ensure early initiation of life support interventions (e.g oxygen and 
+fluid therapy) and rapid transportation to the most appropriate center with pre-arrival notification. 
+In a patient with haemorrhage (or suspected haemorrhage) TXA should be administered en 
+route to hospital.
+During primary survey, cervical spine protection is maintained with the use of cervical collar and 
+pelvic binder is applied in patients where pelvic fracture is suspected.
+Based on the Malaysian Triage Scale (MTS) for Emergency and Trauma Departments the 
+following are levels of triaging which can be used as a guide in abdominal trauma patients.
+A focused history provides valuable information, especially in cases of blunt abdominal trauma 
+(BAT). Evaluating the mechanism of injury is crucial as certain scenarios, e.g. high-speed motor 
+vehicle collisions, falls from height, direct abdominal trauma and penetrating injuries (e.g. 
+gunshots or stab wounds), are highly associated with intra-abdominal injury.
+Physical examination findings to look for are abdominal tenderness, guarding, rigidity, distension or 
+external signs of trauma (e.g. bruising or abrasions including the “seatbelt sign”). The absence of 
+abdominal pain or tenderness does not rule out serious injury, as symptoms may develop 
+several hours after the initial trauma. Therefore, repeated assessment and timely imaging are 
+essential.
+MANAGEMENT OF HAEMODYNAMICALLY STABLE ABDOMINAL
+TRAUMA PATIENTS 
+EARLY ASSESSMENT AND RESUSCITATION
+• Seatbelt signs is associated with intra-abdominal injury and has become an important 
+clinical factor in assessing blunt abdominal trauma related to road traffic accidents.
+CLINICAL DIAGNOSIS 
+Level of Triage Parameters associated with Chest/ Abdominal Trauma
+•  Agonal breathing
+•  Pulseless
+Level 1: Resuscitation
+•  Penetrating injury
+•  High velocity 
+ mechanism of injury
+Level 2: Emergency
+Level 3: Urgency •  Likely rib fractures
+•  Possibility of pelvic 
+ injury
+Level 4: Early Care •  Elderly
+•  Anticoagulant use
+Level 5: Routine •  Mild symptoms
+•  Unrecordable BP
+•  Shock index ≥1.4
+•  Respiratory distress
+•  SpO2 <95%
+•  Shock index ≥1.0 to <1.4
+•  Significant external bruising
+•  Shock index ≥0.6 to <1.0
+•  Pregnancy
+•  Shock index <0.6
+Note: Complete assessment should be repeated regularly when managing a patient with suspected 
+intra-abdominal injury especially when there is a change in haemodynamic status. 
+Haemodynamically stable
+trauma patients suspected
+of intra-abdominal injury 
+Abbreviations: SBP=systolic 
+blood pressure; HR=heart rate; 
+FAST=focused assessment 
+sonography in trauma; 
+e-FAST=extended FAST; 
+CT=computed tomography; 
+CECT=contrast enhanced CT
+Haemodynamically stable
+after initial resuscitation:
+SBP >90 mmHg
+HR <120/min
+Patient’s condition:
+- alert
+- not intoxicated
+- no distracting injuries
+Generalised
+peritonitis?
+e-FAST
+Presence of
+intraperitoneal fluid?
+CT scan
+available
+Active 
+bleeding
+Serial abdominal
+examination and
+observation
+Consider repeat
+FAST/CECT scan if
+equivocal signs and
+treat accordingly
+Consider formal ultrasound
+abdomen/ diagnostic
+laparoscopy/ refer for
+CECT scan and treat
+accordingly
+Proceed with CECT scan 
+Suggestive of hollow
+viscus injury
+Suggestive of solid
+organ injury
+Non-suggestive of
+intra-abdominal injuryExploratory
+laparotomy
+Exploratory laparotomy
+or
+laparoscopic surgery
+Consider exploratory
+laparotomy/
+angioembolisation
+Consider non-operative
+management/treat
+accordingly based on
+clinical judgement
+Yes
+Yes
+Yes
+No
+Yes
+Yes
+No
+No
+No
+No
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+PRE-HOSPITAL CARE AND TRANSFER
+During the prehospital phase of trauma patient management, it is important to recognise 
+presence of severe injuries to ensure early initiation of life support interventions (e.g oxygen and 
+fluid therapy) and rapid transportation to the most appropriate center with pre-arrival notification. 
+In a patient with haemorrhage (or suspected haemorrhage) TXA should be administered en 
+route to hospital.
+During primary survey, cervical spine protection is maintained with the use of cervical collar and 
+pelvic binder is applied in patients where pelvic fracture is suspected.
+Based on the Malaysian Triage Scale (MTS) for Emergency and Trauma Departments the 
+following are levels of triaging which can be used as a guide in abdominal trauma patients.
+A focused history provides valuable information, especially in cases of blunt abdominal trauma 
+(BAT). Evaluating the mechanism of injury is crucial as certain scenarios, e.g. high-speed motor 
+vehicle collisions, falls from height, direct abdominal trauma and penetrating injuries (e.g. 
+gunshots or stab wounds), are highly associated with intra-abdominal injury.
+Physical examination findings to look for are abdominal tenderness, guarding, rigidity, distension or 
+external signs of trauma (e.g. bruising or abrasions including the “seatbelt sign”). The absence of 
+abdominal pain or tenderness does not rule out serious injury, as symptoms may develop 
+several hours after the initial trauma. Therefore, repeated assessment and timely imaging are 
+essential.
+MANAGEMENT OF HAEMODYNAMICALLY STABLE ABDOMINAL
+TRAUMA PATIENTS 
+EARLY ASSESSMENT AND RESUSCITATION
+• Seatbelt signs is associated with intra-abdominal injury and has become an important 
+clinical factor in assessing blunt abdominal trauma related to road traffic accidents.
+CLINICAL DIAGNOSIS 
+Level of Triage Parameters associated with Chest/ Abdominal Trauma
+•  Agonal breathing
+•  Pulseless
+Level 1: Resuscitation
+•  Penetrating injury
+•  High velocity 
+ mechanism of injury
+Level 2: Emergency
+Level 3: Urgency •  Likely rib fractures
+•  Possibility of pelvic 
+ injury
+Level 4: Early Care •  Elderly
+•  Anticoagulant use
+Level 5: Routine •  Mild symptoms
+•  Unrecordable BP
+•  Shock index ≥1.4
+•  Respiratory distress
+•  SpO2 <95%
+•  Shock index ≥1.0 to <1.4
+•  Significant external bruising
+•  Shock index ≥0.6 to <1.0
+•  Pregnancy
+•  Shock index <0.6
+Note: Complete assessment should be repeated regularly when managing a patient with suspected 
+intra-abdominal injury especially when there is a change in haemodynamic status. 
+Haemodynamically stable
+trauma patients suspected
+of intra-abdominal injury 
+Abbreviations: SBP=systolic 
+blood pressure; HR=heart rate; 
+FAST=focused assessment 
+sonography in trauma; 
+e-FAST=extended FAST; 
+CT=computed tomography; 
+CECT=contrast enhanced CT
+Haemodynamically stable
+after initial resuscitation:
+SBP >90 mmHg
+HR <120/min
+Patient’s condition:
+- alert
+- not intoxicated
+- no distracting injuries
+Generalised
+peritonitis?
+e-FAST
+Presence of
+intraperitoneal fluid?
+CT scan
+available
+Active 
+bleeding
+Serial abdominal
+examination and
+observation
+Consider repeat
+FAST/CECT scan if
+equivocal signs and
+treat accordingly
+Consider formal ultrasound
+abdomen/ diagnostic
+laparoscopy/ refer for
+CECT scan and treat
+accordingly
+Proceed with CECT scan 
+Suggestive of hollow
+viscus injury
+Suggestive of solid
+organ injury
+Non-suggestive of
+intra-abdominal injuryExploratory
+laparotomy
+Exploratory laparotomy
+or
+laparoscopic surgery
+Consider exploratory
+laparotomy/
+angioembolisation
+Consider non-operative
+management/treat
+accordingly based on
+clinical judgement
+Yes
+Yes
+Yes
+No
+Yes
+Yes
+No
+No
+No
+No
+2 7
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTSQUICK REFERENCE FOR HEALTHCARE PROVIDERS
+KEY MESSAGES
+1. Intra-abdominal injury has been defined as injuries to the abdominal organs caused by 
+trauma, which may be associated with injuries to the ribs, vertebrae, pelvis and abdominal wall.
+2. All severely injured trauma patients should be transferred to the nearest appropriate 
+hospital within 60 minutes from time of injury (trauma bypass system).
+3. Resuscitation in abdominal trauma involves judicious fluid administration [initial fluid bolus 
+not exceeding 1L (15ml/kg)] combined with early blood transfusion and timely haemostasis. 
+Where available, massive transfusion protocol, should be activated early.
+4. Polytrauma patients should be managed by a specialist-led multidisciplinary trauma team 
+and it should be initiated promptly upon patient’s arrival at the hospital.
+5. In trauma, combination of clinical assessment, which includes mechanism of injury and 
+physical findings, with adjuncts such as e-FAST, chest x-ray and pelvic x-ray are paramount 
+to diagnose intra-abdominal injury and guide further management.
+6. Management is based on haemodynamic status:
+a. Haemodynamically stable patients warrant further diagnostic modalities such as CECT 
+scan or diagnostic laparoscopy
+b. Haemodynamically unstable bleeding patients unresponsive to resuscitation require 
+immediate haemostatic surgical intervention via damage control surgery.
+7. Non-operative management in abdominal trauma should only be considered in centres with 
+24-hours availability of surgical services, operating theatres, intensive care units and other 
+supporting resources. Patients should be closely monitored for clinical deterioration (e.g. 
+haemodynamic instability and peritonitis) which warrants urgent intervention.
+8. In abdominal trauma patients without active bleeding or other contraindications, venous 
+thromboembolism (VTE) prophylaxis should be initiated within 48 hours.
+9. All abdominal trauma patients at risk of developing abdominal compartment syndromes 
+should be identified early and monitored closely. Management strategies for intra-
+ abdominal hypertension (IAH) should be individualised based on cause and severity of IAH.
+10. If the initial health facility is unable to provide the patient the required trauma care,  a timely 
+referral to an appropriate facility should be made.
+This Quick Reference provides key messages & a summary of the main recommendations 
+in the Clinical Practice Guidelines (CPG) Management of Abdominal Trauma in Adults. 
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+MaHTAS: https://mymahtas.moh.gov.my
+Trauma Surgery Society of Malaysia: https://www.traumasurgerymalaysia.org/
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+SIGNS AND SYMPTOMS OF HAEMORRHAGE BY CLASS
+IMAGING
+*a Base excess is the quantity of base (HCO3–, in mEq/L) that is above or below the normal range in 
+the body. A negative number is called a base deficit and indicates metabolic acidosis.
+Abbreviations: GCS=Glasgow Coma Scale; ↔=normal; ↑=increase, ↑↑=marked increase, ↓
+=decrease, ↓↓=marked decrease
+Patients who fulfill at least two criteria from any two of the three categories may be 
+considered for WBCT as shown below.
+• In intra-abdominal injury patients, e-FAST is only used for detection of free fluid.
+• A negative initial e-FAST does not completely exclude the possibility of intra-abdominal 
+injury, hence it should be repeated together with regular clinical assessment.
+• All abdominal trauma patients undergoing computed tomography scan should have at 
+least arterial and portovenous phases which can be obtained by either multiphasic or 
+split-bolus protocol.
+CRITERIA TO CONSIDER FOR WBCT
+Pulse rate
+Parameters
+Approximate
+blood loss
+Pulse pressure
+Respiratory rate 
+Urine output 
+GCS Score
+Base deficit*
+Blood 
+pressure
+Need for blood
+products
+Class I
+<15%
+Monitor
+↔
+↔
+↔
+↔
+0 to -2 mEq/L
+↔
+↔
+Class II
+15 to 30%
+Possible
+↔/↑
+↓
+↔
+↔
+-2 to -6 mEq/L
+↔
+↔
+Class III
+31 to 40%
+Yes
+↑
+↓
+↔/↑
+↓
+-6 to -10 mEq/L
+↓
+↔/↓
+Class IV
+>40%
+Massive
+Transfusion
+Protocol
+↑/↑↑
+↓
+↑
+↓↓
+≤ -10 mEq/L
+↓
+↓
+Physiological Anatomical Mechanism
+• GCS ≤13 or abnormal 
+pupillary reaction
+• SBP <100 mmHg
+• Pulse rate <50 or >120 
+beats per minute
+• Respiratory rate <10 or >29 
+breaths per minute
+• Oxygen saturation <90% 
+on air
+• Estimated exterior blood 
+loss ≥500 ml
+• Visible injury to >1 body 
+part involving head, neck, 
+chest, abdomen and pelvis 
+(exclude extremity)
+• Flail chest, open chest or 
+multiple rib fractures
+• Positive FAST scan
+• Suspected unstable pelvic 
+fracture
+• Vertebral fractures/spinal 
+cord compression
+• Fall from a height (>4 m)
+• Wedged or trapped 
+chest/abdomen
+• Ejection, rollover or death 
+of passenger in same 
+vehicle
+• Pedestrian, cyclist or 
+motorcyclist hit by moving 
+vehicle
+• Explosion 
+• The principles of management in abdominal trauma are:
+ ○ systematic and timely assessment of injuries
+ ○ resuscitation and stabilisation of the patient
+ ○ control of haemorrhage and/or contamination
+ ○ prevention of secondary injuries
+• Unstable abdominal trauma can be caused by major intra-abdominal bleeding from solid 
+organs or abdominal vascular injury and peritonitis secondary to contamination following 
+hollow viscus perforation. This group of trauma patients requires immediate arrangement 
+for emergency laparotomy to arrest the bleeding or clear and clean the contamination. 
+ tneitap eht fi detacidni si ,)SCD( yregrus lortnoc egamad .g.e ,yregrus etaidemmI •
+remains unstable despite initial resuscitation.
+• DO NOT perform CT scan in persistently unstable patients as it may delay definitive 
+surgical intervention.
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ABDOMINAL TRAUMA IN ADULTS
+PRINCIPLES OF MANAGEMENT
+OPERATIVE MANAGEMENT
+NON-OPERATIVE MANAGEMENT
+The CPG DG opines the following guide should be referred when considering NOM.
+Non-Operative Management Guide in Abdominal Trauma
+Prerequisites
+1. Resources
+ a. 24-hour access to surgeon, operation theatre, ICU care, CT scan and continuous  
+  monitoring capability 
+ b. Care of patients undergoing NOM should be led by a surgeon
+2. Patient factor
+ a. haemodynamically stable
+ b. no peritonitis 
+3. Injury factor
+ a. Full extent and severity of injuries determined by CECT scan
+ b. In polytrauma patients, treatment plan should take into account the severity of    
+  extra-abdominal injuries such as TBI, chest and extremity injuries, rather than   
+  addressing abdominal injuries in isolation. 
+Monitoring
+1. Parameters to monitor
+ a. Vital signs (BP, PR, RR, SpO2, Temperature, pain score) and GCS
+ b. Fluid balance and urine output 
+ c. Clinical parameters e.g. presence of peritonitis
+ d. Blood results e.g. blood gases analysis, Hb level, coagulation profile, RP, LFT
+2. Complications – clinically or by re-imaging
+Deciding factors for termination of NOM
+1. Deterioration in patient’s haemodynamic status
+2. Onset of peritonitis
+3. Increased requirement of blood transfusion suggestive of active bleeding
+4. Radiological evidence of complications on reimaging (e.g. bleeding, hollow viscus   
+ perforation)
+Note: Special population- e.g. geriatric, obese, pregnancy, comorbidities, polypharmacy; will 
+have unique characteristics which may affect interpretation of findings 
+MANAGEMENT OF
+ABDOMINAL TRAUMA
+IN ADULTS
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS
+ACADEMY OF
+MEDICINE MALAYSIA
+MINISTRY OF HEALTH
+MALAYSIA
+TRAUMA SURGERY SOCIETY
+OF MALAYSIA

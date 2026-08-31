@@ -49,6 +49,68 @@ class Biomarker extends Model
         ];
     }
 
+    /**
+     * Labs often report censored values (eGFR >60, CRP <0.1). Decimal columns need the number.
+     */
+    public static function parseDecimal(mixed $value): ?float
+    {
+        if ($value === null || $value === '' || is_bool($value)) {
+            return null;
+        }
+
+        if (is_int($value) || is_float($value)) {
+            $number = (float) $value;
+
+            return is_finite($number) ? $number : null;
+        }
+
+        $text = trim(str_replace([',', ' '], '', (string) $value));
+        if ($text === '') {
+            return null;
+        }
+
+        if (preg_match('/^[<>]=?(-?\d+(?:\.\d+)?)/', $text, $matches) === 1) {
+            return (float) $matches[1];
+        }
+
+        if (preg_match('/^-?\d+(?:\.\d+)?$/', $text) === 1) {
+            return (float) $text;
+        }
+
+        if (preg_match('/-?\d+(?:\.\d+)?/', $text, $matches) === 1) {
+            return (float) $matches[0];
+        }
+
+        return null;
+    }
+
+    /**
+     * @param  array<int, mixed>  $rows
+     * @return list<array<string, mixed>>
+     */
+    public static function normalizeIncoming(array $rows): array
+    {
+        $normalized = [];
+
+        foreach ($rows as $row) {
+            if (! is_array($row) || empty($row['name'])) {
+                continue;
+            }
+
+            $value = self::parseDecimal($row['value'] ?? null);
+            if ($value === null) {
+                continue;
+            }
+
+            $row['value'] = $value;
+            $row['reference_low'] = self::parseDecimal($row['reference_low'] ?? null);
+            $row['reference_high'] = self::parseDecimal($row['reference_high'] ?? null);
+            $normalized[] = $row;
+        }
+
+        return $normalized;
+    }
+
     /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {

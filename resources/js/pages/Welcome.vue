@@ -89,7 +89,7 @@ const agents = [
     },
     {
         name: 'Retriever',
-        detail: 'Hybrid RAG',
+        detail: 'BM25 + optional dense',
         code: 'citations[]',
         icon: LibraryBig,
     },
@@ -111,13 +111,13 @@ const advantages = [
     {
         title: 'Understands more',
         body: 'X-rays, CT, labs, PDFs and voice route through one pipeline. Modality detection sends each artifact to the right specialist.',
-        tags: ['X-ray · CT · MRI', 'Lab PDFs', 'Voice intake'],
+        tags: ['X-ray · CT · MRI', 'Lab PDFs', 'Voice triage'],
         icon: Layers,
     },
     {
         title: 'Grounded in Malaysia',
-        body: 'MOH Clinical Practice Guidelines, traceable citations, and a localized adapter keep every claim grounded.',
-        tags: ['MOH CPG', 'Citations', 'BM · EN'],
+        body: 'MOH Quick Reference retrieval with BM25, and dense ranking only when embeddings match. Weak retrieve returns no citations.',
+        tags: ['MOH CPG', 'BM25', 'BM · EN'],
         icon: BookOpenText,
     },
     {
@@ -142,8 +142,8 @@ const safetyPrinciples = [
     },
     {
         n: '02',
-        title: 'Calibrate uncertainty',
-        body: 'Publish ≥ .80 · hedge .50–.80 · abstain below .50.',
+        title: 'Heuristic confidence',
+        body: 'Publish, hedge, or abstain from model-reported scores. Not calibrated probability.',
     },
     {
         n: '03',
@@ -395,9 +395,9 @@ onUnmounted(() => {
                             class="welcome-reveal max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg"
                             style="--reveal-delay: 240ms"
                         >
-                            One agentic engine understands imaging, labs,
-                            documents and voice, then composes grounded outputs
-                            for physicians and patients.
+                            Three inspectable flows: multimodal analysis with
+                            MOH-grounded reports, Ask the scan on this study,
+                            and voice triage.
                         </p>
 
                         <div
@@ -429,13 +429,13 @@ onUnmounted(() => {
                             style="--reveal-delay: 400ms"
                         >
                             <AnnotationPill
-                                >Multimodal reasoning</AnnotationPill
+                                >Medical intelligence</AnnotationPill
                             >
                             <AnnotationPill variant="teal"
-                                >Agentic orchestration</AnnotationPill
+                                >Ask the scan</AnnotationPill
                             >
                             <AnnotationPill variant="coral"
-                                >Malaysia-localized</AnnotationPill
+                                >Voice triage</AnnotationPill
                             >
                         </div>
                     </div>
@@ -553,7 +553,7 @@ onUnmounted(() => {
                                 </IconDisc>
                                 <div class="leading-tight">
                                     <p class="text-sm font-semibold">
-                                        Voice intake
+                                        Voice triage
                                     </p>
                                     <p
                                         class="font-mono text-[0.65rem] text-ink-faint uppercase"
@@ -1047,9 +1047,9 @@ onUnmounted(() => {
                         <AnnotationPill
                             v-for="label in [
                                 'Bounding-box localization',
-                                'Confidence calibration',
+                                'Ask the scan',
                                 'Inline citations',
-                                'Longitudinal comparison',
+                                'Heuristic confidence',
                             ]"
                             :key="label"
                         >
@@ -1122,10 +1122,10 @@ onUnmounted(() => {
                                 AI intelligence line
                             </p>
                             <p class="font-semibold">
-                                FastAPI → Agent graph → MedGemma 1.5
+                                FastAPI → Inspectable hops → MedGemma 1.5
                             </p>
                             <p class="text-sm text-muted-foreground">
-                                Pydantic contracts, typed state machine, 4B
+                                Pydantic contracts, sequential hops, 4B
                                 multimodal reasoning.
                             </p>
                         </div>
@@ -1220,7 +1220,7 @@ onUnmounted(() => {
                                 <p
                                     class="font-mono text-[0.65rem] text-ink-faint uppercase"
                                 >
-                                    Pixel tensor → structured observations[]
+                                    Pixel tensor → findings; click to Ask the scan
                                 </p>
                             </div>
                         </article>
@@ -1436,8 +1436,8 @@ onUnmounted(() => {
                                     v-for="step in [
                                         [
                                             '01',
-                                            'Hybrid search',
-                                            'Dense vectors + lexical BM25',
+                                            'BM25 search',
+                                            'Dense rank when embeddings match',
                                         ],
                                         [
                                             '02',
@@ -1552,8 +1552,8 @@ onUnmounted(() => {
                                         QLoRA adapter
                                     </p>
                                     <p class="text-xs text-muted-foreground">
-                                        BM medical register · local disease
-                                        priors
+                                        Patient Ask the scan phrasing · Bahasa
+                                        CPG style
                                     </p>
                                 </div>
                             </div>
@@ -1729,53 +1729,55 @@ onUnmounted(() => {
                         <div
                             class="paper-panel flex flex-col items-center gap-3 p-6 text-center"
                         >
-                            <div
-                                class="welcome-gauge-ring"
-                                style="--score: 68.4"
-                            >
-                                <strong class="text-xl tabular-nums"
-                                    >68.4%</strong
-                                >
-                            </div>
+                            <IconDisc>
+                                <Stethoscope class="size-6" />
+                            </IconDisc>
                             <p
                                 class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase"
                             >
-                                Medical reasoning
+                                01 · Investigate
                             </p>
-                            <p class="text-sm font-semibold">MedQA subset</p>
+                            <p class="text-sm font-semibold">
+                                Medical intelligence
+                            </p>
+                            <p class="text-xs leading-relaxed text-muted-foreground">
+                                Overlay, MOH citations, dual reports, physician
+                                sign-off.
+                            </p>
                         </div>
                         <div
                             class="paper-panel flex flex-col items-center gap-3 p-6 text-center"
                         >
-                            <div class="welcome-gauge-ring" style="--score: 84">
-                                <strong class="text-xl tabular-nums"
-                                    >4.2/5</strong
-                                >
-                            </div>
+                            <IconDisc>
+                                <ScanLine class="size-6" />
+                            </IconDisc>
                             <p
                                 class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase"
                             >
-                                Report quality
+                                02 · Ask
                             </p>
-                            <p class="text-sm font-semibold">Judge rubric</p>
+                            <p class="text-sm font-semibold">Ask the scan</p>
+                            <p class="text-xs leading-relaxed text-muted-foreground">
+                                Click a finding. Streaming Q&amp;A on this
+                                study, not a second diagnosis engine.
+                            </p>
                         </div>
                         <div
                             class="paper-panel flex flex-col items-center gap-3 p-6 text-center"
                         >
-                            <div
-                                class="welcome-gauge-ring"
-                                style="--score: 96.5"
-                            >
-                                <strong class="text-xl tabular-nums"
-                                    >96.5%</strong
-                                >
-                            </div>
+                            <IconDisc>
+                                <Mic class="size-6" />
+                            </IconDisc>
                             <p
                                 class="font-mono text-[0.65rem] tracking-wider text-ink-faint uppercase"
                             >
-                                Safety compliance
+                                03 · Intake
                             </p>
-                            <p class="text-sm font-semibold">Red-team set</p>
+                            <p class="text-sm font-semibold">Voice triage</p>
+                            <p class="text-xs leading-relaxed text-muted-foreground">
+                                Spoken or typed symptoms with structured
+                                urgency.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1811,9 +1813,9 @@ onUnmounted(() => {
                             <p
                                 class="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg"
                             >
-                                SihatAI combines multimodal perception, agentic
-                                reasoning, local evidence, and audience-adaptive
-                                generation in one inspectable pipeline.
+                                SihatAI combines multimodal analysis, Ask the
+                                scan, and voice triage in one inspectable
+                                pipeline.
                             </p>
 
                             <div
@@ -1846,7 +1848,7 @@ onUnmounted(() => {
                                         [
                                             '02',
                                             'Reasons',
-                                            'agents · RAG · longitudinal context',
+                                            'hops · RAG · longitudinal context',
                                         ],
                                         [
                                             '03',
@@ -1898,9 +1900,9 @@ onUnmounted(() => {
                         <p
                             class="max-w-sm text-sm leading-relaxed text-muted-foreground"
                         >
-                            Multimodal clinical intelligence for Malaysian
-                            imaging and labs: MedGemma analysis, RAG citations,
-                            and dual physician / patient reports.
+                            Multimodal clinical intelligence for Malaysia:
+                            analysis, Ask the scan, and voice triage, with MOH
+                            citations and dual physician / patient reports.
                         </p>
                     </div>
 

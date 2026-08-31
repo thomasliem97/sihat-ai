@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('uploaded_by_user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->foreignId('subject_user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('title');
+            $table->boolean('title_generated')->default(false);
             $table->string('modality')->default('unknown');
             $table->string('detected_modality')->nullable();
             $table->decimal('route_confidence', 5, 2)->nullable();

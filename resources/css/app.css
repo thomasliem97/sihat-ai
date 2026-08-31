@@ -868,6 +868,41 @@
         }
     }
 
+    .triage-md p + p {
+        margin-top: 0.5rem;
+    }
+
+    .triage-md strong {
+        font-weight: 600;
+    }
+
+    .triage-md ul {
+        margin-top: 0.5rem;
+        list-style: disc;
+        padding-left: 1.15rem;
+    }
+
+    .triage-md li + li {
+        margin-top: 0.25rem;
+    }
+
+    .triage-teletype-caret {
+        display: inline-block;
+        width: 0.08em;
+        height: 1em;
+        margin-left: 0.12em;
+        vertical-align: -0.12em;
+        background: currentColor;
+        border-radius: 1px;
+        animation: triage-teletype-caret 1s steps(1, end) infinite;
+    }
+
+    @keyframes triage-teletype-caret {
+        50% {
+            opacity: 0;
+        }
+    }
+
     @keyframes triage-mic-ring {
         0% {
             transform: scale(0.92);
@@ -947,7 +982,8 @@
         .triage-wave span,
         .triage-listen-rec::before,
         .triage-mic-ring,
-        .triage-mic-ring-delay {
+        .triage-mic-ring-delay,
+        .triage-teletype-caret {
             animation: none;
         }
     }

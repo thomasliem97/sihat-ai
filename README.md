@@ -9,7 +9,10 @@
     <a href="https://sihat-ai.vxms.dev/">
       <img src="https://img.shields.io/badge/LAUNCH_LIVE_DEMO-176CA5?style=for-the-badge" alt="Launch live demo">
     </a>
-    <a href="docs/pitch-deck/SihatAI-Pitch-Deck.html">
+    <a href="https://sihat-ai.vxms.dev/docs/demo.mp4">
+      <img src="https://img.shields.io/badge/WATCH_DEMO-0C527F?style=for-the-badge" alt="Watch demo">
+    </a>
+    <a href="https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.html">
       <img src="https://img.shields.io/badge/VIEW_PITCH_DECK-0B8994?style=for-the-badge" alt="View pitch deck">
     </a>
   </p>
@@ -58,7 +61,7 @@ The pipeline produces one canonical findings object, then adapts the explanation
 
 | 01 · Understand                                       | 02 · Reason                                                                | 03 · Protect                                                          | 04 · Communicate                                                            |
 | ----------------------------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| Imaging, labs, clinical documents, history, and voice | Specialist routing, MedGemma analysis, hybrid RAG, and temporal comparison | De-identification, confidence calibration, guardrails, and escalation | Physician reports, patient explanations, citations, and multilingual output |
+| Imaging, labs, clinical documents, history, and voice | Specialist routing, MedGemma analysis, MOH RAG, and temporal comparison | De-identification, heuristic confidence bands, guardrails, and escalation | Physician reports, patient explanations, citations, and multilingual output |
 
 ## One truth, two useful voices
 
@@ -77,11 +80,11 @@ The evidence is generated once. The presentation changes to match the person rea
 
 ### 🩻 Multimodal by design
 
-Chest X-rays, CT and MRI studies, dermatology, ophthalmology, histopathology, laboratory PDFs, clinical documents, and spoken symptoms all move through one connected workflow.
+Chest X-rays, CT and MRI mid-volume slices, dermatology, ophthalmology, histopathology, laboratory PDFs, clinical documents, and spoken symptoms all move through one connected workflow. Overlay preview shows the first extracted slice, not a 3D viewer.
 
 ### 🇲🇾 Grounded in Malaysia
 
-Hybrid retrieval combines dense search, BM25, and maximal marginal relevance to connect findings with Malaysian Ministry of Health Clinical Practice Guidelines, patient history, and local clinical context.
+Retrieval is BM25 over Malaysian Ministry of Health Quick Reference chunks, with dense ranking only when query and chunk embeddings share the same OpenAI model. Weak retrieve returns no citations. Prior-record comparison is a separate longitudinal step.
 
 ### 🛡️ Safety as a control plane
 
@@ -103,8 +106,8 @@ SihatAI turns the same grounded findings into dense clinical reporting for physi
 | **Medical records**     | Multimodal upload, automatic routing, analysis lifecycle, confidence, severity, and evidence              |
 | **Clinical report**     | Findings, differential diagnosis, recommendations, citations, editing, and sign-off                       |
 | **Patient health**      | Plain-language results, health trends, action plans, and questions for the doctor                         |
-| **Voice triage**        | Spoken interview prompts, symptom capture, transcription, and structured urgency guidance                 |
-| **Evaluation lab**      | Medical reasoning, report grounding, quality, and safety evaluation                                       |
+| **Ask the scan**        | Click a finding or overlay box; streaming visual Q&A on this study, with field-of-view abstention         |
+| **Voice triage**        | Spoken or typed symptom intake, transcription, structured urgency, and share with the physician           |
 
 The interface follows the **Clinical Field Atlas** design language: calm clinical surfaces, cobalt annotation ink, technical metadata, and a clear evidence hierarchy.
 
@@ -121,7 +124,7 @@ Open **[sihat-ai.vxms.dev](https://sihat-ai.vxms.dev/)** and choose a guided pro
 
 | Demo profile                     | Best for exploring                                                                            |
 | -------------------------------- | --------------------------------------------------------------------------------------------- |
-| **Physician · Dr. Aisha Rahman** | Multimodal analysis, clinical evidence, report review, sign-off, voice triage, and evaluation |
+| **Physician · Dr. Aisha Rahman** | Multimodal analysis, clinical evidence, Ask the scan, report review, sign-off, and voice triage |
 | **Patient · Ahmad bin Hassan**   | Plain-language reports, action plans, health trends, and voice-based symptom guidance         |
 
 Select a profile and press **Log in**. Access is prepared automatically.
@@ -132,16 +135,16 @@ Select a profile and press **Log in**. Access is prepared automatically.
 2. **Open Records** and select a completed study for an immediate tour, or choose **Upload record** to submit an artifact.
 3. **Upload and analyze** by adding a title, assigning the patient, selecting a report language, and providing an image, PDF, DICOM file, or study archive.
 4. **Follow the pipeline** as SihatAI de-identifies, routes, analyzes, grounds, checks, and composes the result.
-5. **Inspect the evidence** through localized findings, confidence and severity labels, biomarkers, citations, longitudinal changes, similar cases, and agent traces.
-6. **Review the clinical report**, edit the draft if needed, then select **Sign report** to approve the patient explanation.
-7. **Try Voice Triage** using a guided spoken prompt, recorded symptoms, or typed symptom text.
-8. **Open Evaluation** to explore the quality and safety layer behind the product.
+5. **Inspect the evidence** through localized findings, overlay boxes, confidence and severity labels, biomarkers, citations, and longitudinal changes.
+6. **Ask the scan** by clicking the opacity on the overlay or a finding, then watch the streaming answer about this image.
+7. **Review the clinical report**, edit the draft if needed, then select **Sign report** to approve the patient explanation.
+8. **Try Voice Triage** using recorded symptoms or typed symptom text.
 
 ### Patient tour
 
 1. Log out from the profile menu and select **Patient · Ahmad bin Hassan** on the login screen.
 2. **Review My Health** to see analyzed records, results needing attention, recent reports, and biomarker trends.
-3. **Open a signed record** to read the clinical findings in clear, patient-friendly language.
+3. **Open a signed record** to read the clinical findings in clear, patient-friendly language. Ask the scan is available after sign-off when the report is not withheld.
 4. **Review the action plan** and suggested questions to discuss with the doctor.
 5. **Try Voice Triage** to describe symptoms by voice or text and view structured guidance.
 
@@ -175,9 +178,9 @@ Laravel manages identity, authorization, records, queues, and report workflows. 
 | Web application | PHP 8.4, Laravel 13, Fortify, queues                                       |
 | Frontend        | Vue 3, TypeScript, Inertia.js 3, Wayfinder, Tailwind CSS 4, shadcn-vue     |
 | AI service      | Python, FastAPI, Pydantic, HTTPX, Modal                                    |
-| Intelligence    | MedGemma 1.5, Malaysia-focused adaptation, MedASR, hybrid RAG              |
+| Intelligence    | MedGemma 1.5, MY-LoRA (patient Ask the scan), MedASR, BM25 RAG             |
 | Data            | MySQL, clinical artifact storage, MOH guideline index                      |
-| Quality         | Pest 4, Larastan, ESLint, Prettier, TypeScript, evaluation regression gate |
+| Quality         | Pest 4, Larastan, ESLint, Prettier, TypeScript                             |
 
 </details>
 
@@ -188,7 +191,7 @@ Laravel manages identity, authorization, records, queues, and report workflows. 
 app/                     Laravel application, jobs, policies, and clinical services
 ai-service/              FastAPI, Modal inference, OCR, DICOM, and LoRA tooling
 database/                Schema, factories, guidelines, and clinical demo data
-docs/                    Pitch deck, project brief, and testing artifacts
+docs/                    Pitch deck, briefs, architecture, and testing artifacts
 resources/js/            Vue and Inertia physician and patient interfaces
 resources/css/           Clinical Field Atlas tokens and global styling
 routes/                   Web and authentication routes
@@ -199,10 +202,11 @@ tests/                    Pest feature and unit tests
 
 ## Project documents
 
-- **[Interactive pitch deck](docs/pitch-deck/SihatAI-Pitch-Deck.html)**: product story, experience, architecture, responsible AI, and differentiation.
-- **[Project summary](docs/project-summary.html)**: concise overview of the platform, pipeline, audiences, technology, and quality strategy.
-- **[AI disclosure](docs/ai-disclosure.html)**: how SihatAI uses AI in the product and during development, including data, safety, privacy, authorship, and accountability.
-- **[Technical paper](docs/academic-paper/SihatAI-Academic-Paper.html)**: academic write-up of the multimodal clinical intelligence system, methods, and evaluation ([PDF](docs/academic-paper/SihatAI-Academic-Paper.pdf)).
+- **[Demo video](https://sihat-ai.vxms.dev/docs/demo.mp4)**: product walkthrough.
+- **[Interactive pitch deck](https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.html)**: 12-slide product story ([PDF](https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.pdf)).
+- **[Project summary](https://sihat-ai.vxms.dev/docs/project-summary.html)**: written brief ([plain text](https://sihat-ai.vxms.dev/docs/project-summary.txt)).
+- **[AI disclosure](https://sihat-ai.vxms.dev/docs/ai-disclosure.html)**: product and development AI use ([plain text](https://sihat-ai.vxms.dev/docs/ai-disclosure.txt)).
+- **[Technical architecture](https://sihat-ai.vxms.dev/docs/technical-architecture/SihatAI-Technical-Architecture.html)**: system architecture, algorithms, and claim boundary ([PDF](https://sihat-ai.vxms.dev/docs/technical-architecture/SihatAI-Technical-Architecture.pdf)).
 
 ---
 

@@ -31,8 +31,23 @@ class AiWebhookController extends Controller
             'route_confidence' => ['nullable', 'numeric'],
         ]);
 
+        $raw = is_array($validated['result'] ?? null) ? $validated['result'] : [];
+
+        if (($validated['status'] ?? '') === 'completed') {
+            $peek = AnalysisJob::query()
+                ->where('external_job_id', $validated['job_id'])
+                ->first();
+            if ($peek && $peek->status !== 'completed') {
+                $raw = $pipeline->structureLabResultIfNeeded(
+                    $peek->medicalRecord,
+                    $raw,
+                    isset($validated['detected_modality']) ? (string) $validated['detected_modality'] : null,
+                );
+            }
+        }
+
         try {
-            return DB::transaction(function () use ($validated, $pipeline) {
+            return DB::transaction(function () use ($validated, $pipeline, $raw) {
                 $job = AnalysisJob::query()
                     ->where('external_job_id', $validated['job_id'])
                     ->lockForUpdate()
@@ -57,8 +72,6 @@ class AiWebhookController extends Controller
 
                     return response()->json(['ok' => true]);
                 }
-
-                $raw = $validated['result'] ?? [];
 
                 if (! empty($validated['detected_modality'])) {
                     $modality = Modality::tryFrom($validated['detected_modality']);
@@ -111,9 +124,9 @@ class AiWebhookController extends Controller
             return;
         }
 
-        foreach ($biomarkers as $data) {
+        foreach (Biomarker::normalizeIncoming($biomarkers) as $data) {
             $status = ClinicalFlag::tryFrom((string) ($data['status'] ?? ''));
-            if ($status === null || empty($data['name'])) {
+            if ($status === null) {
                 continue;
             }
 

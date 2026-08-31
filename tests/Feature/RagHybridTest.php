@@ -1,20 +1,30 @@
 <?php
 
+use App\Enums\Modality;
 use App\Models\GuidelineChunk;
 use App\Models\MedicalRecord;
 use App\Models\User;
 use App\Services\RagService;
+use Illuminate\Support\Facades\Http;
 
 test('hybrid rag returns diversified citations without static stubs on weak retrieve', function () {
     $rag = app(RagService::class);
     $user = User::factory()->create();
-    $record = MedicalRecord::factory()->create(['user_id' => $user->id]);
+    $record = MedicalRecord::factory()->create([
+        'user_id' => $user->id,
+        'title' => 'zzz-visit',
+        'modality' => Modality::Unknown,
+        'detected_modality' => Modality::Unknown,
+    ]);
+
+    $near = $rag->localHashEmbed('pneumonia consolidation antibiotic therapy chest radiograph');
+    fakeOpenAiEmbedding($near);
 
     GuidelineChunk::create([
         'source' => 'MOH CPG A',
         'section' => '1',
         'content' => 'pneumonia consolidation antibiotic therapy chest radiograph',
-        'embedding' => $rag->localHashEmbed('pneumonia consolidation antibiotic therapy chest radiograph'),
+        'embedding' => $near,
     ]);
     GuidelineChunk::create([
         'source' => 'MOH CPG B',
@@ -35,6 +45,9 @@ test('hybrid rag returns diversified citations without static stubs on weak retr
 
     expect($citations)->not->toBeEmpty()
         ->and(collect($citations)->pluck('source')->unique()->count())->toBeGreaterThan(0);
+
+    Http::fake();
+    config(['services.openai.api_key' => '']);
 
     $weak = $rag->retrieveCitations($record, [
         ['label' => 'zzzz-unrelated-token-qqqq'],

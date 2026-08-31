@@ -17,7 +17,9 @@ class UpdateMedicalRecordReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'summary' => ['required', 'string', 'max:5000'],
+            'summary' => ['required', 'string', 'max:20000'],
+            'findings_narrative' => ['nullable', 'string', 'max:20000'],
+            'impression' => ['nullable', 'string', 'max:10000'],
             'recommendations' => ['nullable', 'array'],
             'recommendations.*' => ['string', 'max:1000'],
             'technical_notes' => ['nullable', 'string', 'max:5000'],

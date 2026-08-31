@@ -8,22 +8,30 @@ use App\Enums\RecordStatus;
 use App\Enums\ReportLanguage;
 use App\Enums\UserRole;
 use App\Models\Biomarker;
-use App\Models\GuidelineChunk;
 use App\Models\MedicalRecord;
 use App\Models\User;
+use App\Services\AiPipelineService;
 use App\Services\RagService;
+use App\Support\GuidelineIngestor;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class MedicalDemoSeeder extends Seeder
 {
+    public const DEMO_PASSWORD = 'SihatAI-klinik-26';
+
     public function run(): void
     {
+        $this->seedDemoFiles();
+
+        if (User::query()->where('email', 'physician@sihat-ai.vxms.dev')->exists()) {
+            return;
+        }
+
         $physician = User::factory()->create([
             'name' => 'Dr. Aisha Rahman',
             'email' => 'physician@sihat-ai.vxms.dev',
-            'password' => Hash::make('password'),
+            'password' => self::DEMO_PASSWORD,
             'role' => UserRole::Physician,
             'locale' => ReportLanguage::English,
         ]);
@@ -31,12 +39,11 @@ class MedicalDemoSeeder extends Seeder
         $patient = User::factory()->create([
             'name' => 'Ahmad bin Hassan',
             'email' => 'patient@sihat-ai.vxms.dev',
-            'password' => Hash::make('password'),
+            'password' => self::DEMO_PASSWORD,
             'role' => UserRole::Patient,
             'locale' => ReportLanguage::Malay,
         ]);
 
-        $this->seedDemoFiles();
         $this->seedGuidelines();
         $this->seedDemoRecords($physician, $patient);
         $this->seedBiomarkerTrends($patient);
@@ -47,78 +54,61 @@ class MedicalDemoSeeder extends Seeder
         $disk = Storage::disk('local');
         $disk->makeDirectory('medical-records');
 
-        $cxr = public_path('images/chest-xray.png');
-        if (is_file($cxr)) {
-            $contents = file_get_contents($cxr);
+        $copies = [
+            public_path('images/chest-xray.png') => 'medical-records/demo-cxr.png',
+            base_path('docs/testing-dataset/lab-report/05-hod-healthcare-cbc.pdf') => 'medical-records/demo-lab.pdf',
+        ];
+
+        foreach ($copies as $from => $to) {
+            if (! is_file($from)) {
+                continue;
+            }
+
+            $contents = file_get_contents($from);
             if (is_string($contents)) {
-                $disk->put('medical-records/demo-cxr.png', $contents);
+                $disk->put($to, $contents);
             }
         }
-
-        // Minimal one-page PDF for the lab demo specimen.
-        $disk->put('medical-records/demo-lab.pdf', <<<'PDF'
-%PDF-1.4
-1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj
-2 0 obj<< /Type /Pages /Kids [3 0 R] /Count 1 >>endobj
-3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources<< /Font<< /F1 5 0 R >> >> >>endobj
-4 0 obj<< /Length 68 >>stream
-BT /F1 18 Tf 72 720 Td (SihatAI demo FBC report) Tj ET
-endstream
-endobj
-5 0 obj<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>endobj
-xref
-0 6
-0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000266 00000 n 
-0000000385 00000 n 
-trailer<< /Size 6 /Root 1 0 R >>
-startxref
-462
-%%EOF
-PDF);
     }
 
     private function seedGuidelines(): void
     {
-        $rag = app(RagService::class);
+        app(GuidelineIngestor::class)->ingest();
+    }
 
-        $rows = [
-            [
-                'source' => 'MOH Malaysia CPG - Community Acquired Pneumonia',
-                'section' => '4.2 Diagnosis',
-                'content' => 'Chest radiograph may show lobar or patchy consolidation. Clinical correlation with symptoms, vital signs, and laboratory findings is essential before initiating antibiotic therapy.',
-            ],
-            [
-                'source' => 'MOH Malaysia CPG - Tuberculosis',
-                'section' => '3.1 Imaging',
-                'content' => 'Upper lobe cavitary lesions are characteristic of post-primary TB. Lower lobe involvement can occur, particularly in immunocompromised patients.',
-            ],
-            [
-                'source' => 'MOH Malaysia CPG - Thalassemia',
-                'section' => '2.1 Laboratory',
-                'content' => 'Microcytic hypochromic anemia with elevated HbA2 or HbF suggests beta-thalassemia trait. Iron studies help differentiate from iron deficiency anemia.',
-            ],
-            [
-                'source' => 'MOH Malaysia CPG - Dermatology',
-                'section' => '1.2 Pigmented lesions',
-                'content' => 'Asymmetry, border irregularity, colour variation, diameter >6mm, and evolution warrant specialist review for suspected melanoma.',
-            ],
-        ];
+    /**
+     * @param  array<string, mixed>  $attributes
+     */
+    private function seedCompletedRecord(array $attributes): MedicalRecord
+    {
+        $record = MedicalRecord::create($attributes);
+        $findings = $record->findings ?? [];
+        $citations = app(RagService::class)->retrieveCitations($record, $findings);
+        $existing = is_array($record->physician_report) ? $record->physician_report : [];
+        $summary = (string) ($existing['summary'] ?? '');
+        $composed = app(AiPipelineService::class)->composeReports($record, [
+            'findings' => $findings,
+            'overall_confidence' => (float) $record->overall_confidence,
+            'citations' => $citations,
+            'differential_diagnosis' => $existing['differential_diagnosis'] ?? [],
+            'recommendations' => $existing['recommendations'] ?? [],
+            'medgemma_draft' => $summary === '' ? '' : "FINDINGS:\n{$summary}\n\nIMPRESSION:\n{$summary}",
+            'patient_report' => $record->patient_report,
+            'engine' => 'medgemma',
+        ], is_array($record->guardrail_flags) ? $record->guardrail_flags : []);
 
-        foreach ($rows as $row) {
-            GuidelineChunk::create([
-                ...$row,
-                'embedding' => $rag->localHashEmbed($row['source'].' '.$row['section'].' '.$row['content']),
-            ]);
-        }
+        $record->update([
+            'citations' => $citations,
+            'physician_report' => $composed['physician_report'],
+            'patient_report' => $composed['patient_report'] ?? $record->patient_report,
+        ]);
+
+        return $record->fresh();
     }
 
     private function seedDemoRecords(User $physician, User $patient): void
     {
-        MedicalRecord::create([
+        $cxr = $this->seedCompletedRecord([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $physician->id,
             'subject_user_id' => $patient->id,
@@ -149,12 +139,29 @@ PDF);
                 'questions_for_doctor' => ['Adakah saya perlu antibiotik?'],
                 'action_plan' => ['Rehat', 'Minum air secukupnya'],
             ],
-            'citations' => [
-                ['source' => 'MOH CPG - CAP', 'section' => '4.2', 'excerpt' => 'Chest radiograph may show patchy consolidation.', 'relevance' => 0.82],
-            ],
             'bounding_boxes' => [
                 // RLL opacity sits on image-left (patient right) in the lower third of the demo CXR.
-                ['label' => 'Opacity', 'x' => 0.08, 'y' => 0.56, 'width' => 0.34, 'height' => 0.3, 'confidence' => 0.87],
+                [
+                    'label' => 'Right lower lobe opacity',
+                    'x' => 0.08,
+                    'y' => 0.56,
+                    'width' => 0.34,
+                    'height' => 0.3,
+                    'confidence' => 0.87,
+                    'kind' => 'finding',
+                    'finding_index' => 0,
+                    'image_index' => 0,
+                ],
+                [
+                    'label' => 'Heart',
+                    'x' => 0.32,
+                    'y' => 0.38,
+                    'width' => 0.38,
+                    'height' => 0.32,
+                    'confidence' => 0.9,
+                    'kind' => 'anatomy',
+                    'image_index' => 0,
+                ],
             ],
             'longitudinal_diff' => [
                 'has_prior' => true,
@@ -171,8 +178,9 @@ PDF);
             'deidentified_at' => now()->subHours(2),
             'analyzed_at' => now()->subHours(2),
         ]);
+        $this->signDemoRecord($cxr, $physician);
 
-        MedicalRecord::create([
+        $lab = $this->seedCompletedRecord([
             'user_id' => $patient->id,
             'uploaded_by_user_id' => $patient->id,
             'subject_user_id' => $patient->id,
@@ -186,21 +194,62 @@ PDF);
             'language' => ReportLanguage::English,
             'overall_confidence' => 0.92,
             'findings' => [
-                ['label' => 'Hemoglobin', 'value' => 9.2, 'unit' => 'g/dL', 'severity' => 'abnormal', 'confidence' => 0.95],
-                ['label' => 'Platelet count', 'value' => 85, 'unit' => '×10³/µL', 'severity' => 'abnormal', 'confidence' => 0.93],
+                ['label' => 'Hemoglobin', 'value' => 9.7, 'unit' => 'g/dL', 'severity' => 'abnormal', 'confidence' => 0.95],
+                ['label' => 'WBC', 'value' => 14.6, 'unit' => '×10³/µL', 'severity' => 'abnormal', 'confidence' => 0.93],
             ],
             'physician_report' => [
-                'summary' => 'Microcytic anemia with thrombocytopenia. Consider thalassemia trait vs iron deficiency.',
+                'summary' => 'Anemia (Hb 9.7 g/dL) with leukocytosis. Low MCV/MCH and raised RDW favor iron deficiency over thalassaemia trait.',
+                'differential_diagnosis' => [
+                    ['condition' => 'Iron deficiency', 'confidence' => 0.7],
+                    ['condition' => 'Thalassaemia trait', 'confidence' => 0.4],
+                ],
             ],
             'patient_report' => [
                 'summary' => 'Some results need your doctor\'s attention.',
-                'what_this_means' => 'Your blood test shows lower than normal hemoglobin and platelets.',
+                'what_this_means' => 'Your blood test shows lower than normal hemoglobin.',
             ],
             'guardrail_flags' => [
                 'code' => 'ALLOW',
                 'flags' => ['medical_disclaimer_required', 'not_a_diagnosis', 'confidence_publish'],
             ],
             'analyzed_at' => now()->subDay(),
+        ]);
+        $this->signDemoRecord($lab, $physician);
+        $this->seedLabBiomarkers($lab, $patient);
+    }
+
+    private function signDemoRecord(MedicalRecord $record, User $physician): void
+    {
+        $record->update([
+            'signed_physician_report' => $record->physician_report,
+            'signed_by' => $physician->id,
+            'signed_at' => $record->analyzed_at ?? now()->subHour(),
+        ]);
+    }
+
+    private function seedLabBiomarkers(MedicalRecord $record, User $patient): void
+    {
+        Biomarker::create([
+            'user_id' => $patient->id,
+            'medical_record_id' => $record->id,
+            'name' => 'Hemoglobin',
+            'value' => 9.7,
+            'unit' => 'g/dL',
+            'reference_low' => 12.0,
+            'reference_high' => 16.0,
+            'status' => ClinicalFlag::Abnormal,
+            'collected_at' => $record->analyzed_at ?? now()->subDay(),
+        ]);
+        Biomarker::create([
+            'user_id' => $patient->id,
+            'medical_record_id' => $record->id,
+            'name' => 'WBC',
+            'value' => 14.6,
+            'unit' => '×10³/µL',
+            'reference_low' => 4.0,
+            'reference_high' => 11.0,
+            'status' => ClinicalFlag::Abnormal,
+            'collected_at' => $record->analyzed_at ?? now()->subDay(),
         ]);
     }
 

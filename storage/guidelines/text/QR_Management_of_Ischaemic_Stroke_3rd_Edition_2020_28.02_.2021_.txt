@@ -1,0 +1,1309 @@
+1
+
+2
+This Quick Reference provides key recommendations and and a summary of
+the main recommendations in the Clinical Practice Guidelines (CPG)
+Management of Ischaemic Stroke 3rd Edition 2020.
+Details of the evidence supporting these recommendations can be found in the
+above CPG, available on the following website:
+Academy of Medicine: http://www.acadmed.org.my
+Malaysia Society of Neurosciences: http://neuro.org.my
+Ministry of Health Malaysia: http://www.moh.gov.my
+Also available as an app for Android and IOS platform: MyMaHTAS
+3
+KEY RECOMMENDATIONS OF STROKE CPG 2020
+Chapter 1: Epidemiology, Definition and Classification Of Stroke
+1. Stroke is a major cause of mortality and morbidity, and in Malaysia, stroke is the third leading cause
+of mortality.
+2. Ischaemic stroke is the most common stroke, and hypertension was the most common risk factor
+followed by diabetes mellitus.
+3. The new definition of stroke and transient ischaemic attack (TIA) involved either pathological imaging
+or clinical evidence of ischaemia and can be timed based on the presentation of symptoms.
+4. Ischaemic stroke can be classified according to clinical, phenotypic or aetiologic classification.
+Chapter 2: Causes and Pathophysiology
+1. Three main causes of ischaemic stroke include atherothrombosis of large vessels, intracranial small
+vessel disease, and embolism, which may contribute to up to 80% of the cases.
+2. Cryptogenic infarction or stroke of undetermined aetiology may be responsible for around 20 to 40%
+of the cases despite extensive workout and usually would be a diagnosis of exclusion.
+Chapter 3: Diagnosis and Initial Assessment
+1. The diagnosis of stroke is made by evaluating and analysing information derived from a good history,
+physical examination and selected diagnostic tests.
+2. The symptoms and signs of stroke depend on the type, location, and the extent of the affected brain
+tissues.
+3. A full neurological examination, including the patient’s conscious level and tests of higher mental
+function is mandatory.
+4. Stroke mimics commonly confound the clinical diagnosis of stroke.
+Chapter 4: Prognosis
+1. Haemorrhagic stroke has a higher mortality than ischaemic stroke.
+2. There is a decline in stroke mortality in both men and women suffering from ischaemic or
+haemorrhagic stroke due to the introduction of dedicated stroke units and improved control of stroke
+risk factors.
+3. The recurrence rates are 3-4% in the first month and 12% in the first year.
+4. Progress of time is an independent covariate which reflects the spontaneous recovery of bodily
+functions.
+4
+Chapter 5: Prevention of Stroke
+1. Stroke is a preventable disease and may be attributed to modifiable and non-modifiable risk factors.
+2. Modifiable risk factors are the focus of primary prevention and can be clustered into three main
+groups i.e.
+a) Lifestyle risk factors, i.e., smoking, physical inactivity, and unhealthy eating
+b) Metabolic risk factors, i.e., high systolic BP, high cholesterol, high fasting blood glucose, low
+eGFR and high BMI.
+c) Environmental factors, i.e., air pollution and lead exposure.
+3. Secondary prevention of stroke involves the prevention of recurrent stroke, and this may involve
+medical interventions includes antiplatelet therapy, anti-hypertensive treatment, lipid-lowering
+agents, glycaemic control, prevention of cardio-embolism and re-vascularisation procedures in
+selected cases.
+Chapter 6: Investigations
+1. Investigations carried out for stroke are aimed to confirm the diagnosis, determine the mechanism of
+stroke, stratify risk and to identify potential treatable vascular lesions.
+2. Computed tomography (CT) brain is mandatory and preferred imaging in the emergency setting to
+differentiate haemorrhage from ischaemia, determine the site(s), cause, and extent of the lesion.
+3. Advance imaging may be required in selected cases in the emergency settings, e.g., ruling out stroke
+mimics, reperfusion therapy in extended hours and determining potential re-vascularisation
+procedure.
+4. Selected blood investigations and imaging will be required in certain patients to determine the
+aetiology of stroke.
+Chapter 7: Emergency Medicine Services
+1. The public should be encouraged to call 999 if they suspect a person is having a stroke.
+2. Emergency medical dispatcher and prehospital care providers should be trained to recognize and
+identify stroke and are able to provide rapid transportation of suspected acute stroke patient to
+nearest stroke ready hospital.
+3. Assessment of patients with suspected acute stroke in emergency department should be prioritized
+in order to expediate the diagnosis of stroke and to determine the appropriate acute stroke
+interventions.
+4. Audit of acute stroke care and training of emergency department personnel should be conducted to
+improve quality of care in acute stroke cases.
+Chapter 8: Acute General Management
+1. Acute general management in stroke includes supportive care and treatment of acute complications
+in order to improve the mortality rate and functional disability.
+2. General management includes management of blood pressure, glucose control, nutritional support,
+prevention of infection and DVT, and also to treat potential sequelae, e.g. raised intracranial pressure
+and seizure.
+5
+Chapter 9: Reperfusion of Ischaemic Brain
+1. Intravenous alteplase (0.9 mg/kg; maximum dose of 90mg) is recommended for the definite onset
+stroke for up to 4.5 hours from the onset. The treatment window can also be extended via CT
+perfusion with clinical evidence of penumbra-core mismatch up to 9 hours from the time of the last
+known to be well/midpoint of sleep or via MRI (DWI-FLAIR mismatch) done to identify possible stroke
+onset within the last 4.5 hours.
+2. Intravenous tenecteplase (0.25 mg/kg;maximum dose of 25mg) is a possible treatment agent in
+acute stroke that presented within 4.5 hours with evidence of large vessel occlusion on imaging.
+Chapter 10: Endovascular Thrombectomy
+1. Hyperacute endovascular thrombectomy is recommended for the definite onset of stroke with
+evidence of large vessel occlusion which is within 6 hours from the onset. The treatment window can
+be extended via CT/MR perfusion (penumbra-core mismatch) or MRI (clinical-imaging mismatch)
+with current evidence showed significant benefit up to 24 hours from the onset/time of last known to
+be well. However, treatment pathway should not be delayed, as the treatment outcome can be
+influence by the imaging-to-recanalization time.
+2. Drip & Ship (IVT prior to EVT) as per Chapter 9 is recommended for eligible patients.
+Chapter 11: Stroke Unit
+1. The use of comprehensive specialized stroke care centres (stroke units) that incorporates
+rehabilitation services are able to reduce mortality and disabilities among stroke patients.
+Chapter 12: Stroke in The Older Person
+1. All older persons with acute stroke should be assessed for fitness/frailty level using a validated
+instrument to facilitate a tailored and individualised treatment plan.
+2. An older person can benefit from acute treatment for stroke including stroke thrombolysis and
+endovascular thrombectomy, providing the inclusion and exclusion criteria of the treatment are met.
+3. An older person can benefit from and should receive treatment for stroke prevention with
+management of polypharmacy issues, individualised medication dosages and treatment targets as is
+tolerated, for stroke risk factors.
+4. All older persons with stroke should be:
+- screened for delirium using a validated tool, and receive a tailored multicomponent intervention
+and management plan for delirium, when admitted with an acute stroke
+- offered falls and fragility fracture risk assessment and management during the
+rehabilitation period
+- assessed by a multidisciplinary team with an appropriate discharge plan
+- able to receive end-of-life care and recommendations when the prognosis is poor
+either from the stroke itself, complications, or other serious comorbid conditions
+6
+Chapter 13: Stroke and Cardioembolism
+1. Cardioemboli is a common cause of stroke. Stroke patient must have cardiac assessment to look for
+the presence of cardioemboli.
+2. It causes more severe stroke and carry a higher morbidity and mortality rates.
+3. Effective treatment to prevent cardioembolism is available and should be offered to patients at risk.
+4. NOAC is preferred over VKA for NVAF.
+5. Patient on VKA should have regular INR monitoring and aimed for time in therapeutic range (TTR) >
+70%.
+6. Antiplatelet is not recommended in NVAF for the prevention of stroke.
+Chapter 14: Stroke in Special Circumstances
+1. Young onset stroke requires more comprehensive investigation to determine the stroke
+aetiology.
+2. Diagnosis of cryptogenic stroke and embolic stroke of undertermined source (ESUS) is made
+after standard evaluation to rule out possible cause of stroke.
+3. Further specialized investigations needed in the cryptogenic or ESUS stroke for example
+prolonged Holter monitoring to look for atrial fibrillation or to look for evidence of patent foramen
+ovale (PFO).
+4. Cerebral venous thrombosis is one of the major cause of venous infarct and would require
+investigations to determine the cause of thrombosis. Treatment mainly directed at
+anticoagulation with adjunctive therapy to prevent associated complications.
+Chapter 15: Management of Stroke in Pregnancy
+1. MRI of the brain (without gadolinium contrast) is the radiological modality of choice for investigating
+strokes in pregnancy.
+2. Aspirin is the only choice of antiplatelet for pregnant patients with a well-defined low risk profile.
+Chapter 16: Stroke Therapies with Limited Evidence
+1. There are a variety of stroke medications and treatment modalities, but the evidence is very limited.
+7
+LEVELS OF EVIDENCE SCALE
+I Evidence obtained from at least one properly randomized controlled trial
+II – 1 Evidence obtained from well-designed controlled trials without randomization
+II – 2 Evidence obtained from well-designed cohort or case-control analytic studies,
+preferably from more than one centre or research group
+II – 3
+Evidence obtained from multiple time series with or without the intervention.
+Dramatic results in uncontrolled experiments (such as the results of the
+introduction of penicillin treatment in the 1940s) could also be regarded as this
+type of evidence
+III Opinions of respected authorities, based on clinical experience, descriptive
+studies and case reports; or reports of expert committees
+Source: U.S./ CANADIAN PREVENTIVE SERVICES TASK FORCE
+Source: Guidelines for CLINICAL PRACTICE GUIDELINES, Ministry of Health Malaysia 2003
+KEY TO EVIDENCE STATEMENTS AND GRADES OF RECOMMENDATIONS
+GRADES OF RECOMMENDATIONS
+A At least one meta-analysis, systematic review, or randomized controlled trial
+(RCT), or evidence rated as good and directly applicable to the target population
+B
+Evidence from well-conducted clinical trials, directly applicable to the target
+population, and demonstrating overall consistency of results; or evidence
+extrapolated from meta-analysis, systematic review or RCT
+C
+Evidence from expert committee reports, or opinions and/or clinical experiences of
+respected authorities; indicates the absence of directly applicable clinical studies of
+good quality
+8
+RECOMMENDATIONS SUMMARY OF STROKE CPG 2020
+Chapter 5: Primary Prevention of Stroke
+Table 5.2: Primary Prevention and Management of Risk Factors
+Factors Recommendations Level of
+Evidence Grade
+Hypertension Self-BP monitoring is recommended for all hypertensive
+patients.
+New recommendation
+I ARisk stratification for hypertension based on CVD risk,
+target organ damage and complications are
+recommended for optimizing therapy.
+New recommendation
+Lifestyle changes if systolic BP is between
+130-139mmHg and/or diastolic BP is between
+80-89mmHg, with three to six-monthly review.
+New recommendation
+I A
+Treat medically if systolic BP is >140mmHg and/or
+diastolic BP is >90mmHg. I A
+Hypertension should be treated in the very elderly
+(age >80years) to reduce the risk of stroke.
+New recommendation
+I B
+Diabetes Mellitus Strict blood pressure control is important in patients with
+diabetes. I A
+More intensive HbA1c glycaemic control targets
+(<6.5%) may be required for optimal ischemic stroke
+prevention.
+I A
+Target BP for diabetics is systolic BP <130mmHg and
+diastolic BP <80mmHg, preferably <120mmHg if
+tolerated.
+New recommendation
+I A
+Hyperlipidaemia Treatment of dyslipidaemia / LDL-C is stratified based
+on risk.
+I B
+High-risk group: lowering LDL to <1.8 mmol/l is
+recommended.
+New recommendation
+Intermediate and low risk: keep LDL <3.4mmol/l.
+Low-risk group may benefit from cholesterol-lowering
+therapy with a statin.
+New recommendation
+No risk – keep LDL <4.2 mmol/L.
+Smoking Cessation of smoking. III C
+Aspirin therapy Aspirin therapy is not recommended for primary
+prevention of stroke in the elderly, diabetics, or other
+high-risk groups.
+New recommendation
+I A
+Post-menopausal
+Hormone Replacement
+Therapy
+Oestrogen-based HRT is not recommended for primary
+stroke prevention. II B
+Alcohol Avoid heavy alcohol consumption or limit to < 1 drink
+per day.
+New recommendation
+II-2 B
+Physical Activity Physical activity (occupational and leisure time) is I A
+9
+recommended for all groups of patients.
+New recommendation
+Physical activity > 30mins/day or >150mins/week as
+part of a healthy lifestyle is recommended
+New recommendation
+I A
+Diet DASH diet is recommended to reduce BP.
+New recommendation I A
+Mediterranean diet (low glycaemic content with high
+intake of vegetables) supplemented with nuts and olive
+oil is beneficial.
+New recommendation
+II B
+Diet high in fruits and leafy green vegetables is
+beneficial.
+New recommendation
+II B
+Table 5.3: Secondary Prevention of Stroke
+Factors/Treatment Recommendations Level of
+Evidence Grade
+Antiplatelet (Single agent)
+Aspirin The recommended dose of aspirin is 75mg to 325mg daily. I A
+Alternatives:
+Clopidogrel The recommended dose is 75mg daily. I A
+Ticlopidine The recommended dose is 250mg twice a day. I A
+Triflusal The recommended dose is 600mg daily I A
+Cilostazol The recommended dose is 100mg twice a day. I A
+Double therapy Combination therapy of Clopidogrel and Aspirin is
+recommended in patient with minor ischaemic stroke and
+high-risk TIA for 21 days.
+New recommendation
+I A
+Antihypertensive
+treatment
+ACE-inhibitor based therapy should be used to reduce
+recurrent stroke in normotensive and hypertensive
+patients.
+I A
+ARB-based therapy may benefit selected high risk
+populations. II-1 B
+Lipid lowering Lipid reduction should be considered in all patients with
+previous ischaemic strokes. I A
+LDL target < 1.8 is recommended in all patients with
+previous ischaemic stroke.
+New recommendation
+I A
+Diabetic control All diabetic patients with a previous stroke should have
+good glycaemic control. III C
+Cigarette smoking All smokers should stop smoking. III C
+Table 5.4: Cardiac Conditions Predisposing to Ischaemic stroke
+Major Risk
+Conditions Additional Risk Factors Recommendations Level of
+Evidence Grade
+Atrial
+Fibrillation
+Risk factors to be
+assessed by
+CHA2DS2-VASc
+Score.
+OAC to prevent cardioembolic stroke is
+recommended for all NVAF male patients
+with CHA2DS2-VASc score of 2 or more
+and female patients with a
+CHA2DS2-VASc score of 3 or more.
+New recommendation
+I A
+Aspirin 75-325mg daily is sufficient for I A
+10
+patients < 65 years old with ‘lone’ AF and
+no additional risk factors.
+Direct Oral Anticoagulant (DOAC) vs. Warfarin
+Dabigatran is superior (150mg bid) to and
+as effective (110mg bid) as compared to
+Warfarin, in preventing stroke and
+systemic embolism. Bleeding rates are
+similar with Warfarin at 150mg bid but with
+a lower bleeding rates at 110mg bid.
+I A
+Rivaroxaban was compared with
+adjusted-dose warfarin and was found to
+be non-inferior with regard to the primary
+composite end point of stroke or
+non-central nervous systemic embolism.
+New recommendation
+I A
+Apixaban was compared with
+adjusted-dose warfarin and was found to
+be superior to warfarin in preventing
+stroke or systemic embolism. Apixaban
+also caused less major bleeding events as
+compared with warfarin and resulted in
+lower overall mortality.
+New recommendation
+I A
+Edoxaban* as compared to warfarin was
+found to be noninferior with regard to the
+primary efficacy end point and caused
+less bleeding.
+New recommendation
+*Currently not available in Malaysia.
+I A
+Prosthetic
+Heart Valves
+(Mechanical)
+Moderate risk:
+Bi-leaflet or tilting disk
+aortic valves in NSR
+Lifelong Warfarin
+II-2 B
+High risk:
+Bileaflet or tilting disk
+aortic valves in AF;
+Bileaflet or tilting disk
+mitral valve in AF or
+NSR.
+Lifelong Warfarin (target INR 3.0; range
+2.5-3.5)
+II-3 B
+Caged-ball and
+caged-disk designs;
+Documented stroke/TIA
+despite adequate
+therapy with Warfarin.
+Lifelong Warfarin
+(target INR 3.0; range 2.5-3.5) plus
+Aspirin 75-150mg daily II-1 B
+Bioprosthetic
+heart valves
+High risk:
+AF; left atrial thrombus at
+surgery; previous
+stroke/TIA or systemic
+embolism.
+If major risk factors are present, consider
+Warfarin for 3-12 months or longer. III C
+For all other patients, give
+Warfarin for 3 months post-op, then
+Aspirin 75-150mg daily.
+III C
+Mitral Stenosis High risk:
+AF; previous stroke/TIA;
+left atrial thrombus; left
+atrial diameter > 55mm
+on Echo.
+If major risk factors are present, consider
+lifelong Warfarin. II-3 B
+For all other patients start Aspirin
+75-150mg daily. II-2 B
+MI and LV
+dysfunction
+High risk:
+Acute/recent MI (<6
+months); extensive
+infarct with anterior wall
+involvement; previous
+If risk factors are present without LV
+thrombus: consider Warfarin for 3-6
+months followed by Aspirin 75-150mg
+daily.
+III C
+11
+stroke/TIA.
+Very high risk:
+Severe LV dysfunction
+(EF < 28%); LV
+aneurysm; spontaneous
+echo contrast; LV
+thrombus; dilated
+non-ischaemic
+cardiomyopathies.
+If LV thrombus is present, consider
+Warfarin for 6-12 months III C
+For dilated cardiomyopathies including
+peripartum, consider lifelong Warfarin
+III C
+Recommended Warfarin dose INR target 2.5 [range 2.0 to 3.0] unless stated otherwise
+Table 5.5: Anticoagulation for the Patient with Acute Cardioembolic Stroke
+Treatment Recommendations Level of
+Evidence Grade
+Warfarin Adjusted-dose warfarin may be commenced within 2-4 days
+after the patient is both neurologically and medically stable. II-2 C
+Heparin
+(unfractionated)
+Adjusted-dose unfractionated heparin may be started
+concurrently for patients at a very high risk of embolism. III C
+Anticoagulant Anticoagulant may be delayed for 1-2 weeks if there has been
+substantial haemorrhage. III C
+Urgent routine anticoagulation with the goal of improving
+neurological outcomes or preventing early recurrent stroke is not
+recommended.
+I A
+Urgent anticoagulation is not recommended for treatment of
+patients with moderate-to-large cerebral infarcts because of the
+high risk of intracranial bleeding.
+I A
+Table 5.6: Revascularisation Procedures
+Treatment Recommendations Level of
+Evidence Grade
+Carotid
+Endarterectomy
+(CEA)
+Primary Prevention
+May be considered in patients with a high grade
+asymptomatic carotid stenosis (70-99%) when performed by
+surgeons with less than 3% morbidity/mortality rate.
+I A
+Secondary Prevention
+Indicated for most patients with a stenosis of 70-99% after a
+recent ischaemic event in centres with complication rates of
+less than 6%.
+I A
+Earlier intervention (within 2 weeks) is more beneficial. II-1 B
+May be indicated for patients with a stenosis of 50-69% after
+a recent ischaemic event in centres with complication rates
+of less than 6%.
+III C
+Not recommended for patients with a stenosis of less than
+50%. I A
+Patients should remain on antiplatelet therapy before and
+after surgery. II-2 B
+Carotid angioplasty
+and stenting (CAS)
+CAS represents a feasible alternative to carotid
+endarterectomy for secondary stroke prevention when
+surgery is undesirable, technically difficult, or inaccessible.
+II-2 B
+Distal protective devices should be used during the
+procedure. I A
+Use of dual antiplatelet for at least 4 weeks after CAS. I A
+12
+The long-term safety (for 4 years) for CAS is as good as
+CEA. I A
+Complex configuration of the aortic arch and internal carotid
+artery tortuosity increase the risk of cerebral ischemia in
+CAS.
+II-2 B
+Intracranial
+angioplasty & stenting
+(IAS)
+Role of IAS in intra-cranial stenoses, asymptomatic
+stenoses and acute stroke is unclear and may not be
+recommended.
+II-2 C
+Chapter 7: Emergency Medicine Services
+Table 7.1: Emergency Medicine Services
+Management Recommendations Level of
+Evidence Grade
+Pre-Hospital Management
+Public education Educational programmes
+- should be designed to create awareness and knowledge of
+stroke warning signs.
+- should include the timely recognition and need to seek
+emergency care by calling 999 promptly.
+New recommendation
+II-1
+II-1
+A
+A
+Emergency
+dispatch system
+ADC
+- should be familiar with common descriptors used by the
+public for stroke. Whenever the descriptors are used, EMD
+are trained to use the stroke protocols to identify suspected
+stroke patients
+- should have a protocol or tools that allow Emergency
+Medical Dispatchers (EMD) to identify suspected stroke
+patients. e.g. MDPS Stroke Diagnostic Tool, FAST stroke
+assessment.
+- should have a system to priorities suspected stroke calls to
+facilitate early arrival of patients to the ED.
+New recommendation
+II-1
+II-1
+II-1
+A
+A
+A
+Initial on-scene
+management
+PHC responders
+- should rapidly evaluate airway, breathing and circulation to
+identify life threatening situation, and manage them
+accordingly.
+- should use a validated and standardized stroke
+identification assessment tool such as FAST or BE-FAST
+stroke assessment
+- should be trained to identify hypoglycaemia as a
+stroke-mimic and apply appropriate management protocols
+- should ascertain the time of onset of stroke symptoms from
+the patient or witness(es).
+PHC Service Providers should ensure its responders are made
+aware of the nearest hospital capable of providing thrombolysis and
+hospital capable of performing endovascular stroke treatment,
+within their service area. A written protocol that ensures the
+ambulance diversion of the patient to such hospitals should be
+made available for use.
+All stroke patients from PHC with positive signs of stroke within the
+4.5-hour time window for medical thrombolytic therapy should be
+transported immediately to an acute stroke ready hospital.
+Titrated dose of oxygen should be delivered to stroke patients with
+an oxygen saturation level of below 95%.
+II-1
+II-1
+I
+I
+I
+II-1
+II-3
+A
+A
+A
+A
+A
+A
+B
+13
+New recommendation
+Pre-arrival
+communication
+PHC Responders should be trained to provide pre-arrival
+notification of stroke patients to receiving hospitals.
+MECC and associated stroke ready hospital(s) are recommended
+to have local regional stroke referral system/ network and
+agreement with the ED to facilitate the transport decision from PHC
+to ensure the treatment window of 4.5 hours is achieved.
+New recommendation
+II-1
+I
+A
+A
+Emergency Department Management
+ED Evaluation All patients presenting to an ED with suspected acute stroke must
+have immediate clinical evaluation and investigations to establish
+the diagnosis and to determine the eligibility for intravenous
+thrombolytic therapy and/or EVT
+The use of clinical screening tools such as FAST or BE-FAST to
+identify stroke by ED staff can be beneficial
+New recommendation
+I
+II-2
+A
+B
+Initial
+Assessment in
+ED
+ED staff should rapidly evaluate airway, breathing and circulation in
+patients with suspected acute stroke and manage accordingly
+All patients with suspected acute stroke should have their blood
+glucose level checked upon arrival at the ED
+A standardized stroke severity scale should be used such as the
+National Institutes of Health Stroke Scale (NIHSS) to assess stroke
+severity in the ED
+New recommendation
+I
+II-1
+II-1
+A
+A
+A
+Imaging All patients with suspected stroke who are candidates for
+intravenous thrombolysis and/ or EVT should undergo at least CT
+scan immediately. All other suspected stroke patients should have
+an urgent CT brain.
+Interpretation of acute stroke imaging for thrombolysis decisions
+should only be made by healthcare professionals who have
+received appropriate training.
+New recommendation
+II-1
+III
+A
+C
+Other
+Considerations
+Patients with acute stroke should only receive supplemental
+oxygen only if their oxygen saturation is below 95%.
+Hypotension and hypertension in patients with acute stroke should
+be identified and managed accordingly.
+Patients with acute stroke should have their swallowing ability
+screened as early as possible after arrival at the hospital and
+before being given any oral food, fluid, or medication
+New recommendation
+II-3
+III
+II-2
+B
+C
+B
+Quality
+Improvement
+Joint multidisciplinary audit to review and monitor stroke care
+quality benchmarks, indicators, evidence-based practices, and
+outcomes should be performed periodically.
+ED personnel should undergo a standardized training in acute
+stroke management.
+II-1
+III
+A
+C
+14
+New recommendation
+Chapter 8: Acute General Management
+Table 8.1: Acute General Management
+Factors Recommendations Level of
+Evidence Grade
+Oxygen and
+Airway support
+Patients with acute stroke should only receive supplemental oxygen
+if their oxygen saturation is below 95% and be titrated to achieve
+above 95%.
+New recommendation
+II-3 B
+Observation Regular observation is mandatory to recognise impaired pulmonary
+function (pulse oxymeter), circulatory function (pulse rate, blood
+pressure), NIHSS score, head chart, GCS, and complications from
+mass effect.
+III C
+Mobilisation Mobilise early to prevent complications. II-3 C
+High-dose, very early mobilisation within 24 hours of stroke onset
+should not be performed because it can reduce the odds of a
+favourable outcome at 3 months.
+New recommendation
+I -
+Blood Pressure Lowering BP initially by 15% is probably safe. Blood pressure
+reduction should not be drastic.
+New recommendation
+III C
+Do not treat hypertension if systolic BP is <220mmHg or diastolic BP
+is <120mmHg. Mild hypertension is desirable at 160-180/90-100
+mmHg.
+III C
+Recommended therapy: Labetalol 10-20mg boluses at 10-minute
+intervals up to 150-300mg or 1mg/ml infusion, rate of infusion for
+Labetalol as 1-3mg/min or Captopril 6.25-12.5mg orally.
+III C
+Blood Glucose After an acute stroke, treat hyperglycaemia to keep the blood
+glucose levels between 6.0-10.0 mmol/L and ensure that
+hypoglycaemia is avoided.
+New recommendation
+III C
+Avoid very tight target of glucose control (4.0-7.5 mmol/L) in the first
+hours of acute ischaemic stroke.
+New recommendation
+I A
+Nutrition Perform a water swallowing test. III C
+Insert a nasogastric tube if the patient fails the swallowing test. III C
+PEG is superior to nasogastric feeding only if prolonged enteral
+feeding is required II-1 B
+Enteral feeding should be started within 7 days of admission (oral or
+tube feeding).
+New recommendation
+I A
+Infection Search for the presence of infection if fever appears and treat it early
+with appropriate antibiotics. III C
+Fever Use anti-pyretics to control elevated temperatures. II-1 B
+Continence The application of indwelling catheter should be used cautiously and
+should be removed as soon as possible.
+New recommendation
+I A
+All stroke patients should be assessed for urinary retention or
+incontinence, faecal incontinence, and constipation.
+New recommendation
+III C
+Raised
+Intracranial
+Pressure
+Hyperventilate to lower the intracranial pressure. II-2 B
+Mannitol (0.25 to 0.5g/kg) intravenously administered over 20
+minutes lowers the intracranial pressure and can be given every 6
+hours.
+II-2 B
+15
+If hydrocephalus is present, drainage of cerebrospinal fluid via an
+intraventricular catheter can rapidly lower intracranial pressure. III C
+Hemicraniectomy and surgical decompressive therapy within 48
+hours after symptom onset is recommended to control intracranial
+pressure and prevent herniation among those patients with very
+large infarcts of the cerebral hemisphere.
+I A
+Patients >60 years of age may be considered for decompressive
+craniectomy in selected cases.
+New recommendation
+I A
+Ventriculostomy and sub-occipital craniectomy are effective in
+relieving hydrocephalus and brain stem compression caused by
+large cerebellar infarctions.
+II-2 B
+Deep Vein
+Thrombosis
+Prophylaxis
+For immobile stroke patients without contraindications, intermittent
+pneumatic compression (IPC) in addition to routine care (aspirin and
+hydration) is recommended over routine care alone to reduce the
+risk of deep vein thrombosis (DVT).
+New recommendation
+I A
+The benefit of prophylactic-dose subcutaneous heparin
+(unfractionated heparin [UFH] or LMWH) in immobile patients with
+AIS is not well established.
+New recommendation
+III C
+In ischaemic stroke, elastic compression stockings should not be
+used.
+New recommendation
+I A
+Seizure New-onset seizures in admitted patients with acute stroke should be
+treated using appropriate short-acting medications if they are not
+self-limiting.
+New recommendation
+III C
+A single, self-limiting seizure occurring at the onset, or within 24
+hours after an ischemic stroke (considered an ‘‘immediate’’
+post-stroke seizure) should not be treated with long-term
+anticonvulsant medications. The use of prophylactic anti-seizure
+medications is not recommended.
+New recommendation
+III C
+Patients that have an immediate post-stroke seizure should be
+monitored for recurrent seizure activity and should be treated as per
+treatment recommendations for seizures in as in other neurological
+conditions and treatment should be individualised.
+New recommendation
+III C
+Chapter 9: Reperfusion of Ischaemic Brain
+Table 9.1: Treatment of Acute Ischaemic Stroke with Intravenous Thrombolysis
+Treatment Recommendations Level of
+Evidence Grade
+Alteplase Onset within 4.5 hours
+Dose: 0.9 mg/kg, max 90 mg, 10% bolus and remaining dose given
+as infusion over 1 hour.
+I A
+Onset >4.5 up to 9 hours if known onset or wake-up stroke guided by
+CT perfusion, with the presence of a significant penumbra core
+mismatch.
+New recommendation
+II B
+Uncertain onset and wake up stroke guided by MRI (DWI-FLAIR
+mismatch)
+New recommendation
+II B
+16
+Chapter 10: Endovascular Thrombectomy
+Chapter 11: Stroke Unit
+Chapter 12: Stroke in the Older Person
+Table 12.1: Stroke in the Older Person
+Management Recommendations Level of
+Evidence Grade
+Screening for Frailty All older adults should be screened for frailty using a
+validated instrument suitable for the specific setting or
+context with a tailored management plan thereafter.
+New recommendation
+III C
+Tenecteplase Onset within 4.5 hours and eligible for thrombolytic treatment can be
+considered for intravenous Tenecteplase prior to EVT.
+Dose: 0.25mg/kg; maximum dose of 25mg
+New recommendation
+II B
+Table 10.1: Acute Endovascular Thrombectomy Treatment
+Treatment Recommendations Level of
+Evidence Grade
+Acute Endovascular
+Thrombectomy
+(EVT)
+EVT is indicated for AIS with large vessel occlusion; proximal
+middle cerebral artery segment 1 (M1)/proximal M2
+occlusion/internal carotid artery (ICA), and presenting within 6
+hours from onset.
+New recommendation
+I A
+EVT is indicated in selected patients who arrive after 6 hours
+and up to 24 hours of stroke onset with evidence of large vessel
+occlusion.
+New recommendation
+I A
+EVT bridging with
+Alteplase
+(Drip & Ship)
+AIS patients who arrive within 4.5 hours of stroke onset and are
+eligible for rtPA treatment should be considered for
+thrombolytic treatment prior to EVT.
+New recommendation
+I A
+For patients undergoing “Drip & Ship” (EVT following
+administration of IVT), there should be no delay in proceeding
+to EVT to determine the clinical effectiveness of Alteplase.
+New recommendation
+I A
+EVT bridging with
+Tenecteplase
+AIS patients who arrive within 4.5 hours of stroke onset and are
+eligible for thrombolytic treatment can be considered for
+intravenous Tenecteplase prior to EVT.
+New recommendation
+II B
+Table 11.1: Stroke Unit
+Factor Recommendations Level of
+Evidence Grade
+Stroke
+Unit
+Every hospital should set up a stroke unit as it can significantly reduce
+deaths, dependency, institutionalisation, and length of hospital stay. I A
+The use of comprehensive specialized stroke care (stroke units) that
+incorporates rehabilitation is recommended. I A
+A stroke unit should be managed by a multidisciplinary stroke team. I A
+17
+Stroke Thrombolysis An older person should receive and can benefit from
+intravenous thrombolysis.
+New recommendation
+I A
+Endovascular
+thrombectomy
+An older person can benefit from endovascular
+thrombectomy for anterior circulatory large vessel occlusion.
+New recommendation
+I A
+Management of
+glucose level in the
+acute phase of stroke
+After an acute stroke, treat hyperglycaemia to keep the
+blood glucose levels between 6.0-10.0 mmol/L (110-180
+mg/dL) and ensure that hypoglycaemia is avoided.
+New recommendation
+III C
+Avoid very tight targets of glucose control (4.0-7.5 mmol/L)
+in the first hours of acute ischaemic stroke.
+New recommendation
+I A
+Hypertension Older persons who have one or more of the following: frailty,
+multiple comorbidities and/or cognitive impairment, require
+an individualised approach for blood pressure management.
+New recommendation
+I A
+Diabetes Mellitus Targets of blood glucose control in older persons with
+diabetes should be individualised taking into account their
+functional status, medical comorbidities, and likelihood of
+developing adverse events.
+New recommendation
+III C
+Dyslipidaemia Statins are recommended for stroke prevention in older
+persons with a less direct evidence of benefit for stroke
+prevention and primary prevention of vascular events in
+those aged over 75 years.
+New recommendation
+I A
+Atrial Fibrillation Older persons with atrial fibrillation can benefit from oral
+anticoagulant for stroke prevention with an individualised
+treatment plan taking into account medical co-morbidities,
+functional status, and social factors.
+New recommendation
+I A
+Medication
+management in the
+older person with
+stroke
+A comprehensive care plan for a frail older person should
+include management of polypharmacy.
+New recommendation III C
+Delirium post-acute
+stroke
+All post-stroke patients should be screened for delirium
+throughout hospitalization.
+New recommendation
+II-2 B
+Screening for post-stroke delirium using the 4AT tool is
+recommended.
+New recommendation
+II-2 B
+A multi-component intervention for post-stroke delirium
+prevention and management should be implemented to
+decrease the incidence and severity of delirium as well as to
+reduce the length of stay.
+New recommendation
+II-2 B
+Falls prevention
+post-stroke
+All people with stroke should be offered falls and fragility
+fracture risk assessment and management during their
+rehabilitation period.
+New recommendation
+III C
+Discharge planning
+and early supported
+discharge post stroke
+Discharge planning for older persons with stroke should
+occur at the appropriate time following a multidisciplinary
+recommendation in where any decisions about care is made
+in the person’s best interests.
+New recommendation
+II-3 B
+Hospital in-patients with stroke who have mild to moderate
+disability should be offered early supported discharge, with
+treatment at home beginning within 24 hours of discharge.
+II-3 B
+18
+New recommendation
+An early stroke supported discharge team should be
+organised as a single multi-disciplinary team comprising of:
+● Doctors
+● Nurses
+● Physiotherapists
+● Occupational therapists
+● Speech and language therapists
+● Clinical psychologists
+● Social workers
+New recommendation
+II-1 A
+Older persons with stroke and their family members/carers
+should be involved in decisions about the discharge and are
+prepared to be involved in their care.
+New recommendation
+III C
+Discharge planning should include providing necessary
+equipment and support services including identification of
+follow-up treatment.
+New recommendation
+III C
+Evaluation of home environment by an occupational
+therapist should be carried out, by doing a home visit or
+conducting an interview about the home environment,
+including taking photographs or videos with the consent of
+the family members/carers.
+New recommendation
+III C
+End-of-life care The multidisciplinary stroke team should be trained in
+principles and practice of end-of-life care.
+New recommendation
+II-3 C
+Burdensome treatment should be avoided at the end-of-life
+care and this should include decisions to continue oral
+feeding and hydration despite potential risk of aspiration.
+New recommendation
+II-3 C
+Advanced care planning should be provided for individuals
+who are expected to have limited life expectancy.
+New recommendation
+II-2 B
+Decisions to withhold and withdraw treatment should take
+into account prior expressed wishes of the individual with
+stroke which often needs to be established from the
+next-of-kin and close relatives.
+New recommendation
+III C
+Stroke teams should be prepared to facilitate the transfer of
+care of the individual dying of stroke to their own homes
+supported by local hospices and palliative care services if
+available.
+New recommendation
+III C
+Chapter 13: Stroke and Cardioembolism
+Table 13.1: Prevention of Stroke in Atrial Fibrillation Patients
+Treatment Recommendations Level of
+Evidence Grade
+Stroke Prevention
+Antiplatelet monotherapy Antiplatelet monotherapy is not indicated for stroke
+prevention in patients with non-valvular atrial fibrillation
+(NVAF).
+I A
+19
+Oral anticoagulant (OAC) OAC has been proven to be superior to no treatment or
+Aspirin in patients with NVAF. I A
+OAC is recommended to prevent cardioembolic stroke for
+all NVAF male patients with CHA2DS2-VASc score of 2 or
+more and female patients with a CHA2DS2-VASc score of
+3 or more.
+New recommendation
+I A
+The OAC of choice for valvular AF (moderate-to-severe
+mitral stenosis) and mechanical heart valves patients is
+Vitamin K Antagonist (Warfarin).
+I A
+Secondary Stroke Prevention
+Parenteral anticoagulant
+(heparin or low molecular
+weight heparin)
+After a cardioembolic stroke, parenteral anticoagulant
+therapy (heparin or low molecular weight heparin) is not
+recommended to prevent secondary stroke.
+I A
+DOACs For secondary stroke prevention in an AF patient, the
+initiation of DOACs is recommended after excluding
+haemorrhagic transformation
+New recommendation
+II B
+DOACs are preferred over VKA and Aspirin in AF
+patients with a previous stroke.
+New recommendation
+I A
+Aspirin Aspirin could be considered before the initiation of OAC
+after an AF patient develops an ischaemic stroke. III C
+Combination therapy of
+OAC and antiplatelet
+The risk of bleeding is high after initiation of the
+combination therapy of OAC and antiplatelet for
+secondary stroke prevention.
+New recommendation
+III C
+OAC After an intracranial haemorrhage, OAC could be
+re-initiated after 4-8 weeks in a NVAF patient with high
+CHA2DS2-VASc score if the underlying cause and risk
+factors of bleeding have been treated.
+New recommendation
+II B
+Chapter 14: Stroke in Special Circumstances
+Table 14.3: Treatment of Stroke in Certain Circumstances
+Treatment Recommendations Level of
+Evidence Grade
+Aspirin If the cause is not identified, Aspirin is usually given while III C
+Table 14.2: Investigation of Young Stroke
+Investigation Recommendations Level of
+Evidence Grade
+Homocysteinaemia Routine screening for hyperhomocysteinaemia among patients
+with a recent ischaemic stroke or TIA is not indicated. III C
+Anti-phospholipid
+antibodies
+Routine testing for anti-phospholipid antibodies is not
+recommended for patients with ischaemic stroke or TIA who
+have no other manifestations of the anti-phospholipid antibody
+syndrome and who have an alternative explanation for their
+ischaemic event, such as atherosclerosis, carotid stenosis, or
+AF.
+III C
+Sleep study A sleep study might be considered for patients with an
+ischaemic stroke or TIA. II-2 B
+Coagulation
+screening
+The usefulness of screening for thrombophilic states in patients
+with ischaemic stroke or TIA is unknown. II-2 C
+20
+additional tests are obtained to guide the choice between
+long-term antiplatelet or anticoagulant therapy.
+Antiplatelet therapy is recommended in patients who are found to
+have abnormal findings on coagulation testing after an initial
+ischaemic stroke or TIA if anticoagulant therapy is not used.
+I A
+For patients with ischaemic stroke or TIA who have an
+anti-phospholipid antibody but who do not fulfil the criteria for
+anti-phospholipid antibody syndrome, antiplatelet therapy is
+recommended
+I B
+For patients with ischaemic stroke or TIA who meet the criteria for
+the anti-phospholipid antibody syndrome but in whom
+anticoagulation is not yet started, antiplatelet therapy is indicated
+I A
+DOAC ESUS:
+There is no role of anticoagulant in ESUS.
+New recommendation
+I A
+For patients with an ischaemic stroke or TIA and both a PFO and a
+venous source of embolism, anticoagulation is indicated,
+depending on the characteristics of the stroke.
+New recommendation
+I A
+Anticoagulation might be considered in patients who are found to
+have abnormal findings on coagulation testing after an initial
+ischaemic stroke or TIA, depending on the abnormality and the
+clinical circumstances.
+New recommendation
+II-2 C
+For patients with ischaemic stroke or TIA who meet the criteria for
+APS, anticoagulant therapy might be considered depending on the
+perception of risk for recurrent thrombotic events and bleeding.
+New recommendation
+II-2 C
+Device PFO closure device therapy
+PFO closure devices have moderate benefit in young and
+middle-aged patients with cryptogenic ischaemic stroke. PFO
+closure devices combined with antiplatelet therapy is also
+recommended.
+New recommendation
+I A
+Continuous positive airway pressure (CPAP) machine
+CPAP therapy might be considered for patients with ischaemic
+stroke or TIA and sleep apnoea given the emerging evidence in
+support of improved outcomes.
+New recommendation
+II-2 B
+Blood
+transfusion
+For patients with sickle cell disease and prior ischaemic stroke or
+TIA, long-term blood transfusions to reduce the level of
+haemoglobin S to <30% of the total haemoglobin composition are
+recommended.
+New recommendation
+I B
+Supplements Supplementation with folate, vitamin B6 and vitamin B1
+In adults with a recent ischaemic stroke or TIA who are known to
+have mild to moderate hyperhomocysteinaemia, supplementation
+with folate, vitamin B6 and vitamin B12 safely reduces the
+homocysteine levels but has not been shown to prevent stroke.
+New recommendation
+III B
+21
+Table 14.4: Investigation of Cerebral Venous Thrombosis
+Investigation Recommendations Level of
+Evidence Grade
+CTV/ MRV Either CT or MR venography can be used as a reliable alternative
+to DSA for the diagnosis of CVT in patients with suspected CVT II-3 B
+Digital Subtraction
+Angiography (DSA)
+DSA as a diagnostic modality is indicated in cases of suspected
+CVT when the diagnosis of CVT is doubtful with non-invasive
+imaging alone.
+II-1 C
+D-Dimer Measurement of the D-dimer level before neuroimaging is
+recommended in patients with suspected CVT, except in those
+with isolated headache or prolonged duration of symptoms (high
+false negative rates).
+II-2 B
+Thrombophilia
+screening
+Thrombophilia screening may be performed in patients with high
+pre-test probabilityof having severe thrombophilia (i.e. a personal
+and/or family history of venous thrombosis, a young age at CVT
+and/or CVT without a transient or a permanent risk factor) to
+prevent recurrent venous thrombotic events. However, routine
+thrombophilia screening is not recommended to reduce deaths,
+improve functional outcome, or prevent recurrent venous
+thrombosis in patients with CVT.
+II-3 B
+Occult malignancy
+screening
+Routine screening for occult malignancy in patients with CVT is not
+recommended to improve outcomes II-3 B
+Table 14.5: Treatment of Central Venous Thrombosis
+Treatment Recommendations Level of
+Evidence Grade
+Acute anticoagulant
+treatment
+Treatment of acute CVT adult patients with heparin in
+therapeutic dosage is recommended, including in those with
+intracerebral haemorrhage at baseline.
+I B
+Type of heparin Treatment of acute CVT patients with LMWH instead of UFH is
+recommended (unless fast reversal of the anticoagulant effect
+is required, or the patient has contraindications to LMWH).
+I B
+Thrombolysis in
+acute CVT
+Thrombolysis in acute CVT patients with a pre-treatment low
+risk of poor outcome is not recommended. III C
+Endovascular
+therapy or
+Thrombectomy
+Endovascular therapy or Thrombectomy may be considered in
+patients with clinical deterioration despite anticoagulation, with
+severe neurological deficits or in coma.
+II-2 C
+Warfarin Using oral anticoagulants (vitamin K antagonists) for a variable
+period (3-12 months) after CVT is recommended to prevent
+recurrent CVT and other venous thromboembolic events.
+Patients with recurrent venous thrombosis or with an
+associated prothrombotic condition with a high thrombotic risk
+may need permanent anticoagulation. We suggest following
+specific recommendations for the prevention of recurrent
+venous thromboembolic events in such conditions.
+III C
+DOACs Treatment of CVT with DOACs is not recommended especially
+during the acute phase. III C
+Therapeutic LP Therapeutic LP is not recommended. However, it may be
+considered in patients with cerebral venous thrombosis and
+signs of intracranial hypertension, because of a potential
+beneficial effect on visual loss and/or headache, whenever its
+safety profile is acceptable.
+III C
+Acetazolamide Acetazolamide is not recommended in patients with acute CVT
+to prevent death or to improve the functional outcome.
+However, in isolated intracranial hypertension secondary to
+III C
+22
+Chapter 15: Management of Stroke in Pregnancy
+CVT, causing severe headaches or is threatening the vision,
+Acetazolamide may be considered if its safety profile is
+acceptable
+Steroids Steroids in patients with acute CVT without any co-existing
+inflammatory disease are not recommended to prevent death
+or to improve the functional outcome
+III C
+Shunt Routine shunting (without other surgical treatment) in patients
+with acute CVT and impending brain herniation due to
+parenchymal lesions is not recommended to prevent death
+II-3 C
+Decompressive
+surgery
+Decompressive surgery for patients with acute CVT and
+parenchymal lesion(s) with impending herniation is
+recommended to prevent death.
+II-1 B
+Antiepileptic drugs
+(AEDs)
+Antiepileptic drugs usage in patients with acute CVT with
+supratentorial lesions and seizures are recommended to
+prevent early recurrent seizures.
+II-3 C
+Table 15.1: Management of Stroke in Pregnancy
+Management Recommendations Level of
+Evidence Grade
+During
+pregnancy
+In AIS, Aspirin up to 150 mg daily is well tolerated during
+pregnancy.
+Pregnant patients with well-defined low risk conditions may be
+given UFH or LMWH in the first trimester, followed by a low dose
+aspirin in the second and third trimesters.
+III C
+In pregnant patients with well-defined low risk conditions, no
+antiplatelet other than Aspirin can be prescribed. III C
+In pregnant women with well-defined high-risk conditions, Vitamin
+K antagonists need to be avoided between the 6th and 12th weeks
+of pregnancy and also near to term.
+During this period, UFH or LMWH can be used.
+II B
+In addition, pregnant patients with well-defined high-risk conditions
+currently on direct oral anticoagulants (DOACs) should be given
+UFH or LMWH between the 6th and 12th weeks of pregnancy.
+New recommendation
+III C
+At other weeks of gestation, Warfarin can be given. III C
+Labour
+induction
+When the labour process is pharmacologically induced, Aspirin
+can be continued. III C
+UFH and LMWH need to be stopped 24 hours before the induction
+of labour. III C
+UFH and LMWH should be restarted within 24 hours of delivery if
+there are no contraindications. III C
+Vitamin K antagonists (without loading dose) may be restarted
+after 24 hours of delivery if there are no contraindications. III C
+23
+Acute Ischaemic Stroke Pathway
+Suspected AIS within reperfusion window
+ED Management
+ Fast track assessment by medical officer or physician
+ ABC Assessment
+ Basic history, examination, and tests
+ Activate stroke team and radiology
+Imaging
+ NCCT Brain +/- CTA/MRI +/- Perfusion Scan
+Stroke Team
+ Ascertain history and physical examination NIHSS scale and mRS
+ Review neuroimaging with/without radiologist
+ Rule out contraindication
+ Administer IVT and/or EVT
+ Close neurology monitoring and admit to stroke care unit
+Pre-Arrival Management
+ Pre-arrival notification to the receiving hospital
+ Ambulance from non-stroke ready hospital
+Pre-Hospital Management
+ High priority ambulance dispatch
+ Pre-hospital screening and assessment (FAST)
+24
+Endovascular Thrombectomy Work Flow
+Perform plain CT brain as per protocol, with/without CT angiography and perfusion
+scan
+Prepare patient immediately upon arrival
+Renal profile is not required for plain CT brain or CT angiography
+Book the next CT slot
+Ensure that the ED transfers the patient immediately Inform the radiologist/
+interventional radiologist/ neuroradiologist on call
+Suspected stroke cases receive priority
+Staff receive notification from primary triage nurse/medical assistant
+Assess eligibility as specified by the Malaysian Clinical Practice Guideline.
+A stroke physician/neurologist should confirm eligibility and make the final decision.
+Review CT imaging and confirm patient eligibility for thrombolytic therapy
+NOT ELIGIBLE
+If not eligible, please document reason(s)
+ELIGIBLE
+Administer IV rtPA as soon as possible
+Drip and Ship or Direct-thrombectomy
+25
+Malaysian Society of Neurosciences
+Neurology Laboratory, 6th Floor, South Tower
+University of Malaya Medical Centre
+50603 Kuala Lumpur
+Malaysia

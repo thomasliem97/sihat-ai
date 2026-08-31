@@ -1,0 +1,892 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+7
+SECTION 3. ANTI-TUBERCULOSIS DRUG ADVERSE REACTIONS 
+& DRUG INTERACTIONS
+Anti-TB ADRs may affect any organ/system & they vary in severity.
+COMMON ADRs TO FIRST-LINE ANTI-TB DRUGS
+Drug induced liver injury (DILI) is one of the commonest serious ADRs due to first-line anti-TB 
+drugs. Two criteria may be used to diagnose anti-TB DILI, after excluding other causes of 
+abnormal liver enzymes:
+1.  The American Thoracic Society criteria for drug-induced hepatitis
+i. an ALT ≥3 times the upper limit of normal (ULN) in patients with symptomatic hepatitis, or
+ii. an ALT ≥5 x the ULN in patients without any symptoms
+2.  The international DILI expert consensus criteria:
+    (any of the following, regardless of symptoms)
+i. an ALT ≥5 x the ULN
+ii. an ALP ≥2 x the ULN
+iii. an ALT ≥3 x & total bilirubin 2x the ULN
+Patients with suspected severe ADR, including DILI, should have their TB treatment stopped 
+immediately or switched to an alternative anti-TB regimen. All patients with ADR should be 
+treated compassionately, offered symptomatic treatment & given reassurance of getting good 
+medical care. They should be referred to specialists for drug challenge/dechallenge or drug 
+desensitisation when indicated.
+The first-line anti-TB drugs, INH & RIF, interact with many commonly used medications shown 
+below.
+Therefore, health care workers should routinely check for drug-drug interactions when starting 
+anti-TB treatment. It may be necessary to switch to other drugs or adjust the dose of these 
+medications during TB treatment.
+Drug ADR  
+INH
+RIF
+EMB
+PZA
+Anti-TB  Potential interactions with these drugs  
+DRUGS WITH POTENTIAL INTERACTIONS INVOLVING RIFAMYCINS & ISONIAZID
+Skin rash, jaundice, hepatitis, anorexia, nausea, abdominal pain, burning/numbness/tingling 
+sensation in hands or feet
+Skin rash, jaundice, hepatitis, anorexia, nausea, abdominal pain, orange/red urine, flu syndrome
+(fever, chills, malaise, headache, bone pain)
+Visual impairment
+Skin rash, jaundice, hepatitis, anorexia, nausea, abdominal pain, joint pain
+Clarithromycin, moxifloxacin, doxycycline, fluconazole, itraconazole, 
+voriconazole, caspofungin, dapsone, artemether/lumefantrine, hepatitis C 
+direct-acting antivirals, immunosuppressive agents, protease inhibitors, 
+integrase strand transfer inhibitors, hormone therapy, anticonvulsants, 
+antidepressants, antipsychotics, barbiturates, benzodiazepines, opioid 
+agonists, oral anticoagulants, antiplatelet agents, calcium channel blockers, 
+beta-blockers, enalapril, losartan, digoxin, ivabradine, ranolazine, 
+propafenone, antihyperlipidemics, methylxanthines, aprepitant, proton pump 
+inhibitors, tyrosine kinase inhibitors, cyclin-dependent kinase inhibitors.
+Azole antifungal agents, rifampicin, clozapine, levodopa, paracetamol, 
+warfarin, antihyperlipidemics, immunosuppressive agents, anticonvulsants, 
+methylxanthines, benzodiazepines.
+Rifamycins
+(Rifampicin,
+Rifabutin,
+Rifapentine)
+Isoniazid
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS
+1. The vision of the Malaysian Tuberculosis (TB) Control Programme is for Malaysia to be a 
+TB-free country by 2035.
+2. Adults with productive cough, haemoptysis, loss of appetite, unexplained weight loss, fever, 
+night sweats & fatigue should be screened for pulmonary TB (PTB). 
+3. TB disease in children is mostly paucibacillary with non-specific signs & symptoms. It could 
+be disseminated especially in young children. In children <5 years old, additional symptoms 
+include anorexia, failure to thrive, poor feeding & decreased activities or playfulness. 
+Therefore, a high index of suspicion is needed for the diagnosis.
+4. Testing with Xpert Ultra & mycobacterial culture should be done as part of assessment for 
+the diagnosis of smear negative & extrapulmonary tuberculosis (EPTB). Chest radiograph 
+(CXR) should be done in people with suspected EPTB to rule out concomitant PTB.
+5. The standard treatment regimens for drug susceptible TB are:
+• PTB - 2EHRZ/4HR (8 weeks of EHRZ, 18 weeks of HR)
+• TB meningitis - 2EHRZ/10HR
+• bone & joint TB - 2EHRZ/4 - 7HR
+• other forms of EPTB - 2EHRZ/4HR
+ Adjunctive corticosteroids should be given in tuberculous meningitis & pericarditis.
+6. Fixed-Dose Combination (FDC) tablets or flavoured, dispersible child-friendly FDC should 
+be used to treat active TB.
+7. Rifabutin should be used instead of rifampicin for HIV-TB co-infected patients on protease 
+inhibitors or integrase strand transfer inhibitors.
+8. Active TB must be ruled out before starting latent TB infection (LTBI) treatment. Shorter LTBI 
+treatment regimens are preferred in eligible individuals without contraindications.
+9. Adverse drug reaction (ADR) should be recognised early & managed well to reduce 
+treatment-related morbidity & mortality, & to inspire confidence in the patient.
+10. Isoniazid & rifampicin interact with a broad range of commonly used medications. These 
+medications may need to be switched or have their dose adjusted.
+1 6
+Key Messages
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Tuberculosis (Fourth Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+Systematic Screening & Treatment Of LTBI
+The target population for LTBI screening & treatment are:
+• household & close contact of bacteriologically-confirmed PTB
+• PLHIV including children • patients initiating anti-tumour necrosis factor treatment 
+• patients receiving dialysis • patients with silicosis
+• patients preparing for organ/haematological transplant
+Pyridoxine 10 - 30 mg/day should be given to patients on isoniazid
+Age  Preferred  Alternative  
+Drugs    
+Isoniazid (6H) 6 months Daily
+Rifampicin (4R) 4 months Daily
+Isoniazid + 
+rifampicin
+(3HR) 
+3 months Daily
+Rifapentine + 
+isoniazid (3HP) 
+3 months*  Weekly
+Recommended LTBI regimen for children according to age*
+P=rifapentine     *For children living with HIV, refer to the main CPG.
+Recommended dosage for LTBI treatment in children
+*Given for total of 12 doses
+Pyridoxine 5 - 10 mg/day should be given to patients on isoniazid.
+Both adults & children on LTBI treatment should be monitored regularly for treatment 
+compliance, ADR & progression to active TB.
+28 days & below
+29 days to 2 years old
+More than 2 years old
+6H
+4R
+4R or 3HP
+Nil
+3HR, 6H, 9H
+3HR, 6H, 9H
+1. Age 10 years & older: 5 mg/kg/day
+2. Age <10 years: 10 mg/kg/day (range 7 - 15 mg/kg)
+Maximum dose: 300 mg
+1. Age 10 years & older: 10 mg/kg/day 
+2. Age <10 years: 15 mg/kg/day (range 10 -20 mg/kg)
+Maximum dose: 600 mg
+Dose of INH & RIF same as above
+Isoniazid: 
+10 - 15 kg: 300 mg
+16 - 23 kg: 500 mg
+24 - 30 kg: 600 mg
+>31 kg: 700 mg 
+(For children age 2 - 14 
+years old)
+Rifapentine:
+10 - 15 kg: 300 mg
+16 - 23 kg: 450 mg
+24 - 30 kg: 600 mg
+>31 kg: 750 mg
+(For children age 2 - 14 
+years old)
+Duration Interval Dose
+Recommended dosage for LTBI treatment in adults
+Drug Duration Interval DosageDoses
+Isoniazid (6H/9H) Six months/ Daily 180/270 5 mg/kg, max 300 mg 
+ nine months  
+Isoniazid +  Three months Daily 90 INH: 5 mg/kg, max 300 mg
+rifampicin (3HR)    RIF: 10 mg/kg, max 600 mg
+Rifapentine +  Three months Weekly 12 INH: 15 mg/kg, max 900 mg
+isoniazid (3HP)    RPT:
+    <50 kg; 750 mg 
+    >50 kg: 900 mg 
+Rifampicin (4R) Four months Daily 120 10 mg/kg, max 600 mg
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+SECTION 1. ACTIVE TUBERCULOSIS
+Algorithm 1: Management of Active Tuberculosis
+SECTION 2. LATENT TUBERCULOSIS INFECTION
+Algorithm 2: Management of Latent Tuberculosis Infection
+25
+Investigate for PTB Investigate for EPTB
+Adults
+Sputum/IS for AFB, 
+mycobacterial 
+culture, Xpert Ultra*,
+CXR
+Children
+Sputum/IS/GA/NPA 
+for AFB, mycobacterial 
+culture, Xpert Ultra*
+CXR#
+TST/IGRA
+Extrapulmonary specimens for
+Xpert Ultra*, mycobacterial culture 
+(BACTEC MGIT), AFB
+± HPE
+± Biochemistry, ADA*
+± Diagnostic imaging
+TB diagnosis confirmed
+People with symptoms# of active TB
+TB diagnosis not confirmed
+Use the following standard regimens
+PTB: 2EHRZ/4HR
+TB Meningitis: 2EHRZ/10HR
+Bone and joint TB: 2EHRZ/4-7HR 
+Other EPTB: 2EHRZ/4HR
+Refer to a specialist
+Monitor treatment
+Response to
+treatment 
+Good treatment response
+and treatment tolerance
+Poor treatment response
+complications due to TB or
+severe ADR
+Continue and complete
+treatment Refer to a specialist
+#Symptoms of TB and CXR findings in children may be different from adults 
+*When indicated
+Important note: Please refer to the texts in the relevant sections in the CPG for further details. 
+Abbreviations:
+ADA=adenosine deaminase, ADR=adverse drug reaction, AFB=acid fast bacilli, CXR=chest 
+radiograph, EPTB=extrapulmonary tuberculosis, GA=gastric aspirate, HPE=histopathological 
+examination, IS=induced sputum, IGRA=Interferon Gamma Release Assay, NPA=nasopharyngeal
+aspirate, PTB=pulmonary tuberculosis, TB=tuberculosis, TST=tuberculin skin test
+Target population at risk of progression to active TB*
+Active TB excluded 
+(Asymptomatic and Normal CXR)
+Active TB not excluded 
+(Symptomatic or Abnormal CXR)
+TST/IGRA
+Investigate for active TB and 
+treat accordingly 
+In cases involving children,
+refer to a paediatrician
+Positive Negative#
+LTBI Treatment in Adults
+Preferred regimens: 
+3HR or 3HP
+Alternative regimens: 
+4R, 6H or 9H (adults)
+1HP (adult PLHIV)
+LTBI treatment in Children
+PLHIV aged >12 months or
+household PTB contact aged
+<5 years
+Other at-risk groups 
+No contraindication for LTBI
+treatment 
+Active TB excluded
+Monitor treatment
+LTBI treatment tolerated
+Continue and complete
+treatment
+Severe ADR or 
+progression to active TB
+Refer to a specialist
+Follow-up for progression to active TB
+#IGRA/TST may be repeated if the initial testing has been done with <2 months of exposure to an 
+index case, initiate LTBI treatment if repeat testing is positive. For children <5 years old, refer to a 
+specialist to consider withholding the treatment if 2 consecutives IGRA/TST are negative.
+*Refer to page 6
+Abbreviations:
+ADR=adverse drug reaction, CXR=chest radiograph, IGRA=Interferon Gamma Release Assay, 
+LTBI=latent tuberculosis infection, PLHIV=people living with HIV, PTB=pulmonary tuberculosis, 
+TB=tuberculosis, TST=tuberculin skin test
+Refer to Section 3.1(d)
+in the CPG 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+43
+E=ethambutol, H=isoniazid, R=rifampicin, Z=pyrazinamide
+*requires in-person visit
+**for return to work/school purposes
+#sputum smear for AFB should be done at the end of five months of standard anti-TB treatment
+TB treatment should be observed directly (DOT). Alternatively, video observed treatment (VOT) 
+may be used. Self-administered treatment should be reserved for patients who are unable to 
+undergo DOT or VOT.
+Recurrent TB
+• Patients exposed to anti-TB drugs are at risk of drug resistance. Hence, all patients who are 
+suspected to have recurrent TB should be investigated using rapid molecular tests, e.g. Xpert 
+Ultra & mycobacterial culture (BACTEC MGIT).
+• If the rapid molecular test results are negative, the patients should be treated with a standard 
+regimen for drug susceptible TB pending drug culture & susceptibility results.
+Body weight (kg)  
+Drug   
+  
+ 
+Active TB Treatment & Monitoring
+Recommended dose of first-line anti-TB in adults
+*Pyridoxine 10 - 30 mg daily needs to be added if INH is prescribed
+Monitoring schedule of adults on PTB treatment
+TB in Special Situations
+• Patients having chronic kidney disease with GFR of <30 ml/min, & patients on hemodialysis 
+should be treated with standard anti-TB regimen & have the dosage adjusted.
+• Patients with liver cirrhosis should be managed at an experienced specialist centre.
+• Pregnant & lactating women should receive the same treatment regimen for TB as for 
+non-pregnant women.
+• Women on rifampicin-based anti-TB treatment should use alternative contraception methods 
+other than oral contraceptive pills.
+HIV-TB Co-infection
+Timing for anti-retroviral treatment (ART) initiation in patients with HIV-TB coinfection:
+• Immune Reconstitution Inflammatory Syndrome typically occurs within 2 - 12 weeks after 
+starting ART, especially in patients with CD4 count <50 cells/mm3, anaemia or EPTB.
+• Co-trimoxazole prophylaxis should be given to patients with HIV-TB coinfection with an 
+unknown CD4 count or a CD4 count <200 cells/mm3.
+TB in Children
+The TB treatment regimen in children for both PTB & EPTB are the same as in adults. Anti-TB 
+dose in children should be calculated in mg/kg & the total dose must not exceed the maximum 
+dose. 
+Recommended dose of anti-TB drugs in children
+Clinical conditions  Timing of ART initiation  
+Drug    
+Isoniazid*  
+Rifampicin
+Pyrazinamide  
+Ethambutol
+4 - 7 1 1 
+8 - 11 2 2 
+12 - 15 3 3 
+16 - 24 4 4 
+>25 Adult doses recommended  
+*Pyridoxine 5 - 10 mg daily needs to be added if INH is prescribed.
+WHO recommended dose for FDC in children
+*EMB should be added in the intensive phase for children with extensive disease.
+Newborns to mothers with active TB should be screened for active & latent TB before receiving 
+BCG vaccination . 
+Number of FDC tablets daily
+30 - 37
+38 - 54
+55 - 70
+>70
+2
+3
+4
+5
+Isoniazid (INH)
+Rifampicin (RIF)
+Ethambutol (EMB)
+Pyrazinamide (PZA) 
+5 (4 - 6)
+10 (8 - 12)
+15 (15 - 20)
+25 (20 - 30)
+300
+600
+1600
+2000
+1*
+2*
+3*
+4
+5*
+0 month
+2 - 4 weeks
+2 months
+5 months
+6 months
+EHRZ
+EHRZ
+HR
+HR
+Treatment complete
+FBC, RBS, RP, LFT, HIV screening
+Sputum smear for AFB
+Sputum mycobacterial culture &
+drug susceptibility testing
+CXR
+LFT
+Sputum smear for AFB**
+Sputum smear for AFB
+CXR 
+Sputum smear for AFB#
+Sputum smear for AFB
+CXR 
+Visit Treatment
+duration Regimen Investigations
+Recommended dose for FDC in adults
+Dose (range) in 
+mg/kg body weight daily
+Maximum dose in mg daily
+Recommended doses
+CD4  >50 cells/mm3
+CD4  <50 cells/mm3
+HIV with TB meningitis
+Initiate within 8 weeks of anti-TB treatment
+initiate within the first 2 weeks of anti-TB treatment
+Delay ART until 2 months after initiation of TB treatment
+Maximum dose (mg)Dose (range) in mg/kg body weight
+10 (7 - 15)
+15 (10 - 20)
+35 (30 - 40)
+20 (15 - 25)
+300
+600
+2000 (2 g)
+1000 (1 g)
+Weight band
+(kg) Intensive phase:
+RHZ 75/50/150*
+Continuation phase
+RH 75/50
+Numbers of tablets daily
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+43
+E=ethambutol, H=isoniazid, R=rifampicin, Z=pyrazinamide
+*requires in-person visit
+**for return to work/school purposes
+#sputum smear for AFB should be done at the end of five months of standard anti-TB treatment
+TB treatment should be observed directly (DOT). Alternatively, video observed treatment (VOT) 
+may be used. Self-administered treatment should be reserved for patients who are unable to 
+undergo DOT or VOT.
+Recurrent TB
+• Patients exposed to anti-TB drugs are at risk of drug resistance. Hence, all patients who are 
+suspected to have recurrent TB should be investigated using rapid molecular tests, e.g. Xpert 
+Ultra & mycobacterial culture (BACTEC MGIT).
+• If the rapid molecular test results are negative, the patients should be treated with a standard 
+regimen for drug susceptible TB pending drug culture & susceptibility results.
+Body weight (kg)  
+Drug   
+  
+ 
+Active TB Treatment & Monitoring
+Recommended dose of first-line anti-TB in adults
+*Pyridoxine 10 - 30 mg daily needs to be added if INH is prescribed
+Monitoring schedule of adults on PTB treatment
+TB in Special Situations
+• Patients having chronic kidney disease with GFR of <30 ml/min, & patients on hemodialysis 
+should be treated with standard anti-TB regimen & have the dosage adjusted.
+• Patients with liver cirrhosis should be managed at an experienced specialist centre.
+• Pregnant & lactating women should receive the same treatment regimen for TB as for 
+non-pregnant women.
+• Women on rifampicin-based anti-TB treatment should use alternative contraception methods 
+other than oral contraceptive pills.
+HIV-TB Co-infection
+Timing for anti-retroviral treatment (ART) initiation in patients with HIV-TB coinfection:
+• Immune Reconstitution Inflammatory Syndrome typically occurs within 2 - 12 weeks after 
+starting ART, especially in patients with CD4 count <50 cells/mm3, anaemia or EPTB.
+• Co-trimoxazole prophylaxis should be given to patients with HIV-TB coinfection with an 
+unknown CD4 count or a CD4 count <200 cells/mm3.
+TB in Children
+The TB treatment regimen in children for both PTB & EPTB are the same as in adults. Anti-TB 
+dose in children should be calculated in mg/kg & the total dose must not exceed the maximum 
+dose. 
+Recommended dose of anti-TB drugs in children
+Clinical conditions  Timing of ART initiation  
+Drug    
+Isoniazid*  
+Rifampicin
+Pyrazinamide  
+Ethambutol
+4 - 7 1 1 
+8 - 11 2 2 
+12 - 15 3 3 
+16 - 24 4 4 
+>25 Adult doses recommended  
+*Pyridoxine 5 - 10 mg daily needs to be added if INH is prescribed.
+WHO recommended dose for FDC in children
+*EMB should be added in the intensive phase for children with extensive disease.
+Newborns to mothers with active TB should be screened for active & latent TB before receiving 
+BCG vaccination . 
+Number of FDC tablets daily
+30 - 37
+38 - 54
+55 - 70
+>70
+2
+3
+4
+5
+Isoniazid (INH)
+Rifampicin (RIF)
+Ethambutol (EMB)
+Pyrazinamide (PZA) 
+5 (4 - 6)
+10 (8 - 12)
+15 (15 - 20)
+25 (20 - 30)
+300
+600
+1600
+2000
+1*
+2*
+3*
+4
+5*
+0 month
+2 - 4 weeks
+2 months
+5 months
+6 months
+EHRZ
+EHRZ
+HR
+HR
+Treatment complete
+FBC, RBS, RP, LFT, HIV screening
+Sputum smear for AFB
+Sputum mycobacterial culture &
+drug susceptibility testing
+CXR
+LFT
+Sputum smear for AFB**
+Sputum smear for AFB
+CXR 
+Sputum smear for AFB#
+Sputum smear for AFB
+CXR 
+Visit Treatment
+duration Regimen Investigations
+Recommended dose for FDC in adults
+Dose (range) in 
+mg/kg body weight daily
+Maximum dose in mg daily
+Recommended doses
+CD4  >50 cells/mm3
+CD4  <50 cells/mm3
+HIV with TB meningitis
+Initiate within 8 weeks of anti-TB treatment
+initiate within the first 2 weeks of anti-TB treatment
+Delay ART until 2 months after initiation of TB treatment
+Maximum dose (mg)Dose (range) in mg/kg body weight
+10 (7 - 15)
+15 (10 - 20)
+35 (30 - 40)
+20 (15 - 25)
+300
+600
+2000 (2 g)
+1000 (1 g)
+Weight band
+(kg) Intensive phase:
+RHZ 75/50/150*
+Continuation phase
+RH 75/50
+Numbers of tablets daily
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+SECTION 1. ACTIVE TUBERCULOSIS
+Algorithm 1: Management of Active Tuberculosis
+SECTION 2. LATENT TUBERCULOSIS INFECTION
+Algorithm 2: Management of Latent Tuberculosis Infection
+25
+Investigate for PTB Investigate for EPTB
+Adults
+Sputum/IS for AFB, 
+mycobacterial 
+culture, Xpert Ultra*,
+CXR
+Children
+Sputum/IS/GA/NPA 
+for AFB, mycobacterial 
+culture, Xpert Ultra*
+CXR#
+TST/IGRA
+Extrapulmonary specimens for
+Xpert Ultra*, mycobacterial culture 
+(BACTEC MGIT), AFB
+± HPE
+± Biochemistry, ADA*
+± Diagnostic imaging
+TB diagnosis confirmed
+People with symptoms# of active TB
+TB diagnosis not confirmed
+Use the following standard regimens
+PTB: 2EHRZ/4HR
+TB Meningitis: 2EHRZ/10HR
+Bone and joint TB: 2EHRZ/4-7HR 
+Other EPTB: 2EHRZ/4HR
+Refer to a specialist
+Monitor treatment
+Response to
+treatment 
+Good treatment response
+and treatment tolerance
+Poor treatment response
+complications due to TB or
+severe ADR
+Continue and complete
+treatment Refer to a specialist
+#Symptoms of TB and CXR findings in children may be different from adults 
+*When indicated
+Important note: Please refer to the texts in the relevant sections in the CPG for further details. 
+Abbreviations:
+ADA=adenosine deaminase, ADR=adverse drug reaction, AFB=acid fast bacilli, CXR=chest 
+radiograph, EPTB=extrapulmonary tuberculosis, GA=gastric aspirate, HPE=histopathological 
+examination, IS=induced sputum, IGRA=Interferon Gamma Release Assay, NPA=nasopharyngeal
+aspirate, PTB=pulmonary tuberculosis, TB=tuberculosis, TST=tuberculin skin test
+Target population at risk of progression to active TB*
+Active TB excluded 
+(Asymptomatic and Normal CXR)
+Active TB not excluded 
+(Symptomatic or Abnormal CXR)
+TST/IGRA
+Investigate for active TB and 
+treat accordingly 
+In cases involving children,
+refer to a paediatrician
+Positive Negative#
+LTBI Treatment in Adults
+Preferred regimens: 
+3HR or 3HP
+Alternative regimens: 
+4R, 6H or 9H (adults)
+1HP (adult PLHIV)
+LTBI treatment in Children
+PLHIV aged >12 months or
+household PTB contact aged
+<5 years
+Other at-risk groups 
+No contraindication for LTBI
+treatment 
+Active TB excluded
+Monitor treatment
+LTBI treatment tolerated
+Continue and complete
+treatment
+Severe ADR or 
+progression to active TB
+Refer to a specialist
+Follow-up for progression to active TB
+#IGRA/TST may be repeated if the initial testing has been done with <2 months of exposure to an 
+index case, initiate LTBI treatment if repeat testing is positive. For children <5 years old, refer to a 
+specialist to consider withholding the treatment if 2 consecutives IGRA/TST are negative.
+*Refer to page 6
+Abbreviations:
+ADR=adverse drug reaction, CXR=chest radiograph, IGRA=Interferon Gamma Release Assay, 
+LTBI=latent tuberculosis infection, PLHIV=people living with HIV, PTB=pulmonary tuberculosis, 
+TB=tuberculosis, TST=tuberculin skin test
+Refer to Section 3.1(d)
+in the CPG 
+1. The vision of the Malaysian Tuberculosis (TB) Control Programme is for Malaysia to be a 
+TB-free country by 2035.
+2. Adults with productive cough, haemoptysis, loss of appetite, unexplained weight loss, fever, 
+night sweats & fatigue should be screened for pulmonary TB (PTB). 
+3. TB disease in children is mostly paucibacillary with non-specific signs & symptoms. It could 
+be disseminated especially in young children. In children <5 years old, additional symptoms 
+include anorexia, failure to thrive, poor feeding & decreased activities or playfulness. 
+Therefore, a high index of suspicion is needed for the diagnosis.
+4. Testing with Xpert Ultra & mycobacterial culture should be done as part of assessment for 
+the diagnosis of smear negative & extrapulmonary tuberculosis (EPTB). Chest radiograph 
+(CXR) should be done in people with suspected EPTB to rule out concomitant PTB.
+5. The standard treatment regimens for drug susceptible TB are:
+• PTB - 2EHRZ/4HR (8 weeks of EHRZ, 18 weeks of HR)
+• TB meningitis - 2EHRZ/10HR
+• bone & joint TB - 2EHRZ/4 - 7HR
+• other forms of EPTB - 2EHRZ/4HR
+ Adjunctive corticosteroids should be given in tuberculous meningitis & pericarditis.
+6. Fixed-Dose Combination (FDC) tablets or flavoured, dispersible child-friendly FDC should 
+be used to treat active TB.
+7. Rifabutin should be used instead of rifampicin for HIV-TB co-infected patients on protease 
+inhibitors or integrase strand transfer inhibitors.
+8. Active TB must be ruled out before starting latent TB infection (LTBI) treatment. Shorter LTBI 
+treatment regimens are preferred in eligible individuals without contraindications.
+9. Adverse drug reaction (ADR) should be recognised early & managed well to reduce 
+treatment-related morbidity & mortality, & to inspire confidence in the patient.
+10. Isoniazid & rifampicin interact with a broad range of commonly used medications. These 
+medications may need to be switched or have their dose adjusted.
+1 6
+Key Messages
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & summarises the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Tuberculosis (Fourth Edition).
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+Systematic Screening & Treatment Of LTBI
+The target population for LTBI screening & treatment are:
+• household & close contact of bacteriologically-confirmed PTB
+• PLHIV including children • patients initiating anti-tumour necrosis factor treatment 
+• patients receiving dialysis • patients with silicosis
+• patients preparing for organ/haematological transplant
+Pyridoxine 10 - 30 mg/day should be given to patients on isoniazid
+Age  Preferred  Alternative  
+Drugs    
+Isoniazid (6H) 6 months Daily
+Rifampicin (4R) 4 months Daily
+Isoniazid + 
+rifampicin
+(3HR) 
+3 months Daily
+Rifapentine + 
+isoniazid (3HP) 
+3 months*  Weekly
+Recommended LTBI regimen for children according to age*
+P=rifapentine     *For children living with HIV, refer to the main CPG.
+Recommended dosage for LTBI treatment in children
+*Given for total of 12 doses
+Pyridoxine 5 - 10 mg/day should be given to patients on isoniazid.
+Both adults & children on LTBI treatment should be monitored regularly for treatment 
+compliance, ADR & progression to active TB.
+28 days & below
+29 days to 2 years old
+More than 2 years old
+6H
+4R
+4R or 3HP
+Nil
+3HR, 6H, 9H
+3HR, 6H, 9H
+1. Age 10 years & older: 5 mg/kg/day
+2. Age <10 years: 10 mg/kg/day (range 7 - 15 mg/kg)
+Maximum dose: 300 mg
+1. Age 10 years & older: 10 mg/kg/day 
+2. Age <10 years: 15 mg/kg/day (range 10 -20 mg/kg)
+Maximum dose: 600 mg
+Dose of INH & RIF same as above
+Isoniazid: 
+10 - 15 kg: 300 mg
+16 - 23 kg: 500 mg
+24 - 30 kg: 600 mg
+>31 kg: 700 mg 
+(For children age 2 - 14 
+years old)
+Rifapentine:
+10 - 15 kg: 300 mg
+16 - 23 kg: 450 mg
+24 - 30 kg: 600 mg
+>31 kg: 750 mg
+(For children age 2 - 14 
+years old)
+Duration Interval Dose
+Recommended dosage for LTBI treatment in adults
+Drug Duration Interval DosageDoses
+Isoniazid (6H/9H) Six months/ Daily 180/270 5 mg/kg, max 300 mg 
+ nine months  
+Isoniazid +  Three months Daily 90 INH: 5 mg/kg, max 300 mg
+rifampicin (3HR)    RIF: 10 mg/kg, max 600 mg
+Rifapentine +  Three months Weekly 12 INH: 15 mg/kg, max 900 mg
+isoniazid (3HP)    RPT:
+    <50 kg; 750 mg 
+    >50 kg: 900 mg 
+Rifampicin (4R) Four months Daily 120 10 mg/kg, max 600 mg
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+SECTION 1. ACTIVE TUBERCULOSIS
+Algorithm 1: Management of Active Tuberculosis
+SECTION 2. LATENT TUBERCULOSIS INFECTION
+Algorithm 2: Management of Latent Tuberculosis Infection
+25
+Investigate for PTB Investigate for EPTB
+Adults
+Sputum/IS for AFB, 
+mycobacterial 
+culture, Xpert Ultra*,
+CXR
+Children
+Sputum/IS/GA/NPA 
+for AFB, mycobacterial 
+culture, Xpert Ultra*
+CXR#
+TST/IGRA
+Extrapulmonary specimens for
+Xpert Ultra*, mycobacterial culture 
+(BACTEC MGIT), AFB
+± HPE
+± Biochemistry, ADA*
+± Diagnostic imaging
+TB diagnosis confirmed
+People with symptoms# of active TB
+TB diagnosis not confirmed
+Use the following standard regimens
+PTB: 2EHRZ/4HR
+TB Meningitis: 2EHRZ/10HR
+Bone and joint TB: 2EHRZ/4-7HR 
+Other EPTB: 2EHRZ/4HR
+Refer to a specialist
+Monitor treatment
+Response to
+treatment 
+Good treatment response
+and treatment tolerance
+Poor treatment response
+complications due to TB or
+severe ADR
+Continue and complete
+treatment Refer to a specialist
+#Symptoms of TB and CXR findings in children may be different from adults 
+*When indicated
+Important note: Please refer to the texts in the relevant sections in the CPG for further details. 
+Abbreviations:
+ADA=adenosine deaminase, ADR=adverse drug reaction, AFB=acid fast bacilli, CXR=chest 
+radiograph, EPTB=extrapulmonary tuberculosis, GA=gastric aspirate, HPE=histopathological 
+examination, IS=induced sputum, IGRA=Interferon Gamma Release Assay, NPA=nasopharyngeal
+aspirate, PTB=pulmonary tuberculosis, TB=tuberculosis, TST=tuberculin skin test
+Target population at risk of progression to active TB*
+Active TB excluded 
+(Asymptomatic and Normal CXR)
+Active TB not excluded 
+(Symptomatic or Abnormal CXR)
+TST/IGRA
+Investigate for active TB and 
+treat accordingly 
+In cases involving children,
+refer to a paediatrician
+Positive Negative#
+LTBI Treatment in Adults
+Preferred regimens: 
+3HR or 3HP
+Alternative regimens: 
+4R, 6H or 9H (adults)
+1HP (adult PLHIV)
+LTBI treatment in Children
+PLHIV aged >12 months or
+household PTB contact aged
+<5 years
+Other at-risk groups 
+No contraindication for LTBI
+treatment 
+Active TB excluded
+Monitor treatment
+LTBI treatment tolerated
+Continue and complete
+treatment
+Severe ADR or 
+progression to active TB
+Refer to a specialist
+Follow-up for progression to active TB
+#IGRA/TST may be repeated if the initial testing has been done with <2 months of exposure to an 
+index case, initiate LTBI treatment if repeat testing is positive. For children <5 years old, refer to a 
+specialist to consider withholding the treatment if 2 consecutives IGRA/TST are negative.
+*Refer to page 6
+Abbreviations:
+ADR=adverse drug reaction, CXR=chest radiograph, IGRA=Interferon Gamma Release Assay, 
+LTBI=latent tuberculosis infection, PLHIV=people living with HIV, PTB=pulmonary tuberculosis, 
+TB=tuberculosis, TST=tuberculin skin test
+Refer to Section 3.1(d)
+in the CPG 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF TUBERCULOSIS (FOURTH EDITION)
+7
+SECTION 3. ANTI-TUBERCULOSIS DRUG ADVERSE REACTIONS 
+& DRUG INTERACTIONS
+Anti-TB ADRs may affect any organ/system & they vary in severity.
+COMMON ADRs TO FIRST-LINE ANTI-TB DRUGS
+Drug induced liver injury (DILI) is one of the commonest serious ADRs due to first-line anti-TB 
+drugs. Two criteria may be used to diagnose anti-TB DILI, after excluding other causes of 
+abnormal liver enzymes:
+1.  The American Thoracic Society criteria for drug-induced hepatitis
+i. an ALT ≥3 times the upper limit of normal (ULN) in patients with symptomatic hepatitis, or
+ii. an ALT ≥5 x the ULN in patients without any symptoms
+2.  The international DILI expert consensus criteria:
+    (any of the following, regardless of symptoms)
+i. an ALT ≥5 x the ULN
+ii. an ALP ≥2 x the ULN
+iii. an ALT ≥3 x & total bilirubin 2x the ULN
+Patients with suspected severe ADR, including DILI, should have their TB treatment stopped 
+immediately or switched to an alternative anti-TB regimen. All patients with ADR should be 
+treated compassionately, offered symptomatic treatment & given reassurance of getting good 
+medical care. They should be referred to specialists for drug challenge/dechallenge or drug 
+desensitisation when indicated.
+The first-line anti-TB drugs, INH & RIF, interact with many commonly used medications shown 
+below.
+Therefore, health care workers should routinely check for drug-drug interactions when starting 
+anti-TB treatment. It may be necessary to switch to other drugs or adjust the dose of these 
+medications during TB treatment.
+Drug ADR  
+INH
+RIF
+EMB
+PZA
+Anti-TB  Potential interactions with these drugs  
+DRUGS WITH POTENTIAL INTERACTIONS INVOLVING RIFAMYCINS & ISONIAZID
+Skin rash, jaundice, hepatitis, anorexia, nausea, abdominal pain, burning/numbness/tingling 
+sensation in hands or feet
+Skin rash, jaundice, hepatitis, anorexia, nausea, abdominal pain, orange/red urine, flu syndrome
+(fever, chills, malaise, headache, bone pain)
+Visual impairment
+Skin rash, jaundice, hepatitis, anorexia, nausea, abdominal pain, joint pain
+Clarithromycin, moxifloxacin, doxycycline, fluconazole, itraconazole, 
+voriconazole, caspofungin, dapsone, artemether/lumefantrine, hepatitis C 
+direct-acting antivirals, immunosuppressive agents, protease inhibitors, 
+integrase strand transfer inhibitors, hormone therapy, anticonvulsants, 
+antidepressants, antipsychotics, barbiturates, benzodiazepines, opioid 
+agonists, oral anticoagulants, antiplatelet agents, calcium channel blockers, 
+beta-blockers, enalapril, losartan, digoxin, ivabradine, ranolazine, 
+propafenone, antihyperlipidemics, methylxanthines, aprepitant, proton pump 
+inhibitors, tyrosine kinase inhibitors, cyclin-dependent kinase inhibitors.
+Azole antifungal agents, rifampicin, clozapine, levodopa, paracetamol, 
+warfarin, antihyperlipidemics, immunosuppressive agents, anticonvulsants, 
+methylxanthines, benzodiazepines.
+Rifamycins
+(Rifampicin,
+Rifabutin,
+Rifapentine)
+Isoniazid
+QUICK REFERENCE FOR
+HEALTHCARE PROVIDERS

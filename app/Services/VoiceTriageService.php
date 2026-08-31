@@ -12,10 +12,14 @@ use App\Models\MedicalRecord;
 use App\Models\TriageMessage;
 use App\Models\TriageSession;
 use App\Models\User;
+use App\Support\TriageDraft;
+use App\Support\TriagePrompts;
+use Illuminate\Http\Client\Response as HttpResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class VoiceTriageService
 {
@@ -108,72 +112,8 @@ class VoiceTriageService
             $detected['code'],
             $detected['name'],
         );
-        $structured = is_array($triage['structured'] ?? null) ? $triage['structured'] : [];
-        $inScope = array_key_exists('in_scope', $structured)
-            ? (bool) $structured['in_scope']
-            : true;
 
-        if (! $inScope) {
-            $assistantFromModel = trim((string) ($structured['assistant_message'] ?? ''));
-            $draftRedirect = trim((string) ($triage['draft'] ?? ''));
-            $assistantMessageText = $assistantFromModel !== ''
-                ? $assistantFromModel
-                : ($draftRedirect !== ''
-                    ? $draftRedirect
-                    : $this->scopeRedirectMessage(self::INTENT_OFF_TOPIC, $detected['code']));
-
-            $assistantMessage = $session->messages()->create([
-                'role' => TriageMessageRole::Assistant,
-                'content' => $assistantMessageText,
-                'input_modality' => TriageInputModality::Text,
-                'stt_engine' => null,
-            ]);
-
-            $phases['speaking'] = true;
-
-            return [
-                'message' => $assistantMessage,
-                'user_message' => $userMessage,
-                'session' => $session->fresh(['messages', 'subjectUser:id,name']),
-                'audio_base64' => $withSpeech ? $this->textToSpeech($assistantMessageText) : null,
-                'phases' => $phases,
-                'done' => false,
-            ];
-        }
-
-        $assistantMessageText = trim((string) ($structured['assistant_message'] ?? ''));
-        if ($assistantMessageText === '') {
-            $assistantMessageText = trim((string) ($triage['draft'] ?? ''))
-                ?: 'I heard you. Can you tell me a bit more about your main symptom?';
-        }
-
-        $urgency = TriageUrgency::tryFrom((string) ($structured['urgency'] ?? ''))
-            ?? TriageUrgency::Routine;
-
-        $session->fill([
-            'urgency' => $urgency,
-            'chief_complaint' => $this->nullableString($structured['chief_complaint'] ?? null) ?? $session->chief_complaint,
-            'summary' => $this->nullableString($structured['summary'] ?? null) ?? $session->summary,
-        ]);
-        $session->save();
-
-        $assistantMessage = $session->messages()->create([
-            'role' => TriageMessageRole::Assistant,
-            'content' => $assistantMessageText,
-            'input_modality' => TriageInputModality::Text,
-            'stt_engine' => null,
-        ]);
-
-        $phases['speaking'] = true;
-
-        return [
-            'message' => $assistantMessage,
-            'user_message' => $userMessage,
-            'session' => $session->fresh(['messages', 'subjectUser:id,name']),
-            'audio_base64' => $withSpeech ? $this->textToSpeech($assistantMessageText) : null,
-            'phases' => $phases,
-            'done' => (bool) ($structured['done'] ?? false),
-        ];
+        return $this->completeTriageTurn($session, $userMessage, $triage, $phases, $withSpeech);
     }
 
     public function speakMessage(TriageMessage $message): ?string
@@ -183,6 +123,213 @@ class VoiceTriageService
         }
 
         return $this->textToSpeech($message->content);
+    }
+
+    /**
+     * Stream one triage turn as SSE hops and tokens.
+     */
+    public function streamMessage(
+        TriageSession $session,
+        User $actor,
+        ?string $text = null,
+        ?UploadedFile $audio = null,
+    ): StreamedResponse {
+        return response()->stream(function () use ($session, $actor, $text, $audio): void {
+            set_time_limit(0);
+            ignore_user_abort(true);
+            session_write_close();
+
+            $onHop = function (string $hop, ?string $detail = null): void {
+                $payload = ['event' => 'hop', 'hop' => $hop];
+                if (is_string($detail) && $detail !== '' && ! TriageDraft::isPromptEcho($detail)) {
+                    $payload['detail'] = $detail;
+                }
+                $this->emitSse($payload);
+            };
+
+            try {
+                $sttEngine = null;
+                $content = trim((string) $text);
+                $modality = TriageInputModality::Text;
+
+                if ($audio !== null) {
+                    $onHop('Transcribing speech', 'listening to the recording');
+                    if ($audio->getSize() < 1500) {
+                        throw new \InvalidArgumentException('Hold the mic and speak before releasing.');
+                    }
+                    $stt = $this->speechToText($audio);
+                    $sttEngine = is_string($stt['engine'] ?? null) ? $stt['engine'] : null;
+                    $transcript = trim($stt['transcript']);
+                    if ($transcript === '' || ! preg_match('/\p{L}|\p{N}/u', $transcript)) {
+                        throw new \InvalidArgumentException('No speech heard. Speak closer to the mic and try again.');
+                    }
+                    $content = $transcript;
+                    $modality = TriageInputModality::Voice;
+                    $onHop('Heard you', mb_strlen($content) > 120 ? mb_substr($content, 0, 117).'...' : $content);
+                }
+
+                if ($content === '') {
+                    throw new \InvalidArgumentException('Provide text or audio for this triage turn.');
+                }
+
+                $onHop('Reading your message', mb_strlen($content) > 120 ? mb_substr($content, 0, 117).'...' : $content);
+
+                $userMessage = $session->messages()->create([
+                    'role' => TriageMessageRole::User,
+                    'content' => $content,
+                    'input_modality' => $modality,
+                    'stt_engine' => $sttEngine,
+                ]);
+                $this->emitSse([
+                    'event' => 'user',
+                    'message' => $this->messagePayload($userMessage),
+                ]);
+
+                $onHop('Detecting language');
+                $detected = $this->detectLanguage($content);
+                $session->locale = $detected['code'];
+                $session->save();
+
+                $onHop('Checking the request');
+                $intent = $this->classifyIntent(
+                    $session,
+                    $userMessage,
+                    $content,
+                    $detected['code'],
+                    $detected['name'],
+                );
+                $minConfidence = (float) config('services.triage.intent_confidence_min', 0.85);
+
+                if (
+                    in_array($intent['intent'], [self::INTENT_OFF_TOPIC, self::INTENT_UNSAFE], true)
+                    && $intent['confidence'] >= $minConfidence
+                ) {
+                    $refused = $this->finishRefusedTurn(
+                        $session,
+                        $userMessage,
+                        ['transcribing' => $audio !== null, 'thinking' => true, 'speaking' => false],
+                        $intent['intent'],
+                        $detected['code'],
+                        false,
+                        $intent['redirect_message'],
+                    );
+                    $this->emitSse([
+                        'event' => 'assistant',
+                        'message' => $this->messagePayload($refused['message']),
+                    ]);
+                    $this->emitSse([
+                        'event' => 'session',
+                        'session' => $this->sessionStreamPayload($refused['session']),
+                    ]);
+
+                    return;
+                }
+
+                $onHop('Asking MedGemma');
+                $streamed = '';
+                $triage = $this->streamTriageTurn(
+                    $session,
+                    $actor,
+                    $content,
+                    $userMessage,
+                    $detected['code'],
+                    $detected['name'],
+                    $onHop,
+                    function (string $token) use (&$streamed): void {
+                        $streamed .= $token;
+                        if (TriageDraft::isPromptEcho($streamed) || TriageDraft::isPromptEcho($token)) {
+                            return;
+                        }
+                        $this->emitSse([
+                            'event' => 'token',
+                            'token' => $token,
+                        ]);
+                    },
+                );
+
+                $result = $this->completeTriageTurn($session, $userMessage, $triage, [
+                    'transcribing' => $audio !== null,
+                    'thinking' => true,
+                    'speaking' => false,
+                ], false);
+                $this->emitSse([
+                    'event' => 'assistant',
+                    'message' => $this->messagePayload($result['message']),
+                ]);
+                $this->emitSse([
+                    'event' => 'session',
+                    'session' => $this->sessionStreamPayload($result['session']),
+                    'done' => $result['done'],
+                ]);
+            } catch (\InvalidArgumentException $e) {
+                $this->emitSse([
+                    'event' => 'error',
+                    'message' => $e->getMessage(),
+                ]);
+            } catch (\Throwable $e) {
+                Log::warning('Triage stream failed', ['error' => $e->getMessage()]);
+                $this->emitSse([
+                    'event' => 'error',
+                    'message' => 'Could not send message',
+                ]);
+            }
+        }, 200, [
+            'Content-Type' => 'text/event-stream; charset=UTF-8',
+            'Cache-Control' => 'no-cache, no-transform',
+            'X-Accel-Buffering' => 'no',
+        ]);
+    }
+
+    public function streamSpeech(TriageMessage $message): StreamedResponse
+    {
+        if ($message->role !== TriageMessageRole::Assistant) {
+            throw new \InvalidArgumentException('Only assistant messages can be spoken.');
+        }
+
+        $apiKey = config('services.openai.api_key');
+        if (! $apiKey || trim($message->content) === '') {
+            abort(503, 'Voice playback is unavailable.');
+        }
+
+        $model = (string) config('services.triage.tts_model', 'gpt-4o-mini-tts');
+        $voice = (string) config('services.triage.tts_voice', 'marin');
+        $speed = max(0.25, min(4.0, (float) config('services.triage.tts_speed', 1.5)));
+        $instructions = (string) config(
+            'services.triage.tts_instructions',
+            'Voice identity: A warm, polished female clinical professional speaking face to face with a patient. Affect: Calm, composed, reassuring, and gently upbeat, with quiet confidence. Tone: Human, sincere, empathetic, and conversational; sound attentive rather than scripted. Pacing: Natural and moderate, never rushed. Use subtle changes in rhythm and intonation, with brief pauses after questions, important guidance, and reassuring statements. Emotion: Let a pleasant warmth show in greetings and routine guidance, but become appropriately serious and grounded for distressing symptoms, urgent advice, or safety warnings. Pronunciation: Clear and precise without over-enunciating; emphasize medication names, doses, timeframes, warning signs, and next steps when present. Delivery: Speak fluidly as one clinician to one patient. Avoid a flat monotone, sing-song cadence, exaggerated cheerfulness, announcer voice, phone-menu rhythm, or chatbot-like delivery.',
+        );
+
+        $response = Http::withToken((string) $apiKey)
+            ->timeout(60)
+            ->withOptions(['stream' => true])
+            ->withHeaders(['Accept' => 'audio/mpeg'])
+            ->post('https://api.openai.com/v1/audio/speech', [
+                'model' => $model,
+                'voice' => $voice,
+                'input' => mb_substr($message->content, 0, 2000),
+                'speed' => $speed,
+                'instructions' => $instructions,
+            ]);
+
+        if (! $response->successful()) {
+            Log::warning('Triage TTS stream failed', ['status' => $response->status()]);
+            abort(503, 'Voice playback is unavailable.');
+        }
+
+        return response()->stream(function () use ($response): void {
+            $body = $response->toPsrResponse()->getBody();
+            while (! $body->eof()) {
+                echo $body->read(4096);
+                if (ob_get_level() > 0) {
+                    ob_flush();
+                }
+                flush();
+            }
+        }, 200, [
+            'Content-Type' => 'audio/mpeg',
+            'Cache-Control' => 'no-cache, no-transform',
+            'X-Accel-Buffering' => 'no',
+        ]);
     }
 
     public function archive(TriageSession $session): TriageSession
@@ -415,6 +562,289 @@ class VoiceTriageService
     }
 
     /**
+     * @param  array<string, mixed>  $triage
+     * @param  array<string, bool>  $phases
+     * @return array{message: TriageMessage, user_message: TriageMessage, session: TriageSession, audio_base64: string|null, phases: array<string, bool>, done: bool}
+     */
+    private function completeTriageTurn(
+        TriageSession $session,
+        TriageMessage $userMessage,
+        array $triage,
+        array $phases,
+        bool $withSpeech,
+    ): array {
+        $structured = is_array($triage['structured'] ?? null) ? $triage['structured'] : [];
+        $inScope = array_key_exists('in_scope', $structured)
+            ? (bool) $structured['in_scope']
+            : true;
+
+        if (! $inScope) {
+            $assistantMessageText = trim((string) ($structured['assistant_message'] ?? ''));
+            if ($assistantMessageText === '') {
+                $assistantMessageText = $this->scopeRedirectMessage(
+                    self::INTENT_OFF_TOPIC,
+                    (string) $session->locale,
+                );
+            }
+
+            $assistantMessage = $session->messages()->create([
+                'role' => TriageMessageRole::Assistant,
+                'content' => $assistantMessageText,
+                'input_modality' => TriageInputModality::Text,
+                'stt_engine' => null,
+            ]);
+            $phases['speaking'] = true;
+
+            return [
+                'message' => $assistantMessage,
+                'user_message' => $userMessage,
+                'session' => $session->fresh(['messages', 'subjectUser:id,name', 'user:id,name']),
+                'audio_base64' => $withSpeech ? $this->textToSpeech($assistantMessageText) : null,
+                'phases' => $phases,
+                'done' => false,
+            ];
+        }
+
+        $assistantMessageText = TriageDraft::pickReply(
+            (string) ($triage['draft'] ?? ''),
+            (string) ($structured['assistant_message'] ?? ''),
+            $userMessage->content,
+        );
+
+        if ($assistantMessageText === '') {
+            $assistantMessageText = 'I heard you. Can you tell me a bit more about your main symptom?';
+        }
+
+        $urgency = TriageUrgency::tryFrom((string) ($structured['urgency'] ?? ''))
+            ?? TriageUrgency::Routine;
+
+        $session->fill([
+            'urgency' => $urgency,
+            'chief_complaint' => $this->nullableString($structured['chief_complaint'] ?? null) ?? $session->chief_complaint,
+            'summary' => $this->nullableString($structured['summary'] ?? null) ?? $session->summary,
+        ]);
+        $session->save();
+
+        $prompts = TriagePrompts::looksLikeAnswers($userMessage->content)
+            ? []
+            : TriagePrompts::normalize($structured['prompts'] ?? null);
+
+        $assistantMessage = $session->messages()->create([
+            'role' => TriageMessageRole::Assistant,
+            'content' => $assistantMessageText,
+            'input_modality' => TriageInputModality::Text,
+            'stt_engine' => null,
+            'prompts' => $prompts === [] ? null : $prompts,
+        ]);
+        $phases['speaking'] = true;
+
+        return [
+            'message' => $assistantMessage,
+            'user_message' => $userMessage,
+            'session' => $session->fresh(['messages', 'subjectUser:id,name', 'user:id,name']),
+            'audio_base64' => $withSpeech ? $this->textToSpeech($assistantMessageText) : null,
+            'phases' => $phases,
+            'done' => (bool) ($structured['done'] ?? false),
+        ];
+    }
+
+    /**
+     * @param  callable(string, ?string): void  $onHop
+     * @param  callable(string): void  $onToken
+     * @return array{draft: string, structured: array<string, mixed>}
+     */
+    private function streamTriageTurn(
+        TriageSession $session,
+        User $actor,
+        string $userMessage,
+        TriageMessage $currentUserMessage,
+        string $locale,
+        string $localeName,
+        callable $onHop,
+        callable $onToken,
+    ): array {
+        $session->loadMissing('subjectUser');
+        $baseUrl = rtrim((string) config('services.modal.url'), '/');
+        $payload = [
+            'role_context' => $session->role_context->value,
+            'summary' => (string) ($session->summary ?? ''),
+            'recent_dialog' => $this->buildRecentDialog($session, $currentUserMessage),
+            'record_context' => $this->buildRecordContext($session),
+            'user_message' => $userMessage,
+            'locale' => $locale,
+            'locale_name' => $localeName,
+            'subject_name' => $session->subject_user_id !== null
+                ? $session->subjectUser->name
+                : ($session->role_context === TriageRoleContext::Patient ? $actor->name : ''),
+        ];
+
+        try {
+            $response = Http::timeout(180)
+                ->withOptions(['stream' => true])
+                ->withHeaders(['Accept' => 'text/event-stream'])
+                ->post("{$baseUrl}/api/v1/triage/stream", $payload);
+
+            if ($response->successful()) {
+                $parsed = $this->consumeTriageSse($response, $onHop, $onToken);
+                if ($parsed['draft'] !== '' || $parsed['structured'] !== []) {
+                    return $parsed;
+                }
+            } else {
+                Log::warning('Triage Modal stream failed', [
+                    'status' => $response->status(),
+                    'body' => $response->body(),
+                ]);
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Triage Modal stream exception', ['error' => $e->getMessage()]);
+        }
+
+        return $this->fallbackTriage($userMessage, (string) ($session->summary ?? ''));
+    }
+
+    /**
+     * @param  callable(string, ?string): void  $onHop
+     * @param  callable(string): void  $onToken
+     * @return array{draft: string, structured: array<string, mixed>}
+     */
+    private function consumeTriageSse(HttpResponse $response, callable $onHop, callable $onToken): array
+    {
+        $buffer = '';
+        $assembled = '';
+        $draft = null;
+        $structured = [];
+        $failed = false;
+
+        $handleBlock = function (string $block) use (&$assembled, &$draft, &$structured, &$failed, $onHop, $onToken): void {
+            foreach (preg_split("/\r\n|\n|\r/", $block) ?: [] as $line) {
+                if (! str_starts_with($line, 'data: ')) {
+                    continue;
+                }
+
+                $decoded = json_decode(substr($line, 6), true);
+                if (! is_array($decoded)) {
+                    continue;
+                }
+
+                if (isset($decoded['error'])) {
+                    $failed = true;
+
+                    continue;
+                }
+
+                $hop = $decoded['hop'] ?? null;
+                if (is_string($hop)) {
+                    $hop = trim($hop);
+                    $detail = $decoded['detail'] ?? null;
+                    $detail = is_string($detail) ? trim($detail) : null;
+                    if ($hop !== '' && strlen($hop) <= 80) {
+                        $onHop(
+                            $hop,
+                            ($detail !== null && $detail !== '' && strlen($detail) <= 240) ? $detail : null,
+                        );
+                    }
+
+                    continue;
+                }
+
+                if (isset($decoded['token']) && is_string($decoded['token']) && $decoded['token'] !== '') {
+                    $assembled .= $decoded['token'];
+                    $onToken($decoded['token']);
+                }
+
+                if (! empty($decoded['done'])) {
+                    if (isset($decoded['draft']) && is_string($decoded['draft'])) {
+                        $draft = trim($decoded['draft']);
+                    }
+                    if (isset($decoded['structured']) && is_array($decoded['structured'])) {
+                        $structured = $decoded['structured'];
+                    }
+                }
+            }
+        };
+
+        $body = $response->toPsrResponse()->getBody();
+        while (! $body->eof()) {
+            $buffer .= $body->read(512);
+            $buffer = str_replace("\r\n", "\n", $buffer);
+            while (($pos = strpos($buffer, "\n\n")) !== false) {
+                $block = substr($buffer, 0, $pos);
+                $buffer = substr($buffer, $pos + 2);
+                $handleBlock($block);
+            }
+        }
+
+        if ($buffer !== '') {
+            $handleBlock($buffer);
+        }
+
+        if ($failed && $assembled === '' && $draft === null) {
+            return ['draft' => '', 'structured' => []];
+        }
+
+        return [
+            'draft' => $draft ?? trim($assembled),
+            'structured' => $structured,
+        ];
+    }
+
+    /**
+     * @return array{id: int, role: string, content: string, input_modality: string, stt_engine: string|null, created_at: string|null}
+     */
+    private function messagePayload(TriageMessage $message): array
+    {
+        return [
+            'id' => $message->id,
+            'role' => $message->role->value,
+            'content' => $message->content,
+            'input_modality' => $message->input_modality->value,
+            'stt_engine' => $message->stt_engine,
+            'prompts' => is_array($message->prompts) ? $message->prompts : [],
+            'created_at' => $message->created_at?->toIso8601String(),
+        ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function sessionStreamPayload(TriageSession $session): array
+    {
+        $session->loadMissing(['messages', 'subjectUser:id,name', 'user:id,name']);
+
+        return [
+            'id' => $session->id,
+            'role_context' => $session->role_context->value,
+            'locale' => $session->locale,
+            'status' => $session->status->value,
+            'urgency' => $session->urgency?->value,
+            'chief_complaint' => $session->chief_complaint,
+            'summary' => $session->summary,
+            'shared_at' => $session->shared_at?->toIso8601String(),
+            'subject_user_id' => $session->subject_user_id,
+            'subject_name' => $session->subjectUser?->name,
+            'owner_name' => $session->user?->name,
+            'created_at' => $session->created_at?->toIso8601String(),
+            'updated_at' => $session->updated_at?->toIso8601String(),
+            'last_message_at' => $session->messages->last()?->created_at?->toIso8601String(),
+            'messages' => $session->messages->map(fn (TriageMessage $message) => $this->messagePayload($message))->values()->all(),
+        ];
+    }
+
+    /**
+     * @param  array<string, mixed>  $payload
+     */
+    private function emitSse(array $payload): void
+    {
+        echo 'data: '.json_encode($payload, JSON_UNESCAPED_UNICODE)."\n\n";
+
+        if (ob_get_level() > 0) {
+            ob_flush();
+        }
+
+        flush();
+    }
+
+    /**
      * Prior messages for short-horizon continuity (session language as spoken).
      */
     private function buildRecentDialog(
@@ -430,6 +860,11 @@ class VoiceTriageService
             ->get(['role', 'content'])
             ->reverse()
             ->values();
+
+        $prior = $prior->reject(function (TriageMessage $message): bool {
+            return $message->role === TriageMessageRole::Assistant
+                && TriageDraft::isPromptEcho($message->content);
+        })->values();
 
         if ($prior->isEmpty()) {
             return '';
@@ -456,7 +891,10 @@ class VoiceTriageService
         ];
 
         try {
-            $response = Http::timeout(120)->post("{$baseUrl}/api/v1/transcribe", $payload);
+            $response = Http::connectTimeout(15)
+                ->timeout(120)
+                ->retry(2, 100)
+                ->post("{$baseUrl}/api/v1/transcribe", $payload);
 
             if ($response->successful()) {
                 return [
@@ -468,7 +906,9 @@ class VoiceTriageService
             Log::warning('Triage STT failed', ['error' => $e->getMessage()]);
         }
 
-        return ['transcript' => '', 'engine' => 'unavailable'];
+        throw new \InvalidArgumentException(
+            'Speech service is warming up. Type your message or try again in a moment.',
+        );
     }
 
     /**

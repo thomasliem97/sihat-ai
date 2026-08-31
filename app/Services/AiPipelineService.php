@@ -5,11 +5,15 @@ namespace App\Services;
 use App\Enums\Modality;
 use App\Enums\RecordStatus;
 use App\Enums\ReportLanguage;
+use App\Jobs\FailStaleAnalysis;
 use App\Jobs\ProcessMedicalRecord;
 use App\Models\AnalysisJob;
 use App\Models\AuditEvent;
+use App\Models\Biomarker;
 use App\Models\MedicalRecord;
 use App\Notifications\CriticalEscalationNotification;
+use App\Support\LabTextExtractor;
+use App\Support\MedgemmaDraft;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
@@ -22,6 +26,9 @@ class AiPipelineService
         private DeidentificationService $deidentification,
         private RagService $rag,
         private SimilarCaseService $similarCases,
+        private LabTextExtractor $labText,
+        private LabStructurer $labStructurer,
+        private RecordTitleGenerator $titles,
     ) {}
 
     public function dispatch(MedicalRecord $record): AnalysisJob
@@ -46,6 +53,15 @@ class AiPipelineService
         return $job;
     }
 
+    public function retry(MedicalRecord $record): AnalysisJob
+    {
+        $record->update([
+            'error_message' => null,
+        ]);
+
+        return $this->dispatch($record);
+    }
+
     /**
      * De-identify, route, and hand off to FastAPI. Record stays processing until webhook.
      */
@@ -58,30 +74,42 @@ class AiPipelineService
         $baseUrl = rtrim((string) config('services.modal.url'), '/');
         $webhookUrl = rtrim((string) config('app.url'), '/').'/api/ai/webhook';
         $path = $record->inferenceFilePath();
-        $bytes = Storage::disk('local')->get($path);
-
-        if ($bytes === null || $bytes === '') {
+        if (! Storage::disk('local')->exists($path)) {
             throw new \RuntimeException('Inference file missing for analyze handoff: '.$path);
         }
 
         $analyzeStartedAt = microtime(true);
 
-        // Always embed bytes. Modal cannot pull trycloudflare/ngrok signed URLs (datacenter IP blocked).
-        $response = Http::timeout(120)
-            ->post("{$baseUrl}/api/v1/analyze", [
-                'job_id' => $job->external_job_id,
-                'record_id' => $record->id,
-                'modality' => $modality->value,
-                'file_path' => $path,
-                'file_b64' => base64_encode($bytes),
-                'language' => $record->language->value,
-                'webhook_url' => $webhookUrl,
-                'mime_type' => $record->mime_type,
-                'original_filename' => $record->original_filename,
-                'route_confidence' => $record->route_confidence,
-                'engine' => 'medgemma',
-                'adapter' => config('services.modal.lora_path') ? 'configured' : 'none',
-            ]);
+        $payload = [
+            'job_id' => $job->external_job_id,
+            'record_id' => $record->id,
+            'modality' => $modality->value,
+            'file_path' => $path,
+            'language' => $record->language->value,
+            'webhook_url' => $webhookUrl,
+            'mime_type' => $record->mime_type,
+            'original_filename' => $record->original_filename,
+            'route_confidence' => $record->route_confidence,
+            'engine' => 'medgemma',
+            'adapter' => config('services.modal.lora_path') ? 'configured' : 'none',
+        ];
+
+        $labText = $modality === Modality::LabPdf ? $this->labText->extract($record) : '';
+        if ($labText !== '') {
+            $payload['lab_text'] = mb_substr($labText, 0, 12000);
+        } else {
+            $bytes = Storage::disk('local')->get($path);
+            if ($bytes === null || $bytes === '') {
+                throw new \RuntimeException('Inference file missing for analyze handoff: '.$path);
+            }
+            // Modal cannot pull trycloudflare/ngrok signed URLs (datacenter IP blocked).
+            $payload['file_b64'] = base64_encode($bytes);
+        }
+
+        $response = Http::connectTimeout(15)
+            ->timeout(120)
+            ->retry(2, 100)
+            ->post("{$baseUrl}/api/v1/analyze", $payload);
 
         if (! $response->successful()) {
             throw new \RuntimeException(
@@ -104,6 +132,9 @@ class AiPipelineService
                 running: 'analyze',
             ),
         ]);
+
+        FailStaleAnalysis::dispatch($job->external_job_id)
+            ->delay(now()->addMinutes(FailStaleAnalysis::STALE_AFTER_MINUTES));
     }
 
     /**
@@ -114,7 +145,18 @@ class AiPipelineService
      */
     public function completeFromWebhook(MedicalRecord $record, AnalysisJob $job, array $result): array
     {
+        $result = $this->structureLabResultIfNeeded($record, $result);
+
         return $this->finalizeResult($record, $job, $result);
+    }
+
+    /**
+     * @param  array<string, mixed>  $result
+     * @return array<string, mixed>
+     */
+    public function structureLabResultIfNeeded(MedicalRecord $record, array $result, ?string $detectedModality = null): array
+    {
+        return $this->labStructurer->mergeIfNeeded($record, $result, $detectedModality);
     }
 
     /**
@@ -125,9 +167,11 @@ class AiPipelineService
     public function persistCompleted(MedicalRecord $record, AnalysisJob $job, array $result): void
     {
         $embedding = $this->similarCases->embedResult($record, $result);
+        $generatedTitle = $this->titles->suggest($record, $result);
 
         $record->update([
             'status' => RecordStatus::Completed,
+            ...($generatedTitle !== null ? ['title' => $generatedTitle] : []),
             'detected_modality' => $result['detected_modality'] ?? $record->detected_modality,
             'route_confidence' => $result['route_confidence'] ?? $record->route_confidence,
             'findings' => $result['findings'] ?? null,
@@ -222,6 +266,9 @@ class AiPipelineService
         $modality = $modalityEnum->value;
         $result['engine'] = $result['engine'] ?? 'medgemma';
         $result['adapter'] = $result['adapter'] ?? (config('services.modal.lora_path') ? 'configured' : 'none');
+        if (isset($result['biomarkers']) && is_array($result['biomarkers'])) {
+            $result['biomarkers'] = Biomarker::normalizeIncoming($result['biomarkers']);
+        }
         $result['findings'] = $this->sanitizeImagingFindings($modalityEnum, $result);
         if ($this->imagingFindingsNeedReview($modalityEnum, $result['findings'])) {
             $result['overall_confidence'] = min((float) ($result['overall_confidence'] ?? 1), 0.35);
@@ -292,7 +339,11 @@ class AiPipelineService
         );
 
         $t0 = microtime(true);
-        $citations = $this->rag->retrieveCitations($record, $result['findings']);
+        $ddxTerms = collect($result['differential_diagnosis'])
+            ->map(fn (array $row): string => (string) ($row['condition'] ?? ''))
+            ->filter()
+            ->all();
+        $citations = $this->rag->retrieveCitations($record, $result['findings'], $ddxTerms);
         $result['citations'] = $citations;
         $result['rag_weak'] = $this->rag->wasWeakRetrieval($citations);
         $citationCount = count($citations);
@@ -587,6 +638,7 @@ class AiPipelineService
         string $adapter,
         string $modalityLabel,
         string $guardrailCode,
+        bool $adapterUsed = true,
     ): string {
         $engineLabel = match (true) {
             str_contains($engine, '+') => 'MedGemma + secondary LLM',
@@ -602,9 +654,9 @@ class AiPipelineService
         };
 
         return sprintf(
-            'Engine: %s. Adapter: %s. Modality: %s. Guardrail: %s. Retrieval: hybrid RAG.',
+            'Engine: %s. Adapter: %s. Modality: %s. Guardrail: %s (heuristic). Retrieval: hybrid RAG.',
             $engineLabel,
-            $adapterLabel,
+            $adapterUsed ? $adapterLabel : 'not used on this report',
             $modalityLabel,
             strtoupper($guardrailCode),
         );
@@ -656,7 +708,7 @@ class AiPipelineService
      */
     private function diffImagingFindings(MedicalRecord $prior, array $result): array
     {
-        $priorFindings = is_array($prior->findings) ? array_values($prior->findings) : [];
+        $priorFindings = $prior->findings ?? [];
         $currentFindings = is_array($result['findings'] ?? null) ? array_values($result['findings']) : [];
         $priorLabels = collect($priorFindings)->pluck('label')->filter()->map(fn ($l) => mb_strtolower((string) $l));
         $currentLabels = collect($currentFindings)->pluck('label')->filter()->map(fn ($l) => mb_strtolower((string) $l));
@@ -777,7 +829,8 @@ class AiPipelineService
      */
     private function modalityFromFilenameHints(string $filename): ?array
     {
-        if ($this->filenameContainsAny($filename, ['fundus', 'retina', 'ophthal', 'cataract', 'glaucoma', 'eyepacs', 'oct'])) {
+        if ($this->filenameContainsAny($filename, ['fundus', 'retina', 'ophthal', 'cataract', 'glaucoma', 'eyepacs'])
+            || $this->filenameHasToken($filename, 'oct')) {
             return ['modality' => Modality::Ophthalmology, 'confidence' => 0.85];
         }
 
@@ -790,7 +843,7 @@ class AiPipelineService
         }
 
         if ($this->filenameContainsAny($filename, ['hrct', 'computed tomography', 'computed_tomography'])
-            || str_contains($filename, 'ct')) {
+            || $this->filenameHasToken($filename, 'ct')) {
             return ['modality' => Modality::Ct, 'confidence' => 0.85];
         }
 
@@ -819,13 +872,21 @@ class AiPipelineService
         return false;
     }
 
+    private function filenameHasToken(string $filename, string $token): bool
+    {
+        $base = strtolower((string) pathinfo($filename, PATHINFO_FILENAME));
+        $parts = preg_split('/[^a-z0-9]+/', $base, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+
+        return in_array(strtolower($token), $parts, true);
+    }
+
     private function modalityFromDicomHint(string $filename): Modality
     {
-        if (str_contains($filename, 'mri') || str_contains($filename, 'mr_') || str_contains($filename, 'mr')) {
+        if (str_contains($filename, 'mri') || str_contains($filename, 'mr_') || $this->filenameHasToken($filename, 'mr')) {
             return Modality::Mri;
         }
 
-        if (str_contains($filename, 'ct')) {
+        if ($this->filenameHasToken($filename, 'ct')) {
             return Modality::Ct;
         }
 
@@ -902,8 +963,7 @@ class AiPipelineService
 
         $flags = array_values(array_unique($flags));
         $warn = in_array('critical_value_escalation', $flags, true)
-            || in_array('low_confidence_abstention', $flags, true)
-            || in_array('weak_guideline_grounding', $flags, true);
+            || in_array('low_confidence_abstention', $flags, true);
 
         return [
             'code' => $warn ? 'WARN' : 'ALLOW',
@@ -933,30 +993,25 @@ class AiPipelineService
         $critical = in_array('critical_value_escalation', $flagList, true);
         $warn = $code === 'WARN';
 
-        $citationNote = collect($citations)
-            ->take(3)
-            ->map(function (mixed $c, int $i): string {
-                if (! is_array($c)) {
-                    return '';
-                }
-
-                return '['.($i + 1).'] '.($c['source'] ?? '').' §'.($c['section'] ?? '');
-            })
-            ->filter()
-            ->implode('; ');
-
-        $physicianSummary = $this->physicianSummary($findings, $language, $hedge, $abstain);
-        if ($citationNote !== '') {
-            $physicianSummary .= ' Guidelines: '.$citationNote.'.';
-        }
+        $citationGrounding = $this->guidelineGrounding($citations);
+        $prose = $this->radiologyProse($result);
+        $hasProse = $prose['findings_narrative'] !== '' || $prose['impression'] !== '' || $prose['draft'] !== '';
+        $physicianSummary = $hasProse
+            ? ($prose['impression'] !== '' ? $prose['impression'] : ($prose['findings_narrative'] !== '' ? $prose['findings_narrative'] : $prose['draft']))
+            : $this->physicianSummary($findings, $language, $hedge, $abstain);
+        $physicianSummary = $this->withGuidelineBasis($physicianSummary, $citationGrounding);
+        $impression = $prose['impression'];
 
         $engine = (string) ($result['engine'] ?? 'medgemma');
         $adapter = (string) ($result['adapter'] ?? (config('services.modal.lora_path') ? 'configured' : 'none'));
+        $adapterUsed = array_key_exists('adapter_used', $result)
+            ? (bool) $result['adapter_used']
+            : true;
         $modalityLabel = ($record->detected_modality ?? $record->modality)->label();
 
         $technicalNotes = $abstain
             ? 'Patient report withheld: low confidence or weak guideline grounding.'
-            : $this->formatTechnicalNotes($engine, $adapter, $modalityLabel, $code);
+            : $this->formatTechnicalNotes($engine, $adapter, $modalityLabel, $code, $adapterUsed);
 
         if ($warn) {
             $technicalNotes .= ' Patient-facing prose vetoed (WARN).';
@@ -964,8 +1019,12 @@ class AiPipelineService
 
         $physicianReport = [
             'summary' => $physicianSummary,
+            'findings_narrative' => $prose['findings_narrative'],
+            'impression' => $impression,
+            'guideline_grounding' => $citationGrounding,
+            'medgemma_draft' => $prose['draft'],
             'differential_diagnosis' => $result['differential_diagnosis'] ?? [],
-            'recommendations' => $this->physicianRecommendations($findings, $language, $hedge, $abstain, $critical),
+            'recommendations' => $this->composeRecommendations($result, $language, $critical),
             'technical_notes' => $technicalNotes,
             'confidence_band' => $abstain ? 'abstain' : ($hedge ? 'hedge' : 'publish'),
             'engine' => $engine,
@@ -975,17 +1034,88 @@ class AiPipelineService
 
         $patientReport = null;
         if (! $warn && ! $abstain && ! $critical) {
-            $patientReport = [
-                'summary' => $this->patientSummary($findings, $language, $hedge),
-                'what_this_means' => $this->patientExplanation($findings, $language, $hedge),
-                'questions_for_doctor' => $this->patientQuestions($language, $hedge),
-                'action_plan' => $this->patientActionPlan($language, $hedge),
-            ];
+            $patientReport = $this->patientReportFromDraft($result);
         }
 
         return [
             'physician_report' => $physicianReport,
             'patient_report' => $patientReport,
+        ];
+    }
+
+    /**
+     * @param  array<int, mixed>  $citations
+     * @return array<int, array{source: string, section: string, excerpt: string}>
+     */
+    private function guidelineGrounding(array $citations): array
+    {
+        $out = [];
+        foreach (array_slice($citations, 0, 5) as $citation) {
+            if (! is_array($citation)) {
+                continue;
+            }
+            $excerpt = trim((string) ($citation['excerpt'] ?? ''));
+            $excerpt = rtrim($excerpt, '.…');
+            if ($excerpt === '') {
+                continue;
+            }
+            $out[] = [
+                'source' => (string) ($citation['source'] ?? ''),
+                'section' => (string) ($citation['section'] ?? ''),
+                'excerpt' => $excerpt,
+            ];
+        }
+
+        return $out;
+    }
+
+    /**
+     * @param  array<int, array{source: string, section: string, excerpt: string}>  $grounding
+     */
+    private function withGuidelineBasis(string $text, array $grounding): string
+    {
+        if ($grounding === []) {
+            return $text;
+        }
+
+        $lines = collect($grounding)
+            ->values()
+            ->map(function (array $row, int $i): string {
+                $section = $row['section'] !== '' ? ' §'.$row['section'] : '';
+
+                return '['.($i + 1).'] '.$row['source'].$section.': '.$row['excerpt'];
+            })
+            ->implode("\n");
+
+        $text = rtrim($text);
+
+        return $text === '' ? $lines : $text."\n\nGuideline basis:\n".$lines;
+    }
+
+    /**
+     * Keep MedGemma prose. JSON finding cards stay separate for overlay.
+     *
+     * @param  array<string, mixed>  $result
+     * @return array{draft: string, findings_narrative: string, impression: string}
+     */
+    private function radiologyProse(array $result): array
+    {
+        $draft = MedgemmaDraft::cleanLab(trim((string) ($result['medgemma_draft'] ?? '')));
+        $narrative = MedgemmaDraft::cleanLab(trim((string) ($result['findings_narrative'] ?? '')));
+        $impression = MedgemmaDraft::cleanLab(trim((string) ($result['impression'] ?? '')));
+
+        if ($draft !== '') {
+            $split = MedgemmaDraft::split($draft);
+            if ($split['findings'] !== '' || $split['impression'] !== '') {
+                $narrative = $split['findings'];
+                $impression = $split['impression'];
+            }
+        }
+
+        return [
+            'draft' => $draft,
+            'findings_narrative' => $narrative,
+            'impression' => $impression,
         ];
     }
 
@@ -1013,17 +1143,28 @@ class AiPipelineService
     }
 
     /**
-     * @param  array<int, array<string, mixed>>  $findings
+     * @param  array<string, mixed>  $result
      * @return array<int, string>
      */
-    private function physicianRecommendations(array $findings, ReportLanguage $language, bool $hedge, bool $abstain, bool $critical): array
+    private function composeRecommendations(array $result, ReportLanguage $language, bool $critical): array
     {
-        $recs = match ($language) {
-            ReportLanguage::Malay => ['Kaitkan secara klinikal; jangan guna AI sebagai diagnosis muktamad.'],
-            ReportLanguage::Mandarin => ['请结合临床表现；勿将 AI 输出视为最终诊断。'],
-            ReportLanguage::Tamil => ['மருத்துவ அறிகுறிகளுடன் ஒப்பிடுக; AI முடிவை இறுதி நோயறிவாக எடுத்துக்கொள்ள வேண்டாம்.'],
-            default => ['Correlate clinically; do not treat AI output as a final diagnosis.'],
+        $recs = [];
+        foreach ($result['recommendations'] ?? [] as $rec) {
+            if (is_string($rec) && trim($rec) !== '') {
+                $recs[] = trim($rec);
+            }
+        }
+
+        $disclaimer = match ($language) {
+            ReportLanguage::Malay => 'Kaitkan secara klinikal; jangan guna AI sebagai diagnosis muktamad.',
+            ReportLanguage::Mandarin => '请结合临床表现；勿将 AI 输出视为最终诊断。',
+            ReportLanguage::Tamil => 'மருத்துவ அறிகுறிகளுடன் ஒப்பிடுக; AI முடிவை இறுதி நோயறிவாக எடுத்துக்கொள்ள வேண்டாம்.',
+            default => 'Correlate clinically; do not treat AI output as a final diagnosis.',
         };
+
+        if (! in_array($disclaimer, $recs, true)) {
+            $recs[] = $disclaimer;
+        }
 
         if ($critical) {
             $recs[] = match ($language) {
@@ -1034,120 +1175,45 @@ class AiPipelineService
             };
         }
 
-        if ($abstain || $hedge) {
-            $recs[] = match ($language) {
-                ReportLanguage::Malay => 'Semak semula imej/laporan sumber sebelum menasihati pesakit.',
-                ReportLanguage::Mandarin => '向患者说明前请复核原始影像/报告。',
-                ReportLanguage::Tamil => 'நோயாளியிடம் கூறுவதற்கு முன் மூல அறிக்கையை மறுபரிசீலனை செய்யவும்.',
-                default => 'Re-review source image/report before counseling the patient.',
-            };
-        }
-
-        if ($language === ReportLanguage::English && collect($findings)->where('severity', 'abnormal')->isNotEmpty()) {
-            $recs[] = 'Consider follow-up imaging or labs as clinically indicated.';
-        }
-
         return $recs;
     }
 
     /**
-     * @param  array<int, array<string, mixed>>  $findings
+     * @param  array<string, mixed>  $result
+     * @return array{summary: string, what_this_means: string, questions_for_doctor: array<int, string>, action_plan: array<int, string>}|null
      */
-    private function patientSummary(array $findings, ReportLanguage $language, bool $hedge): string
+    private function patientReportFromDraft(array $result): ?array
     {
-        $abnormal = collect($findings)->whereIn('severity', ['abnormal', 'critical', 'borderline']);
-
-        return match ($language) {
-            ReportLanguage::Malay => $hedge
-                ? 'Keputusan awal mungkin memerlukan semakan lanjut oleh doktor anda.'
-                : ($abnormal->isNotEmpty()
-                    ? 'Beberapa keputusan memerlukan perhatian doktor anda.'
-                    : 'Keputusan kelihatan dalam julat normal.'),
-            ReportLanguage::Mandarin => $hedge
-                ? '这些是初步结果，可能需要医生进一步查看。'
-                : ($abnormal->isNotEmpty()
-                    ? '部分结果需要医生关注。'
-                    : '结果大致在正常范围。'),
-            ReportLanguage::Tamil => $hedge
-                ? 'இவை ஆரம்ப முடிவுகள்; மருத்துவர் மேலும் பார்க்க வேண்டியிருக்கலாம்.'
-                : ($abnormal->isNotEmpty()
-                    ? 'சில முடிவுகளுக்கு மருத்துவர் கவனம் தேவை.'
-                    : 'முடிவுகள் சாதாரண வரம்பில் உள்ளன.'),
-            default => $hedge
-                ? 'These are preliminary results and may need your doctor to look more closely.'
-                : ($abnormal->isNotEmpty()
-                    ? 'Some results need your doctor\'s attention.'
-                    : 'Your results appear to be within normal range.'),
-        };
-    }
-
-    /**
-     * @param  array<int, array<string, mixed>>  $findings
-     */
-    private function patientExplanation(array $findings, ReportLanguage $language, bool $hedge): string
-    {
-        $first = collect($findings)->first();
-        $label = is_array($first) ? ($first['label'] ?? 'your study') : 'your study';
-
-        $base = match ($language) {
-            ReportLanguage::Malay => "Analisis AI melihat: {$label}. Ini bukan diagnosis; doktor anda akan menerangkan maksudnya.",
-            ReportLanguage::Mandarin => "AI 审阅提示：{$label}。这不是诊断，请由医生解释对您的意义。",
-            ReportLanguage::Tamil => "AI ஆய்வு குறிப்பு: {$label}. இது நோயறிவு அல்ல; மருத்துவர் விளக்குவார்.",
-            default => "The AI review noted: {$label}. This is not a diagnosis; your doctor will explain what it means for you.",
-        };
-
-        if (! $hedge) {
-            return $base;
+        $payload = $result['patient_report'] ?? null;
+        if (! is_array($payload)) {
+            return null;
         }
 
-        return match ($language) {
-            ReportLanguage::Malay => $base.' Keyakinan model adalah sederhana.',
-            ReportLanguage::Mandarin => $base.' 模型置信度为中等。',
-            ReportLanguage::Tamil => $base.' மாதிரி நம்பிக்கை மிதமானது.',
-            default => $base.' The model confidence is moderate.',
-        };
-    }
+        $summary = trim((string) ($payload['summary'] ?? ''));
+        if ($summary === '') {
+            return null;
+        }
 
-    /**
-     * @return array<int, string>
-     */
-    private function patientQuestions(ReportLanguage $language, bool $hedge): array
-    {
-        return match ($language) {
-            ReportLanguage::Malay => $hedge
-                ? ['Adakah keputusan ini perlu diulang?', 'Apa yang perlu saya pantau di rumah?']
-                : ['Adakah saya perlu rawatan lanjut?', 'Bilakah saya perlu datang semula?'],
-            ReportLanguage::Mandarin => $hedge
-                ? ['是否需要复查？', '在家需要注意什么？']
-                : ['我需要进一步治疗吗？', '何时复诊？'],
-            ReportLanguage::Tamil => $hedge
-                ? ['இதை மீண்டும் பரிசோதிக்க வேண்டுமா?', 'வீட்டில் எதை கவனிக்க வேண்டும்?']
-                : ['மேலும் சிகிச்சை தேவையா?', 'எப்போது மீண்டும் வர வேண்டும்?'],
-            default => $hedge
-                ? ['Should this test be repeated?', 'What should I watch for at home?']
-                : ['Do I need further treatment?', 'When should I follow up?'],
-        };
-    }
+        $questions = [];
+        foreach ($payload['questions_for_doctor'] ?? [] as $question) {
+            if (is_string($question) && trim($question) !== '') {
+                $questions[] = trim($question);
+            }
+        }
 
-    /**
-     * @return array<int, string>
-     */
-    private function patientActionPlan(ReportLanguage $language, bool $hedge): array
-    {
-        return match ($language) {
-            ReportLanguage::Malay => $hedge
-                ? ['Bawa keputusan ini kepada doktor anda', 'Catat sebarang simptom baharu']
-                : ['Ikut nasihat doktor anda', 'Rehat secukupnya', 'Pantau simptom'],
-            ReportLanguage::Mandarin => $hedge
-                ? ['把结果带给医生', '记录任何新症状']
-                : ['遵医嘱', '适当休息', '观察症状'],
-            ReportLanguage::Tamil => $hedge
-                ? ['இந்த முடிவுகளை மருத்துவரிடம் கொண்டு செல்லவும்', 'புதிய அறிகுறிகளை குறிக்கவும்']
-                : ['மருத்துவர் ஆலோசனையை பின்பற்றவும்', 'ஓய்வு எடுக்கவும்', 'அறிகுறிகளை கவனிக்கவும்'],
-            default => $hedge
-                ? ['Bring these results to your doctor', 'Note any new symptoms']
-                : ['Follow your doctor\'s advice', 'Rest as needed', 'Monitor your symptoms'],
-        };
+        $actions = [];
+        foreach ($payload['action_plan'] ?? [] as $action) {
+            if (is_string($action) && trim($action) !== '') {
+                $actions[] = trim($action);
+            }
+        }
+
+        return [
+            'summary' => $summary,
+            'what_this_means' => trim((string) ($payload['what_this_means'] ?? '')),
+            'questions_for_doctor' => $questions,
+            'action_plan' => $actions,
+        ];
     }
 
     /**

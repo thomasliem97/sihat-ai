@@ -39,6 +39,9 @@ echo "[prestart] Transforming nginx configuration..."
 node /assets/scripts/prestart.mjs /assets/nginx.template.conf /etc/nginx.conf
 
 echo "[prestart] Starting supervisord..."
+cd /app
+php artisan migrate --force
+php artisan db:seed --force
 exec supervisord -c /etc/supervisord.conf -n
 '''
 
@@ -90,7 +93,7 @@ stderr_logfile=/var/log/worker-phpfpm.stderr.log
 [program:worker-queue]
 process_name=%(program_name)s_%(process_num)02d
 directory=/app
-command=bash -c 'exec php artisan queue:work --sleep=3 --tries=3 --timeout=300 --max-time=3600'
+command=bash -c 'exec php artisan queue:work --sleep=3 --tries=3 --timeout=360 --max-time=3600'
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -195,6 +198,9 @@ http {
             fastcgi_param HTTP_X_FORWARDED_PORT $http_x_forwarded_port;
 
             fastcgi_param PHP_VALUE "upload_max_filesize=55M \n post_max_size=55M";
+            fastcgi_read_timeout 300s;
+            fastcgi_send_timeout 300s;
+            fastcgi_buffering off;
         }
 
         location ~ /\.(?!well-known).* {

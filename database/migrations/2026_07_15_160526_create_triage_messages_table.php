@@ -15,6 +15,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('input_modality')->default('text');
             $table->string('stt_engine')->nullable();
+            $table->json('prompts')->nullable();
             $table->timestamps();
 
             $table->index(['triage_session_id', 'created_at']);

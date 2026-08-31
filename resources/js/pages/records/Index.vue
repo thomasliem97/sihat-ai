@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import { FileText, Plus } from '@lucide/vue';
+import FeatureIntroDialog from '@/components/medical/FeatureIntroDialog.vue';
 import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import AtlasEmptyState from '@/components/patterns/AtlasEmptyState.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
@@ -36,10 +37,26 @@ defineOptions({
         breadcrumbs: [{ title: 'Medical Records', href: recordsIndex() }],
     },
 });
+
+function formatRecordDate(iso: string): string {
+    const date = new Date(iso);
+    if (Number.isNaN(date.getTime())) {
+        return '-';
+    }
+
+    return date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        timeZone: 'Asia/Kuala_Lumpur',
+    });
+}
 </script>
 
 <template>
     <Head title="Medical Records" />
+
+    <FeatureIntroDialog feature="records" />
 
     <div class="space-y-6">
         <div class="flex flex-wrap items-start justify-between gap-4">
@@ -129,11 +146,7 @@ defineOptions({
                                 <td
                                     class="py-3 font-mono text-xs text-muted-foreground tabular-nums"
                                 >
-                                    {{
-                                        new Date(
-                                            record.created_at,
-                                        ).toLocaleDateString()
-                                    }}
+                                    {{ formatRecordDate(record.created_at) }}
                                 </td>
                             </tr>
                         </tbody>

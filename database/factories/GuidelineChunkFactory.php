@@ -15,7 +15,7 @@ class GuidelineChunkFactory extends Factory
     public function definition(): array
     {
         return [
-            'source' => 'MOH Malaysia CPG',
+            'source' => 'MOH QR',
             'section' => fake()->word(),
             'content' => fake()->paragraph(),
         ];

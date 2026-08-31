@@ -26,6 +26,7 @@ modal deploy ai-service/app/modal_app.py
 ```
 
 Loads LoRA from volume `sihat-lora` at `/lora/adapter` on the GPU class.
+Serve-load is not analysis: the adapter stays off for MedGemma analyze and is used for patient Ask the scan phrasing.
 
 ## Cleanup
 

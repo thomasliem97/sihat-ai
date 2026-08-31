@@ -1,0 +1,426 @@
+
+1
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS                        MANAGEMENT OF DENGUE INFECTION IN ADULTS (THIRD EDITION)
+KEY MESSAGES
+Dengue infection is a 1. systemic and dynamic disease with clinical, haematological 
+and serological profiles changing from day to day.
+Clinical deterioration may occur in the critical phase and is marked by plasma 2. 
+leakage and rising haematocrit (HCT).
+Look out for warning signs which may indicate severe dengue.3. 
+Recognition of shock in its early stage and prompt fluid therapy with close 4. 
+monitoring of fluid adjustment may give a good clinical outcome.
+DENGUE CASES NOTIFICATION
+LABORATORY INTERPRETATION
+DENGUE SEROLOGY TESTS
+DENGUE CLASSIFICATION & LEVEL OF SEVERITY
+All suspected dengue cases must be notified (telephone/fax/e-notification) to • 
+the nearest health office within 24 hours of diagnosis, followed by the written 
+standard notification format.
+Update the notification when there is change in disease severity or dengue death.• 
+The median HCT level among Malaysian population is taken as: • 
+ͦ  male < 60 years – 46%            ͦ  male > 60 years – 42%        
+ͦ  female (all age groups) – 40%
+In the absence of baseline HCT, a HCT value higher than the above should • 
+raise the suspicion of plasma leakage.
+Usually, leucopaenia preceeds thrombocytopaenia.• 
+Rapid combo test (dengue NS1 antigen/dengue IgM/IgG antibodies) should • 
+be done as a screening tool in suspected dengue infection and results can be 
+obtained within 15-20 minutes. 
+Dengue non-structural protein-1 (NS1 Antigen) is helpful in early phase (< day • 
+5) of dengue infection and usually becomes undetectable in the convalescence 
+phase.
+Real time reverse transcriptase polymerase chain reaction (RT-PCR) should • 
+be done in clinically suspected seronegative patients and also in seropositive 
+severe dengue infection (serotyping).
+
+2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS                        MANAGEMENT OF DENGUE INFECTION IN ADULTS (THIRD EDITION)
+APPROACH TO OUTPATIENT EVALUATION OF DENGUE INFECTION
+Overall assessment 
+History1. 
+Date of onset of fever/illness• 
+Oral intake• 
+Assess for warning signs • 
+Change in mental state/seizure/dizziness• 
+Urine output (frequency, volume and time of last voiding)• 
+Other important relevant histories:• 
+Pregnancy -
+Co-morbidities  -
+Physical examination 2. 
+Assess mental state and GCS scorei. 
+Assess hydration statusii. 
+Assess haemodynamic status iii. 
+Skin colour (C), capillary filling time (normal <2 seconds) (C), cold/ -
+warm extremities (T), pulse volume (V) and rate (R) - CCTVR
+Blood pressure and pulse pressure -
+Look out for tachypnoea/acidotic breathing/pleural effusioniv. 
+Check for abdominal tenderness/tender liver/ascitesv. 
+Examine for bleeding manifestationvi. 
+Investigation3. 
+FBC and HCT i. 
+Point of care test for dengue infection (RCT or NS1 antigen) ii. 
+Diagnosis, disease staging and severity assessment 
+Based on evaluations in history, physical examination ± FBC, HCT and point of care 
+test, the clinicians should be able to determine:
+Likelihood of dengue infection1. 
+The phase of dengue infection (febrile/critical/recovery)2. 
+Severity of the illness 3. 
+Plan of management 
+Dengue assessment checklist must be filled 1. 
+Notify the district health office followed by disease notification form 2. 
+If admission is indicated 3. 
+Stabilise the patient at primary care before transfer • 
+Communicate with the receiving hospital/Emergency Department (ED) • 
+before transfer
+At ED, dengue patients with deteriorating vital signs must be uptriaged • 
+accordingly
+All dengue patients requiring admission should be immediately started • 
+on an appropriate fluid therapy (oral or IV)
+Chest X-ray and ultrasound (where available) are required in patients • 
+suspected to have vascular leakage.
+If admission is not indicated 4. 
+Daily follow up is necessary until the patient remains afebrile for at least • 
+24 - 48 hours 
+Provide patient with Outpatient Dengue Monitoring Record and Home • 
+Care Advice Leaflet for Dengue Patients 
+Parameters for 
+monitoring
+Frequency of monitoring
+Critical phase Reabsorption phaseFebrile phase
+Frequency of monitoringParameters for 
+monitoring Febrile phase Critical phase Reabsorption phase
+3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS                        MANAGEMENT OF DENGUE INFECTION IN ADULTS (THIRD EDITION)
+General well being
+Appetite / oral intake
+Warning signs
+Daily or more 
+frequently towards late 
+febrile phase
+At least twice a day 
+and more frequently as
+indicated
+Daily or more 
+frequently as 
+indicated
+Haemodynamic 
+status
+• CCTVR
+• BP
+• Pulse pressure
+Respiratory status
+• RR
+• SpO2
+Neurological Status
+• Conscious level
+• Restlessness
+• Seizures
+4-6 hourly depending 
+on clinical status
+2-4 hourly depending 
+on clinical status
+In shock
+Every 15-30 minutes till
+stable then 1-2 hourly
+4-6 hourly
+Urine output 4 hourly 2-4 hourly
+In shock : Hourly
+4-6 hourly
+FBC Daily or more 
+frequently as indicated
+4-12 hourly depending
+on clinical status
+In shock
+Repeated before and
+after each fluid
+resuscitation and as
+indicated
+Daily
+BUSE/Creatinine
+LFT + AST
+RBS
+Creatine Kinase
+As clinically indicated
+At least daily or more
+frequently as indicated
+In shock
+Crucial to monitor ABG
+and lactate closely
+As clinically
+indicated
+ABG, lactate 
+Coagulation profile
+Troponin or CKMB 
+CRP, Fibrinogen, LDH, 
+Ferritin, Triglyceride 
+ECG, Echocardiogram 
+Ultrasound
+As clinically indicated As clinically indicated As clinically 
+indicated
+Clinical Parameters
+Laboratory Parameters and Imaging
+All investigations done at ED must be reviewed immediately upon ward admission
+COMMON PITFALLS IN FLUID THERAPY
+Treating patients with unnecessary fluid boluses based on raised HCT or warning • 
+signs as the sole parameter without considering other clinical parameters.
+Excessive and prolonged fixed fluid regime in stable patients. • 
+Infrequent monitoring and adjustment of infusion rate.• 
+Continuation of intravenous fluid during the recovery phase.• 
+Excessive fluid therapy in patients with co-morbidities (such as heart disease and • 
+renal disease).
+DISEASE MONITORING PARAMETERS
+4
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS                        MANAGEMENT OF DENGUE INFECTION IN ADULTS (THIRD EDITION)
+CALCULATION FOR ROUTINE MAINTENANCE INTRAVENOUS FLUID
+Non-obese patients
+   •      1.2 to 1.5 ml/kg/hour 
+Obese patients (BMI >27.5 kg/m2) 
+   •      Routine maintenance fluid can be calculated based on adjusted body weight (ABW).
+          o   ABW = IBW + 0.4 (actual weight - IBW)
+          o   Ideal bodyweight (IBW) can be estimated based on the following formula. 
+ Female: 45.5 kg + 0.91(height in cm -152) 
+ Male: 50.0 kg + 0.91(height in cm -152)
+CAUTION : Fluid intake and urine output must be reviewed and adjusted according to clinical response.
+DENGUE INFECTION IN PREGNANCY
+All pregnant mothers with dengue infection should be managed in hospitals by a • 
+multidisciplinary team (physician, anaesthetist and obstetrician) due to a higher risk of 
+morbidity and mortality.
+Spontaneous vaginal delivery is the preferred mode of delivery.• 
+Group and cross match (GXM) must be done. Blood and blood products transfusion to be • 
+given only when indicated or when instrumental/operative delivery is decided 
+Serology test (Dengue IgM and NS1 antigen) or real time RT-PCR should be performed in • 
+neonates when congenital dengue infection is suspected.
+FLUID THERAPY IN NON-SHOCK PATIENTS (DENGUE FEVER WITH WARNING SIGNS)
+WHEN TO SUSPECT SIGNIFICANT OCCULT BLEEDING
+MANAGEMENT OF SIGNIFICANT BLEEDING
+GRADED FLUID BOLUS REGIME IN NON-SHOCK PATIENTS (DF with Warning Signs)
+In dengue patients without co-morbidities who can tolerate orally, adequate oral fluid intake • 
+of two to three litres daily should be encouraged (often 1.2-1.5 times the normal maintenance 
+will be required during the critical phase).
+Frequent adjustment of maintenance fluid regime is needed during the critical phase.• 
+In patients with persistent warning signs with increasing or persistently high HCT, the graded • 
+fluid bolus may be initiated with caution.
+Suspect significant occult bleeding in the following situations: 
+HCT not as high as expected for the degree of shock to be explained by plasma leakage • 
+alone. 
+A drop in HCT without clinical improvement despite adequate fluid replacement (40-60 ml/kg).• 
+Severe metabolic acidosis and end-organ dysfunction despite adequate fluid replacement.• 
+Transfuse blood (5–10ml/kg of packed red cells) and observe the clinical response. Consider • 
+blood components if required.
+Consider repeating the blood transfusion if there is further blood loss or no appropriate rise • 
+in HCT after blood transfusion.
+Endoscopy by trained surgeon or gastroenterologist is indicated if these patients have • 
+persistent bleeding despite optimum medical therapy.
+Obtain a baseline HCT before fluid therapy.• 
+Give crystalloids solution (such as 0.9% saline).• 
+Start with 5 ml/kg/hour for 1–2 hours, then reduce to 3 ml/kg/hr for 2–4 hours, and then • 
+reduce to 2 ml/kg/hr or less according to the clinical response.
+If the clinical parameters are worsening and HCT is rising, increase the rate of infusion.• 
+Reassess the clinical status, repeat the HCT and review fluid infusion rates accordingly.• 
+5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS                        MANAGEMENT OF DENGUE INFECTION IN ADULTS (THIRD EDITION)
+IV crystalloid 5-7 ml/kg/hr for       • 
+1-2 hours, then:
+reduce to 3-5 ml/kg/hr 
+for 2-4 hours; then
+reduce to 2-3 ml/kg/hr 
+for 2-4 hours
+If patient continues to • 
+improve, fluid can be further 
+reduced.
+Monitor HCT 4-6 hourly.• 
+If the patient is not stable, • 
+act according to HCT 
+levels:
+if HCT increases, 
+consider bolus 
+fluid administration 
+or increase fluid 
+administration
+if HCT decreases, 
+consider transfusion 
+with packed red 
+cells and/or blood 
+components
+Consider to stop IV fluid at • 
+48 hours of plasma leakage/ 
+defervescence.
+IV = intravenous    ;   HCT = haematocrit
+     = increased   ;      = decreased
+1GXM: emergency cross-match
+ALGORITHM A - FLUID MANAGEMENT IN COMPENSATED SHOCK
+COMPENSATED SHOCK
+(systolic pressure maintained but has signs of reduced perfusion)
+Fluid resuscitation with isotonic crystalloid 5-10 ml/kg/hr for 1 hour• 
+Obtain FBC, HCT, RP, LFT, RBS, PT/APTT, CK, Lactate/HCO• 3, GXM1 before 
+fluid resuscitation.
+*   Reassess the patient’s clinical condition, vital signs, pulse volume, capillary refill 
+    time, urine output and temperature of extremities.
+** Colloid is preferable if the patient has already received previous bolus of crystalloid
+IMPROVEMENT*
+IMPROVEMENT*
+YES
+YES
+NO
+NO
+If patient improves, reduce to • 
+7-10 ml/kg/hr for 1-2 hours 
+Then reduce further• 
+Check HCT
+Consider significant 
+occult/overt bleed
+Initiate transfusion 
+with packed red 
+cells and/or blood 
+components
+Administer 2nd bolus 
+of fluid (colloid) **
+10-20 ml/kg/hr for 1 hour
+HCTHCT       or high
+IMPROVEMENT*
+YES
+NO
+Repeat
+3rd HCT
+Administer 3rd bolus of 
+fluid (colloid) 10-20 ml/kg 
+over 1 hour
+HCT      or high
+Crystalloid/colloid  • 
+10ml/kg/hr for    1 hour, 
+then continue with:
+IV crystalloid 
+5-7 ml/kg/hr 
+for    1-2 hours; 
+then
+reduce to 3-5 
+ml/kg/hr for  2-4 
+hours; then
+reduce to 2-3 
+ml/kg/hr for  
+2-4 hours
+If patient continues to • 
+improve, fluid can be 
+further reduced.
+Monitor HCT 4 hourly • 
+or more frequent as 
+indicated.
+If the patient is not • 
+stable, act according 
+to HCT levels:
+if HCT 
+increases,  
+consider  
+bolus fluid 
+administration 
+or increase fluid 
+administration;
+if HCT 
+decreases,  
+consider  
+transfusion  
+with packed 
+red cells
+Consider to stop • 
+IV fluid at 48 hours 
+of plasma leakage/ 
+defervescence.
+IMPROVEMENT*
+IMPROVEMENT*
+YES
+YES
+NO
+NO
+Review 1st HCT
+Repeat 2nd HCT
+HCT      or high HCT 
+Consider 
+significant 
+occult/overt 
+bleed
+Initiate transfusion 
+with packed red 
+cells and /or blood 
+components
+Administer 2nd 
+bolus of fluid 
+(colloid)^
+10-20 ml/kg over 
+½ to 1 hour
+REFER TO  
+ALGORITHM C
+HCT HCT unchanged
+6
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS                        MANAGEMENT OF DENGUE INFECTION IN ADULTS (THIRD EDITION)
+ALGORITHM B - FLUID MANAGEMENT IN DECOMPENSATED SHOCK
+DECOMPENSATED SHOCK
+Fluid resuscitation with 20 ml/kg colloid / crystalloid within 15 - 30 minutes •  
+Obtain HCT/FBC, RP, LFT, RBS, PT/APTT, CK, Lactate/HCO• 3, GXM1 before 
+fluid resuscitation.
+IV = intravenous ; HCT = haematocrit
+     = increased ;      = decreased
+1GXM: emergency cross-match
+* Reassess the patient’s clinical condition, vital signs, pulse volume, capillary refill time and  
+   temperature of extremities.
+^ Colloid is preferable if the patient has already received previous bolus of crystalloid.
+Low CO :
+Inotrope 
+(eg. dobutamine/ 
+adrenaline)
+High CO :
+Vasodilated shock with 
+myocardial dysfunction
+Inotropes + 
+vasopressor
+(eg. noradrenaline 
++ dobutamine /
+adrenaline)
+Septic shock Cardiac dysfunction Cytokine storm
+Vasodilated state
+Noradrenaline 
+titrated to MAP  
+65 mmHg
+Noradrenaline 
+and fluids
+Check for disease 
+markers of 
+haemophagocytic 
+syndrome
+ALGORITHM C - FLUID MANAGEMENT IN DECOMPENSATED SHOCK
+(WITH PRESENCE OF BLEEDING & LEAKING OR OTHER CAUSES OF SHOCK)
+HAEMATOCRIT REMAIN UNCHANGED AFTER FIRST FLUID RESUSCITATION
+Consider other causes of shock
+Bleeding and leaking at 
+same time
+All the above types of shocks need to be supported by echocardiography and non-invasive cardiac 
+output monitoring and treatments tailor to each patient.
+HCT = haematocrit      ;     MAP = mean arterial pressure        ;      CO = cardiac output;      
+OGDS = oesophagogastroduodenoscopy               USG = ultrasonography
+Severe metabolic acidosis 
+with hyperlactataemia (liver 
++/- multiorgan failure)
+Look for source of bleeding 
+(eg. OGDS)
+Evidence of leaking (USG, 
+chest X-ray)
+Check for coagulopathy
+Transfuse packed red cells 
+and blood components 
+Vasopressor
++
+Supportive care
++
+Continuous renal replacement 
+therapy (CRRT)
+This Quick Reference provides key messages and a summary of the main recommendations in the 
+Clinical Practice Guidelines (CPG) Management of Dengue Infection in Adults 2015 (Third Edition).
+Details of the evidence supporting these recommendations can be found in the above CPG, 
+available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysia Health Technology Assessment Section (MaHTAS)
+Medical Development Division
+Ministry of Health Malaysia
+4th Floor, Block E1, Parcel E, 62590 Putrajaya
+Tel : +603-88831246      E-mail : htamalaysia@moh.gov.my

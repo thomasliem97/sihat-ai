@@ -1,0 +1,812 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+7
+ALGORITHM ON MANAGEMENT OF GOUT
+/gid00050/gid00054/gid00042/gid00036/gid00044/gid00001/gid00051/gid00038/gid00039/gid00038/gid00051/gid00038/gid00047/gid00036/gid00038/gid00001/gid00039/gid00048/gid00051
+/gid00041/gid00038/gid00034/gid00045/gid00053/gid00041/gid00001/gid00036/gid00034/gid00051/gid00038/gid00001/gid00049/gid00051/gid00048/gid00055/gid00042/gid00037/gid00038/gid00051/gid00052
+ 
+ Acute monoarthritis/oligoarthritis
+Clinical features of gout
+1. Involvement of the first metatarsophalangeal joint, ankle or midfoot 
+2. Redness, extreme pain and loss of function in the affected joint 
+3. Time to maximal pain <24 hours and complete resolution of symptoms within 14 days 
+4. Recurrence of typical attacks increase the likelihood of diagnosis 
+5. Clinical evidence of tophus (present in chronic gouty arthritis)
+•  Normal SU during gout flare does not exclude the 
+ diagnosis of gout.
+•  Repeat SU ≥2 weeks after resolution of flare if highly 
+ suspicious of gout.
+CKD: chronic kidney disease
+COX-2 inhibitors: cyclooxygenase-2 inhibitors
+MTP: metatarsophalangeal
+NSAIDs: nonsteroidal anti-inflammatory drugs
+SU: serum urate
+ULT: urate-lowering therapy
+No Yes
+Other causes of acute monoarthritis/oligoarthritis - manage accordingly  Diagnosis of gout
+*ULT is indicated if:
+•  recurrent gout flares (≥2 flares in 12 months) OR 
+•  presence of tophi OR
+•  presence of radiographic damage due to gout
+ULT is conditionally recommended if:
+• previously had >1 flare but infrequent (<2 flares/year)
+• first gout flare if:
+  concomitant CKD stage ≥3 OR
+  SU >540 µmol/L OR
+  presence of urolithiasis
+• Baseline SU, other blood/urine/imaging study
+ as indicated
+• Screening of associated comorbidities
+Investigations Treatment of gout flare
+Non-pharmacological
+•  Topical ice during gout flare
+•  Health education
+•  Lifestyle modification
+•  Avoidance of medications
+ that increase risk of gout, if feasible
+Pharmacological
+•  Colchicine, OR
+•  NSAIDs/COX-2
+ inhibitors OR
+•  Corticosteroids OR
+•  Combination of the above
+• Allopurinol as first-line ULT
+• Start allopurinol at low dose and uptitrate slowly especially in patients with CKD
+• Monitor for drug-related adverse events
+• Treat-to-target (T2T) strategy: aim for SU <360 µmol/L
+• Do not stop ULT during attack
+• Initiate flare prophylactic treatment (at least 3 - 6 months)
+• Monitor for associated comorbidities
+If unable to tolerate allopurinol/failure to achieve SU target despite dose escalation and good compliance to treatment, consider:
+•  switching to febuxostat or uricosuric agent
+•  addition of uricosuric agent
+ Indication for
+ULT*
+Continue to monitor 
+for possible indications 
+in future
+NoYes
+1. Gout is a disease caused by monosodium urate (MSU) crystal deposition with any of the 
+following clinical presentations (current or prior): gout flare, chronic gouty arthritis, or 
+subcutaneous tophus.
+2. Not all hyperuricaemic individuals develop MSU crystal deposition or gout. There is 
+insufficient evidence to recommend urate-lowering therapy (ULT) to treat asymptomatic 
+hyperuricaemia.
+3. Modifiable risk factors for gout include obesity/overweight, alcohol, high-fructose corn 
+syrup, red meat, seafood [except n-3 polyunsaturated fatty acid (PUFA)-rich fish] & 
+medications especially diuretics.
+4. Gout can be prevented by adopting a healthy lifestyle which includes maintenance of a 
+healthy body weight, avoidance of alcohol & adherence to Dietary Approaches to Stop 
+Hypertension (DASH) diet. Diuretics should be replaced by an alternative drug, if possible, 
+when used as an antihypertensive agent to reduce the risk of gout.
+5. Screening for comorbidities associated with gout e.g. hypertension, diabetes mellitus, 
+hyperlipidaemia, coronary heart disease & renal disease including urolithiasis should be 
+done upon diagnosis & during follow-up.
+6. The ACR-EULAR 2015 Classification Criteria (refer to http://goutclassificationcalculator.auckland.ac.nz 
+or https://www.mdcalc.com/acr-eular-gout-classification-criteria) can be used to diagnose 
+gout based on clinical features & serum urate (SU). A score of ≥8 classifies a patient as 
+having gout. 
+7. Treat-to-target (T2T) strategy aiming for SU <360 μmol/L should be applied in the treatment 
+of all gout patients including those with chronic kidney disease (CKD).  
+8. For ULT, allopurinol is the first-line therapy (start low, go slow). When allopurinol is 
+contraindicated or not tolerated, febuxostat or uricosuric agents can be considered.
+9. Gout flare should be treated promptly & adequately with colchicine, nonsteroidal 
+anti-inflammatory drugs/cyclooxygenase-2 inhibitors or corticosteroids. The choice of drug 
+is guided by patient's concomitant comorbidities. 
+10. Prophylaxis for gout flares should be used for at least 3 - 6 months when initiating ULT. The 
+preferred choices are stepwise dose increase of ULT and/or concomitant colchicine. 
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Gout 
+(Second Edition)
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Society of Rheumatology: https://msr.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+B. TREATMENT OF FLARE & FLARE PROPHYLAXIS
+Drug Recommended dose Possible AEs
+Gout flare
+Initial dose: 1 mg, then 0.5 mg after 1 hour. No further tablets should be taken for 12 hours. 
+After 12 hours, treatment can be resumed if necessary with a maximum dose of 0.5 mg every 8 hours until 
+symptoms are relieved. The course of treatment should end when symptoms are relieved or when a total of 
+6 mg (12 tablets) has been taken. After completion of a course, another course should not be started for at 
+least 3 days (72 hours). 
+Flare prophylaxis    
+0.5 mg OD or BD. Prophylactic therapy may be beneficial for at least the first 3 to 6 months of ULT therapy.
+Treatment of gout flare during prophylaxis with colchicine
+Do not exceed 1 mg at the first sign of flare, followed by 0.5 mg 1 hour later, wait for 12 hours and then 
+resume prophylactic dose.
+Initiate prophylactic dose at least 12 hours after treatment dose and continue until gout flare resolves.
+Dosage modifications in renal impairment:
+Common: 
+ Nausea, vomiting, diarrhoea
+Serious:
+ Myelosuppression
+ Neuromuscular disease,
+ neuromyotoxicity
+Colchicine 
+No dosage adjustment, monitor closely for AENo dosage adjustment, monitor closely for AE>60 - 89
+Limit dose to 0.5 mg daily 
+Consider alternative therapy
+No dosage adjustment, monitor closely for AE30 - 60
+Consider alternative therapy <30, renal 
+replacement 
+therapy
+Gout flare prophylaxisCrCl (ml/min) Gout flare treatment*
+*Use of colchicine to treat gout flares is not recommended in patients with renal impairment (CrCl <80 ml/min)
+already receiving prophylactic colchicine.
+Ibuprofen
+Diclofenac
+Naproxen
+Meloxicam
+Celecoxib
+Etoricoxib
+400 - 800 mg TDS 
+(maximum: 3200 mg/day)
+50 mg BD/TDS 
+550 - 1100 mg in 2 divided doses (275 mg tablet) 
+750 mg initially, then 250 mg TDS (250 mg tablet) 
+Maximum 15 mg/day
+400 mg stat followed by 200 mg BD subsequently 
+Maximum 120 mg/day
+Common:
+• Gastrointestinal Intolerance
+• Elevated blood pressure, oedema
+• Rash
+• Abnormal liver function test
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+DIAGNOSIS
+DIFFERENTIAL DIAGNOSES
+25
+ Diagnosis of gout should not be made based on hyperuricaemia alone.
+ The cut-off SU level to diagnose hyperuricaemia based on urate saturation 
+threshold is a SU concentration of >6.8 mg/dL (408 µmol/L) at physiological pH 
+and body temperature.
+ A normal or low SU during flare does not exclude gout, as the level may not be 
+elevated during a flare. If clinical suspicion of gout is high, SU may be repeated 2 
+weeks or more after complete resolution of flare.
+ Demonstration of MSU crystals in synovial fluid or tophus aspirate under polarised 
+light microscopy should be performed to confirm the diagnosis of gout. 
+ If confirmation of presence of MSU crystals is not possible, the diagnosis may be 
+made based on typical clinical manifestations.
+ Musculoskeletal ultrasonography may assist in the diagnosis of gout with 
+atypical presentations.
+Gout usually presents with acute monoarthritis, & less commonly with oligoarthritis. A 
+diagnosis of gout can be reasonably made in a hyperuricaemic patient who presents 
+with acute monoarthritis of the first metatarsophalangeal (MTP) joint.  Other causes of 
+acute monoarthritis/oligoarthritis should be considered before making a diagnosis of 
+gout. 
+The main differential diagnoses of gout are: 
+i. septic arthritis (key differential diagnosis) iii. psoriatic arthritis
+ii. acute calcium pyrophosphate crystal arthritis iv. reactive arthritis
+ There is insufficient evidence from current studies to recommend ULT in 
+asymptomatic hyperuricaemia to prevent gout, disease progression in CKD or 
+cardiovascular (CV) events. 
+• A lower SU target of <5 mg/dL (300 μmol/L) for faster dissolution of crystals is 
+recommended in severe gout (tophi, chronic arthropathy, frequent flares). 
+However, some studies have suggested that urate might be protective against 
+various neurodegenerative diseases, therefore prolonged SU <3 mg/dL (180 μ
+mol/L) is not recommended.
+ASYMPTOMATIC HYPERURICAEMIA
+TREAT-TO-TARGET
+Drug Recommended dose Possible AEs
+Initial: 100 mg/day, increase 100 mg every 2 - 4 weeks until target is achieved
+Maximum: 900 mg/day
+Dosage modifications in renal impairment:
+Allopurinol 
+Probenecid
+Febuxostat
+Initial: 250 mg BD for 1 week; may increase to 500 mg BD
+Maximum:1000 mg BD (increase dosage in 500 mg increment every 4 weeks)
+Renal impairment of CrCl <30 ml/min: Avoid use 
+Initial: 40 mg OD; if SU level is >6.0 mg/dL (360 µmol/L) after 2 - 4 weeks,
+80 mg OD may be considered
+Common: 
+• Maculopapular rash, pruritus 
+• Nausea, vomiting
+Serious:
+• Stevens-Johnson syndrome (SJS), Toxic Epidermal 
+ Necrolysis (TEN), drug reaction with eosinophilia and systemic 
+ symptoms (DRESS)
+• Transaminitis, cholestasis
+• Bone marrow suppression
+Common:
+• Rash
+• Nausea, vomiting
+Serious:
+• SJS
+• Aplastic anaemia, leukopenia, thrombocytopenia, neutropenia
+• Hepatic necrosis 
+• Anaphylaxis, hypersensitivity reaction
+Common: 
+• Rash
+• Diarrhoea, nausea
+• Liver function abnormalities
+Black Box Warning
+Cardiovascular:
+• Higher rate of CV death in gout patients with established CV disease
+Estimated Glomerular Filtration
+Rate (ml/min/1.73m2)
+Initial dose
+>60
+30 - 60
+<30
+100 mg daily
+50 mg daily
+50 mg every other day
+Dosage modifications in renal impairment:
+CrCl (ml/min) Dose
+≥30
+15-29
+No adjustment
+Maximum dose 40 mg OD
+PHARMACOLOGICAL TREATMENT FOR GOUT
+A. URATE-LOWERING THERAPY
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+43
+NON-PHARMACOLOGICAL TREATMENT
+PHARMACOLOGICAL TREATMENT
+ To improve outcomes in the management of gout: 
+ health education & behavioural intervention should be offered
+ the following lifestyle modifications should be encouraged:
+- reduce weight in those who are obese/overweight 
+- limit intake of purine-rich food especially of animal origin except omega-3 
+polyunsaturated fatty acid-rich fish  
+- limit intake of all types of alcohol (beer, wine & liquor)
+- limit intake of high-fructose corn syrup 
+ Ice packs may be used during gout flare.
+ Established indications for initiation of ULT for gout patients are:
+ recurrent gout flares (≥2 flares in 12 months) OR
+ presence of ≥1 tophi OR
+ presence of radiographic damage attributable to gout
+ T2T should also be applied in the treatment of gout patients with concomitant CKD. 
+ Health care professionals should be aware of the potential severe AEs of 
+allopurinol especially severe cutaneous adverse reaction (SCAR) and its risk 
+factors: 
+ starting dose of allopurinol
+ presence of renal impairment 
+ presence of genetic allele HLA-B*58:01
+• Initiation dose of allopurinol should be based on eGFR.
+• Routine screening of HLA-B*58:01 prior to commencement of allopurinol is not 
+recommended locally. 
+• Febuxostat can be used in patients with renal impairment (eGFR 15 - 89ml/min). 
+However, uricosuric agents are contraindicated in patients with urolithiasis and not 
+recommended in severe renal impairment.
+MONITORING
+REFERRAL
+ Referral of gout patients to a rheumatologist may be considered for the following:          
+ diagnostic indications 
+- unclear diagnosis with atypical clinical presentations including suspected gout in 
+ women with onset before menopause 
+ men with early onset at age <30 years without predisposing risk factors for gout 
+ therapeutic indications
+- refractory to conventional therapy despite drug adherence
+ gout flare that fails to resolve despite treatment as recommended by the CPG
+ recurrent flares although SU target of <360 µmol/L is achieved
+ failure to achieve SU target of <360 μmol/L after a trial of at least 3 months 
+of allopurinol at a maximally tolerated dose 
+ tophaceous gout with progressive joint damage, active symptoms or 
+growing tophi despite medical treatment
+- complicated gout with destructive joint changes
+- hypersensitivity or intolerance to allopurinol 
+ special group indication 
+- gout in pregnancy
+ Surgical management of tophi may be considered when there is: 
+ uncontrolled infection 
+ entrapment neuropathy
+ risk of permanent joint damage 
+ Gout with urolithiasis should be assessed by a urologist.
+Every 4
+weeks
+during dose
+titration &
+then every 6
+months
+when dose
+is stable
+Every 4
+weeks
+during dose
+titration &
+then every 6
+months
+when dose
+is stable
+Every 4
+weeks
+during dose
+titration &
+then every 6
+months
+when dose
+is stable
+Annually
+Every 4 weeks
+for first 6 months
+& then every 3
+months
+Every 3
+months
+Full blood count
+Liver function test
+Every 4 weeks until SU <360 µmol/L then every 6 months
+At least annually
+During clinical review 
+(urine protein to creatinine ratio or albumin to creatinine ratio if there
+is concurrent hypertension/diabetes mellitus) 
+Repeat when indicated
+When clinically indicated
+SU and renal profile
+Fasting blood sugar, 
+Fasting serum lipid
+Haemoglobin A1c (HbA1c)
+Full and microscopic
+examination of urine 
+(Urine FEME) 
+Plain radiography of 
+affected joints 
+Ultrasonography of 
+kidney ureter & bladder
+Electrocardiogram
+Echocardiogram (ECHO)
+Investigation Allopurinol Febuxostat Probenecid Benzbromarone Colchicine
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+43
+NON-PHARMACOLOGICAL TREATMENT
+PHARMACOLOGICAL TREATMENT
+ To improve outcomes in the management of gout: 
+ health education & behavioural intervention should be offered
+ the following lifestyle modifications should be encouraged:
+- reduce weight in those who are obese/overweight 
+- limit intake of purine-rich food especially of animal origin except omega-3 
+polyunsaturated fatty acid-rich fish  
+- limit intake of all types of alcohol (beer, wine & liquor)
+- limit intake of high-fructose corn syrup 
+ Ice packs may be used during gout flare.
+ Established indications for initiation of ULT for gout patients are:
+ recurrent gout flares (≥2 flares in 12 months) OR
+ presence of ≥1 tophi OR
+ presence of radiographic damage attributable to gout
+ T2T should also be applied in the treatment of gout patients with concomitant CKD. 
+ Health care professionals should be aware of the potential severe AEs of 
+allopurinol especially severe cutaneous adverse reaction (SCAR) and its risk 
+factors: 
+ starting dose of allopurinol
+ presence of renal impairment 
+ presence of genetic allele HLA-B*58:01
+• Initiation dose of allopurinol should be based on eGFR.
+• Routine screening of HLA-B*58:01 prior to commencement of allopurinol is not 
+recommended locally. 
+• Febuxostat can be used in patients with renal impairment (eGFR 15 - 89ml/min). 
+However, uricosuric agents are contraindicated in patients with urolithiasis and not 
+recommended in severe renal impairment.
+MONITORING
+REFERRAL
+ Referral of gout patients to a rheumatologist may be considered for the following:          
+ diagnostic indications 
+- unclear diagnosis with atypical clinical presentations including suspected gout in 
+ women with onset before menopause 
+ men with early onset at age <30 years without predisposing risk factors for gout 
+ therapeutic indications
+- refractory to conventional therapy despite drug adherence
+ gout flare that fails to resolve despite treatment as recommended by the CPG
+ recurrent flares although SU target of <360 µmol/L is achieved
+ failure to achieve SU target of <360 μmol/L after a trial of at least 3 months 
+of allopurinol at a maximally tolerated dose 
+ tophaceous gout with progressive joint damage, active symptoms or 
+growing tophi despite medical treatment
+- complicated gout with destructive joint changes
+- hypersensitivity or intolerance to allopurinol 
+ special group indication 
+- gout in pregnancy
+ Surgical management of tophi may be considered when there is: 
+ uncontrolled infection 
+ entrapment neuropathy
+ risk of permanent joint damage 
+ Gout with urolithiasis should be assessed by a urologist.
+Every 4
+weeks
+during dose
+titration &
+then every 6
+months
+when dose
+is stable
+Every 4
+weeks
+during dose
+titration &
+then every 6
+months
+when dose
+is stable
+Every 4
+weeks
+during dose
+titration &
+then every 6
+months
+when dose
+is stable
+Annually
+Every 4 weeks
+for first 6 months
+& then every 3
+months
+Every 3
+months
+Full blood count
+Liver function test
+Every 4 weeks until SU <360 µmol/L then every 6 months
+At least annually
+During clinical review 
+(urine protein to creatinine ratio or albumin to creatinine ratio if there
+is concurrent hypertension/diabetes mellitus) 
+Repeat when indicated
+When clinically indicated
+SU and renal profile
+Fasting blood sugar, 
+Fasting serum lipid
+Haemoglobin A1c (HbA1c)
+Full and microscopic
+examination of urine 
+(Urine FEME) 
+Plain radiography of 
+affected joints 
+Ultrasonography of 
+kidney ureter & bladder
+Electrocardiogram
+Echocardiogram (ECHO)
+Investigation Allopurinol Febuxostat Probenecid Benzbromarone Colchicine
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+DIAGNOSIS
+DIFFERENTIAL DIAGNOSES
+25
+ Diagnosis of gout should not be made based on hyperuricaemia alone.
+ The cut-off SU level to diagnose hyperuricaemia based on urate saturation 
+threshold is a SU concentration of >6.8 mg/dL (408 µmol/L) at physiological pH 
+and body temperature.
+ A normal or low SU during flare does not exclude gout, as the level may not be 
+elevated during a flare. If clinical suspicion of gout is high, SU may be repeated 2 
+weeks or more after complete resolution of flare.
+ Demonstration of MSU crystals in synovial fluid or tophus aspirate under polarised 
+light microscopy should be performed to confirm the diagnosis of gout. 
+ If confirmation of presence of MSU crystals is not possible, the diagnosis may be 
+made based on typical clinical manifestations.
+ Musculoskeletal ultrasonography may assist in the diagnosis of gout with 
+atypical presentations.
+Gout usually presents with acute monoarthritis, & less commonly with oligoarthritis. A 
+diagnosis of gout can be reasonably made in a hyperuricaemic patient who presents 
+with acute monoarthritis of the first metatarsophalangeal (MTP) joint.  Other causes of 
+acute monoarthritis/oligoarthritis should be considered before making a diagnosis of 
+gout. 
+The main differential diagnoses of gout are: 
+i. septic arthritis (key differential diagnosis) iii. psoriatic arthritis
+ii. acute calcium pyrophosphate crystal arthritis iv. reactive arthritis
+ There is insufficient evidence from current studies to recommend ULT in 
+asymptomatic hyperuricaemia to prevent gout, disease progression in CKD or 
+cardiovascular (CV) events. 
+• A lower SU target of <5 mg/dL (300 μmol/L) for faster dissolution of crystals is 
+recommended in severe gout (tophi, chronic arthropathy, frequent flares). 
+However, some studies have suggested that urate might be protective against 
+various neurodegenerative diseases, therefore prolonged SU <3 mg/dL (180 μ
+mol/L) is not recommended.
+ASYMPTOMATIC HYPERURICAEMIA
+TREAT-TO-TARGET
+Drug Recommended dose Possible AEs
+Initial: 100 mg/day, increase 100 mg every 2 - 4 weeks until target is achieved
+Maximum: 900 mg/day
+Dosage modifications in renal impairment:
+Allopurinol 
+Probenecid
+Febuxostat
+Initial: 250 mg BD for 1 week; may increase to 500 mg BD
+Maximum:1000 mg BD (increase dosage in 500 mg increment every 4 weeks)
+Renal impairment of CrCl <30 ml/min: Avoid use 
+Initial: 40 mg OD; if SU level is >6.0 mg/dL (360 µmol/L) after 2 - 4 weeks,
+80 mg OD may be considered
+Common: 
+• Maculopapular rash, pruritus 
+• Nausea, vomiting
+Serious:
+• Stevens-Johnson syndrome (SJS), Toxic Epidermal 
+ Necrolysis (TEN), drug reaction with eosinophilia and systemic 
+ symptoms (DRESS)
+• Transaminitis, cholestasis
+• Bone marrow suppression
+Common:
+• Rash
+• Nausea, vomiting
+Serious:
+• SJS
+• Aplastic anaemia, leukopenia, thrombocytopenia, neutropenia
+• Hepatic necrosis 
+• Anaphylaxis, hypersensitivity reaction
+Common: 
+• Rash
+• Diarrhoea, nausea
+• Liver function abnormalities
+Black Box Warning
+Cardiovascular:
+• Higher rate of CV death in gout patients with established CV disease
+Estimated Glomerular Filtration
+Rate (ml/min/1.73m2)
+Initial dose
+>60
+30 - 60
+<30
+100 mg daily
+50 mg daily
+50 mg every other day
+Dosage modifications in renal impairment:
+CrCl (ml/min) Dose
+≥30
+15-29
+No adjustment
+Maximum dose 40 mg OD
+PHARMACOLOGICAL TREATMENT FOR GOUT
+A. URATE-LOWERING THERAPY
+1. Gout is a disease caused by monosodium urate (MSU) crystal deposition with any of the 
+following clinical presentations (current or prior): gout flare, chronic gouty arthritis, or 
+subcutaneous tophus.
+2. Not all hyperuricaemic individuals develop MSU crystal deposition or gout. There is 
+insufficient evidence to recommend urate-lowering therapy (ULT) to treat asymptomatic 
+hyperuricaemia.
+3. Modifiable risk factors for gout include obesity/overweight, alcohol, high-fructose corn 
+syrup, red meat, seafood [except n-3 polyunsaturated fatty acid (PUFA)-rich fish] & 
+medications especially diuretics.
+4. Gout can be prevented by adopting a healthy lifestyle which includes maintenance of a 
+healthy body weight, avoidance of alcohol & adherence to Dietary Approaches to Stop 
+Hypertension (DASH) diet. Diuretics should be replaced by an alternative drug, if possible, 
+when used as an antihypertensive agent to reduce the risk of gout.
+5. Screening for comorbidities associated with gout e.g. hypertension, diabetes mellitus, 
+hyperlipidaemia, coronary heart disease & renal disease including urolithiasis should be 
+done upon diagnosis & during follow-up.
+6. The ACR-EULAR 2015 Classification Criteria (refer to http://goutclassificationcalculator.auckland.ac.nz 
+or https://www.mdcalc.com/acr-eular-gout-classification-criteria) can be used to diagnose 
+gout based on clinical features & serum urate (SU). A score of ≥8 classifies a patient as 
+having gout. 
+7. Treat-to-target (T2T) strategy aiming for SU <360 μmol/L should be applied in the treatment 
+of all gout patients including those with chronic kidney disease (CKD).  
+8. For ULT, allopurinol is the first-line therapy (start low, go slow). When allopurinol is 
+contraindicated or not tolerated, febuxostat or uricosuric agents can be considered.
+9. Gout flare should be treated promptly & adequately with colchicine, nonsteroidal 
+anti-inflammatory drugs/cyclooxygenase-2 inhibitors or corticosteroids. The choice of drug 
+is guided by patient's concomitant comorbidities. 
+10. Prophylaxis for gout flares should be used for at least 3 - 6 months when initiating ULT. The 
+preferred choices are stepwise dose increase of ULT and/or concomitant colchicine. 
+1 6
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Presint 1,
+Federal Government Administrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Gout 
+(Second Edition)
+Details of the evidence supporting these recommendations can be found in the above 
+CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Society of Rheumatology: https://msr.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+B. TREATMENT OF FLARE & FLARE PROPHYLAXIS
+Drug Recommended dose Possible AEs
+Gout flare
+Initial dose: 1 mg, then 0.5 mg after 1 hour. No further tablets should be taken for 12 hours. 
+After 12 hours, treatment can be resumed if necessary with a maximum dose of 0.5 mg every 8 hours until 
+symptoms are relieved. The course of treatment should end when symptoms are relieved or when a total of 
+6 mg (12 tablets) has been taken. After completion of a course, another course should not be started for at 
+least 3 days (72 hours). 
+Flare prophylaxis    
+0.5 mg OD or BD. Prophylactic therapy may be beneficial for at least the first 3 to 6 months of ULT therapy.
+Treatment of gout flare during prophylaxis with colchicine
+Do not exceed 1 mg at the first sign of flare, followed by 0.5 mg 1 hour later, wait for 12 hours and then 
+resume prophylactic dose.
+Initiate prophylactic dose at least 12 hours after treatment dose and continue until gout flare resolves.
+Dosage modifications in renal impairment:
+Common: 
+ Nausea, vomiting, diarrhoea
+Serious:
+ Myelosuppression
+ Neuromuscular disease,
+ neuromyotoxicity
+Colchicine 
+No dosage adjustment, monitor closely for AENo dosage adjustment, monitor closely for AE>60 - 89
+Limit dose to 0.5 mg daily 
+Consider alternative therapy
+No dosage adjustment, monitor closely for AE30 - 60
+Consider alternative therapy <30, renal 
+replacement 
+therapy
+Gout flare prophylaxisCrCl (ml/min) Gout flare treatment*
+*Use of colchicine to treat gout flares is not recommended in patients with renal impairment (CrCl <80 ml/min)
+already receiving prophylactic colchicine.
+Ibuprofen
+Diclofenac
+Naproxen
+Meloxicam
+Celecoxib
+Etoricoxib
+400 - 800 mg TDS 
+(maximum: 3200 mg/day)
+50 mg BD/TDS 
+550 - 1100 mg in 2 divided doses (275 mg tablet) 
+750 mg initially, then 250 mg TDS (250 mg tablet) 
+Maximum 15 mg/day
+400 mg stat followed by 200 mg BD subsequently 
+Maximum 120 mg/day
+Common:
+• Gastrointestinal Intolerance
+• Elevated blood pressure, oedema
+• Rash
+• Abnormal liver function test
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+DIAGNOSIS
+DIFFERENTIAL DIAGNOSES
+25
+ Diagnosis of gout should not be made based on hyperuricaemia alone.
+ The cut-off SU level to diagnose hyperuricaemia based on urate saturation 
+threshold is a SU concentration of >6.8 mg/dL (408 µmol/L) at physiological pH 
+and body temperature.
+ A normal or low SU during flare does not exclude gout, as the level may not be 
+elevated during a flare. If clinical suspicion of gout is high, SU may be repeated 2 
+weeks or more after complete resolution of flare.
+ Demonstration of MSU crystals in synovial fluid or tophus aspirate under polarised 
+light microscopy should be performed to confirm the diagnosis of gout. 
+ If confirmation of presence of MSU crystals is not possible, the diagnosis may be 
+made based on typical clinical manifestations.
+ Musculoskeletal ultrasonography may assist in the diagnosis of gout with 
+atypical presentations.
+Gout usually presents with acute monoarthritis, & less commonly with oligoarthritis. A 
+diagnosis of gout can be reasonably made in a hyperuricaemic patient who presents 
+with acute monoarthritis of the first metatarsophalangeal (MTP) joint.  Other causes of 
+acute monoarthritis/oligoarthritis should be considered before making a diagnosis of 
+gout. 
+The main differential diagnoses of gout are: 
+i. septic arthritis (key differential diagnosis) iii. psoriatic arthritis
+ii. acute calcium pyrophosphate crystal arthritis iv. reactive arthritis
+ There is insufficient evidence from current studies to recommend ULT in 
+asymptomatic hyperuricaemia to prevent gout, disease progression in CKD or 
+cardiovascular (CV) events. 
+• A lower SU target of <5 mg/dL (300 μmol/L) for faster dissolution of crystals is 
+recommended in severe gout (tophi, chronic arthropathy, frequent flares). 
+However, some studies have suggested that urate might be protective against 
+various neurodegenerative diseases, therefore prolonged SU <3 mg/dL (180 μ
+mol/L) is not recommended.
+ASYMPTOMATIC HYPERURICAEMIA
+TREAT-TO-TARGET
+Drug Recommended dose Possible AEs
+Initial: 100 mg/day, increase 100 mg every 2 - 4 weeks until target is achieved
+Maximum: 900 mg/day
+Dosage modifications in renal impairment:
+Allopurinol 
+Probenecid
+Febuxostat
+Initial: 250 mg BD for 1 week; may increase to 500 mg BD
+Maximum:1000 mg BD (increase dosage in 500 mg increment every 4 weeks)
+Renal impairment of CrCl <30 ml/min: Avoid use 
+Initial: 40 mg OD; if SU level is >6.0 mg/dL (360 µmol/L) after 2 - 4 weeks,
+80 mg OD may be considered
+Common: 
+• Maculopapular rash, pruritus 
+• Nausea, vomiting
+Serious:
+• Stevens-Johnson syndrome (SJS), Toxic Epidermal 
+ Necrolysis (TEN), drug reaction with eosinophilia and systemic 
+ symptoms (DRESS)
+• Transaminitis, cholestasis
+• Bone marrow suppression
+Common:
+• Rash
+• Nausea, vomiting
+Serious:
+• SJS
+• Aplastic anaemia, leukopenia, thrombocytopenia, neutropenia
+• Hepatic necrosis 
+• Anaphylaxis, hypersensitivity reaction
+Common: 
+• Rash
+• Diarrhoea, nausea
+• Liver function abnormalities
+Black Box Warning
+Cardiovascular:
+• Higher rate of CV death in gout patients with established CV disease
+Estimated Glomerular Filtration
+Rate (ml/min/1.73m2)
+Initial dose
+>60
+30 - 60
+<30
+100 mg daily
+50 mg daily
+50 mg every other day
+Dosage modifications in renal impairment:
+CrCl (ml/min) Dose
+≥30
+15-29
+No adjustment
+Maximum dose 40 mg OD
+PHARMACOLOGICAL TREATMENT FOR GOUT
+A. URATE-LOWERING THERAPY
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF GOUT (SECOND EDITION)
+7
+ALGORITHM ON MANAGEMENT OF GOUT
+/gid00050/gid00054/gid00042/gid00036/gid00044/gid00001/gid00051/gid00038/gid00039/gid00038/gid00051/gid00038/gid00047/gid00036/gid00038/gid00001/gid00039/gid00048/gid00051
+/gid00041/gid00038/gid00034/gid00045/gid00053/gid00041/gid00001/gid00036/gid00034/gid00051/gid00038/gid00001/gid00049/gid00051/gid00048/gid00055/gid00042/gid00037/gid00038/gid00051/gid00052
+ 
+ Acute monoarthritis/oligoarthritis
+Clinical features of gout
+1. Involvement of the first metatarsophalangeal joint, ankle or midfoot 
+2. Redness, extreme pain and loss of function in the affected joint 
+3. Time to maximal pain <24 hours and complete resolution of symptoms within 14 days 
+4. Recurrence of typical attacks increase the likelihood of diagnosis 
+5. Clinical evidence of tophus (present in chronic gouty arthritis)
+•  Normal SU during gout flare does not exclude the 
+ diagnosis of gout.
+•  Repeat SU ≥2 weeks after resolution of flare if highly 
+ suspicious of gout.
+CKD: chronic kidney disease
+COX-2 inhibitors: cyclooxygenase-2 inhibitors
+MTP: metatarsophalangeal
+NSAIDs: nonsteroidal anti-inflammatory drugs
+SU: serum urate
+ULT: urate-lowering therapy
+No Yes
+Other causes of acute monoarthritis/oligoarthritis - manage accordingly  Diagnosis of gout
+*ULT is indicated if:
+•  recurrent gout flares (≥2 flares in 12 months) OR 
+•  presence of tophi OR
+•  presence of radiographic damage due to gout
+ULT is conditionally recommended if:
+• previously had >1 flare but infrequent (<2 flares/year)
+• first gout flare if:
+  concomitant CKD stage ≥3 OR
+  SU >540 µmol/L OR
+  presence of urolithiasis
+• Baseline SU, other blood/urine/imaging study
+ as indicated
+• Screening of associated comorbidities
+Investigations Treatment of gout flare
+Non-pharmacological
+•  Topical ice during gout flare
+•  Health education
+•  Lifestyle modification
+•  Avoidance of medications
+ that increase risk of gout, if feasible
+Pharmacological
+•  Colchicine, OR
+•  NSAIDs/COX-2
+ inhibitors OR
+•  Corticosteroids OR
+•  Combination of the above
+• Allopurinol as first-line ULT
+• Start allopurinol at low dose and uptitrate slowly especially in patients with CKD
+• Monitor for drug-related adverse events
+• Treat-to-target (T2T) strategy: aim for SU <360 µmol/L
+• Do not stop ULT during attack
+• Initiate flare prophylactic treatment (at least 3 - 6 months)
+• Monitor for associated comorbidities
+If unable to tolerate allopurinol/failure to achieve SU target despite dose escalation and good compliance to treatment, consider:
+•  switching to febuxostat or uricosuric agent
+•  addition of uricosuric agent
+ Indication for
+ULT*
+Continue to monitor 
+for possible indications 
+in future
+NoYes

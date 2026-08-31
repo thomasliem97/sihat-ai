@@ -1,0 +1,913 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MEDICATION DOSAGE, INDICATIONS & SPECIAL PRECAUTIONS IN RS
+ 
+   
+ 
+  
+   
+  
+   
+  
+INTRANASAL CORTICOSTEROIDS
+Generic Drug
+Name
+Indications Dosage
+Budesonide 
+64 mcg/dose
+nasal spray 
+• Seasonal & perennial allergic rhinitis, 
+ & nasal polyposis
+• Treatment & prevention of nasal polyps
+Adults & children 6 years and older: 
+• Rhinitis: 2 sprays into each nostril once 
+ daily in the morning or 
+ (1 spray into each nostril twice daily) 
+• Nasal polyps: 2 sprays twice daily
+Fluticasone
+propionate 
+50 mcg/dose
+nasal spray
+• Prophylaxis & treatment of seasonal 
+ & perennial allergic rhinitis
+• Treatment of associated sinus pain 
+ & pressure
+• Adults/adolescents (≥12 years): 2 sprays in
+ each nostril once daily
+• Maximum daily dose: 4 sprays in each
+ nostril 
+Mometasone
+furoate 
+50 mcg 
+aqueous 
+nasal spray 
+• Symptomatic treatment associated 
+ with ARS & treatment of nasal polyps
+Allergic Rhinitis (adults & children over 
+ 12 years):
+• 100 mcg/day (2 sprays) to each nostril 
+ once daily
+• Maximum 200 mcg (4 sprays) once daily 
+• Reduce to 50 mcg (1 spray) once daily 
+ when control achieved 
+Acute Rhinosinusitis:
+• 2 sprays in each nostril twice daily 
+ (total 400 mcg/day)
+Nasal polyphosis
+• 2 sprays in each nostril twice daily 
+ (total 400 mcg/day), 
+• reduced to 2 sprays each nostril once daily 
+ when symptoms are adequately controlled 
+ 
+ 
+   
+ 
+  
+   
+  
+   
+  
+ANTIBIOTICS
+Generic Drug
+Name
+Recommended Dosage Special Precautions
+Amoxicillin
+Amoxicillin &
+Clavulanic acid 
+Cefuroxime
+axetil
+Azithromycin
+Clarithromycin
+500/125 mg PO q8hr x 5 - 7 days or
+875/125 mg PO q12hr x 5 - 7 days
+250 - 500 mg PO q8hr x 5 - 10 days or
+500 - 875 mg PO q12hr x 5 - 10 days
+250 - 500 mg PO q12hr x 5 - 10 days
+500 mg PO q24hr x 3 days
+ABRS: 250 - 500 mg PO q12hr 
+x 7 - 14 days
+CRS: 250 mg PO q12hr  
+• Preferred antibiotics in ABRS
+• Penicillin allergy, infectious mononucleosis,
+ renal impairment 
+• Preferred antibiotics in ABRS
+• Allergy to beta-lactam antibiotics, infectious 
+ mononucleosis 
+• Penicillin allergy, gastrointestinal disease 
+ (e.g. colitis), renal impairment  
+• Coronary artery disease, prolonged QT 
+ interval (disease or co-administration of 
+ drugs that prolong QT interval or 
+ proarryhthmic conditions), myasthenia 
+ gravis, severe renal (require dose 
+ adjustment) & hepatic impairment  
+• Prolonged QT interval (torsades de pointes, 
+ congenital long QT syndrome, 
+ bradyarrhythmias, uncompensated heart 
+ failure, drugs that prolong QT interval or 
+ proarrhythmic conditions), myasthenia 
+ gravis, renal & hepatic impairment
+MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+Ministry of Health
+Malaysia
+Malaysian Society of Otorhinolaryngologist
+- Head & Neck Surgeons (MS)-HNS)
+Academy of
+Medicine Malaysia
+MANAGEMENT OF RHINOSINUSITIS
+IN ADOLESCENTS AND ADULTS
+2 7
+1. Rhinosinusitis is a common health problem characterised by mucosal 
+inflammation of the nose & paranasal sinuses.
+2. Important risk factors for rhinosinusitis are active & passive smoking, family 
+history, asthma & gastroesophageal reflux disease.
+3. In acute rhinosinusitis (ARS), the duration of symptoms is <12 weeks. 
+4. Majority of ARS cases are viral in origin, with only 0.5 - 2.0% are 
+complicated by bacterial infection.
+5. Anterior rhinoscopy should be performed as part of clinical assessment of 
+suspected ARS in primary care setting.
+6. Plain radiography has no role in the routine management of rhinosinusitis.
+7. Endoscopically-directed middle meatal culture should be used in 
+diagnosing acute bacterial rhinosinusitis (ABRS) & chronic rhinosinusitis 
+(CRS), instead of nasal swab culture.
+8. Intranasal corticosteroids & nasal saline irrigation are the mainstay 
+treatment of rhinosinusitis.
+9. Antibiotic should be considered in patients with severe ARS.
+10. Surgery is indicated for ARS with orbital or intracranial complications & 
+CRS not responding to optimal medical therapy.
+KEY MESSAGES
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Rhinosinusitis in Adolescent and Adults. 
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Society of Otorhinolaryngologists Head & Neck Surgeons: 
+www.msohns.com
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-8883 1228
+E-mail: htamalaysia@moh.gov.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+Indications of Referral to ORL Centre
+Summary Treatment & Recommendations For Adults With RS
+Therapy Relevance 
+ 
+ 
+Antibiotic
+Topical steroids
+Addition of topical corticosteroids to antibiotics
+Addition of oral corticosteroids to antibiotics
+Saline irrigation
+Antihistamine, analgesic & decongestion combination
+Oral antihistamine added in allergic patients
+Paracetamol
+Decongestants 
+Mucolytics
+Yes in ABRS
+Yes, mainly in post-viral ARS
+Yes in ABRS
+Yes in ABRS
+Yes
+Yes in viral ARS
+Yes 
+Yes, in viral and post-viral ARS
+Yes 
+No
+  
+  
+ 
+ 
+ 
+Indication of Referral
+ACUTE RHINOSINUSITIS CHRONIC RHINOSINUSITIS
+                                          Early referral*:
+Ø persistent of
+ symptoms despite
+ optimal therapy
+Ø frequent recurrence 
+ (≥4 per year)
+Ø suspected malignancy
+Ø immunodeficiencies
+                                          Early referral*:
+Ø failed a course of
+ optimal medical
+ therapy 
+Ø >3 sinus   
+     infections/year
+Ø suspected fungal 
+ infections, 
+ granulomatous disease
+ or malignancy
+Ø immunodeficiencies
+                                          Urgent referral**:
+Ø periorbital oedema/
+ erythema
+Ø displaced globe
+Ø double vision
+Ø ophtalmoplegia/
+ restricted eye 
+ movement
+Ø reduced visual acuity
+Ø severe frontal 
+ headache
+Ø forehead swelling
+Ø neurological 
+ manifestation e.g. 
+ meningitis, altered 
+ consciousness, 
+ seizure
+Ø septicaemia
+                                          Urgent referral**:
+Ø severe pain or 
+ swelling of the sinus
+ areas (lower
+ threshold for 
+ immune-
+ compromised 
+ patients e.g. 
+ uncontrolled 
+ diabetes, end stage
+ renal failure, HIV)
+*Early referral          : within 2 weeks
+**Urgent referral      : within 24 hours
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+• Inflammation of the nose & paranasal sinuses characterised by two or more 
+symptoms, one of which should be either nasal blockage/obstruction/ 
+congestion or nasal discharge (anterior/posterior nasal drip):
+ - ± facial pain/pressure
+ - ± reduction or loss of smell
+ 
+AND at least one of the following: 
+• Endoscopic signs of:
+ - nasal polyps, &/or
+ - mucopurulent discharge primarily from middle meatus &/or
+ - oedema/mucosal obstruction primarily in middle meatus
+• CT changes:
+ - mucosal changes within the ostiomeatal complex &/or sinuses
+• Past medical history of CRS (medically-diagnosed)
+Clinical Diagnosis
+Increased in symptoms after 5 days or persistent symptoms
+after 10 days with less than 12 weeks duration
+Management of CRS for Primary/
+Secondary/Tertiary Care 
+NoYes  
+   
+Continue therapy  Refer to ORL specialist  
+ 
+No Yes  
+Improvement of
+symptom(s)
+ 
+ 
+ 
+ 
+"
+Topical steroids  
+Nasal irrigation  
+CT scan of paranasal sinuses
+Consider endoscopic sinus surgery
+History & investigations
+ • Nasal endoscopy
+ • Skin Prick Test for allergy
+ • Consider other diagnosis and predisposing factors e.g.
+  bronchial asthma, smoking, etc
+Treatment
+ • Topical steroids
+ • Nasal irrigation
+ • Short-term oral steroids
+ • Consider oral antibiotic as immunomodulator (if serum IgE
+  is low or normal) 
+Continue follow-up with ORL centres:
+• Topical steroids
+• Nasal irrigation
+• Short-term oral steroids
+Continue follow-up with ORL centres:
+• Topical steroids
+• Nasal irrigation
+• Short-term oral steroids
+Improvement
+of symptom(s)
+Re-evaluate after 4 weeks
+Presence of ≥2 symptoms (duration ≥12 weeks):
+One of which should be nasal obstruction or 
+purulent/greenish nasal discharge
+± facial pain, headache
+± smell disturbance
+Examination: anterior rhinoscopy
+(plain X-ray is NOT recommended)  
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+Management of ARS for ORL Centre
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+      
+ 
+ 
+Referral from primary care and 
+non-ORL centre
+Moderate ARS with
+no improvement of
+ symptoms after 14 days
+of treatment
+Severe ARS with
+no improvement of
+symptoms within 3 days
+ARS with orbital or
+intracranial
+complications
+1. Nasal endoscopy
+2. Culture and sensitivity
+3. Symptomatic relief
+4. Topical corticosteroids
+5. Oral antibiotics
+1. Hospital admission
+2. Nasal endoscopy
+3. CT and/or MRI scan
+4. Culture and sensitivity
+5. Symptomatic relief
+6. Topical corticosteroids
+7.  Intravenous antibiotics
+8. Consider surgery if
+  medical therapy fails
+ after 48 hours
+1. Hospital admission
+2. Nasal endoscopy
+3. CT and/or MRI scan
+4. Culture and sensitivity
+5. Symptomatic relief
+6. Topical steroids
+7. Intravenous antibiotics
+ and/or surgery
+Management of ARS for Primary Care & Non-Otorhinolaryngology
+(ORL) Centre
+NoYes
+Presence of ≥2 symptoms one of which should 
+be nasal obstruction or purulent/greenish nasal discharge
+± facial pain, headache
+± smell disturbance
+Examination: anterior rhinoscopy
+Symptoms increasing after 5 days or
+persistent after 10 days
+Common cold
+Treat
+accordingly
+Mild* ARS
+VAS = 0 to 3
+Moderate* ARS
+VAS >3 to 7
+Symptomatic relief
+medication** 
++ topical steroid
+Severe* ARS
+VAS >7 to 10
+Symptomatic relief
+medication** 
++ topical steroid
+ +consider antibiotic***
+Symptomatic relief
+medication**
+Topical steroid
+No improvement after
+14 days treatment
+No improvement
+after 10 days or worsening
+after 5 days
+Improvement
+within 3 days
+Consider
+referral to
+specialist
+Refer to
+specialist
+Symptoms <5 days or improving
+thereafter
+Continue
+treatment 
+7 - 14 days
+*    based on visual analogue score (VAS)
+**   may include analgesics, nasal saline irrigation & decongestants
+***  at least 3 of:
+ • purulent/greenish nasal discharge       •  fever
+ • severe local pain                                  •  “double sickening”
+ • elevated erythrocyte sedimentation rate/C-reactive protein
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+Management of ARS for ORL Centre
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+      
+ 
+ 
+Referral from primary care and 
+non-ORL centre
+Moderate ARS with
+no improvement of
+ symptoms after 14 days
+of treatment
+Severe ARS with
+no improvement of
+symptoms within 3 days
+ARS with orbital or
+intracranial
+complications
+1. Nasal endoscopy
+2. Culture and sensitivity
+3. Symptomatic relief
+4. Topical corticosteroids
+5. Oral antibiotics
+1. Hospital admission
+2. Nasal endoscopy
+3. CT and/or MRI scan
+4. Culture and sensitivity
+5. Symptomatic relief
+6. Topical corticosteroids
+7.  Intravenous antibiotics
+8. Consider surgery if
+  medical therapy fails
+ after 48 hours
+1. Hospital admission
+2. Nasal endoscopy
+3. CT and/or MRI scan
+4. Culture and sensitivity
+5. Symptomatic relief
+6. Topical steroids
+7. Intravenous antibiotics
+ and/or surgery
+Management of ARS for Primary Care & Non-Otorhinolaryngology
+(ORL) Centre
+NoYes
+Presence of ≥2 symptoms one of which should 
+be nasal obstruction or purulent/greenish nasal discharge
+± facial pain, headache
+± smell disturbance
+Examination: anterior rhinoscopy
+Symptoms increasing after 5 days or
+persistent after 10 days
+Common cold
+Treat
+accordingly
+Mild* ARS
+VAS = 0 to 3
+Moderate* ARS
+VAS >3 to 7
+Symptomatic relief
+medication** 
++ topical steroid
+Severe* ARS
+VAS >7 to 10
+Symptomatic relief
+medication** 
++ topical steroid
+ +consider antibiotic***
+Symptomatic relief
+medication**
+Topical steroid
+No improvement after
+14 days treatment
+No improvement
+after 10 days or worsening
+after 5 days
+Improvement
+within 3 days
+Consider
+referral to
+specialist
+Refer to
+specialist
+Symptoms <5 days or improving
+thereafter
+Continue
+treatment 
+7 - 14 days
+*    based on visual analogue score (VAS)
+**   may include analgesics, nasal saline irrigation & decongestants
+***  at least 3 of:
+ • purulent/greenish nasal discharge       •  fever
+ • severe local pain                                  •  “double sickening”
+ • elevated erythrocyte sedimentation rate/C-reactive protein
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+• Inflammation of the nose & paranasal sinuses characterised by two or more 
+symptoms, one of which should be either nasal blockage/obstruction/ 
+congestion or nasal discharge (anterior/posterior nasal drip):
+ - ± facial pain/pressure
+ - ± reduction or loss of smell
+ 
+AND at least one of the following: 
+• Endoscopic signs of:
+ - nasal polyps, &/or
+ - mucopurulent discharge primarily from middle meatus &/or
+ - oedema/mucosal obstruction primarily in middle meatus
+• CT changes:
+ - mucosal changes within the ostiomeatal complex &/or sinuses
+• Past medical history of CRS (medically-diagnosed)
+Clinical Diagnosis
+Increased in symptoms after 5 days or persistent symptoms
+after 10 days with less than 12 weeks duration
+Management of CRS for Primary/
+Secondary/Tertiary Care 
+NoYes  
+   
+Continue therapy  Refer to ORL specialist  
+ 
+No Yes  
+Improvement of
+symptom(s)
+ 
+ 
+ 
+ 
+"
+Topical steroids  
+Nasal irrigation  
+CT scan of paranasal sinuses
+Consider endoscopic sinus surgery
+History & investigations
+ • Nasal endoscopy
+ • Skin Prick Test for allergy
+ • Consider other diagnosis and predisposing factors e.g.
+  bronchial asthma, smoking, etc
+Treatment
+ • Topical steroids
+ • Nasal irrigation
+ • Short-term oral steroids
+ • Consider oral antibiotic as immunomodulator (if serum IgE
+  is low or normal) 
+Continue follow-up with ORL centres:
+• Topical steroids
+• Nasal irrigation
+• Short-term oral steroids
+Continue follow-up with ORL centres:
+• Topical steroids
+• Nasal irrigation
+• Short-term oral steroids
+Improvement
+of symptom(s)
+Re-evaluate after 4 weeks
+Presence of ≥2 symptoms (duration ≥12 weeks):
+One of which should be nasal obstruction or 
+purulent/greenish nasal discharge
+± facial pain, headache
+± smell disturbance
+Examination: anterior rhinoscopy
+(plain X-ray is NOT recommended)  
+2 7
+1. Rhinosinusitis is a common health problem characterised by mucosal 
+inflammation of the nose & paranasal sinuses.
+2. Important risk factors for rhinosinusitis are active & passive smoking, family 
+history, asthma & gastroesophageal reflux disease.
+3. In acute rhinosinusitis (ARS), the duration of symptoms is <12 weeks. 
+4. Majority of ARS cases are viral in origin, with only 0.5 - 2.0% are 
+complicated by bacterial infection.
+5. Anterior rhinoscopy should be performed as part of clinical assessment of 
+suspected ARS in primary care setting.
+6. Plain radiography has no role in the routine management of rhinosinusitis.
+7. Endoscopically-directed middle meatal culture should be used in 
+diagnosing acute bacterial rhinosinusitis (ABRS) & chronic rhinosinusitis 
+(CRS), instead of nasal swab culture.
+8. Intranasal corticosteroids & nasal saline irrigation are the mainstay 
+treatment of rhinosinusitis.
+9. Antibiotic should be considered in patients with severe ARS.
+10. Surgery is indicated for ARS with orbital or intracranial complications & 
+CRS not responding to optimal medical therapy.
+KEY MESSAGES
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Rhinosinusitis in Adolescent and Adults. 
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia: www.moh.gov.my
+Academy of Medicine Malaysia: www.acadmed.org.my
+Malaysian Society of Otorhinolaryngologists Head & Neck Surgeons: 
+www.msohns.com
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-8883 1228
+E-mail: htamalaysia@moh.gov.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+Indications of Referral to ORL Centre
+Summary Treatment & Recommendations For Adults With RS
+Therapy Relevance 
+ 
+ 
+Antibiotic
+Topical steroids
+Addition of topical corticosteroids to antibiotics
+Addition of oral corticosteroids to antibiotics
+Saline irrigation
+Antihistamine, analgesic & decongestion combination
+Oral antihistamine added in allergic patients
+Paracetamol
+Decongestants 
+Mucolytics
+Yes in ABRS
+Yes, mainly in post-viral ARS
+Yes in ABRS
+Yes in ABRS
+Yes
+Yes in viral ARS
+Yes 
+Yes, in viral and post-viral ARS
+Yes 
+No
+  
+  
+ 
+ 
+ 
+Indication of Referral
+ACUTE RHINOSINUSITIS CHRONIC RHINOSINUSITIS
+                                          Early referral*:
+Ø persistent of
+ symptoms despite
+ optimal therapy
+Ø frequent recurrence 
+ (≥4 per year)
+Ø suspected malignancy
+Ø immunodeficiencies
+                                          Early referral*:
+Ø failed a course of
+ optimal medical
+ therapy 
+Ø >3 sinus   
+     infections/year
+Ø suspected fungal 
+ infections, 
+ granulomatous disease
+ or malignancy
+Ø immunodeficiencies
+                                          Urgent referral**:
+Ø periorbital oedema/
+ erythema
+Ø displaced globe
+Ø double vision
+Ø ophtalmoplegia/
+ restricted eye 
+ movement
+Ø reduced visual acuity
+Ø severe frontal 
+ headache
+Ø forehead swelling
+Ø neurological 
+ manifestation e.g. 
+ meningitis, altered 
+ consciousness, 
+ seizure
+Ø septicaemia
+                                          Urgent referral**:
+Ø severe pain or 
+ swelling of the sinus
+ areas (lower
+ threshold for 
+ immune-
+ compromised 
+ patients e.g. 
+ uncontrolled 
+ diabetes, end stage
+ renal failure, HIV)
+*Early referral          : within 2 weeks
+**Urgent referral      : within 24 hours
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+• Inflammation of the nose & paranasal sinuses characterised by two or more 
+symptoms, one of which should be either nasal blockage/obstruction/ 
+congestion or nasal discharge (anterior/posterior nasal drip):
+ - ± facial pain/pressure
+ - ± reduction or loss of smell
+ 
+AND at least one of the following: 
+• Endoscopic signs of:
+ - nasal polyps, &/or
+ - mucopurulent discharge primarily from middle meatus &/or
+ - oedema/mucosal obstruction primarily in middle meatus
+• CT changes:
+ - mucosal changes within the ostiomeatal complex &/or sinuses
+• Past medical history of CRS (medically-diagnosed)
+Clinical Diagnosis
+Increased in symptoms after 5 days or persistent symptoms
+after 10 days with less than 12 weeks duration
+Management of CRS for Primary/
+Secondary/Tertiary Care 
+NoYes  
+   
+Continue therapy  Refer to ORL specialist  
+ 
+No Yes  
+Improvement of
+symptom(s)
+ 
+ 
+ 
+ 
+"
+Topical steroids  
+Nasal irrigation  
+CT scan of paranasal sinuses
+Consider endoscopic sinus surgery
+History & investigations
+ • Nasal endoscopy
+ • Skin Prick Test for allergy
+ • Consider other diagnosis and predisposing factors e.g.
+  bronchial asthma, smoking, etc
+Treatment
+ • Topical steroids
+ • Nasal irrigation
+ • Short-term oral steroids
+ • Consider oral antibiotic as immunomodulator (if serum IgE
+  is low or normal) 
+Continue follow-up with ORL centres:
+• Topical steroids
+• Nasal irrigation
+• Short-term oral steroids
+Continue follow-up with ORL centres:
+• Topical steroids
+• Nasal irrigation
+• Short-term oral steroids
+Improvement
+of symptom(s)
+Re-evaluate after 4 weeks
+Presence of ≥2 symptoms (duration ≥12 weeks):
+One of which should be nasal obstruction or 
+purulent/greenish nasal discharge
+± facial pain, headache
+± smell disturbance
+Examination: anterior rhinoscopy
+(plain X-ray is NOT recommended)  
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+MEDICATION DOSAGE, INDICATIONS & SPECIAL PRECAUTIONS IN RS
+ 
+   
+ 
+  
+   
+  
+   
+  
+INTRANASAL CORTICOSTEROIDS
+Generic Drug
+Name
+Indications Dosage
+Budesonide 
+64 mcg/dose
+nasal spray 
+• Seasonal & perennial allergic rhinitis, 
+ & nasal polyposis
+• 
+Treatment & prevention of nasal polyps
+Adults & children 6 years and older: 
+• Rhinitis: 2 sprays into each nostril once 
+ daily in the morning or 
+ (1 spray into each nostril twice daily) 
+• Nasal polyps: 2 sprays twice daily
+Fluticasone
+propionate 
+50 mcg/dose
+nasal spray
+• Prophylaxis & treatment of seasonal 
+ & perennial allergic rhinitis
+• Treatment of associated sinus pain 
+ & pressure
+• Adults/adolescents (≥12 years): 2 sprays in
+ each nostril once daily
+• Maximum daily dose: 4 sprays in each
+ nostril 
+Mometasone
+furoate 
+50 mcg 
+aqueous 
+nasal spray 
+• Symptomatic treatment associated 
+ with ARS & treatment of nasal polyps
+Allergic Rhinitis (adults & children over 
+ 12 years):
+• 100 mcg/day (2 sprays) to each nostril 
+ once daily
+• Maximum 200 mcg (4 sprays) once daily 
+• Reduce to 50 mcg (1 spray) once daily 
+ when control achieved 
+Acute Rhinosinusitis:
+• 2 sprays in each nostril twice daily 
+ (total 400 mcg/day)
+Nasal polyphosis
+• 2 sprays in each nostril twice daily 
+ (total 400 mcg/day), 
+• reduced to 2 sprays each nostril once daily 
+ when symptoms are adequately controlled 
+ 
+ 
+   
+ 
+  
+   
+  
+   
+  
+ANTIBIOTICS
+Generic Drug
+Name
+Recommended Dosage Special Precautions
+Amoxicillin
+Amoxicillin &
+Clavulanic acid 
+Cefuroxime
+axetil
+Azithromycin
+Clarithromycin
+500/125 mg PO q8hr x 5 - 7 days or
+875/125 mg PO q12hr x 5 - 7 days
+250 - 500 mg PO q8hr x 5 - 10 days or
+500 - 875 mg PO q12hr x 5 - 10 days
+250 - 500 mg PO q12hr x 5 - 10 days
+500 mg PO q24hr x 3 days
+ABRS: 250 - 500 mg PO q12hr 
+x 7 - 14 days
+CRS: 250 mg PO q12hr  
+• Preferred antibiotics in ABRS
+• Penicillin allergy, infectious mononucleosis,
+ renal impairment 
+• Preferred antibiotics in ABRS
+• Allergy to beta-lactam antibiotics, infectious 
+ mononucleosis 
+• Penicillin allergy, gastrointestinal disease 
+ (e.g. colitis), renal impairment  
+• Coronary artery disease, prolonged QT 
+ interval (disease or co-administration of 
+ drugs that prolong QT interval or 
+ proarryhthmic conditions), myasthenia 
+ gravis, severe renal (require dose 
+ adjustment) & hepatic impairment  
+• Prolonged QT interval (torsades de pointes, 
+ congenital long QT syndrome, 
+ bradyarrhythmias, uncompensated heart 
+ failure, drugs that prolong QT interval or 
+ proarrhythmic conditions), myasthenia 
+ gravis, renal & hepatic impairment
+MANAGEMENT OF RHINOSINUSITIS IN ADOLESCENT & ADULTS
+Ministry of Health
+Malaysia
+Malaysian Society of Otorhinolaryngologist
+- Head & Neck Surgeons (MS)-HNS)
+Academy of
+Medicine Malaysia
+MANAGEMENT OF RHINOSINUSITIS
+IN ADOLESCENTS AND ADULTS

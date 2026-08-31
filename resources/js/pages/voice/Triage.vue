@@ -2,10 +2,12 @@
 import { Head, usePage } from '@inertiajs/vue3';
 import {
     Archive,
+    Check,
     ChevronLeft,
     CircleStop,
     Copy,
     Ellipsis,
+    LoaderCircle,
     Mic,
     MicOff,
     ScrollText,
@@ -14,7 +16,8 @@ import {
     Volume2,
     VolumeX,
 } from '@lucide/vue';
-import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { toast } from 'vue-sonner';
 import {
     archive as archiveSessionRoute,
@@ -24,6 +27,10 @@ import {
     speak as speakMessageRoute,
     store as storeSessionRoute,
 } from '@/actions/App/Http/Controllers/VoiceTriageController';
+import ChatMarkdown from '@/components/medical/ChatMarkdown.vue';
+import FeatureIntroDialog from '@/components/medical/FeatureIntroDialog.vue';
+import TriagePromptCard from '@/components/medical/TriagePromptCard.vue';
+import type { TriagePrompt } from '@/components/medical/TriagePromptCard.vue';
 import AnnotationPill from '@/components/patterns/AnnotationPill.vue';
 import FieldLabel from '@/components/patterns/FieldLabel.vue';
 import PageHeader from '@/components/patterns/PageHeader.vue';
@@ -55,6 +62,8 @@ import {
 import { Spinner } from '@/components/ui/spinner';
 import { Textarea } from '@/components/ui/textarea';
 import { beginColdStartWatch, endColdStartWatch } from '@/lib/coldStartNotice';
+import { readSse } from '@/lib/sse';
+import { typewriterAdvance } from '@/lib/typewriter';
 import { triage } from '@/routes/voice';
 
 type TriageMessage = {
@@ -63,6 +72,7 @@ type TriageMessage = {
     content: string;
     input_modality?: string;
     stt_engine?: string | null;
+    prompts?: TriagePrompt[];
     created_at?: string | null;
 };
 
@@ -92,6 +102,11 @@ type TriageSession = {
 
 type TurnPhase = 'idle' | 'transcribing' | 'thinking' | 'speaking';
 
+type TurnHop = {
+    hop: string;
+    detail?: string;
+};
+
 const props = defineProps<{
     sessions: TriageSession[];
     sharedSessions: TriageSession[];
@@ -113,17 +128,24 @@ const waveLevels = ref<number[]>(
     Array.from({ length: WAVE_BAR_COUNT }, () => 0.12),
 );
 const autoplay = ref(false);
+const hydrated = ref(false);
 const summaryOpen = ref(false);
 const audioByMessageId = ref<Record<number, string>>({});
 const loadingSpeechMessageId = ref<number | null>(null);
 const playingMessageId = ref<number | null>(null);
 const openMessageActionsId = ref<number | null>(null);
+const threadScroller = ref<HTMLElement | null>(null);
 const threadEnd = ref<HTMLElement | null>(null);
 
 /** null = blank new-session draft */
 const viewingSessionId = ref<number | null>(null);
 const sessionCache = ref<Record<number, TriageSession>>({});
 const phaseBySessionId = ref<Record<number, TurnPhase>>({});
+const turnHops = ref<TurnHop[]>([]);
+const inFlightAssistantId = ref<number | null>(null);
+const typingMessageId = ref<number | null>(null);
+const typedVisible = ref('');
+const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 const draftByKey = ref<Record<string, string>>({});
 
 let mediaRecorder: MediaRecorder | null = null;
@@ -137,12 +159,17 @@ let waveAudioContext: AudioContext | null = null;
 let waveAnalyser: AnalyserNode | null = null;
 let waveFrame = 0;
 let waveSamples: Uint8Array<ArrayBuffer> | null = null;
+let typewriterRaf = 0;
+let typewriterLastTs = 0;
+let threadPinned = true;
 let stoppingRecording = false;
 let recordingStartedAt = 0;
 /** Peak |sample-128| from the live waveform (0–128). Silence stays near 0. */
 let recordingPeak = 0;
 let micDownClientX = 0;
 const cancelArmed = ref(false);
+let streamAbort: AbortController | null = null;
+let pageUnmounted = false;
 
 /** Whisper hallucinates on near-empty / silent clips; require a real hold + energy. */
 const MIN_RECORDING_MS = 1000;
@@ -153,13 +180,144 @@ const CANCEL_SLIDE_PX = 72;
 
 const AUTOPLAY_KEY = 'sihat.triage.autoplay';
 
-if (typeof window !== 'undefined') {
-    autoplay.value = window.localStorage.getItem(AUTOPLAY_KEY) === '1';
+watch(autoplay, (value) => {
+    if (hydrated.value) {
+        window.localStorage.setItem(AUTOPLAY_KEY, value ? '1' : '0');
+    }
+});
+
+const typewriterTarget = computed(() => {
+    const id = typingMessageId.value;
+
+    if (id == null || !active.value) {
+        return '';
+    }
+
+    const content =
+        active.value.messages?.find((message) => message.id === id)?.content ??
+        '';
+
+    return content === '…' ? '' : content;
+});
+
+function stopTypewriterLoop(): void {
+    if (typewriterRaf) {
+        cancelAnimationFrame(typewriterRaf);
+        typewriterRaf = 0;
+    }
+
+    typewriterLastTs = 0;
 }
 
-watch(autoplay, (value) => {
-    if (typeof window !== 'undefined') {
-        window.localStorage.setItem(AUTOPLAY_KEY, value ? '1' : '0');
+function resetTypewriter(): void {
+    stopTypewriterLoop();
+    typingMessageId.value = null;
+    typedVisible.value = '';
+}
+
+function finishTypewriterIfIdle(): void {
+    if (
+        inFlightAssistantId.value == null &&
+        typedVisible.value === typewriterTarget.value
+    ) {
+        typingMessageId.value = null;
+    }
+}
+
+function stepTypewriter(ts: number): void {
+    const elapsed = typewriterLastTs === 0 ? 16 : ts - typewriterLastTs;
+    typewriterLastTs = ts;
+
+    const next = typewriterAdvance(
+        typedVisible.value,
+        typewriterTarget.value,
+        elapsed,
+        prefersReducedMotion.value,
+    );
+
+    if (next !== typedVisible.value) {
+        typedVisible.value = next;
+        void nextTick(pinThreadToEnd);
+    }
+
+    if (next !== typewriterTarget.value) {
+        typewriterRaf = requestAnimationFrame(stepTypewriter);
+
+        return;
+    }
+
+    typewriterRaf = 0;
+    typewriterLastTs = 0;
+    finishTypewriterIfIdle();
+}
+
+function ensureTypewriter(): void {
+    if (typewriterRaf !== 0 || typeof window === 'undefined') {
+        return;
+    }
+
+    if (typingMessageId.value == null) {
+        return;
+    }
+
+    if (typedVisible.value === typewriterTarget.value) {
+        finishTypewriterIfIdle();
+
+        return;
+    }
+
+    typewriterRaf = requestAnimationFrame(stepTypewriter);
+}
+
+function isLiveAssistant(message: TriageMessage): boolean {
+    return (
+        message.role === 'assistant' &&
+        (inFlightAssistantId.value === message.id ||
+            typingMessageId.value === message.id)
+    );
+}
+
+function visibleMessageContent(message: TriageMessage): string {
+    if (typingMessageId.value === message.id) {
+        if (typedVisible.value === '' && message.content === '') {
+            return '…';
+        }
+
+        return typedVisible.value;
+    }
+
+    if (
+        message.role === 'assistant' &&
+        inFlightAssistantId.value === message.id &&
+        message.content === ''
+    ) {
+        return '…';
+    }
+
+    return message.content;
+}
+
+watch(typewriterTarget, (target) => {
+    if (typingMessageId.value == null) {
+        return;
+    }
+
+    if (prefersReducedMotion.value) {
+        stopTypewriterLoop();
+        typedVisible.value = target;
+        finishTypewriterIfIdle();
+        void nextTick(pinThreadToEnd);
+
+        return;
+    }
+
+    ensureTypewriter();
+});
+
+watch(inFlightAssistantId, (id) => {
+    if (id == null) {
+        ensureTypewriter();
+        finishTypewriterIfIdle();
     }
 });
 
@@ -217,14 +375,22 @@ const activePhase = computed<TurnPhase>(() => {
     return getPhase(0);
 });
 
+const hopLog = computed(() => [...turnHops.value].reverse());
+
 const phaseLabel = computed(() => {
+    const current = hopLog.value[0]?.hop;
+
+    if (current) {
+        return current;
+    }
+
     switch (activePhase.value) {
         case 'transcribing':
-            return 'Transcribing…';
+            return 'Transcribing';
         case 'thinking':
-            return 'Thinking…';
+            return 'Thinking';
         case 'speaking':
-            return 'Speaking…';
+            return 'Speaking';
         default:
             return '';
     }
@@ -246,6 +412,34 @@ const canCompose = computed(
         !isActivePending.value,
 );
 
+function isPromptCardMessage(message: TriageMessage): boolean {
+    if (
+        message.role !== 'assistant' ||
+        !canCompose.value ||
+        isLiveAssistant(message) ||
+        (message.prompts?.length ?? 0) === 0
+    ) {
+        return false;
+    }
+
+    const last = (active.value?.messages ?? []).at(-1);
+
+    return last?.id === message.id;
+}
+
+watch(
+    () => {
+        const last = (active.value?.messages ?? []).at(-1);
+
+        return last != null && isPromptCardMessage(last);
+    },
+    (show) => {
+        if (show) {
+            void nextTick(pinThreadToEnd);
+        }
+    },
+);
+
 const showUrgencyBanner = computed(() => {
     const urgency = active.value?.urgency;
 
@@ -253,7 +447,7 @@ const showUrgencyBanner = computed(() => {
 });
 
 function formatRelativeTime(iso: string | null | undefined): string {
-    if (!iso) {
+    if (!iso || !hydrated.value) {
         return '-';
     }
 
@@ -418,16 +612,56 @@ function jsonHeaders(): HeadersInit {
     };
 }
 
+function isBlobAudioUrl(url: string | undefined): url is string {
+    return typeof url === 'string' && url.startsWith('blob:');
+}
+
+function rememberMessageAudioUrl(messageId: number, url: string): void {
+    const previous = audioByMessageId.value[messageId];
+
+    if (previous && previous !== url && isBlobAudioUrl(previous)) {
+        URL.revokeObjectURL(previous);
+    }
+
+    audioByMessageId.value = {
+        ...audioByMessageId.value,
+        [messageId]: url,
+    };
+}
+
 function revokeAudioMap() {
     Object.values(audioByMessageId.value).forEach((url) => {
-        URL.revokeObjectURL(url);
+        if (isBlobAudioUrl(url)) {
+            URL.revokeObjectURL(url);
+        }
     });
     audioByMessageId.value = {};
 }
 
 async function scrollThreadToEnd() {
+    threadPinned = true;
     await nextTick();
-    threadEnd.value?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    pinThreadToEnd();
+}
+
+function pinThreadToEnd(): void {
+    const el = threadScroller.value;
+
+    if (!el || !threadPinned) {
+        return;
+    }
+
+    el.scrollTop = el.scrollHeight;
+}
+
+function onThreadScroll(): void {
+    const el = threadScroller.value;
+
+    if (!el) {
+        return;
+    }
+
+    threadPinned = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
 }
 
 function stopMessageAudio() {
@@ -450,6 +684,14 @@ function attachAudioLifecycle(messageId: number) {
         if (playingMessageId.value === messageId) {
             playingMessageId.value = null;
         }
+    };
+
+    audioEl.onerror = () => {
+        if (playingMessageId.value === messageId) {
+            playingMessageId.value = null;
+        }
+
+        toast.error('Could not play voice');
     };
 }
 
@@ -474,6 +716,7 @@ async function playMessageAudioUrl(messageId: number, url: string) {
         }
     } catch {
         playingMessageId.value = null;
+        toast.error('Tap Replay voice to hear this reply');
     }
 }
 
@@ -488,14 +731,7 @@ function storeMessageAudio(messageId: number, base64: string, play: boolean) {
     const blob = new Blob([bytes], { type: 'audio/mpeg' });
     const url = URL.createObjectURL(blob);
 
-    if (audioByMessageId.value[messageId]) {
-        URL.revokeObjectURL(audioByMessageId.value[messageId]);
-    }
-
-    audioByMessageId.value = {
-        ...audioByMessageId.value,
-        [messageId]: url,
-    };
+    rememberMessageAudioUrl(messageId, url);
 
     if (play) {
         void playMessageAudioUrl(messageId, url);
@@ -517,14 +753,53 @@ function onReplayVoiceSelect(event: Event, messageId: number) {
         return;
     }
 
-    if (audioByMessageId.value[messageId]) {
-        void playMessageAudioUrl(messageId, audioByMessageId.value[messageId]);
+    const cached = audioByMessageId.value[messageId];
+
+    if (isBlobAudioUrl(cached)) {
+        void playMessageAudioUrl(messageId, cached);
 
         return;
     }
 
     event.preventDefault();
     void fetchAndPlayMessageAudio(messageId, { showMenu: true });
+}
+
+async function cacheSpeakAudio(
+    sessionId: number,
+    messageId: number,
+): Promise<string | null> {
+    const cached = audioByMessageId.value[messageId];
+
+    if (isBlobAudioUrl(cached)) {
+        return cached;
+    }
+
+    const response = await fetch(
+        speakMessageRoute.url({
+            session: sessionId,
+            message: messageId,
+        }),
+        {
+            credentials: 'same-origin',
+            headers: { Accept: 'audio/mpeg' },
+        },
+    );
+
+    if (!response.ok) {
+        return null;
+    }
+
+    const type = response.headers.get('content-type') ?? '';
+
+    if (!type.includes('audio')) {
+        return null;
+    }
+
+    const url = URL.createObjectURL(await response.blob());
+    rememberMessageAudioUrl(messageId, url);
+
+    return url;
 }
 
 async function fetchAndPlayMessageAudio(
@@ -544,28 +819,15 @@ async function fetchAndPlayMessageAudio(
     }
 
     try {
-        const response = await fetch(
-            speakMessageRoute.url({
-                session: active.value.id,
-                message: messageId,
-            }),
-            {
-                method: 'POST',
-                headers: jsonHeaders(),
-            },
-        );
-        const data = await response.json().catch(() => ({}));
+        const url = await cacheSpeakAudio(active.value.id, messageId);
 
-        if (!response.ok || !data.audio_base64) {
-            toast.error(data.message || 'Could not play voice');
+        if (!url) {
+            toast.error('Could not play voice');
 
             return;
         }
 
-        storeMessageAudio(messageId, data.audio_base64, false);
-        const url = audioByMessageId.value[messageId];
-
-        if (url && !recording.value && epoch === audioPlaybackEpoch) {
+        if (!recording.value && epoch === audioPlaybackEpoch) {
             await playMessageAudioUrl(messageId, url);
         }
 
@@ -606,6 +868,9 @@ function startNewTriage() {
     }
 
     stopMessageAudio();
+    resetTypewriter();
+    turnHops.value = [];
+    inFlightAssistantId.value = null;
     viewingSessionId.value = null;
     active.value = null;
     draft.value = draftByKey.value.new ?? '';
@@ -700,6 +965,7 @@ async function openSession(id: number) {
     }
 
     stopMessageAudio();
+    resetTypewriter();
 
     viewingSessionId.value = id;
     draft.value = draftByKey.value[String(id)] ?? '';
@@ -870,7 +1136,24 @@ async function startRecording() {
     stopMessageAudio();
     loadingSpeechMessageId.value = null;
 
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    let stream: MediaStream;
+
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch {
+        toast.error(
+            'Microphone permission is required. Allow the mic, or type instead.',
+        );
+
+        return;
+    }
+
+    if (micPointerId === null || !canCompose.value || recording.value) {
+        stream.getTracks().forEach((track) => track.stop());
+
+        return;
+    }
+
     mediaStream = stream;
     chunks.length = 0;
 
@@ -1080,18 +1363,23 @@ function rollbackOptimisticMessage(
     sessionId: number,
     pendingId: number,
     restoreText?: string,
+    extraIds: number[] = [],
 ) {
     const current =
-        sessionCache.value[sessionId] ??
-        (viewingSessionId.value === sessionId ? active.value : null);
+        viewingSessionId.value === sessionId && active.value
+            ? active.value
+            : (sessionCache.value[sessionId] ?? null);
 
     if (!current) {
+        resetTypewriter();
+
         return;
     }
 
+    const drop = new Set([pendingId, ...extraIds]);
     const rolledBack: TriageSession = {
         ...current,
-        messages: (current.messages ?? []).filter((m) => m.id !== pendingId),
+        messages: (current.messages ?? []).filter((m) => !drop.has(m.id)),
     };
     putSessionCache(rolledBack);
 
@@ -1102,6 +1390,8 @@ function rollbackOptimisticMessage(
             draft.value = restoreText;
         }
     }
+
+    resetTypewriter();
 }
 
 const pollingSessionIds = new Set<number>();
@@ -1114,6 +1404,9 @@ async function pollVoiceTurn(
     let nextSeed = seed ?? null;
 
     while (Date.now() < deadline) {
+        if (pageUnmounted) {
+            throw new DOMException('Aborted', 'AbortError');
+        }
         let session: TriageSession;
 
         if (nextSeed) {
@@ -1228,6 +1521,157 @@ async function resumePendingVoiceTurn(session: TriageSession): Promise<void> {
     }
 }
 
+function asTriageMessage(value: unknown): TriageMessage | null {
+    if (!value || typeof value !== 'object') {
+        return null;
+    }
+
+    const row = value as Record<string, unknown>;
+
+    if (
+        typeof row.id !== 'number' ||
+        typeof row.role !== 'string' ||
+        typeof row.content !== 'string'
+    ) {
+        return null;
+    }
+
+    return {
+        id: row.id,
+        role: row.role,
+        content: row.content,
+        input_modality:
+            typeof row.input_modality === 'string'
+                ? row.input_modality
+                : 'text',
+        stt_engine: typeof row.stt_engine === 'string' ? row.stt_engine : null,
+        prompts: asTriagePrompts(row.prompts),
+        created_at: typeof row.created_at === 'string' ? row.created_at : null,
+    };
+}
+
+function asTriagePrompts(value: unknown): TriagePrompt[] {
+    if (!Array.isArray(value)) {
+        return [];
+    }
+
+    return value.flatMap((row) => {
+        if (!row || typeof row !== 'object') {
+            return [];
+        }
+
+        const item = row as Record<string, unknown>;
+
+        if (typeof item.id !== 'string' || typeof item.question !== 'string') {
+            return [];
+        }
+
+        if (!Array.isArray(item.options)) {
+            return [];
+        }
+
+        const options = item.options.flatMap((option) => {
+            if (!option || typeof option !== 'object') {
+                return [];
+            }
+
+            const choice = option as Record<string, unknown>;
+
+            if (
+                typeof choice.id !== 'string' ||
+                typeof choice.label !== 'string'
+            ) {
+                return [];
+            }
+
+            return [{ id: choice.id, label: choice.label }];
+        });
+
+        if (options.length < 2) {
+            return [];
+        }
+
+        return [
+            {
+                id: item.id,
+                question: item.question,
+                allow_multiple: item.allow_multiple === true,
+                options,
+            },
+        ];
+    });
+}
+
+function patchActiveMessage(fromId: number, incoming: TriageMessage): void {
+    if (!active.value) {
+        return;
+    }
+
+    active.value = {
+        ...active.value,
+        messages: (active.value.messages ?? []).map((message) =>
+            message.id === fromId ? { ...message, ...incoming } : message,
+        ),
+    };
+
+    if ((active.value.id ?? 0) > 0) {
+        putSessionCache(active.value);
+    }
+}
+
+function appendActiveToken(messageId: number, token: string): void {
+    if (!active.value) {
+        return;
+    }
+
+    active.value = {
+        ...active.value,
+        messages: (active.value.messages ?? []).map((message) => {
+            if (message.id !== messageId) {
+                return message;
+            }
+
+            const base = message.content === '…' ? '' : message.content;
+
+            return { ...message, content: base + token };
+        }),
+    };
+
+    if ((active.value.id ?? 0) > 0) {
+        putSessionCache(active.value);
+    }
+}
+
+function pushHop(hop: string, detail?: string): void {
+    const last = turnHops.value.at(-1);
+
+    if (last?.hop === hop) {
+        turnHops.value = [
+            ...turnHops.value.slice(0, -1),
+            { hop, detail: detail || last.detail },
+        ];
+
+        return;
+    }
+
+    turnHops.value = [...turnHops.value, { hop, detail }];
+}
+
+function phaseFromHop(hop: string): TurnPhase {
+    const lower = hop.toLowerCase();
+
+    if (lower.includes('transcrib') || lower.includes('heard')) {
+        return 'transcribing';
+    }
+
+    return 'thinking';
+}
+
+function resetTurnUi(): void {
+    turnHops.value = [];
+    inFlightAssistantId.value = null;
+}
+
 async function applyCompletedTurn(
     session: TriageSession,
     requestSessionId: number,
@@ -1245,6 +1689,10 @@ async function applyCompletedTurn(
             .find((m) => m.role === 'assistant')?.id;
 
     if (viewingSessionId.value === requestSessionId) {
+        if (assistantId && typingMessageId.value != null) {
+            typingMessageId.value = assistantId;
+        }
+
         active.value = session;
         await scrollThreadToEnd();
 
@@ -1255,6 +1703,8 @@ async function applyCompletedTurn(
         }
     } else if (options?.audioBase64 && assistantId) {
         storeMessageAudio(assistantId, options.audioBase64, false);
+    } else if (autoplay.value && assistantId) {
+        void cacheSpeakAudio(session.id, assistantId);
     }
 }
 
@@ -1274,7 +1724,10 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         return;
     }
 
+    stopMessageAudio();
+
     const pendingId = -Date.now();
+    const pendingAssistantId = pendingId - 1;
     const modality = audio ? 'voice' : 'text';
     const optimisticContent = text || (audio ? '…' : '');
     let requestSessionId = 0;
@@ -1285,6 +1738,13 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         role: 'user',
         content: optimisticContent,
         input_modality: modality,
+        created_at: new Date().toISOString(),
+    };
+    const optimisticAssistant: TriageMessage = {
+        id: pendingAssistantId,
+        role: 'assistant',
+        content: '',
+        input_modality: 'text',
         created_at: new Date().toISOString(),
     };
 
@@ -1305,13 +1765,17 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                     subjectUserId.value !== ''
                         ? Number(subjectUserId.value)
                         : null,
-                messages: [optimisticMessage],
+                messages: [optimisticMessage, optimisticAssistant],
             };
             viewingSessionId.value = null;
         } else {
             active.value = {
                 ...active.value,
-                messages: [...(active.value.messages ?? []), optimisticMessage],
+                messages: [
+                    ...(active.value.messages ?? []),
+                    optimisticMessage,
+                    optimisticAssistant,
+                ],
             };
 
             if ((active.value.id ?? 0) > 0) {
@@ -1320,6 +1784,13 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
         }
 
         optimisticAttached = true;
+        inFlightAssistantId.value = pendingAssistantId;
+        resetTypewriter();
+        typingMessageId.value = pendingAssistantId;
+        pushHop(
+            audio ? 'Transcribing speech' : 'Reading your message',
+            text || 'voice note',
+        );
         draft.value = '';
         draftByKey.value = {
             ...draftByKey.value,
@@ -1336,6 +1807,8 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
 
         if (!ensured?.id) {
             setPhase(provisionalKey, 'idle');
+            resetTurnUi();
+            resetTypewriter();
 
             if (optimisticAttached) {
                 if (viewingSessionId.value === null) {
@@ -1347,7 +1820,9 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                     active.value = {
                         ...active.value,
                         messages: (active.value.messages ?? []).filter(
-                            (m) => m.id !== pendingId,
+                            (m) =>
+                                m.id !== pendingId &&
+                                m.id !== pendingAssistantId,
                         ),
                     };
 
@@ -1390,21 +1865,26 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
             form.append('audio', audio, 'triage.webm');
         }
 
+        streamAbort?.abort();
+        streamAbort = new AbortController();
+
         const response = await fetch(
             messageSessionRoute.url(requestSessionId),
             {
                 method: 'POST',
                 headers: {
-                    Accept: 'application/json',
+                    Accept: 'text/event-stream',
                     'X-CSRF-TOKEN': csrf.value,
                 },
                 body: form,
+                signal: streamAbort.signal,
             },
         );
 
-        const data = await response.json().catch(() => ({}));
-
         if (response.status === 202) {
+            const data = await response.json().catch(() => ({}));
+            resetTurnUi();
+
             try {
                 const session = await awaitPendingVoiceTurn(
                     requestSessionId,
@@ -1418,36 +1898,152 @@ async function sendMessage(options?: { audio?: Blob; text?: string }) {
                         ? error.message
                         : 'Could not process voice message';
                 toast.error(message);
-                rollbackOptimisticMessage(requestSessionId, pendingId);
+                rollbackOptimisticMessage(
+                    requestSessionId,
+                    pendingId,
+                    undefined,
+                    [pendingAssistantId],
+                );
             }
 
             return;
         }
 
         if (!response.ok) {
-            toast.error(data.message || 'Could not send message');
+            const data = await response.json().catch(() => ({}));
+            toast.error(
+                (data as { message?: string }).message ||
+                    'Could not send message',
+            );
+            resetTurnUi();
             rollbackOptimisticMessage(
                 requestSessionId,
                 pendingId,
                 text || undefined,
+                [pendingAssistantId],
             );
 
             return;
         }
 
-        if (audio) {
-            setPhase(requestSessionId, 'thinking');
+        let streamError: string | null = null;
+        let persistedUser = false;
+        let completedSession: TriageSession | null = null;
+        let assistantId: number | undefined;
+        let streamingId = pendingAssistantId;
+
+        await readSse(response, (data) => {
+            if (data.event === 'error' && typeof data.message === 'string') {
+                streamError = data.message;
+
+                return;
+            }
+
+            if (
+                data.event === 'hop' &&
+                typeof data.hop === 'string' &&
+                data.hop
+            ) {
+                pushHop(
+                    data.hop,
+                    typeof data.detail === 'string' && data.detail
+                        ? data.detail
+                        : undefined,
+                );
+                setPhase(requestSessionId, phaseFromHop(data.hop));
+                void nextTick(pinThreadToEnd);
+
+                return;
+            }
+
+            if (data.event === 'user') {
+                const incoming = asTriageMessage(data.message);
+
+                if (incoming) {
+                    persistedUser = true;
+                    patchActiveMessage(pendingId, incoming);
+                }
+
+                return;
+            }
+
+            if (data.event === 'token' && typeof data.token === 'string') {
+                setPhase(requestSessionId, 'thinking');
+                appendActiveToken(streamingId, data.token);
+
+                return;
+            }
+
+            if (data.event === 'assistant') {
+                const incoming = asTriageMessage(data.message);
+
+                if (incoming) {
+                    if (typingMessageId.value === streamingId) {
+                        typingMessageId.value = incoming.id;
+                    }
+
+                    patchActiveMessage(streamingId, incoming);
+                    streamingId = incoming.id;
+                    inFlightAssistantId.value = incoming.id;
+                    assistantId = incoming.id;
+                }
+
+                return;
+            }
+
+            if (data.event === 'session') {
+                const session = data.session as TriageSession | undefined;
+
+                if (session?.id) {
+                    completedSession = session;
+                }
+            }
+        });
+
+        if (!streamError && !completedSession) {
+            streamError = 'Could not send message';
         }
 
-        await applyCompletedTurn(
-            data.session as TriageSession,
+        if (streamError) {
+            toast.error(streamError);
+            resetTurnUi();
+            rollbackOptimisticMessage(
+                requestSessionId,
+                persistedUser ? pendingAssistantId : pendingId,
+                persistedUser ? undefined : text || undefined,
+                persistedUser ? [] : [pendingAssistantId],
+            );
+
+            return;
+        }
+
+        resetTurnUi();
+
+        if (completedSession) {
+            await applyCompletedTurn(completedSession, requestSessionId, {
+                assistantId,
+            });
+        }
+    } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+            resetTurnUi();
+
+            return;
+        }
+
+        const message =
+            error instanceof Error ? error.message : 'Could not send message';
+        toast.error(message);
+        resetTurnUi();
+        rollbackOptimisticMessage(
             requestSessionId,
-            {
-                audioBase64: data.audio_base64,
-                assistantId: data.assistant_message?.id as number | undefined,
-            },
+            pendingId,
+            text || undefined,
+            [pendingAssistantId],
         );
     } finally {
+        resetTurnUi();
+
         if (requestSessionId > 0) {
             setPhase(requestSessionId, 'idle');
         } else {
@@ -1475,22 +2071,26 @@ async function archiveSession() {
             'X-CSRF-TOKEN': csrf.value,
         },
     });
-    const data = await response.json();
+    const data = await response.json().catch(() => ({}));
 
-    if (response.ok) {
-        const archivedId = data.session.id as number;
-        ownSessions.value = ownSessions.value.filter(
-            (s) => s.id !== archivedId,
+    if (!response.ok) {
+        toast.error(
+            (data as { message?: string }).message || 'Could not archive triage',
         );
-        sessionCache.value = Object.fromEntries(
-            Object.entries(sessionCache.value).filter(
-                ([id]) => Number(id) !== archivedId,
-            ),
-        );
-        setPhase(archivedId, 'idle');
-        startNewTriage();
-        toast.success('Triage archived');
+
+        return;
     }
+
+    const archivedId = data.session.id as number;
+    ownSessions.value = ownSessions.value.filter((s) => s.id !== archivedId);
+    sessionCache.value = Object.fromEntries(
+        Object.entries(sessionCache.value).filter(
+            ([id]) => Number(id) !== archivedId,
+        ),
+    );
+    setPhase(archivedId, 'idle');
+    startNewTriage();
+    toast.success('Triage archived');
 }
 
 async function shareSession() {
@@ -1505,28 +2105,43 @@ async function shareSession() {
             'X-CSRF-TOKEN': csrf.value,
         },
     });
-    const data = await response.json();
+    const data = await response.json().catch(() => ({}));
 
-    if (response.ok) {
-        putSessionCache(data.session);
-
-        if (viewingSessionId.value === data.session.id) {
-            active.value = data.session;
-        }
-
-        ownSessions.value = ownSessions.value.map((s) =>
-            s.id === data.session.id
-                ? { ...data.session, messages: undefined }
-                : s,
+    if (!response.ok) {
+        toast.error(
+            (data as { message?: string }).message || 'Could not share triage',
         );
-        toast.success('Shared with doctors');
+
+        return;
     }
+
+    putSessionCache(data.session);
+
+    if (viewingSessionId.value === data.session.id) {
+        active.value = data.session;
+    }
+
+    ownSessions.value = ownSessions.value.map((s) =>
+        s.id === data.session.id
+            ? { ...data.session, messages: undefined }
+            : s,
+    );
+    toast.success('Shared with doctors');
 }
 
+onMounted(() => {
+    hydrated.value = true;
+    autoplay.value = window.localStorage.getItem(AUTOPLAY_KEY) === '1';
+});
+
 onUnmounted(() => {
+    pageUnmounted = true;
+    streamAbort?.abort();
+    streamAbort = null;
     endColdStartWatch();
     window.removeEventListener('keydown', onRecordingKeydown);
     micPointerId = null;
+    stopTypewriterLoop();
 
     if (recording.value) {
         mediaRecorder?.stop();
@@ -1550,6 +2165,7 @@ if (props.activeSessionId) {
 }
 
 defineOptions({
+    inheritAttrs: false,
     layout: {
         breadcrumbs: [{ title: 'Voice Triage', href: triage() }],
     },
@@ -1557,13 +2173,15 @@ defineOptions({
 </script>
 
 <template>
-    <Head title="Voice Triage" />
-
     <div class="space-y-6">
+        <Head title="Voice Triage" />
+
+        <FeatureIntroDialog feature="triage" />
+
         <PageHeader
-            tag="MedASR triage"
+            tag="Voice triage"
             title="Voice Triage"
-            description="Conversational symptom intake with voice."
+            description="Describe symptoms by voice or text. Hold the mic to talk, or type if the microphone is unavailable."
         />
 
         <div class="grid items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
@@ -1625,15 +2243,21 @@ defineOptions({
                                         }}
                                     </span>
                                     <span
-                                        class="mt-1.5 flex items-center text-xs text-muted-foreground/80"
+                                        class="mt-1.5 flex items-center gap-2 text-xs text-muted-foreground/80"
                                     >
                                         <Spinner
                                             v-if="
                                                 (phaseBySessionId[s.id] ??
                                                     'idle') !== 'idle'
                                             "
-                                            class="mr-1.5 size-3"
+                                            class="size-3"
                                         />
+                                        <AnnotationPill
+                                            v-if="s.shared_at"
+                                            variant="teal"
+                                        >
+                                            Shared
+                                        </AnnotationPill>
                                         {{
                                             formatRelativeTime(
                                                 s.last_message_at ||
@@ -1679,8 +2303,11 @@ defineOptions({
                                             }}
                                         </span>
                                         <span
-                                            class="mt-1.5 block text-xs text-muted-foreground/80"
+                                            class="mt-1.5 flex items-center gap-2 text-xs text-muted-foreground/80"
                                         >
+                                            <AnnotationPill variant="teal">
+                                                Shared
+                                            </AnnotationPill>
                                             {{
                                                 formatRelativeTime(
                                                     s.last_message_at ||
@@ -1732,6 +2359,24 @@ defineOptions({
                                 >
                                     {{ active.locale }}
                                 </AnnotationPill>
+                                <AnnotationPill
+                                    v-if="active.shared_at"
+                                    variant="teal"
+                                >
+                                    Shared with physician
+                                </AnnotationPill>
+                                <AnnotationPill
+                                    v-if="recording"
+                                    variant="coral"
+                                >
+                                    Listening
+                                </AnnotationPill>
+                                <AnnotationPill
+                                    v-else-if="isActivePending"
+                                    variant="amber"
+                                >
+                                    {{ phaseLabel || 'Working' }}
+                                </AnnotationPill>
                             </div>
                         </div>
 
@@ -1748,7 +2393,10 @@ defineOptions({
                                 "
                                 @click="toggleAutoplay"
                             >
-                                <Volume2 v-if="autoplay" class="size-4" />
+                                <Volume2
+                                    v-if="hydrated && autoplay"
+                                    class="size-4"
+                                />
                                 <VolumeX v-else class="size-4" />
                             </Button>
 
@@ -1775,12 +2423,22 @@ defineOptions({
                                     <DropdownMenuItem
                                         v-if="
                                             !isPhysician &&
-                                            active.status === 'active'
+                                            active.status === 'active' &&
+                                            !active.shared_at
                                         "
                                         @click="shareSession"
                                     >
                                         <Share2 />
                                         Share with doctor
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem
+                                        v-else-if="
+                                            !isPhysician && active.shared_at
+                                        "
+                                        disabled
+                                    >
+                                        <Share2 />
+                                        Shared with doctor
                                     </DropdownMenuItem>
                                     <DropdownMenuItem
                                         v-if="active.status === 'active'"
@@ -1824,7 +2482,9 @@ defineOptions({
                         class="flex min-h-0 flex-1 flex-col gap-0 overflow-hidden p-0"
                     >
                         <div
+                            ref="threadScroller"
                             class="min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-4 md:px-6"
+                            @scroll.passive="onThreadScroll"
                         >
                             <p
                                 v-if="
@@ -1887,18 +2547,109 @@ defineOptions({
                                             · voice
                                         </template>
                                     </p>
+                                    <ol
+                                        v-if="
+                                            item.message.role === 'assistant' &&
+                                            inFlightAssistantId ===
+                                                item.message.id &&
+                                            hopLog.length
+                                        "
+                                        class="space-y-2 rounded-2xl border border-border bg-muted/40 px-3.5 py-2.5"
+                                        aria-live="polite"
+                                    >
+                                        <li
+                                            v-for="(step, i) in hopLog"
+                                            :key="`${i}-${step.hop}`"
+                                            class="flex items-start gap-2"
+                                        >
+                                            <span
+                                                class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border"
+                                                :class="
+                                                    i === 0
+                                                        ? 'border-primary bg-primary/15 text-primary'
+                                                        : 'border-line-strong bg-paper-blue text-ink-soft'
+                                                "
+                                            >
+                                                <LoaderCircle
+                                                    v-if="i === 0"
+                                                    class="size-3.5 animate-spin"
+                                                    aria-hidden="true"
+                                                />
+                                                <Check
+                                                    v-else
+                                                    class="size-3.5"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
+                                            <span>
+                                                <span
+                                                    class="block text-sm font-semibold"
+                                                    :class="
+                                                        i === 0
+                                                            ? 'text-primary'
+                                                            : 'text-ink'
+                                                    "
+                                                >
+                                                    {{ step.hop }}
+                                                </span>
+                                                <span
+                                                    v-if="step.detail"
+                                                    class="mt-0.5 block text-xs leading-relaxed text-muted-foreground"
+                                                >
+                                                    {{ step.detail }}
+                                                </span>
+                                            </span>
+                                        </li>
+                                    </ol>
                                     <div
-                                        class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap"
+                                        v-if="
+                                            item.message.role === 'user' ||
+                                            (typingMessageId === item.message.id
+                                                ? typedVisible.length > 0
+                                                : item.message.content) ||
+                                            !(
+                                                isLiveAssistant(item.message) &&
+                                                hopLog.length
+                                            )
+                                        "
+                                        class="w-fit max-w-full rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed"
                                         :class="
                                             item.message.role === 'user'
-                                                ? 'ml-auto bg-primary text-primary-foreground'
+                                                ? 'ml-auto whitespace-pre-wrap bg-primary text-primary-foreground'
                                                 : 'border border-border bg-card text-card-foreground'
                                         "
                                     >
-                                        {{ item.message.content }}
+                                        <ChatMarkdown
+                                            v-if="
+                                                item.message.role ===
+                                                'assistant'
+                                            "
+                                            :source="
+                                                visibleMessageContent(
+                                                    item.message,
+                                                )
+                                            "
+                                        />
+                                        <template v-else>{{
+                                            visibleMessageContent(item.message)
+                                        }}</template
+                                        ><span
+                                            v-if="
+                                                !prefersReducedMotion &&
+                                                typingMessageId ===
+                                                    item.message.id &&
+                                                typedVisible.length > 0
+                                            "
+                                            class="triage-teletype-caret"
+                                            aria-hidden="true"
+                                        />
                                     </div>
                                     <div
-                                        v-if="item.message.role === 'assistant'"
+                                        v-if="
+                                            item.message.role === 'assistant' &&
+                                            item.message.content &&
+                                            !isLiveAssistant(item.message)
+                                        "
                                         class="flex items-center gap-0.5 pt-0.5"
                                     >
                                         <Button
@@ -1995,11 +2746,18 @@ defineOptions({
                                             </DropdownMenuContent>
                                         </DropdownMenu>
                                     </div>
+                                    <TriagePromptCard
+                                        v-if="isPromptCardMessage(item.message)"
+                                        class="mt-2"
+                                        :prompts="item.message.prompts ?? []"
+                                        :disabled="!canCompose"
+                                        @submit="sendMessage({ text: $event })"
+                                    />
                                 </div>
                             </template>
 
                             <div
-                                v-if="phaseLabel"
+                                v-if="phaseLabel && !hopLog.length"
                                 class="w-full max-w-prose space-y-2"
                             >
                                 <p

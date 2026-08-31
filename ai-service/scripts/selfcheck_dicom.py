@@ -59,17 +59,17 @@ def main() -> None:
         assert jpeg[:2] == b"\xff\xd8", name
         print(f"OK {name} slices={meta.get('slice_count')} tag={meta.get('modality_tag')} jpeg={len(jpeg)}")
 
-    from app.api import _build_volume_montage
+    from app.api import _extract_volume_slices
 
     for name, data in payloads[:3] if len(payloads) >= 3 else payloads:
-        b64, meta = _build_volume_montage(data, name, "application/dicom")
-        assert b64, (name, meta)
+        b64s, meta = _extract_volume_slices(data, name, "application/dicom")
+        assert b64s, (name, meta)
         assert meta.get("error") is None, (name, meta)
         import base64
 
-        jpeg = base64.b64decode(b64)
+        jpeg = base64.b64decode(b64s[0])
         assert jpeg[:2] == b"\xff\xd8", (name, jpeg[:16], meta)
-        print(f"OK montage {name} meta_slices={meta.get('slice_count')}")
+        print(f"OK slices {name} n={len(b64s)} meta_slices={meta.get('slice_count')}")
 
     print("ALL DICOM SELFCHECKS PASSED")
 

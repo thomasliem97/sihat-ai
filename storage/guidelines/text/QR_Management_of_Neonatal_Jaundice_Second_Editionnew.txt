@@ -1,0 +1,1218 @@
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+ALGORITHM ON MANAGEMENT OF NEONATAL JAUNDICE
+(Second Edition)
+MANAGEMENT OF
+NEONATAL JAUNDICE
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Malaysian Paediatric
+Association
+Perinatal Society of
+Malaysia
+QUICK REFERENCE
+FOR HEALTHCARE PROVIDERS
+ 
+G6PD Deficiency
+ 
+JaundiceYes
+No
+Admit and observe 
+Phototherapy ± ET
+Jaundice resolved
+Monitor as scheduled
+Discharge
+and follow-up
+Assess
+risk factors
+Need 
+admission
+Monitor as
+scheduled* 
+Need treatment
+Jaundice 
+resolved
+Yes No
+Yes
+No
+Yes
+No
+NNJ
+>24 hours of life ≤24 hours of life
+Rebound
+jaundice
+Admit
+*If jaundice persists beyond 14 days in term babies & 21 days in preterm babies, further 
+evaluation for prolonged jaundice is needed.
+1 6
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+1. Neonatal jaundice (NNJ) is common in newborn babies. Severe NNJ can lead to acute & 
+chronic bilirubin encephalopathy. 
+2. NNJ within 24 hours of life is abnormal and needs urgent attention.
+3. Assess all babies for jaundice at every opportunity. Methods include visual assessment, 
+transcutaneous bilirubinometer (TcB) or total serum bilirubin (TSB)
+4. The adequacy of breastfeeding, weight & hydration status of all babies should be assessed 
+during the first week of life. Refer babies with weight loss ≥7% of birth weight for further 
+evaluation.
+5. Screen all babies for Glucose-6-phosphate dehydrogenase (G6PD) deficiency. Babies with 
+G6PD deficient should be admitted for the first five days of life. 
+6. Start phototherapy when TSB reaches the phototherapy threshold. The threshold is lower 
+in preterm & low birth weight babies.
+7. Consider exchange transfusion (ET) when TSB reaches the ET threshold. This should 
+follow a standardised protocol & be supervised by experienced personnel.
+8. Babies discharged <48 hours after birth should be seen by a healthcare provider in an 
+ambulatory setting or at home within 24 hours of discharge.
+9. Continue breastfeeding in babies with jaundice. Provide adequate lactation support to all 
+mothers, particularly those with preterm babies. 
+10. Babies with acute bilirubin encephalopathy (ABE) should have long-term follow-up to 
+monitor for neurodevelopmental sequelae. Auditory Brainstem Response testing should be 
+done within the first three months of life.
+KEY MESSAGES
+This Quick Reference (QR) provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Neonatal 
+Jaundice (Second Edition). 
+Details of the evidence supporting these recommendations can be found in the above  CPG, 
+available on the following websites: 
+ Ministry of Health Malaysia: 
+http://www.moh.gov.my
+ Academy of Medicine Malaysia: http://www.acadmed.org.my
+ Malaysian Paediatric Association:  http://www.mpaweb.org.my
+ Perinatal Society of Malaysia: http://www.perinatal-malaysia.org
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Health Technology Assessment Section
+Medical Development Division, Ministry of Health Malaysia
+4th Floor, Block E1, Parcel E, 62590 Putrajaya
+Tel: 603-8883 1246 E-mail: htamalaysia@moh.gov.my
+•  This QR & its CPG do not address prolonged jaundice.
+Risk factors for severe NNJ
+• Prematurity
+• Low birth weight
+• Jaundice in the first 24 hours of life
+• Mother with Blood Group O or Rhesus 
+ Negative
+• G6PD deficiency
+• Rapid rise of total serum bilirubin
+• Sepsis
+• Excessive weight loss
+• High predischarge bilirubin level
+• Cephalohaematoma or bruises
+• Lactation failure in exclusive 
+ breastfeeding
+• Baby of diabetic mothers
+• Siblings with history of severe NNJ
+1. Babies with gestational age 35 - 37 weeks WITH clinical risk factors in (A) 
+& predischarge TcB/TSB in the following risk zones:
+2. Babies with gestational age 35 - 37 weeks with NO clinical risk factors in 
+(A) OR with gestational age ≥38 weeks WITH clinical risk factors in (A) & 
+predischarge TcB/TSB in the following risk zones:
+3. Babies with gestational age ≥38 weeks with NO clinical risk factors in (A) 
+& predischarge TcB/TSB in the following risk zones:
+Predischarge 
+TcB /TSB Risk 
+Zone
+High Risk
+High 
+Intermediate Risk
+Low Intermediate 
+Risk
+Low Risk
+Interval to 
+repeat TSB
+4 - 24 hours
+ 24 hours
+If jaundiced at       
+follow-up
+If jaundiced at 
+follow-up
+Action
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+If discharging in <72 hours, follow-up within 2 days
+If discharging in <72 hours, follow-up within 2 days
+Predischarge 
+TcB /TSB Risk 
+Zone
+High Risk
+High 
+Intermediate Risk
+Low Intermediate 
+Risk
+Low Risk
+Interval to 
+repeat TSB
+4 - 24 hours
+ 2 days
+If jaundiced at    
+follow-up
+If jaundiced at 
+follow-up
+Action
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+Follow-up in 2 days
+If discharging in <72 hours, follow-up in 2 - 3 days
+If discharging in <72 hours, follow-up in 2 - 3 days
+Predischarge 
+TcB /TSB Risk 
+Zone
+High Risk
+High 
+Intermediate Risk
+Low Intermediate 
+Risk
+Low Risk
+Interval to 
+repeat TSB
+4 - 8 hours
+4 - 24 hours
+Within 2 days at      
+follow-up
+If jaundiced at 
+follow-up
+Action
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+If discharging in <72 hours, follow-up within 2 days
+If discharging in <72 hours, follow-up within 2 days
+5 2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+• Bilirubin-Induced Neurologic Dysfunction (BIND) score may be used in babies with 
+severe NNJ to assess the severity & progression of ABE.
+Home visits by healthcare providers during postnatal period
+• Home visits should be done for all newborns on day 1, 2, 3, 4, 6, 8, 10 & 20. 
+• If jaundice is detected, TSB should be measured & managed accordingly. 
+Indications for referral to hospital
+• Onset of jaundice within 24 hours of life
+• Rapidly rising TSB of greater than 6 mg/dL/day (103 µmol/L/day) 
+• Clinical jaundice below umbilicus (if till the soles of the feet - urgent referral for  
+ possibility of ET)
+• G6PD deficiency (if not previously hospitalised)
+• Clinical symptoms/signs suggestive of sepsis
+• G6PD test (if not screened)
+• Mother’s & baby’s blood group
+• Direct Coombs test
+• Full blood count ± peripheral blood picture
+• Reticulocyte count
+• Septic workup (if infection is suspected)
+BIND Score
+Laboratory investigations to be considered for severe or early-onset NNJ
+Clinical Signs
+Mental Status
+ Normal
+ Sleepy but arousable; decreased feeding
+ Lethargy, poor suck &/or irritable/jittery with strong suck
+ Semi-coma, apnoea, unable to feed, seizures, coma
+Muscle Tone
+ Normal
+ Persistent mild to moderate hypotonia
+ Mild to moderate hypertonia alternating with hypotonia, beginning  
+ arching of neck & trunk on stimulation
+ Persistent retrocollis & opisthotonus - bicycling or twitching of hands & 
+feet 
+Cry Pattern
+ Normal
+ High pitched when aroused
+ Shrill, difficult to console
+ Inconsolable crying or cry weak or absent 
+BIND Score
+0
+1
+2
+3
+0
+1
+2
+3
+0
+1
+2
+3
+TOTAL BIND SCORE
+Advanced ABE (score 7 - 9): urgent bilirubin reduction intervention is needed to prevent 
+further brain damage & reduce the severity of sequelae
+Moderate ABE (score 4 - 6): urgent bilirubin reduction intervention is likely to reverse this 
+acute damage
+Mild ABE (score 1 - 3): subtle signs of ABE
+Predischarge screening
+• Predischarge screening should be used to prevent severe NNJ in late preterm & 
+term babies.
+ Clinical risk factor assessment or/& predischarge bilirubin levels (TcB or TSB) 
+can be used as predischarge screening.
+A. Clinical risk factors to be considered with predischarge TcB or TSB levels:
+1. Isoimmune (ABO or Rhesus) haemolytic disease, G6PD deficiency or other 
+haemolytic diseases
+2. Exclusive breastfeeding, if nursing is not going well, &/or weight loss is >8 - 
+10%
+3. Previous sibling with jaundice
+4. Cephalhaematoma or significant bruising
+5. East Asian race
+Nomogram for Predischarge Screening
+Nomogram for designation of risk at ≥36 weeks’ gestational age with birth 
+weight ≥2000 g or ≥35 weeks’ gestational age with birth weight ≥2500 g
+3 4
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+*Jaundice appearing within 24 hours of life is abnormal & needs further evaluation.
+TSB levels for phototherapy & ET in babies ≥35 weeks gestation
+a. Start intensive phototherapy at a TSB level of 3 mg/dL (51 µmol/L) above the 
+level for conventional phototherapy or when TSB increasing at >0.5 mg/dL (8.5 
+µmol/L) per hour
+b. Risk factors are isoimmune haemolytic disease, G6PD deficiency, neonatal 
+encephalopathy & sepsis.
+*Jaundice appearing within 24 hours of life is abnormal & needs further evaluation.
+Requirements for effective phototherapy
+• Irradiance of phototherapy units should be checked regularly
+ Irradiance of minimum of 15 µW/cm²/nm for conventional phototherapy
+ Irradiance of minimum of 30 µW/cm²/nm for intensive phototherapy              
+• Distance of the light source not exceeding 30 - 50 cm from the baby
+Care of babies during phototherapy
+• Babies should be regularly monitored for vital signs including temperature & 
+hydration status.
+• Babies should be adequately exposed.
+• Babies’ eyes should be covered to prevent retinal damage.
+• Breastfeeding should be continued.
+ET guidelines for babies ≥35 weeks gestation
+• ET if baby shows signs of ABE or if TSB ≥5 mg/dL (85 µmol/L) above the ET 
+levels.
+• ET if TSB rises to ET levels despite intensive phototherapy in hospitalised
+ babies. 
+• For readmitted babies without signs of ABE, if the TSB is above the ET levels, 
+repeat TSB every 2 - 3 hours & consider ET if the TSB remains above the levels 
+indicated after intensive phototherapy for 6 hours.
+ 
+Hours
+of life
+<24*
+24
+48
+72
+96
+>96
+Conventional
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+9 (154)
+12 (205)
+15 (257)
+17 (291)
+18 (308)
+Conventional
+Phototherapy -
+TSB in mg/dL
+(µmol/L)
+5 (86)
+8 (137)
+10 (171)
+11 (188)
+12 (205)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+15 (257)
+17 (291)
+18.5 (316)
+19 (325)
+19 (325)
+Conventional
+Phototherapy -
+TSB in mg/dL
+(µmol/L)
+7 (120)
+10 (171)
+12 (205)
+14 (239)
+15 (257)
+Age LOW RISK
+>38 weeks & well
+HIGH RISK
+35 - 37 weeks + 6 days
+with risk factors
+MEDIUM RISK
+>38 weeks with risk factors
+or 
+35 - 37 weeks + 6 days & well
+ET -
+TSB in
+mg/dL
+(µmol/L)
+19 (325)
+22 (376)
+24 (410)
+25 (428)
+25 (428)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+17 (291)
+19 (325)
+21 (359)
+22.5 (385)
+22.5 (385)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.7 (80)
+6.5 (110)
+8.8 (150)
+8.8 (150)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.2 (140)
+11.1 (190)
+14.6 (250)
+14.6 (250)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.1 (70)
+6.5 (110)
+8.2 (140)
+8.2 (140)
+23 weeks 24 weeks 25 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+7.6 (130)
+10.5 (180)
+13.5 (230)
+13.5 (230)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+7.9 (135)
+10.9 185)
+14.0 (240)
+14.0 (240)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.1 (70)
+5.9 (100)
+7.9 (130)
+7.6 (130)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.3 (90)
+7.6 (130)
+10.5 (180)
+10.5 (180)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.8 (150)
+12.3 (210)
+16.4 (280)
+16.4 (280)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.7 (80)
+7.6 (130)
+10.0 (170)
+10.0 (170)
+26 weeks 27 weeks 28 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.2 (140)
+11.7 (200)
+15.2 (260)
+15.2 (260)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.2 (140)
+12.0 (205)
+15.8 (270)
+15.8 (270)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.7 (80)
+7.0 (120)
+9.4 (160)
+9.4 (160)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.9 (100)
+9.1 (155)
+12.3 (210)
+12.3 (210)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+9.1 (155)
+13.5 (230)
+18.1 (310)
+18.1 (310)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.6 (95)
+8.5 (145)
+11.7 (200)
+11.7 (200)
+29 weeks 30 weeks 31 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.8 (150)
+12.9 (220)
+17.0 (290)
+17.0 (290)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.8 150)
+12.9 (220)
+17.5 (300)
+17.5 (300)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.3 (90)
+8.2 (140)
+11.1 (190)
+11.1 (190)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+6.5 110)
+10.0 (170)
+14.6 (240)
+14.6 (240)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+10.0 (170)
+14.6 (250)
+20.0 (340)
+20.0 (340)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.9 (100)
+10.0 (170)
+13.5 (230)
+13.5 (230)
+32 weeks 33 weeks 34 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+9.4 (160)
+14.0 (240)
+18.7 (320)
+18.7 (320)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+9.4 (160)
+14.3 (245)
+19.3 (330)
+19.3 (330)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.9 (100)
+9.4 (160)
+12.9 (220)
+12.9 (220)
+TSB levels for phototherapy & ET in
+babies 23 - 34 weeks gestation
+3 4
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+*Jaundice appearing within 24 hours of life is abnormal & needs further evaluation.
+TSB levels for phototherapy & ET in babies ≥35 weeks gestation
+a. Start intensive phototherapy at a TSB level of 3 mg/dL (51 µmol/L) above the 
+level for conventional phototherapy or when TSB increasing at >0.5 mg/dL (8.5 
+µmol/L) per hour
+b. Risk factors are isoimmune haemolytic disease, G6PD deficiency, neonatal 
+encephalopathy & sepsis.
+*Jaundice appearing within 24 hours of life is abnormal & needs further evaluation.
+Requirements for effective phototherapy
+• Irradiance of phototherapy units should be checked regularly
+ Irradiance of minimum of 15 µW/cm²/nm for conventional phototherapy
+ Irradiance of minimum of 30 µW/cm²/nm for intensive phototherapy              
+• Distance of the light source not exceeding 30 - 50 cm from the baby
+Care of babies during phototherapy
+• Babies should be regularly monitored for vital signs including temperature & 
+hydration status.
+• Babies should be adequately exposed.
+• Babies’ eyes should be covered to prevent retinal damage.
+• Breastfeeding should be continued.
+ET guidelines for babies ≥35 weeks gestation
+• ET if baby shows signs of ABE or if TSB ≥5 mg/dL (85 µmol/L) above the ET 
+levels.
+• ET if TSB rises to ET levels despite intensive phototherapy in hospitalised
+ babies. 
+• For readmitted babies without signs of ABE, if the TSB is above the ET levels, 
+repeat TSB every 2 - 3 hours & consider ET if the TSB remains above the levels 
+indicated after intensive phototherapy for 6 hours.
+ 
+Hours
+of life
+<24*
+24
+48
+72
+96
+>96
+Conventional
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+9 (154)
+12 (205)
+15 (257)
+17 (291)
+18 (308)
+Conventional
+Phototherapy -
+TSB in mg/dL
+(µmol/L)
+5 (86)
+8 (137)
+10 (171)
+11 (188)
+12 (205)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+15 (257)
+17 (291)
+18.5 (316)
+19 (325)
+19 (325)
+Conventional
+Phototherapy -
+TSB in mg/dL
+(µmol/L)
+7 (120)
+10 (171)
+12 (205)
+14 (239)
+15 (257)
+Age LOW RISK
+>38 weeks & well
+HIGH RISK
+35 - 37 weeks + 6 days
+with risk factors
+MEDIUM RISK
+>38 weeks with risk factors
+or 
+35 - 37 weeks + 6 days & well
+ET -
+TSB in
+mg/dL
+(µmol/L)
+19 (325)
+22 (376)
+24 (410)
+25 (428)
+25 (428)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+17 (291)
+19 (325)
+21 (359)
+22.5 (385)
+22.5 (385)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.7 (80)
+6.5 (110)
+8.8 (150)
+8.8 (150)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.2 (140)
+11.1 (190)
+14.6 (250)
+14.6 (250)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.1 (70)
+6.5 (110)
+8.2 (140)
+8.2 (140)
+23 weeks 24 weeks 25 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+7.6 (130)
+10.5 (180)
+13.5 (230)
+13.5 (230)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+7.9 (135)
+10.9 185)
+14.0 (240)
+14.0 (240)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.1 (70)
+5.9 (100)
+7.9 (130)
+7.6 (130)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.3 (90)
+7.6 (130)
+10.5 (180)
+10.5 (180)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.8 (150)
+12.3 (210)
+16.4 (280)
+16.4 (280)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.7 (80)
+7.6 (130)
+10.0 (170)
+10.0 (170)
+26 weeks 27 weeks 28 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.2 (140)
+11.7 (200)
+15.2 (260)
+15.2 (260)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.2 (140)
+12.0 (205)
+15.8 (270)
+15.8 (270)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+4.7 (80)
+7.0 (120)
+9.4 (160)
+9.4 (160)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.9 (100)
+9.1 (155)
+12.3 (210)
+12.3 (210)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+9.1 (155)
+13.5 (230)
+18.1 (310)
+18.1 (310)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.6 (95)
+8.5 (145)
+11.7 (200)
+11.7 (200)
+29 weeks 30 weeks 31 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.8 (150)
+12.9 (220)
+17.0 (290)
+17.0 (290)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+8.8 150)
+12.9 (220)
+17.5 (300)
+17.5 (300)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.3 (90)
+8.2 (140)
+11.1 (190)
+11.1 (190)
+Hours
+of life
+<24*
+24
+48
+72
+96
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+6.5 110)
+10.0 (170)
+14.6 (240)
+14.6 (240)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+10.0 (170)
+14.6 (250)
+20.0 (340)
+20.0 (340)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.9 (100)
+10.0 (170)
+13.5 (230)
+13.5 (230)
+32 weeks 33 weeks 34 weeksAge
+ET -
+TSB in
+mg/dL
+(µmol/L)
+9.4 (160)
+14.0 (240)
+18.7 (320)
+18.7 (320)
+ET -
+TSB in
+mg/dL
+(µmol/L)
+9.4 (160)
+14.3 (245)
+19.3 (330)
+19.3 (330)
+Phototherapy -
+TSB in mg/dL 
+(µmol/L)
+5.9 (100)
+9.4 (160)
+12.9 (220)
+12.9 (220)
+TSB levels for phototherapy & ET in
+babies 23 - 34 weeks gestation
+5 2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+• Bilirubin-Induced Neurologic Dysfunction (BIND) score may be used in babies with 
+severe NNJ to assess the severity & progression of ABE.
+Home visits by healthcare providers during postnatal period
+• Home visits should be done for all newborns on day 1, 2, 3, 4, 6, 8, 10 & 20. 
+• If jaundice is detected, TSB should be measured & managed accordingly. 
+Indications for referral to hospital
+• Onset of jaundice within 24 hours of life
+• Rapidly rising TSB of greater than 6 mg/dL/day (103 µmol/L/day) 
+• Clinical jaundice below umbilicus (if till the soles of the feet - urgent referral for  
+ possibility of ET)
+• G6PD deficiency (if not previously hospitalised)
+• Clinical symptoms/signs suggestive of sepsis
+• G6PD test (if not screened)
+• Mother’s & baby’s blood group
+• Direct Coombs test
+• Full blood count ± peripheral blood picture
+• Reticulocyte count
+• Septic workup (if infection is suspected)
+BIND Score
+Laboratory investigations to be considered for severe or early-onset NNJ
+Clinical Signs
+Mental Status
+ Normal
+ Sleepy but arousable; decreased feeding
+ Lethargy, poor suck &/or irritable/jittery with strong suck
+ Semi-coma, apnoea, unable to feed, seizures, coma
+Muscle Tone
+ Normal
+ Persistent mild to moderate hypotonia
+ Mild to moderate hypertonia alternating with hypotonia, beginning  
+ arching of neck & trunk on stimulation
+ Persistent retrocollis & opisthotonus - bicycling or twitching of hands & 
+feet 
+Cry Pattern
+ Normal
+ High pitched when aroused
+ Shrill, difficult to console
+ Inconsolable crying or cry weak or absent 
+BIND Score
+0
+1
+2
+3
+0
+1
+2
+3
+0
+1
+2
+3
+TOTAL BIND SCORE
+Advanced ABE (score 7 - 9): urgent bilirubin reduction intervention is needed to prevent 
+further brain damage & reduce the severity of sequelae
+Moderate ABE (score 4 - 6): urgent bilirubin reduction intervention is likely to reverse this 
+acute damage
+Mild ABE (score 1 - 3): subtle signs of ABE
+Predischarge screening
+• Predischarge screening should be used to prevent severe NNJ in late preterm & 
+term babies.
+ Clinical risk factor assessment or/& predischarge bilirubin levels (TcB or TSB) 
+can be used as predischarge screening.
+A. Clinical risk factors to be considered with predischarge TcB or TSB levels:
+1. Isoimmune (ABO or Rhesus) haemolytic disease, G6PD deficiency or other 
+haemolytic diseases
+2. Exclusive breastfeeding, if nursing is not going well, &/or weight loss is >8 - 
+10%
+3. Previous sibling with jaundice
+4. Cephalhaematoma or significant bruising
+5. East Asian race
+Nomogram for Predischarge Screening
+Nomogram for designation of risk at ≥36 weeks’ gestational age with birth 
+weight ≥2000 g or ≥35 weeks’ gestational age with birth weight ≥2500 g
+
+1 6
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+1. Neonatal jaundice (NNJ) is common in newborn babies. Severe NNJ can lead to acute & 
+chronic bilirubin encephalopathy. 
+2. NNJ within 24 hours of life is abnormal and needs urgent attention.
+3. Assess all babies for jaundice at every opportunity. Methods include visual assessment, 
+transcutaneous bilirubinometer (TcB) or total serum bilirubin (TSB)
+4. The adequacy of breastfeeding, weight & hydration status of all babies should be assessed 
+during the first week of life. Refer babies with weight loss ≥7% of birth weight for further 
+evaluation.
+5. Screen all babies for Glucose-6-phosphate dehydrogenase (G6PD) deficiency. Babies with 
+G6PD deficient should be admitted for the first five days of life. 
+6. Start phototherapy when TSB reaches the phototherapy threshold. The threshold is lower 
+in preterm & low birth weight babies.
+7. Consider exchange transfusion (ET) when TSB reaches the ET threshold. This should 
+follow a standardised protocol & be supervised by experienced personnel.
+8. Babies discharged <48 hours after birth should be seen by a healthcare provider in an 
+ambulatory setting or at home within 24 hours of discharge.
+9. Continue breastfeeding in babies with jaundice. Provide adequate lactation support to all 
+mothers, particularly those with preterm babies. 
+10. Babies with acute bilirubin encephalopathy (ABE) should have long-term follow-up to 
+monitor for neurodevelopmental sequelae. Auditory Brainstem Response testing should be 
+done within the first three months of life.
+KEY MESSAGES
+This Quick Reference (QR) provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of Neonatal 
+Jaundice (Second Edition). 
+Details of the evidence supporting these recommendations can be found in the above  CPG, 
+available on the following websites: 
+ Ministry of Health Malaysia: 
+http://www.moh.gov.my
+ Academy of Medicine Malaysia: http://www.acadmed.org.my
+ Malaysian Paediatric Association:  http://www.mpaweb.org.my
+ Perinatal Society of Malaysia: http://www.perinatal-malaysia.org
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Health Technology Assessment Section
+Medical Development Division, Ministry of Health Malaysia
+4th Floor, Block E1, Parcel E, 62590 Putrajaya
+Tel: 603-8883 1246 E-mail: htamalaysia@moh.gov.my
+•  This QR & its CPG do not address prolonged jaundice.
+Risk factors for severe NNJ
+• Prematurity
+• Low birth weight
+• Jaundice in the first 24 hours of life
+• Mother with Blood Group O or Rhesus 
+ Negative
+• G6PD deficiency
+• Rapid rise of total serum bilirubin
+• Sepsis
+• Excessive weight loss
+• High predischarge bilirubin level
+• Cephalohaematoma or bruises
+• Lactation failure in exclusive 
+ breastfeeding
+• Baby of diabetic mothers
+• Siblings with history of severe NNJ
+1. Babies with gestational age 35 - 37 weeks WITH clinical risk factors in (A) 
+& predischarge TcB/TSB in the following risk zones:
+2. Babies with gestational age 35 - 37 weeks with NO clinical risk factors in 
+(A) OR with gestational age ≥38 weeks WITH clinical risk factors in (A) & 
+predischarge TcB/TSB in the following risk zones:
+3. Babies with gestational age ≥38 weeks with NO clinical risk factors in (A) 
+& predischarge TcB/TSB in the following risk zones:
+Predischarge 
+TcB /TSB Risk 
+Zone
+High Risk
+High 
+Intermediate Risk
+Low Intermediate 
+Risk
+Low Risk
+Interval to 
+repeat TSB
+4 - 24 hours
+ 24 hours
+If jaundiced at       
+follow-up
+If jaundiced at 
+follow-up
+Action
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+If discharging in <72 hours, follow-up within 2 days
+If discharging in <72 hours, follow-up within 2 days
+Predischarge 
+TcB /TSB Risk 
+Zone
+High Risk
+High 
+Intermediate Risk
+Low Intermediate 
+Risk
+Low Risk
+Interval to 
+repeat TSB
+4 - 24 hours
+ 2 days
+If jaundiced at    
+follow-up
+If jaundiced at 
+follow-up
+Action
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+Follow-up in 2 days
+If discharging in <72 hours, follow-up in 2 - 3 days
+If discharging in <72 hours, follow-up in 2 - 3 days
+Predischarge 
+TcB /TSB Risk 
+Zone
+High Risk
+High 
+Intermediate Risk
+Low Intermediate 
+Risk
+Low Risk
+Interval to 
+repeat TSB
+4 - 8 hours
+4 - 24 hours
+Within 2 days at      
+follow-up
+If jaundiced at 
+follow-up
+Action
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+• Check TcB/TSB against phototherapy guidelines
+• Start phototherapy as needed
+If discharging in <72 hours, follow-up within 2 days
+If discharging in <72 hours, follow-up within 2 days
+5 2
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+• Bilirubin-Induced Neurologic Dysfunction (BIND) score may be used in babies with 
+severe NNJ to assess the severity & progression of ABE.
+Home visits by healthcare providers during postnatal period
+• Home visits should be done for all newborns on day 1, 2, 3, 4, 6, 8, 10 & 20. 
+• If jaundice is detected, TSB should be measured & managed accordingly. 
+Indications for referral to hospital
+• Onset of jaundice within 24 hours of life
+• Rapidly rising TSB of greater than 6 mg/dL/day (103 µmol/L/day) 
+• Clinical jaundice below umbilicus (if till the soles of the feet - urgent referral for  
+ possibility of ET)
+• G6PD deficiency (if not previously hospitalised)
+• Clinical symptoms/signs suggestive of sepsis
+• G6PD test (if not screened)
+• Mother’s & baby’s blood group
+• Direct Coombs test
+• Full blood count ± peripheral blood picture
+• Reticulocyte count
+• Septic workup (if infection is suspected)
+BIND Score
+Laboratory investigations to be considered for severe or early-onset NNJ
+Clinical Signs
+Mental Status
+ Normal
+ Sleepy but arousable; decreased feeding
+ Lethargy, poor suck &/or irritable/jittery with strong suck
+ Semi-coma, apnoea, unable to feed, seizures, coma
+Muscle Tone
+ Normal
+ Persistent mild to moderate hypotonia
+ Mild to moderate hypertonia alternating with hypotonia, beginning  
+ arching of neck & trunk on stimulation
+ Persistent retrocollis & opisthotonus - bicycling or twitching of hands & 
+feet 
+Cry Pattern
+ Normal
+ High pitched when aroused
+ Shrill, difficult to console
+ Inconsolable crying or cry weak or absent 
+BIND Score
+0
+1
+2
+3
+0
+1
+2
+3
+0
+1
+2
+3
+TOTAL BIND SCORE
+Advanced ABE (score 7 - 9): urgent bilirubin reduction intervention is needed to prevent 
+further brain damage & reduce the severity of sequelae
+Moderate ABE (score 4 - 6): urgent bilirubin reduction intervention is likely to reverse this 
+acute damage
+Mild ABE (score 1 - 3): subtle signs of ABE
+Predischarge screening
+• Predischarge screening should be used to prevent severe NNJ in late preterm & 
+term babies.
+ Clinical risk factor assessment or/& predischarge bilirubin levels (TcB or TSB) 
+can be used as predischarge screening.
+A. Clinical risk factors to be considered with predischarge TcB or TSB levels:
+1. Isoimmune (ABO or Rhesus) haemolytic disease, G6PD deficiency or other 
+haemolytic diseases
+2. Exclusive breastfeeding, if nursing is not going well, &/or weight loss is >8 - 
+10%
+3. Previous sibling with jaundice
+4. Cephalhaematoma or significant bruising
+5. East Asian race
+Nomogram for Predischarge Screening
+Nomogram for designation of risk at ≥36 weeks’ gestational age with birth 
+weight ≥2000 g or ≥35 weeks’ gestational age with birth weight ≥2500 g
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF NEONATAL JAUNDICE (SECOND EDITION)
+ALGORITHM ON MANAGEMENT OF NEONATAL JAUNDICE
+(Second Edition)
+MANAGEMENT OF
+NEONATAL JAUNDICE
+Academy of
+Medicine Malaysia
+Ministry of Health
+Malaysia
+Malaysian Paediatric
+Association
+Perinatal Society of
+Malaysia
+QUICK REFERENCE
+FOR HEALTHCARE PROVIDERS
+ 
+G6PD Deficiency
+ 
+JaundiceYes
+No
+Admit and observe 
+Phototherapy ± ET
+Jaundice resolved
+Monitor as scheduled
+Discharge
+and follow-up
+Assess
+risk factors
+Need 
+admission
+Monitor as
+scheduled* 
+Need treatment
+Jaundice 
+resolved
+Yes No
+Yes
+No
+Yes
+No
+NNJ
+>24 hours of life ≤24 hours of life
+Rebound
+jaundice
+Admit
+*If jaundice persists beyond 14 days in term babies & 21 days in preterm babies, further 
+evaluation for prolonged jaundice is needed.

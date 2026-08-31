@@ -1,0 +1,893 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+ 
+Diagnosis of CKD
+Diabetic Kidney Disease Non-Diabetic Kidney Disease
+• Optimisation of glycaemic control
+• Strict BP control
+• ACEi/ARB
+Hypertension
+(BP >140/90 mmHg)
+Proteinuria
+(≥0.5 g/day)
+Proteinuria
+(≥1.0 g/day)
+Any antihypertensive
+to achieve target BP
+• ACEi/ARB (preferred)
+• Non-dihydropyridine calcium channel blockers
+• Encourage exercise, weight reduction & smoking cessation      •   Manage CV risks including dyslipidaemia
+• Restrict sodium intake to <2,400 mg/day (1 teaspoon of            •   Monitor renal profile according to individual
+ table salt)                                                                                        patient’s characteristics (baseline renal
+• Avoid excessive protein intake                                                       function, risk factors for CKD progression &
+• Identify other end-organ damage of diabetes & hypertension        specific treatment given)
+General measures in the management of CKD
+No Yes
+Yes No
+NoYes
+ALGORITHM 4. TREATMENT FOR CKD IN ADULTS
+2 7
+1. Targeted screening in high risk groups is necessary to detect chronic kidney 
+disease (CKD) & early intervention is important to delay its progression. CKD 
+management requires shared decision making & close collaboration between 
+different levels of healthcare.
+2. Screening for CKD includes assessment for proteinuria, haematuria & renal 
+function [using estimated glomerular filtration rate (eGFR) based on 
+CKD-epidemiology (CKD-EPI) creatinine equation].
+3. Detection of CKD should be followed by staging using eGFR, risk stratification 
+with albuminuria & determination of underlying cause. This is based on Kidney 
+Disease Improving Global Outcomes (KDIGO) classification.
+4. Target blood pressure (BP) & glycaemic control should be individualised 
+according to co-morbidities & age. 
+5. Angiotensin converting enzyme inhibitor (ACEi) or angiotensin receptor blocker 
+(ARB) should be used as first-line antihypertensive agent in diabetic kidney 
+disease (DKD) with albuminuria & non-DKD with proteinuria ≥0.5 g/day.
+6. Dual renin-angiotensin system blockade should only be used in carefully selected 
+non-DKD patients with proteinuria under close supervision by nephrologists.
+7. All cardiovascular (CV) risk factors should be addressed in patients with CKD to 
+reduce CV events. Aspirin should only be used for secondary prevention of CV 
+disease (CVD).
+8. All female patients of reproductive age with CKD should receive pre-pregnancy 
+care.
+9. The optimal time of nephrology referral depends on the indications while the 
+urgency is based on the trend of eGFR.
+10. Screening for CKD-related complications is recommended at CKD stage 3 
+onwards. 
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Chronic Kidney in Adults (Second Edition).
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia : www.moh.gov.my
+Academy of Medicine Malaysia : www.acadmed.org.my
+Malaysian Society of Nephrology :  www.msn.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+ 
+ 
+ 
+Presence of microscopic haematuria
+Signs & 
+symptoms
+of UTI
+• Treat infection 
+• Confirm resolution
+ of microscopic 
+ haematuria with 
+ follow-up urinalysis 
+ after 6 weeks 
+ completion of therapy 
+Other
+aetiologies*
+Stop
+contributing
+factors
+Yes No
+Yes No
+Evidence of 
+glomerular 
+disease**
+Presence of haematuria
+No
+haematuria Re-test for
+microscopic
+haematuria
+Discharge
+Refer to
+nephrologist
+Refer to
+urologist
+Yes No
+ *vigorous exercise, trauma to urethra,   
+  menstruation, medications
+**proteinuria, red cell casts, dysmorphic red 
+   blood cells, elevated creatinine
+ALGORITHM 3. EVALUATION OF HAEMATURIA IN CKD IN ADULTS
+6 3
+ALGORITHM 2. SCREENING & INVESTIGATIONS FOR CKD IN ADULTS 
+WITHOUT DIABETES 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+• Patients with diabetes mellitus and/or hypertension should be screened at least yearly 
+for CKD.
+• Screening for CKD may be considered for patients with:
+ age >65 years old
+ obesity
+ CVD
+ metabolic syndrome 
+ drugs e.g. nephrotoxic drugs, long-term use of proton-pump inhibitors or analgesics
+ family history of CKD or hereditary kidney disease
+ gout
+ multisystem diseases with potential kidney involvement e.g. systemic lupus 
+erythematosus 
+ structural renal tract disease, renal calculi or prostatic hypertrophy
+ opportunistic (incidental) detection of haematuria or proteinuria
+SCREENING
+STRATEGIES IN DELAYING CKD PROGESSION
+1. Established strategies:
+a. Optimal BP control
+b. Optimal blood glucose control
+c. Proteinuria reduction
+d. Renin-angiotensin system blockers
+2. Strategies requiring more evidence:
+a. Lifestyle modifications (smoking cessation, weight reduction, low salt diet & dietary 
+protein restriction)
+b. Sodium-glucose co-transporter-2 (SGLT2) inhibitors
+c. Uric acid reduction
+KDIGO CLASSIFICATION
+ 
+  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+G1     
+G2      
+    
+ 
+ 
+    
+     
+      
+Normal to
+mildly
+increased
+Moderately
+increased
+Severely
+increased
+<30 mg/g
+<3 mg/mmol
+30 - 300
+mg/g
+3 - 30
+mg/mmol
+>300 mg/g
+>30 mg/mmol
+Persistent albuminuria categories
+Description and range
+A1 A2 A3
+Normal or high
+Mildly decreased
+Mildly to moderately
+decreased
+Moderately to
+severely decreased
+severely decreased
+Renal failureG5
+G4
+G3b
+G3a
+≥90
+60 - 89
+45 - 59
+30 - 44 
+15 - 29 
+<15
+GFR
+categories
+(ml/min/
+1.73 m2)
+Description
+and range
+Green - low risk, Yellow - moderate risk, Orange - high risk, Red & Deep Red - very high risk
+DIAGNOSIS OF ABNORMAL PROTEIN OR ALBUMIN EXCRETION
+Urine
+albumin
+excretion
+in µg/min
+(mg/24 hour)
+Urine ACR
+in
+mg/mmol
+Urine ACR
+in
+mg/mmol
+Urine total
+protein
+excretion
+in g/24
+hour
+Urine
+dipstick
+reading
+Class
+Normal
+Microalbuminuria
+Macroalbuminuria
+Negative
+Negative
+Trace
+1+
+2+
+3+
+<15
+<15
+15 - 44
+45 - 149
+150 - 449
+≥450
+<0.15
+<0.15
+0.15 - 0.44
+0.45 - 1.49
+1.50 - 4.49
+≥4.50
+<2.5 (male)
+<3.5 (female)
+≥2.5 to 30
+(male)
+≥3.5 to 30
+(female)
+>30
+<20
+(<30)
+20 - 200
+(30 - 300)
+>200
+(>300)
+Presence of risk factors 
+for CKD
+Check urine using dipstick
+(refer to Section 3.1 in CPG)
+Proteinuria
+on 2 out of 3
+occasions YesNo
+Yearly urine test 
+& renal function test
+(refer to Section 3.2 in CPG)
+• Quantify proteinuria 
+• Check renal function (refer to Section 3.2 
+ in CPG)
+• Perform renal ultrasound scan if indicated 
+ (refer to Section 3.3 in CPG)
+4 5
+TARGETS OF CKD TREATMENT
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+•  BP target for CKD should be aimed at:
+≤130/80 mmHg
+(SBP 120 to 130 mmHg)
+≤130/80 mmHg
+(SBP 120 to 130 mmHg)
+≤130/80 mmHg
+(SBP 120 to 130 mmHg)
+≤140/90 mmHg*
+(SBP 120 to 140 mmHg)
+DKD
+Non-DKD
+Cause Proteinuria ≥1 g/day <1 g/day
+SBP=systolic blood pressure
+*BP targets should be individualised according to co-morbidities & age.
+*Based on SPRINT (Systolic Blood Pressure Intervention Trial) study (median follow-up of 3.3 years), lowering SBP towards 120 
+mmHg can be considered in non-DKD patients with high CV risk, in whom BP lowering is well-tolerated.
+*This is an estimation for practical purpose. The actual conversion of urine protein 1 g/day=uPCR 113 mg/mmol.
+• The target HbA1c should be ≤7% in DKD but this should be individualised according to 
+co-morbidities & age. 
+• Pregnancy may be considered in women with mild renal impairment (serum creatinine 
+<124 µmol/L), well controlled BP & without significant proteinuria (<1 g/day).
+• Pregnancy should be avoided in women with either:
+ moderate to severe renal impairment 
+ poorly controlled hypertension 
+ heavy proteinuria
+ active systemic disease
+• All pregnant women with CKD should be co-managed by a multidisciplinary team.
+PREGNANCY IN CKD
+• A patient with CKD with any of the following criteria should be referred to a 
+nephrologist/physician:
+ persistent heavy proteinuria [urine protein ≥1 g/day or urine protein: creatinine ratio 
+(uPCR) ≥100 mg/mmol*] despite optimal treatment
+ persistent isolated microscopic haematuria after excluding urogynaecological cause
+ persistent haematuria with proteinuria (urine protein ≥0.5 g/day or uPCR ≥50 
+mg/mmol*)
+ rapidly declining renal function [loss of eGFR >5 ml/min/1.73 m2 in 1 year or >10 
+ml/min/1.73 m2 within 5 years]
+ eGFR <30 ml/min/1.73 m2 (eGFR categories G4 - G5)
+ resistant hypertension (failure to achieve target BP despite 3 antihypertensive 
+agents including a diuretic) 
+ suspected renal artery stenosis
+ suspected hereditary kidney disease
+ pregnant or when pregnancy is planned
+ persistent abnormalities of serum potassium
+ unexplained cause of CKD
+REFERRAL
+ALGORITHM 1. SCREENING & INVESTIGATIONS FOR CKD IN ADULTS 
+WITH DIABETES 
+Urine dipstick for protein
+a)Type 1: After 5 years history of diabetes or 
+earlier in the presence of other CV risk factors.
+b)Type 2: At time of diagnosis
+NEGATIVE
+NEGATIVE
+Overt nephropathy
+Screen for 
+microalbuminuria 
+on early morning 
+spot urine
+Quantify
+proteinuria 
+POSITIVE
+Retest twice in 3 - 6 months 
+(exclude other causes e.g. 
+UTI, CCF, others)
+Yearly test for
+microalbuminuria
+& renal function
+• If 2 of 3 tests are 
+ positive, diagnosis of 
+ DKD is established
+• Quantify 
+ microalbuminuria
+• 3- to 6-monthly follow-up 
+ of microalbuminuria 
+• Check renal function
+• Exclude other 
+ nephropathies
+• Perform renal 
+ ultrasound scan if 
+ indicated (refer to 
+ Section 3.3 in CPG)
+POSITIVE on 2 occasions
+(Urine protein >0.3 mg/mol) 
+(exclude other causes e.g. urinary
+ tract infection (UTI), congestive
+cardiac failure (CCF), others)
+4 5
+TARGETS OF CKD TREATMENT
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+•  BP target for CKD should be aimed at:
+≤130/80 mmHg
+(SBP 120 to 130 mmHg)
+≤130/80 mmHg
+(SBP 120 to 130 mmHg)
+≤130/80 mmHg
+(SBP 120 to 130 mmHg)
+≤140/90 mmHg*
+(SBP 120 to 140 mmHg)
+DKD
+Non-DKD
+Cause Proteinuria ≥1 g/day <1 g/day
+SBP=systolic blood pressure
+*BP targets should be individualised according to co-morbidities & age.
+*Based on SPRINT (Systolic Blood Pressure Intervention Trial) study (median follow-up of 3.3 years), lowering SBP towards 120 
+mmHg can be considered in non-DKD patients with high CV risk, in whom BP lowering is well-tolerated.
+*This is an estimation for practical purpose. The actual conversion of urine protein 1 g/day=uPCR 113 mg/mmol.
+• The target HbA1c should be ≤7% in DKD but this should be individualised according to 
+co-morbidities & age. 
+• Pregnancy may be considered in women with mild renal impairment (serum creatinine 
+<124 µmol/L), well controlled BP & without significant proteinuria (<1 g/day).
+• Pregnancy should be avoided in women with either:
+ moderate to severe renal impairment 
+ poorly controlled hypertension 
+ heavy proteinuria
+ active systemic disease
+• All pregnant women with CKD should be co-managed by a multidisciplinary team.
+PREGNANCY IN CKD
+• A patient with CKD with any of the following criteria should be referred to a 
+nephrologist/physician:
+ persistent heavy proteinuria [urine protein ≥1 g/day or urine protein: creatinine ratio 
+(uPCR) ≥100 mg/mmol*] despite optimal treatment
+ persistent isolated microscopic haematuria after excluding urogynaecological cause
+ persistent haematuria with proteinuria (urine protein ≥0.5 g/day or uPCR ≥50 
+mg/mmol*)
+ rapidly declining renal function [loss of eGFR >5 ml/min/1.73 m2 in 1 year or >10 
+ml/min/1.73 m2 within 5 years]
+ eGFR <30 ml/min/1.73 m2 (eGFR categories G4 - G5)
+ resistant hypertension (failure to achieve target BP despite 3 antihypertensive 
+agents including a diuretic) 
+ suspected renal artery stenosis
+ suspected hereditary kidney disease
+ pregnant or when pregnancy is planned
+ persistent abnormalities of serum potassium
+ unexplained cause of CKD
+REFERRAL
+ALGORITHM 1. SCREENING & INVESTIGATIONS FOR CKD IN ADULTS 
+WITH DIABETES 
+Urine dipstick for protein
+a)Type 1: After 5 years history of diabetes or 
+earlier in the presence of other CV risk factors.
+b)Type 2: At time of diagnosis
+NEGATIVE
+NEGATIVE
+Overt nephropathy
+Screen for 
+microalbuminuria 
+on early morning 
+spot urine
+Quantify
+proteinuria 
+POSITIVE
+Retest twice in 3 - 6 months 
+(exclude other causes e.g. 
+UTI, CCF, others)
+Yearly test for
+microalbuminuria
+& renal function
+• If 2 of 3 tests are 
+ positive, diagnosis of 
+ DKD is established
+• Quantify 
+ microalbuminuria
+• 3- to 6-monthly follow-up 
+ of microalbuminuria 
+• Check renal function
+• Exclude other 
+ nephropathies
+• Perform renal 
+ ultrasound scan if 
+ indicated (refer to 
+ Section 3.3 in CPG)
+POSITIVE on 2 occasions
+(Urine protein >0.3 mg/mol) 
+(exclude other causes e.g. urinary
+ tract infection (UTI), congestive
+cardiac failure (CCF), others)
+6 3
+ALGORITHM 2. SCREENING & INVESTIGATIONS FOR CKD IN ADULTS 
+WITHOUT DIABETES 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+• Patients with diabetes mellitus and/or hypertension should be screened at least yearly 
+for CKD.
+• Screening for CKD may be considered for patients with:
+ age >65 years old
+ obesity
+ CVD
+ metabolic syndrome 
+ drugs e.g. nephrotoxic drugs, long-term use of proton-pump inhibitors or analgesics
+ family history of CKD or hereditary kidney disease
+ gout
+ multisystem diseases with potential kidney involvement e.g. systemic lupus 
+erythematosus 
+ structural renal tract disease, renal calculi or prostatic hypertrophy
+ opportunistic (incidental) detection of haematuria or proteinuria
+SCREENING
+STRATEGIES IN DELAYING CKD PROGESSION
+1. Established strategies:
+a. Optimal BP control
+b. Optimal blood glucose control
+c. Proteinuria reduction
+d. Renin-angiotensin system blockers
+2. Strategies requiring more evidence:
+a. Lifestyle modifications (smoking cessation, weight reduction, low salt diet & dietary 
+protein restriction)
+b. Sodium-glucose co-transporter-2 (SGLT2) inhibitors
+c. Uric acid reduction
+KDIGO CLASSIFICATION
+ 
+  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+G1     
+G2      
+    
+ 
+ 
+    
+     
+      
+Normal to
+mildly
+increased
+Moderately
+increased
+Severely
+increased
+<30 mg/g
+<3 mg/mmol
+30 - 300
+mg/g
+3 - 30
+mg/mmol
+>300 mg/g
+>30 mg/mmol
+Persistent albuminuria categories
+Description and range
+A1 A2 A3
+Normal or high
+Mildly decreased
+Mildly to moderately
+decreased
+Moderately to
+severely decreased
+severely decreased
+Renal failureG5
+G4
+G3b
+G3a
+≥90
+60 - 89
+45 - 59
+30 - 44 
+15 - 29 
+<15
+GFR
+categories
+(ml/min/
+1.73 m2)
+Description
+and range
+Green - low risk, Yellow - moderate risk, Orange - high risk, Red & Deep Red - very high risk
+DIAGNOSIS OF ABNORMAL PROTEIN OR ALBUMIN EXCRETION
+Urine
+albumin
+excretion
+in µg/min
+(mg/24 hour)
+Urine ACR
+in
+mg/mmol
+Urine ACR
+in
+mg/mmol
+Urine total
+protein
+excretion
+in g/24
+hour
+Urine
+dipstick
+reading
+Class
+Normal
+Microalbuminuria
+Macroalbuminuria
+Negative
+Negative
+Trace
+1+
+2+
+3+
+<15
+<15
+15 - 44
+45 - 149
+150 - 449
+≥450
+<0.15
+<0.15
+0.15 - 0.44
+0.45 - 1.49
+1.50 - 4.49
+≥4.50
+<2.5 (male)
+<3.5 (female)
+≥2.5 to 30
+(male)
+≥3.5 to 30
+(female)
+>30
+<20
+(<30)
+20 - 200
+(30 - 300)
+>200
+(>300)
+Presence of risk factors 
+for CKD
+Check urine using dipstick
+(refer to Section 3.1 in CPG)
+Proteinuria
+on 2 out of 3
+occasions YesNo
+Yearly urine test 
+& renal function test
+(refer to Section 3.2 in CPG)
+• Quantify proteinuria 
+• Check renal function (refer to Section 3.2 
+ in CPG)
+• Perform renal ultrasound scan if indicated 
+ (refer to Section 3.3 in CPG)
+2 7
+1. Targeted screening in high risk groups is necessary to detect chronic kidney 
+disease (CKD) & early intervention is important to delay its progression. CKD 
+management requires shared decision making & close collaboration between 
+different levels of healthcare.
+2. Screening for CKD includes assessment for proteinuria, haematuria & renal 
+function [using estimated glomerular filtration rate (eGFR) based on 
+CKD-epidemiology (CKD-EPI) creatinine equation].
+3. Detection of CKD should be followed by staging using eGFR, risk stratification 
+with albuminuria & determination of underlying cause. This is based on Kidney 
+Disease Improving Global Outcomes (KDIGO) classification.
+4. Target blood pressure (BP) & glycaemic control should be individualised 
+according to co-morbidities & age. 
+5. Angiotensin converting enzyme inhibitor (ACEi) or angiotensin receptor blocker 
+(ARB) should be used as first-line antihypertensive agent in diabetic kidney 
+disease (DKD) with albuminuria & non-DKD with proteinuria ≥0.5 g/day.
+6. Dual renin-angiotensin system blockade should only be used in carefully selected 
+non-DKD patients with proteinuria under close supervision by nephrologists.
+7. All cardiovascular (CV) risk factors should be addressed in patients with CKD to 
+reduce CV events. Aspirin should only be used for secondary prevention of CV 
+disease (CVD).
+8. All female patients of reproductive age with CKD should receive pre-pregnancy 
+care.
+9. The optimal time of nephrology referral depends on the indications while the 
+urgency is based on the trend of eGFR.
+10. Screening for CKD-related complications is recommended at CKD stage 3 
+onwards. 
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages & a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Chronic Kidney in Adults (Second Edition).
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia : www.moh.gov.my
+Academy of Medicine Malaysia : www.acadmed.org.my
+Malaysian Society of Nephrology :  www.msn.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+ 
+ 
+ 
+Presence of microscopic haematuria
+Signs & 
+symptoms
+of UTI
+• Treat infection 
+• Confirm resolution
+ of microscopic 
+ haematuria with 
+ follow-up urinalysis 
+ after 6 weeks 
+ completion of therapy 
+Other
+aetiologies*
+Stop
+contributing
+factors
+Yes
+No
+Yes No
+Evidence of 
+glomerular 
+disease**
+Presence of haematuria
+No
+haematuria Re-test for
+microscopic
+haematuria
+Discharge
+Refer to
+nephrologist
+Refer to
+urologist
+Yes No
+ *vigorous exercise, trauma to urethra,   
+  menstruation, medications
+**proteinuria, red cell casts, dysmorphic red 
+   blood cells, elevated creatinine
+ALGORITHM 3. EVALUATION OF HAEMATURIA IN CKD IN ADULTS
+6 3
+ALGORITHM 2. SCREENING & INVESTIGATIONS FOR CKD IN ADULTS 
+WITHOUT DIABETES 
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION) QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+• Patients with diabetes mellitus and/or hypertension should be screened at least yearly 
+for CKD.
+• Screening for CKD may be considered for patients with:
+ age >65 years old
+ obesity
+ CVD
+ metabolic syndrome 
+ drugs e.g. nephrotoxic drugs, long-term use of proton-pump inhibitors or analgesics
+ family history of CKD or hereditary kidney disease
+ gout
+ multisystem diseases with potential kidney involvement e.g. systemic lupus 
+erythematosus 
+ structural renal tract disease, renal calculi or prostatic hypertrophy
+ opportunistic (incidental) detection of haematuria or proteinuria
+SCREENING
+STRATEGIES IN DELAYING CKD PROGESSION
+1. Established strategies:
+a. Optimal BP control
+b. Optimal blood glucose control
+c. Proteinuria reduction
+d. Renin-angiotensin system blockers
+2. Strategies requiring more evidence:
+a. Lifestyle modifications (smoking cessation, weight reduction, low salt diet & dietary 
+protein restriction)
+b. Sodium-glucose co-transporter-2 (SGLT2) inhibitors
+c. Uric acid reduction
+KDIGO CLASSIFICATION
+ 
+  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+G1     
+G2      
+    
+ 
+ 
+    
+     
+      
+Normal to
+mildly
+increased
+Moderately
+increased
+Severely
+increased
+<30 mg/g
+<3 mg/mmol
+30 - 300
+mg/g
+3 - 30
+mg/mmol
+>300 mg/g
+>30 mg/mmol
+Persistent albuminuria categories
+Description and range
+A1 A2 A3
+Normal or high
+Mildly decreased
+Mildly to moderately
+decreased
+Moderately to
+severely decreased
+severely decreased
+Renal failureG5
+G4
+G3b
+G3a
+≥90
+60 - 89
+45 - 59
+30 - 44 
+15 - 29 
+<15
+GFR
+categories
+(ml/min/
+1.73 m2)
+Description
+and range
+Green - low risk, Yellow - moderate risk, Orange - high risk, Red & Deep Red - very high risk
+DIAGNOSIS OF ABNORMAL PROTEIN OR ALBUMIN EXCRETION
+Urine
+albumin
+excretion
+in µg/min
+(mg/24 hour)
+Urine ACR
+in
+mg/mmol
+Urine ACR
+in
+mg/mmol
+Urine total
+protein
+excretion
+in g/24
+hour
+Urine
+dipstick
+reading
+Class
+Normal
+Microalbuminuria
+Macroalbuminuria
+Negative
+Negative
+Trace
+1+
+2+
+3+
+<15
+<15
+15 - 44
+45 - 149
+150 - 449
+≥450
+<0.15
+<0.15
+0.15 - 0.44
+0.45 - 1.49
+1.50 - 4.49
+≥4.50
+<2.5 (male)
+<3.5 (female)
+≥2.5 to 30
+(male)
+≥3.5 to 30
+(female)
+>30
+<20
+(<30)
+20 - 200
+(30 - 300)
+>200
+(>300)
+Presence of risk factors 
+for CKD
+Check urine using dipstick
+(refer to Section 3.1 in CPG)
+Proteinuria
+on 2 out of 3
+occasions YesNo
+Yearly urine test 
+& renal function test
+(refer to Section 3.2 in CPG)
+• Quantify proteinuria 
+• Check renal function (refer to Section 3.2 
+ in CPG)
+• Perform renal ultrasound scan if indicated 
+ (refer to Section 3.3 in CPG)
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF CHRONIC KIDNEY DISEASE IN ADULTS (SECOND EDITION)
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+ 
+Diagnosis of CKD
+Diabetic Kidney Disease Non-Diabetic Kidney Disease
+• Optimisation of glycaemic control
+• Strict BP control
+• ACEi/ARB
+Hypertension
+(BP >140/90 mmHg)
+Proteinuria
+(≥0.5 g/day)
+Proteinuria
+(≥1.0 g/day)
+Any antihypertensive
+to achieve target BP
+• ACEi/ARB (preferred)
+• Non-dihydropyridine calcium channel blockers
+• Encourage exercise, weight reduction & smoking cessation      •   Manage CV risks including dyslipidaemia
+• Restrict sodium intake to <2,400 mg/day (1 teaspoon of            •   Monitor renal profile according to individual
+ table salt)                                                                                        patient’s characteristics (baseline renal
+• Avoid excessive protein intake                                                       function, risk factors for CKD progression &
+• Identify other end-organ damage of diabetes & hypertension        specific treatment given)
+General measures in the management of CKD
+No
+Yes
+Yes No
+NoYes
+ALGORITHM 4. TREATMENT FOR CKD IN ADULTS

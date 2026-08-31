@@ -1,0 +1,733 @@
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+TABLE 4. WRITTEN ECZEMA ACTION PLAN
+GREEN = GO : Use preventive measures
+YELLOW = CAUTION: Use lower strength medications
+RED = FLARE : Use higher strength medications   
+     and consult your doctor
+NAME:
+REGULAR DAILY SKIN CARE
+1. Bath twice a day with gentle cleanser less than 10 minutes.
+2. Apply moisturiser to all body parts immediately after bath.
+3. Apply moisturiser to all body parts minimum thrice a day.
+4. Bath and moisturise your skin before bed.
+5. Wear suitable cloth/pyjamas, preferably cotton, to bed.
+SKIN CARE DURING WORSENING
+1. Continue regular skin care from GREEN phase.
+2. Apply anti-inflammatory creams till eczema clears.
+2a. Face: Apply hydrocortisone 1% twice a day for 5 - 7 days,
+ then once a day for 5 - 7 days till eczema clears.
+2b. Body: Apply betamethasone (1:4) twice a day for 5 - 7 days, 
+ then once a day for 5 - 7 days till eczema clears.
+3. Take antihistamine (anti-itch), prescribed by doctor, half an
+ hour before bed.
+4. If eczema gets better, revert back to GREEN phase.
+5. If eczema not responding within 3 days or eczema and itch 
+ worsens, move to RED phase.
+SKIN CARE DURING UNCONTROLLED ECZEMA
+1. Continue regular skin care form GREEN phase.
+2. Bath daily with antiseptic wash for 5 - 7 days.
+3. Apply anti-inflammatory creams till eczema clears.
+ 
+3a. Face: Apply betamethasone (1:8) twice a day for 5 - 7 days, 
+ then once a day for 5 - 7 days till eczema clears.
+ 
+3b. Body: Apply betamethasone (1:2) twice a day for 5 - 7 days, 
+ then once a day for 5 - 7 days till eczema clears.
+4. Take antihistamine (anti-itch), prescribed by doctor, half an
+ hour before bed.
+5. If eczema gets better revert back to YELLOW phase, then
+ subsequently to GREEN phase.
+6. If eczema not responding within 3 days or eczema and itch 
+ worsens, consult your doctor.
+ECZEMA UNDER CONTROL
+ECZEMA WORSENING
+UNCONTROLLED ECZEMA
+GREEN
+RED
+YELLOW
+Persatuan Dermatologi
+Malaysia
+Ministry of Health
+Malaysia
+Academy of
+Medicine Malaysia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS
+2 7
+1. Atopic eczema (AE) is a clinical diagnosis based on the U.K. Working Party’s 
+Diagnostic Criteria for Atopic Dermatitis (refer to Table 1).
+2. Serum immunoglobulin E levels, patch test, skin prick test and skin biopsy should 
+not be used as diagnostic tools for AE.
+3. Management of AE depends on the disease severity and quality of life 
+assessment (refer to Algorithm 1 and 2).
+4. Emollient therapy is the mainstay of treatment at any stage of AE.
+5. Topical corticosteroids (TCS) should be used appropriately for treatment of flares 
+in AE (refer to Table 3).
+6. Topical calcineurin inhibitors may be considered to treat flares in AE for patients 
+aged two years and above.
+7. Ultraviolet A1 may be used to control acute flares and narrow-band ultraviolet B 
+in moderate to severe chronic AE.
+8. Antihistamines should not be used as monotherapy or to substitute topical 
+therapy in AE.
+9. Systemic corticosteroids may be considered for short-term control of severe 
+acute exacerbation of AE.
+10. Immunomodulating agents such as azathioprine, cyclosporin A, methotrexate or 
+mycophenolate may be used in the treatment of severe AE after optimisation of 
+topical treatment.
+11. Educational interventions should be considered as part of the management of AE 
+(refer to Table 4).
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages and a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Atopic Eczema.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia : www.moh.gov.my
+Academy of Medicine Malaysia : www.acadmed.org.my
+Persatuan Dermatologi Malaysia : www.dermatology.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+DRUG POSSIBLE SIDE
+EFFECTS
+  SPECIAL
+PRECAUTIONS
+ 
+TOPICAL CORTICOSTEROIDS 
+1 - 2 times daily
+Once daily
+Worsening of untreated
+infection, contact dermatitis, 
+perioral dermatitis, acne, 
+depigmentation, dryness, 
+hypertrichosis, secondary 
+infection, skin atrophy, pruritus, 
+tingling/stinging, rosacea, 
+folliculitis, photosensitivity
+Mometasone Furoate 
+0.1% Cream/Ointment
+1 - 2 times daily
+Very Potent
+Clobetasol Propionate 
+0.05% Cream/Ointment
+Untreated bacterial, fungal 
+or viral skin lesions in 
+rosacea and perioral 
+dermatitis
+Avoid prolonged use 
+Caution when used on 
+face or intertriginous and 
+flexor areas
+CONTRAINDICATIONRECOMMENDED
+DOSAGE
+Potent
+Betamethasone Dipropionate 
+0.05% Cream /Ointment
+Betamethasone Valerate 
+0.1% Cream /Ointment
+Fluocinolone Acetonide 
+0.025% Cream
+Fluticasone Propionate 
+0.05% Cream
+Triamcinolone Acetonide
+ 0.1% Cream
+TABLE 3. RECOMMENDED TOPICAL CORTICOSTEROIDS DOSING,
+SIDE EFFECTS AND CONTRAINDICATIONS 
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+Patient must have an itchy skin condition (or parental report of scratching or rubbing in a 
+child) plus 3 or more of the following:
+• history of involvement of the skin creases e.g. folds of elbows, behind the knees, fronts of 
+ankles or around the neck (including cheeks in children under 10 years old)
+• a personal history of asthma or hay fever (or history of atopic disease in a first-degree 
+relative in children under 4 years old)
+• a history of a general dry skin in the last year
+• visible flexural eczema (or eczema involving the cheeks/forehead and outer limbs in 
+children under 4 years old)
+• onset under the age of 2 (not used if child is under 4 years old)
+THE U.K. WORKING PARTY’S DIAGNOSTIC CRITERIA FOR ATOPIC DERMATITIS
+The urgency for referral to a dermatologist is divided into the following categories:
+1. Urgent referral (within 24 hours)
+• AE with clinical suspicion of eczema herpeticum (eczema with widespread herpes 
+simplex infection)
+• AE with severe skin bacterial infection that requires intravenous antibiotics
+• AE with acute erythroderma where the eczema is affecting >80% body surface area
+2. Non-urgent referral
+• Diagnostic uncertainty
+• Severe or uncontrolled eczema:
+ requirement of potent and very potent TCS
+ frequent infections
+ poor sleep or excessive scratching
+ treatment failure with appropriate topical therapy regimen
+• Parental concern
+• Need for treatment demonstration/education
+• Involvement of sites that are difficult to treat
+• Psychological disturbance on the patient or family
+CRITERIA FOR REFERRAL
+TABLE 2. CRITERIA FOR REFERRAL
+TABLE 1. THE U.K. WORKING PARTY’S DIAGNOSTIC CRITERIA 
+FOR ATOPIC DERMATITIS
+TABLE 3. RECOMMENDED TOPICAL CORTICOSTEROIDS DOSING,
+SIDE EFFECTS AND CONTRAINDICATIONS 
+DRUG POSSIBLE SIDE
+EFFECTS
+  SPECIAL
+PRECAUTIONS
+ 
+TOPICAL CORTICOSTEROIDS 
+1 - 2 times daily
+1 - 2 times daily
+Worsening of untreated
+infection, contact dermatitis, 
+perioral dermatitis, acne, 
+depigmentation, dryness, 
+hypertrichosis, secondary 
+infection, skin atrophy, 
+pruritus, 
+tingling/stinging, 
+rosacea, folliculitis, 
+photosensitivity
+Moderate
+Betamethasone Valerate 
+1 in 2 dilution (0.05%) Cream /Ointment
+Betamethasone Valerate
+1 in 4 dilution (0.025%) Cream/Ointment
+Clobetasone Butyrate 
+0.05% Cream/Ointment
+Untreated bacterial,
+fungal or viral skin 
+lesions in rosacea 
+and perioral dermatitis
+Avoid prolonged use 
+Caution when used on 
+face or intertriginous and 
+flexor areas
+CONTRAINDICATIONRECOMMENDED
+DOSAGE
+Mild
+Betamethasone Valerate 
+1 in 10 dilution (0.01%) Cream/Ointment
+Betamethasone Valerate 
+1 in 8 dilution (0.0125%) Cream/Ointment
+Hydrocortisone Acetate 1% Cream/Ointment
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+ALGORITHM 2. TREATMENT OF ATOPIC ECZEMA
+ 
+ 
+Step 4
+Step 3
+Step 1
+Step 2
+ 
+  
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+Improvement of AE
+ 
+Worsening of AE
+ 
+• TCS (moderate to very 
+ potent) or TCI
+• Wet wrap therapy
+• Phototherapy
+• Systemic therapy:
+ o Oral corticosteroids 
+  (short-term)
+ o Azathioprine
+ o Cyclosporin A
+ o Methotrexate
+ o Mycophenolate mofetil
+• TCS (moderate)
+ or TCI
+• Wet wrap 
+ therapy
+• Phototherapy
+• TCS (mild) or
+ TCI
+• Skin care
+ o Emollients
+ o Bathing practices
+• Educational intervention
+• Identification and management of aggravating factors
+4 to 5
+Severe to
+Very severe
+3
+Moderate
+2
+Mild
+0 to 1
+Clear to
+Almost clear
+IGA score:
+Severity:
+Adjunct therapy:
+• Topical/oral antibiotics/antiviral/antifungal
+ for bacterial, viral or fungal infections
+• Oral sedating antihistamines for sleep
+ disturbance
+• Topical antiseptics to reduce
+ Staphylococcus aureus colonisation
+• Psychological intervention 
+IGA: Investigators’ Global Assessment; TCS: Topical corticosteroids; TCI: Topical calcineurin inhibitors
+ALGORITHM 1. MANAGEMENT OF ATOPIC ECZEMA IN PRIMARY CARE
+IGA : Investigators’ Global Assessment
+QoL : Quality of life
+DLQI : Dermatology Life Quality Index
+CDLQI: Children’s Dermatology Life Quality Index
+SEVERITY ASSESSMENT
+CLEAR TO MILD
+IGA score: 0 to 2
+ATOPIC ECZEMA PATIENT PRESENTING TO
+PRIMARY CARE
+MODERATE
+IGA score: 3
+SEVERE TO VERY SEVERE
+IGA score: 4 to 5
+REFER
+DERMATOLOGY
+SERVICE
+DLQI/CDLQI >10
+NO
+YES
+TREATMENT
+Refer Algorithm 2
+RESPONSE
+QoL
+CONTINUE
+TREATMENT
+Score Description 
+0 = Clear
+1 = Almost clear
+2 = Mild disease
+3 = Moderate disease
+4 = Severe disease
+5 = Very severe disease
+No inflammatory signs of atopic eczema 
+Just perceptible erythema, and just perceptible 
+papulation/infiltration
+Mild erythema, and mild papulation/infiltration
+Moderate erythema, and moderate papulation/infiltration 
+Severe erythema, and severe papulation/infiltration
+Severe erythema, and severe papulation/infiltration with 
+oozing/crusting
+Investigator’s Global Assessment
+4 5
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+ALGORITHM 2. TREATMENT OF ATOPIC ECZEMA
+ 
+ 
+Step 4
+Step 3
+Step 1
+Step 2
+ 
+  
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+Improvement of AE
+ 
+Worsening of AE
+ 
+• TCS (moderate to very 
+ potent) or TCI
+• Wet wrap therapy
+• Phototherapy
+• Systemic therapy:
+ o Oral corticosteroids 
+  (short-term)
+ o Azathioprine
+ o Cyclosporin A
+ o Methotrexate
+ o Mycophenolate mofetil
+• TCS (moderate)
+ or TCI
+• Wet wrap 
+ therapy
+• Phototherapy
+• TCS (mild) or
+ TCI
+• Skin care
+ o Emollients
+ o Bathing practices
+• Educational intervention
+• Identification and management of aggravating factors
+4 to 5
+Severe to
+Very severe
+3
+Moderate
+2
+Mild
+0 to 1
+Clear to
+Almost clear
+IGA score:
+Severity:
+Adjunct therapy:
+• Topical/oral antibiotics/antiviral/antifungal
+ for bacterial, viral or fungal infections
+• Oral sedating antihistamines for sleep
+ disturbance
+• Topical antiseptics to reduce
+ Staphylococcus aureus colonisation
+• Psychological intervention 
+IGA: Investigators’ Global Assessment; TCS: Topical corticosteroids; TCI: Topical calcineurin inhibitors
+ALGORITHM 1. MANAGEMENT OF ATOPIC ECZEMA IN PRIMARY CARE
+IGA : Investigators’ Global Assessment
+QoL : Quality of life
+DLQI : Dermatology Life Quality Index
+CDLQI: Children’s Dermatology Life Quality Index
+SEVERITY ASSESSMENT
+CLEAR TO MILD
+IGA score: 0 to 2
+ATOPIC ECZEMA PATIENT PRESENTING TO
+PRIMARY CARE
+MODERATE
+IGA score: 3
+SEVERE TO VERY SEVERE
+IGA score: 4 to 5
+REFER
+DERMATOLOGY
+SERVICE
+DLQI/CDLQI >10
+NO
+YES
+TREATMENT
+Refer Algorithm 2
+RESPONSE
+QoL
+CONTINUE
+TREATMENT
+Score Description 
+0 = Clear
+1 = Almost clear
+2 = Mild disease
+3 = Moderate disease
+4 = Severe disease
+5 = Very severe disease
+No inflammatory signs of atopic eczema 
+Just perceptible erythema, and just perceptible 
+papulation/infiltration
+Mild erythema, and mild papulation/infiltration
+Moderate erythema, and moderate papulation/infiltration 
+Severe erythema, and severe papulation/infiltration
+Severe erythema, and severe papulation/infiltration with 
+oozing/crusting
+Investigator’s Global Assessment
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+Patient must have an itchy skin condition (or parental report of scratching or rubbing in a 
+child) plus 3 or more of the following:
+• history of involvement of the skin creases e.g. folds of elbows, behind the knees, fronts of 
+ankles or around the neck (including cheeks in children under 10 years old)
+• a personal history of asthma or hay fever (or history of atopic disease in a first-degree 
+relative in children under 4 years old)
+• a history of a general dry skin in the last year
+• visible flexural eczema (or eczema involving the cheeks/forehead and outer limbs in 
+children under 4 years old)
+• onset under the age of 2 (not used if child is under 4 years old)
+THE U.K. WORKING PARTY’S DIAGNOSTIC CRITERIA FOR ATOPIC DERMATITIS
+The urgency for referral to a dermatologist is divided into the following categories:
+1. Urgent referral (within 24 hours)
+• AE with clinical suspicion of eczema herpeticum (eczema with widespread herpes 
+simplex infection)
+• AE with severe skin bacterial infection that requires intravenous antibiotics
+• AE with acute erythroderma where the eczema is affecting >80% body surface area
+2. Non-urgent referral
+• Diagnostic uncertainty
+• Severe or uncontrolled eczema:
+ requirement of potent and very potent TCS
+ frequent infections
+ poor sleep or excessive scratching
+ treatment failure with appropriate topical therapy regimen
+• Parental concern
+• Need for treatment demonstration/education
+• Involvement of sites that are difficult to treat
+• Psychological disturbance on the patient or family
+CRITERIA FOR REFERRAL
+TABLE 2. CRITERIA FOR REFERRAL
+TABLE 1. THE U.K. WORKING PARTY’S DIAGNOSTIC CRITERIA 
+FOR ATOPIC DERMATITIS
+TABLE 3. RECOMMENDED TOPICAL CORTICOSTEROIDS DOSING,
+SIDE EFFECTS AND CONTRAINDICATIONS 
+DRUG POSSIBLE SIDE
+EFFECTS
+  SPECIAL
+PRECAUTIONS
+ 
+TOPICAL CORTICOSTEROIDS 
+1 - 2 times daily
+1 - 2 times daily
+Worsening of untreated
+infection, contact dermatitis, 
+perioral dermatitis, acne, 
+depigmentation, dryness, 
+hypertrichosis, secondary 
+infection, skin atrophy, 
+pruritus, 
+tingling/stinging, 
+rosacea, folliculitis, 
+photosensitivity
+Moderate
+Betamethasone Valerate 
+1 in 2 dilution (0.05%) Cream /Ointment
+Betamethasone Valerate
+1 in 4 dilution (0.025%) Cream/Ointment
+Clobetasone Butyrate 
+0.05% Cream/Ointment
+Untreated bacterial,
+fungal or viral skin 
+lesions in rosacea 
+and perioral dermatitis
+Avoid prolonged use 
+Caution when used on 
+face or intertriginous and 
+flexor areas
+CONTRAINDICATIONRECOMMENDED
+DOSAGE
+Mild
+Betamethasone Valerate 
+1 in 10 dilution (0.01%) Cream/Ointment
+Betamethasone Valerate 
+1 in 8 dilution (0.0125%) Cream/Ointment
+Hydrocortisone Acetate 1% Cream/Ointment
+2 7
+1. Atopic eczema (AE) is a clinical diagnosis based on the U.K. Working Party’s 
+Diagnostic Criteria for Atopic Dermatitis (refer to Table 1).
+2. Serum immunoglobulin E levels, patch test, skin prick test and skin biopsy should 
+not be used as diagnostic tools for AE.
+3. Management of AE depends on the disease severity and quality of life 
+assessment (refer to Algorithm 1 and 2).
+4. Emollient therapy is the mainstay of treatment at any stage of AE.
+5. Topical corticosteroids (TCS) should be used appropriately for treatment of flares 
+in AE (refer to Table 3).
+6. Topical calcineurin inhibitors may be considered to treat flares in AE for patients 
+aged two years and above.
+7. Ultraviolet A1 may be used to control acute flares and narrow-band ultraviolet B 
+in moderate to severe chronic AE.
+8. Antihistamines should not be used as monotherapy or to substitute topical 
+therapy in AE.
+9. Systemic corticosteroids may be considered for short-term control of severe 
+acute exacerbation of AE.
+10. Immunomodulating agents such as azathioprine, cyclosporin A, methotrexate or 
+mycophenolate may be used in the treatment of severe AE after optimisation of 
+topical treatment.
+11. Educational interventions should be considered as part of the management of AE 
+(refer to Table 4).
+KEY MESSAGES
+CLINICAL PRACTICE GUIDELINES SECRETARIAT
+Malaysian Health Technology Assessment Section (MaHTAS)
+Medical Development Division, Ministry of Health Malaysia
+Level 4, Block E1, Precint 1,
+Federal Government Adminstrative Centre 62590
+Putrajaya, Malaysia
+Tel: 603-88831229
+E-mail: htamalaysia@moh.gov.my
+This Quick Reference provides key messages and a summary of the main 
+recommendations in the Clinical Practice Guidelines (CPG) Management of 
+Atopic Eczema.
+Details of the evidence supporting these recommendations can be found in the 
+above CPG, available on the following websites:
+Ministry of Health Malaysia : www.moh.gov.my
+Academy of Medicine Malaysia : www.acadmed.org.my
+Persatuan Dermatologi Malaysia : www.dermatology.org.my
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+DRUG POSSIBLE SIDE
+EFFECTS
+  SPECIAL
+PRECAUTIONS
+ 
+TOPICAL CORTICOSTEROIDS 
+1 - 2 times daily
+Once daily
+Worsening of untreated
+infection, contact dermatitis, 
+perioral dermatitis, acne, 
+depigmentation, dryness, 
+hypertrichosis, secondary 
+infection, skin atrophy, pruritus, 
+tingling/stinging, rosacea, 
+folliculitis, photosensitivity
+Mometasone Furoate 
+0.1% Cream/Ointment
+1 - 2 times daily
+Very Potent
+Clobetasol Propionate 
+0.05% Cream/Ointment
+Untreated bacterial, fungal 
+or viral skin lesions in 
+rosacea and perioral 
+dermatitis
+Avoid prolonged use 
+Caution when used on 
+face or intertriginous and 
+flexor areas
+CONTRAINDICATIONRECOMMENDED
+DOSAGE
+Potent
+Betamethasone Dipropionate 
+0.05% Cream /Ointment
+Betamethasone Valerate 
+0.1% Cream /Ointment
+Fluocinolone Acetonide 
+0.025% Cream
+Fluticasone Propionate 
+0.05% Cream
+Triamcinolone Acetonide
+ 0.1% Cream
+TABLE 3. RECOMMENDED TOPICAL CORTICOSTEROIDS DOSING,
+SIDE EFFECTS AND CONTRAINDICATIONS 
+6 3
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+Patient must have an itchy skin condition (or parental report of scratching or rubbing in a 
+child) plus 3 or more of the following:
+• history of involvement of the skin creases e.g. folds of elbows, behind the knees, fronts of 
+ankles or around the neck (including cheeks in children under 10 years old)
+• a personal history of asthma or hay fever (or history of atopic disease in a first-degree 
+relative in children under 4 years old)
+• a history of a general dry skin in the last year
+• visible flexural eczema (or eczema involving the cheeks/forehead and outer limbs in 
+children under 4 years old)
+• onset under the age of 2 (not used if child is under 4 years old)
+THE U.K. WORKING PARTY’S DIAGNOSTIC CRITERIA FOR ATOPIC DERMATITIS
+The urgency for referral to a dermatologist is divided into the following categories:
+1. Urgent referral (within 24 hours)
+• AE with clinical suspicion of eczema herpeticum (eczema with widespread herpes 
+simplex infection)
+• AE with severe skin bacterial infection that requires intravenous antibiotics
+• AE with acute erythroderma where the eczema is affecting >80% body surface area
+2. Non-urgent referral
+• Diagnostic uncertainty
+• Severe or uncontrolled eczema:
+ requirement of potent and very potent TCS
+ frequent infections
+ poor sleep or excessive scratching
+ treatment failure with appropriate topical therapy regimen
+• Parental concern
+• Need for treatment demonstration/education
+• Involvement of sites that are difficult to treat
+• Psychological disturbance on the patient or family
+CRITERIA FOR REFERRAL
+TABLE 2. CRITERIA FOR REFERRAL
+TABLE 1. THE U.K. WORKING PARTY’S DIAGNOSTIC CRITERIA 
+FOR ATOPIC DERMATITIS
+TABLE 3. RECOMMENDED TOPICAL CORTICOSTEROIDS DOSING,
+SIDE EFFECTS AND CONTRAINDICATIONS 
+DRUG POSSIBLE SIDE
+EFFECTS
+  SPECIAL
+PRECAUTIONS
+ 
+TOPICAL CORTICOSTEROIDS 
+1 - 2 times daily
+1 - 2 times daily
+Worsening of untreated
+infection, contact dermatitis, 
+perioral dermatitis, acne, 
+depigmentation, dryness, 
+hypertrichosis, secondary 
+infection, skin atrophy, 
+pruritus, 
+tingling/stinging, 
+rosacea, folliculitis, 
+photosensitivity
+Moderate
+Betamethasone Valerate 
+1 in 2 dilution (0.05%) Cream /Ointment
+Betamethasone Valerate
+1 in 4 dilution (0.025%) Cream/Ointment
+Clobetasone Butyrate 
+0.05% Cream/Ointment
+Untreated bacterial,
+fungal or viral skin 
+lesions in rosacea 
+and perioral dermatitis
+Avoid prolonged use 
+Caution when used on 
+face or intertriginous and 
+flexor areas
+CONTRAINDICATIONRECOMMENDED
+DOSAGE
+Mild
+Betamethasone Valerate 
+1 in 10 dilution (0.01%) Cream/Ointment
+Betamethasone Valerate 
+1 in 8 dilution (0.0125%) Cream/Ointment
+Hydrocortisone Acetate 1% Cream/Ointment
+8
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS MANAGEMENT OF ATOPIC ECZEMA
+TABLE 4. WRITTEN ECZEMA ACTION PLAN
+GREEN = GO : Use preventive measures
+YELLOW = CAUTION: Use lower strength medications
+RED = FLARE : Use higher strength medications   
+     and consult your doctor
+NAME:
+REGULAR DAILY SKIN CARE
+1. Bath twice a day with gentle cleanser less than 10 minutes.
+2. Apply moisturiser to all body parts immediately after bath.
+3. Apply moisturiser to all body parts minimum thrice a day.
+4. Bath and moisturise your skin before bed.
+5. Wear suitable cloth/pyjamas, preferably cotton, to bed.
+SKIN CARE DURING WORSENING
+1. Continue regular skin care from GREEN phase.
+2. Apply anti-inflammatory creams till eczema clears.
+2a. Face: Apply hydrocortisone 1% twice a day for 5 - 7 days,
+ then once a day for 5 - 7 days till eczema clears.
+2b. Body: Apply betamethasone (1:4) twice a day for 5 - 7 days, 
+ then once a day for 5 - 7 days till eczema clears.
+3. Take antihistamine (anti-itch), prescribed by doctor, half an
+ hour before bed.
+4. If eczema gets better, revert back to GREEN phase.
+5. If eczema not responding within 3 days or eczema and itch 
+ worsens, move to RED phase.
+SKIN CARE DURING UNCONTROLLED ECZEMA
+1. Continue regular skin care form GREEN phase.
+2. Bath daily with antiseptic wash for 5 - 7 days.
+3. Apply anti-inflammatory creams till eczema clears.
+ 
+3a. Face: Apply betamethasone (1:8) twice a day for 5 - 7 days, 
+ then once a day for 5 - 7 days till eczema clears.
+ 
+3b. Body: Apply betamethasone (1:2) twice a day for 5 - 7 days, 
+ then once a day for 5 - 7 days till eczema clears.
+4. Take antihistamine (anti-itch), prescribed by doctor, half an
+ hour before bed.
+5. If eczema gets better revert back to YELLOW phase, then
+ subsequently to GREEN phase.
+6. If eczema not responding within 3 days or eczema and itch 
+ worsens, consult your doctor.
+ECZEMA UNDER CONTROL
+ECZEMA WORSENING
+UNCONTROLLED ECZEMA
+GREEN
+RED
+YELLOW
+Persatuan Dermatologi
+Malaysia
+Ministry of Health
+Malaysia
+Academy of
+Medicine Malaysia
+QUICK REFERENCE FOR HEALTHCARE PROVIDERS

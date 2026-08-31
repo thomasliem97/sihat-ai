@@ -10,7 +10,7 @@ use App\Models\TriageMessage;
 use App\Models\TriageSession;
 use App\Models\User;
 use App\Services\TriageTurnStatus;
-use Illuminate\Http\Client\Response;
+use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -50,7 +50,7 @@ function openaiJsonFromRequest($request): array
     ];
 }
 
-function fakeOpenAiChatCompletion($request, ?callable $intentOverride = null): Response
+function fakeOpenAiChatCompletion($request, ?callable $intentOverride = null): PromiseInterface
 {
     $messages = $request->data()['messages'] ?? [];
     $system = (string) data_get($messages, '0.content', '');
@@ -75,7 +75,7 @@ function fakeOpenAiChatCompletion($request, ?callable $intentOverride = null): R
     ], 200);
 }
 
-function fakeTriageHttp(array $structuredOverrides = [], ?string $transcript = null, string $engine = 'medasr'): void
+function fakeTriageHttp(array $structuredOverrides = [], ?string $transcript = null, string $engine = 'medasr', ?string $draft = null): void
 {
     $structured = array_merge([
         'assistant_message' => 'How long have you had these symptoms?',
@@ -84,12 +84,31 @@ function fakeTriageHttp(array $structuredOverrides = [], ?string $transcript = n
         'summary' => 'Patient reports chest pain for two days.',
         'done' => false,
         'in_scope' => true,
+        'prompts' => [],
     ], $structuredOverrides);
 
-    Http::fake(function ($request) use ($structured, $transcript, $engine) {
+    Http::fake(function ($request) use ($structured, $transcript, $engine, $draft) {
+        if (str_contains($request->url(), '/api/v1/triage/stream')) {
+            $draftText = $draft ?? (string) $structured['assistant_message'];
+            $sse = implode("\n\n", [
+                'data: '.json_encode(['hop' => 'Writing the reply', 'detail' => 'the current message']),
+                'data: '.json_encode(['token' => $draftText]),
+                'data: '.json_encode(['hop' => 'Checking urgency and summary']),
+                'data: '.json_encode([
+                    'done' => true,
+                    'draft' => $draftText,
+                    'structured' => $structured,
+                ]),
+            ])."\n\n";
+
+            return Http::response($sse, 200, [
+                'Content-Type' => 'text/event-stream',
+            ]);
+        }
+
         if (str_contains($request->url(), '/api/v1/triage')) {
             return Http::response([
-                'draft' => $structured['assistant_message'],
+                'draft' => $draft ?? (string) $structured['assistant_message'],
                 'structured' => $structured,
             ], 200);
         }
@@ -720,6 +739,36 @@ test('voice turn marks pending turn failed for empty stt transcript', function (
     expect($session->fresh()->messages)->toHaveCount(0);
 });
 
+test('voice turn reports warming up when stt is down', function () {
+    Http::fake(function ($request) {
+        if (str_contains($request->url(), '/api/v1/transcribe')) {
+            return Http::response(['detail' => 'cold start'], 502);
+        }
+
+        return fakeOpenAiChatCompletion($request);
+    });
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => '',
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $response = $this->actingAs($patient)
+        ->withHeaders(['Accept' => 'text/event-stream'])
+        ->post(route('voice.triage.sessions.messages', $session), [
+            'audio' => fakeTriageWebm(),
+        ]);
+
+    $response->assertSuccessful();
+    expect($response->streamedContent())->toContain(
+        'Speech service is warming up. Type your message or try again in a moment.',
+    );
+    expect($session->fresh()->messages)->toHaveCount(0);
+});
+
 test('stale pending voice turn is marked failed', function () {
     $session = TriageSession::factory()->create();
 
@@ -852,18 +901,365 @@ test('user can synthesize speech for any assistant message in a viewed session',
         'content' => 'I have a fever',
     ]);
 
-    $this->actingAs($patient)
-        ->postJson(route('voice.triage.sessions.messages.speak', [
+    $response = $this->actingAs($patient)
+        ->get(route('voice.triage.sessions.messages.speak', [
             'session' => $session,
             'message' => $assistant,
-        ]))
-        ->assertSuccessful()
-        ->assertJsonPath('audio_base64', base64_encode('replay-mp3'));
+        ]), [
+            'Accept' => 'audio/mpeg',
+        ]);
+
+    $response->assertSuccessful()
+        ->assertHeader('Content-Type', 'audio/mpeg');
+
+    expect($response->streamedContent())->toBe('replay-mp3');
 
     $this->actingAs($patient)
-        ->postJson(route('voice.triage.sessions.messages.speak', [
+        ->get(route('voice.triage.sessions.messages.speak', [
             'session' => $session,
             'message' => $userMessage,
         ]))
         ->assertUnprocessable();
+});
+
+test('triage message stream yields hops tokens and persists the reply', function () {
+    fakeTriageHttp();
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => '',
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $response = $this->actingAs($patient)
+        ->withHeaders(['Accept' => 'text/event-stream'])
+        ->post(route('voice.triage.sessions.messages', $session), [
+            'text' => 'I have a fever',
+        ]);
+
+    $response->assertSuccessful();
+
+    $body = $response->streamedContent();
+
+    expect($body)->toContain('"event":"hop"')
+        ->and($body)->toContain('Reading your message')
+        ->and($body)->toContain('Asking MedGemma')
+        ->and($body)->toContain('Writing the reply')
+        ->and($body)->toContain('"event":"token"')
+        ->and($body)->toContain('How long have you had these symptoms?')
+        ->and($body)->toContain('"event":"assistant"')
+        ->and($body)->toContain('"event":"session"');
+
+    expect($session->fresh()->messages)->toHaveCount(2)
+        ->and($session->fresh()->messages->last()->content)->toBe('How long have you had these symptoms?');
+});
+
+test('prompt-echo draft is not streamed or persisted', function (string $leak) {
+    $reply = 'For a slight fever, paracetamol 500 mg every 4 to 6 hours is a usual first option.';
+
+    fakeTriageHttp([
+        'assistant_message' => $reply,
+        'chief_complaint' => 'slight fever',
+        'summary' => 'Adult with a slight fever asking about medication.',
+        'urgency' => 'routine',
+    ], draft: $leak);
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => 'en',
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $response = $this->actingAs($patient)
+        ->withHeaders(['Accept' => 'text/event-stream'])
+        ->post(route('voice.triage.sessions.messages', $session), [
+            'text' => "Who has the fever?: Adult\nWhat is the highest measured temperature?: 38-39C",
+        ]);
+
+    $response->assertSuccessful();
+
+    $body = $response->streamedContent();
+
+    expect($body)->not->toContain('Write the next triage reply')
+        ->and($body)->not->toContain('Current user message:')
+        ->and($body)->not->toContain('prefer this for immediate continuity')
+        ->and($body)->toContain($reply)
+        ->and($session->fresh()->messages->last()->content)->toBe($reply);
+})->with([
+    'instruction tail' => 'Write the next triage reply in English. Stay in medical triage scope. Plain text only, not JSON.',
+    'dialog body' => "Recent dialog (up to last 10 messages; prefer this for immediate continuity):\nCurrent user message:\nWhat is your highest measured temperature?: Under 38C",
+]);
+
+test('leaked assistant history is not sent back to medgemma', function () {
+    $captured = [];
+
+    Http::fake(function ($request) use (&$captured) {
+        if (str_contains($request->url(), '/api/v1/triage')) {
+            $captured[] = $request->data();
+
+            return Http::response([
+                'draft' => 'For a slight fever, rest and paracetamol are usual first steps.',
+                'structured' => [
+                    'assistant_message' => 'For a slight fever, rest and paracetamol are usual first steps.',
+                    'urgency' => 'routine',
+                    'chief_complaint' => 'slight fever',
+                    'summary' => 'Adult with a slight fever.',
+                    'done' => false,
+                    'in_scope' => true,
+                    'prompts' => [],
+                ],
+            ], 200);
+        }
+
+        if (str_contains($request->url(), 'chat/completions')) {
+            return fakeOpenAiChatCompletion($request);
+        }
+
+        if (str_contains($request->url(), 'audio/speech')) {
+            return Http::response('fake-mp3', 200, [
+                'Content-Type' => 'audio/mpeg',
+            ]);
+        }
+
+        return Http::response(['error' => 'unexpected'], 500);
+    });
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => 'en',
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    TriageMessage::factory()->create([
+        'triage_session_id' => $session->id,
+        'role' => TriageMessageRole::User,
+        'content' => 'i would like to know what medication should i take when i have a slight fever',
+    ]);
+    TriageMessage::factory()->create([
+        'triage_session_id' => $session->id,
+        'role' => TriageMessageRole::Assistant,
+        'content' => 'Write the next triage reply in English. Plain text only, not JSON.',
+    ]);
+
+    $this->actingAs($patient)->postJson(
+        route('voice.triage.sessions.messages', $session),
+        ['text' => 'Who has the fever?: Adult'],
+    )->assertSuccessful();
+
+    $dialog = (string) data_get($captured, '0.recent_dialog', '');
+
+    expect($captured)->not->toBeEmpty()
+        ->and($dialog)->toContain('slight fever')
+        ->and($dialog)->not->toContain('Write the next triage reply');
+});
+
+test('triage turn persists follow-up prompts for the selection card', function () {
+    fakeTriageHttp([
+        'prompts' => [
+            [
+                'id' => 'fever',
+                'question' => 'Any fever with this cough?',
+                'allow_multiple' => false,
+                'options' => [
+                    ['id' => 'yes', 'label' => 'Yes'],
+                    ['id' => 'no', 'label' => 'No'],
+                    ['id' => 'unsure', 'label' => 'Not sure'],
+                ],
+            ],
+            [
+                'id' => 'duration',
+                'question' => 'How long have you had this?',
+                'allow_multiple' => false,
+                'options' => [
+                    ['id' => 'lt2d', 'label' => 'Less than 2 days'],
+                    ['id' => '2to7d', 'label' => '2 to 7 days'],
+                    ['id' => 'gt7d', 'label' => 'More than a week'],
+                ],
+            ],
+            ['question' => 'no'],
+        ],
+    ]);
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $turn = $this->actingAs($patient)->postJson(
+        route('voice.triage.sessions.messages', $session),
+        ['text' => 'I have a cough'],
+    );
+
+    $turn->assertSuccessful()
+        ->assertJsonPath('session.messages.1.prompts.0.id', 'fever')
+        ->assertJsonPath('session.messages.1.prompts.1.id', 'duration');
+
+    expect($turn->json('session.messages.1.prompts'))->toHaveCount(2)
+        ->and($session->fresh()->messages->last()->prompts)->toHaveCount(2);
+});
+
+test('card answers do not open another prompt card', function () {
+    fakeTriageHttp([
+        'assistant_message' => 'For a slight fever with cough, rest and paracetamol are usual first steps.',
+        'chief_complaint' => 'slight fever',
+        'summary' => 'Adult with a slight fever and cough.',
+        'urgency' => 'routine',
+        'done' => false,
+        'prompts' => [
+            [
+                'id' => 'meds',
+                'question' => 'Have you taken anything for this?',
+                'allow_multiple' => false,
+                'options' => [
+                    ['id' => 'yes', 'label' => 'Yes'],
+                    ['id' => 'no', 'label' => 'No'],
+                ],
+            ],
+        ],
+    ]);
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $turn = $this->actingAs($patient)->postJson(
+        route('voice.triage.sessions.messages', $session),
+        ['text' => "Which symptoms do you have now?: Cough\nDo you have a condition that raises the risk?: No"],
+    );
+
+    $turn->assertSuccessful();
+
+    expect($turn->json('session.messages.1.prompts'))->toBe([])
+        ->and($session->fresh()->messages->last()->prompts)->toBeNull();
+});
+
+test('ai disclaimer sentences are stripped from the persisted reply', function () {
+    $hedged = 'Rest and paracetamol 500 mg every 4 to 6 hours are usual first steps. I am a large language model, not a medical professional. I cannot provide medical advice. Please consult a licensed clinician for diagnosis and treatment.';
+
+    fakeTriageHttp([
+        'assistant_message' => $hedged,
+        'chief_complaint' => 'slight fever',
+        'summary' => 'Adult with a slight fever.',
+        'urgency' => 'routine',
+        'prompts' => [],
+    ], draft: $hedged);
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $this->actingAs($patient)->postJson(
+        route('voice.triage.sessions.messages', $session),
+        ['text' => 'I have a slight fever'],
+    )->assertSuccessful();
+
+    $content = (string) $session->fresh()->messages->last()->content;
+
+    expect($content)->toContain('paracetamol')
+        ->and($content)->not->toContain('large language model')
+        ->and($content)->not->toContain('medical professional')
+        ->and($content)->not->toContain('licensed clinician');
+});
+
+test('a see-a-doctor stub is replaced by the structured medication plan', function () {
+    $stub = 'This is a low-grade fever. If you have a cough, sore throat, or shortness of breath, it is best to monitor your symptoms and contact a healthcare provider for further evaluation.';
+    $plan = 'This is often a viral upper respiratory infection. Paracetamol 500 mg to 1 g every 4 to 6 hours (maximum 4 g in 24 hours) is the usual first option. Rest, fluids, and throat lozenges help. If shortness of breath is new or worsening, go to the emergency department now.';
+
+    fakeTriageHttp([
+        'assistant_message' => $plan,
+        'chief_complaint' => 'fever and cough',
+        'summary' => 'Low-grade fever starting today with cough and sore throat.',
+        'urgency' => 'urgent',
+        'prompts' => [],
+    ], draft: $stub);
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $this->actingAs($patient)->postJson(
+        route('voice.triage.sessions.messages', $session),
+        ['text' => "What is the highest temperature you have measured?: Under 38°C\nWhen did the fever start?: Today"],
+    )->assertSuccessful();
+
+    $content = (string) $session->fresh()->messages->last()->content;
+
+    expect($content)->toContain('Paracetamol')
+        ->and($content)->not->toContain('healthcare provider')
+        ->and($content)->not->toContain('further evaluation');
+});
+
+test('the structured plan is shown even when the medgemma draft is fluent', function () {
+    $draft = 'This is a low-grade fever starting today.';
+    $plan = 'This is often viral. Paracetamol 500 mg to 1 g every 4 to 6 hours is the usual first option. Rest and fluids. Go to the emergency department now if breathing becomes hard.';
+
+    fakeTriageHttp([
+        'assistant_message' => $plan,
+        'chief_complaint' => 'fever',
+        'summary' => 'Low-grade fever starting today.',
+        'urgency' => 'routine',
+        'prompts' => [],
+    ], draft: $draft);
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $this->actingAs($patient)->postJson(
+        route('voice.triage.sessions.messages', $session),
+        ['text' => 'I have a fever since this morning'],
+    )->assertSuccessful();
+
+    expect($session->fresh()->messages->last()->content)->toBe($plan);
+});
+
+test('sse audio message skips the voice job and transcribes inline', function () {
+    Queue::fake();
+    fakeTriageHttp(transcript: 'I have chest pain');
+
+    $patient = User::factory()->patient()->create();
+    $session = TriageSession::factory()->create([
+        'user_id' => $patient->id,
+        'subject_user_id' => $patient->id,
+        'locale' => '',
+        'status' => TriageSessionStatus::Active,
+    ]);
+
+    $response = $this->actingAs($patient)
+        ->withHeaders(['Accept' => 'text/event-stream'])
+        ->post(route('voice.triage.sessions.messages', $session), [
+            'audio' => fakeTriageWebm(),
+        ]);
+
+    $response->assertSuccessful();
+    Queue::assertNothingPushed();
+
+    $body = $response->streamedContent();
+
+    expect($body)->toContain('Transcribing speech')
+        ->and($body)->toContain('Heard you')
+        ->and($body)->toContain('I have chest pain');
+
+    expect($session->fresh()->messages)->toHaveCount(2)
+        ->and($session->fresh()->messages->first()->content)->toBe('I have chest pain');
 });
