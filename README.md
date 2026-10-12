@@ -204,6 +204,8 @@ tests/                    Pest feature and unit tests
 
 - **[Demo video](https://sihat-ai.vxms.dev/docs/demo.mp4)**: product walkthrough.
 - **[Interactive pitch deck](https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.html)**: 12-slide product story ([PDF](https://sihat-ai.vxms.dev/docs/pitch-deck/SihatAI-Pitch-Deck.pdf)).
+- **[Stage presentation](https://sihat-ai.vxms.dev/docs/stage-presentation/SihatAI-Stage.html)**: Semi-final on-stage keynote.
+- **[Team profile](https://sihat-ai.vxms.dev/docs/team-profile/SihatAI-Team-Profile.html)**: one-page MAIC team slide ([PDF](https://sihat-ai.vxms.dev/docs/team-profile/SihatAI-Team-Profile.pdf)).
 - **[Project summary](https://sihat-ai.vxms.dev/docs/project-summary.html)**: written brief ([plain text](https://sihat-ai.vxms.dev/docs/project-summary.txt)).
 - **[AI disclosure](https://sihat-ai.vxms.dev/docs/ai-disclosure.html)**: product and development AI use ([plain text](https://sihat-ai.vxms.dev/docs/ai-disclosure.txt)).
 - **[Technical architecture](https://sihat-ai.vxms.dev/docs/technical-architecture/SihatAI-Technical-Architecture.html)**: system architecture, algorithms, and claim boundary ([PDF](https://sihat-ai.vxms.dev/docs/technical-architecture/SihatAI-Technical-Architecture.pdf)).

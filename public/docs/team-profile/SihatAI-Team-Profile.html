@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>SihatAI · Team Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --stage-bg: #d9eef5;
+      --slide-bg: #f3fbfd;
+      --paper: #ffffff;
+      --paper-blue: #e4f5fa;
+      --paper-deep: #ccebf3;
+      --ink: #102f4a;
+      --ink-soft: #48697d;
+      --ink-faint: #7795a6;
+      --blue: #176ca5;
+      --blue-dark: #0c527f;
+      --teal: #0b8994;
+      --coral: #f26b5e;
+      --line: #bddce6;
+      --line-strong: #83bdcf;
+      --font-display: "Bricolage Grotesque", sans-serif;
+      --font-mono: "Azeret Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    h1, h2, p { margin: 0; }
+    h1, h2 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--stage-bg);
+      color: var(--ink);
+      font-family: var(--font-display);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .deck-viewport {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: var(--stage-bg);
+    }
+
+    .deck-stage {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      transform-origin: 0 0;
+      background: var(--slide-bg);
+    }
+
+    .slide {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 56px 28px;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(105, 203, 218, .34), transparent 26%),
+        radial-gradient(circle at 8% 92%, rgba(23, 108, 165, .08), transparent 28%),
+        linear-gradient(rgba(16, 92, 130, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 92, 130, .055) 1px, transparent 1px),
+        #f3fbfd;
+      background-size: auto, auto, 48px 48px, 48px 48px, auto;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(23, 108, 165, .2);
+      border-radius: 36px;
+      pointer-events: none;
+    }
+
+    .topline, .layout, .slide-footer { position: relative; z-index: 2; }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      flex: none;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      color: white;
+      background: var(--blue);
+      border-radius: 50% 50% 46% 54%;
+      box-shadow: 5px 4px 0 var(--paper-deep);
+      font: 700 18px/1 var(--font-mono);
+    }
+
+    .brand-ai { color: var(--blue); }
+
+    .kicker, .section-tag, .specimen-label, .pill, .track small {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--blue);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .section-tag::before {
+      content: "";
+      width: 26px;
+      border-top: 3px solid var(--coral);
+      flex: none;
+    }
+
+    .layout {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 860px minmax(0, 1fr);
+      gap: 36px;
+      margin-top: 22px;
+    }
+
+    .identity {
+      position: relative;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .orbit {
+      position: absolute;
+      z-index: 0;
+      left: -88px;
+      top: -28px;
+      width: 560px;
+      height: 560px;
+      border: 2px dashed rgba(23, 108, 165, .42);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(11, 137, 148, .28);
+    }
+
+    .orbit::before { inset: 54px; }
+    .orbit::after { inset: 118px; border-color: rgba(23, 108, 165, .16); }
+
+    .plate-stack {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .plate-back { display: none; }
+
+    .plate {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 26px 26px 22px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+    }
+
+    .plate::before {
+      content: "";
+      position: absolute;
+      width: 118px;
+      height: 22px;
+      top: -11px;
+      left: 64px;
+      background: rgba(143, 205, 219, .95);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45);
+    }
+
+    .specimen-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--ink-faint);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .specimen-label span {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .specimen-label i {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 8px rgba(242, 107, 94, .14);
+    }
+
+    .well {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--paper);
+    }
+
+    .well img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.8);
+      transform-origin: 47% 5%;
+    }
+
+    .photo-logo {
+      position: absolute;
+      z-index: 1;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px 6px 6px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .94);
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .photo-logo .brand-mark {
+      width: 50px;
+      height: 50px;
+      box-shadow: none;
+      font-size: 22px;
+    }
+
+    .members {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .member {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto auto;
+      column-gap: 14px;
+      row-gap: 8px;
+      padding: 16px 16px 18px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 16px 40px rgba(16, 79, 110, .08);
+    }
+
+    .member.tech { border-top: 4px solid var(--blue); }
+    .member.story { border-top: 4px solid var(--teal); }
+
+    .icon-disc {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 56px;
+      height: 56px;
+      color: var(--blue);
+      background: var(--paper-blue);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+
+    .icon-disc svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .member .icon-disc {
+      grid-row: 1 / span 3;
+      align-self: start;
+      width: 52px;
+      height: 52px;
+    }
+
+    .member .icon-disc svg { width: 26px; height: 26px; }
+
+    .member.story .icon-disc {
+      color: #086772;
+      background: #dcf5f2;
+      border-color: #9edbd5;
+    }
+
+    .finding .icon-disc {
+      width: 112px;
+      height: 112px;
+      color: var(--blue);
+      background: white;
+      border: 0;
+    }
+
+    .finding .icon-disc svg { width: 56px; height: 56px; }
+
+    .finding-head,
+    .why-head,
+    .track-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .finding-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .why .section-tag::before,
+    .track .section-tag::before {
+      content: none;
+      display: none;
+      width: 0;
+      border: 0;
+    }
+
+    .why .icon-disc,
+    .track .icon-disc {
+      width: 48px;
+      height: 48px;
+    }
+
+    .why .icon-disc svg,
+    .track .icon-disc svg { width: 24px; height: 24px; }
+
+    .member h2 {
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+      font-weight: 750;
+    }
+
+    .pill {
+      justify-self: start;
+      padding: 7px 12px;
+      color: var(--blue-dark);
+      background: var(--paper-blue);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .member.story .pill {
+      color: #086772;
+      background: #dcf5f2;
+      border-color: #9edbd5;
+    }
+
+    .member p {
+      color: var(--ink-soft);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .brief {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 6px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue-dark);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .kicker i {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 8px rgba(242, 107, 94, .14);
+    }
+
+    h1 {
+      font-size: 108px;
+      line-height: .86;
+      letter-spacing: -5px;
+      font-weight: 760;
+    }
+
+    .finding {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px 36px 34px 40px;
+      color: white;
+      background: var(--blue);
+      border: 0;
+      border-radius: 28px;
+      box-shadow: 8px 9px 0 var(--paper-deep);
+    }
+
+    .finding .section-tag {
+      color: #d7eef6;
+      margin-bottom: 16px;
+    }
+
+    .finding::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 6px;
+      border-radius: 0 6px 6px 0;
+      background: var(--coral);
+    }
+
+    .finding .lead {
+      margin-top: 18px;
+      color: white;
+      font-size: 42px;
+      line-height: 1.08;
+      font-weight: 740;
+      letter-spacing: -1.3px;
+    }
+
+    .finding .follow {
+      margin-top: 16px;
+      color: #d7eef6;
+      font-size: 26px;
+      line-height: 1.32;
+      font-weight: 560;
+    }
+
+    .split {
+      flex: none;
+      display: grid;
+      grid-template-columns: 420px minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .track, .why {
+      border-radius: 24px;
+      padding: 18px 20px 20px;
+    }
+
+    .why,
+    .track {
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .track {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-art {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 0;
+      margin: 14px 0 0;
+      overflow: hidden;
+      background: var(--paper-blue);
+      border-radius: 16px;
+    }
+
+    .track-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .track .section-tag { color: var(--blue); }
+
+    .track-body {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .track-index {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 64px;
+      height: 64px;
+      color: white;
+      background: var(--blue);
+      border-radius: 20px;
+      font-size: 26px;
+      font-weight: 760;
+      letter-spacing: -1px;
+    }
+
+    .track strong {
+      display: block;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.4px;
+    }
+
+    .track small {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink-soft);
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 560;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .why p {
+      margin-top: 12px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.38;
+      font-weight: 520;
+    }
+
+    .slide-footer {
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 34px;
+      margin-top: 14px;
+      color: var(--ink-faint);
+      font: 600 16px/1 var(--font-mono);
+      letter-spacing: .3px;
+    }
+
+    @page { size: 13.333333in 7.5in; margin: 0; }
+
+    html.export,
+    html.export body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #f3fbfd;
+    }
+
+    html.export .deck-viewport,
+    html.export .deck-stage {
+      position: static;
+      width: 1920px;
+      height: 1080px;
+      transform: none !important;
+      overflow: hidden;
+    }
+
+    @media print {
+      html, body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #fff;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .deck-viewport, .deck-stage {
+        position: static;
+        width: 1920px;
+        height: 1080px;
+        transform: none !important;
+        overflow: hidden;
+        background: none;
+      }
+
+      .slide {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-viewport">
+    <main class="deck-stage" id="deckStage">
+      <section class="slide" aria-label="SihatAI team profile">
+        <header class="topline">
+          <div class="brand"><span class="brand-mark">S</span><span>Sihat<span class="brand-ai">AI</span></span></div>
+          <span class="section-tag">Team profile</span>
+        </header>
+
+        <div class="layout">
+          <div class="identity">
+            <div class="orbit" aria-hidden="true"></div>
+            <div class="plate-stack">
+              <div class="plate-back" aria-hidden="true"></div>
+              <figure class="plate">
+                <figcaption class="specimen-label"><span><i></i>Team photograph</span></figcaption>
+                <div class="well">
+                  <img src="images/team-photo.webp" alt="SihatAI team photo">
+                  <span class="photo-logo"><span class="brand-mark" aria-hidden="true">S</span><span>Sihat<span class="brand-ai">AI</span></span></span>
+                </div>
+              </figure>
+            </div>
+            <div class="members">
+              <article class="member tech">
+                <span class="icon-disc" aria-hidden="true"><svg class="lucide lucide-cpu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v2"/><path d="M12 2v2"/><path d="M17 20v2"/><path d="M17 2v2"/><path d="M2 12h2"/><path d="M2 17h2"/><path d="M2 7h2"/><path d="M20 12h2"/><path d="M20 17h2"/><path d="M20 7h2"/><path d="M7 20v2"/><path d="M7 2v2"/><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></span>
+                <h2>Thomas Liem</h2>
+                <span class="pill">Tech</span>
+                <p>Builds the whole app, the tool and everything around it.</p>
+              </article>
+              <article class="member story">
+                <span class="icon-disc" aria-hidden="true"><svg class="lucide lucide-presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg></span>
+                <h2>Wei Le</h2>
+                <span class="pill">Presentation</span>
+                <p>Runs the demo, and covers the UI, UX, docs, and pitch deck.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="brief">
+            <div class="kicker"><i></i> Who we are</div>
+            <h1>SihatAI</h1>
+            <article class="finding">
+              <div class="finding-head">
+                <span class="section-tag">The project</span>
+                <span class="icon-disc" aria-hidden="true"><svg class="lucide lucide-scan-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></svg></span>
+              </div>
+              <p class="lead">A scan, a lab report, and a symptom usually show up separately.</p>
+              <p class="follow">SihatAI turns them into one report the doctor can check and the patient can read. The language stays plain, so the report can be understood easily even without special medical knowledge.</p>
+            </article>
+            <div class="split">
+              <article class="track">
+                <div class="track-head">
+                  <span class="icon-disc" aria-hidden="true"><svg class="lucide lucide-stethoscope" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg></span>
+                  <span class="section-tag">Challenge track</span>
+                </div>
+                <figure class="track-art">
+                  <img src="images/track-field.jpg" alt="A chest study and a lab tube on field paper">
+                </figure>
+                <div class="track-body">
+                  <div class="track-index">T2</div>
+                  <div>
+                    <strong>AI for Healthcare &amp; Medical</strong>
+                    <small>MAIC Nexus Challenge</small>
+                  </div>
+                </div>
+              </article>
+              <article class="why">
+                <div class="why-head">
+                  <span class="icon-disc" aria-hidden="true"><svg class="lucide lucide-heart-handshake" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/></svg></span>
+                  <span class="section-tag">Why we joined MAIC</span>
+                </div>
+                <p>Malaysian clinics are short of specialists. Scans and lab reports pile up, and patients often leave without knowing what the report means. We joined this track to work on that problem.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <footer class="slide-footer">
+          <span>SihatAI · Clinical Field Atlas</span>
+          <span>sihat-ai.vxms.dev</span>
+        </footer>
+      </section>
+    </main>
+  </div>
+  <script>
+    const stage = document.getElementById('deckStage');
+    const exporting = new URLSearchParams(window.location.search).has('export');
+
+    if (exporting) {
+      document.documentElement.classList.add('export');
+    }
+
+    function scaleStage() {
+      if (exporting) {
+        return;
+      }
+      const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      const x = (window.innerWidth - 1920 * factor) / 2;
+      const y = (window.innerHeight - 1080 * factor) / 2;
+      stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+    }
+
+    scaleStage();
+    window.addEventListener('resize', scaleStage);
+  </script>
+</body>
+</html>
